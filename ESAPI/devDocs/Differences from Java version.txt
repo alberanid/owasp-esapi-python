@@ -1,0 +1,20 @@
+Documentation built with epydoc using *Javadocs*
+
+toString() -> __str__()
+
+Package name schema
+	Simply remove "org.owasp." from package references
+
+	Java: org.owasp.esapi.Logger
+	Python: esapi.Logger
+	
+	Java: org.owasp.esapi.errors.AuthenticationException
+	Python: esapi.errors.AuthenticationException
+	
+Utilizing default paramaters
+	Java:
+		void fatal(EventType type, String message);
+		void fatal(EventType type, String message, Throwable throwable);
+		
+	Python:
+		fatal(type, message, throwable=None)
