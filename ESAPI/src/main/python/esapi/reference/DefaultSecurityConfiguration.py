@@ -4,7 +4,6 @@
 
 import os
 import os.path
-import ConfigParser
 import sys
 
 REMEMBER_TOKEN_DURATION = "Authenticator.RememberTokenDuration"

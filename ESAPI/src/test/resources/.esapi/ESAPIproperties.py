@@ -24,14 +24,14 @@
 # entire application.
 #
 # DefaultAccessController requires ESAPI-AccessControlPolicy.xml in .esapi directory
-'ESAPI.AccessControl' = 'esapi.reference.accesscontrol.DefaultAccessController"'
+ESAPI_AccessControl = 'esapi.reference.accesscontrol.DefaultAccessController'
 # FileBasedAuthenticator requires users.txt file in .esapi directory
-'ESAPI.Authenticator' = 'esapi.reference.FileBasedAuthenticator'
-'ESAPI.Encoder' = 'esapi.reference.DefaultEncoder'
-'ESAPI.Encryptor' = 'esapi.reference.JavaEncryptor'
-'ESAPI.Executor' = 'esapi.reference.DefaultExecutor'
-'ESAPI.HTTPUtilities' = 'esapi.reference.DefaultHTTPUtilities'
-'ESAPI.IntrusionDetector' = 'esapi.reference.DefaultIntrusionDetector'
+ESAPI_Authenticator = 'esapi.reference.FileBasedAuthenticator'
+ESAPI_Encoder = 'esapi.reference.DefaultEncoder'
+ESAPI_Encryptor = 'esapi.reference.JavaEncryptor'
+ESAPI_Executor = 'esapi.reference.DefaultExecutor'
+ESAPI_HTTPUtilities = 'esapi.reference.DefaultHTTPUtilities'
+ESAPI_IntrusionDetector' = 'esapi.reference.DefaultIntrusionDetector'
 # Log4JFactory Requires log4j.xml or log4j.properties in classpath - http://www.laliluna.de/log4j-tutorial.html
 'ESAPI.Logger' = 'esapi.reference.Log4JLogFactory'
 #ESAPI.Logger=esapi.reference.JavaLogFactory
