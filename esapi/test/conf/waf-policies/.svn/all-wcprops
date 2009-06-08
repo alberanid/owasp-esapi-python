@@ -1,0 +1,89 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/492/trunk/src/test/resources/.esapi/waf-policies
+END
+restrict-source-ip-policy.xml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/492/trunk/src/test/resources/.esapi/waf-policies/restrict-source-ip-policy.xml
+END
+virtual-patch-policy.xml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/492/trunk/src/test/resources/.esapi/waf-policies/virtual-patch-policy.xml
+END
+detect-outbound-policy.xml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/492/trunk/src/test/resources/.esapi/waf-policies/detect-outbound-policy.xml
+END
+restrict-content-type-policy.xml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/492/trunk/src/test/resources/.esapi/waf-policies/restrict-content-type-policy.xml
+END
+add-httponly-policy.xml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/492/trunk/src/test/resources/.esapi/waf-policies/add-httponly-policy.xml
+END
+restrict-user-agent-policy.xml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/492/trunk/src/test/resources/.esapi/waf-policies/restrict-user-agent-policy.xml
+END
+restrict-extension-policy.xml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/492/trunk/src/test/resources/.esapi/waf-policies/restrict-extension-policy.xml
+END
+add-secure-policy.xml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/492/trunk/src/test/resources/.esapi/waf-policies/add-secure-policy.xml
+END
+dynamic-insertion-policy.xml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/492/trunk/src/test/resources/.esapi/waf-policies/dynamic-insertion-policy.xml
+END
+restrict-method-policy.xml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/492/trunk/src/test/resources/.esapi/waf-policies/restrict-method-policy.xml
+END
+add-header-policy.xml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/492/trunk/src/test/resources/.esapi/waf-policies/add-header-policy.xml
+END
+authentication-policy.xml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/492/trunk/src/test/resources/.esapi/waf-policies/authentication-policy.xml
+END
+enforce-https-policy.xml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/492/trunk/src/test/resources/.esapi/waf-policies/enforce-https-policy.xml
+END
+must-match-policy.xml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/492/trunk/src/test/resources/.esapi/waf-policies/must-match-policy.xml
+END
