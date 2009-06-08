@@ -10,7 +10,6 @@ The ESAPI is published by OWASP under the BSD license. You should read and accep
 LICENSE before you use, modify, and/or redistribute this software.
 
 @author Craig Younkins (craig.younkins@owasp.org)
-@created 2009
 """
 
 class SecurityConfiguration:
@@ -319,8 +318,6 @@ class SecurityConfiguration:
         Forces new cookie headers with HttpOnly on first and second responses
         in public HttpSession esapi.filters.SafeRequest.getSession() and
         esapi.filters.getSession(boolean create)
-        
-        @param force whether to override JSESSIONID cookie
         """
         raise NotImplementedError()
 
@@ -330,7 +327,7 @@ class SecurityConfiguration:
         
         @param filename
         @return
-        @throws IOException
+        @raise IOException
         """
         raise NotImplementedError()
 

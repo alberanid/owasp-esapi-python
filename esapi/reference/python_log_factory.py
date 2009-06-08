@@ -10,7 +10,6 @@ The ESAPI is published by OWASP under the BSD license. You should read and accep
 LICENSE before you use, modify, and/or redistribute this software.
 
 @author Craig Younkins (craig.younkins@owasp.org)
-@created 2009
 """
 
 # Todo: 
@@ -30,8 +29,8 @@ class PythonLogFactory(LogFactory):
     
     @author Craig Younkins (craig.younkins@owasp.org)
     @since June 1, 2009
-    @see esapi.LogFactory
-    @see esapi.reference.PythonLogFactory.PythonLogFactory.PythonLogger
+    @see esapi.log_factory
+    @see esapi.reference.python_log_factory.PythonLogFactory.PythonLogger
     """
     
     applicationName = None

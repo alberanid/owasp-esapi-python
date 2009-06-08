@@ -3,7 +3,7 @@
           "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>esapi.ESAPI</title>
+  <title>esapi.core</title>
   <link rel="stylesheet" href="epydoc.css" type="text/css" />
   <script type="text/javascript" src="epydoc.js"></script>
 </head>
@@ -38,7 +38,7 @@
     <td width="100%">
       <span class="breadcrumbs">
         <a href="esapi-module.html">Package&nbsp;esapi</a> ::
-        Module&nbsp;ESAPI
+        Module&nbsp;core
       </span>
     </td>
     <td>
@@ -48,14 +48,14 @@
     onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
         <tr><td align="right"><span class="options"
             >[<a href="frames.html" target="_top">frames</a
-            >]&nbsp;|&nbsp;<a href="esapi.ESAPI-module.html"
+            >]&nbsp;|&nbsp;<a href="esapi.core-module.html"
             target="_top">no&nbsp;frames</a>]</span></td></tr>
       </table>
     </td>
   </tr>
 </table>
 <!-- ==================== MODULE DESCRIPTION ==================== -->
-<h1 class="epydoc">Module ESAPI</h1><p class="nomargin-top"><span class="codelink"><a href="esapi.ESAPI-pysrc.html">source&nbsp;code</a></span></p>
+<h1 class="epydoc">Module core</h1><p class="nomargin-top"><span class="codelink"><a href="esapi.core-pysrc.html">source&nbsp;code</a></span></p>
 OWASP Enterprise Security API (ESAPI)
  
 This file is part of the Open Web Application Security Project (OWASP)
@@ -93,10 +93,10 @@ LICENSE before you use, modify, and/or redistribute this software.
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="esapi.ESAPI-module.html#getLogFactory" class="summary-sig-name">getLogFactory</a>()</span><br />
+          <td><span class="summary-sig"><a href="esapi.core-module.html#getLogFactory" class="summary-sig-name">getLogFactory</a>()</span><br />
       Get the current LogFactory being used by ESAPI.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="esapi.ESAPI-pysrc.html#getLogFactory">source&nbsp;code</a></span>
+            <span class="codelink"><a href="esapi.core-pysrc.html#getLogFactory">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -110,11 +110,11 @@ LICENSE before you use, modify, and/or redistribute this software.
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="esapi.ESAPI-module.html#getLogger" class="summary-sig-name">getLogger</a>(<span class="summary-sig-arg">classOrMod</span>)</span><br />
+          <td><span class="summary-sig"><a href="esapi.core-module.html#getLogger" class="summary-sig-name">getLogger</a>(<span class="summary-sig-arg">classOrMod</span>)</span><br />
       Returns:
 The current Logger associated with the specified class.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="esapi.ESAPI-pysrc.html#getLogger">source&nbsp;code</a></span>
+            <span class="codelink"><a href="esapi.core-pysrc.html#getLogger">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -128,11 +128,11 @@ The current Logger associated with the specified class.</td>
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="esapi.ESAPI-module.html#log" class="summary-sig-name">log</a>()</span><br />
+          <td><span class="summary-sig"><a href="esapi.core-module.html#log" class="summary-sig-name">log</a>()</span><br />
       Returns:
 The default logger</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="esapi.ESAPI-pysrc.html#log">source&nbsp;code</a></span>
+            <span class="codelink"><a href="esapi.core-pysrc.html#log">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -146,10 +146,10 @@ The default logger</td>
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="esapi.ESAPI-module.html#setLogFactory" class="summary-sig-name">setLogFactory</a>(<span class="summary-sig-arg">factory</span>)</span><br />
+          <td><span class="summary-sig"><a href="esapi.core-module.html#setLogFactory" class="summary-sig-name">setLogFactory</a>(<span class="summary-sig-arg">factory</span>)</span><br />
       Change the current ESAPI LogFactory to the LogFactory provided.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="esapi.ESAPI-pysrc.html#setLogFactory">source&nbsp;code</a></span>
+            <span class="codelink"><a href="esapi.core-pysrc.html#setLogFactory">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -179,7 +179,21 @@ The default logger</td>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="__package__"></a><span class="summary-name">__package__</span> = <code title="'esapi'"><code class="variable-quote">'</code><code class="variable-string">esapi</code><code class="variable-quote">'</code></code>
+        <a name="authenticator"></a><span class="summary-name">authenticator</span> = <code title="None">None</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="encoder"></a><span class="summary-name">encoder</span> = <code title="None">None</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="logFactory"></a><span class="summary-name">logFactory</span> = <code title="None">None</code>
     </td>
   </tr>
 <tr>
@@ -193,21 +207,14 @@ The default logger</td>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="authenticator"></a><span class="summary-name">authenticator</span> = <code title="None">None</code>
+        <a name="intrusionDetector"></a><span class="summary-name">intrusionDetector</span> = <code title="None">None</code>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="defaultLogger"></a><span class="summary-name">defaultLogger</span> = <code title="None">None</code>
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a name="encoder"></a><span class="summary-name">encoder</span> = <code title="None">None</code>
+        <a name="randomizer"></a><span class="summary-name">randomizer</span> = <code title="None">None</code>
     </td>
   </tr>
 <tr>
@@ -228,6 +235,13 @@ The default logger</td>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
+        <a name="validator"></a><span class="summary-name">validator</span> = <code title="None">None</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
         <a name="httpUtilities"></a><span class="summary-name">httpUtilities</span> = <code title="None">None</code>
     </td>
   </tr>
@@ -235,14 +249,7 @@ The default logger</td>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="intrusionDetector"></a><span class="summary-name">intrusionDetector</span> = <code title="None">None</code>
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a name="logFactory"></a><span class="summary-name">logFactory</span> = <code title="None">None</code>
+        <a name="defaultLogger"></a><span class="summary-name">defaultLogger</span> = <code title="None">None</code>
     </td>
   </tr>
 <tr>
@@ -256,14 +263,7 @@ The default logger</td>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="randomizer"></a><span class="summary-name">randomizer</span> = <code title="None">None</code>
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a name="validator"></a><span class="summary-name">validator</span> = <code title="None">None</code>
+        <a name="__package__"></a><span class="summary-name">__package__</span> = <code title="'esapi'"><code class="variable-quote">'</code><code class="variable-string">esapi</code><code class="variable-quote">'</code></code>
     </td>
   </tr>
 </table>
@@ -295,7 +295,7 @@ The default logger</td>
   <h3 class="epydoc"><span class="sig"><span class="sig-name">getLogFactory</span>()</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="esapi.ESAPI-pysrc.html#getLogFactory">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="esapi.core-pysrc.html#getLogFactory">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
@@ -317,7 +317,7 @@ return this same LogFactory from then on.
   <h3 class="epydoc"><span class="sig"><span class="sig-name">getLogger</span>(<span class="sig-arg">classOrMod</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="esapi.ESAPI-pysrc.html#getLogger">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="esapi.core-pysrc.html#getLogger">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
@@ -342,7 +342,7 @@ return this same LogFactory from then on.
   <h3 class="epydoc"><span class="sig"><span class="sig-name">log</span>()</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="esapi.ESAPI-pysrc.html#log">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="esapi.core-pysrc.html#log">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
@@ -363,7 +363,7 @@ return this same LogFactory from then on.
   <h3 class="epydoc"><span class="sig"><span class="sig-name">setLogFactory</span>(<span class="sig-arg">factory</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="esapi.ESAPI-pysrc.html#setLogFactory">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="esapi.core-pysrc.html#setLogFactory">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
@@ -403,7 +403,7 @@ return this same LogFactory from then on.
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Tue Jun 02 15:43:11 2009
+    Generated by Epydoc 3.0.1 on Mon Jun 08 11:38:43 2009
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

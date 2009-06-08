@@ -10,7 +10,6 @@ The ESAPI is published by OWASP under the BSD license. You should read and accep
 LICENSE before you use, modify, and/or redistribute this software.
 
 @author Craig Younkins (craig.younkins@owasp.org)
-@created 2009
 """
 
 # Todo
@@ -23,7 +22,7 @@ class LogFactory:
     In the reference implementation, PythonLogFactory.py implements this interface.  PythonLogFactory.py also contains an
     inner class called PythonLogger which implements Logger.java and uses the Python logging package to log events.
     
-    @see esapi.ESAPI
+    @see esapi.core
     
     @author Craig Younkins (craig.younkins@owasp.org)
     
