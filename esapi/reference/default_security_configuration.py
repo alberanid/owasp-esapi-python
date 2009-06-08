@@ -1,117 +1,23 @@
-# Todo
-# Fix getResourceFile
+"""
+OWASP Enterprise Security API (ESAPI)
+ 
+This file is part of the Open Web Application Security Project (OWASP)
+Enterprise Security API (ESAPI) project. For details, please see
+<a href="http://www.owasp.org/index.php/ESAPI">http://www.owasp.org/index.php/ESAPI</a>.
+Copyright (c) 2009 - The OWASP Foundation
 
+The ESAPI is published by OWASP under the BSD license. You should read and accept the
+LICENSE before you use, modify, and/or redistribute this software.
 
-import os
-import os.path
+@author Craig Younkins (craig.younkins@owasp.org)
+"""
+
 import sys
 
-REMEMBER_TOKEN_DURATION = "Authenticator.RememberTokenDuration"
-IDLE_TIMEOUT_DURATION = "Authenticator.IdleTimeoutDuration"
-ABSOLUTE_TIMEOUT_DURATION = "Authenticator.AbsoluteTimeoutDuration"
-ALLOWED_LOGIN_ATTEMPTS = "Authenticator.AllowedLoginAttempts"
-USERNAME_PARAMETER_NAME = "Authenticator.UsernameParameterName"
-PASSWORD_PARAMETER_NAME = "Authenticator.PasswordParameterName"
-MAX_OLD_PASSWORD_HASHES = "Authenticator.MaxOldPasswordHashes"
-
-MASTER_KEY = "Encryptor.MasterKey"
-MASTER_SALT = "Encryptor.MasterSalt"
-KEY_LENGTH = "Encryptor.EncryptionKeyLength"
-ENCRYPTION_ALGORITHM = "Encryptor.EncryptionAlgorithm"
-HASH_ALGORITHM = "Encryptor.HashAlgorithm"
-HASH_ITERATIONS = "Encryptor.HashIterations"
-CHARACTER_ENCODING = "Encryptor.CharacterEncoding"
-RANDOM_ALGORITHM = "Encryptor.RandomAlgorithm"
-DIGITAL_SIGNATURE_ALGORITHM = "Encryptor.DigitalSignatureAlgorithm"
-DIGITAL_SIGNATURE_KEY_LENGTH = "Encryptor.DigitalSignatureKeyLength"
-
-WORKING_DIRECTORY = "Executor.WorkingDirectory"
-APPROVED_EXECUTABLES = "Executor.ApprovedExecutables"
-
-FORCE_HTTPONLY = "HttpUtilities.ForceHTTPOnly"
-UPLOAD_DIRECTORY = "HttpUtilities.UploadDir"    
-APPROVED_UPLOAD_EXTENSIONS = "HttpUtilities.ApprovedUploadExtensions"
-MAX_UPLOAD_FILE_BYTES = "HttpUtilities.MaxUploadFileBytes"
-RESPONSE_CONTENT_TYPE = "HttpUtilities.ResponseContentType"
-
-APPLICATION_NAME = "Logger.ApplicationName"    
-LOG_LEVEL = "Logger.LogLevel"
-LOG_FILE_NAME = "Logger.LogFileName"
-MAX_LOG_FILE_SIZE = "Logger.MaxLogFileSize"
-LOG_ENCODING_REQUIRED = "Logger.LogEncodingRequired"
-        
-## The default max log file size is set to 10,000,000 bytes (10 Meg). If the current log file exceeds the current 
-# max log file size, the logger will move the old log data into another log file. There currently is a max of 
-# 1000 log files of the same name. If that is exceeded it will presumably start discarding the oldest logs.
-DEFAULT_MAX_LOG_FILE_SIZE = 10000000
-MAX_REDIRECT_LOCATION = 1000
-MAX_FILE_NAME_LENGTH = 1000
-
-# Implementation Keys
-LOG_IMPLEMENTATION = "ESAPI.Logger"
-AUTHENTICATION_IMPLEMENTATION = "ESAPI.Authenticator"
-ENCODER_IMPLEMENTATION = "ESAPI.Encoder"
-ACCESS_CONTROL_IMPLEMENTATION = "ESAPI.AccessControl"
-ENCRYPTION_IMPLEMENTATION = "ESAPI.Encryptor"
-INTRUSION_DETECTION_IMPLEMENTATION = "ESAPI.IntrusionDetector"
-RANDOMIZER_IMPLEMENTATION = "ESAPI.Randomizer"
-EXECUTOR_IMPLEMENTATION = "ESAPI.Executor"
-VALIDATOR_IMPLEMENTATION = "ESAPI.Validator"
-HTTP_UTILITIES_IMPLEMENTATION = "ESAPI.HTTPUtilities"
-
-userDirectory = os.getenv('USERPROFILE') or os.getenv('HOME')
-
-# Relative path to the resourceDirectory. Relative to the classpath. 
-# Specifically, ClassLoader.getResource(resourceDirectory + filename) will
-# be used to load the file.
-resourceDirectory = ".esapi"
-
-defaults = {
-    REMEMBER_TOKEN_DURATION         : 14,
-    IDLE_TIMEOUT_DURATION           : 20,
-    ABSOLUTE_TIMEOUT_DURATION       : 20,
-    ALLOWED_LOGIN_ATTEMPTS          : 5,
-    USERNAME_PARAMETER_NAME         : "username",
-    PASSWORD_PARAMETER_NAME         : "password",
-    MAX_OLD_PASSWORD_HASHES         : 12,
-    
-    MASTER_KEY                      : None,
-    MASTER_SALT                     : None,
-    KEY_LENGTH                      : 256,
-    ENCRYPTION_ALGORITHM            : "AES",
-    HASH_ALGORITHM                  : "SHA-512",
-    HASH_ITERATIONS                 : 1024,
-    CHARACTER_ENCODING              : "UTF-8",
-    RANDOM_ALGORITHM                : "SHA1PRNG",
-    DIGITAL_SIGNATURE_ALGORITHM     : "SHAwithDSA",
-    DIGITAL_SIGNATURE_KEY_LENGTH    : 1024,
-    
-    WORKING_DIRECTORY               : None,
-    APPROVED_EXECUTABLES            : None,
-    
-    FORCE_HTTPONLY                  : True,
-    UPLOAD_DIRECTORY                : "UploadDir",
-    APPROVED_UPLOAD_EXTENSIONS      : ".zip,.pdf,.tar,.gz,.xls,.properties,.txt,.xml".split(','),
-    MAX_UPLOAD_FILE_BYTES           : 5000000,
-    RESPONSE_CONTENT_TYPE           : "text/html; charset=UTF-8",
-    
-    APPLICATION_NAME                : "DefaultName",
-    LOG_LEVEL                       : "Warning",
-    LOG_FILE_NAME                   : "ESAPI_logging_file",
-    MAX_LOG_FILE_SIZE               : DEFAULT_MAX_LOG_FILE_SIZE,
-    LOG_ENCODING_REQUIRED           : False,
-    
-    LOG_IMPLEMENTATION              : "esapi.reference.JavaLogFactory",
-    AUTHENTICATION_IMPLEMENTATION   : "esapi.reference.FileBasedAuthenticator",
-    ENCODER_IMPLEMENTATION          : "esapi.reference.DefaultEncoder",
-    ACCESS_CONTROL_IMPLEMENTATION   : "esapi.reference.accesscontrol.DefaultAccessController",
-    ENCRYPTION_IMPLEMENTATION       : "esapi.reference.JavaEncryptor",
-    INTRUSION_DETECTION_IMPLEMENTATION : "esapi.reference.DefaultIntrusionDetector",
-    RANDOMIZER_IMPLEMENTATION       : "esapi.reference.DefaultRandomizer",
-    EXECUTOR_IMPLEMENTATION         : "esapi.reference.DefaultExecutor",
-    VALIDATOR_IMPLEMENTATION        : "esapi.reference.DefaultHTTPUtilities",
-    HTTP_UTILITIES_IMPLEMENTATION   : "esapi.reference.DefaultValidator",
-    }
+try:
+    import esapi.conf.settings as settings
+except ImportError:
+    raise "Unable to import settings file - Check settings.py"
 
 class DefaultSecurityConfiguration:
     def __init__(self):
@@ -123,168 +29,141 @@ class DefaultSecurityConfiguration:
             
     def loadConfiguration(self):
         """Load configuration"""
-        
-        self.config = ConfigParser.RawConfigParser(defaults)
-        self.config.read(self.getResourceFile("ESAPI.properties"))
+            
         self.logSpecial("Loaded ESAPI properties")
         
         self.logSpecial(" ======Master Configuration======")
-        self.logSpecial("\tResourceDirectory: " + resourceDirectory)
         
-        for option in self.config.options('ESAPI'):
-            if "Master" not in option:
-                self.logSpecial("  |   %(key)s = %(value)s" % {"key": option, "value": self.config.get('ESAPI', option)})
-        
-#    def getResourceStream(self, filename):
-#        """
-#        Utility method to get a resource and open it, returning the stream.
-#        
-#        """
-#        file = self.getResourceFile(filename)
-#        return open(file, 'r')
-        
-    def getResourceFile(self, filename):
-        """
-        """
-        self.logSpecial("Seeking " + filename)
-        
-        path = "C:\\ESAPIPython\\ESAPI\\src\\test\\resources\\.esapi\\" + filename
-        if os.path.isfile(path):
-            sys.stdout.flush()
-            return path
-            
+        for option in dir(settings):
+            if "Master" not in option and option[0] != "_":
+                self.logSpecial("  |   %(key)s = %(value)s" % {"key": option, "value": str(settings.__dict__[option])})
+           
     def getApplicationName(self):
-        return self.config.get("ESAPI", APPLICATION_NAME)
+        return settings.Logger_ApplicationName
 
     def getLogImplementation(self):
-        return self.config.get("ESAPI", LOG_IMPLEMENTATION)
+        return settings.ESAPI_Logger
 
     def getAuthenticationImplementation(self):
-        return self.config.get("ESAPI", AUTHENTICATION_IMPLEMENTATION)
+        return settings.ESAPI_Authenticator
 
     def getEncoderImplementation(self):
-        return self.config.get("ESAPI", ENCODER_IMPLEMENTATION)
+        return settings.ESAPI_Encoder
 
     def getAccessControlImplementation(self):
-        return self.config.get("ESAPI", ACCESS_CONTROL_IMPLEMENTATION)
+        return settings.ESAPI_AccessControl
 
     def getIntrusionDetectionImplementation(self):
-        return self.config.get("ESAPI", INTRUSION_DETECTION_IMPLEMENTATION)
+        return settings.ESAPI_IntrusionDetector
 
     def getRandomizerImplementation(self):
-        return self.config.get("ESAPI", RANDOMIZER_IMPLEMENTATION)
+        return settings.ESAPI_Randomizer
 
     def getEncryptionImplementation(self):
-        return self.config.get("ESAPI", ENCRYPTION_IMPLEMENTATION)
+        return settings.ESAPI_Encryptor
 
     def getValidationImplementation(self):
-        return self.config.get("ESAPI", VALIDATOR_IMPLEMENTATION)
+        return settings.ESAPI_Validator
     
     def getExecutorImplementation(self):
-        return self.config.get("ESAPI", EXECUTOR_IMPLEMENTATION)
+        return settings.ESAPI_Executor
     
     def getHTTPUtilitiesImplementation(self):
-        return self.config.get("ESAPI", HTTP_UTILITIES_IMPLEMENTATION)
+        return settings.ESAPI_HTTPUtilities
     
     def getMasterKey(self):
-        return self.config.get("ESAPI", MASTER_KEY)
+        return settings.Encryptor_MasterKey
     
     def getUploadDirectory(self):
-        return self.config.get("ESAPI", UPLOAD_DIRECTORY)
+        return settings.HttpUtilities_UploadDir
 
     def getEncryptionKeyLength(self):
-        return self.config.get("ESAPI", KEY_LENGTH)
+        return settings.Encryptor_EncryptionKeyLength
 
     def getMasterSalt(self):
-        return self.config.get("ESAPI", MASTER_SALT)
+        return settings.Encryptor_MasterSalt
 
     def getAllowedExecutables(self):
-        return self.config.get("ESAPI", APPROVED_EXECUTABLES)
+        return settings.HttpUtilities_AllowedUploadExtensions
 
     def getAllowedFileExtensions(self):
-        return self.config.get("ESAPI", APPROVED_UPLOAD_EXTENSIONS)
+        return settings.HttpUtilities_AllowedUploadExtensions
 
     def getAllowedFileUploadSize(self):
-        return self.config.get("ESAPI", APPLICATION_NAME) ####
+        return settings.HttpUtilities_MaxUploadFileBytes
 
     def getPasswordParameterName(self):
-        return self.config.get("ESAPI", PASSWORD_PARAMETER_NAME)
+        return settings.Authenticator_PasswordParameterName
 
     def getUsernameParameterName(self):
-        return self.config.get("ESAPI", USERNAME_PARAMETER_NAME)
+        return settings.Authenticator_UsernameParameterName
 
     def getEncryptionAlgorithm(self):
-        return self.config.get("ESAPI", ENCRYPTION_ALGORITHM)
+        return settings.Encryptor_EncryptionAlgorithm
 
     def getHashAlgorithm(self):
-        return self.config.get("ESAPI", HASH_ALGORITHM)
+        return settings.Encryptor_HashAlgorithm
 
     def getHashIterations(self):
-        return self.config.get("ESAPI", HASH_ITERATIONS)
+        return settings.Encryptor_HashIterations
 
     def getCharacterEncoding(self):
-        return self.config.get("ESAPI", CHARACTER_ENCODING)
+        return settings.Encryptor_CharacterEncoding
 
     def getDigitalSignatureAlgorithm(self):
-        return self.config.get("ESAPI", DIGITAL_SIGNATURE_ALGORITHM)
+        return settings.Encryptor_DigitalSignatureAlgorithm
 
     def getDigitalSignatureKeyLength(self):
-        return self.config.get("ESAPI", DIGITAL_SIGNATURE_KEY_LENGTH)
+        return settings.Encryptor_DigitalSignatureKeyLength
 
     def getRandomAlgorithm(self):
-        return self.config.get("ESAPI", RANDOM_ALGORITHM)
+        return settings.Encryptor_RandomAlgorithm
 
     def getAllowedLoginAttempts(self):
-        return self.config.get("ESAPI", ALLOWED_LOGIN_ATTEMPTS)
+        return settings.Authenticator_AllowedLoginAttempts
 
     def getMaxOldPasswordHashes(self):
-        return self.config.get("ESAPI", MAX_OLD_PASSWORD_HASHES)
+        return settings.Authenticator_MaxOldPasswordHashes
 
     def getQuota(self, eventName):
-        return self.config.get("ESAPI", APPLICATION_NAME) ####
+        count = getattr(settings, "IntrusionDetector_" + eventName + "_count", 0)
+        interval = getattr(settings, "IntrusionDetector_" + eventName + "_interval", 0)
+        actions = interval = getattr(settings, "IntrusionDetector_" + eventName + "_actions", ())
+        if count > 0 and interval > 0 and len(actions) > 0:
+            return Threshold( eventName, count, interval, actions)
 
     def getForceHTTPOnly(self):
-        return self.config.get("ESAPI", FORCE_HTTPONLY)
-
-    def setResourceDirectory(self, dir):
-        self.resourceDirectory = dir
-        self.logSpecial( "Reset resource directory to: " + dir)
-        
-        # Reload configuration if necessary
-        try:
-            self.loadConfiguration()
-        except e:
-            self.logSpecial("Failed to load security configuration from " + dir, e)
+        return settings.HttpUtilities_ForceHTTPOnly
 
     def getResponseContentType(self):
-        return self.config.get("ESAPI", RESPONSE_CONTENT_TYPE)
+        return settings.HttpUtilities_ResponseContentType
 
     def getRememberTokenDuration(self):
-        days = self.config.get("ESAPI", REMEMBER_TOKEN_DURATION)
+        days = settings.Authenticator_RememberTokenDuration
         duration = 1000 * 60 * 60 * 24 * days
         return duration
 
     def getSessionIdleTimeoutLength(self):
-        minutes = self.config.get("ESAPI", IDLE_TIMEOUT_DURATION)
+        minutes = settings.Authenticator_IdleTimeoutDuration
         duration = 1000 * 60 * minutes
         return duration
 
     def getSessionAbsoluteTimeoutLength(self):
-        minutes = self.config.get("ESAPI", ABSOLUTE_TIMEOUT_DURATION)
+        minutes = settings.Authenticator_AbsoluteTimeoutDuration
         duration = 1000 * 60 * minutes
         return duration
 
     def getLogEncodingRequired(self):
-        return self.config.get("ESAPI", LOG_ENCODING_REQUIRED)
+        return settings.Logger_LogEncodingRequired
 
     def getLogFileName(self):
-        return self.config.get("ESAPI", LOG_FILE_NAME)
+        return settings.Logger_LogFileName
     
     def getMaxLogFileSize(self):
-        return self.config.get("ESAPI", MAX_LOG_FILE_SIZE)
+        return settings.Logger_MaxLogFileSize
 
     def getWorkingDirectory(self):
-        return self.config.get("ESAPI", WORKING_DIRECTORY)
+        return settings.Executor_WorkingDirectory
     
     def logSpecial(self, text):
         print text

@@ -36,14 +36,13 @@ ESAPI_Encryptor = 'esapi.reference.JavaEncryptor'
 ESAPI_Executor = 'esapi.reference.DefaultExecutor'
 ESAPI_HTTPUtilities = 'esapi.reference.DefaultHTTPUtilities'
 ESAPI_IntrusionDetector = 'esapi.reference.DefaultIntrusionDetector'
-ESAPI_Logger = 'esapi.reference.python_log_factory'
+ESAPI_Logger = 'esapi.reference.python_log_factory.PythonLogFactory'
 ESAPI_Randomizer = 'esapi.reference.DefaultRandomizer'
 ESAPI_Validator = 'esapi.reference.DefaultValidator'
 
 #===========================================================================
 # ESAPI Authenticator
 #
-Authenticator_RememberTokenDuration = 14
 Authenticator_AllowedLoginAttempts = 5
 Authenticator_MaxOldPasswordHashes = 12
 Authenticator_UsernameParameterName = 'username'
@@ -98,12 +97,11 @@ Encryptor_CharacterEncoding = 'UTF-8'
 # and other simple attacks. The HttpUtilities also provides utility methods for dealing with cookies,
 # headers, and CSRF tokens.
 #
-# Default file upload location (remember to escape backslashes with \\)
 HttpUtilities_UploadDir = r'UploadDir'
 # Force HTTP only on all cookies in ESAPI SafeRequest
 HttpUtilities_ForceHTTPOnly = False
 # File upload configuration
-HttpUtilities_ApprovedUploadExtensions = '.zip,.pdf,.tar,.gz,.xls,.properties,.txt,.xml'
+HttpUtilities_AllowedUploadExtensions = '.zip,.pdf,.tar,.gz,.xls,.properties,.txt,.xml'
 HttpUtilities_MaxUploadFileBytes = 5000000
 # Using UTF-8 throughout your stack is highly recommended. That includes your database driver,
 # container, and any other technologies you may be using. Failure to do this may expose you

@@ -102,7 +102,7 @@
 # Force HTTP only on all cookies in ESAPI SafeRequest
 #HttpUtilities_ForceHTTPOnly = False
 # File upload configuration
-#HttpUtilities_ApprovedUploadExtensions = '.zip,.pdf,.tar,.gz,.xls,.properties,.txt,.xml'
+#HttpUtilities_AllowedUploadExtensions = '.zip,.pdf,.tar,.gz,.xls,.properties,.txt,.xml'
 #HttpUtilities_MaxUploadFileBytes = 5000000
 # Using UTF-8 throughout your stack is highly recommended. That includes your database driver,
 # container, and any other technologies you may be using. Failure to do this may expose you

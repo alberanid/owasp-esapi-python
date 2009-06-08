@@ -13,9 +13,12 @@ LICENSE before you use, modify, and/or redistribute this software.
 """
 
 # Todo
-# Change logging after securityConfiguration is written
+# Change logging after getSecurityConfiguration is written
+
+import sys
 
 from esapi.reference.python_log_factory import PythonLogFactory
+from esapi.reference.default_security_configuration import DefaultSecurityConfiguration
 
 """
 ESAPI locator class is provided to make it easy to gain access to the current ESAPI classes in use.
@@ -33,7 +36,7 @@ executor = None
 validator = None
 httpUtilities = None
 defaultLogger = None
-#securityConfiguration = DefaultSecurityConfiguration()
+securityConfiguration = None
 messageUtil = None
 
 #def currentRequest():
@@ -55,7 +58,7 @@ messageUtil = None
 #    @return the current ESAPI AccessController object being used to maintain the access control rules for this application.
 #    """
 #    if self.accessController is None:
-#        accessControllerName = cls.securityConfiguration().getAccessControlImplementation()
+#        accessControllerName = cls.getSecurityConfiguration().getAccessControlImplementation()
 #        try:
 #            theClass = Class.forName(accessControllerName)
 #            cls.accessController = theClass.newInstance()
@@ -72,7 +75,7 @@ messageUtil = None
 #    
 #def authenticator(cls):
 #    if cls.authenticator is None:
-#        authenticatorName = cls.securityConfiguration().getAuthenticationImplementation()
+#        authenticatorName = cls.getSecurityConfiguration().getAuthenticationImplementation()
 #        try:
 #            theClass = Class.forName(authenticatorName)
 #            cls.authenticator = theClass.newInstance()
@@ -89,7 +92,7 @@ messageUtil = None
 #    
 #def encoder(cls):
 #    if cls.encoder is None:
-#        encoderName = cls.securityConfiguration().getEncoderImplementation()
+#        encoderName = cls.getSecurityConfiguration().getEncoderImplementation()
 #        try:
 #            theClass = Class.forName(encoderName)
 #            cls.encoder = theClass.newInstance()
@@ -106,7 +109,7 @@ messageUtil = None
 #    
 #def encryptor(cls):
 #    if cls.encryptor is None:
-#        encryptorName = cls.securityConfiguration().getEncryptionImplementation()
+#        encryptorName = cls.getSecurityConfiguration().getEncryptionImplementation()
 #        try:
 #            theClass = Class.forName(encryptorName)
 #            cls.encryptor = theClass.newInstance()
@@ -123,7 +126,7 @@ messageUtil = None
 #    
 #def executor(cls):
 #    if cls.executor is None:
-#        executorName = cls.securityConfiguration().getExecutorImplementation()
+#        executorName = cls.getSecurityConfiguration().getExecutorImplementation()
 #        try:
 #            theClass = Class.forName(executorName)
 #            cls.executor = theClass.newInstance()
@@ -140,7 +143,7 @@ messageUtil = None
 #
 #def httpUtilities(self):
 #    if self.httpUtilities is None:
-#        httpUtilitiesName = self.securityConfiguration().getHTTPUtilitiesImplementation()
+#        httpUtilitiesName = self.getSecurityConfiguration().getHTTPUtilitiesImplementation()
 #        try:
 #            theClass = Class.forName(httpUtilitiesName)
 #            cls.httpUtilities = theClass.newInstance()
@@ -157,7 +160,7 @@ messageUtil = None
 #    
 #def intrusionDetector(cls):
 #    if cls.intrusionDetector is None:
-#        intrusionDetectorName = cls.securityConfiguration().getIntrusionDetectionImplementation()
+#        intrusionDetectorName = cls.getSecurityConfiguration().getIntrusionDetectionImplementation()
 #        try:
 #            theClass = Class.forName(intrusionDetectorName)
 #            cls.intrusionDetector = theClass.newInstance()
@@ -179,24 +182,17 @@ def getLogFactory():
     @return The current LogFactory being used by ESAPI.
     """
     global logFactory
-    
+
     if logFactory is None:
-        logFactory = PythonLogFactory()
-        logFactory.setApplicationName("the app name")
+        fqn = getSecurityConfiguration().getLogImplementation()
+        moduleName = '.'.join(fqn.split('.')[:-1])
+        __import__(moduleName)
+        module = sys.modules[moduleName]
+        className = fqn.split('.')[-1]
+        logFactory = getattr(module, className)()
+        logFactory.setApplicationName(getSecurityConfiguration().getApplicationName())
         
     return logFactory
-
-#    if logFactory is None:
-#        logFactoryName = self.securityConfiguration().getLogImplementation()
-#        try:
-#            module = __import__(logFactoryName)
-#            self.logFactory = getattr(module, logFactoryName)
-#            self.logFactory.setApplicationName(self.securityConfiguration().getApplicationName())
-#        except (IllegalAccessException, ), ex:
-#            print ex + " LogFactory class (" + logFactoryName + " must be in class path."
-#            print ex + " LogFactory class (" + logFactoryName + " must be concrete."
-#            print ex + " LogFactory class (" + logFactoryName + " must have a no-arg constructor."
-#    return self.logFactory
       
 def getLogger(classOrMod):
     """
@@ -228,7 +224,7 @@ def setLogFactory(factory):
 #    
 #def randomizer(cls):
 #    if cls.randomizer is None:
-#        randomizerName = cls.securityConfiguration().getRandomizerImplementation()
+#        randomizerName = cls.getSecurityConfiguration().getRandomizerImplementation()
 #        try:
 #            theClass = Class.forName(randomizerName)
 #            cls.randomizer = theClass.newInstance()
@@ -243,19 +239,22 @@ def setLogFactory(factory):
 #    ESAPI.cls.randomizer = cls.randomizer
 #
 # 
-#def securityConfiguration(self):
-#    if self.securityConfiguration is None:
-#        self.securityConfiguration = DefaultSecurityConfiguration()
-#    return self.securityConfiguration
-#
-#    
-#def setSecurityConfiguration(self, securityConfiguration):
-#    self.securityConfiguration = securityConfiguration
-#
+def getSecurityConfiguration():
+    global securityConfiguration
+    
+    if securityConfiguration is None:
+        securityConfiguration = DefaultSecurityConfiguration()
+    return securityConfiguration
+
+   
+def setSecurityConfiguration(newSecurityConfiguration):
+    global securityConfiguration
+    securityConfiguration = newSecurityConfiguration
+
 #  
 #def validator(cls):
 #    if cls.validator is None:
-#        validatorName = cls.securityConfiguration().getValidationImplementation()
+#        validatorName = cls.getSecurityConfiguration().getValidationImplementation()
 #        try:
 #            theClass = Class.forName(validatorName)
 #            cls.validator = theClass.newInstance()
