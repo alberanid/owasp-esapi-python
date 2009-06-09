@@ -15,10 +15,11 @@ LICENSE before you use, modify, and/or redistribute this software.
 # Todo: 
 # Add HTTP Session info to log method
 # Change log method after Authenticator has been written
-# Change log method after SecurityConfiguration and HTML Encoder are written
+# Change log method after HTML Encoder are written
 
 import logging
 
+import esapi.core
 from esapi.log_factory import LogFactory
 from esapi.logger import Logger
 
@@ -165,10 +166,8 @@ class PythonLogFactory(LogFactory):
                 
             # ensure no CRLF injection into logs for forging records
             clean = message.replace('\n', '_').replace('\r', '_')
-            #if esapi.ESAPI.securityConfiguration().getLogEncodingRequired():
-            if True:
-                #clean = ESAPI.encoder().encodeForHTML(message)
-                clean = message
+            if esapi.core.getSecurityConfiguration().getLogEncodingRequired():
+                clean = esapi.core.encoder().encodeForHTML(message)
                 if message != clean:
                     clean += " (Encoded)"
                       
