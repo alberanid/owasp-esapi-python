@@ -2,3 +2,4 @@ Logger
 LoggerTest
 LogFactory
 SecurityConfiguration
+DefaultSecurityConfiguration

@@ -13,7 +13,6 @@ LICENSE before you use, modify, and/or redistribute this software.
 """
 
 # Todo
-# Change logging after getSecurityConfiguration is written
 
 import sys
 

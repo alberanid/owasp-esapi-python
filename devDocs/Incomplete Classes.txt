@@ -1,3 +1,2 @@
 ESAPI - dep on everything
-PythonLogFactory - dep Authenticator, SecurityConfiguration, HTML Encoder
-DefaultSecurityConfiguration
+PythonLogFactory - dep Authenticator, HTML Encoder
