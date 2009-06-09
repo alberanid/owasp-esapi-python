@@ -85,7 +85,7 @@ Encryptor_HashAlgorithm = 'SHA-512'
 Encryptor_HashIterations = 1024
 Encryptor_DigitalSignatureAlgorithm = 'SHAwithDSA'
 Encryptor_DigitalSignatureKeyLength = 1024
-Encryptor_RandomAlgorithm = 'SHA1PRNG'
+#Encryptor_RandomAlgorithm = 'SHA1PRNG'
 Encryptor_CharacterEncoding = 'UTF-8'
 
 

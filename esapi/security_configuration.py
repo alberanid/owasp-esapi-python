@@ -268,13 +268,13 @@ class SecurityConfiguration:
         """
         raise NotImplementedError()
 
-    def getRandomAlgorithm(self):
-        """
-        Gets the random number generation algorithm used to generate random numbers where needed.
+    # def getRandomAlgorithm(self):
+        # """
+        # Gets the random number generation algorithm used to generate random numbers where needed.
         
-        @return the current random number generation algorithm
-        """
-        raise NotImplementedError()
+        # @return the current random number generation algorithm
+        # """
+        # raise NotImplementedError()
 
     def getAllowedLoginAttempts(self):
         """

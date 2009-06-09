@@ -113,8 +113,8 @@ class DefaultSecurityConfiguration:
     def getDigitalSignatureKeyLength(self):
         return settings.Encryptor_DigitalSignatureKeyLength
 
-    def getRandomAlgorithm(self):
-        return settings.Encryptor_RandomAlgorithm
+    # def getRandomAlgorithm(self):
+        # return settings.Encryptor_RandomAlgorithm
 
     def getAllowedLoginAttempts(self):
         return settings.Authenticator_AllowedLoginAttempts
