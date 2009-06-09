@@ -12,20 +12,17 @@ LICENSE before you use, modify, and/or redistribute this software.
 @author Craig Younkins (craig.younkins@owasp.org)
 """
 
-import sys
+class ImportSettingsError(): pass
 
 try:
     import esapi.conf.settings as settings
 except ImportError:
-    raise "Unable to import settings file - Check settings.py"
+    raise ImportSettingsError, "Unable to import settings file - Check settings.py"
 
 class DefaultSecurityConfiguration:
     def __init__(self):
         """Instantiates a new configuration"""
-        #try:
         self.loadConfiguration()
-#        except:
-#            self.logSpecial("Failed to load security configuration")
             
     def loadConfiguration(self):
         """Load configuration"""
@@ -167,4 +164,3 @@ class DefaultSecurityConfiguration:
     
     def logSpecial(self, text):
         print text
-        sys.stdout.flush()
