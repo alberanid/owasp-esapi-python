@@ -16,7 +16,7 @@ class Randomizer():
     """
     The Randomizer interface defines a set of methods for creating
     cryptographically random numbers and strings. Implementers should be sure to
-    use a strong cryptographic implementation, such as PyCrypto.
+    use a strong cryptographic implementation, such as random.SystemRandom.
     Weak sources of randomness can undermine a wide variety of security
     mechanisms. The specific algorithm used is configurable in settings.py.
 
@@ -25,9 +25,9 @@ class Randomizer():
 
     def getRandomString(self, length, characterSet):
     """
-    Gets a random string of a desired length and character set.  The use of PyCrypto
+    Gets a random string of a desired length and character set.  The use of random.SystemRandom
     is recommended because it provides a cryptographically strong pseudo-random number generator.
-    If PyCrypto is not used, the pseudo-random number gernerator used should comply with the
+    If random.SystemRandom is not used, the pseudo-random number gernerator used should comply with the
     statistical random number generator tests specified in <a href="http://csrc.nist.gov/cryptval/140-2.htm">
     FIPS 140-2, Security Requirements for Cryptographic Modules</a>, section 4.9.1.
 
@@ -42,9 +42,9 @@ class Randomizer():
 
     def getRandomBoolean(self):
     """
-    Returns a random boolean.  The use of PyCrypto
+    Returns a random boolean.  The use of random.SystemRandom
     is recommended because it provides a cryptographically strong pseudo-random number generator.
-    If PyCrypto is not used, the pseudo-random number gernerator used should comply with the
+    If random.SystemRandom is not used, the pseudo-random number gernerator used should comply with the
     statistical random number generator tests specified in <a href="http://csrc.nist.gov/cryptval/140-2.htm">
     FIPS 140-2, Security Requirements for Cryptographic Modules</a>, section 4.9.1.
 
@@ -53,11 +53,11 @@ class Randomizer():
     """
         raise NotImplementedError()
 
-    def getRandomInteger(self, min, max):
+    def getRandomNumber(self, min, max):
     """
-    Gets the random integer. The use of PyCrypto
+    Gets a random number. The use of random.SystemRandom
     is recommended because it provides a cryptographically strong pseudo-random number generator.
-    If PyCrypto is not used, the pseudo-random number gernerator used should comply with the
+    If random.SystemRandom is not used, the pseudo-random number gernerator used should comply with the
     statistical random number generator tests specified in <a href="http://csrc.nist.gov/cryptval/140-2.htm">
     FIPS 140-2, Security Requirements for Cryptographic Modules</a>, section 4.9.1.
 
@@ -68,19 +68,6 @@ class Randomizer():
 
     @return
             the random integer
-    """
-        raise NotImplementedError()
-
-    def getRandomLong(self):
-    """
-    Gets the random long. The use of PyCrypto
-    is recommended because it provides a cryptographically strong pseudo-random number generator.
-    If PyCrypto is not used, the pseudo-random number gernerator used should comply with the
-    statistical random number generator tests specified in <a href="http://csrc.nist.gov/cryptval/140-2.htm">
-    FIPS 140-2, Security Requirements for Cryptographic Modules</a>, section 4.9.1.
-
-    @return
-            the random long
     """
         raise NotImplementedError()
 
@@ -98,24 +85,6 @@ class Randomizer():
     """
         raise NotImplementedError()
 
-    def getRandomReal(self, min, max):
-    """
-    Gets the random real.  The use of PyCrypto
-    is recommended because it provides a cryptographically strong pseudo-random number generator.
-    If PyCrypto is not used, the pseudo-random number gernerator used should comply with the
-    statistical random number generator tests specified in <a href="http://csrc.nist.gov/cryptval/140-2.htm">
-    FIPS 140-2, Security Requirements for Cryptographic Modules</a>, section 4.9.1.
-
-    @param min
-            the minimum real number that will be returned
-    @param max
-            the maximum real number that will be returned
-
-    @return
-            the random real
-    """
-        raise NotImplementedError()
-
     def getRandomGUID(self):
     """
     Generates a random GUID.  This method could use a hash of random Strings, the current time,
@@ -124,9 +93,6 @@ class Randomizer():
 
     @return
             the GUID
-
-    @throws
-            EncryptionException if hashing or encryption fails
     """
         raise NotImplementedError()
 
