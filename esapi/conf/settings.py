@@ -37,7 +37,7 @@ ESAPI_Executor = 'esapi.reference.DefaultExecutor'
 ESAPI_HTTPUtilities = 'esapi.reference.DefaultHTTPUtilities'
 ESAPI_IntrusionDetector = 'esapi.reference.DefaultIntrusionDetector'
 ESAPI_Logger = 'esapi.reference.python_log_factory.PythonLogFactory'
-ESAPI_Randomizer = 'esapi.reference.DefaultRandomizer'
+ESAPI_Randomizer = 'esapi.reference.default_randomizer.DefaultRandomizer'
 ESAPI_Validator = 'esapi.reference.DefaultValidator'
 
 #===========================================================================

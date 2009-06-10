@@ -220,31 +220,30 @@ def setLogFactory(factory):
     
     logFactory = factory
 
-#    
-#def randomizer(cls):
-#    if cls.randomizer is None:
-#        randomizerName = cls.getSecurityConfiguration().getRandomizerImplementation()
-#        try:
-#            theClass = Class.forName(randomizerName)
-#            cls.randomizer = theClass.newInstance()
-#        except (IllegalAccessException, ), ex:
-#            print ex + " Randomizer class (" + randomizerName + " must be in class path."
-#            print ex + " Randomizer class (" + randomizerName + " must be concrete."
-#            print ex + " Randomizer class (" + randomizerName + " must have a no-arg constructor."
-#    return cls.randomizer
-#
-#    
-#def setRandomizer(cls, randomizer):
-#    ESAPI.cls.randomizer = cls.randomizer
-#
-# 
+   
+def getRandomizer():
+    global randomizer
+
+    if randomizer is None:
+        fqn = getSecurityConfiguration().getRandomizerImplementation()
+        moduleName = '.'.join(fqn.split('.')[:-1])
+        __import__(moduleName)
+        module = sys.modules[moduleName]
+        className = fqn.split('.')[-1]
+        randomizer = getattr(module, className)()
+        
+    return randomizer
+
+def setRandomizer(newRandomizer):
+    global randomizer
+    randomizer = newRandomizer
+
 def getSecurityConfiguration():
     global securityConfiguration
     
     if securityConfiguration is None:
         securityConfiguration = DefaultSecurityConfiguration()
     return securityConfiguration
-
    
 def setSecurityConfiguration(newSecurityConfiguration):
     global securityConfiguration
