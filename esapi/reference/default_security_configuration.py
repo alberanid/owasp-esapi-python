@@ -12,6 +12,10 @@ LICENSE before you use, modify, and/or redistribute this software.
 @author Craig Younkins (craig.younkins@owasp.org)
 """
 
+# Todo
+# After base64 decoder written, remove dependency in base64 in getMasterSalt and getMasterKey
+
+
 class ImportSettingsError(): pass
 
 try:
@@ -69,7 +73,8 @@ class DefaultSecurityConfiguration:
         return settings.ESAPI_HTTPUtilities
     
     def getMasterKey(self):
-        return settings.Encryptor_MasterKey
+        import base64
+        return base64.b64decode(settings.Encryptor_MasterKey)
     
     def getUploadDirectory(self):
         return settings.HttpUtilities_UploadDir
@@ -78,7 +83,8 @@ class DefaultSecurityConfiguration:
         return settings.Encryptor_EncryptionKeyLength
 
     def getMasterSalt(self):
-        return settings.Encryptor_MasterSalt
+        import base64
+        return base64.b64decode(settings.Encryptor_MasterSalt)
 
     def getAllowedExecutables(self):
         return settings.HttpUtilities_AllowedUploadExtensions
