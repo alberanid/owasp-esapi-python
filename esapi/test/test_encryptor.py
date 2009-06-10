@@ -13,10 +13,8 @@ LICENSE before you use, modify, and/or redistribute this software.
 """
 
 import unittest
-#import sys
 
 import esapi.core
-#from esapi.encryptor import Encryptor
 
 class EncryptorTest(unittest.TestCase):
     """
