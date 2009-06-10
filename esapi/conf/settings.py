@@ -81,7 +81,7 @@ Encryptor_EncryptionAlgorithm = 'AES'
 #Encryptor_EncryptionKeyLength=168
 #Encryptor_EncryptionAlgorithm=DESede
 
-Encryptor_HashAlgorithm = 'SHA-512'
+Encryptor_HashAlgorithm = 'SHA512'
 Encryptor_HashIterations = 1024
 Encryptor_DigitalSignatureAlgorithm = 'SHAwithDSA'
 Encryptor_DigitalSignatureKeyLength = 1024
