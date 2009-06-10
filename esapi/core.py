@@ -122,6 +122,24 @@ messageUtil = None
 #def setEncryptor(cls, encryptor):
 #    ESAPI.cls.encryptor = cls.encryptor
 #
+
+def getEncryptor():
+    global encryptor
+
+    if encryptor is None:
+        fqn = getSecurityConfiguration().getEncryptionImplementation()
+        moduleName = '.'.join(fqn.split('.')[:-1])
+        __import__(moduleName)
+        module = sys.modules[moduleName]
+        className = fqn.split('.')[-1]
+        encryptor = getattr(module, className)()
+        
+    return encryptor
+
+def setencryptor(newEncryptor):
+    global encryptor
+    encryptor = newEncryptor
+
 #    
 #def executor(cls):
 #    if cls.executor is None:

@@ -32,7 +32,7 @@ ESAPI_AccessControl = 'esapi.reference.accesscontrol.DefaultAccessController'
 # FileBasedAuthenticator requires users.txt file in .esapi directory
 ESAPI_Authenticator = 'esapi.reference.FileBasedAuthenticator'
 ESAPI_Encoder = 'esapi.reference.DefaultEncoder'
-ESAPI_Encryptor = 'esapi.reference.JavaEncryptor'
+ESAPI_Encryptor = 'esapi.reference.default_encryptor.DefaultEncryptor'
 ESAPI_Executor = 'esapi.reference.DefaultExecutor'
 ESAPI_HTTPUtilities = 'esapi.reference.DefaultHTTPUtilities'
 ESAPI_IntrusionDetector = 'esapi.reference.DefaultIntrusionDetector'
