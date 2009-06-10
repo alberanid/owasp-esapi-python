@@ -4,3 +4,4 @@ LogFactory
 SecurityConfiguration
 DefaultSecurityConfiguration
 Randomizer
+Encryptor
