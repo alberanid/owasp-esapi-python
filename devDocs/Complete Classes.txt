@@ -3,3 +3,4 @@ LoggerTest
 LogFactory
 SecurityConfiguration
 DefaultSecurityConfiguration
+Randomizer
