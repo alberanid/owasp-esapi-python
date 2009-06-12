@@ -51,10 +51,22 @@ class EncryptorTest(unittest.TestCase):
         self.assertFalse(hash3 == hash4)
         
     def testEncrypt(self):
-        pass
+        instance = esapi.core.getEncryptor()
+        plaintext = "test1234"
+        ciphertext = instance.encrypt(plaintext)
+        result = instance.decrypt(ciphertext)
+        self.assertEquals(plaintext, result)
         
     def testDecrypt(self):
-        pass
+        try:
+            instance = esapi.core.getEncryptor()
+            plaintext = "test123"
+            ciphertext = instance.encrypt(plaintext)
+            self.assertFalse(plaintext == ciphertext)
+            result = instance.decrypt(ciphertext)
+            self.assertEquals(plaintext, result)
+        except:
+            self.fail()
         
     def testSign(self):
         pass
