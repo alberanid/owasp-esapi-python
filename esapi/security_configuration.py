@@ -268,6 +268,14 @@ class SecurityConfiguration:
         """
         raise NotImplementedError()
 
+    def getDigitalSignatureKey(self):
+        """
+        Gets the object associated with the digital signing keypair.
+        
+        @return the object of the keypair
+        """
+        raise NotImplementedError()
+        
     # def getRandomAlgorithm(self):
         # """
         # Gets the random number generation algorithm used to generate random numbers where needed.

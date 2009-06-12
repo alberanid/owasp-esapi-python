@@ -13,8 +13,9 @@ LICENSE before you use, modify, and/or redistribute this software.
 """
 
 # Todo
-# After base64 decoder written, remove dependency in base64 in getMasterSalt and getMasterKey
+# After base64 decoder written, remove dependency in base64 in getMasterSalt and getMasterKey and getDigitalSignatureKey
 
+import pickle
 
 class ImportSettingsError(): pass
 
@@ -119,6 +120,13 @@ class DefaultSecurityConfiguration:
     def getDigitalSignatureKeyLength(self):
         return settings.Encryptor_DigitalSignatureKeyLength
 
+    def getDigitalSignatureKey(self):
+        raw = settings.Encryptor_DigitalSignatureMasterKey
+        import base64
+        decoded = base64.b64decode(raw)
+        obj = pickle.loads(decoded)
+        return obj
+        
     # def getRandomAlgorithm(self):
         # return settings.Encryptor_RandomAlgorithm
 
