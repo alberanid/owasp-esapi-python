@@ -29,6 +29,7 @@ from random import SystemRandom
 import esapi.core
 from esapi.logger import Logger
 from esapi.randomizer import Randomizer
+from esapi.translation import _
 
 class DefaultRandomizer(Randomizer):
     alpha_numerics = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
@@ -52,7 +53,7 @@ class DefaultRandomizer(Randomizer):
 
     def getRandomFilename(self, extension):
         fn = self.getRandomString(12, self.alpha_numerics) + "." + extension
-        self.logger.debug(Logger.SECURITY_SUCCESS, "Generated a new random filename: " + fn)
+        self.logger.debug(Logger.SECURITY_SUCCESS, _("Generated a new random filename: ") + fn)
         return fn
         
     def getRandomFloat(self, min, max):

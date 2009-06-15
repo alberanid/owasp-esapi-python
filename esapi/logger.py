@@ -14,6 +14,8 @@ LICENSE before you use, modify, and/or redistribute this software.
 
 # Todo
 
+from esapi.translation import _
+
 """
 The Logger interface defines a set of methods that can be used to log
 security events. It supports a hierarchy of logging levels which can be configured at runtime to determine
@@ -79,6 +81,8 @@ order to integrate ESAPI logging with their logging infrastructure. The ESAPI Re
 is intended to provide a simple functional example of an implementation.
 """
 
+from esapi.translation import _
+
 class Logger:
     
     class EventType:
@@ -103,19 +107,19 @@ class Logger:
         
     # A security type of log event that has succeeded. This is one of 4 predefined
     # ESAPI logging events. New events can be added.
-    SECURITY_SUCCESS = EventType("SECURITY SUCCESS", True)
+    SECURITY_SUCCESS = EventType(_("SECURITY SUCCESS"), True)
     
     # A security type of log event that has failed. This is one of 4 predefined
     # ESAPI logging events. New events can be added.
-    SECURITY_FAILURE = EventType("SECURITY FAILURE", False)
+    SECURITY_FAILURE = EventType(_("SECURITY FAILURE"), False)
     
     # A non-security type of log event that has succeeded. This is one of 4 predefined
     # ESAPI logging events. New events can be added.
-    EVENT_SUCCESS = EventType("EVENT SUCCESS", True)
+    EVENT_SUCCESS = EventType(_("EVENT SUCCESS"), True)
     
     # A non-security type of log event that has failed. This is one of 4 predefined
     # ESAPI logging events. New events can be added.
-    EVENT_FAILURE = EventType("EVENT FAILURE", False)
+    EVENT_FAILURE = EventType(_("EVENT FAILURE"), False)
     
     # The Logger interface defines 6 logging levels: FATAL, ERROR, WARNING, INFO, DEBUG, TRACE. It also 
     # supports ALL, which logs all events, and OFF, which disables all logging.

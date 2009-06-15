@@ -23,6 +23,7 @@ import os
 
 import esapi.core
 from esapi.encryptor import Encryptor
+from esapi.translation import _
 
 class EncryptionException(Exception): pass
 
@@ -42,7 +43,7 @@ class DefaultEncryptor(Encryptor):
         try:
             self.encryptAlgorithmClass = self.encryptAlgorithmMap[encryptAlgorithm]
         except KeyError:
-            raise EncryptionException, "Encryption Failure - Unknown algorithm: " + self.encryptAlgorithm
+            raise EncryptionException, _("Encryption Failure - Unknown algorithm: ") + self.encryptAlgorithm
         
         self.encryptionKeyLength = esapi.core.getSecurityConfiguration().getEncryptionKeyLength()
         self.masterKey = esapi.core.getSecurityConfiguration().getMasterKey()
@@ -78,7 +79,7 @@ class DefaultEncryptor(Encryptor):
             return encoded
             
         except ValueError, e:
-            raise EncryptionException, "Internal Error - Can't find hash algorithm " + self.hashAlgorithm
+            raise EncryptionException, _("Internal Error - Can't find hash algorithm ") + self.hashAlgorithm
         
     def encrypt(self, plaintext):
         encryptor = self.encryptAlgorithmClass.new(self.masterKey)

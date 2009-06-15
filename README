@@ -1,3 +1,7 @@
 Requirements:
+    PyCrypto 2.01 - Some binaries for Win32 are available in the PyCrypto directory. Homepage: http://www.amk.ca/python/code/crypto
 
-PyCrypto 2.01 - Some binaries for Win32 are available in the PyCrypto directory. Homepage: http://www.amk.ca/python/code/crypto
+To enable internationalization:
+    Set the 'LANGUAGE' environment variable with your locale
+    On *nix: export LANGUAGE=en_US
+    On Windows: set LANGUAGE=en_US

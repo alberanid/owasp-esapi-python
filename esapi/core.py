@@ -18,6 +18,7 @@ import sys
 
 from esapi.reference.python_log_factory import PythonLogFactory
 from esapi.reference.default_security_configuration import DefaultSecurityConfiguration
+from esapi.translation import _
 
 """
 ESAPI locator class is provided to make it easy to gain access to the current ESAPI classes in use.

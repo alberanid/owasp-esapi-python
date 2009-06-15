@@ -17,12 +17,14 @@ LICENSE before you use, modify, and/or redistribute this software.
 
 import pickle
 
+from esapi.translation import _
+
 class ImportSettingsError(): pass
 
 try:
     import esapi.conf.settings as settings
 except ImportError:
-    raise ImportSettingsError, "Unable to import settings file - Check settings.py"
+    raise ImportSettingsError, _("Unable to import settings file - Check settings.py")
 
 class DefaultSecurityConfiguration:
     def __init__(self):
@@ -32,9 +34,9 @@ class DefaultSecurityConfiguration:
     def loadConfiguration(self):
         """Load configuration"""
             
-        self.logSpecial("Loaded ESAPI properties")
+        self.logSpecial(_("Loaded ESAPI properties"))
         
-        self.logSpecial(" ======Master Configuration======")
+        self.logSpecial(_(" ======Master Configuration======"))
         
         for option in dir(settings):
             if "Master" not in option and option[0] != "_":

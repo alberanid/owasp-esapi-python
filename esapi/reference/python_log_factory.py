@@ -22,6 +22,7 @@ import logging
 import esapi.core
 from esapi.log_factory import LogFactory
 from esapi.logger import Logger
+from esapi.translation import _
 
 class PythonLogFactory(LogFactory):
     """
@@ -156,7 +157,7 @@ class PythonLogFactory(LogFactory):
             #user = ESAPI.authenticator().getCurrentUser()
             
             # create a random session number for the user to represent the user's 'session', if it doesn't exist already
-            userSessionIDforLogging = "unknown"
+            userSessionIDforLogging = _("unknown")
             
             # Add HTTP Session information here
             
@@ -173,7 +174,7 @@ class PythonLogFactory(LogFactory):
                       
             extra = {
                  'eventType' : str(type),
-                 'eventSuccess' : ["SUCCESS","FAILURE"][type.isSuccess()],
+                 'eventSuccess' : [_("SUCCESS"),_("FAILURE")][type.isSuccess()],
                  'user' : "user.getAccountName()",
                  'hostname' : "user.getLastHostAddress()",
                  'sessionID' : userSessionIDforLogging,
