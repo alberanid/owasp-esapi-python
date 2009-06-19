@@ -20,5 +20,5 @@ CWD = os.getcwd()
 pos = CWD.find('esapi')
 path = CWD[:pos] + 'esapi\\' + LOCALEDIR
 
-t = gettext.translation('esapi', path)
+t = gettext.translation('esapi', path, fallback=True)
 _ = t.ugettext
