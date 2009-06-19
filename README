@@ -1,5 +1,9 @@
 Requirements:
     PyCrypto 2.01 - Some binaries for Win32 are available in the PyCrypto directory. Homepage: http://www.amk.ca/python/code/crypto
+    
+    PyLint - Only needed for static analysis
+    Coverage module by Ned Batchelder - Only needed if you want coverage analysis
+    Nose - Only needed if you want to run unit tests together and combine it with coverage analysis
 
 To enable internationalization:
     Set the 'LANGUAGE' environment variable with your locale

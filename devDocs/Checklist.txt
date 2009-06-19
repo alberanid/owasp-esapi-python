@@ -1,0 +1,7 @@
+So you think you've finished a module?
+
+Look through the module to ensure it is complete
+Ensure the test cases are written and test most of the functionality
+Ensure coverage is adaquate
+Run module throught PyLint for checking
+Verify nose runs all tests successfully
