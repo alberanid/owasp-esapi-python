@@ -65,7 +65,7 @@ class PushbackString:
         return True
     
     def next(self):
-        if self._pushback is None:
+        if self._pushback is not None:
             save = self._pushback
             self._pushback = None
             return save
