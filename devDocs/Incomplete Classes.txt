@@ -1,5 +1,0 @@
-ESAPI - dep on everything
-PythonLogFactory - dep Authenticator, HTML Encoder
-DefaultRandomizer - dep on Encoder
-DefaultEncryptor - dep on Encored.base64, on hold for crypto
-EncryptorTest - Will code with DefaultEncryptor

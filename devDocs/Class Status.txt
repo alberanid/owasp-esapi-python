@@ -1,0 +1,25 @@
+Complete
+---------
+Logger
+LoggerTest
+LogFactory
+SecurityConfiguration
+DefaultSecurityConfiguration
+Randomizer
+Encryptor
+translation.py
+Codec
+PercentCodec
+PercentCodecTest
+PushbackString
+PushbackStringTest
+
+Incomplete
+---------
+core.py - dep on everything
+PythonLogFactory - dep Authenticator, HTML Encoder
+DefaultRandomizer - dep on Encoder
+DefaultEncryptor - dep on Encoder.base64, on hold for crypto
+EncryptorTest - Will code with DefaultEncryptor
+Encoder - Dep on all codecs
+EncoderTest
