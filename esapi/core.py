@@ -89,23 +89,24 @@ messageUtil = None
 #def setAuthenticator(cls, authenticator):
 #    ESAPI.cls.authenticator = cls.authenticator
 #
-#    
-#def encoder(cls):
-#    if cls.encoder is None:
-#        encoderName = cls.getSecurityConfiguration().getEncoderImplementation()
-#        try:
-#            theClass = Class.forName(encoderName)
-#            cls.encoder = theClass.newInstance()
-#        except (IllegalAccessException, ), ex:
-#            print ex + " Encoder class (" + encoderName + " must be in class path."
-#            print ex + " Encoder class (" + encoderName + " must be concrete."
-#            print ex + " Encoder class (" + encoderName + " must have a no-arg constructor."
-#    return cls.encoder
 #
-#    
-#def setEncoder(cls, encoder):
-#    ESAPI.cls.encoder = cls.encoder
-#
+
+def get_encoder():
+    global encoder
+
+    if encoder is None:
+        fqn = getSecurityConfiguration().getEncoderImplementation()
+        moduleName = '.'.join(fqn.split('.')[:-1])
+        __import__(moduleName)
+        module = sys.modules[moduleName]
+        className = fqn.split('.')[-1]
+        encoder = getattr(module, className)()
+        
+    return encoder
+
+def setencoder(newEncoder):
+    global encoder
+    encoder = newEncoder
 #    
 #def encryptor(cls):
 #    if cls.encryptor is None:

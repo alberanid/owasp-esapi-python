@@ -14,6 +14,18 @@ accept the LICENSE before you use, modify, and/or redistribute this software.
 
 from esapi.codecs.push_back_string import PushbackString
 
+def get_hex_for_non_alphanumeric(char):
+    """
+    Returns the hex equivalent of the given character in the form 0x3c
+    """
+    if ord(char) > 0xFF: return None
+    if ('0' <= char <= '9' or
+        'a' <= char <= 'z' or
+        'A' <= char <= 'Z'):
+        return None
+    else:
+        return hex(ord(char))
+
 class Codec():
     """
     The Codec interface defines a set of methods for encoding and decoding 
@@ -31,7 +43,7 @@ class Codec():
     
     def __init__(self):
         pass
-    
+           
     def encode(self, immune, raw):
         """
         Encode a String so that it can be safely used in a specific context.
@@ -69,10 +81,10 @@ class Codec():
         """
         buf = ''
         pbs = PushbackString(encoded)
-        while pbs.hasNext():
-            c = self.decode_character(pbs)
-            if c is None:
-                buf += c
+        while pbs.has_next():
+            char = self.decode_character(pbs)
+            if char is not None:
+                buf += char
             else:
                 buf += pbs.next()
         return buf
