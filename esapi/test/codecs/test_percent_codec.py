@@ -16,7 +16,7 @@ import unittest
 
 from esapi.codecs.percent_codec import PercentCodec
 
-class EncoderTest(unittest.TestCase):
+class PercentCodecTest(unittest.TestCase):
 
     known_values = ( ('a', 'a'),
                      ('d', 'd'),
@@ -25,6 +25,7 @@ class EncoderTest(unittest.TestCase):
                      ('M', 'M'),
                      ('Z', 'Z'),
                      (' ', '+'),
+                     ('<', '%3C'),
                      ('!', '%21'),
                      ('*', '%2A'),
                      ("'", '%27'),
@@ -32,12 +33,14 @@ class EncoderTest(unittest.TestCase):
                      ('#', '%23'),
                      ('/', '%2F'),
                      ('&', '%26'),
-                     ('<script>', '%3Cscript%3E'))
+                     ('<script>', '%3Cscript%3E'),
+                     (chr(2), '%02'), # 0 padding
+                    )
                      
     
     def __init__(self, test_name=""):
         """
-        Instantiates a new EncoderTest test.
+        Instantiates a new PercentCodecTest test.
         
         @param test_name the test name
         """

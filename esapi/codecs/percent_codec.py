@@ -39,9 +39,6 @@ class PercentCodec(Codec):
         if hex_str is None:
             return char
             
-        # get_hex_for_non_alphanumeric returns '0x3c'
-        # Strip the 0x and upper it
-        hex_str = hex_str[2:].upper() 
         if ord(char) < 0x10:
             hex_str = '0' + hex_str
             
@@ -77,6 +74,8 @@ class PercentCodec(Codec):
             try:
                 ret = chr( int( hex_digits, 16 ) )
                 return ret
+            # Should never hit exception because cannot have int > 255
+            # with only 2 hex digits. 0xFF = 255
             except ValueError:
                 pass
                 # Malformed?
