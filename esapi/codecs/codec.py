@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 """
 OWASP Enterprise Security API (ESAPI)
  
@@ -16,9 +19,10 @@ from esapi.codecs.push_back_string import PushbackString
 
 def get_hex_for_non_alphanumeric(char):
     """
-    Returns the hex equivalent of the given character in the form 0x3c
+    Returns the hex equivalent of the given character in the form 3C
     """
-    if ord(char) > 0xFF: return None
+    # Disabled for unicode
+    #if ord(char) > 0xFF: return None
     if ('0' <= char <= '9' or
         'a' <= char <= 'z' or
         'A' <= char <= 'Z'):

@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 """
 OWASP Enterprise Security API (ESAPI)
  
@@ -68,11 +71,12 @@ class PercentCodec(Codec):
         hex_digits = ''
         for i in range(2):
             char = pbs.next_hex()
-            if char is not None: hex_digits += char
+            if char is not None: 
+                hex_digits += char
             
         if len(hex_digits) == 2:
             try:
-                ret = chr( int( hex_digits, 16 ) )
+                ret = unichr( int( hex_digits, 16 ) )
                 return ret
             # Should never hit exception because cannot have int > 255
             # with only 2 hex digits. 0xFF = 255

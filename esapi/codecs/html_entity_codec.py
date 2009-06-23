@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 """
 OWASP Enterprise Security API (ESAPI)
  
@@ -21,6 +24,7 @@ class HTMLEntityCodec(Codec):
     """
    
     def __init__(self):
+        Codec.__init__(self)
         self.entity_values_to_names = None
         self.entity_names_to_values = None
     
@@ -57,6 +61,10 @@ class HTMLEntityCodec(Codec):
         return "&#x" + hex_str + ";"
     
     def decode_character(self, pbs):
+        """
+        Attempts to decode an HTML encoded string such as &lt; or &#x74; into
+        its value.
+        """
         pbs.mark()
         
         first = pbs.next()
@@ -78,12 +86,14 @@ class HTMLEntityCodec(Codec):
         if second == '#':
             # Handle numbers
             char = self.get_numeric_entity(pbs)
-            if char is not None: return char
+            if char is not None: 
+                return char
         elif second.isalpha():
             # Handle entities
             pbs.pushback(second)
             char = self.get_named_entity(pbs)
-            if char is not None: return char
+            if char is not None: 
+                return char
             
         pbs.reset()
         return None
@@ -97,7 +107,8 @@ class HTMLEntityCodec(Codec):
         """
         
         first = pbs.peek()
-        if first is None: return None
+        if first is None: 
+            return None
         
         if first == 'x' or first == 'X':
             pbs.next()
@@ -113,15 +124,15 @@ class HTMLEntityCodec(Codec):
         @param pbs the PushbackString
         @return character representation of the decimal value
         """
-        sb = ''
+        buf = ''
         
         while pbs.has_next():
-            c = pbs.peek()
-            if c.isdigit():
+            peek_char = pbs.peek()
+            if peek_char.isdigit():
                 # If character is a digit than add it on and keep going
-                sb += c
+                buf += peek_char
                 pbs.next()
-            elif c == ';':
+            elif peek_char == ';':
                 # if character is a semi-colon, eat it and quit
                 pbs.next()
                 break
@@ -129,8 +140,8 @@ class HTMLEntityCodec(Codec):
                 # Otherwise, just quit
                 break
         try:
-            i = int(sb)
-            return chr(i)
+            i = int(buf)
+            return unichr(i)
         except ValueError:
             # Throw an exception for a malformed entity?
             return None
@@ -142,14 +153,14 @@ class HTMLEntityCodec(Codec):
         @param pbs the PushbackString
         @return a single character from the string
         """
-        sb = ''
+        buf = ''
         
         while pbs.has_next():
             char = pbs.peek()
             
             if char in "0123456789ABCDEFabcdef":
                 # If char is a hex digit than add it on and keep going
-                sb += char
+                buf += char
                 pbs.next()
             elif char == ';':
                 # if the character is a semi-colon, eat it and quit
@@ -159,8 +170,8 @@ class HTMLEntityCodec(Codec):
                 # otherwise just quit
                 break
         try:
-            i = int(sb, 16)
-            return chr(i)
+            i = int(buf, 16)
+            return unichr(i)
         except ValueError:
             # Throw an exception for a malformed entity?
             return None
@@ -189,18 +200,22 @@ class HTMLEntityCodec(Codec):
         possible = ''
         len_to_go = min( len(pbs.remainder()), 7 )
         for i in range(len_to_go):
-            possible += pbs.next().lower()
-            entity = self.entity_names_to_values.get(possible, None)
+            possible += pbs.next()
+            entity1 = self.entity_names_to_values.get(possible, None)
+            entity2 = self.entity_names_to_values.get(possible.lower(), None)
+            entity = entity1 or entity2
             if entity is not None:
                 # Eat any trailing semicolons
                 if pbs.peek(';'):
                     pbs.next()
                 
-                return chr(entity)
+                return unichr(entity)
                 
         return None
             
     def initialize_dicts(self):
+        """Initializes the HTML entity and value dictionaries"""
+        
         self.entity_values_to_names = {
         34 : "quot", # quotation mark
         38 : "amp", # ampersand
@@ -373,7 +388,7 @@ class HTMLEntityCodec(Codec):
         8212 : "mdash", # em dash
         8216 : "lsquo", # left single quotation mark
         8217 : "rsquo", # right single quotation mark
-        8218 : "sbquo", # single low-9 quotation mark
+        8218 : "bufquo", # single low-9 quotation mark
         8220 : "ldquo", # left double quotation mark
         8221 : "rdquo", # right double quotation mark
         8222 : "bdquo", # double low-9 quotation mark
@@ -457,4 +472,5 @@ class HTMLEntityCodec(Codec):
         }
         
         # Invert the dict
-        self.entity_names_to_values = dict([v,k] for k,v in self.entity_values_to_names.iteritems())
+        self.entity_names_to_values = dict([v, k] 
+            for k, v in self.entity_values_to_names.iteritems())
