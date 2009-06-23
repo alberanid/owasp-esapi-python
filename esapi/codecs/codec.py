@@ -24,7 +24,7 @@ def get_hex_for_non_alphanumeric(char):
         'A' <= char <= 'Z'):
         return None
     else:
-        return hex(ord(char))
+        return hex(ord(char))[2:].upper()
 
 class Codec():
     """
@@ -52,7 +52,7 @@ class Codec():
         @param raw
                 the String to encode
         @return the encoded String
-        """
+        """    
         ret = ''
         for char in raw:
             ret += self.encode_character(immune, char)
