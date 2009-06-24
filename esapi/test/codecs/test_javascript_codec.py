@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 """
 OWASP Enterprise Security API (ESAPI)
  
@@ -20,6 +23,10 @@ class JavascriptCodecTest(unittest.TestCase):
 
     known_values = ( 
                      ('<', '\\x3C'),
+                     ('\\', '\\x5C'),
+                     ('~', '\\x7E'),
+                     ('"', '\\x22'),
+                     (u'Δ', '\\u0394'),
                     )
                      
     known_encode_only = ( 

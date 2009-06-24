@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 """
 OWASP Enterprise Security API (ESAPI)
  
@@ -65,15 +68,15 @@ class JavascriptCodec(Codec):
             return None
             
         char_to_values = {
-            'b' : chr(0x08),
-            't' : chr(0x09),
-            'n' : chr(0x0a),
-            'v' : chr(0x0b),
-            'f' : chr(0x0c),
-            'r' : chr(0x0d),
-            '\"' : chr(0x22),
-            '\'' : chr(0x27),
-            '\\' : chr(0x5c),
+            'b' : unichr(0x08),
+            't' : unichr(0x09),
+            'n' : unichr(0x0a),
+            'v' : unichr(0x0b),
+            'f' : unichr(0x0c),
+            'r' : unichr(0x0d),
+            '\"' : unichr(0x22),
+            '\'' : unichr(0x27),
+            '\\' : unichr(0x5c),
             }
             
         if char_to_values.has_key(second):
@@ -82,18 +85,18 @@ class JavascriptCodec(Codec):
         # look for \\xXX format
         if second.lower() == 'x':
             # Search for exactly 2 hex digits following
-            sb = ''
+            buf = ''
             for i in range(2):
-                c = pbs.next_hex()
-                if c is not None: 
-                    sb += c
+                char = pbs.next_hex()
+                if char is not None: 
+                    buf += char
                 else:
                     pbs.reset()
                     return None
             try:
                 # parse the hex digit and create a character
-                i = int(sb, 16)
-                return chr(i)
+                i = int(buf, 16)
+                return unichr(i)
             except ValueError:
                 # throw exception for malformed entity?
                 pbs.reset()
@@ -102,18 +105,18 @@ class JavascriptCodec(Codec):
         # look for \\uXXXX format
         if second.lower() == 'u':
             # Search for exactly 4 hex digits following
-            sb = ''
+            buf = ''
             for i in range(4):
-                c = pbs.next_hex()
-                if c is not None: 
-                    sb += c
+                char = pbs.next_hex()
+                if char is not None: 
+                    buf += char
                 else:
                     pbs.reset()
                     return None
             try:
                 # parse the hex digit and create a character
-                i = int(sb, 16)
-                return chr(i)
+                i = int(buf, 16)
+                return unichr(i)
             except ValueError:
                 # throw exception for malformed entity?
                 pbs.reset()
@@ -121,26 +124,26 @@ class JavascriptCodec(Codec):
                 
         # look for one, two, or three octal digits
         if esapi.codecs.push_back_string.is_octal_digit(second):
-            sb = ''
+            buf = ''
             # get digit 1
-            sb += second
+            buf += second
             
             # get digit 2 if present
-            c2 = pbs.next()
-            if not esapi.codecs.push_back_string.is_octal_digit(c2):
-                pbs.pushback(c2)
+            char2 = pbs.next()
+            if not esapi.codecs.push_back_string.is_octal_digit(char2):
+                pbs.pushback(char2)
             else:
-                sb += c2
+                buf += char2
                 # get digit 3 if present
-                c3 = pbs.next()
-                if not esapi.codecs.push_back_string.is_octal_digit(c3):
-                    pbs.pushback(c3)
+                char3 = pbs.next()
+                if not esapi.codecs.push_back_string.is_octal_digit(char3):
+                    pbs.pushback(char3)
                 else:
-                    sb += c3
+                    buf += char3
             try:
                 # parse the octal string and create a character
-                i = int(sb, 8)
-                return chr(i)
+                i = int(buf, 8)
+                return unichr(i)
             except ValueError:
                 # throw exception for malformed entity?
                 pbs.reset()
