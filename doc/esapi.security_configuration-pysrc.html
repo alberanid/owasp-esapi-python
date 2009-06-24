@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>esapi.security_configuration</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="esapi-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="esapi-module.html">Package&nbsp;esapi</a> ::
+        Module&nbsp;security_configuration
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="esapi.security_configuration-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="esapi.security_configuration-module.html">Module esapi.security_configuration</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-docstring">OWASP Enterprise Security API (ESAPI)</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-docstring"> </tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-docstring">This file is part of the Open Web Application Security Project (OWASP)</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-docstring">Enterprise Security API (ESAPI) project. For details, please see</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-docstring">&lt;a href="http://www.owasp.org/index.php/ESAPI"&gt;http://www.owasp.org/index.php/ESAPI&lt;/a&gt;.</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-docstring">Copyright (c) 2009 - The OWASP Foundation</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-docstring">The ESAPI is published by OWASP under the BSD license. You should read and accept the</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-docstring">LICENSE before you use, modify, and/or redistribute this software.</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-docstring">@author Craig Younkins (craig.younkins@owasp.org)</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"> </tt>
+<a name="SecurityConfiguration"></a><div id="SecurityConfiguration-def"><a name="L15"></a><tt class="py-lineno"> 15</tt> <a class="py-toggle" href="#" id="SecurityConfiguration-toggle" onclick="return toggle('SecurityConfiguration');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="esapi.security_configuration.SecurityConfiguration-class.html">SecurityConfiguration</a><tt class="py-op">:</tt> </tt>
+</div><div id="SecurityConfiguration-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="SecurityConfiguration-expanded"><a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt class="py-docstring">    The SecurityConfiguration interface stores all configuration information</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"><tt class="py-docstring">    that directs the behavior of the ESAPI implementation.</tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"><tt class="py-docstring">    &lt;br&gt;&lt;br&gt;</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"><tt class="py-docstring">    Protection of this configuration information is critical to the secure</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"><tt class="py-docstring">    operation of the application using the ESAPI. You should use operating system</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"><tt class="py-docstring">    access controls to limit access to wherever the configuration information is</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"><tt class="py-docstring">    stored.</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"><tt class="py-docstring">    &lt;br&gt;&lt;br&gt;</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"><tt class="py-docstring">    Please note that adding another layer of encryption does not make the</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line"><tt class="py-docstring">    attackers job much more difficult. Somewhere there must be a master "secret"</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line"><tt class="py-docstring">    that is stored unencrypted on the application platform. Creating another</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"><tt class="py-docstring">    layer of indirection doesn't provide any real additional security. Its up to the</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line"><tt class="py-docstring">    reference implementation to decide whether this file should be encrypted or not.</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line"><tt class="py-docstring">    The ESAPI reference implementation (DefaultSecurityConfiguration.java) does not encrypt</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line"><tt class="py-docstring">    its properties file.</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"><tt class="py-docstring">    </tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line"><tt class="py-docstring">    @author Craig Younkins (craig.younkins@owasp.org)</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"><tt class="py-docstring">    @since June 3, 2009</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line"> </tt>
+<a name="SecurityConfiguration.Threshold"></a><div id="SecurityConfiguration.Threshold-def"><a name="L37"></a><tt class="py-lineno"> 37</tt> <a class="py-toggle" href="#" id="SecurityConfiguration.Threshold-toggle" onclick="return toggle('SecurityConfiguration.Threshold');">-</a><tt class="py-line">    <tt class="py-keyword">class</tt> <a class="py-def-name" href="esapi.security_configuration.SecurityConfiguration.Threshold-class.html">Threshold</a><tt class="py-op">:</tt> </tt>
+</div><div id="SecurityConfiguration.Threshold-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SecurityConfiguration.Threshold-expanded"><a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line"><tt class="py-docstring">        Models a simple threshold as a count and an interval, along with a set of actions to take if</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line"><tt class="py-docstring">        the threshold is exceeded. These thresholds are used to define when the accumulation of a particular event</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line"><tt class="py-docstring">        has met a set number within the specified time period. Once a threshold value has been met, various</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line"><tt class="py-docstring">        actions can be taken at that point.</tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line"> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line">        <tt class="py-comment"># The name of this threshold</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">        <tt id="link-0" class="py-name" targets="Variable esapi.security_configuration.SecurityConfiguration.Threshold.name=esapi.security_configuration.SecurityConfiguration.Threshold-class.html#name"><a title="esapi.security_configuration.SecurityConfiguration.Threshold.name" class="py-name" href="#" onclick="return doclink('link-0', 'name', 'link-0');">name</a></tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line">         </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line">        <tt class="py-comment"># The count at which this threshold is triggered</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">        <tt id="link-1" class="py-name" targets="Variable esapi.security_configuration.SecurityConfiguration.Threshold.count=esapi.security_configuration.SecurityConfiguration.Threshold-class.html#count"><a title="esapi.security_configuration.SecurityConfiguration.Threshold.count" class="py-name" href="#" onclick="return doclink('link-1', 'count', 'link-1');">count</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">         </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">        <tt class="py-comment"># The time frame which 'count' number of actions has to be detected</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line">        <tt class="py-comment"># in order trigger this threshold</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">        <tt id="link-2" class="py-name" targets="Variable esapi.security_configuration.SecurityConfiguration.Threshold.interval=esapi.security_configuration.SecurityConfiguration.Threshold-class.html#interval"><a title="esapi.security_configuration.SecurityConfiguration.Threshold.interval" class="py-name" href="#" onclick="return doclink('link-2', 'interval', 'link-2');">interval</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line">         </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line">        <tt class="py-comment"># The list of actions to take if the threshold is met.</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">        <tt id="link-3" class="py-name" targets="Variable esapi.security_configuration.SecurityConfiguration.Threshold.actions=esapi.security_configuration.SecurityConfiguration.Threshold-class.html#actions"><a title="esapi.security_configuration.SecurityConfiguration.Threshold.actions" class="py-name" href="#" onclick="return doclink('link-3', 'actions', 'link-3');">actions</a></tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line"> </tt>
+<a name="SecurityConfiguration.Threshold.__init__"></a><div id="SecurityConfiguration.Threshold.__init__-def"><a name="L58"></a><tt class="py-lineno"> 58</tt> <a class="py-toggle" href="#" id="SecurityConfiguration.Threshold.__init__-toggle" onclick="return toggle('SecurityConfiguration.Threshold.__init__');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.security_configuration.SecurityConfiguration.Threshold-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">name</tt><tt class="py-op">,</tt> <tt class="py-param">count</tt><tt class="py-op">,</tt> <tt class="py-param">interval</tt><tt class="py-op">,</tt> <tt class="py-param">actions</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SecurityConfiguration.Threshold.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++++++++++"></div><div id="SecurityConfiguration.Threshold.__init__-expanded"><a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">            <tt class="py-docstring">"""</tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line"><tt class="py-docstring">            Constructs a threshold that is composed of its name, its threshold count, the time window for</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line"><tt class="py-docstring">            the threshold, and the actions to take if the threshold is triggered.</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line"><tt class="py-docstring">            </tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line"><tt class="py-docstring">            @param name The name of this threshold.</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line"><tt class="py-docstring">            @param count The count at which this threshold is triggered.</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line"><tt class="py-docstring">            @param interval The time frame within which 'count' number of actions has to be detected in order to</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line"><tt class="py-docstring">            trigger this threshold.</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line"><tt class="py-docstring">            @param actions The list of actions to take if the threshold is met.</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line"><tt class="py-docstring">            """</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">             </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-4" class="py-name"><a title="esapi.security_configuration.SecurityConfiguration.Threshold.name" class="py-name" href="#" onclick="return doclink('link-4', 'name', 'link-0');">name</a></tt> <tt class="py-op">=</tt> <tt id="link-5" class="py-name"><a title="esapi.security_configuration.SecurityConfiguration.Threshold.name" class="py-name" href="#" onclick="return doclink('link-5', 'name', 'link-0');">name</a></tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-6" class="py-name"><a title="esapi.security_configuration.SecurityConfiguration.Threshold.count" class="py-name" href="#" onclick="return doclink('link-6', 'count', 'link-1');">count</a></tt> <tt class="py-op">=</tt> <tt id="link-7" class="py-name"><a title="esapi.security_configuration.SecurityConfiguration.Threshold.count" class="py-name" href="#" onclick="return doclink('link-7', 'count', 'link-1');">count</a></tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-8" class="py-name"><a title="esapi.security_configuration.SecurityConfiguration.Threshold.interval" class="py-name" href="#" onclick="return doclink('link-8', 'interval', 'link-2');">interval</a></tt> <tt class="py-op">=</tt> <tt id="link-9" class="py-name"><a title="esapi.security_configuration.SecurityConfiguration.Threshold.interval" class="py-name" href="#" onclick="return doclink('link-9', 'interval', 'link-2');">interval</a></tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-10" class="py-name"><a title="esapi.security_configuration.SecurityConfiguration.Threshold.actions" class="py-name" href="#" onclick="return doclink('link-10', 'actions', 'link-3');">actions</a></tt> <tt class="py-op">=</tt> <tt id="link-11" class="py-name"><a title="esapi.security_configuration.SecurityConfiguration.Threshold.actions" class="py-name" href="#" onclick="return doclink('link-11', 'actions', 'link-3');">actions</a></tt> </tt>
+</div></div><a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line"> </tt>
+<a name="SecurityConfiguration.getApplicationName"></a><div id="SecurityConfiguration.getApplicationName-def"><a name="L75"></a><tt class="py-lineno"> 75</tt> <a class="py-toggle" href="#" id="SecurityConfiguration.getApplicationName-toggle" onclick="return toggle('SecurityConfiguration.getApplicationName');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.security_configuration.SecurityConfiguration-class.html#getApplicationName">getApplicationName</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SecurityConfiguration.getApplicationName-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SecurityConfiguration.getApplicationName-expanded"><a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line"><tt class="py-docstring">        Gets the application name, used for logging</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line"><tt class="py-docstring">        @return the name of the current application</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line"> </tt>
+<a name="SecurityConfiguration.getLogImplementation"></a><div id="SecurityConfiguration.getLogImplementation-def"><a name="L83"></a><tt class="py-lineno"> 83</tt> <a class="py-toggle" href="#" id="SecurityConfiguration.getLogImplementation-toggle" onclick="return toggle('SecurityConfiguration.getLogImplementation');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.security_configuration.SecurityConfiguration-class.html#getLogImplementation">getLogImplementation</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SecurityConfiguration.getLogImplementation-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SecurityConfiguration.getLogImplementation-expanded"><a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line"><tt class="py-docstring">        Returns the fully qualified classname of the ESAPI Logging implementation.</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line"> </tt>
+<a name="SecurityConfiguration.getAuthenticationImplementation"></a><div id="SecurityConfiguration.getAuthenticationImplementation-def"><a name="L89"></a><tt class="py-lineno"> 89</tt> <a class="py-toggle" href="#" id="SecurityConfiguration.getAuthenticationImplementation-toggle" onclick="return toggle('SecurityConfiguration.getAuthenticationImplementation');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.security_configuration.SecurityConfiguration-class.html#getAuthenticationImplementation">getAuthenticationImplementation</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SecurityConfiguration.getAuthenticationImplementation-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SecurityConfiguration.getAuthenticationImplementation-expanded"><a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line"><tt class="py-docstring">        Returns the fully qualified classname of the ESAPI Authentication implementation.</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line"> </tt>
+<a name="SecurityConfiguration.getEncoderImplementation"></a><div id="SecurityConfiguration.getEncoderImplementation-def"><a name="L95"></a><tt class="py-lineno"> 95</tt> <a class="py-toggle" href="#" id="SecurityConfiguration.getEncoderImplementation-toggle" onclick="return toggle('SecurityConfiguration.getEncoderImplementation');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.security_configuration.SecurityConfiguration-class.html#getEncoderImplementation">getEncoderImplementation</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SecurityConfiguration.getEncoderImplementation-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SecurityConfiguration.getEncoderImplementation-expanded"><a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line"><tt class="py-docstring">        Returns the fully qualified classname of the ESAPI Encoder implementation.</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line"> </tt>
+<a name="SecurityConfiguration.getAccessControlImplementation"></a><div id="SecurityConfiguration.getAccessControlImplementation-def"><a name="L101"></a><tt class="py-lineno">101</tt> <a class="py-toggle" href="#" id="SecurityConfiguration.getAccessControlImplementation-toggle" onclick="return toggle('SecurityConfiguration.getAccessControlImplementation');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.security_configuration.SecurityConfiguration-class.html#getAccessControlImplementation">getAccessControlImplementation</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SecurityConfiguration.getAccessControlImplementation-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SecurityConfiguration.getAccessControlImplementation-expanded"><a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line"><tt class="py-docstring">        Returns the fully qualified classname of the ESAPI Access Control implementation.</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line"> </tt>
+<a name="SecurityConfiguration.getIntrusionDetectionImplementation"></a><div id="SecurityConfiguration.getIntrusionDetectionImplementation-def"><a name="L107"></a><tt class="py-lineno">107</tt> <a class="py-toggle" href="#" id="SecurityConfiguration.getIntrusionDetectionImplementation-toggle" onclick="return toggle('SecurityConfiguration.getIntrusionDetectionImplementation');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.security_configuration.SecurityConfiguration-class.html#getIntrusionDetectionImplementation">getIntrusionDetectionImplementation</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SecurityConfiguration.getIntrusionDetectionImplementation-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SecurityConfiguration.getIntrusionDetectionImplementation-expanded"><a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line"><tt class="py-docstring">        Returns the fully qualified classname of the ESAPI Intrusion Detection implementation.</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line"> </tt>
+<a name="SecurityConfiguration.getRandomizerImplementation"></a><div id="SecurityConfiguration.getRandomizerImplementation-def"><a name="L113"></a><tt class="py-lineno">113</tt> <a class="py-toggle" href="#" id="SecurityConfiguration.getRandomizerImplementation-toggle" onclick="return toggle('SecurityConfiguration.getRandomizerImplementation');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.security_configuration.SecurityConfiguration-class.html#getRandomizerImplementation">getRandomizerImplementation</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SecurityConfiguration.getRandomizerImplementation-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SecurityConfiguration.getRandomizerImplementation-expanded"><a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line"><tt class="py-docstring">        Returns the fully qualified classname of the ESAPI Randomizer implementation.</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line"> </tt>
+<a name="SecurityConfiguration.getEncryptionImplementation"></a><div id="SecurityConfiguration.getEncryptionImplementation-def"><a name="L119"></a><tt class="py-lineno">119</tt> <a class="py-toggle" href="#" id="SecurityConfiguration.getEncryptionImplementation-toggle" onclick="return toggle('SecurityConfiguration.getEncryptionImplementation');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.security_configuration.SecurityConfiguration-class.html#getEncryptionImplementation">getEncryptionImplementation</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SecurityConfiguration.getEncryptionImplementation-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SecurityConfiguration.getEncryptionImplementation-expanded"><a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line"><tt class="py-docstring">        Returns the fully qualified classname of the ESAPI Encryption implementation.</tt> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line"> </tt>
+<a name="SecurityConfiguration.getValidationImplementation"></a><div id="SecurityConfiguration.getValidationImplementation-def"><a name="L125"></a><tt class="py-lineno">125</tt> <a class="py-toggle" href="#" id="SecurityConfiguration.getValidationImplementation-toggle" onclick="return toggle('SecurityConfiguration.getValidationImplementation');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.security_configuration.SecurityConfiguration-class.html#getValidationImplementation">getValidationImplementation</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SecurityConfiguration.getValidationImplementation-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SecurityConfiguration.getValidationImplementation-expanded"><a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line"><tt class="py-docstring">        Returns the fully qualified classname of the ESAPI Validation implementation.</tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line"> </tt>
+<a name="SecurityConfiguration.getExecutorImplementation"></a><div id="SecurityConfiguration.getExecutorImplementation-def"><a name="L131"></a><tt class="py-lineno">131</tt> <a class="py-toggle" href="#" id="SecurityConfiguration.getExecutorImplementation-toggle" onclick="return toggle('SecurityConfiguration.getExecutorImplementation');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.security_configuration.SecurityConfiguration-class.html#getExecutorImplementation">getExecutorImplementation</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SecurityConfiguration.getExecutorImplementation-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SecurityConfiguration.getExecutorImplementation-expanded"><a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line"><tt class="py-docstring">        Returns the fully qualified classname of the ESAPI OS Execution implementation.</tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line"> </tt>
+<a name="SecurityConfiguration.getHTTPUtilitiesImplementation"></a><div id="SecurityConfiguration.getHTTPUtilitiesImplementation-def"><a name="L137"></a><tt class="py-lineno">137</tt> <a class="py-toggle" href="#" id="SecurityConfiguration.getHTTPUtilitiesImplementation-toggle" onclick="return toggle('SecurityConfiguration.getHTTPUtilitiesImplementation');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.security_configuration.SecurityConfiguration-class.html#getHTTPUtilitiesImplementation">getHTTPUtilitiesImplementation</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SecurityConfiguration.getHTTPUtilitiesImplementation-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SecurityConfiguration.getHTTPUtilitiesImplementation-expanded"><a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line"><tt class="py-docstring">        Returns the fully qualified classname of the ESAPI HTTPUtilities implementation.</tt> </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line"> </tt>
+<a name="SecurityConfiguration.getMasterKey"></a><div id="SecurityConfiguration.getMasterKey-def"><a name="L143"></a><tt class="py-lineno">143</tt> <a class="py-toggle" href="#" id="SecurityConfiguration.getMasterKey-toggle" onclick="return toggle('SecurityConfiguration.getMasterKey');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.security_configuration.SecurityConfiguration-class.html#getMasterKey">getMasterKey</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SecurityConfiguration.getMasterKey-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SecurityConfiguration.getMasterKey-expanded"><a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line"><tt class="py-docstring">        Gets the master key. This password is used to encrypt/decrypt other files or types</tt> </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line"><tt class="py-docstring">        of data that need to be protected by your application.</tt> </tt>
+<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line"><tt class="py-docstring">        @return the current master key</tt> </tt>
+<a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line"> </tt>
+<a name="SecurityConfiguration.getUploadDirectory"></a><div id="SecurityConfiguration.getUploadDirectory-def"><a name="L152"></a><tt class="py-lineno">152</tt> <a class="py-toggle" href="#" id="SecurityConfiguration.getUploadDirectory-toggle" onclick="return toggle('SecurityConfiguration.getUploadDirectory');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.security_configuration.SecurityConfiguration-class.html#getUploadDirectory">getUploadDirectory</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SecurityConfiguration.getUploadDirectory-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SecurityConfiguration.getUploadDirectory-expanded"><a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line"><tt class="py-docstring">        Retrieves the default upload directory declared in the ESAPI properties file.</tt> </tt>
+<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line"><tt class="py-docstring">        @return the default upload directory declared in the ESAPI properties file</tt> </tt>
+<a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line"> </tt>
+<a name="SecurityConfiguration.getEncryptionKeyLength"></a><div id="SecurityConfiguration.getEncryptionKeyLength-def"><a name="L160"></a><tt class="py-lineno">160</tt> <a class="py-toggle" href="#" id="SecurityConfiguration.getEncryptionKeyLength-toggle" onclick="return toggle('SecurityConfiguration.getEncryptionKeyLength');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.security_configuration.SecurityConfiguration-class.html#getEncryptionKeyLength">getEncryptionKeyLength</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SecurityConfiguration.getEncryptionKeyLength-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SecurityConfiguration.getEncryptionKeyLength-expanded"><a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line"><tt class="py-docstring">        Gets the key length to use in cryptographic operations declared in the ESAPI properties file.</tt> </tt>
+<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line"><tt class="py-docstring">        @return the key length.</tt> </tt>
+<a name="L165"></a><tt class="py-lineno">165</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L167"></a><tt class="py-lineno">167</tt>  <tt class="py-line"> </tt>
+<a name="SecurityConfiguration.getMasterSalt"></a><div id="SecurityConfiguration.getMasterSalt-def"><a name="L168"></a><tt class="py-lineno">168</tt> <a class="py-toggle" href="#" id="SecurityConfiguration.getMasterSalt-toggle" onclick="return toggle('SecurityConfiguration.getMasterSalt');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.security_configuration.SecurityConfiguration-class.html#getMasterSalt">getMasterSalt</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SecurityConfiguration.getMasterSalt-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SecurityConfiguration.getMasterSalt-expanded"><a name="L169"></a><tt class="py-lineno">169</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L170"></a><tt class="py-lineno">170</tt>  <tt class="py-line"><tt class="py-docstring">        Gets the master salt that is used to salt stored password hashes and any other location</tt> </tt>
+<a name="L171"></a><tt class="py-lineno">171</tt>  <tt class="py-line"><tt class="py-docstring">        where a salt is needed.</tt> </tt>
+<a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L173"></a><tt class="py-lineno">173</tt>  <tt class="py-line"><tt class="py-docstring">        @return the current master salt</tt> </tt>
+<a name="L174"></a><tt class="py-lineno">174</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L175"></a><tt class="py-lineno">175</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L176"></a><tt class="py-lineno">176</tt>  <tt class="py-line"> </tt>
+<a name="SecurityConfiguration.getAllowedExecutables"></a><div id="SecurityConfiguration.getAllowedExecutables-def"><a name="L177"></a><tt class="py-lineno">177</tt> <a class="py-toggle" href="#" id="SecurityConfiguration.getAllowedExecutables-toggle" onclick="return toggle('SecurityConfiguration.getAllowedExecutables');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.security_configuration.SecurityConfiguration-class.html#getAllowedExecutables">getAllowedExecutables</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SecurityConfiguration.getAllowedExecutables-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SecurityConfiguration.getAllowedExecutables-expanded"><a name="L178"></a><tt class="py-lineno">178</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L179"></a><tt class="py-lineno">179</tt>  <tt class="py-line"><tt class="py-docstring">        Gets the allowed executables to run with the Executor.</tt> </tt>
+<a name="L180"></a><tt class="py-lineno">180</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L181"></a><tt class="py-lineno">181</tt>  <tt class="py-line"><tt class="py-docstring">        @return a list of the current allowed file extensions</tt> </tt>
+<a name="L182"></a><tt class="py-lineno">182</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L183"></a><tt class="py-lineno">183</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L184"></a><tt class="py-lineno">184</tt>  <tt class="py-line"> </tt>
+<a name="SecurityConfiguration.getAllowedFileExtensions"></a><div id="SecurityConfiguration.getAllowedFileExtensions-def"><a name="L185"></a><tt class="py-lineno">185</tt> <a class="py-toggle" href="#" id="SecurityConfiguration.getAllowedFileExtensions-toggle" onclick="return toggle('SecurityConfiguration.getAllowedFileExtensions');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.security_configuration.SecurityConfiguration-class.html#getAllowedFileExtensions">getAllowedFileExtensions</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SecurityConfiguration.getAllowedFileExtensions-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SecurityConfiguration.getAllowedFileExtensions-expanded"><a name="L186"></a><tt class="py-lineno">186</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L187"></a><tt class="py-lineno">187</tt>  <tt class="py-line"><tt class="py-docstring">        Gets the allowed file extensions for files that are uploaded to this application.</tt> </tt>
+<a name="L188"></a><tt class="py-lineno">188</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L189"></a><tt class="py-lineno">189</tt>  <tt class="py-line"><tt class="py-docstring">        @return a list of the current allowed file extensions</tt> </tt>
+<a name="L190"></a><tt class="py-lineno">190</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L191"></a><tt class="py-lineno">191</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L192"></a><tt class="py-lineno">192</tt>  <tt class="py-line"> </tt>
+<a name="SecurityConfiguration.getAllowedFileUploadSize"></a><div id="SecurityConfiguration.getAllowedFileUploadSize-def"><a name="L193"></a><tt class="py-lineno">193</tt> <a class="py-toggle" href="#" id="SecurityConfiguration.getAllowedFileUploadSize-toggle" onclick="return toggle('SecurityConfiguration.getAllowedFileUploadSize');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.security_configuration.SecurityConfiguration-class.html#getAllowedFileUploadSize">getAllowedFileUploadSize</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SecurityConfiguration.getAllowedFileUploadSize-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SecurityConfiguration.getAllowedFileUploadSize-expanded"><a name="L194"></a><tt class="py-lineno">194</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L195"></a><tt class="py-lineno">195</tt>  <tt class="py-line"><tt class="py-docstring">        Gets the maximum allowed file upload size.</tt> </tt>
+<a name="L196"></a><tt class="py-lineno">196</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L197"></a><tt class="py-lineno">197</tt>  <tt class="py-line"><tt class="py-docstring">        @return the current allowed file upload size</tt> </tt>
+<a name="L198"></a><tt class="py-lineno">198</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L199"></a><tt class="py-lineno">199</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L200"></a><tt class="py-lineno">200</tt>  <tt class="py-line"> </tt>
+<a name="SecurityConfiguration.getPasswordParameterName"></a><div id="SecurityConfiguration.getPasswordParameterName-def"><a name="L201"></a><tt class="py-lineno">201</tt> <a class="py-toggle" href="#" id="SecurityConfiguration.getPasswordParameterName-toggle" onclick="return toggle('SecurityConfiguration.getPasswordParameterName');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.security_configuration.SecurityConfiguration-class.html#getPasswordParameterName">getPasswordParameterName</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SecurityConfiguration.getPasswordParameterName-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SecurityConfiguration.getPasswordParameterName-expanded"><a name="L202"></a><tt class="py-lineno">202</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L203"></a><tt class="py-lineno">203</tt>  <tt class="py-line"><tt class="py-docstring">        Gets the name of the password parameter used during user authentication.</tt> </tt>
+<a name="L204"></a><tt class="py-lineno">204</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L205"></a><tt class="py-lineno">205</tt>  <tt class="py-line"><tt class="py-docstring">        @return the name of the password parameter</tt> </tt>
+<a name="L206"></a><tt class="py-lineno">206</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L207"></a><tt class="py-lineno">207</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L208"></a><tt class="py-lineno">208</tt>  <tt class="py-line"> </tt>
+<a name="SecurityConfiguration.getUsernameParameterName"></a><div id="SecurityConfiguration.getUsernameParameterName-def"><a name="L209"></a><tt class="py-lineno">209</tt> <a class="py-toggle" href="#" id="SecurityConfiguration.getUsernameParameterName-toggle" onclick="return toggle('SecurityConfiguration.getUsernameParameterName');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.security_configuration.SecurityConfiguration-class.html#getUsernameParameterName">getUsernameParameterName</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SecurityConfiguration.getUsernameParameterName-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SecurityConfiguration.getUsernameParameterName-expanded"><a name="L210"></a><tt class="py-lineno">210</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L211"></a><tt class="py-lineno">211</tt>  <tt class="py-line"><tt class="py-docstring">        Gets the name of the username parameter used during user authentication.</tt> </tt>
+<a name="L212"></a><tt class="py-lineno">212</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L213"></a><tt class="py-lineno">213</tt>  <tt class="py-line"><tt class="py-docstring">        @return the name of the username parameter</tt> </tt>
+<a name="L214"></a><tt class="py-lineno">214</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L215"></a><tt class="py-lineno">215</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L216"></a><tt class="py-lineno">216</tt>  <tt class="py-line"> </tt>
+<a name="SecurityConfiguration.getEncryptionAlgorithm"></a><div id="SecurityConfiguration.getEncryptionAlgorithm-def"><a name="L217"></a><tt class="py-lineno">217</tt> <a class="py-toggle" href="#" id="SecurityConfiguration.getEncryptionAlgorithm-toggle" onclick="return toggle('SecurityConfiguration.getEncryptionAlgorithm');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.security_configuration.SecurityConfiguration-class.html#getEncryptionAlgorithm">getEncryptionAlgorithm</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SecurityConfiguration.getEncryptionAlgorithm-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SecurityConfiguration.getEncryptionAlgorithm-expanded"><a name="L218"></a><tt class="py-lineno">218</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L219"></a><tt class="py-lineno">219</tt>  <tt class="py-line"><tt class="py-docstring">        Gets the encryption algorithm used by ESAPI to protect data.</tt> </tt>
+<a name="L220"></a><tt class="py-lineno">220</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L221"></a><tt class="py-lineno">221</tt>  <tt class="py-line"><tt class="py-docstring">        @return the current encryption algorithm</tt> </tt>
+<a name="L222"></a><tt class="py-lineno">222</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L223"></a><tt class="py-lineno">223</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L224"></a><tt class="py-lineno">224</tt>  <tt class="py-line"> </tt>
+<a name="SecurityConfiguration.getHashAlgorithm"></a><div id="SecurityConfiguration.getHashAlgorithm-def"><a name="L225"></a><tt class="py-lineno">225</tt> <a class="py-toggle" href="#" id="SecurityConfiguration.getHashAlgorithm-toggle" onclick="return toggle('SecurityConfiguration.getHashAlgorithm');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.security_configuration.SecurityConfiguration-class.html#getHashAlgorithm">getHashAlgorithm</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SecurityConfiguration.getHashAlgorithm-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SecurityConfiguration.getHashAlgorithm-expanded"><a name="L226"></a><tt class="py-lineno">226</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L227"></a><tt class="py-lineno">227</tt>  <tt class="py-line"><tt class="py-docstring">        Gets the hashing algorithm used by ESAPI to hash data.</tt> </tt>
+<a name="L228"></a><tt class="py-lineno">228</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L229"></a><tt class="py-lineno">229</tt>  <tt class="py-line"><tt class="py-docstring">        @return the current hashing algorithm</tt> </tt>
+<a name="L230"></a><tt class="py-lineno">230</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L231"></a><tt class="py-lineno">231</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L232"></a><tt class="py-lineno">232</tt>  <tt class="py-line"> </tt>
+<a name="SecurityConfiguration.getHashIterations"></a><div id="SecurityConfiguration.getHashIterations-def"><a name="L233"></a><tt class="py-lineno">233</tt> <a class="py-toggle" href="#" id="SecurityConfiguration.getHashIterations-toggle" onclick="return toggle('SecurityConfiguration.getHashIterations');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.security_configuration.SecurityConfiguration-class.html#getHashIterations">getHashIterations</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SecurityConfiguration.getHashIterations-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SecurityConfiguration.getHashIterations-expanded"><a name="L234"></a><tt class="py-lineno">234</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L235"></a><tt class="py-lineno">235</tt>  <tt class="py-line"><tt class="py-docstring">        Gets the hash iterations used by ESAPI to hash data.</tt> </tt>
+<a name="L236"></a><tt class="py-lineno">236</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L237"></a><tt class="py-lineno">237</tt>  <tt class="py-line"><tt class="py-docstring">        @return the current hashing algorithm</tt> </tt>
+<a name="L238"></a><tt class="py-lineno">238</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L239"></a><tt class="py-lineno">239</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L240"></a><tt class="py-lineno">240</tt>  <tt class="py-line"> </tt>
+<a name="SecurityConfiguration.getCharacterEncoding"></a><div id="SecurityConfiguration.getCharacterEncoding-def"><a name="L241"></a><tt class="py-lineno">241</tt> <a class="py-toggle" href="#" id="SecurityConfiguration.getCharacterEncoding-toggle" onclick="return toggle('SecurityConfiguration.getCharacterEncoding');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.security_configuration.SecurityConfiguration-class.html#getCharacterEncoding">getCharacterEncoding</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SecurityConfiguration.getCharacterEncoding-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SecurityConfiguration.getCharacterEncoding-expanded"><a name="L242"></a><tt class="py-lineno">242</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L243"></a><tt class="py-lineno">243</tt>  <tt class="py-line"><tt class="py-docstring">        Gets the character encoding scheme supported by this application. This is used to set the</tt> </tt>
+<a name="L244"></a><tt class="py-lineno">244</tt>  <tt class="py-line"><tt class="py-docstring">        character encoding scheme on requests and responses when setCharacterEncoding() is called</tt> </tt>
+<a name="L245"></a><tt class="py-lineno">245</tt>  <tt class="py-line"><tt class="py-docstring">        on SafeRequests and SafeResponses. This scheme is also used for encoding/decoding URLs</tt> </tt>
+<a name="L246"></a><tt class="py-lineno">246</tt>  <tt class="py-line"><tt class="py-docstring">        and any other place where the current encoding scheme needs to be known.</tt> </tt>
+<a name="L247"></a><tt class="py-lineno">247</tt>  <tt class="py-line"><tt class="py-docstring">        &lt;br&gt;&lt;br&gt;</tt> </tt>
+<a name="L248"></a><tt class="py-lineno">248</tt>  <tt class="py-line"><tt class="py-docstring">        Note: This does not get the configured response content type. That is accessed by calling</tt> </tt>
+<a name="L249"></a><tt class="py-lineno">249</tt>  <tt class="py-line"><tt class="py-docstring">        getResponseContentType().</tt> </tt>
+<a name="L250"></a><tt class="py-lineno">250</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L251"></a><tt class="py-lineno">251</tt>  <tt class="py-line"><tt class="py-docstring">        @return the current character encoding scheme</tt> </tt>
+<a name="L252"></a><tt class="py-lineno">252</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L253"></a><tt class="py-lineno">253</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L254"></a><tt class="py-lineno">254</tt>  <tt class="py-line"> </tt>
+<a name="SecurityConfiguration.getDigitalSignatureAlgorithm"></a><div id="SecurityConfiguration.getDigitalSignatureAlgorithm-def"><a name="L255"></a><tt class="py-lineno">255</tt> <a class="py-toggle" href="#" id="SecurityConfiguration.getDigitalSignatureAlgorithm-toggle" onclick="return toggle('SecurityConfiguration.getDigitalSignatureAlgorithm');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.security_configuration.SecurityConfiguration-class.html#getDigitalSignatureAlgorithm">getDigitalSignatureAlgorithm</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SecurityConfiguration.getDigitalSignatureAlgorithm-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SecurityConfiguration.getDigitalSignatureAlgorithm-expanded"><a name="L256"></a><tt class="py-lineno">256</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L257"></a><tt class="py-lineno">257</tt>  <tt class="py-line"><tt class="py-docstring">        Gets the digital signature algorithm used by ESAPI to generate and verify signatures.</tt> </tt>
+<a name="L258"></a><tt class="py-lineno">258</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L259"></a><tt class="py-lineno">259</tt>  <tt class="py-line"><tt class="py-docstring">        @return the current digital signature algorithm</tt> </tt>
+<a name="L260"></a><tt class="py-lineno">260</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L261"></a><tt class="py-lineno">261</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L262"></a><tt class="py-lineno">262</tt>  <tt class="py-line"> </tt>
+<a name="SecurityConfiguration.getDigitalSignatureKeyLength"></a><div id="SecurityConfiguration.getDigitalSignatureKeyLength-def"><a name="L263"></a><tt class="py-lineno">263</tt> <a class="py-toggle" href="#" id="SecurityConfiguration.getDigitalSignatureKeyLength-toggle" onclick="return toggle('SecurityConfiguration.getDigitalSignatureKeyLength');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.security_configuration.SecurityConfiguration-class.html#getDigitalSignatureKeyLength">getDigitalSignatureKeyLength</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SecurityConfiguration.getDigitalSignatureKeyLength-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SecurityConfiguration.getDigitalSignatureKeyLength-expanded"><a name="L264"></a><tt class="py-lineno">264</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L265"></a><tt class="py-lineno">265</tt>  <tt class="py-line"><tt class="py-docstring">        Gets the digital signature key length used by ESAPI to generate and verify signatures.</tt> </tt>
+<a name="L266"></a><tt class="py-lineno">266</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L267"></a><tt class="py-lineno">267</tt>  <tt class="py-line"><tt class="py-docstring">        @return the current digital signature key length</tt> </tt>
+<a name="L268"></a><tt class="py-lineno">268</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L269"></a><tt class="py-lineno">269</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L270"></a><tt class="py-lineno">270</tt>  <tt class="py-line"> </tt>
+<a name="SecurityConfiguration.getRandomAlgorithm"></a><div id="SecurityConfiguration.getRandomAlgorithm-def"><a name="L271"></a><tt class="py-lineno">271</tt> <a class="py-toggle" href="#" id="SecurityConfiguration.getRandomAlgorithm-toggle" onclick="return toggle('SecurityConfiguration.getRandomAlgorithm');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.security_configuration.SecurityConfiguration-class.html#getRandomAlgorithm">getRandomAlgorithm</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SecurityConfiguration.getRandomAlgorithm-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SecurityConfiguration.getRandomAlgorithm-expanded"><a name="L272"></a><tt class="py-lineno">272</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L273"></a><tt class="py-lineno">273</tt>  <tt class="py-line"><tt class="py-docstring">        Gets the random number generation algorithm used to generate random numbers where needed.</tt> </tt>
+<a name="L274"></a><tt class="py-lineno">274</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L275"></a><tt class="py-lineno">275</tt>  <tt class="py-line"><tt class="py-docstring">        @return the current random number generation algorithm</tt> </tt>
+<a name="L276"></a><tt class="py-lineno">276</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L277"></a><tt class="py-lineno">277</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L278"></a><tt class="py-lineno">278</tt>  <tt class="py-line"> </tt>
+<a name="SecurityConfiguration.getAllowedLoginAttempts"></a><div id="SecurityConfiguration.getAllowedLoginAttempts-def"><a name="L279"></a><tt class="py-lineno">279</tt> <a class="py-toggle" href="#" id="SecurityConfiguration.getAllowedLoginAttempts-toggle" onclick="return toggle('SecurityConfiguration.getAllowedLoginAttempts');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.security_configuration.SecurityConfiguration-class.html#getAllowedLoginAttempts">getAllowedLoginAttempts</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SecurityConfiguration.getAllowedLoginAttempts-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SecurityConfiguration.getAllowedLoginAttempts-expanded"><a name="L280"></a><tt class="py-lineno">280</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L281"></a><tt class="py-lineno">281</tt>  <tt class="py-line"><tt class="py-docstring">        Gets the number of login attempts allowed before the user's account is locked. If this</tt> </tt>
+<a name="L282"></a><tt class="py-lineno">282</tt>  <tt class="py-line"><tt class="py-docstring">        many failures are detected within the alloted time period, the user's account will be locked.</tt> </tt>
+<a name="L283"></a><tt class="py-lineno">283</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L284"></a><tt class="py-lineno">284</tt>  <tt class="py-line"><tt class="py-docstring">        @return the number of failed login attempts that cause an account to be locked</tt> </tt>
+<a name="L285"></a><tt class="py-lineno">285</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L286"></a><tt class="py-lineno">286</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L287"></a><tt class="py-lineno">287</tt>  <tt class="py-line"> </tt>
+<a name="SecurityConfiguration.getMaxOldPasswordHashes"></a><div id="SecurityConfiguration.getMaxOldPasswordHashes-def"><a name="L288"></a><tt class="py-lineno">288</tt> <a class="py-toggle" href="#" id="SecurityConfiguration.getMaxOldPasswordHashes-toggle" onclick="return toggle('SecurityConfiguration.getMaxOldPasswordHashes');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.security_configuration.SecurityConfiguration-class.html#getMaxOldPasswordHashes">getMaxOldPasswordHashes</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SecurityConfiguration.getMaxOldPasswordHashes-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SecurityConfiguration.getMaxOldPasswordHashes-expanded"><a name="L289"></a><tt class="py-lineno">289</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L290"></a><tt class="py-lineno">290</tt>  <tt class="py-line"><tt class="py-docstring">        Gets the maximum number of old password hashes that should be retained. These hashes can</tt> </tt>
+<a name="L291"></a><tt class="py-lineno">291</tt>  <tt class="py-line"><tt class="py-docstring">        be used to ensure that the user doesn't reuse the specified number of previous passwords</tt> </tt>
+<a name="L292"></a><tt class="py-lineno">292</tt>  <tt class="py-line"><tt class="py-docstring">        when they change their password.</tt> </tt>
+<a name="L293"></a><tt class="py-lineno">293</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L294"></a><tt class="py-lineno">294</tt>  <tt class="py-line"><tt class="py-docstring">        @return the number of old hashed passwords to retain</tt> </tt>
+<a name="L295"></a><tt class="py-lineno">295</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L296"></a><tt class="py-lineno">296</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L297"></a><tt class="py-lineno">297</tt>  <tt class="py-line"> </tt>
+<a name="SecurityConfiguration.getQuota"></a><div id="SecurityConfiguration.getQuota-def"><a name="L298"></a><tt class="py-lineno">298</tt> <a class="py-toggle" href="#" id="SecurityConfiguration.getQuota-toggle" onclick="return toggle('SecurityConfiguration.getQuota');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.security_configuration.SecurityConfiguration-class.html#getQuota">getQuota</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">eventName</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SecurityConfiguration.getQuota-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SecurityConfiguration.getQuota-expanded"><a name="L299"></a><tt class="py-lineno">299</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L300"></a><tt class="py-lineno">300</tt>  <tt class="py-line"><tt class="py-docstring">        Gets the intrusion detection quota for the specified event.</tt> </tt>
+<a name="L301"></a><tt class="py-lineno">301</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L302"></a><tt class="py-lineno">302</tt>  <tt class="py-line"><tt class="py-docstring">        @param eventName the name of the event whose quota is desired</tt> </tt>
+<a name="L303"></a><tt class="py-lineno">303</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L304"></a><tt class="py-lineno">304</tt>  <tt class="py-line"><tt class="py-docstring">        @return the Quota that has been configured for the specified type of event</tt> </tt>
+<a name="L305"></a><tt class="py-lineno">305</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L306"></a><tt class="py-lineno">306</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L307"></a><tt class="py-lineno">307</tt>  <tt class="py-line"> </tt>
+<a name="SecurityConfiguration.getResourceFile"></a><div id="SecurityConfiguration.getResourceFile-def"><a name="L308"></a><tt class="py-lineno">308</tt> <a class="py-toggle" href="#" id="SecurityConfiguration.getResourceFile-toggle" onclick="return toggle('SecurityConfiguration.getResourceFile');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.security_configuration.SecurityConfiguration-class.html#getResourceFile">getResourceFile</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">filename</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SecurityConfiguration.getResourceFile-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SecurityConfiguration.getResourceFile-expanded"><a name="L309"></a><tt class="py-lineno">309</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L310"></a><tt class="py-lineno">310</tt>  <tt class="py-line"><tt class="py-docstring">        Gets a file from the resource directory</tt> </tt>
+<a name="L311"></a><tt class="py-lineno">311</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L312"></a><tt class="py-lineno">312</tt>  <tt class="py-line"><tt class="py-docstring">        @param filename</tt> </tt>
+<a name="L313"></a><tt class="py-lineno">313</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L314"></a><tt class="py-lineno">314</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L315"></a><tt class="py-lineno">315</tt>  <tt class="py-line"> </tt>
+<a name="SecurityConfiguration.getForceHTTPOnly"></a><div id="SecurityConfiguration.getForceHTTPOnly-def"><a name="L316"></a><tt class="py-lineno">316</tt> <a class="py-toggle" href="#" id="SecurityConfiguration.getForceHTTPOnly-toggle" onclick="return toggle('SecurityConfiguration.getForceHTTPOnly');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.security_configuration.SecurityConfiguration-class.html#getForceHTTPOnly">getForceHTTPOnly</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SecurityConfiguration.getForceHTTPOnly-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SecurityConfiguration.getForceHTTPOnly-expanded"><a name="L317"></a><tt class="py-lineno">317</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L318"></a><tt class="py-lineno">318</tt>  <tt class="py-line"><tt class="py-docstring">        Forces new cookie headers with HttpOnly on first and second responses</tt> </tt>
+<a name="L319"></a><tt class="py-lineno">319</tt>  <tt class="py-line"><tt class="py-docstring">        in public HttpSession esapi.filters.SafeRequest.getSession() and</tt> </tt>
+<a name="L320"></a><tt class="py-lineno">320</tt>  <tt class="py-line"><tt class="py-docstring">        esapi.filters.getSession(boolean create)</tt> </tt>
+<a name="L321"></a><tt class="py-lineno">321</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L322"></a><tt class="py-lineno">322</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L323"></a><tt class="py-lineno">323</tt>  <tt class="py-line"> </tt>
+<a name="SecurityConfiguration.getResourceStream"></a><div id="SecurityConfiguration.getResourceStream-def"><a name="L324"></a><tt class="py-lineno">324</tt> <a class="py-toggle" href="#" id="SecurityConfiguration.getResourceStream-toggle" onclick="return toggle('SecurityConfiguration.getResourceStream');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.security_configuration.SecurityConfiguration-class.html#getResourceStream">getResourceStream</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">filename</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SecurityConfiguration.getResourceStream-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SecurityConfiguration.getResourceStream-expanded"><a name="L325"></a><tt class="py-lineno">325</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L326"></a><tt class="py-lineno">326</tt>  <tt class="py-line"><tt class="py-docstring">        Gets an InputStream to a file in the resource directory</tt> </tt>
+<a name="L327"></a><tt class="py-lineno">327</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L328"></a><tt class="py-lineno">328</tt>  <tt class="py-line"><tt class="py-docstring">        @param filename</tt> </tt>
+<a name="L329"></a><tt class="py-lineno">329</tt>  <tt class="py-line"><tt class="py-docstring">        @return</tt> </tt>
+<a name="L330"></a><tt class="py-lineno">330</tt>  <tt class="py-line"><tt class="py-docstring">        @raise IOException</tt> </tt>
+<a name="L331"></a><tt class="py-lineno">331</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L332"></a><tt class="py-lineno">332</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L333"></a><tt class="py-lineno">333</tt>  <tt class="py-line"> </tt>
+<a name="SecurityConfiguration.setResourceDirectory"></a><div id="SecurityConfiguration.setResourceDirectory-def"><a name="L334"></a><tt class="py-lineno">334</tt> <a class="py-toggle" href="#" id="SecurityConfiguration.setResourceDirectory-toggle" onclick="return toggle('SecurityConfiguration.setResourceDirectory');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.security_configuration.SecurityConfiguration-class.html#setResourceDirectory">setResourceDirectory</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">dir</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SecurityConfiguration.setResourceDirectory-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SecurityConfiguration.setResourceDirectory-expanded"><a name="L335"></a><tt class="py-lineno">335</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L336"></a><tt class="py-lineno">336</tt>  <tt class="py-line"><tt class="py-docstring">        Sets the ESAPI resource directory.</tt> </tt>
+<a name="L337"></a><tt class="py-lineno">337</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L338"></a><tt class="py-lineno">338</tt>  <tt class="py-line"><tt class="py-docstring">        @param dir The location of the resource directory.</tt> </tt>
+<a name="L339"></a><tt class="py-lineno">339</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L340"></a><tt class="py-lineno">340</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L341"></a><tt class="py-lineno">341</tt>  <tt class="py-line"> </tt>
+<a name="SecurityConfiguration.getResponseContentType"></a><div id="SecurityConfiguration.getResponseContentType-def"><a name="L342"></a><tt class="py-lineno">342</tt> <a class="py-toggle" href="#" id="SecurityConfiguration.getResponseContentType-toggle" onclick="return toggle('SecurityConfiguration.getResponseContentType');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.security_configuration.SecurityConfiguration-class.html#getResponseContentType">getResponseContentType</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SecurityConfiguration.getResponseContentType-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SecurityConfiguration.getResponseContentType-expanded"><a name="L343"></a><tt class="py-lineno">343</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L344"></a><tt class="py-lineno">344</tt>  <tt class="py-line"><tt class="py-docstring">        Gets the content type for responses used when setSafeContentType() is called.</tt> </tt>
+<a name="L345"></a><tt class="py-lineno">345</tt>  <tt class="py-line"><tt class="py-docstring">        &lt;br&gt;&lt;br&gt;</tt> </tt>
+<a name="L346"></a><tt class="py-lineno">346</tt>  <tt class="py-line"><tt class="py-docstring">        Note: This does not get the configured character encoding scheme. That is accessed by calling</tt> </tt>
+<a name="L347"></a><tt class="py-lineno">347</tt>  <tt class="py-line"><tt class="py-docstring">        getCharacterEncoding().</tt> </tt>
+<a name="L348"></a><tt class="py-lineno">348</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L349"></a><tt class="py-lineno">349</tt>  <tt class="py-line"><tt class="py-docstring">        @return The current content-type set for responses.</tt> </tt>
+<a name="L350"></a><tt class="py-lineno">350</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L351"></a><tt class="py-lineno">351</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L352"></a><tt class="py-lineno">352</tt>  <tt class="py-line"> </tt>
+<a name="SecurityConfiguration.getRememberTokenDuration"></a><div id="SecurityConfiguration.getRememberTokenDuration-def"><a name="L353"></a><tt class="py-lineno">353</tt> <a class="py-toggle" href="#" id="SecurityConfiguration.getRememberTokenDuration-toggle" onclick="return toggle('SecurityConfiguration.getRememberTokenDuration');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.security_configuration.SecurityConfiguration-class.html#getRememberTokenDuration">getRememberTokenDuration</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SecurityConfiguration.getRememberTokenDuration-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SecurityConfiguration.getRememberTokenDuration-expanded"><a name="L354"></a><tt class="py-lineno">354</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L355"></a><tt class="py-lineno">355</tt>  <tt class="py-line"><tt class="py-docstring">        Gets the length of the time to live window for remember me tokens (in milliseconds).</tt> </tt>
+<a name="L356"></a><tt class="py-lineno">356</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L357"></a><tt class="py-lineno">357</tt>  <tt class="py-line"><tt class="py-docstring">        @return The time to live length for generated remember me tokens.</tt> </tt>
+<a name="L358"></a><tt class="py-lineno">358</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L359"></a><tt class="py-lineno">359</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L360"></a><tt class="py-lineno">360</tt>  <tt class="py-line"> </tt>
+<a name="SecurityConfiguration.getSessionIdleTimeoutLength"></a><div id="SecurityConfiguration.getSessionIdleTimeoutLength-def"><a name="L361"></a><tt class="py-lineno">361</tt> <a class="py-toggle" href="#" id="SecurityConfiguration.getSessionIdleTimeoutLength-toggle" onclick="return toggle('SecurityConfiguration.getSessionIdleTimeoutLength');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.security_configuration.SecurityConfiguration-class.html#getSessionIdleTimeoutLength">getSessionIdleTimeoutLength</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SecurityConfiguration.getSessionIdleTimeoutLength-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SecurityConfiguration.getSessionIdleTimeoutLength-expanded"><a name="L362"></a><tt class="py-lineno">362</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L363"></a><tt class="py-lineno">363</tt>  <tt class="py-line"><tt class="py-docstring">        Gets the idle timeout length for sessions (in milliseconds). This is the amount of time that a session</tt> </tt>
+<a name="L364"></a><tt class="py-lineno">364</tt>  <tt class="py-line"><tt class="py-docstring">        can live before it expires due to lack of activity. Applications or frameworks could provide a reauthenticate</tt> </tt>
+<a name="L365"></a><tt class="py-lineno">365</tt>  <tt class="py-line"><tt class="py-docstring">        function that enables a session to continue after reauthentication.</tt> </tt>
+<a name="L366"></a><tt class="py-lineno">366</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L367"></a><tt class="py-lineno">367</tt>  <tt class="py-line"><tt class="py-docstring">        @return The session idle timeout length.</tt> </tt>
+<a name="L368"></a><tt class="py-lineno">368</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L369"></a><tt class="py-lineno">369</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L370"></a><tt class="py-lineno">370</tt>  <tt class="py-line"> </tt>
+<a name="SecurityConfiguration.getSessionAbsoluteTimeoutLength"></a><div id="SecurityConfiguration.getSessionAbsoluteTimeoutLength-def"><a name="L371"></a><tt class="py-lineno">371</tt> <a class="py-toggle" href="#" id="SecurityConfiguration.getSessionAbsoluteTimeoutLength-toggle" onclick="return toggle('SecurityConfiguration.getSessionAbsoluteTimeoutLength');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.security_configuration.SecurityConfiguration-class.html#getSessionAbsoluteTimeoutLength">getSessionAbsoluteTimeoutLength</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SecurityConfiguration.getSessionAbsoluteTimeoutLength-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SecurityConfiguration.getSessionAbsoluteTimeoutLength-expanded"><a name="L372"></a><tt class="py-lineno">372</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L373"></a><tt class="py-lineno">373</tt>  <tt class="py-line"><tt class="py-docstring">        Gets the absolute timeout length for sessions (in milliseconds). This is the amount of time that a session</tt> </tt>
+<a name="L374"></a><tt class="py-lineno">374</tt>  <tt class="py-line"><tt class="py-docstring">        can live before it expires regardless of the amount of user activity. Applications or frameworks could</tt> </tt>
+<a name="L375"></a><tt class="py-lineno">375</tt>  <tt class="py-line"><tt class="py-docstring">        provide a reauthenticate function that enables a session to continue after reauthentication.</tt> </tt>
+<a name="L376"></a><tt class="py-lineno">376</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L377"></a><tt class="py-lineno">377</tt>  <tt class="py-line"><tt class="py-docstring">        @return The session absolute timeout length.</tt> </tt>
+<a name="L378"></a><tt class="py-lineno">378</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L379"></a><tt class="py-lineno">379</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L380"></a><tt class="py-lineno">380</tt>  <tt class="py-line"> </tt>
+<a name="SecurityConfiguration.getLogEncodingRequired"></a><div id="SecurityConfiguration.getLogEncodingRequired-def"><a name="L381"></a><tt class="py-lineno">381</tt> <a class="py-toggle" href="#" id="SecurityConfiguration.getLogEncodingRequired-toggle" onclick="return toggle('SecurityConfiguration.getLogEncodingRequired');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.security_configuration.SecurityConfiguration-class.html#getLogEncodingRequired">getLogEncodingRequired</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SecurityConfiguration.getLogEncodingRequired-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SecurityConfiguration.getLogEncodingRequired-expanded"><a name="L382"></a><tt class="py-lineno">382</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L383"></a><tt class="py-lineno">383</tt>  <tt class="py-line"><tt class="py-docstring">        Returns whether HTML entity encoding should be applied to log entries.</tt> </tt>
+<a name="L384"></a><tt class="py-lineno">384</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L385"></a><tt class="py-lineno">385</tt>  <tt class="py-line"><tt class="py-docstring">        @return True if log entries are to be HTML Entity encoded. False otherwise.</tt> </tt>
+<a name="L386"></a><tt class="py-lineno">386</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L387"></a><tt class="py-lineno">387</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L388"></a><tt class="py-lineno">388</tt>  <tt class="py-line"> </tt>
+<a name="SecurityConfiguration.getLogFileName"></a><div id="SecurityConfiguration.getLogFileName-def"><a name="L389"></a><tt class="py-lineno">389</tt> <a class="py-toggle" href="#" id="SecurityConfiguration.getLogFileName-toggle" onclick="return toggle('SecurityConfiguration.getLogFileName');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.security_configuration.SecurityConfiguration-class.html#getLogFileName">getLogFileName</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SecurityConfiguration.getLogFileName-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SecurityConfiguration.getLogFileName-expanded"><a name="L390"></a><tt class="py-lineno">390</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L391"></a><tt class="py-lineno">391</tt>  <tt class="py-line"><tt class="py-docstring">        Get the name of the log file specified in the ESAPI configuration properties file. Return a default value</tt> </tt>
+<a name="L392"></a><tt class="py-lineno">392</tt>  <tt class="py-line"><tt class="py-docstring">        if it is not specified.</tt> </tt>
+<a name="L393"></a><tt class="py-lineno">393</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L394"></a><tt class="py-lineno">394</tt>  <tt class="py-line"><tt class="py-docstring">        @return the log file name defined in the properties file.</tt> </tt>
+<a name="L395"></a><tt class="py-lineno">395</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L396"></a><tt class="py-lineno">396</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L397"></a><tt class="py-lineno">397</tt>  <tt class="py-line"> </tt>
+<a name="SecurityConfiguration.getMaxLogFileSize"></a><div id="SecurityConfiguration.getMaxLogFileSize-def"><a name="L398"></a><tt class="py-lineno">398</tt> <a class="py-toggle" href="#" id="SecurityConfiguration.getMaxLogFileSize-toggle" onclick="return toggle('SecurityConfiguration.getMaxLogFileSize');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.security_configuration.SecurityConfiguration-class.html#getMaxLogFileSize">getMaxLogFileSize</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SecurityConfiguration.getMaxLogFileSize-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SecurityConfiguration.getMaxLogFileSize-expanded"><a name="L399"></a><tt class="py-lineno">399</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L400"></a><tt class="py-lineno">400</tt>  <tt class="py-line"><tt class="py-docstring">        Get the maximum size of a single log file from the ESAPI configuration properties file. Return a default value</tt> </tt>
+<a name="L401"></a><tt class="py-lineno">401</tt>  <tt class="py-line"><tt class="py-docstring">        if it is not specified. Once the log hits this file size, it will roll over into a new log.</tt> </tt>
+<a name="L402"></a><tt class="py-lineno">402</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L403"></a><tt class="py-lineno">403</tt>  <tt class="py-line"><tt class="py-docstring">        @return the maximum size of a single log file (in bytes).</tt> </tt>
+<a name="L404"></a><tt class="py-lineno">404</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L405"></a><tt class="py-lineno">405</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L406"></a><tt class="py-lineno">406</tt>  <tt class="py-line"> </tt>
+<a name="SecurityConfiguration.getWorkingDirectory"></a><div id="SecurityConfiguration.getWorkingDirectory-def"><a name="L407"></a><tt class="py-lineno">407</tt> <a class="py-toggle" href="#" id="SecurityConfiguration.getWorkingDirectory-toggle" onclick="return toggle('SecurityConfiguration.getWorkingDirectory');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.security_configuration.SecurityConfiguration-class.html#getWorkingDirectory">getWorkingDirectory</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SecurityConfiguration.getWorkingDirectory-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SecurityConfiguration.getWorkingDirectory-expanded"><a name="L408"></a><tt class="py-lineno">408</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L409"></a><tt class="py-lineno">409</tt>  <tt class="py-line"><tt class="py-docstring">        Returns the default working directory for executing native processes with Runtime.exec().</tt> </tt>
+<a name="L410"></a><tt class="py-lineno">410</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L411"></a><tt class="py-lineno">411</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L412"></a><tt class="py-lineno">412</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="esapi-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Mon Jun 08 11:38:43 2009
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>
