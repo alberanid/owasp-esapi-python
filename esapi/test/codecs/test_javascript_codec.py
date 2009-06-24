@@ -33,6 +33,10 @@ class JavascriptCodecTest(unittest.TestCase):
                         ) 
                      
     known_decode_only = ( 
+                        ('\\x2', '\\x2'), # malformed
+                        ('\\u083', '\\u083'),
+                        ('A', '\\101'), # octal
+                        ('?', '\\77'),
                         )
                      
     
