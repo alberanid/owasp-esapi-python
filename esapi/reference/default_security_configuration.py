@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 """
 OWASP Enterprise Security API (ESAPI)
  
@@ -6,8 +9,8 @@ Enterprise Security API (ESAPI) project. For details, please see
 <a href="http://www.owasp.org/index.php/ESAPI">http://www.owasp.org/index.php/ESAPI</a>.
 Copyright (c) 2009 - The OWASP Foundation
 
-The ESAPI is published by OWASP under the BSD license. You should read and accept the
-LICENSE before you use, modify, and/or redistribute this software.
+The ESAPI is published by OWASP under the BSD license. You should read and 
+accept the LICENSE before you use, modify, and/or redistribute this software.
 
 @author Craig Younkins (craig.younkins@owasp.org)
 """
@@ -17,6 +20,7 @@ LICENSE before you use, modify, and/or redistribute this software.
 
 import pickle
 
+from esapi.security_configuration import SecurityConfiguration
 from esapi.translation import _
 
 class ImportSettingsError(): pass
@@ -26,157 +30,155 @@ try:
 except ImportError:
     raise ImportSettingsError, _("Unable to import settings file - Check settings.py")
 
-class DefaultSecurityConfiguration:
+class DefaultSecurityConfiguration(SecurityConfiguration):
     def __init__(self):
         """Instantiates a new configuration"""
-        self.loadConfiguration()
+        SecurityConfiguration.__init__(self)
+        self.load_configuration()
             
-    def loadConfiguration(self):
+    def load_configuration(self):
         """Load configuration"""
             
-        self.logSpecial(_("Loaded ESAPI properties"))
+        self.log_special(_("Loaded ESAPI properties"))
         
-        self.logSpecial(_(" ======Master Configuration======"))
+        self.log_special(_(" ======Master Configuration======"))
         
         for option in dir(settings):
             if "Master" not in option and option[0] != "_":
-                self.logSpecial("  |   %(key)s = %(value)s" % {"key": option, "value": str(settings.__dict__[option])})
+                self.log_special("  |   %(key)s = %(value)s" % {"key": option, "value": str(settings.__dict__[option])})
            
-    def getApplicationName(self):
+    def get_application_name(self):
         return settings.Logger_ApplicationName
 
-    def getLogImplementation(self):
+    def get_log_implementation(self):
         return settings.ESAPI_Logger
 
-    def getAuthenticationImplementation(self):
+    def get_authentication_implementation(self):
         return settings.ESAPI_Authenticator
 
-    def getEncoderImplementation(self):
+    def get_encoder_implementation(self):
         return settings.ESAPI_Encoder
 
-    def getAccessControlImplementation(self):
+    def get_access_control_implementation(self):
         return settings.ESAPI_AccessControl
 
-    def getIntrusionDetectionImplementation(self):
+    def get_intrusion_detection_implementation(self):
         return settings.ESAPI_IntrusionDetector
 
-    def getRandomizerImplementation(self):
+    def get_randomizer_implementation(self):
         return settings.ESAPI_Randomizer
 
-    def getEncryptionImplementation(self):
+    def get_encryption_implementation(self):
         return settings.ESAPI_Encryptor
 
-    def getValidationImplementation(self):
+    def get_validation_implementation(self):
         return settings.ESAPI_Validator
     
-    def getExecutorImplementation(self):
+    def get_executor_implementation(self):
         return settings.ESAPI_Executor
     
-    def getHTTPUtilitiesImplementation(self):
+    def get_http_utilities_implementation(self):
         return settings.ESAPI_HTTPUtilities
     
-    def getMasterKey(self):
+    def get_master_key(self):
         import base64
         return base64.b64decode(settings.Encryptor_MasterKey)
     
-    def getUploadDirectory(self):
+    def get_upload_directory(self):
         return settings.HttpUtilities_UploadDir
 
-    def getEncryptionKeyLength(self):
+    def get_encryption_key_length(self):
         return settings.Encryptor_EncryptionKeyLength
 
-    def getMasterSalt(self):
+    def get_master_salt(self):
         import base64
         return base64.b64decode(settings.Encryptor_MasterSalt)
 
-    def getAllowedExecutables(self):
+    def get_allowed_executables(self):
         return settings.HttpUtilities_AllowedUploadExtensions
 
-    def getAllowedFileExtensions(self):
+    def get_allowed_file_extensions(self):
         return settings.HttpUtilities_AllowedUploadExtensions
 
-    def getAllowedFileUploadSize(self):
+    def get_allowed_file_upload_size(self):
         return settings.HttpUtilities_MaxUploadFileBytes
 
-    def getPasswordParameterName(self):
+    def get_password_parameter_name(self):
         return settings.Authenticator_PasswordParameterName
 
-    def getUsernameParameterName(self):
+    def get_username_parameter_name(self):
         return settings.Authenticator_UsernameParameterName
 
-    def getEncryptionAlgorithm(self):
+    def get_encryption_algorithm(self):
         return settings.Encryptor_EncryptionAlgorithm
 
-    def getHashAlgorithm(self):
+    def get_hash_algorithm(self):
         return settings.Encryptor_HashAlgorithm
 
-    def getHashIterations(self):
+    def get_hash_iterations(self):
         return settings.Encryptor_HashIterations
 
-    def getCharacterEncoding(self):
+    def get_character_encoding(self):
         return settings.Encryptor_CharacterEncoding
 
-    def getDigitalSignatureAlgorithm(self):
+    def get_digital_signature_algorithm(self):
         return settings.Encryptor_DigitalSignatureAlgorithm
 
-    def getDigitalSignatureKeyLength(self):
+    def get_digital_signature_key_length(self):
         return settings.Encryptor_DigitalSignatureKeyLength
 
-    def getDigitalSignatureKey(self):
+    def get_digital_signature_key(self):
         raw = settings.Encryptor_DigitalSignatureMasterKey
         import base64
         decoded = base64.b64decode(raw)
         obj = pickle.loads(decoded)
         return obj
-        
-    # def getRandomAlgorithm(self):
-        # return settings.Encryptor_RandomAlgorithm
 
-    def getAllowedLoginAttempts(self):
+    def get_allowed_login_attempts(self):
         return settings.Authenticator_AllowedLoginAttempts
 
-    def getMaxOldPasswordHashes(self):
+    def get_max_old_password_hashes(self):
         return settings.Authenticator_MaxOldPasswordHashes
 
-    def getQuota(self, eventName):
-        count = getattr(settings, "IntrusionDetector_" + eventName + "_count", 0)
-        interval = getattr(settings, "IntrusionDetector_" + eventName + "_interval", 0)
-        actions = interval = getattr(settings, "IntrusionDetector_" + eventName + "_actions", ())
+    def get_quota(self, event_name):
+        count = getattr(settings, "IntrusionDetector_" + event_name + "_count", 0)
+        interval = getattr(settings, "IntrusionDetector_" + event_name + "_interval", 0)
+        actions = interval = getattr(settings, "IntrusionDetector_" + event_name + "_actions", ())
         if count > 0 and interval > 0 and len(actions) > 0:
-            return Threshold( eventName, count, interval, actions)
+            return SecurityConfiguration.Threshold( event_name, count, interval, actions)
 
-    def getForceHTTPOnly(self):
+    def get_force_http_only(self):
         return settings.HttpUtilities_ForceHTTPOnly
 
-    def getResponseContentType(self):
+    def get_response_content_type(self):
         return settings.HttpUtilities_ResponseContentType
 
-    def getRememberTokenDuration(self):
+    def get_remember_token_duration(self):
         days = settings.Authenticator_RememberTokenDuration
         duration = 1000 * 60 * 60 * 24 * days
         return duration
 
-    def getSessionIdleTimeoutLength(self):
+    def get_session_idle_timeout_length(self):
         minutes = settings.Authenticator_IdleTimeoutDuration
         duration = 1000 * 60 * minutes
         return duration
 
-    def getSessionAbsoluteTimeoutLength(self):
+    def get_session_absolute_timeout_length(self):
         minutes = settings.Authenticator_AbsoluteTimeoutDuration
         duration = 1000 * 60 * minutes
         return duration
 
-    def getLogEncodingRequired(self):
+    def get_log_encoding_required(self):
         return settings.Logger_LogEncodingRequired
 
-    def getLogFileName(self):
+    def get_log_filename(self):
         return settings.Logger_LogFileName
     
-    def getMaxLogFileSize(self):
+    def get_max_log_filesize(self):
         return settings.Logger_MaxLogFileSize
 
-    def getWorkingDirectory(self):
+    def get_working_directory(self):
         return settings.Executor_WorkingDirectory
     
-    def logSpecial(self, text):
+    def log_special(self, text):
         print text

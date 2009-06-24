@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 """
 OWASP Enterprise Security API (ESAPI)
  
@@ -6,8 +9,8 @@ Enterprise Security API (ESAPI) project. For details, please see
 <a href="http://www.owasp.org/index.php/ESAPI">http://www.owasp.org/index.php/ESAPI</a>.
 Copyright (c) 2009 - The OWASP Foundation
 
-The ESAPI is published by OWASP under the BSD license. You should read and accept the
-LICENSE before you use, modify, and/or redistribute this software.
+The ESAPI is published by OWASP under the BSD license. You should read and 
+accept the LICENSE before you use, modify, and/or redistribute this software.
 
 @author Craig Younkins (craig.younkins@owasp.org)
 """
@@ -16,87 +19,91 @@ LICENSE before you use, modify, and/or redistribute this software.
 
 from esapi.translation import _
 
-"""
-The Logger interface defines a set of methods that can be used to log
-security events. It supports a hierarchy of logging levels which can be configured at runtime to determine
-the severity of events that are logged, and those below the current threshold that are discarded.
-Implementors should use a well established logging library
-as it is quite difficult to create a high-performance logger.
-<P>
-<img src="doc-files/Logger.jpg">
-<P>
-
-The logging levels defined by this interface (in descending order) are:
-<ul>
-<li>fatal (highest value)</li>
-<li>error</li>
-<li>warning</li>
-<li>info</li>
-<li>debug</li>
-<li>trace (lowest value)</li>
-</ul>
-
-ESAPI also allows for the definition of the type of log event that is being generated. The Logger interface  
-predefines 4 types of Log events: SECURITY_SUCCESS, SECURITY_FAILURE, EVENT_SUCCESS, EVENT_FAILURE. 
-Your implementation can extend or change this list if desired. 
-
-This Logger allows callers to determine which logging levels are enabled, and to submit events 
-at different severity levels.<br>
-<br>Implementors of this interface should:
-
-<ol>
-<li>provide a mechanism for setting the logging level threshold that is currently enabled. This usually works by logging all 
-events at and above that severity level, and discarding all events below that level.
-This is usually done via configuration, but can also be made accessible programmatically.</li>
-<li>ensure that dangerous HTML characters are encoded before they are logged to defend against malicious injection into logs 
-that might be viewed in an HTML based log viewer.</li>
-<li>encode any CRLF characters included in log data in order to prevent log injection attacks.</li>
-<li>avoid logging the user's session ID. Rather, they should log something equivalent like a 
-generated logging session ID, or a hashed value of the session ID so they can track session specific 
-events without risking the exposure of a live session's ID.</li> 
-<li>record the following information with each event:</li>
-  <ol type="a">
-  <li>identity of the user that caused the event,</li>
-  <li>a description of the event (supplied by the caller),</li>
-  <li>whether the event succeeded or failed (indicated by the caller),</li>
-  <li>severity level of the event (indicated by the caller),</li>
-  <li>that this is a security relevant event (indicated by the caller),</li>
-  <li>hostname or IP where the event occurred (and ideally the user's source IP as well),</li>
-  <li>a time stamp</li>
-  </ol>
-</ol>
- 
-Custom logger implementations might also:
-<ol start="6">
-<li>filter out any sensitive data specific to the current application or organization, such as credit cards, 
-social security numbers, etc.</li>
-</ol>
-
-In the default implementation, this interface is implemented by PythonLogger, which is an inner class 
-in PythonLogFactory.java. PythonLogger uses the logging package as the basis for its logging 
-implementation. This default implementation implements requirements #1 thru #5 above.<br>
-<br>
-Customization: It is expected that most organizations will implement their own custom Logger class in 
-order to integrate ESAPI logging with their logging infrastructure. The ESAPI Reference Implementation 
-is intended to provide a simple functional example of an implementation.
-"""
-
-from esapi.translation import _
-
 class Logger:
+    """
+    The Logger interface defines a set of methods that can be used to log
+    security events. It supports a hierarchy of logging levels which can be 
+    configured at runtime to determine the severity of events that are logged, and
+    those below the current threshold that are discarded. Implementors should use 
+    a well established logging library as it is quite difficult to create a 
+    high-performance logger.
+    <P>
+    <img src="doc-files/Logger.jpg">
+    <P>
+
+    The logging levels defined by this interface (in descending order) are:
+    <ul>
+    <li>fatal (highest value)</li>
+    <li>error</li>
+    <li>warning</li>
+    <li>info</li>
+    <li>debug</li>
+    <li>trace (lowest value)</li>
+    </ul>
+
+    ESAPI also allows for the definition of the type of log event that is being 
+    generated. The Logger interface predefines 4 types of Log events: 
+    SECURITY_SUCCESS, SECURITY_FAILURE, EVENT_SUCCESS, EVENT_FAILURE. 
+    Your implementation can extend or change this list if desired. 
+
+    This Logger allows callers to determine which logging levels are enabled, and 
+    to submit events at different severity levels.<br>
+    <br>Implementors of this interface should:
+
+    <ol>
+    <li>provide a mechanism for setting the logging level threshold that is 
+    currently enabled. This usually works by logging all events at and above that 
+    severity level, and discarding all events below that level. This is usually 
+    done via configuration, but can also be made accessible programmatically.</li>
+    <li>ensure that dangerous HTML characters are encoded before they are logged 
+    to defend against malicious injection into logs that might be viewed in an 
+    HTML based log viewer.</li><li>encode any CRLF characters included in log data 
+    in order to prevent log injection attacks.</li><li>avoid logging the user's 
+    session ID. Rather, they should log something equivalent like a generated 
+    logging session ID, or a hashed value of the session ID so they can track 
+    session specific events without risking the exposure of a live session's ID.
+    </li><li>record the following information with each event:</li>
+      <ol type="a">
+      <li>identity of the user that caused the event,</li>
+      <li>a description of the event (supplied by the caller),</li>
+      <li>whether the event succeeded or failed (indicated by the caller),</li>
+      <li>severity level of the event (indicated by the caller),</li>
+      <li>that this is a security relevant event (indicated by the caller),</li>
+      <li>hostname or IP where the event occurred (and ideally the user's source IP
+      as well),</li>
+      <li>a time stamp</li>
+      </ol>
+    </ol>
+     
+    Custom logger implementations might also:
+    <ol start="6">
+    <li>filter out any sensitive data specific to the current application or 
+    organization, such as credit cards, social security numbers, etc.</li>
+    </ol>
+
+    In the default implementation, this interface is implemented by PythonLogger, 
+    which is an inner class in PythonLogFactory.java. PythonLogger uses the logging 
+    package as the basis for its logging implementation. This default 
+    implementation implements requirements #1 thru #5 above.<br><br>
+    Customization: It is expected that most organizations will implement their own 
+    custom Logger class in order to integrate ESAPI logging with their logging 
+    infrastructure. The ESAPI Reference Implementation is intended to provide a 
+    simple functional example of an implementation.
+    """
     
     class EventType:
         """
-        Defines the type of log event that is being generated. The Logger interface defines 4 types of Log events: 
+        Defines the type of log event that is being generated. The Logger 
+        interface defines 4 types of Log events: 
         SECURITY_SUCCESS, SECURITY_FAILURE, EVENT_SUCCESS, EVENT_FAILURE. 
         Your implementation can extend or change this list if desired. 
         """
         
-        def __init__(self, name, newSuccess):
+        def __init__(self, name, success):
             self.type = name
-            self.success = newSuccess
+            self.success = success
             
-        def isSuccess(self):
+        def is_success(self):
             return self.success
         
         def __str__(self):
@@ -105,30 +112,33 @@ class Logger:
         def __repr__(self):
             return 'EventType("%s", %s)' % (self.type, self.success)
         
-    # A security type of log event that has succeeded. This is one of 4 predefined
-    # ESAPI logging events. New events can be added.
+    # A security type of log event that has succeeded. This is one of 4 
+    # predefined ESAPI logging events. New events can be added.
     SECURITY_SUCCESS = EventType(_("SECURITY SUCCESS"), True)
     
     # A security type of log event that has failed. This is one of 4 predefined
     # ESAPI logging events. New events can be added.
     SECURITY_FAILURE = EventType(_("SECURITY FAILURE"), False)
     
-    # A non-security type of log event that has succeeded. This is one of 4 predefined
-    # ESAPI logging events. New events can be added.
+    # A non-security type of log event that has succeeded. This is one of 4 
+    # predefined ESAPI logging events. New events can be added.
     EVENT_SUCCESS = EventType(_("EVENT SUCCESS"), True)
     
-    # A non-security type of log event that has failed. This is one of 4 predefined
-    # ESAPI logging events. New events can be added.
+    # A non-security type of log event that has failed. This is one of 4 
+    # predefined ESAPI logging events. New events can be added.
     EVENT_FAILURE = EventType(_("EVENT FAILURE"), False)
     
-    # The Logger interface defines 6 logging levels: FATAL, ERROR, WARNING, INFO, DEBUG, TRACE. It also 
-    # supports ALL, which logs all events, and OFF, which disables all logging.
-    # Your implementation can extend or change this list if desired.
+    # The Logger interface defines 6 logging levels: 
+    # FATAL, ERROR, WARNING, INFO, DEBUG, TRACE.
+    # It also supports ALL, which logs all events, and OFF, which disables all 
+    # logging. Your implementation can extend or change this list if desired.
     
-    # OFF indicates that no messages should be logged. This level is initialized to Java's Integer.MAX_VALUE.
+    # OFF indicates that no messages should be logged. This level is 
+    # initialized to Java's Integer.MAX_VALUE.
     OFF = 2 ** 31 -1
     
-    # FATAL indicates that only FATAL messages should be logged. This level is initialized to 1000.
+    # FATAL indicates that only FATAL messages should be logged. This level is 
+    # initialized to 1000.
     FATAL = 1000
     
     # ERROR indicates that ERROR messages and above should be logged. 
@@ -151,30 +161,35 @@ class Logger:
     # This level is initialized to 100.
     TRACE = 100
     
-    # ALL indicates that all messages should be logged. This level is initialized to Java's Integer.MIN_VALUE.
+    # ALL indicates that all messages should be logged. This level is 
+    # initialized to Java's Integer.MIN_VALUE.
     ALL = -(2 ** 31)
+    
+    def __init__(self):
+        pass
         
-    def setLevel(self, level):
+    def set_level(self, level):
         """
-        Dynamically set the logging severity level. All events of this level and higher will be logged from 
-        this point forward for all logs. All events below this level will be discarded.
+        Dynamically set the logging severity level. All events of this level 
+        and higher will be logged from this point forward for all logs. All 
+        events below this level will be discarded.
         
         @param level The level to set the logging level to.
         """
         raise NotImplementedError()
         
-    def fatal(self, type, message, exception=None):
+    def fatal(self, event_type, message, exception=None):
         """
         Log a fatal level security event if 'fatal' level logging is enabled 
         and also record the stack trace associated with the event.
      
-        @param type the type of event
+        @param event_type the type of event
         @param message the message to log
         @param exception the exception to be logged
         """
         raise NotImplementedError()
         
-    def isFatalEnabled(self):
+    def is_fatal_enabled(self):
         """
         Allows the caller to determine if messages logged at this level
         will be discarded, to avoid performing expensive processing.
@@ -183,18 +198,18 @@ class Logger:
         """
         raise NotImplementedError()
         
-    def error(self, type, message, exception=None):
+    def error(self, event_type, message, exception=None):
         """
         Log an error level security event if 'error' level logging is enabled 
         and also record the stack trace associated with the event.
         
-        @param type the type of event
+        @param event_type the type of event
         @param message the message to log
         @param exception the exception to be logged
         """
         raise NotImplementedError()
     
-    def isErrorEnabled(self):
+    def is_error_enabled(self):
         """
         Allows the caller to determine if messages logged at this level
         will be discarded, to avoid performing expensive processing.
@@ -203,18 +218,18 @@ class Logger:
         """
         raise NotImplementedError()
     
-    def warning(self, type, message, exception=None):
+    def warning(self, event_type, message, exception=None):
         """
-        Log a warning level security event if 'warning' level logging is enabled 
-        and also record the stack trace associated with the event.
+        Log a warning level security event if 'warning' level logging is 
+        enabled and also record the stack trace associated with the event.
      
-        @param type the type of event
+        @param event_type the type of event
         @param message the message to log
         @param exception the exception to be logged
         """
         raise NotImplementedError()
     
-    def isWarningEnabled(self):
+    def is_warning_enabled(self):
         """
         Allows the caller to determine if messages logged at this level
         will be discarded, to avoid performing expensive processing.
@@ -223,18 +238,18 @@ class Logger:
         """
         raise NotImplementedError()
     
-    def info(self, type, message, exception=None):
+    def info(self, event_type, message, exception=None):
         """
         Log an info level security event if 'info' level logging is enabled 
         and also record the stack trace associated with the event.
      
-        @param type the type of event
+        @param event_type the type of event
         @param message the message to log
         @param exception the exception to be logged
         """
         raise NotImplementedError()
         
-    def isInfoEnabled(self):
+    def is_info_enabled(self):
         """
         Allows the caller to determine if messages logged at this level
         will be discarded, to avoid performing expensive processing.
@@ -243,18 +258,18 @@ class Logger:
         """
         raise NotImplementedError()
         
-    def debug(self, type, message, exception=None):
+    def debug(self, event_type, message, exception=None):
         """
         Log a debug level security event if 'debug' level logging is enabled 
         and also record the stack trace associated with the event.
         
-        @param type the type of event
+        @param event_type the type of event
         @param message the message to log
         @param exception the exception to be logged 
         """
         raise NotImplementedError()
     
-    def isDebugEnabled(self):
+    def is_debug_enabled(self):
         """
         Allows the caller to determine if messages logged at this level
         will be discarded, to avoid performing expensive processing.
@@ -263,18 +278,18 @@ class Logger:
         """
         raise NotImplementedError()
         
-    def trace(self, type, message, exception=None):
+    def trace(self, event_type, message, exception=None):
         """
         Log a trace level security event if 'trace' level logging is enabled 
         and also record the stack trace associated with the event.
      
-        @param type the type of event
+        @param event_type the type of event
         @param message the message to log
         @param exception the exception to be logged
         """
         raise NotImplementedError()
     
-    def isTraceEnabled(self):
+    def is_trace_enabled(self):
         """
         Allows the caller to determine if messages logged at this level
         will be discarded, to avoid performing expensive processing.

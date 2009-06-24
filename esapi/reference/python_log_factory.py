@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 """
 OWASP Enterprise Security API (ESAPI)
  
@@ -6,8 +9,8 @@ Enterprise Security API (ESAPI) project. For details, please see
 <a href="http://www.owasp.org/index.php/ESAPI">http://www.owasp.org/index.php/ESAPI</a>.
 Copyright (c) 2009 - The OWASP Foundation
 
-The ESAPI is published by OWASP under the BSD license. You should read and accept the
-LICENSE before you use, modify, and/or redistribute this software.
+The ESAPI is published by OWASP under the BSD license. You should read and 
+accept the LICENSE before you use, modify, and/or redistribute this software.
 
 @author Craig Younkins (craig.younkins@owasp.org)
 """
@@ -26,34 +29,36 @@ from esapi.translation import _
 
 class PythonLogFactory(LogFactory):
     """
-    Reference implementation of the LogFactory and Logger interfaces. This implementation uses the Python logging package, and marks each
-    log message with the currently logged in user and the word "SECURITY" for security related events. 
+    Reference implementation of the LogFactory and Logger interfaces. This 
+    implementation uses the Python logging package, and marks each log message 
+    with the currently logged in user and the word "SECURITY" for security 
+    related events. 
     
     @author Craig Younkins (craig.younkins@owasp.org)
-    @since June 1, 2009
     @see esapi.log_factory
     @see esapi.reference.python_log_factory.PythonLogFactory.PythonLogger
     """
     
-    applicationName = None
-    loggersMap = {}
+    application_name = None
+    loggers_map = {}
     
-    def __init__(self, applicationName=None):
+    def __init__(self, application_name=None):
         """
         Constructor for this implementation of the LogFactory interface.
         
-        @param applicationName The name of the application this logger is being constructed for.
+        @param application_name The name of the application this logger is being constructed for.
         """
-        self.applicationName = applicationName
+        LogFactory.__init__(self)
+        self.application_name = application_name
         
-    def setApplicationName(self, applicationName):
-        self.applicationName = applicationName
+    def set_application_name(self, application_name):
+        self.application_name = application_name
         
-    def getLogger(self, classOrModule):
-        if not self.loggersMap.has_key(classOrModule):
-            self.loggersMap[classOrModule] = self.PythonLogger(self.applicationName, classOrModule)
+    def get_logger(self, key):
+        if not self.loggers_map.has_key(key):
+            self.loggers_map[key] = self.PythonLogger(self.application_name, key)
             
-        return self.loggersMap[classOrModule]
+        return self.loggers_map[key]
     
     class PythonLogger(Logger):
         """
@@ -72,22 +77,24 @@ class PythonLogFactory(LogFactory):
         pyLogger = None
         
         # The application name using this log.
-        applicationName = None
+        application_name = None
         
         # The module name using this log.
-        moduleName = None
+        module_name = None
         
-        def __init__(self, applicationName, moduleName):
+        def __init__(self, application_name, module_name):
             """
             Public constructor should only ever be called via the appropriate LogFactory
             
-            @param applicationName the application name
-            @param moduleName the module name
+            @param application_name the application name
+            @param module_name the module name
             """
-            self.applicationName = applicationName
-            self.moduleName = moduleName
+            Logger.__init__(self)
             
-            # Set the log levels. These are straight from Logger.py
+            self.application_name = application_name
+            self.module_name = module_name
+            
+            # Set the log levels. These are straight from logger.py
             logging.addLevelName(Logger.OFF, "OFF")
             logging.addLevelName(Logger.FATAL, "FATAL")
             logging.addLevelName(Logger.ERROR, "ERROR")
@@ -98,19 +105,19 @@ class PythonLogFactory(LogFactory):
             logging.addLevelName(Logger.ALL, "ALL")
             
             # Make our logger
-            self.pyLogger = logging.getLogger(applicationName + "." + moduleName)
+            self.pyLogger = logging.getLogger(application_name + "." + module_name)
             
             # create console handler and set level to debug
-            ch = logging.StreamHandler()
-            ch.setLevel(Logger.ALL)
+            console_handler = logging.StreamHandler()
+            console_handler.setLevel(Logger.ALL)
             # create formatter
             formatter = logging.Formatter("%(levelname)s %(name)s - %(eventType)s - %(user)s@%(hostname)s:%(sessionID)s -- %(message)s")
-            # add formatter to ch
-            ch.setFormatter(formatter)
-            # add ch to logger
-            self.pyLogger.addHandler(ch)
+            # add formatter to console_handler
+            console_handler.setFormatter(formatter)
+            # add console_handler to logger
+            self.pyLogger.addHandler(console_handler)
 
-        def setLevel(self, level):
+        def set_level(self, level):
             """
             Note: In this implementation, this change is not persistent,
             meaning that if the application is restarted, the log level will revert to the level defined in the
@@ -118,46 +125,51 @@ class PythonLogFactory(LogFactory):
             """
             self.pyLogger.setLevel(level)
             
-        def trace(self, type, message, exception=None):
-            self.log(Logger.TRACE, type, message, exception)
+        def trace(self, event_type, message, exception=None):
+            self.log(Logger.TRACE, event_type, message, exception)
             
-        def debug(self, type, message, exception=None):
-            self.log(Logger.DEBUG, type, message, exception)
+        def debug(self, event_type, message, exception=None):
+            self.log(Logger.DEBUG, event_type, message, exception)
             
-        def info(self, type, message, exception=None):
-            self.log(Logger.INFO, type, message, exception)
+        def info(self, event_type, message, exception=None):
+            self.log(Logger.INFO, event_type, message, exception)
             
-        def warning(self, type, message, exception=None):
-            self.log(Logger.WARNING, type, message, exception)
+        def warning(self, event_type, message, exception=None):
+            self.log(Logger.WARNING, event_type, message, exception)
             
-        def error(self, type, message, exception=None):
-            self.log(Logger.ERROR, type, message, exception)
+        def error(self, event_type, message, exception=None):
+            self.log(Logger.ERROR, event_type, message, exception)
             
-        def fatal(self, type, message, exception=None):
-            self.log(Logger.FATAL, type, message, exception)
+        def fatal(self, event_type, message, exception=None):
+            self.log(Logger.FATAL, event_type, message, exception)
             
-        def log(self, level, type, message, exception):
+        def log(self, level, event_type, message, exception=None):
             """
-            Log the message after optionally encoding any special characters that might be dangerous when viewed
-            by an HTML based log viewer. Also encode any carriage returns and line feeds to prevent log
-            injection attacks. This logs all the supplied parameters plus the user ID, user's source IP, a logging
-            specific session ID, and the current date/time.
+            Log the message after optionally encoding any special characters 
+            that might be dangerous when viewed by an HTML based log viewer. 
+            Also encode any carriage returns and line feeds to prevent log
+            injection attacks. This logs all the supplied parameters plus the 
+            user ID, user's source IP, a logging specific session ID, and the 
+            current date/time.
             
-            It will only log the message if the current logging level is enabled, otherwise it will
-            discard the message.
+            It will only log the message if the current logging level is 
+            enabled, otherwise it will discard the message.
             
             @param level the severity level of the security event
-            @param type the type of the event (SECURITY, FUNCTIONALITY, etc.)
+            @param event_type the event_type of the event (SECURITY, FUNCTIONALITY, etc.)
             @param message the message
             @param exception an exception
             """
-            # Before we waste all kinds of time preparing this event for the log, let check to see if its loggable
-            if not self.pyLogger.isEnabledFor(level): return
+            # Before we waste all kinds of time preparing this event for the 
+            # log, let check to see if its loggable
+            if not self.pyLogger.isEnabledFor(level): 
+                return
             
             #user = ESAPI.authenticator().getCurrentUser()
             
-            # create a random session number for the user to represent the user's 'session', if it doesn't exist already
-            userSessionIDforLogging = _("unknown")
+            # create a random session number for the user to represent the 
+            # user's 'session', if it doesn't exist already
+            user_session_id_for_logging = _("unknown")
             
             # Add HTTP Session information here
             
@@ -167,34 +179,34 @@ class PythonLogFactory(LogFactory):
                 
             # ensure no CRLF injection into logs for forging records
             clean = message.replace('\n', '_').replace('\r', '_')
-            if esapi.core.getSecurityConfiguration().getLogEncodingRequired():
-                clean = esapi.core.encoder().encodeForHTML(message)
+            if esapi.core.getSecurityConfiguration().get_log_encoding_required():
+                clean = esapi.core.encoder().encode_for_html(message)
                 if message != clean:
                     clean += " (Encoded)"
                       
             extra = {
-                 'eventType' : str(type),
-                 'eventSuccess' : [_("SUCCESS"),_("FAILURE")][type.isSuccess()],
+                 'eventType' : str(event_type),
+                 'eventSuccess' : [_("SUCCESS"),_("FAILURE")][event_type.isSuccess()],
                  'user' : "user.getAccountName()",
                  'hostname' : "user.getLastHostAddress()",
-                 'sessionID' : userSessionIDforLogging,
+                 'sessionID' : user_session_id_for_logging,
                  }
             self.pyLogger.log(level, clean, extra=extra) 
                         
-        def isDebugEnabled(self):
+        def is_debug_enabled(self):
             return self.pyLogger.isEnabledFor(Logger.DEBUG)
         
-        def isErrorEnabled(self):
+        def is_error_enabled(self):
             return self.pyLogger.isEnabledFor(Logger.ERROR)
         
-        def isFatalEnabled(self):
+        def is_fatal_enabled(self):
             return self.pyLogger.isEnabledFor(Logger.FATAL)
         
-        def isInfoEnabled(self):
+        def is_info_enabled(self):
             return self.pyLogger.isEnabledFor(Logger.INFO)
         
-        def isTraceEnabled(self):
+        def is_trace_enabled(self):
             return self.pyLogger.isEnabledFor(Logger.TRACE)
         
-        def isWarningEnabled(self):
+        def is_warning_enabled(self):
             return self.pyLogger.isEnabledFor(Logger.WARNING)

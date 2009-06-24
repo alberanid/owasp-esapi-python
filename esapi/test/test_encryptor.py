@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 """
 OWASP Enterprise Security API (ESAPI)
  
@@ -6,8 +9,8 @@ Enterprise Security API (ESAPI) project. For details, please see
 <a href="http://www.owasp.org/index.php/ESAPI">http://www.owasp.org/index.php/ESAPI</a>.
 Copyright (c) 2009 - The OWASP Foundation
 
-The ESAPI is published by OWASP under the BSD license. You should read and accept the
-LICENSE before you use, modify, and/or redistribute this software.
+The ESAPI is published by OWASP under the BSD license. You should read and 
+accept the LICENSE before you use, modify, and/or redistribute this software.
 
 @author Craig Younkins (craig.younkins@owasp.org)
 """
@@ -23,25 +26,15 @@ class EncryptorTest(unittest.TestCase):
     @author Craig Younkins (craig.younkins@owasp.org)
     """
     
-    def __init__(self, testName=""):
+    def __init__(self, test_name=""):
         """
         Instantiates a new Encryptor test.
         
-        @param testName the test name
+        @param test_name the test name
         """
-        unittest.TestCase.__init__(self, testName)
-        
-    def suite(self):
-        """
-        Suite.
-        
-        @return the test
-        """
-        suite = unittest.makeSuite(Encryptor,'test')
-        
-        return suite
+        unittest.TestCase.__init__(self, test_name)
     
-    def testHash(self):
+    def test_hash(self):
         instance = esapi.core.getEncryptor()
         hash1 = instance.hash("test1", "salt")
         hash2 = instance.hash("test2", "salt")
@@ -50,14 +43,14 @@ class EncryptorTest(unittest.TestCase):
         hash4 = instance.hash("test", "salt2")
         self.assertFalse(hash3 == hash4)
         
-    def testEncrypt(self):
+    def test_encrypt(self):
         instance = esapi.core.getEncryptor()
         plaintext = "test1234"
         ciphertext = instance.encrypt(plaintext)
         result = instance.decrypt(ciphertext)
         self.assertEquals(plaintext, result)
         
-    def testDecrypt(self):
+    def test_decrypt(self):
         try:
             instance = esapi.core.getEncryptor()
             plaintext = "test123"
@@ -68,19 +61,19 @@ class EncryptorTest(unittest.TestCase):
         except:
             self.fail()
         
-    def testSign(self):
+    def test_sign(self):
         pass
         
-    def testVerifySignature(self):
+    def test_verify_signature(self):
         pass
         
-    def testSeal(self):
+    def test_seal(self):
         pass
         
-    def testVerifySeal(self):
+    def test_verify_seal(self):
         pass
 
-    def testMain(self):
+    def test_main(self):
         pass
     
 if __name__ == "__main__":

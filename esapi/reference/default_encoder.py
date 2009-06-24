@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 """
 OWASP Enterprise Security API (ESAPI)
  
@@ -6,8 +9,8 @@ Enterprise Security API (ESAPI) project. For details, please see
 <a href="http://www.owasp.org/index.php/ESAPI">http://www.owasp.org/index.php/ESAPI</a>.
 Copyright (c) 2009 - The OWASP Foundation
 
-The ESAPI is published by OWASP under the BSD license. You should read and accept the
-LICENSE before you use, modify, and/or redistribute this software.
+The ESAPI is published by OWASP under the BSD license. You should read and 
+accept the LICENSE before you use, modify, and/or redistribute this software.
 
 @author Craig Younkins (craig.younkins@owasp.org)
 """
@@ -19,9 +22,9 @@ from esapi.logger import Logger
 
 class DefaultEncoder(Encoder):
     """
-    Reference implementation of the Encoder interface. This implementation takes
-    a whitelist approach to encoding, meaning that everything not specifically 
-    identified in a list of "immune" characters is encoded.
+    Reference implementation of the Encoder interface. This implementation 
+    takes a whitelist approach to encoding, meaning that everything not 
+    specifically identified in a list of "immune" characters is encoded.
 
     @author Craig Younkins (craig.younkins@owasp.org)
     """
@@ -49,6 +52,7 @@ class DefaultEncoder(Encoder):
     IMMUNE_URL = '-_.~'
     
     def __init__(self, codecs=None):
+        Encoder.__init__(self)
         if codecs is None:
             #self.codecs.append(self.html_codec)
             self.codecs.append(self._percent_codec)
@@ -56,10 +60,11 @@ class DefaultEncoder(Encoder):
         else:
             self.codecs = codecs
 
-    def canonicalize(self, input, strict=True):
-        if input is None: return None
+    def canonicalize(self, input_, strict=True):
+        if input_ is None: 
+            return None
         
-        working = input[:]
+        working = input_[:]
         codecs_found = []
         found_count = 0
         clean = False
@@ -82,91 +87,93 @@ class DefaultEncoder(Encoder):
             if strict:
                 raise IntrusionException( "Input validation failure", 
                 "Multiple (%sx) and mixed encoding (%s) detected in %s" %
-                (found_count, str(codecs_found), input))
+                (found_count, str(codecs_found), input_))
             else:
                 self.logger.warning( Logger.SECURITY_FAILURE, 
                 "Multiple (%sx) and mixed encoding (%s) detected in %s" %
-                (found_count, str(codecs_found), input))
+                (found_count, str(codecs_found), input_))
             
         elif found_count >= 2:
             if strict:
                 raise IntrusionException( "Input validation failure",
                 "Multiple (%sx) encoding detected in %s" %
-                (found_count, input))
+                (found_count, input_))
             else:
                 self.logger.warning( Logger.SECURITY_FAILURE,
                 "Multiple (%sx) encoding detected in %s" %
-                (found_count, input))
+                (found_count, input_))
                 
         elif len(codecs_found) > 1:
             if strict:
                 raise IntrusionException( "Input validation failure",
                 "Mixed encoding (%s) detected in %s" % 
-                (str(codecs_found), input))
+                (str(codecs_found), input_))
             else:
                 self.logger.warning( Logger.SECURITY_FAILURE,
                 "Mixed encoding (%s) detected in %s" % 
-                (str(codecs_found), input))
+                (str(codecs_found), input_))
                 
         return working
         
-    def normalize(self, input):
+    def normalize(self, input_):
         raise NotImplementedError()
 
-    def encodeForCSS(self, input):
+    def encode_for_css(self, input_):
         raise NotImplementedError()
 
-    def encodeForHTML(self, input):
+    def encode_for_html(self, input_):
         raise NotImplementedError()
 
-    def encodeForHTMLAttribute(self, input):
+    def encode_for_html_attribute(self, input_):
         raise NotImplementedError()
 
-    def encodeForJavaScript(self, input):
+    def encode_for_javascript(self, input_):
         raise NotImplementedError()
 
-    def encodeForVBScript(self, input):
+    def encode_for_vbscript(self, input_):
         raise NotImplementedError()
 
-    def encodeForSQL(self, codec, input):
+    def encode_for_sql(self, codec, input_):
         raise NotImplementedError()
 
-    def encodeForOS(self, codec, input):
+    def encode_for_os(self, codec, input_):
         raise NotImplementedError()
 
-    def encodeForLDAP(self, input):
+    def encode_for_ldap(self, input_):
         raise NotImplementedError()
 
-    def encodeForDN(self, input):
+    def encode_for_dn(self, input_):
         raise NotImplementedError()
 
-    def encodeForXPath(self, input):
+    def encode_for_xpath(self, input_):
         raise NotImplementedError()
 
-    def encodeForXML(self, input):
+    def encode_for_xml(self, input_):
         raise NotImplementedError()
 
-    def encodeForXMLAttribute(self, input):
+    def encode_for_xml_attribute(self, input_):
         raise NotImplementedError()
 
-    def encode_for_url(self, input):
-        if input is None: return None
+    def encode_for_url(self, input_):
+        if input_ is None: 
+            return None
         
-        return self._percent_codec.encode(self.IMMUNE_URL, input)
+        return self._percent_codec.encode(self.IMMUNE_URL, input_)
 
-    def decode_from_url(self, input):
-        if input is None: return None
+    def decode_from_url(self, input_):
+        if input_ is None: 
+            return None
         
-        canonical = self.canonicalize(input)
+        canonical = self.canonicalize(input_)
         return self._percent_codec.decode(canonical)
 
-    def encodeForBase64(self, input, wrap):
+    def encode_for_base64(self, input_, wrap):
         options = 0
         if not wrap:
             options |= Base64.DONT_BREAK_LINES
-        return Base64.encode(input, options)
+        return Base64.encode(input_, options)
 
-    def decodeFromBase64(self, input):
+    def decode_from_base64(self, input_):
         raise NotImplementedError()
 
 

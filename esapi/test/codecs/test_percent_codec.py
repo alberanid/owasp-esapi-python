@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 """
 OWASP Enterprise Security API (ESAPI)
  
@@ -34,7 +37,7 @@ class PercentCodecTest(unittest.TestCase):
                      ('/', '%2F'),
                      ('&', '%26'),
                      ('<script>', '%3Cscript%3E'),
-                     (chr(2), '%02'), # 0 padding
+                     (unichr(2), '%02'), # 0 padding
                     )
                      
     

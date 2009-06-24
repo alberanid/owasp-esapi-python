@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 """
 OWASP Enterprise Security API (ESAPI)
  
@@ -6,8 +9,8 @@ Enterprise Security API (ESAPI) project. For details, please see
 <a href="http://www.owasp.org/index.php/ESAPI">http://www.owasp.org/index.php/ESAPI</a>.
 Copyright (c) 2009 - The OWASP Foundation
 
-The ESAPI is published by OWASP under the BSD license. You should read and accept the
-LICENSE before you use, modify, and/or redistribute this software.
+The ESAPI is published by OWASP under the BSD license. You should read and 
+accept the LICENSE before you use, modify, and/or redistribute this software.
 
 @author Craig Younkins (craig.younkins@owasp.org)
 """
@@ -30,6 +33,9 @@ class Encryptor():
 
     @author Craig Younkins (craig.younkins@owasp.org)
     """
+    
+    def __init__(self):
+        pass
 
     def hash(self, plaintext, salt, iterations=1):
         """
@@ -106,7 +112,7 @@ class Encryptor():
         """
         raise NotImplementedError()
 
-    def verifySignature(self, signature, data):
+    def verify_signature(self, signature, data):
         """
         Verifies a digital signature (created with the sign method) and returns
         the boolean result.
@@ -155,7 +161,7 @@ class Encryptor():
         """
         raise NotImplementedError()
 
-    def verifySeal(self, seal):
+    def verify_seal(self, seal):
         """
         Verifies a seal (created with the seal method) and throws an exception
         describing any of the various problems that could exist with a seal, such
@@ -169,7 +175,7 @@ class Encryptor():
         """
         raise NotImplementedError()
 
-    def getRelativeTimeStamp(self, offset):
+    def get_relative_timestamp(self, offset):
         """
         Gets an absolute timestamp representing an offset from the current time to be used by
         other functions in the library.
@@ -182,7 +188,7 @@ class Encryptor():
         """
         raise NotImplementedError()
 
-    def getTimeStamp(self):
+    def get_timestamp(self):
         """
         Gets a timestamp representing the current date and time to be used by
         other functions in the library.

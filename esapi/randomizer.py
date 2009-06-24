@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 """
 OWASP Enterprise Security API (ESAPI)
  
@@ -6,8 +9,8 @@ Enterprise Security API (ESAPI) project. For details, please see
 <a href="http://www.owasp.org/index.php/ESAPI">http://www.owasp.org/index.php/ESAPI</a>.
 Copyright (c) 2009 - The OWASP Foundation
 
-The ESAPI is published by OWASP under the BSD license. You should read and accept the
-LICENSE before you use, modify, and/or redistribute this software.
+The ESAPI is published by OWASP under the BSD license. You should read and 
+accept the LICENSE before you use, modify, and/or redistribute this software.
 
 @author Craig Younkins (craig.younkins@owasp.org)
 """
@@ -22,50 +25,62 @@ class Randomizer():
 
     @author Craig Younkins (craig.younkins@owasp.org)
     """
+    
+    def __init__(self):
+        pass
 
-    def getRandomString(self, length, characterSet):
+    def get_random_string(self, length, character_set):
         """
-        Gets a random string of a desired length and character set.  The use of random.SystemRandom
-        is recommended because it provides a cryptographically strong pseudo-random number generator.
-        If random.SystemRandom is not used, the pseudo-random number gernerator used should comply with the
-        statistical random number generator tests specified in <a href="http://csrc.nist.gov/cryptval/140-2.htm">
-        FIPS 140-2, Security Requirements for Cryptographic Modules</a>, section 4.9.1.
+        Gets a random string of a desired length and character set.  The use of
+        random.SystemRandom is recommended because it provides a 
+        cryptographically strong pseudo-random number generator. If 
+        random.SystemRandom is not used, the pseudo-random number gernerator 
+        used should comply with the statistical random number generator tests 
+        specified in <a href="http://csrc.nist.gov/cryptval/140-2.htm">FIPS 
+        140-2, Security Requirements for Cryptographic Modules</a>, section 
+        4.9.1.
 
         @param length
                 the length of the string
-        @param characterSet
+        @param character_set
                 the set of characters to include in the created random string
         @return
                 the random string of the desired length and character set
         """
         raise NotImplementedError()
 
-    def getRandomBoolean(self):
+    def get_random_boolean(self):
         """
         Returns a random boolean.  The use of random.SystemRandom
-        is recommended because it provides a cryptographically strong pseudo-random number generator.
-        If random.SystemRandom is not used, the pseudo-random number gernerator used should comply with the
-        statistical random number generator tests specified in <a href="http://csrc.nist.gov/cryptval/140-2.htm">
-        FIPS 140-2, Security Requirements for Cryptographic Modules</a>, section 4.9.1.
+        is recommended because it provides a cryptographically strong 
+        pseudo-random number generator. If random.SystemRandom is not used, 
+        the pseudo-random number gernerator used should comply with the 
+        statistical random number generator tests specified in 
+        <a href="http://csrc.nist.gov/cryptval/140-2.htm">FIPS 
+        140-2, Security Requirements for Cryptographic Modules</a>, section 
+        4.9.1.
 
         @return
                 true or false, randomly
         """
         raise NotImplementedError()
 
-    def getRandomInteger(self, min, max):
+    def get_random_integer(self, min_, max_):
         """
-        Gets a random integer or long. The use of random.SystemRandom
-        is recommended because it provides a cryptographically strong pseudo-random number generator.
-        If random.SystemRandom is not used, the pseudo-random number gernerator used should comply with the
-        statistical random number generator tests specified in <a href="http://csrc.nist.gov/cryptval/140-2.htm">
-        FIPS 140-2, Security Requirements for Cryptographic Modules</a>, section 4.9.1.
+        Returns a random integer or long.  The use of random.SystemRandom
+        is recommended because it provides a cryptographically strong 
+        pseudo-random number generator. If random.SystemRandom is not used, 
+        the pseudo-random number gernerator used should comply with the 
+        statistical random number generator tests specified in 
+        <a href="http://csrc.nist.gov/cryptval/140-2.htm">FIPS 
+        140-2, Security Requirements for Cryptographic Modules</a>, section 
+        4.9.1.
 
         The lower bound (minimum) is inclusive and the upper bound (max) is also inclusive.
         
-        @param min
+        @param min_
                 the minimum integer that will be returned
-        @param max
+        @param max_
                 the maximum integer that will be returned
 
         @return
@@ -73,11 +88,12 @@ class Randomizer():
         """
         raise NotImplementedError()
 
-    def getRandomFilename(self, extension):
+    def get_random_filename(self, extension):
         """
-        Returns an unguessable random filename with the specified extension.  This method could call
-        getRandomString(length, charset) from this Class with the desired length and alphanumerics as the charset
-        then merely append "." + extension.
+        Returns an unguessable random filename with the specified extension.  
+        This method could call getRandomString(length, charset) from this 
+        Class with the desired length and alphanumerics as the charset then 
+        merely append "." + extension.
 
         @param extension
                 extension to add to the random filename
@@ -87,19 +103,22 @@ class Randomizer():
         """
         raise NotImplementedError()
        
-    def getRandomFloat(self, min, max):
+    def get_random_float(self, min_, max_):
         """
-        Gets a random floating point number. The use of random.SystemRandom
-        is recommended because it provides a cryptographically strong pseudo-random number generator.
-        If random.SystemRandom is not used, the pseudo-random number gernerator used should comply with the
-        statistical random number generator tests specified in <a href="http://csrc.nist.gov/cryptval/140-2.htm">
-        FIPS 140-2, Security Requirements for Cryptographic Modules</a>, section 4.9.1.
+        Returns a random floating point number.  The use of random.SystemRandom
+        is recommended because it provides a cryptographically strong 
+        pseudo-random number generator. If random.SystemRandom is not used, 
+        the pseudo-random number gernerator used should comply with the 
+        statistical random number generator tests specified in 
+        <a href="http://csrc.nist.gov/cryptval/140-2.htm">FIPS 
+        140-2, Security Requirements for Cryptographic Modules</a>, section 
+        4.9.1.
 
         The lower bound (minimum) is inclusive and the upper bound (max) is also inclusive.
         
-        @param min
+        @param min_
                 the minimum float that will be returned
-        @param max
+        @param max_
                 the maximum float that will be returned
 
         @return
@@ -107,18 +126,21 @@ class Randomizer():
         """
         raise NotImplementedError()
 
-    def getRandomGUID(self):
+    def get_random_guid(self):
         """
-        Generates a random GUID according to <a href="http://tools.ietf.org/html/rfc4122#section-4.1.3">RFC 4122 V4</a>.
-        This should set the version to '4', and satisfy the high-bit requirement by setting the correct position to 
-        '8','9','a', or 'b'.  The format is a well-defined sequence of 32 hex digits grouped into chunks of 8-4-4-4-12.
+        Generates a random GUID according to 
+        <a href="http://tools.ietf.org/html/rfc4122#section-4.1.3">RFC 4122 V4</a>.
+        This should set the version to '4', and satisfy the high-bit 
+        requirement by setting the correct position to '8','9','a', or 'b'.  
+        The format is a well-defined sequence of 32 hex digits grouped into 
+        chunks of 8-4-4-4-12.
 
         @return
                 the GUID
         """
         raise NotImplementedError()
 
-    def getRandomChoice(self, seq):
+    def get_random_choice(self, seq):
         """
         Selects a random element from the sequence.
         

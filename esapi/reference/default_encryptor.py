@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 """
 OWASP Enterprise Security API (ESAPI)
  
@@ -6,8 +9,8 @@ Enterprise Security API (ESAPI) project. For details, please see
 <a href="http://www.owasp.org/index.php/ESAPI">http://www.owasp.org/index.php/ESAPI</a>.
 Copyright (c) 2009 - The OWASP Foundation
 
-The ESAPI is published by OWASP under the BSD license. You should read and accept the
-LICENSE before you use, modify, and/or redistribute this software.
+The ESAPI is published by OWASP under the BSD license. You should read and 
+accept the LICENSE before you use, modify, and/or redistribute this software.
 
 @author Craig Younkins (craig.younkins@owasp.org)
 """
@@ -28,49 +31,51 @@ from esapi.translation import _
 class EncryptionException(Exception): pass
 
 class DefaultEncryptor(Encryptor):
-    encryptAlgorithmMap = {
+    encrypt_algorithm_map = {
         'AES' : Crypto.Cipher.AES,
         'DES' : Crypto.Cipher.DES,
         'DES3' : Crypto.Cipher.DES3}
     
     def __init__(self):
+        Encryptor.__init__(self)
         # Hashing
-        self.hashAlgorithm = esapi.core.getSecurityConfiguration().getHashAlgorithm()
-        self.hashIterations = esapi.core.getSecurityConfiguration().getHashIterations()
+        self.hash_algorithm = esapi.core.getSecurityConfiguration().get_hash_algorithm()
+        self.hash_iterations = esapi.core.getSecurityConfiguration().get_hash_iterations()
         
         # Encryption
-        encryptAlgorithm = esapi.core.getSecurityConfiguration().getEncryptionAlgorithm()
+        encrypt_algorithm = esapi.core.getSecurityConfiguration().get_encryption_algorithm()
         try:
-            self.encryptAlgorithmClass = self.encryptAlgorithmMap[encryptAlgorithm]
+            self.encrypt_algorithm_class = self.encrypt_algorithm_map[encrypt_algorithm]
         except KeyError:
-            raise EncryptionException, _("Encryption Failure - Unknown algorithm: ") + self.encryptAlgorithm
+            raise EncryptionException, _("Encryption Failure - Unknown algorithm: ") + self.encrypt_algorithm
         
-        self.encryptionKeyLength = esapi.core.getSecurityConfiguration().getEncryptionKeyLength()
-        self.masterKey = esapi.core.getSecurityConfiguration().getMasterKey()
-        self.masterSalt = esapi.core.getSecurityConfiguration().getMasterSalt()
+        self.encryption_key_length = esapi.core.getSecurityConfiguration().get_encryption_key_length()
+        self.master_key = esapi.core.getSecurityConfiguration().get_master_key()
+        self.master_salt = esapi.core.getSecurityConfiguration().get_master_salt()
         
         # Public key crypto
-        self.signingAlgorithm = esapi.core.getSecurityConfiguration().getDigitalSignatureAlgorithm()
-        self.signingKeyLength = esapi.core.getSecurityConfiguration().getDigitalSignatureKeyLength()
-        self.signingKeyPair = esapi.core.getSecurityConfiguration().getDigitalSignatureKey()
+        self.signing_algorithm = esapi.core.getSecurityConfiguration().get_digital_signature_algorithm()
+        self.signing_key_length = esapi.core.getSecurityConfiguration().get_digital_signature_key_length()
+        self.signing_key_pair = esapi.core.getSecurityConfiguration().get_digital_signature_key()
         
 
     def main(self):
         # Generate a new DSA key
-        DSAKey = DSA.generate(self.signingKeyLength, os.urandom)
+        DSAKey = DSA.generate(self.signing_key_length, os.urandom)
         
     def hash(self, plaintext, salt, iterations=None):
-        if iterations is None: iterations = self.hashIterations
+        if iterations is None: 
+            iterations = self.hash_iterations
     
         try:
-            digest = hashlib.new(self.hashAlgorithm)
-            digest.update(self.masterSalt)
+            digest = hashlib.new(self.hash_algorithm)
+            digest.update(self.master_salt)
             digest.update(salt)
             digest.update(plaintext)
             
             bytes = digest.digest()
-            for i in range(self.hashIterations):
-                digest = hashlib.new(self.hashAlgorithm)
+            for i in range(self.hash_iterations):
+                digest = hashlib.new(self.hash_algorithm)
                 digest.update(bytes)
                 bytes = digest.digest()
                 
@@ -79,10 +84,10 @@ class DefaultEncryptor(Encryptor):
             return encoded
             
         except ValueError, e:
-            raise EncryptionException, _("Internal Error - Can't find hash algorithm ") + self.hashAlgorithm
+            raise EncryptionException, _("Internal Error - Can't find hash algorithm ") + self.hash_algorithm
         
     def encrypt(self, plaintext):
-        encryptor = self.encryptAlgorithmClass.new(self.masterKey)
+        encryptor = self.encrypt_algorithm_class.new(self.master_key)
         padded = self._pad(plaintext, encryptor.block_size)
         return encryptor.encrypt(padded)
             
@@ -93,9 +98,9 @@ class DefaultEncryptor(Encryptor):
         Then that number (say, n) is appended to the string n times.
         """
         n = block_size - ( len(text) % block_size )
-        return text + chr(n) * n
+        return text + unichr(n) * n
         
-    def _unpad(self, text, block_size):
+    def _unpad(self, text):
         """
         Unpads the text according to RFC 1423 / PKCS5.
         First the last byte of the string is taken. It is possibly
@@ -105,24 +110,24 @@ class DefaultEncryptor(Encryptor):
         that this will remove part of the data that looks like padding
         but is not.
         """
-        n = text[-1]
-        isPadding = True
+        pos_padding_len = text[-1]
+        is_padding = True
         for char in text[-ord(n):]:
-            if char != n:
-                isPadding = False
+            if char != pos_padding_len:
+                is_padding = False
                 
-        if isPadding:
-            return text[:-ord(n)]
+        if is_padding:
+            return text[:-ord(pos_padding_length)]
 
     def decrypt(self, ciphertext):
-        crypt = self.encryptAlgorithmClass.new(self.masterKey) 
+        crypt = self.encrypt_algorithm_class.new(self.master_key) 
         padded = crypt.decrypt(ciphertext)
         return self._unpad(padded, crypt.block_size)
 
     def sign(self, data):
         raise NotImplementedError()
 
-    def verifySignature(self, signature, data):
+    def verify_signature(self, signature, data):
         raise NotImplementedError()
 
     def seal(self, data, timestamp):
@@ -131,13 +136,13 @@ class DefaultEncryptor(Encryptor):
     def unseal(self, seal):
         raise NotImplementedError()
 
-    def verifySeal(self, seal):
+    def verify_seal(self, seal):
         raise NotImplementedError()
 
-    def getRelativeTimeStamp(self, offset):
+    def get_relative_timestamp(self, offset):
         raise NotImplementedError()
 
-    def getTimeStamp(self):
+    def get_timestamp(self):
         raise NotImplementedError()
 
 

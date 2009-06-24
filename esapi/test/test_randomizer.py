@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 """
 OWASP Enterprise Security API (ESAPI)
  
@@ -6,8 +9,8 @@ Enterprise Security API (ESAPI) project. For details, please see
 <a href="http://www.owasp.org/index.php/ESAPI">http://www.owasp.org/index.php/ESAPI</a>.
 Copyright (c) 2009 - The OWASP Foundation
 
-The ESAPI is published by OWASP under the BSD license. You should read and accept the
-LICENSE before you use, modify, and/or redistribute this software.
+The ESAPI is published by OWASP under the BSD license. You should read and 
+accept the LICENSE before you use, modify, and/or redistribute this software.
 
 @author Craig Younkins (craig.younkins@owasp.org)
 """
@@ -25,14 +28,14 @@ class RandomzerTest(unittest.TestCase):
     
     alpha_numerics = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
-    def __init__(self, testName=""):
+    def __init__(self, test_name=""):
         """
         Instantiates a new Randomizer test.
         
-        @param testName the test name
+        @param test_name the test name
         """
-        unittest.TestCase.__init__(self, testName)
-        
+        unittest.TestCase.__init__(self, test_name)
+            
     def suite(self):
         """
         Suite.
@@ -43,11 +46,11 @@ class RandomzerTest(unittest.TestCase):
         
         return suite
     
-    def testGetRandomString(self):
+    def test_get_random_string(self):
         length = 20
         instance = core.getRandomizer()
         for i in range (100):
-            result = instance.getRandomString(length, self.alpha_numerics)
+            result = instance.get_random_string(length, self.alpha_numerics)
             #print result
             # for char is result:
                 # if !Codec.containsCharacter( result[j], self.alpha_numerics):
@@ -55,43 +58,48 @@ class RandomzerTest(unittest.TestCase):
                     
             self.assertEquals(length, len(result))
     
-    def testGetRandomInteger(self):
-        min = -20
-        max = 100
+    def test_get_random_integer(self):
+        min_ = -20
+        max_ = 100
         instance = core.getRandomizer()
-        minResult = maxResult = ( max - min ) / 2
+        min_result = max_result = ( max_ - min_ ) / 2
         for i in range(100):
-            result = instance.getRandomInteger(min, max)
+            result = instance.get_random_integer(min_, max_)
             #print result
-            if result < minResult: minResult = result
-            if result > maxResult: maxResult = result
+            if result < min_result: 
+                min_result = result
+            if result > max_result: 
+                max_result = result
         
-        assert minResult >= min and maxResult <= max
+        assert min_result >= min_ and max_result <= max_
     
-    def testGetRandomFloat(self):
-        min = -20.5234
-        max = 100.12124
+    def test_get_random_float(self):
+        min_ = -20.5234
+        max_ = 100.12124
         instance = core.getRandomizer()
-        minResult = maxResult =( max - min ) / 2
+        min_result = max_result = ( max_ - min_ ) / 2
         for i in range(100):
-            result = instance.getRandomFloat(min, max)
+            result = instance.get_random_float(min_, max_)
             #print result
-            if result < minResult: minResult = result
-            if result > maxResult: maxResult = result
+            if result < min_result: 
+                min_result = result
+            if result > max_result: 
+                max_result = result
         
-        assert minResult >= min and maxResult <= max
+        assert min_result >= min_ and max_result <= max_
   
-    def testGetRandomGUID(self):
+    def test_get_random_guid(self):
         instance = core.getRandomizer()
-        list = []
+        guids = []
         for i in range(100):
-            guid = instance.getRandomGUID()
+            guid = instance.get_random_guid()
             #print guid
             self.assertEquals(36, len(guid)) # Check length
             self.assertEquals('4', guid[14]) # Check version 4
             assert guid[19] in '89ab' # Check high bits
-            if guid in list: self.fail()
-            list.append(guid)
+            if guid in guids: 
+                self.fail()
+            guids.append(guid)
     
     
 if __name__ == "__main__":

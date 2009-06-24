@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 """
 OWASP Enterprise Security API (ESAPI)
  
@@ -6,8 +9,8 @@ Enterprise Security API (ESAPI) project. For details, please see
 <a href="http://www.owasp.org/index.php/ESAPI">http://www.owasp.org/index.php/ESAPI</a>.
 Copyright (c) 2009 - The OWASP Foundation
 
-The ESAPI is published by OWASP under the BSD license. You should read and accept the
-LICENSE before you use, modify, and/or redistribute this software.
+The ESAPI is published by OWASP under the BSD license. You should read and 
+accept the LICENSE before you use, modify, and/or redistribute this software.
 
 @author Craig Younkins (craig.younkins@owasp.org)
 """
@@ -60,8 +63,11 @@ class Encoder():
     CHAR_PASSWORD_DIGITS = '23456789'
     CHAR_PASSWORD_SPECIALS = '_.!@$*=-?'
     CHAR_PASSWORD_LETTERS = CHAR_PASSWORD_LOWERS + CHAR_PASSWORD_UPPERS
+    
+    def __init__(self):
+        pass
 
-    def canonicalize(self, input, strict=True):
+    def canonicalize(self, input_, strict=True):
         """
         Canonicalization is simply the operation of reducing a possibly encoded
         string down to its simplest form. This is important, because attackers
@@ -123,7 +129,7 @@ class Encoder():
 
         @see <a href="http://www.w3.org/TR/html4/interact/forms.html#h-17.13.4">W3C specifications</a>
 
-        @param input
+        @param string
                 the text to canonicalize
         @param strict
                 true (default) if checking for double encoding is desired, false otherwise
@@ -135,20 +141,20 @@ class Encoder():
         """
         raise NotImplementedError()
         
-    def normalize(self, input):
+    def normalize(self, input_):
         """
         Reduce all non-ascii characters to their ASCII form so that simpler
         validation rules can be applied. For example, an accented-e character
         will be changed into a regular ASCII e character.
 
-        @param input
+        @param input_
                 the text to normalize
 
-        @return a normalized String
+        @return a normalized string
         """
         raise NotImplementedError()
 
-    def encodeForCSS(self, input):
+    def encode_for_css(self, input_):
         """
         Encode data for use in Cascading Style Sheets (CSS) content.
 
@@ -161,7 +167,7 @@ class Encoder():
         """
         raise NotImplementedError()
 
-    def encodeForHTML(self, input):
+    def encode_for_html(self, input_):
         """
         Encode data for use in HTML using HTML entity encoding
         <p>
@@ -173,38 +179,38 @@ class Encoder():
         @see <a href="http://www.w3.org/TR/html4/sgml/sgmldecl.html">SGML Specification [w3.org]</a>
         @see <a href="http://www.w3.org/TR/REC-xml/#charsets">XML Specification [w3.org]</a>
 
-        @param input
+        @param input_
                 the text to encode for HTML
 
         @return input encoded for HTML
         """
         raise NotImplementedError()
 
-    def encodeForHTMLAttribute(self, input):
+    def encode_for_html_attribute(self, input_):
         """
         Encode data for use in HTML attributes.
 
-        @param input
+        @param input_
                 the text to encode for an HTML attribute
 
         @return input encoded for use as an HTML attribute
         """
         raise NotImplementedError()
 
-    def encodeForJavaScript(self, input):
+    def encode_for_javascript(self, input_):
         """
         Encode data for insertion inside a data value in JavaScript. Putting user data directly
         inside a script is quite dangerous. Great care must be taken to prevent putting user data
         directly into script code itself, as no amount of encoding will prevent attacks there.
 
-        @param input
+        @param input_
                 the text to encode for JavaScript
 
         @return input encoded for use in JavaScript
         """
         raise NotImplementedError()
 
-    def encodeForVBScript(self, input):
+    def encode_for_vbscript(self, input_):
         """
         Encode data for insertion inside a data value in a Visual Basic script. Putting user data directly
         inside a script is quite dangerous. Great care must be taken to prevent putting user data
@@ -212,14 +218,14 @@ class Encoder():
 
         This method is not recommended as VBScript is only supported by Internet Explorer
 
-        @param input
+        @param input_
                 the text to encode for VBScript
 
         @return input encoded for use in VBScript
         """
         raise NotImplementedError()
 
-    def encodeForSQL(self, codec, input):
+    def encode_for_sql(self, codec, input_):
         """
         Encode input for use in a SQL query, according to the selected codec
         (appropriate codecs include the MySQLCodec and OracleCodec).
@@ -240,50 +246,50 @@ class Encoder():
 
         @param codec
                 a Codec that declares which database 'input' is being encoded for (ie. MySQL, Oracle, etc.)
-        @param input
+        @param input_
                 the text to encode for SQL
 
         @return input encoded for use in SQL
         """
         raise NotImplementedError()
 
-    def encodeForOS(self, codec, input):
+    def encode_for_os(self, codec, input_):
         """
         Encode for an operating system command shell according to the selected codec (appropriate codecs include
         the WindowsCodec and UnixCodec).
 
         @param codec
                 a Codec that declares which operating system 'input' is being encoded for (ie. Windows, Unix, etc.)
-        @param input
+        @param input_
                 the text to encode for the command shell
 
         @return input encoded for use in command shell
         """
         raise NotImplementedError()
 
-    def encodeForLDAP(self, input):
+    def encode_for_ldap(self, input_):
         """
         Encode data for use in LDAP queries.
 
-        @param input
+        @param input_
                 the text to encode for LDAP
 
         @return input encoded for use in LDAP
         """
         raise NotImplementedError()
 
-    def encodeForDN(self, input):
+    def encode_for_dn(self, input_):
         """
         Encode data for use in an LDAP distinguished name.
 
-         @param input
+         @param input_
                 the text to encode for an LDAP distinguished name
 
          @return input encoded for use in an LDAP distinguished name
         """
         raise NotImplementedError()
 
-    def encodeForXPath(self, input):
+    def encode_for_xpath(self, input_):
         """
         Encode data for use in an XPath query.
 
@@ -303,14 +309,14 @@ class Encoder():
         @see <a href="http://www.ibm.com/developerworks/xml/library/x-xpathinjection.html">XPath Injection [ibm.com]</a>
         @see <a href="http://www.packetstormsecurity.org/papers/bypass/Blind_XPath_Injection_20040518.pdf">Blind XPath Injection [packetstormsecurity.org]</a>
 
-        @param input
+        @param input_
              the text to encode for XPath
         @return
                 input encoded for use in XPath
         """
         raise NotImplementedError()
 
-    def encodeForXML(self, input):
+    def encode_for_xml(self, input_):
         """
         Encode data for use in an XML element. The implementation should follow the <a
         href="http://www.w3schools.com/xml/xml_encoding.asp">XML Encoding
@@ -331,7 +337,7 @@ class Encoder():
         """
         raise NotImplementedError()
 
-    def encodeForXMLAttribute(self, input):
+    def encode_for_xml_attribute(self, input_):
         """
         Encode data for use in an XML attribute. The implementation should follow
         the <a href="http://www.w3schools.com/xml/xml_encoding.asp">XML Encoding
@@ -344,7 +350,7 @@ class Encoder():
 
         @see <a href="http://www.w3schools.com/xml/xml_encoding.asp">XML Encoding Standard</a>
 
-        @param input
+        @param input_
                     the text to encode for use as an XML attribute
 
         @return
@@ -352,7 +358,7 @@ class Encoder():
         """
         raise NotImplementedError()
 
-    def encodeForURL(self, input):
+    def encode_for_url(self, input_):
         """
         Encode for use in a URL. This method performs <a
         href="http://en.wikipedia.org/wiki/Percent-encoding">URL encoding</a>
@@ -363,7 +369,7 @@ class Encoder():
         @param input
                 the text to encode for use in a URL
 
-        @return input
+        @return input_
                 encoded for use in a URL
 
         @throws EncodingException
@@ -371,13 +377,13 @@ class Encoder():
         """
         raise NotImplementedError()
 
-    def decodeFromURL(self, input):
+    def decode_from_url(self, input_):
         """
         Decode from URL. Implementations should first canonicalize and
         detect any double-encoding. If this check passes, then the data is decoded using URL
         decoding.
 
-        @param input
+        @param input_
                 the text to decode from an encoded URL
 
         @return
@@ -388,11 +394,11 @@ class Encoder():
         """
         raise NotImplementedError()
 
-    def encodeForBase64(self, input, wrap):
+    def encode_for_base64(self, input_, wrap):
         """
         Encode for Base64.
 
-        @param input
+        @param input_
                 the text to encode for Base64
         @param wrap
                 the encoder will wrap lines every 64 characters of output
@@ -401,11 +407,11 @@ class Encoder():
         """
         raise NotImplementedError()
 
-    def decodeFromBase64(self, input):
+    def decode_from_base64(self, input_):
         """
         Decode data encoded with BASE-64 encoding.
 
-        @param input
+        @param input_
                 the Base64 text to decode
 
         @return input

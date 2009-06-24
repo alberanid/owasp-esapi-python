@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 """
 OWASP Enterprise Security API (ESAPI)
  
@@ -6,8 +9,8 @@ Enterprise Security API (ESAPI) project. For details, please see
 <a href="http://www.owasp.org/index.php/ESAPI">http://www.owasp.org/index.php/ESAPI</a>.
 Copyright (c) 2009 - The OWASP Foundation
 
-The ESAPI is published by OWASP under the BSD license. You should read and accept the
-LICENSE before you use, modify, and/or redistribute this software.
+The ESAPI is published by OWASP under the BSD license. You should read and 
+accept the LICENSE before you use, modify, and/or redistribute this software.
 
 @author Craig Younkins (craig.younkins@owasp.org)
 """
@@ -27,8 +30,11 @@ class LogFactory:
     @author Craig Younkins (craig.younkins@owasp.org)
     
     """
+    
+    def __init__(self):
+        pass
 
-    def getLogger(self, classOrMod):
+    def get_logger(self, key):
         """
         Gets the logger associated with the specified module or class name. The module or class name is used by the logger to log which
         module or class is generating the log events. The implementation of this method should return any preexisting Logger
@@ -36,18 +42,18 @@ class LogFactory:
         <br><br>
         The PythonLogFactory reference implementation meets these requirements.
         
-        @param classOrMod
+        @param key
                     The name of the class or module requesting the logger.
         @return
                     The Logger associated with this module.
         """
         raise NotImplementedError()
     
-    def setApplicationName(self, applicationName):
+    def set_application_name(self, application_name):
         """
         This is needed to allow for null argument construction of log factories.
         
-        @param applicationName
+        @param application_name
                     A unique name to identify the application being logged.
         """
         raise NotImplementedError()

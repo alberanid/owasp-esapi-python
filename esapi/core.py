@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 """
 OWASP Enterprise Security API (ESAPI)
  
@@ -6,8 +9,8 @@ Enterprise Security API (ESAPI) project. For details, please see
 <a href="http://www.owasp.org/index.php/ESAPI">http://www.owasp.org/index.php/ESAPI</a>.
 Copyright (c) 2009 - The OWASP Foundation
 
-The ESAPI is published by OWASP under the BSD license. You should read and accept the
-LICENSE before you use, modify, and/or redistribute this software.
+The ESAPI is published by OWASP under the BSD license. You should read and 
+accept the LICENSE before you use, modify, and/or redistribute this software.
 
 @author Craig Younkins (craig.younkins@owasp.org)
 """
@@ -21,8 +24,9 @@ from esapi.reference.default_security_configuration import DefaultSecurityConfig
 from esapi.translation import _
 
 """
-ESAPI locator class is provided to make it easy to gain access to the current ESAPI classes in use.
-Use the set methods to override the reference implementations with instances of any custom ESAPI implementations.
+ESAPI locator class is provided to make it easy to gain access to the current 
+ESAPI classes in use. Use the set methods to override the reference 
+implementations with instances of any custom ESAPI implementations.
 """
 
 authenticator = None
