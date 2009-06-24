@@ -13,6 +13,11 @@ PercentCodec
 PercentCodecTest
 PushbackString
 PushbackStringTest
+HTMLEntityCodec
+HTMLEntityCodecTest
+Encoder
+JavascriptCodec
+JavascriptCodecTest
 
 Incomplete
 ---------
@@ -21,5 +26,5 @@ PythonLogFactory - dep Authenticator, HTML Encoder
 DefaultRandomizer - dep on Encoder
 DefaultEncryptor - dep on Encoder.base64, on hold for crypto
 EncryptorTest - Will code with DefaultEncryptor
-Encoder - Dep on all codecs
-EncoderTest
+EncoderTest - dep on all encoders
+DefaultEncoder - Dep on IntrusionException, all codecs
