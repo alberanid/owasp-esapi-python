@@ -1,0 +1,1663 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>esapi.security_configuration.SecurityConfiguration</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="esapi-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="esapi-module.html">Package&nbsp;esapi</a> ::
+        <a href="esapi.security_configuration-module.html">Module&nbsp;security_configuration</a> ::
+        Class&nbsp;SecurityConfiguration
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="esapi.security_configuration.SecurityConfiguration-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class SecurityConfiguration</h1><p class="nomargin-top"><span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration">source&nbsp;code</a></span></p>
+<dl><dt>Known Subclasses:</dt>
+<dd>
+      <ul class="subclass-list">
+<li><a href="esapi.reference.default_security_configuration.DefaultSecurityConfiguration-class.html">reference.default_security_configuration.DefaultSecurityConfiguration</a></li>  </ul>
+</dd></dl>
+
+<hr />
+The SecurityConfiguration interface stores all configuration information
+that directs the behavior of the ESAPI implementation.
+<br><br>
+Protection of this configuration information is critical to the secure
+operation of the application using the ESAPI. You should use operating 
+system access controls to limit access to wherever the configuration 
+information is stored.
+<br><br>
+Please note that adding another layer of encryption does not make the
+attackers job much more difficult. Somewhere there must be a master 
+"secret" that is stored unencrypted on the application platform. Creating 
+another layer of indirection doesn't provide any real additional security. 
+Its up to the reference implementation to decide whether this file should 
+be encrypted or not. The ESAPI reference implementation 
+(DefaultSecurityConfiguration.java) does not encrypt its properties file.
+
+<hr />
+<div class="fields">      <p><strong>Author:</strong>
+        Craig Younkins (craig.younkins@owasp.org)
+      </p>
+</div><!-- ==================== NESTED CLASSES ==================== -->
+<a name="section-NestedClasses"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Nested Classes</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-NestedClasses"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="esapi.security_configuration.SecurityConfiguration.Threshold-class.html" class="summary-name">Threshold</a><br />
+      Models a simple threshold as a count and an interval, along with a set 
+of actions to take if the threshold is exceeded.
+    </td>
+  </tr>
+</table>
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__init__"></a><span class="summary-sig-name">__init__</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.security_configuration.SecurityConfiguration-class.html#get_application_name" class="summary-sig-name">get_application_name</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Gets the application name, used for logging</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_application_name">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_log_implementation"></a><span class="summary-sig-name">get_log_implementation</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Returns the fully qualified classname of the ESAPI Logging 
+implementation.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_log_implementation">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_authentication_implementation"></a><span class="summary-sig-name">get_authentication_implementation</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Returns the fully qualified classname of the ESAPI Authentication 
+implementation.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_authentication_implementation">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_encoder_implementation"></a><span class="summary-sig-name">get_encoder_implementation</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Returns the fully qualified classname of the ESAPI Encoder implementa
+tion.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_encoder_implementation">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_access_control_implementation"></a><span class="summary-sig-name">get_access_control_implementation</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Returns the fully qualified classname of the ESAPI Access Control 
+implementation.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_access_control_implementation">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_intrusion_detection_implementation"></a><span class="summary-sig-name">get_intrusion_detection_implementation</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Returns the fully qualified classname of the ESAPI Intrusion Detection 
+implementation.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_intrusion_detection_implementation">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_randomizer_implementation"></a><span class="summary-sig-name">get_randomizer_implementation</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Returns the fully qualified classname of the ESAPI Randomizer 
+implementation.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_randomizer_implementation">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_encryption_implementation"></a><span class="summary-sig-name">get_encryption_implementation</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Returns the fully qualified classname of the ESAPI Encryption 
+implementation.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_encryption_implementation">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_validation_implementation"></a><span class="summary-sig-name">get_validation_implementation</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Returns the fully qualified classname of the ESAPI Validation 
+implementation.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_validation_implementation">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_executor_implementation"></a><span class="summary-sig-name">get_executor_implementation</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Returns the fully qualified classname of the ESAPI OS Execution 
+implementation.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_executor_implementation">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_http_utilities_implementation"></a><span class="summary-sig-name">get_http_utilities_implementation</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Returns the fully qualified classname of the ESAPI HTTPUtilities 
+implementation.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_http_utilities_implementation">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.security_configuration.SecurityConfiguration-class.html#get_master_key" class="summary-sig-name">get_master_key</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Gets the master key.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_master_key">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.security_configuration.SecurityConfiguration-class.html#get_upload_directory" class="summary-sig-name">get_upload_directory</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Retrieves the default upload directory declared in the ESAPI 
+properties file.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_upload_directory">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.security_configuration.SecurityConfiguration-class.html#get_encryption_key_length" class="summary-sig-name">get_encryption_key_length</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Gets the key length to use in cryptographic operations declared in the 
+ESAPI properties file.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_encryption_key_length">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.security_configuration.SecurityConfiguration-class.html#get_master_salt" class="summary-sig-name">get_master_salt</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Gets the master salt that is used to salt stored password hashes and 
+any other location where a salt is needed.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_master_salt">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.security_configuration.SecurityConfiguration-class.html#get_allowed_executables" class="summary-sig-name">get_allowed_executables</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Gets the allowed executables to run with the Executor.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_allowed_executables">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.security_configuration.SecurityConfiguration-class.html#get_allowed_file_extensions" class="summary-sig-name">get_allowed_file_extensions</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Gets the allowed file extensions for files that are uploaded to this 
+application.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_allowed_file_extensions">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.security_configuration.SecurityConfiguration-class.html#get_allowed_file_upload_size" class="summary-sig-name">get_allowed_file_upload_size</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Gets the maximum allowed file upload size.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_allowed_file_upload_size">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.security_configuration.SecurityConfiguration-class.html#get_password_parameter_name" class="summary-sig-name">get_password_parameter_name</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Gets the name of the password parameter used during user 
+authentication.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_password_parameter_name">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.security_configuration.SecurityConfiguration-class.html#get_username_parameter_name" class="summary-sig-name">get_username_parameter_name</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Gets the name of the username parameter used during user 
+authentication.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_username_parameter_name">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.security_configuration.SecurityConfiguration-class.html#get_encryption_algorithm" class="summary-sig-name">get_encryption_algorithm</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Gets the encryption algorithm used by ESAPI to protect data.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_encryption_algorithm">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.security_configuration.SecurityConfiguration-class.html#get_hash_algorithm" class="summary-sig-name">get_hash_algorithm</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Gets the hashing algorithm used by ESAPI to hash data.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_hash_algorithm">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.security_configuration.SecurityConfiguration-class.html#get_hash_iterations" class="summary-sig-name">get_hash_iterations</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Gets the hash iterations used by ESAPI to hash data.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_hash_iterations">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.security_configuration.SecurityConfiguration-class.html#get_character_encoding" class="summary-sig-name">get_character_encoding</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Gets the character encoding scheme supported by this application.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_character_encoding">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.security_configuration.SecurityConfiguration-class.html#get_digital_signature_algorithm" class="summary-sig-name">get_digital_signature_algorithm</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Gets the digital signature algorithm used by ESAPI to generate and 
+verify signatures.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_digital_signature_algorithm">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.security_configuration.SecurityConfiguration-class.html#get_digital_signature_key_length" class="summary-sig-name">get_digital_signature_key_length</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Gets the digital signature key length used by ESAPI to generate and 
+verify signatures.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_digital_signature_key_length">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.security_configuration.SecurityConfiguration-class.html#get_digital_signature_key" class="summary-sig-name">get_digital_signature_key</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Gets the object associated with the digital signing keypair.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_digital_signature_key">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.security_configuration.SecurityConfiguration-class.html#get_allowed_login_attempts" class="summary-sig-name">get_allowed_login_attempts</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Gets the number of login attempts allowed before the user's account is 
+locked.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_allowed_login_attempts">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.security_configuration.SecurityConfiguration-class.html#get_max_old_password_hashes" class="summary-sig-name">get_max_old_password_hashes</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Gets the maximum number of old password hashes that should be retained.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_max_old_password_hashes">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.security_configuration.SecurityConfiguration-class.html#get_quota" class="summary-sig-name">get_quota</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event_name</span>)</span><br />
+      Gets the intrusion detection quota for the specified event.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_quota">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.security_configuration.SecurityConfiguration-class.html#get_resource_file" class="summary-sig-name">get_resource_file</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">filename</span>)</span><br />
+      Gets a file from the resource directory</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_resource_file">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.security_configuration.SecurityConfiguration-class.html#get_force_http_only" class="summary-sig-name">get_force_http_only</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Forces new cookie headers with HttpOnly on first and second responses...</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_force_http_only">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.security_configuration.SecurityConfiguration-class.html#get_resource_stream" class="summary-sig-name">get_resource_stream</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">filename</span>)</span><br />
+      Gets an InputStream to a file in the resource directory</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_resource_stream">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.security_configuration.SecurityConfiguration-class.html#set_resource_directory" class="summary-sig-name">set_resource_directory</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">directory</span>)</span><br />
+      Sets the ESAPI resource directory.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.set_resource_directory">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.security_configuration.SecurityConfiguration-class.html#get_response_content_type" class="summary-sig-name">get_response_content_type</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Gets the content type for responses used when setSafeContentType() is 
+called.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_response_content_type">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.security_configuration.SecurityConfiguration-class.html#get_remember_token_duration" class="summary-sig-name">get_remember_token_duration</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Gets the length of the time to live window for remember me tokens 
+(in milliseconds).</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_remember_token_duration">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.security_configuration.SecurityConfiguration-class.html#get_session_idle_timeout_length" class="summary-sig-name">get_session_idle_timeout_length</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Gets the idle timeout length for sessions (in milliseconds).</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_session_idle_timeout_length">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.security_configuration.SecurityConfiguration-class.html#get_session_absolute_timeout_length" class="summary-sig-name">get_session_absolute_timeout_length</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Gets the absolute timeout length for sessions (in milliseconds).</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_session_absolute_timeout_length">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.security_configuration.SecurityConfiguration-class.html#get_log_encoding_required" class="summary-sig-name">get_log_encoding_required</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Returns whether HTML entity encoding should be applied to log entries.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_log_encoding_required">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.security_configuration.SecurityConfiguration-class.html#get_log_filename" class="summary-sig-name">get_log_filename</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Get the name of the log file specified in the ESAPI configuration 
+properties file.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_log_filename">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.security_configuration.SecurityConfiguration-class.html#get_max_log_filesize" class="summary-sig-name">get_max_log_filesize</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Get the maximum size of a single log file from the ESAPI configuration 
+properties file.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_max_log_filesize">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_working_directory"></a><span class="summary-sig-name">get_working_directory</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Returns the default working directory for executing native processes 
+with Runtime.exec().</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_working_directory">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="get_application_name"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_application_name</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_application_name">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  Gets the application name, used for logging
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd>the name of the current application</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_master_key"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_master_key</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_master_key">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  Gets the master key. This password is used to encrypt/decrypt other 
+files or types of data that need to be protected by your application.
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd>the current master key</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_upload_directory"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_upload_directory</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_upload_directory">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  Retrieves the default upload directory declared in the ESAPI 
+properties file.
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd>the default upload directory declared in the ESAPI 
+        properties file</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_encryption_key_length"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_encryption_key_length</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_encryption_key_length">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  Gets the key length to use in cryptographic operations declared in the 
+ESAPI properties file.
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd>the key length.</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_master_salt"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_master_salt</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_master_salt">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  Gets the master salt that is used to salt stored password hashes and 
+any other location where a salt is needed.
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd>the current master salt</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_allowed_executables"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_allowed_executables</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_allowed_executables">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  Gets the allowed executables to run with the Executor.
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd>a list of the current allowed file extensions</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_allowed_file_extensions"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_allowed_file_extensions</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_allowed_file_extensions">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  Gets the allowed file extensions for files that are uploaded to this 
+application.
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd>a list of the current allowed file extensions</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_allowed_file_upload_size"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_allowed_file_upload_size</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_allowed_file_upload_size">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  Gets the maximum allowed file upload size.
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd>the current allowed file upload size</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_password_parameter_name"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_password_parameter_name</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_password_parameter_name">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  Gets the name of the password parameter used during user 
+authentication.
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd>the name of the password parameter</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_username_parameter_name"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_username_parameter_name</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_username_parameter_name">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  Gets the name of the username parameter used during user 
+authentication.
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd>the name of the username parameter</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_encryption_algorithm"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_encryption_algorithm</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_encryption_algorithm">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  Gets the encryption algorithm used by ESAPI to protect data.
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd>the current encryption algorithm</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_hash_algorithm"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_hash_algorithm</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_hash_algorithm">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  Gets the hashing algorithm used by ESAPI to hash data.
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd>the current hashing algorithm</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_hash_iterations"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_hash_iterations</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_hash_iterations">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  Gets the hash iterations used by ESAPI to hash data.
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd>the current hashing algorithm</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_character_encoding"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_character_encoding</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_character_encoding">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  Gets the character encoding scheme supported by this application. This 
+is used to set the character encoding scheme on requests and responses 
+when setCharacterEncoding() is called on SafeRequests and 
+SafeResponses. This scheme is also used for encoding/decoding URLs and 
+any other place where the current encoding scheme needs to be known.
+<br><br>
+Note: This does not get the configured response content type. That is 
+accessed by calling
+getResponseContentType().
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd>the current character encoding scheme</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_digital_signature_algorithm"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_digital_signature_algorithm</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_digital_signature_algorithm">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  Gets the digital signature algorithm used by ESAPI to generate and 
+verify signatures.
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd>the current digital signature algorithm</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_digital_signature_key_length"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_digital_signature_key_length</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_digital_signature_key_length">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  Gets the digital signature key length used by ESAPI to generate and 
+verify signatures.
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd>the current digital signature key length</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_digital_signature_key"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_digital_signature_key</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_digital_signature_key">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  Gets the object associated with the digital signing keypair.
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd>the object of the keypair</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_allowed_login_attempts"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_allowed_login_attempts</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_allowed_login_attempts">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  Gets the number of login attempts allowed before the user's account is 
+locked. If this many failures are detected within the alloted time 
+period, the user's account will be locked.
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd>the number of failed login attempts that cause an account to be locked</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_max_old_password_hashes"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_max_old_password_hashes</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_max_old_password_hashes">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  Gets the maximum number of old password hashes that should be retained. 
+These hashes can be used to ensure that the user doesn't reuse the 
+specified number of previous passwords when they change their password.
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd>the number of old hashed passwords to retain</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_quota"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_quota</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">event_name</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_quota">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  Gets the intrusion detection quota for the specified event.
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>event_name</code></strong> - the name of the event whose quota is desired</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>the Quota that has been configured for the specified type of 
+        event</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_resource_file"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_resource_file</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">filename</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_resource_file">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  Gets a file from the resource directory
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>filename</code></strong></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_force_http_only"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_force_http_only</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_force_http_only">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  Forces new cookie headers with HttpOnly on first and second responses
+in public HttpSession esapi.filters.SafeRequest.getSession() and
+esapi.filters.getSession(boolean create)
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_resource_stream"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_resource_stream</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">filename</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_resource_stream">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  Gets an InputStream to a file in the resource directory
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>filename</code></strong></li>
+    </ul></dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'>IOException</strong></code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="set_resource_directory"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">set_resource_directory</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">directory</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.set_resource_directory">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  Sets the ESAPI resource directory.
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>directory</code></strong> - The location of the resource directory.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_response_content_type"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_response_content_type</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_response_content_type">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  Gets the content type for responses used when setSafeContentType() is 
+called.
+<br><br>
+Note: This does not get the configured character encoding scheme. That 
+is accessed by calling getCharacterEncoding().
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd>The current content-type set for responses.</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_remember_token_duration"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_remember_token_duration</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_remember_token_duration">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  Gets the length of the time to live window for remember me tokens 
+(in milliseconds).
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd>The time to live length for generated remember me tokens.</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_session_idle_timeout_length"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_session_idle_timeout_length</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_session_idle_timeout_length">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  Gets the idle timeout length for sessions (in milliseconds). This is 
+the amount of time that a session can live before it expires due to 
+lack of activity. Applications or frameworks could provide a 
+reauthenticate function that enables a session to continue after 
+reauthentication.
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd>The session idle timeout length.</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_session_absolute_timeout_length"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_session_absolute_timeout_length</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_session_absolute_timeout_length">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  Gets the absolute timeout length for sessions (in milliseconds). This 
+is the amount of time that a session can live before it expires 
+regardless of the amount of user activity. Applications or frameworks 
+could provide a reauthenticate function that enables a session to 
+continue after reauthentication.
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd>The session absolute timeout length.</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_log_encoding_required"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_log_encoding_required</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_log_encoding_required">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  Returns whether HTML entity encoding should be applied to log entries.
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd>True if log entries are to be HTML Entity encoded. False 
+otherwise.</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_log_filename"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_log_filename</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_log_filename">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  Get the name of the log file specified in the ESAPI configuration 
+properties file. Return a default value if it is not specified.
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd>the log file name defined in the properties file.</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_max_log_filesize"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_max_log_filesize</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_max_log_filesize">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  Get the maximum size of a single log file from the ESAPI configuration 
+properties file. Return a default value if it is not specified. Once 
+the log hits this file size, it will roll over into a new log.
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd>the maximum size of a single log file (in bytes).</dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="esapi-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Wed Jun 24 17:08:25 2009
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

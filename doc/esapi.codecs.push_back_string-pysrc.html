@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>esapi.codecs.push_back_string</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="esapi-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="esapi-module.html">Package&nbsp;esapi</a> ::
+        <a href="esapi.codecs-module.html">Package&nbsp;codecs</a> ::
+        Module&nbsp;push_back_string
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="esapi.codecs.push_back_string-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="esapi.codecs.push_back_string-module.html">Module esapi.codecs.push_back_string</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment">#!/usr/bin/python</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: utf-8 -*-</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-docstring">OWASP Enterprise Security API (ESAPI)</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-docstring"> </tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-docstring">This file is part of the Open Web Application Security Project (OWASP)</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-docstring">Enterprise Security API (ESAPI) project. For details, please see</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-docstring">&lt;a href="http://www.owasp.org/index.php/ESAPI"&gt;http://www.owasp.org/index.php/ESAPI&lt;/a&gt;.</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-docstring">Copyright (c) 2009 - The OWASP Foundation</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-docstring">The ESAPI is published by OWASP under the BSD license. You should read and </tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-docstring">accept the LICENSE before you use, modify, and/or redistribute this software.</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt class="py-docstring">@author Craig Younkins (craig.younkins@owasp.org)</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"> </tt>
+<a name="is_hex_digit"></a><div id="is_hex_digit-def"><a name="L18"></a><tt class="py-lineno"> 18</tt> <a class="py-toggle" href="#" id="is_hex_digit-toggle" onclick="return toggle('is_hex_digit');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.codecs.push_back_string-module.html#is_hex_digit">is_hex_digit</a><tt class="py-op">(</tt><tt class="py-param">char</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="is_hex_digit-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="is_hex_digit-expanded"><a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"><tt class="py-docstring">    Returns true if the parameter character is a hexadecimal digit 0</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"><tt class="py-docstring">    through 9, a through f, or A through F.</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">char</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt>  </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">False</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-op">(</tt><tt class="py-op">(</tt> <tt class="py-string">'0'</tt> <tt class="py-op">&lt;=</tt> <tt class="py-name">char</tt> <tt class="py-op">&lt;=</tt> <tt class="py-string">'9'</tt><tt class="py-op">)</tt> <tt class="py-keyword">or</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line">            <tt class="py-op">(</tt> <tt class="py-string">'a'</tt> <tt class="py-op">&lt;=</tt> <tt class="py-name">char</tt> <tt class="py-op">&lt;=</tt> <tt class="py-string">'f'</tt><tt class="py-op">)</tt> <tt class="py-keyword">or</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line">            <tt class="py-op">(</tt> <tt class="py-string">'A'</tt> <tt class="py-op">&lt;=</tt> <tt class="py-name">char</tt> <tt class="py-op">&lt;=</tt> <tt class="py-string">'F'</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line">            </tt>
+<a name="is_octal_digit"></a><div id="is_octal_digit-def"><a name="L29"></a><tt class="py-lineno"> 29</tt> <a class="py-toggle" href="#" id="is_octal_digit-toggle" onclick="return toggle('is_octal_digit');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.codecs.push_back_string-module.html#is_octal_digit">is_octal_digit</a><tt class="py-op">(</tt><tt class="py-param">char</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="is_octal_digit-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="is_octal_digit-expanded"><a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line"><tt class="py-docstring">    Returns true if the parameter character is an octal digit between</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"><tt class="py-docstring">    0 through 7.</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">char</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt>  </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">False</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-string">'0'</tt> <tt class="py-op">&lt;=</tt> <tt class="py-name">char</tt> <tt class="py-op">&lt;=</tt> <tt class="py-string">'7'</tt> </tt>
+</div><a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line"> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line"> </tt>
+<a name="PushbackString"></a><div id="PushbackString-def"><a name="L39"></a><tt class="py-lineno"> 39</tt> <a class="py-toggle" href="#" id="PushbackString-toggle" onclick="return toggle('PushbackString');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="esapi.codecs.push_back_string.PushbackString-class.html">PushbackString</a><tt class="py-op">:</tt> </tt>
+</div><div id="PushbackString-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="PushbackString-expanded"><a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line"><tt class="py-docstring">    The pushback string is used by Codecs to allow them to push decoded </tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line"><tt class="py-docstring">    characters back onto a string for further decoding. This is necessary to </tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line"><tt class="py-docstring">    detect double-encoding.</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line"> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">    <tt id="link-0" class="py-name" targets="Variable esapi.codecs.push_back_string.PushbackString._input=esapi.codecs.push_back_string.PushbackString-class.html#_input"><a title="esapi.codecs.push_back_string.PushbackString._input" class="py-name" href="#" onclick="return doclink('link-0', '_input', 'link-0');">_input</a></tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line">    <tt id="link-1" class="py-name" targets="Variable esapi.codecs.push_back_string.PushbackString._pushback=esapi.codecs.push_back_string.PushbackString-class.html#_pushback"><a title="esapi.codecs.push_back_string.PushbackString._pushback" class="py-name" href="#" onclick="return doclink('link-1', '_pushback', 'link-1');">_pushback</a></tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line">    <tt id="link-2" class="py-name" targets="Variable esapi.codecs.push_back_string.PushbackString._temp=esapi.codecs.push_back_string.PushbackString-class.html#_temp"><a title="esapi.codecs.push_back_string.PushbackString._temp" class="py-name" href="#" onclick="return doclink('link-2', '_temp', 'link-2');">_temp</a></tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">    <tt id="link-3" class="py-name" targets="Variable esapi.codecs.push_back_string.PushbackString._index=esapi.codecs.push_back_string.PushbackString-class.html#_index"><a title="esapi.codecs.push_back_string.PushbackString._index" class="py-name" href="#" onclick="return doclink('link-3', '_index', 'link-3');">_index</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">    <tt id="link-4" class="py-name" targets="Variable esapi.codecs.push_back_string.PushbackString._mark=esapi.codecs.push_back_string.PushbackString-class.html#_mark"><a title="esapi.codecs.push_back_string.PushbackString._mark" class="py-name" href="#" onclick="return doclink('link-4', '_mark', 'link-4');">_mark</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line"> </tt>
+<a name="PushbackString.__init__"></a><div id="PushbackString.__init__-def"><a name="L52"></a><tt class="py-lineno"> 52</tt> <a class="py-toggle" href="#" id="PushbackString.__init__-toggle" onclick="return toggle('PushbackString.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.codecs.push_back_string.PushbackString-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">input_</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="PushbackString.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="PushbackString.__init__-expanded"><a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-5" class="py-name"><a title="esapi.codecs.push_back_string.PushbackString._input" class="py-name" href="#" onclick="return doclink('link-5', '_input', 'link-0');">_input</a></tt> <tt class="py-op">=</tt> <tt class="py-name">input_</tt> </tt>
+</div><a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line">     </tt>
+<a name="PushbackString.pushback"></a><div id="PushbackString.pushback-def"><a name="L55"></a><tt class="py-lineno"> 55</tt> <a class="py-toggle" href="#" id="PushbackString.pushback-toggle" onclick="return toggle('PushbackString.pushback');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.codecs.push_back_string.PushbackString-class.html#pushback">pushback</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">char</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="PushbackString.pushback-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="PushbackString.pushback-expanded"><a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line"><tt class="py-docstring">        Set a character for pushback.</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-6" class="py-name"><a title="esapi.codecs.push_back_string.PushbackString._pushback" class="py-name" href="#" onclick="return doclink('link-6', '_pushback', 'link-1');">_pushback</a></tt> <tt class="py-op">=</tt> <tt class="py-name">char</tt> </tt>
+</div><a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">         </tt>
+<a name="PushbackString.index"></a><div id="PushbackString.index-def"><a name="L61"></a><tt class="py-lineno"> 61</tt> <a class="py-toggle" href="#" id="PushbackString.index-toggle" onclick="return toggle('PushbackString.index');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.codecs.push_back_string.PushbackString-class.html#index">index</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="PushbackString.index-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="PushbackString.index-expanded"><a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line"><tt class="py-docstring">        Get the current index of the PushbackString. Typically used in error</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line"><tt class="py-docstring">        messages.</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-7" class="py-name"><a title="esapi.codecs.push_back_string.PushbackString._index" class="py-name" href="#" onclick="return doclink('link-7', '_index', 'link-3');">_index</a></tt> </tt>
+</div><a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">         </tt>
+<a name="PushbackString.has_next"></a><div id="PushbackString.has_next-def"><a name="L68"></a><tt class="py-lineno"> 68</tt> <a class="py-toggle" href="#" id="PushbackString.has_next-toggle" onclick="return toggle('PushbackString.has_next');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.codecs.push_back_string.PushbackString-class.html#has_next">has_next</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="PushbackString.has_next-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="PushbackString.has_next-expanded"><a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line"><tt class="py-docstring">        Returns True if there is another character accesible by next(), False</tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line"><tt class="py-docstring">        if not.</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-8" class="py-name"><a title="esapi.codecs.push_back_string.PushbackString._pushback" class="py-name" href="#" onclick="return doclink('link-8', '_pushback', 'link-1');">_pushback</a></tt> <tt class="py-keyword">is</tt> <tt class="py-keyword">not</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt>  </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">True</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-9" class="py-name"><a title="esapi.codecs.push_back_string.PushbackString._input" class="py-name" href="#" onclick="return doclink('link-9', '_input', 'link-0');">_input</a></tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt>  </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">False</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-10" class="py-name"><a title="esapi.codecs.push_back_string.PushbackString._input" class="py-name" href="#" onclick="return doclink('link-10', '_input', 'link-0');">_input</a></tt><tt class="py-op">)</tt> <tt class="py-op">==</tt> <tt class="py-number">0</tt><tt class="py-op">:</tt>  </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">False</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-11" class="py-name"><a title="esapi.codecs.push_back_string.PushbackString._index" class="py-name" href="#" onclick="return doclink('link-11', '_index', 'link-3');">_index</a></tt> <tt class="py-op">&gt;=</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-12" class="py-name"><a title="esapi.codecs.push_back_string.PushbackString._input" class="py-name" href="#" onclick="return doclink('link-12', '_input', 'link-0');">_input</a></tt><tt class="py-op">)</tt><tt class="py-op">:</tt>  </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">False</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">True</tt> </tt>
+</div><a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">     </tt>
+<a name="PushbackString.next"></a><div id="PushbackString.next-def"><a name="L83"></a><tt class="py-lineno"> 83</tt> <a class="py-toggle" href="#" id="PushbackString.next-toggle" onclick="return toggle('PushbackString.next');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.codecs.push_back_string.PushbackString-class.html#next">next</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="PushbackString.next-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="PushbackString.next-expanded"><a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line"><tt class="py-docstring">        Retrieves the next character in the string, according to the current </tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line"><tt class="py-docstring">        index.</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-13" class="py-name"><a title="esapi.codecs.push_back_string.PushbackString._pushback" class="py-name" href="#" onclick="return doclink('link-13', '_pushback', 'link-1');">_pushback</a></tt> <tt class="py-keyword">is</tt> <tt class="py-keyword">not</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">            <tt class="py-name">save</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-14" class="py-name"><a title="esapi.codecs.push_back_string.PushbackString._pushback" class="py-name" href="#" onclick="return doclink('link-14', '_pushback', 'link-1');">_pushback</a></tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-15" class="py-name"><a title="esapi.codecs.push_back_string.PushbackString._pushback" class="py-name" href="#" onclick="return doclink('link-15', '_pushback', 'link-1');">_pushback</a></tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">save</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">         </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-16" class="py-name"><a title="esapi.codecs.push_back_string.PushbackString._input" class="py-name" href="#" onclick="return doclink('link-16', '_input', 'link-0');">_input</a></tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt>  </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">None</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-17" class="py-name"><a title="esapi.codecs.push_back_string.PushbackString._input" class="py-name" href="#" onclick="return doclink('link-17', '_input', 'link-0');">_input</a></tt><tt class="py-op">)</tt> <tt class="py-op">==</tt> <tt class="py-number">0</tt><tt class="py-op">:</tt>  </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">None</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-18" class="py-name"><a title="esapi.codecs.push_back_string.PushbackString._index" class="py-name" href="#" onclick="return doclink('link-18', '_index', 'link-3');">_index</a></tt> <tt class="py-op">&gt;=</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-19" class="py-name"><a title="esapi.codecs.push_back_string.PushbackString._input" class="py-name" href="#" onclick="return doclink('link-19', '_input', 'link-0');">_input</a></tt><tt class="py-op">)</tt><tt class="py-op">:</tt>  </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">None</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">        <tt class="py-name">ret</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-20" class="py-name"><a title="esapi.codecs.push_back_string.PushbackString._input" class="py-name" href="#" onclick="return doclink('link-20', '_input', 'link-0');">_input</a></tt><tt class="py-op">[</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-21" class="py-name"><a title="esapi.codecs.push_back_string.PushbackString._index" class="py-name" href="#" onclick="return doclink('link-21', '_index', 'link-3');">_index</a></tt><tt class="py-op">]</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-22" class="py-name"><a title="esapi.codecs.push_back_string.PushbackString._index" class="py-name" href="#" onclick="return doclink('link-22', '_index', 'link-3');">_index</a></tt> <tt class="py-op">+=</tt> <tt class="py-number">1</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">ret</tt> </tt>
+</div><a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">         </tt>
+<a name="PushbackString.next_hex"></a><div id="PushbackString.next_hex-def"><a name="L103"></a><tt class="py-lineno">103</tt> <a class="py-toggle" href="#" id="PushbackString.next_hex-toggle" onclick="return toggle('PushbackString.next_hex');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.codecs.push_back_string.PushbackString-class.html#next_hex">next_hex</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="PushbackString.next_hex-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="PushbackString.next_hex-expanded"><a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line"><tt class="py-docstring">        Returns the next character if and only if it is a hex character.</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">        <tt class="py-name">next_char</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-23" class="py-name" targets="Method esapi.codecs.push_back_string.PushbackString.next()=esapi.codecs.push_back_string.PushbackString-class.html#next"><a title="esapi.codecs.push_back_string.PushbackString.next" class="py-name" href="#" onclick="return doclink('link-23', 'next', 'link-23');">next</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">next_char</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt>  </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">None</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt id="link-24" class="py-name" targets="Function esapi.codecs.push_back_string.is_hex_digit()=esapi.codecs.push_back_string-module.html#is_hex_digit"><a title="esapi.codecs.push_back_string.is_hex_digit" class="py-name" href="#" onclick="return doclink('link-24', 'is_hex_digit', 'link-24');">is_hex_digit</a></tt><tt class="py-op">(</tt><tt class="py-name">next_char</tt><tt class="py-op">)</tt><tt class="py-op">:</tt>  </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">next_char</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">None</tt> </tt>
+</div><a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">         </tt>
+<a name="PushbackString.next_octal"></a><div id="PushbackString.next_octal-def"><a name="L114"></a><tt class="py-lineno">114</tt> <a class="py-toggle" href="#" id="PushbackString.next_octal-toggle" onclick="return toggle('PushbackString.next_octal');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.codecs.push_back_string.PushbackString-class.html#next_octal">next_octal</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="PushbackString.next_octal-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="PushbackString.next_octal-expanded"><a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line"><tt class="py-docstring">        Returns the next character if and only if it is an octal character.</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">        <tt class="py-name">next_char</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-25" class="py-name"><a title="esapi.codecs.push_back_string.PushbackString.next" class="py-name" href="#" onclick="return doclink('link-25', 'next', 'link-23');">next</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">next_char</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt>  </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">None</tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt id="link-26" class="py-name" targets="Function esapi.codecs.push_back_string.is_octal_digit()=esapi.codecs.push_back_string-module.html#is_octal_digit"><a title="esapi.codecs.push_back_string.is_octal_digit" class="py-name" href="#" onclick="return doclink('link-26', 'is_octal_digit', 'link-26');">is_octal_digit</a></tt><tt class="py-op">(</tt><tt class="py-name">next_char</tt><tt class="py-op">)</tt><tt class="py-op">:</tt>  </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">next_char</tt> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">None</tt> </tt>
+</div><a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line">         </tt>
+<a name="PushbackString.peek"></a><div id="PushbackString.peek-def"><a name="L125"></a><tt class="py-lineno">125</tt> <a class="py-toggle" href="#" id="PushbackString.peek-toggle" onclick="return toggle('PushbackString.peek');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.codecs.push_back_string.PushbackString-class.html#peek">peek</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">test_char</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="PushbackString.peek-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="PushbackString.peek-expanded"><a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line"><tt class="py-docstring">        Returns the next character without advancing the index.</tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">test_char</tt><tt class="py-op">:</tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-27" class="py-name"><a title="esapi.codecs.push_back_string.PushbackString._pushback" class="py-name" href="#" onclick="return doclink('link-27', '_pushback', 'link-1');">_pushback</a></tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt> <tt class="py-keyword">and</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-28" class="py-name"><a title="esapi.codecs.push_back_string.PushbackString._pushback" class="py-name" href="#" onclick="return doclink('link-28', '_pushback', 'link-1');">_pushback</a></tt> <tt class="py-op">==</tt> <tt class="py-name">test_char</tt><tt class="py-op">:</tt>  </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">True</tt> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-29" class="py-name"><a title="esapi.codecs.push_back_string.PushbackString._input" class="py-name" href="#" onclick="return doclink('link-29', '_input', 'link-0');">_input</a></tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt>  </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">False</tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-30" class="py-name"><a title="esapi.codecs.push_back_string.PushbackString._input" class="py-name" href="#" onclick="return doclink('link-30', '_input', 'link-0');">_input</a></tt><tt class="py-op">)</tt> <tt class="py-op">==</tt> <tt class="py-number">0</tt><tt class="py-op">:</tt>  </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">False</tt> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-31" class="py-name"><a title="esapi.codecs.push_back_string.PushbackString._index" class="py-name" href="#" onclick="return doclink('link-31', '_index', 'link-3');">_index</a></tt> <tt class="py-op">&gt;=</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-32" class="py-name"><a title="esapi.codecs.push_back_string.PushbackString._input" class="py-name" href="#" onclick="return doclink('link-32', '_input', 'link-0');">_input</a></tt><tt class="py-op">)</tt><tt class="py-op">:</tt>  </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">False</tt> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-33" class="py-name"><a title="esapi.codecs.push_back_string.PushbackString._input" class="py-name" href="#" onclick="return doclink('link-33', '_input', 'link-0');">_input</a></tt><tt class="py-op">[</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-34" class="py-name"><a title="esapi.codecs.push_back_string.PushbackString._index" class="py-name" href="#" onclick="return doclink('link-34', '_index', 'link-3');">_index</a></tt><tt class="py-op">]</tt> <tt class="py-op">==</tt> <tt class="py-name">test_char</tt> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line">             </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">test_char</tt><tt class="py-op">:</tt> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-35" class="py-name"><a title="esapi.codecs.push_back_string.PushbackString._pushback" class="py-name" href="#" onclick="return doclink('link-35', '_pushback', 'link-1');">_pushback</a></tt> <tt class="py-keyword">is</tt> <tt class="py-keyword">not</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt>  </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-36" class="py-name"><a title="esapi.codecs.push_back_string.PushbackString._pushback" class="py-name" href="#" onclick="return doclink('link-36', '_pushback', 'link-1');">_pushback</a></tt> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-37" class="py-name"><a title="esapi.codecs.push_back_string.PushbackString._input" class="py-name" href="#" onclick="return doclink('link-37', '_input', 'link-0');">_input</a></tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt>  </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">None</tt> </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-38" class="py-name"><a title="esapi.codecs.push_back_string.PushbackString._input" class="py-name" href="#" onclick="return doclink('link-38', '_input', 'link-0');">_input</a></tt><tt class="py-op">)</tt> <tt class="py-op">==</tt> <tt class="py-number">0</tt><tt class="py-op">:</tt>  </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">None</tt> </tt>
+<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-39" class="py-name"><a title="esapi.codecs.push_back_string.PushbackString._index" class="py-name" href="#" onclick="return doclink('link-39', '_index', 'link-3');">_index</a></tt> <tt class="py-op">&gt;=</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-40" class="py-name"><a title="esapi.codecs.push_back_string.PushbackString._input" class="py-name" href="#" onclick="return doclink('link-40', '_input', 'link-0');">_input</a></tt><tt class="py-op">)</tt><tt class="py-op">:</tt>  </tt>
+<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">None</tt> </tt>
+<a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line">             </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-41" class="py-name"><a title="esapi.codecs.push_back_string.PushbackString._input" class="py-name" href="#" onclick="return doclink('link-41', '_input', 'link-0');">_input</a></tt><tt class="py-op">[</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-42" class="py-name"><a title="esapi.codecs.push_back_string.PushbackString._index" class="py-name" href="#" onclick="return doclink('link-42', '_index', 'link-3');">_index</a></tt><tt class="py-op">]</tt> </tt>
+</div><a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line">             </tt>
+<a name="PushbackString.mark"></a><div id="PushbackString.mark-def"><a name="L152"></a><tt class="py-lineno">152</tt> <a class="py-toggle" href="#" id="PushbackString.mark-toggle" onclick="return toggle('PushbackString.mark');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.codecs.push_back_string.PushbackString-class.html#mark">mark</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="PushbackString.mark-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="PushbackString.mark-expanded"><a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line"><tt class="py-docstring">        Mark the current index, so we can reset() to it if need be.</tt> </tt>
+<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-43" class="py-name"><a title="esapi.codecs.push_back_string.PushbackString._temp" class="py-name" href="#" onclick="return doclink('link-43', '_temp', 'link-2');">_temp</a></tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-44" class="py-name"><a title="esapi.codecs.push_back_string.PushbackString._pushback" class="py-name" href="#" onclick="return doclink('link-44', '_pushback', 'link-1');">_pushback</a></tt> </tt>
+<a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-45" class="py-name"><a title="esapi.codecs.push_back_string.PushbackString._mark" class="py-name" href="#" onclick="return doclink('link-45', '_mark', 'link-4');">_mark</a></tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-46" class="py-name"><a title="esapi.codecs.push_back_string.PushbackString._index" class="py-name" href="#" onclick="return doclink('link-46', '_index', 'link-3');">_index</a></tt> </tt>
+</div><a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line">         </tt>
+<a name="PushbackString.reset"></a><div id="PushbackString.reset-def"><a name="L159"></a><tt class="py-lineno">159</tt> <a class="py-toggle" href="#" id="PushbackString.reset-toggle" onclick="return toggle('PushbackString.reset');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.codecs.push_back_string.PushbackString-class.html#reset">reset</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="PushbackString.reset-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="PushbackString.reset-expanded"><a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line"><tt class="py-docstring">        Return to the last mark.</tt> </tt>
+<a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-47" class="py-name"><a title="esapi.codecs.push_back_string.PushbackString._pushback" class="py-name" href="#" onclick="return doclink('link-47', '_pushback', 'link-1');">_pushback</a></tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-48" class="py-name"><a title="esapi.codecs.push_back_string.PushbackString._temp" class="py-name" href="#" onclick="return doclink('link-48', '_temp', 'link-2');">_temp</a></tt> </tt>
+<a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-49" class="py-name"><a title="esapi.codecs.push_back_string.PushbackString._index" class="py-name" href="#" onclick="return doclink('link-49', '_index', 'link-3');">_index</a></tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-50" class="py-name"><a title="esapi.codecs.push_back_string.PushbackString._mark" class="py-name" href="#" onclick="return doclink('link-50', '_mark', 'link-4');">_mark</a></tt> </tt>
+</div><a name="L165"></a><tt class="py-lineno">165</tt>  <tt class="py-line">         </tt>
+<a name="PushbackString.remainder"></a><div id="PushbackString.remainder-def"><a name="L166"></a><tt class="py-lineno">166</tt> <a class="py-toggle" href="#" id="PushbackString.remainder-toggle" onclick="return toggle('PushbackString.remainder');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.codecs.push_back_string.PushbackString-class.html#remainder">remainder</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="PushbackString.remainder-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="PushbackString.remainder-expanded"><a name="L167"></a><tt class="py-lineno">167</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L168"></a><tt class="py-lineno">168</tt>  <tt class="py-line"><tt class="py-docstring">        Get the remaining part of the string from the current index onward,</tt> </tt>
+<a name="L169"></a><tt class="py-lineno">169</tt>  <tt class="py-line"><tt class="py-docstring">        including a pushback if it exists.</tt> </tt>
+<a name="L170"></a><tt class="py-lineno">170</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L171"></a><tt class="py-lineno">171</tt>  <tt class="py-line">        <tt class="py-name">output</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-51" class="py-name"><a title="esapi.codecs.push_back_string.PushbackString._input" class="py-name" href="#" onclick="return doclink('link-51', '_input', 'link-0');">_input</a></tt><tt class="py-op">[</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-52" class="py-name"><a title="esapi.codecs.push_back_string.PushbackString._index" class="py-name" href="#" onclick="return doclink('link-52', '_index', 'link-3');">_index</a></tt><tt class="py-op">:</tt><tt class="py-op">]</tt> </tt>
+<a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-53" class="py-name"><a title="esapi.codecs.push_back_string.PushbackString._pushback" class="py-name" href="#" onclick="return doclink('link-53', '_pushback', 'link-1');">_pushback</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L173"></a><tt class="py-lineno">173</tt>  <tt class="py-line">            <tt class="py-name">output</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-54" class="py-name"><a title="esapi.codecs.push_back_string.PushbackString._pushback" class="py-name" href="#" onclick="return doclink('link-54', '_pushback', 'link-1');">_pushback</a></tt> <tt class="py-op">+</tt> <tt class="py-name">output</tt> </tt>
+<a name="L174"></a><tt class="py-lineno">174</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">output</tt> </tt>
+</div></div><a name="L175"></a><tt class="py-lineno">175</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="esapi-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Wed Jun 24 17:08:26 2009
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

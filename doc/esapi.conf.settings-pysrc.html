@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>esapi.conf.settings</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="esapi-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="esapi-module.html">Package&nbsp;esapi</a> ::
+        <a href="esapi.conf-module.html">Package&nbsp;conf</a> ::
+        Module&nbsp;settings
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="esapi.conf.settings-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="esapi.conf.settings-module.html">Module esapi.conf.settings</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment"># Properties file for OWASP Enterprise Security API (ESAPI)</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-comment"># You can find more information about ESAPI</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-comment"># http://www.owasp.org/index.php/ESAPI</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-comment"># WARNING: THIS FILE SHOULD ONLY CONTAIN SAFE DEFAULTS!!!!!</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-comment"># TO CUSTOMIZE THIS FILE FOR YOUR INSTALLATION, SEE 'settings_local.template'</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-comment"># SETTINGS DEFINED IN 'settings_local.py' WILL OVERRIDE THESE DEFAULTS!</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-comment"># WARNING: Operating system protection should be used to lock down the conf</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-comment"># resources directory and all the files inside.  Note that if you are using file-based</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-comment"># implementations that some files may need to be read-write as they get</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-comment"># updated dynamically.</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"><tt class="py-comment"># Before using, be sure to update the MasterKey and MasterSalt as described below.</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"><tt class="py-comment">#===========================================================================</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt class="py-comment"># ESAPI Configuration</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"><tt class="py-comment"># ESAPI is designed to be easily extensible. You can use the reference implementation</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"><tt class="py-comment"># or implement your own providers to take advantage of your enterprise's security</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"><tt class="py-comment"># infrastructure. The functions in ESAPI are referenced using the ESAPI locator, like:</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"><tt class="py-comment">#      ESAPI.encryptor().encrypt( "Secret message" );</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"><tt class="py-comment"># Below you can specify the classname for the provider that you wish to use in your</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line"><tt class="py-comment"># application. The only requirement is that it implement the appropriate ESAPI interface.</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line"><tt class="py-comment"># This allows you to switch security implementations in the future without rewriting the</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"><tt class="py-comment"># entire application.</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line"><tt class="py-comment"># DefaultAccessController requires ESAPI-AccessControlPolicy.xml in .esapi directory</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line"><tt id="link-0" class="py-name" targets="Variable esapi.conf.settings.ESAPI_AccessControl=esapi.conf.settings-module.html#ESAPI_AccessControl,Variable esapi.test.conf.settings.ESAPI_AccessControl=esapi.test.conf.settings-module.html#ESAPI_AccessControl"><a title="esapi.conf.settings.ESAPI_AccessControl
+esapi.test.conf.settings.ESAPI_AccessControl" class="py-name" href="#" onclick="return doclink('link-0', 'ESAPI_AccessControl', 'link-0');">ESAPI_AccessControl</a></tt> <tt class="py-op">=</tt> <tt class="py-docstring">'esapi.reference.accesscontrol.DefaultAccessController'</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"><tt class="py-comment"># FileBasedAuthenticator requires users.txt file in .esapi directory</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line"><tt id="link-1" class="py-name" targets="Variable esapi.conf.settings.ESAPI_Authenticator=esapi.conf.settings-module.html#ESAPI_Authenticator,Variable esapi.test.conf.settings.ESAPI_Authenticator=esapi.test.conf.settings-module.html#ESAPI_Authenticator"><a title="esapi.conf.settings.ESAPI_Authenticator
+esapi.test.conf.settings.ESAPI_Authenticator" class="py-name" href="#" onclick="return doclink('link-1', 'ESAPI_Authenticator', 'link-1');">ESAPI_Authenticator</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'esapi.reference.FileBasedAuthenticator'</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"><tt id="link-2" class="py-name" targets="Variable esapi.conf.settings.ESAPI_Encoder=esapi.conf.settings-module.html#ESAPI_Encoder,Variable esapi.test.conf.settings.ESAPI_Encoder=esapi.test.conf.settings-module.html#ESAPI_Encoder"><a title="esapi.conf.settings.ESAPI_Encoder
+esapi.test.conf.settings.ESAPI_Encoder" class="py-name" href="#" onclick="return doclink('link-2', 'ESAPI_Encoder', 'link-2');">ESAPI_Encoder</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'esapi.reference.default_encoder.DefaultEncoder'</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line"><tt id="link-3" class="py-name" targets="Variable esapi.conf.settings.ESAPI_Encryptor=esapi.conf.settings-module.html#ESAPI_Encryptor,Variable esapi.test.conf.settings.ESAPI_Encryptor=esapi.test.conf.settings-module.html#ESAPI_Encryptor"><a title="esapi.conf.settings.ESAPI_Encryptor
+esapi.test.conf.settings.ESAPI_Encryptor" class="py-name" href="#" onclick="return doclink('link-3', 'ESAPI_Encryptor', 'link-3');">ESAPI_Encryptor</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'esapi.reference.default_encryptor.DefaultEncryptor'</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line"><tt id="link-4" class="py-name" targets="Variable esapi.conf.settings.ESAPI_Executor=esapi.conf.settings-module.html#ESAPI_Executor,Variable esapi.test.conf.settings.ESAPI_Executor=esapi.test.conf.settings-module.html#ESAPI_Executor"><a title="esapi.conf.settings.ESAPI_Executor
+esapi.test.conf.settings.ESAPI_Executor" class="py-name" href="#" onclick="return doclink('link-4', 'ESAPI_Executor', 'link-4');">ESAPI_Executor</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'esapi.reference.DefaultExecutor'</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line"><tt id="link-5" class="py-name" targets="Variable esapi.conf.settings.ESAPI_HTTPUtilities=esapi.conf.settings-module.html#ESAPI_HTTPUtilities,Variable esapi.test.conf.settings.ESAPI_HTTPUtilities=esapi.test.conf.settings-module.html#ESAPI_HTTPUtilities"><a title="esapi.conf.settings.ESAPI_HTTPUtilities
+esapi.test.conf.settings.ESAPI_HTTPUtilities" class="py-name" href="#" onclick="return doclink('link-5', 'ESAPI_HTTPUtilities', 'link-5');">ESAPI_HTTPUtilities</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'esapi.reference.DefaultHTTPUtilities'</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line"><tt id="link-6" class="py-name" targets="Variable esapi.conf.settings.ESAPI_IntrusionDetector=esapi.conf.settings-module.html#ESAPI_IntrusionDetector,Variable esapi.test.conf.settings.ESAPI_IntrusionDetector=esapi.test.conf.settings-module.html#ESAPI_IntrusionDetector"><a title="esapi.conf.settings.ESAPI_IntrusionDetector
+esapi.test.conf.settings.ESAPI_IntrusionDetector" class="py-name" href="#" onclick="return doclink('link-6', 'ESAPI_IntrusionDetector', 'link-6');">ESAPI_IntrusionDetector</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'esapi.reference.DefaultIntrusionDetector'</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line"><tt id="link-7" class="py-name" targets="Variable esapi.conf.settings.ESAPI_Logger=esapi.conf.settings-module.html#ESAPI_Logger,Variable esapi.test.conf.settings.ESAPI_Logger=esapi.test.conf.settings-module.html#ESAPI_Logger"><a title="esapi.conf.settings.ESAPI_Logger
+esapi.test.conf.settings.ESAPI_Logger" class="py-name" href="#" onclick="return doclink('link-7', 'ESAPI_Logger', 'link-7');">ESAPI_Logger</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'esapi.reference.python_log_factory.PythonLogFactory'</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line"><tt id="link-8" class="py-name" targets="Variable esapi.conf.settings.ESAPI_Randomizer=esapi.conf.settings-module.html#ESAPI_Randomizer,Variable esapi.test.conf.settings.ESAPI_Randomizer=esapi.test.conf.settings-module.html#ESAPI_Randomizer"><a title="esapi.conf.settings.ESAPI_Randomizer
+esapi.test.conf.settings.ESAPI_Randomizer" class="py-name" href="#" onclick="return doclink('link-8', 'ESAPI_Randomizer', 'link-8');">ESAPI_Randomizer</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'esapi.reference.default_randomizer.DefaultRandomizer'</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line"><tt id="link-9" class="py-name" targets="Variable esapi.conf.settings.ESAPI_Validator=esapi.conf.settings-module.html#ESAPI_Validator,Variable esapi.test.conf.settings.ESAPI_Validator=esapi.test.conf.settings-module.html#ESAPI_Validator"><a title="esapi.conf.settings.ESAPI_Validator
+esapi.test.conf.settings.ESAPI_Validator" class="py-name" href="#" onclick="return doclink('link-9', 'ESAPI_Validator', 'link-9');">ESAPI_Validator</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'esapi.reference.DefaultValidator'</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line"> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line"><tt class="py-comment">#===========================================================================</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line"><tt class="py-comment"># ESAPI Authenticator</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line"><tt id="link-10" class="py-name" targets="Variable esapi.conf.settings.Authenticator_AllowedLoginAttempts=esapi.conf.settings-module.html#Authenticator_AllowedLoginAttempts,Variable esapi.test.conf.settings.Authenticator_AllowedLoginAttempts=esapi.test.conf.settings-module.html#Authenticator_AllowedLoginAttempts"><a title="esapi.conf.settings.Authenticator_AllowedLoginAttempts
+esapi.test.conf.settings.Authenticator_AllowedLoginAttempts" class="py-name" href="#" onclick="return doclink('link-10', 'Authenticator_AllowedLoginAttempts', 'link-10');">Authenticator_AllowedLoginAttempts</a></tt> <tt class="py-op">=</tt> <tt class="py-number">5</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line"><tt id="link-11" class="py-name" targets="Variable esapi.conf.settings.Authenticator_MaxOldPasswordHashes=esapi.conf.settings-module.html#Authenticator_MaxOldPasswordHashes,Variable esapi.test.conf.settings.Authenticator_MaxOldPasswordHashes=esapi.test.conf.settings-module.html#Authenticator_MaxOldPasswordHashes"><a title="esapi.conf.settings.Authenticator_MaxOldPasswordHashes
+esapi.test.conf.settings.Authenticator_MaxOldPasswordHashes" class="py-name" href="#" onclick="return doclink('link-11', 'Authenticator_MaxOldPasswordHashes', 'link-11');">Authenticator_MaxOldPasswordHashes</a></tt> <tt class="py-op">=</tt> <tt class="py-number">12</tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line"><tt id="link-12" class="py-name" targets="Variable esapi.conf.settings.Authenticator_UsernameParameterName=esapi.conf.settings-module.html#Authenticator_UsernameParameterName,Variable esapi.test.conf.settings.Authenticator_UsernameParameterName=esapi.test.conf.settings-module.html#Authenticator_UsernameParameterName"><a title="esapi.conf.settings.Authenticator_UsernameParameterName
+esapi.test.conf.settings.Authenticator_UsernameParameterName" class="py-name" href="#" onclick="return doclink('link-12', 'Authenticator_UsernameParameterName', 'link-12');">Authenticator_UsernameParameterName</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'username'</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line"><tt id="link-13" class="py-name" targets="Variable esapi.conf.settings.Authenticator_PasswordParameterName=esapi.conf.settings-module.html#Authenticator_PasswordParameterName,Variable esapi.test.conf.settings.Authenticator_PasswordParameterName=esapi.test.conf.settings-module.html#Authenticator_PasswordParameterName"><a title="esapi.conf.settings.Authenticator_PasswordParameterName
+esapi.test.conf.settings.Authenticator_PasswordParameterName" class="py-name" href="#" onclick="return doclink('link-13', 'Authenticator_PasswordParameterName', 'link-13');">Authenticator_PasswordParameterName</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'password'</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line"><tt class="py-comment"># RememberTokenDuration (in days)</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line"><tt id="link-14" class="py-name" targets="Variable esapi.conf.settings.Authenticator_RememberTokenDuration=esapi.conf.settings-module.html#Authenticator_RememberTokenDuration,Variable esapi.test.conf.settings.Authenticator_RememberTokenDuration=esapi.test.conf.settings-module.html#Authenticator_RememberTokenDuration"><a title="esapi.conf.settings.Authenticator_RememberTokenDuration
+esapi.test.conf.settings.Authenticator_RememberTokenDuration" class="py-name" href="#" onclick="return doclink('link-14', 'Authenticator_RememberTokenDuration', 'link-14');">Authenticator_RememberTokenDuration</a></tt> <tt class="py-op">=</tt> <tt class="py-number">14</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line"><tt class="py-comment"># Session Timeouts (in minutes)</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line"><tt id="link-15" class="py-name" targets="Variable esapi.conf.settings.Authenticator_IdleTimeoutDuration=esapi.conf.settings-module.html#Authenticator_IdleTimeoutDuration,Variable esapi.test.conf.settings.Authenticator_IdleTimeoutDuration=esapi.test.conf.settings-module.html#Authenticator_IdleTimeoutDuration"><a title="esapi.conf.settings.Authenticator_IdleTimeoutDuration
+esapi.test.conf.settings.Authenticator_IdleTimeoutDuration" class="py-name" href="#" onclick="return doclink('link-15', 'Authenticator_IdleTimeoutDuration', 'link-15');">Authenticator_IdleTimeoutDuration</a></tt> <tt class="py-op">=</tt> <tt class="py-number">20</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line"><tt id="link-16" class="py-name" targets="Variable esapi.conf.settings.Authenticator_AbsoluteTimeoutDuration=esapi.conf.settings-module.html#Authenticator_AbsoluteTimeoutDuration,Variable esapi.test.conf.settings.Authenticator_AbsoluteTimeoutDuration=esapi.test.conf.settings-module.html#Authenticator_AbsoluteTimeoutDuration"><a title="esapi.conf.settings.Authenticator_AbsoluteTimeoutDuration
+esapi.test.conf.settings.Authenticator_AbsoluteTimeoutDuration" class="py-name" href="#" onclick="return doclink('link-16', 'Authenticator_AbsoluteTimeoutDuration', 'link-16');">Authenticator_AbsoluteTimeoutDuration</a></tt> <tt class="py-op">=</tt> <tt class="py-number">20</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line"> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line"><tt class="py-comment">#===========================================================================</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line"><tt class="py-comment"># ESAPI Encryption</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line"><tt class="py-comment"># The ESAPI Encryptor provides basic cryptographic functions with a simplified API.</tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line"><tt class="py-comment"># To get started, generate a new key using java -classpath esapi.jar esapi.reference.JavaEncryptor</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line"><tt class="py-comment"># There is not currently any support for key rotation, so be careful when changing your key and salt as it</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line"><tt class="py-comment"># will invalidate all signed, encrypted, and hashed data.</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line"><tt class="py-comment"># WARNING: Not all combinations of algorithms and key lengths are supported.</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line"><tt class="py-comment"># If you choose to use a key length greater than 128 (and you should), you must download the</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line"><tt class="py-comment"># unlimited strength policy files and install in the lib directory of your JRE/JDK.</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line"><tt class="py-comment"># See http://java.sun.com/javase/downloads/index.jsp for more information.</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line"><tt id="link-17" class="py-name" targets="Variable esapi.conf.settings.Encryptor_MasterKey=esapi.conf.settings-module.html#Encryptor_MasterKey,Variable esapi.test.conf.settings.Encryptor_MasterKey=esapi.test.conf.settings-module.html#Encryptor_MasterKey"><a title="esapi.conf.settings.Encryptor_MasterKey
+esapi.test.conf.settings.Encryptor_MasterKey" class="py-name" href="#" onclick="return doclink('link-17', 'Encryptor_MasterKey', 'link-17');">Encryptor_MasterKey</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'pJhlri8JbuFYDgkqtHmm9s0Ziug2PE7ovZDyEPm4j14='</tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line"><tt id="link-18" class="py-name" targets="Variable esapi.conf.settings.Encryptor_MasterSalt=esapi.conf.settings-module.html#Encryptor_MasterSalt,Variable esapi.test.conf.settings.Encryptor_MasterSalt=esapi.test.conf.settings-module.html#Encryptor_MasterSalt"><a title="esapi.conf.settings.Encryptor_MasterSalt
+esapi.test.conf.settings.Encryptor_MasterSalt" class="py-name" href="#" onclick="return doclink('link-18', 'Encryptor_MasterSalt', 'link-18');">Encryptor_MasterSalt</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'SbftnvmEWD5ZHHP+pX3fqugNysc='</tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line"> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line"><tt class="py-comment"># AES is the most widely used and strongest encryption algorithm</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line"><tt id="link-19" class="py-name" targets="Variable esapi.conf.settings.Encryptor_EncryptionKeyLength=esapi.conf.settings-module.html#Encryptor_EncryptionKeyLength,Variable esapi.test.conf.settings.Encryptor_EncryptionKeyLength=esapi.test.conf.settings-module.html#Encryptor_EncryptionKeyLength"><a title="esapi.conf.settings.Encryptor_EncryptionKeyLength
+esapi.test.conf.settings.Encryptor_EncryptionKeyLength" class="py-name" href="#" onclick="return doclink('link-19', 'Encryptor_EncryptionKeyLength', 'link-19');">Encryptor_EncryptionKeyLength</a></tt> <tt class="py-op">=</tt> <tt class="py-number">256</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line"><tt id="link-20" class="py-name" targets="Variable esapi.conf.settings.Encryptor_EncryptionAlgorithm=esapi.conf.settings-module.html#Encryptor_EncryptionAlgorithm,Variable esapi.test.conf.settings.Encryptor_EncryptionAlgorithm=esapi.test.conf.settings-module.html#Encryptor_EncryptionAlgorithm"><a title="esapi.conf.settings.Encryptor_EncryptionAlgorithm
+esapi.test.conf.settings.Encryptor_EncryptionAlgorithm" class="py-name" href="#" onclick="return doclink('link-20', 'Encryptor_EncryptionAlgorithm', 'link-20');">Encryptor_EncryptionAlgorithm</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'AES'</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line"> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line"><tt class="py-comment"># Do not use DES except in a legacy situation</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line"><tt class="py-comment">#Encryptor_EncryptionKeyLength=56</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line"><tt class="py-comment">#Encryptor_EncryptionAlgorithm=DES</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line"> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line"><tt class="py-comment"># TripleDES is considered strong enough for most purposes</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line"><tt class="py-comment">#Encryptor_EncryptionKeyLength=168</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line"><tt class="py-comment">#Encryptor_EncryptionAlgorithm=DESede</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line"> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line"><tt id="link-21" class="py-name" targets="Variable esapi.conf.settings.Encryptor_HashAlgorithm=esapi.conf.settings-module.html#Encryptor_HashAlgorithm,Variable esapi.test.conf.settings.Encryptor_HashAlgorithm=esapi.test.conf.settings-module.html#Encryptor_HashAlgorithm"><a title="esapi.conf.settings.Encryptor_HashAlgorithm
+esapi.test.conf.settings.Encryptor_HashAlgorithm" class="py-name" href="#" onclick="return doclink('link-21', 'Encryptor_HashAlgorithm', 'link-21');">Encryptor_HashAlgorithm</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'SHA512'</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line"><tt id="link-22" class="py-name" targets="Variable esapi.conf.settings.Encryptor_HashIterations=esapi.conf.settings-module.html#Encryptor_HashIterations,Variable esapi.test.conf.settings.Encryptor_HashIterations=esapi.test.conf.settings-module.html#Encryptor_HashIterations"><a title="esapi.conf.settings.Encryptor_HashIterations
+esapi.test.conf.settings.Encryptor_HashIterations" class="py-name" href="#" onclick="return doclink('link-22', 'Encryptor_HashIterations', 'link-22');">Encryptor_HashIterations</a></tt> <tt class="py-op">=</tt> <tt class="py-number">1024</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line"><tt id="link-23" class="py-name" targets="Variable esapi.conf.settings.Encryptor_DigitalSignatureMasterKey=esapi.conf.settings-module.html#Encryptor_DigitalSignatureMasterKey,Variable esapi.test.conf.settings.Encryptor_DigitalSignatureMasterKey=esapi.test.conf.settings-module.html#Encryptor_DigitalSignatureMasterKey"><a title="esapi.conf.settings.Encryptor_DigitalSignatureMasterKey
+esapi.test.conf.settings.Encryptor_DigitalSignatureMasterKey" class="py-name" href="#" onclick="return doclink('link-23', 'Encryptor_DigitalSignatureMasterKey', 'link-23');">Encryptor_DigitalSignatureMasterKey</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'KGlDcnlwdG8uUHVibGljS2V5LkRTQQpEU0FvYmoKcDAKKGRwMgpTJ3EnCnAzCkw5MDc3OTYyMjQyNjY4NDY3NTIwNTE3NjA1NDAzNTY5Nzg4MTMwMDEzMDExODc3MjlMCnNTJ3AnCnA0Ckw4OTg4NDY1Njc0MzExNTc5NTQzMzI3NjI2OTM4NTcwMjczOTc3MzM3NDcwNTk0ODc4MDA5ODY1NzU4NjY0OTk0NTYwNTU0NDgyODk1ODM1ODIzMjI1Mjc4NDI5NDA3MjM4NzIwODA2MDA5NDY0NzU4MTA2NDkwMzY1MDA5MzY2MjAwMzI1MTk0NzE3OTM2ODA3MzUzMDMzNjE0MjA5NjEzOTQ1NzEyMzQyNjYyNTE2NTgxNTIxMTI0MjcxNjA4NTA2MTU0NjU3NjA3MDU0NDAxODQ1MDgxNTI1Mjk1NTg5Nzk4Mjc4MjU5NDgwOTA5OTM2MDQyMDIxMjcwNzk5MDc4MDAzNTIxMTYwODY5MjY2ODQxNzA2OTQ4NzM0Mjc1NTI1MDg0MzMyODQ3NzQyNjY2Mjg5MUwKc1MneScKcDUKTDc5NDcwOTg5MTY5Njk0MDAxOTAxNDQxOTgzMzQ0MjUwNTQ1MzYyMjMzOTU1NTEyNTM3OTc4Njg5MzI2MDM5NjA0NjMzNTg3OTg4NDcxMzE4OTQ4NDIxNTUzNTc2OTEzNzUzNTgyMjcxMjc2NTYzNjI2OTI1MTY0MzA2MTI3NDQ5MjQ5OTAwMjExMDYzNDkyMjc2NTgwMDUyMzcwMTM0ODY1MjExMDA3MzcxMDIxMjYwMDM5NTU0OTEwNTQwMjU4NjUyMzI1MDMxMzI3MDY2OTE5MjQzOTYyNzg1MTczODc0OTA4MjM4ODcyMDI1MDkzNTg5MDA3MDg0NTM0ODc3MjIyNDA2MTcyNTE2MjYzODMwNzU5MzU3MTE3NTI5NDk1NDkyNDkyNzMxMTY0NDQzMTY5NDQ3TApzUydnJwpwNgpMMTYxMzUxODk2MjE3MjY1NzQ1NzAwNTQ0ODM4MjExMjQ3ODE5NTE2MzMyNDk1MzEwNjk3MzAxNTQ5MzE2NDAyNzE3MDE3MDEwODM0NDUzOTQzOTYwOTIzNjMwNzI2MTA1MjcwNDc2MzU0ODY5NDMzNzI3NDg3OTc2Mzg0NzY1NjAwMzI5MDQ5NzM3NjMzNTAzNzEzODU4ODEzMzE0OTQ2MzQ3MDkwOTQ3MDg4NDQ0NjE4ODg2OTcyMjcyNDI2ODQ1NjkwNzk0OTIxNDg5NjcwMDExMTg2ODgwMTkyNTQ2OTE4NTI0MDYwMzk3MTYxMDExMzIzNjEyNzgzNjUzMDk1MjI5MDM0NTUzODA4Mjk5MDIxOTc5MTkyMjYyMzIxNDgzNzYxMDU0MjI3MDc3NjAxOTgwNzRMCnNTJ3gnCnA3Ckw3OTE5MzAyOTA4NjI2MTI0MTk5NTk0ODE5NDg0MDc5MDI4MjcyODA0MDg5OTY1NjVMCnNiLg=='</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line"><tt id="link-24" class="py-name" targets="Variable esapi.conf.settings.Encryptor_DigitalSignatureAlgorithm=esapi.conf.settings-module.html#Encryptor_DigitalSignatureAlgorithm,Variable esapi.test.conf.settings.Encryptor_DigitalSignatureAlgorithm=esapi.test.conf.settings-module.html#Encryptor_DigitalSignatureAlgorithm"><a title="esapi.conf.settings.Encryptor_DigitalSignatureAlgorithm
+esapi.test.conf.settings.Encryptor_DigitalSignatureAlgorithm" class="py-name" href="#" onclick="return doclink('link-24', 'Encryptor_DigitalSignatureAlgorithm', 'link-24');">Encryptor_DigitalSignatureAlgorithm</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'SHAwithDSA'</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line"><tt id="link-25" class="py-name" targets="Variable esapi.conf.settings.Encryptor_DigitalSignatureKeyLength=esapi.conf.settings-module.html#Encryptor_DigitalSignatureKeyLength,Variable esapi.test.conf.settings.Encryptor_DigitalSignatureKeyLength=esapi.test.conf.settings-module.html#Encryptor_DigitalSignatureKeyLength"><a title="esapi.conf.settings.Encryptor_DigitalSignatureKeyLength
+esapi.test.conf.settings.Encryptor_DigitalSignatureKeyLength" class="py-name" href="#" onclick="return doclink('link-25', 'Encryptor_DigitalSignatureKeyLength', 'link-25');">Encryptor_DigitalSignatureKeyLength</a></tt> <tt class="py-op">=</tt> <tt class="py-number">1024</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line"><tt class="py-comment">#Encryptor_RandomAlgorithm = 'SHA1PRNG'</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line"><tt id="link-26" class="py-name" targets="Variable esapi.conf.settings.Encryptor_CharacterEncoding=esapi.conf.settings-module.html#Encryptor_CharacterEncoding,Variable esapi.test.conf.settings.Encryptor_CharacterEncoding=esapi.test.conf.settings-module.html#Encryptor_CharacterEncoding"><a title="esapi.conf.settings.Encryptor_CharacterEncoding
+esapi.test.conf.settings.Encryptor_CharacterEncoding" class="py-name" href="#" onclick="return doclink('link-26', 'Encryptor_CharacterEncoding', 'link-26');">Encryptor_CharacterEncoding</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'UTF-8'</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line"> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line"> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line"><tt class="py-comment">#===========================================================================</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line"><tt class="py-comment"># ESAPI HttpUtilties</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line"><tt class="py-comment"># The HttpUtilities provide basic protections to HTTP requests and responses. Primarily these methods </tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line"><tt class="py-comment"># protect against malicious data from attackers, such as unprintable characters, escaped characters,</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line"><tt class="py-comment"># and other simple attacks. The HttpUtilities also provides utility methods for dealing with cookies,</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line"><tt class="py-comment"># headers, and CSRF tokens.</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line"><tt id="link-27" class="py-name" targets="Variable esapi.conf.settings.HttpUtilities_UploadDir=esapi.conf.settings-module.html#HttpUtilities_UploadDir,Variable esapi.test.conf.settings.HttpUtilities_UploadDir=esapi.test.conf.settings-module.html#HttpUtilities_UploadDir"><a title="esapi.conf.settings.HttpUtilities_UploadDir
+esapi.test.conf.settings.HttpUtilities_UploadDir" class="py-name" href="#" onclick="return doclink('link-27', 'HttpUtilities_UploadDir', 'link-27');">HttpUtilities_UploadDir</a></tt> <tt class="py-op">=</tt> <tt class="py-string">r'UploadDir'</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line"><tt class="py-comment"># Force HTTP only on all cookies in ESAPI SafeRequest</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line"><tt id="link-28" class="py-name" targets="Variable esapi.conf.settings.HttpUtilities_ForceHTTPOnly=esapi.conf.settings-module.html#HttpUtilities_ForceHTTPOnly,Variable esapi.test.conf.settings.HttpUtilities_ForceHTTPOnly=esapi.test.conf.settings-module.html#HttpUtilities_ForceHTTPOnly"><a title="esapi.conf.settings.HttpUtilities_ForceHTTPOnly
+esapi.test.conf.settings.HttpUtilities_ForceHTTPOnly" class="py-name" href="#" onclick="return doclink('link-28', 'HttpUtilities_ForceHTTPOnly', 'link-28');">HttpUtilities_ForceHTTPOnly</a></tt> <tt class="py-op">=</tt> <tt class="py-name">False</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line"><tt class="py-comment"># File upload configuration</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line"><tt id="link-29" class="py-name" targets="Variable esapi.conf.settings.HttpUtilities_AllowedUploadExtensions=esapi.conf.settings-module.html#HttpUtilities_AllowedUploadExtensions,Variable esapi.test.conf.settings.HttpUtilities_AllowedUploadExtensions=esapi.test.conf.settings-module.html#HttpUtilities_AllowedUploadExtensions"><a title="esapi.conf.settings.HttpUtilities_AllowedUploadExtensions
+esapi.test.conf.settings.HttpUtilities_AllowedUploadExtensions" class="py-name" href="#" onclick="return doclink('link-29', 'HttpUtilities_AllowedUploadExtensions', 'link-29');">HttpUtilities_AllowedUploadExtensions</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'.zip,.pdf,.tar,.gz,.xls,.properties,.txt,.xml'</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line"><tt id="link-30" class="py-name" targets="Variable esapi.conf.settings.HttpUtilities_MaxUploadFileBytes=esapi.conf.settings-module.html#HttpUtilities_MaxUploadFileBytes,Variable esapi.test.conf.settings.HttpUtilities_MaxUploadFileBytes=esapi.test.conf.settings-module.html#HttpUtilities_MaxUploadFileBytes"><a title="esapi.conf.settings.HttpUtilities_MaxUploadFileBytes
+esapi.test.conf.settings.HttpUtilities_MaxUploadFileBytes" class="py-name" href="#" onclick="return doclink('link-30', 'HttpUtilities_MaxUploadFileBytes', 'link-30');">HttpUtilities_MaxUploadFileBytes</a></tt> <tt class="py-op">=</tt> <tt class="py-number">5000000</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line"><tt class="py-comment"># Using UTF-8 throughout your stack is highly recommended. That includes your database driver,</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line"><tt class="py-comment"># container, and any other technologies you may be using. Failure to do this may expose you</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line"><tt class="py-comment"># to Unicode transcoding injection attacks. Use of UTF-8 does not hinder internationalization.</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line"><tt id="link-31" class="py-name" targets="Variable esapi.conf.settings.HttpUtilities_ResponseContentType=esapi.conf.settings-module.html#HttpUtilities_ResponseContentType,Variable esapi.test.conf.settings.HttpUtilities_ResponseContentType=esapi.test.conf.settings-module.html#HttpUtilities_ResponseContentType"><a title="esapi.conf.settings.HttpUtilities_ResponseContentType
+esapi.test.conf.settings.HttpUtilities_ResponseContentType" class="py-name" href="#" onclick="return doclink('link-31', 'HttpUtilities_ResponseContentType', 'link-31');">HttpUtilities_ResponseContentType</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'text/html; charset=UTF-8'</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line"> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line"> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line"> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line"><tt class="py-comment">#===========================================================================</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line"><tt class="py-comment"># ESAPI Executor</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line"><tt id="link-32" class="py-name" targets="Variable esapi.conf.settings.Executor_WorkingDirectory=esapi.conf.settings-module.html#Executor_WorkingDirectory,Variable esapi.test.conf.settings.Executor_WorkingDirectory=esapi.test.conf.settings-module.html#Executor_WorkingDirectory"><a title="esapi.conf.settings.Executor_WorkingDirectory
+esapi.test.conf.settings.Executor_WorkingDirectory" class="py-name" href="#" onclick="return doclink('link-32', 'Executor_WorkingDirectory', 'link-32');">Executor_WorkingDirectory</a></tt> <tt class="py-op">=</tt> <tt class="py-string">r'C:\Windows\Temp'</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line"><tt id="link-33" class="py-name" targets="Variable esapi.conf.settings.Executor_ApprovedExecutables=esapi.conf.settings-module.html#Executor_ApprovedExecutables,Variable esapi.test.conf.settings.Executor_ApprovedExecutables=esapi.test.conf.settings-module.html#Executor_ApprovedExecutables"><a title="esapi.conf.settings.Executor_ApprovedExecutables
+esapi.test.conf.settings.Executor_ApprovedExecutables" class="py-name" href="#" onclick="return doclink('link-33', 'Executor_ApprovedExecutables', 'link-33');">Executor_ApprovedExecutables</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line"> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line"> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line"><tt class="py-comment">#===========================================================================</tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line"><tt class="py-comment"># ESAPI Logging</tt> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line"><tt class="py-comment"># Set the application name if these logs are combined with other applications</tt> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line"><tt id="link-34" class="py-name" targets="Variable esapi.conf.settings.Logger_ApplicationName=esapi.conf.settings-module.html#Logger_ApplicationName,Variable esapi.test.conf.settings.Logger_ApplicationName=esapi.test.conf.settings-module.html#Logger_ApplicationName"><a title="esapi.conf.settings.Logger_ApplicationName
+esapi.test.conf.settings.Logger_ApplicationName" class="py-name" href="#" onclick="return doclink('link-34', 'Logger_ApplicationName', 'link-34');">Logger_ApplicationName</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'ESAPITest'</tt> </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line"><tt class="py-comment"># If you use an HTML log viewer that does not properly HTML escape log data, you can set LogEncodingRequired to true</tt> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line"><tt id="link-35" class="py-name" targets="Variable esapi.conf.settings.Logger_LogEncodingRequired=esapi.conf.settings-module.html#Logger_LogEncodingRequired,Variable esapi.test.conf.settings.Logger_LogEncodingRequired=esapi.test.conf.settings-module.html#Logger_LogEncodingRequired"><a title="esapi.conf.settings.Logger_LogEncodingRequired
+esapi.test.conf.settings.Logger_LogEncodingRequired" class="py-name" href="#" onclick="return doclink('link-35', 'Logger_LogEncodingRequired', 'link-35');">Logger_LogEncodingRequired</a></tt> <tt class="py-op">=</tt> <tt class="py-name">False</tt> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line"><tt class="py-comment"># LogFileName, the name of the logging file. Provide a full directory path (e.g., C:\\ESAPI\\ESAPI_logging_file) if you</tt> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line"><tt class="py-comment"># want to place it in a specific directory.</tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line"><tt id="link-36" class="py-name" targets="Variable esapi.conf.settings.Logger_LogFileName=esapi.conf.settings-module.html#Logger_LogFileName,Variable esapi.test.conf.settings.Logger_LogFileName=esapi.test.conf.settings-module.html#Logger_LogFileName"><a title="esapi.conf.settings.Logger_LogFileName
+esapi.test.conf.settings.Logger_LogFileName" class="py-name" href="#" onclick="return doclink('link-36', 'Logger_LogFileName', 'link-36');">Logger_LogFileName</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'ESAPI_logging_file'</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line"><tt class="py-comment"># MaxLogFileSize, the max size (in bytes) of a single log file before it cuts over to a new one (default is 10,000,000)</tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line"><tt id="link-37" class="py-name" targets="Variable esapi.conf.settings.Logger_MaxLogFileSize=esapi.conf.settings-module.html#Logger_MaxLogFileSize,Variable esapi.test.conf.settings.Logger_MaxLogFileSize=esapi.test.conf.settings-module.html#Logger_MaxLogFileSize"><a title="esapi.conf.settings.Logger_MaxLogFileSize
+esapi.test.conf.settings.Logger_MaxLogFileSize" class="py-name" href="#" onclick="return doclink('link-37', 'Logger_MaxLogFileSize', 'link-37');">Logger_MaxLogFileSize</a></tt> <tt class="py-op">=</tt> <tt class="py-number">10000000</tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line"> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line"> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line"><tt class="py-comment">#===========================================================================</tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line"><tt class="py-comment"># ESAPI Intrusion Detection</tt> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line"><tt class="py-comment"># Each event has a base to which .count, .interval, and .action are added</tt> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line"><tt class="py-comment"># The IntrusionException will fire if we receive "count" events within "interval" seconds</tt> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line"><tt class="py-comment"># The IntrusionDetector is configurable to take the following actions: log, logout, and disable</tt> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line"><tt class="py-comment">#  (multiple actions separated by commas are allowed e.g. event.test.actions=log,disable</tt> </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line"><tt class="py-comment"># Custom Events</tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line"><tt class="py-comment"># Names must start with "event." as the base</tt> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line"><tt class="py-comment"># Use IntrusionDetector.addEvent( "test" ) in your code to trigger "event.test" here</tt> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line"><tt id="link-38" class="py-name" targets="Variable esapi.conf.settings.IntrusionDetector_event_test_count=esapi.conf.settings-module.html#IntrusionDetector_event_test_count,Variable esapi.test.conf.settings.IntrusionDetector_event_test_count=esapi.test.conf.settings-module.html#IntrusionDetector_event_test_count"><a title="esapi.conf.settings.IntrusionDetector_event_test_count
+esapi.test.conf.settings.IntrusionDetector_event_test_count" class="py-name" href="#" onclick="return doclink('link-38', 'IntrusionDetector_event_test_count', 'link-38');">IntrusionDetector_event_test_count</a></tt> <tt class="py-op">=</tt> <tt class="py-number">2</tt> </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line"><tt id="link-39" class="py-name" targets="Variable esapi.conf.settings.IntrusionDetector_event_test_interval=esapi.conf.settings-module.html#IntrusionDetector_event_test_interval,Variable esapi.test.conf.settings.IntrusionDetector_event_test_interval=esapi.test.conf.settings-module.html#IntrusionDetector_event_test_interval"><a title="esapi.conf.settings.IntrusionDetector_event_test_interval
+esapi.test.conf.settings.IntrusionDetector_event_test_interval" class="py-name" href="#" onclick="return doclink('link-39', 'IntrusionDetector_event_test_interval', 'link-39');">IntrusionDetector_event_test_interval</a></tt> <tt class="py-op">=</tt> <tt class="py-number">10</tt> </tt>
+<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line"><tt id="link-40" class="py-name" targets="Variable esapi.conf.settings.IntrusionDetector_event_test_actions=esapi.conf.settings-module.html#IntrusionDetector_event_test_actions,Variable esapi.test.conf.settings.IntrusionDetector_event_test_actions=esapi.test.conf.settings-module.html#IntrusionDetector_event_test_actions"><a title="esapi.conf.settings.IntrusionDetector_event_test_actions
+esapi.test.conf.settings.IntrusionDetector_event_test_actions" class="py-name" href="#" onclick="return doclink('link-40', 'IntrusionDetector_event_test_actions', 'link-40');">IntrusionDetector_event_test_actions</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'disable'</tt><tt class="py-op">,</tt><tt class="py-string">'log'</tt><tt class="py-op">)</tt> </tt>
+<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line"> </tt>
+<a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line"><tt class="py-comment"># Exception Events</tt> </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line"><tt class="py-comment"># All EnterpriseSecurityExceptions are registered automatically</tt> </tt>
+<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line"><tt class="py-comment"># Call IntrusionDetector.getInstance().addException(e) for Exceptions that do not extend EnterpriseSecurityException</tt> </tt>
+<a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line"><tt class="py-comment"># Use the fully qualified classname of the exception as the base</tt> </tt>
+<a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line"> </tt>
+<a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line"><tt class="py-comment"># any intrusion is an attack</tt> </tt>
+<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line"><tt id="link-41" class="py-name" targets="Variable esapi.conf.settings.IntrusionDetector_esapi_errors_IntrusionException_count=esapi.conf.settings-module.html#IntrusionDetector_esapi_errors_IntrusionException_count,Variable esapi.test.conf.settings.IntrusionDetector_esapi_errors_IntrusionException_count=esapi.test.conf.settings-module.html#IntrusionDetector_esapi_errors_IntrusionException_count"><a title="esapi.conf.settings.IntrusionDetector_esapi_errors_IntrusionException_count
+esapi.test.conf.settings.IntrusionDetector_esapi_errors_IntrusionException_count" class="py-name" href="#" onclick="return doclink('link-41', 'IntrusionDetector_esapi_errors_IntrusionException_count', 'link-41');">IntrusionDetector_esapi_errors_IntrusionException_count</a></tt> <tt class="py-op">=</tt> <tt class="py-number">1</tt> </tt>
+<a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line"><tt id="link-42" class="py-name" targets="Variable esapi.conf.settings.IntrusionDetector_esapi_errors_IntrusionException_interval=esapi.conf.settings-module.html#IntrusionDetector_esapi_errors_IntrusionException_interval,Variable esapi.test.conf.settings.IntrusionDetector_esapi_errors_IntrusionException_interval=esapi.test.conf.settings-module.html#IntrusionDetector_esapi_errors_IntrusionException_interval"><a title="esapi.conf.settings.IntrusionDetector_esapi_errors_IntrusionException_interval
+esapi.test.conf.settings.IntrusionDetector_esapi_errors_IntrusionException_interval" class="py-name" href="#" onclick="return doclink('link-42', 'IntrusionDetector_esapi_errors_IntrusionException_interval', 'link-42');">IntrusionDetector_esapi_errors_IntrusionException_interval</a></tt> <tt class="py-op">=</tt> <tt class="py-number">1</tt> </tt>
+<a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line"><tt id="link-43" class="py-name" targets="Variable esapi.conf.settings.IntrusionDetector_esapi_errors_IntrusionException_actions=esapi.conf.settings-module.html#IntrusionDetector_esapi_errors_IntrusionException_actions,Variable esapi.test.conf.settings.IntrusionDetector_esapi_errors_IntrusionException_actions=esapi.test.conf.settings-module.html#IntrusionDetector_esapi_errors_IntrusionException_actions"><a title="esapi.conf.settings.IntrusionDetector_esapi_errors_IntrusionException_actions
+esapi.test.conf.settings.IntrusionDetector_esapi_errors_IntrusionException_actions" class="py-name" href="#" onclick="return doclink('link-43', 'IntrusionDetector_esapi_errors_IntrusionException_actions', 'link-43');">IntrusionDetector_esapi_errors_IntrusionException_actions</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'log'</tt><tt class="py-op">,</tt><tt class="py-string">'disable'</tt><tt class="py-op">,</tt><tt class="py-string">'logout'</tt><tt class="py-op">)</tt> </tt>
+<a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line"> </tt>
+<a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line"><tt class="py-comment"># for test purposes</tt> </tt>
+<a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line"><tt id="link-44" class="py-name" targets="Variable esapi.conf.settings.IntrusionDetector_esapi_errors_IntegrityException_count=esapi.conf.settings-module.html#IntrusionDetector_esapi_errors_IntegrityException_count,Variable esapi.test.conf.settings.IntrusionDetector_esapi_errors_IntegrityException_count=esapi.test.conf.settings-module.html#IntrusionDetector_esapi_errors_IntegrityException_count"><a title="esapi.conf.settings.IntrusionDetector_esapi_errors_IntegrityException_count
+esapi.test.conf.settings.IntrusionDetector_esapi_errors_IntegrityException_count" class="py-name" href="#" onclick="return doclink('link-44', 'IntrusionDetector_esapi_errors_IntegrityException_count', 'link-44');">IntrusionDetector_esapi_errors_IntegrityException_count</a></tt> <tt class="py-op">=</tt> <tt class="py-number">10</tt> </tt>
+<a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line"><tt id="link-45" class="py-name" targets="Variable esapi.conf.settings.IntrusionDetector_esapi_errors_IntegrityException_interval=esapi.conf.settings-module.html#IntrusionDetector_esapi_errors_IntegrityException_interval,Variable esapi.test.conf.settings.IntrusionDetector_esapi_errors_IntegrityException_interval=esapi.test.conf.settings-module.html#IntrusionDetector_esapi_errors_IntegrityException_interval"><a title="esapi.conf.settings.IntrusionDetector_esapi_errors_IntegrityException_interval
+esapi.test.conf.settings.IntrusionDetector_esapi_errors_IntegrityException_interval" class="py-name" href="#" onclick="return doclink('link-45', 'IntrusionDetector_esapi_errors_IntegrityException_interval', 'link-45');">IntrusionDetector_esapi_errors_IntegrityException_interval</a></tt> <tt class="py-op">=</tt> <tt class="py-number">5</tt> </tt>
+<a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line"><tt id="link-46" class="py-name" targets="Variable esapi.conf.settings.IntrusionDetector_esapi_errors_IntegrityException_actions=esapi.conf.settings-module.html#IntrusionDetector_esapi_errors_IntegrityException_actions,Variable esapi.test.conf.settings.IntrusionDetector_esapi_errors_IntegrityException_actions=esapi.test.conf.settings-module.html#IntrusionDetector_esapi_errors_IntegrityException_actions"><a title="esapi.conf.settings.IntrusionDetector_esapi_errors_IntegrityException_actions
+esapi.test.conf.settings.IntrusionDetector_esapi_errors_IntegrityException_actions" class="py-name" href="#" onclick="return doclink('link-46', 'IntrusionDetector_esapi_errors_IntegrityException_actions', 'link-46');">IntrusionDetector_esapi_errors_IntegrityException_actions</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'log'</tt><tt class="py-op">,</tt><tt class="py-string">'disable'</tt><tt class="py-op">,</tt><tt class="py-string">'logout'</tt><tt class="py-op">)</tt> </tt>
+<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line"> </tt>
+<a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line"><tt class="py-comment"># rapid validation errors indicate scans or attacks in progress</tt> </tt>
+<a name="L165"></a><tt class="py-lineno">165</tt>  <tt class="py-line"><tt class="py-comment"># esapi.errors.ValidationException.count=10</tt> </tt>
+<a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line"><tt class="py-comment"># esapi.errors.ValidationException.interval=10</tt> </tt>
+<a name="L167"></a><tt class="py-lineno">167</tt>  <tt class="py-line"><tt class="py-comment"># esapi.errors.ValidationException.actions=log,logout</tt> </tt>
+<a name="L168"></a><tt class="py-lineno">168</tt>  <tt class="py-line"> </tt>
+<a name="L169"></a><tt class="py-lineno">169</tt>  <tt class="py-line"><tt class="py-comment"># sessions jumping between hosts indicates session hijacking</tt> </tt>
+<a name="L170"></a><tt class="py-lineno">170</tt>  <tt class="py-line"><tt id="link-47" class="py-name" targets="Variable esapi.conf.settings.IntrusionDetector_esapi_errors_AuthenticationHostException_count=esapi.conf.settings-module.html#IntrusionDetector_esapi_errors_AuthenticationHostException_count,Variable esapi.test.conf.settings.IntrusionDetector_esapi_errors_AuthenticationHostException_count=esapi.test.conf.settings-module.html#IntrusionDetector_esapi_errors_AuthenticationHostException_count"><a title="esapi.conf.settings.IntrusionDetector_esapi_errors_AuthenticationHostException_count
+esapi.test.conf.settings.IntrusionDetector_esapi_errors_AuthenticationHostException_count" class="py-name" href="#" onclick="return doclink('link-47', 'IntrusionDetector_esapi_errors_AuthenticationHostException_count', 'link-47');">IntrusionDetector_esapi_errors_AuthenticationHostException_count</a></tt> <tt class="py-op">=</tt> <tt class="py-number">2</tt> </tt>
+<a name="L171"></a><tt class="py-lineno">171</tt>  <tt class="py-line"><tt id="link-48" class="py-name" targets="Variable esapi.conf.settings.IntrusionDetector_esapi_errors_AuthenticationHostException_interval=esapi.conf.settings-module.html#IntrusionDetector_esapi_errors_AuthenticationHostException_interval,Variable esapi.test.conf.settings.IntrusionDetector_esapi_errors_AuthenticationHostException_interval=esapi.test.conf.settings-module.html#IntrusionDetector_esapi_errors_AuthenticationHostException_interval"><a title="esapi.conf.settings.IntrusionDetector_esapi_errors_AuthenticationHostException_interval
+esapi.test.conf.settings.IntrusionDetector_esapi_errors_AuthenticationHostException_interval" class="py-name" href="#" onclick="return doclink('link-48', 'IntrusionDetector_esapi_errors_AuthenticationHostException_interval', 'link-48');">IntrusionDetector_esapi_errors_AuthenticationHostException_interval</a></tt> <tt class="py-op">=</tt> <tt class="py-number">10</tt> </tt>
+<a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line"><tt id="link-49" class="py-name" targets="Variable esapi.conf.settings.IntrusionDetector_esapi_errors_AuthenticationHostException_actions=esapi.conf.settings-module.html#IntrusionDetector_esapi_errors_AuthenticationHostException_actions,Variable esapi.test.conf.settings.IntrusionDetector_esapi_errors_AuthenticationHostException_actions=esapi.test.conf.settings-module.html#IntrusionDetector_esapi_errors_AuthenticationHostException_actions"><a title="esapi.conf.settings.IntrusionDetector_esapi_errors_AuthenticationHostException_actions
+esapi.test.conf.settings.IntrusionDetector_esapi_errors_AuthenticationHostException_actions" class="py-name" href="#" onclick="return doclink('link-49', 'IntrusionDetector_esapi_errors_AuthenticationHostException_actions', 'link-49');">IntrusionDetector_esapi_errors_AuthenticationHostException_actions</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'log'</tt><tt class="py-op">,</tt><tt class="py-string">'logout'</tt><tt class="py-op">)</tt> </tt>
+<a name="L173"></a><tt class="py-lineno">173</tt>  <tt class="py-line"> </tt>
+<a name="L174"></a><tt class="py-lineno">174</tt>  <tt class="py-line"> </tt>
+<a name="L175"></a><tt class="py-lineno">175</tt>  <tt class="py-line"><tt class="py-comment">#===========================================================================</tt> </tt>
+<a name="L176"></a><tt class="py-lineno">176</tt>  <tt class="py-line"><tt class="py-comment"># ESAPI Validation</tt> </tt>
+<a name="L177"></a><tt class="py-lineno">177</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L178"></a><tt class="py-lineno">178</tt>  <tt class="py-line"><tt class="py-comment"># The ESAPI validator does many security checks on input, such as canonicalization</tt> </tt>
+<a name="L179"></a><tt class="py-lineno">179</tt>  <tt class="py-line"><tt class="py-comment"># and whitelist validation. Note that all of these validation rules are applied *after*</tt> </tt>
+<a name="L180"></a><tt class="py-lineno">180</tt>  <tt class="py-line"><tt class="py-comment"># canonicalization. Double-encoded characters (even with different encodings involved,</tt> </tt>
+<a name="L181"></a><tt class="py-lineno">181</tt>  <tt class="py-line"><tt class="py-comment"># are never allowed.</tt> </tt>
+<a name="L182"></a><tt class="py-lineno">182</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L183"></a><tt class="py-lineno">183</tt>  <tt class="py-line"><tt class="py-comment"># To use:</tt> </tt>
+<a name="L184"></a><tt class="py-lineno">184</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L185"></a><tt class="py-lineno">185</tt>  <tt class="py-line"><tt class="py-comment"># First set up a pattern below. You can choose any name you want, prefixed by the word</tt> </tt>
+<a name="L186"></a><tt class="py-lineno">186</tt>  <tt class="py-line"><tt class="py-comment"># "Validation." For example:</tt> </tt>
+<a name="L187"></a><tt class="py-lineno">187</tt>  <tt class="py-line"><tt class="py-comment">#   Validation.Email=^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\\.[a-zA-Z]{2,4}$</tt> </tt>
+<a name="L188"></a><tt class="py-lineno">188</tt>  <tt class="py-line"><tt class="py-comment"># </tt> </tt>
+<a name="L189"></a><tt class="py-lineno">189</tt>  <tt class="py-line"><tt class="py-comment"># Then you can validate in your code against the pattern like this:</tt> </tt>
+<a name="L190"></a><tt class="py-lineno">190</tt>  <tt class="py-line"><tt class="py-comment">#   Validator.getInstance().getValidDataFromBrowser( "Email", input );</tt> </tt>
+<a name="L191"></a><tt class="py-lineno">191</tt>  <tt class="py-line"><tt class="py-comment">#   Validator.getInstance().isValidDataFromBrowser( "Email", input );</tt> </tt>
+<a name="L192"></a><tt class="py-lineno">192</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L193"></a><tt class="py-lineno">193</tt>  <tt class="py-line"><tt id="link-50" class="py-name" targets="Variable esapi.conf.settings.Validator_SafeString=esapi.conf.settings-module.html#Validator_SafeString,Variable esapi.test.conf.settings.Validator_SafeString=esapi.test.conf.settings-module.html#Validator_SafeString"><a title="esapi.conf.settings.Validator_SafeString
+esapi.test.conf.settings.Validator_SafeString" class="py-name" href="#" onclick="return doclink('link-50', 'Validator_SafeString', 'link-50');">Validator_SafeString</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"^[\p{L}\p{N}.]{0,1024}$"</tt> </tt>
+<a name="L194"></a><tt class="py-lineno">194</tt>  <tt class="py-line"><tt id="link-51" class="py-name" targets="Variable esapi.conf.settings.Validator_Email=esapi.conf.settings-module.html#Validator_Email,Variable esapi.test.conf.settings.Validator_Email=esapi.test.conf.settings-module.html#Validator_Email"><a title="esapi.conf.settings.Validator_Email
+esapi.test.conf.settings.Validator_Email" class="py-name" href="#" onclick="return doclink('link-51', 'Validator_Email', 'link-51');">Validator_Email</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\\.[a-zA-Z]{2,4}$"</tt> </tt>
+<a name="L195"></a><tt class="py-lineno">195</tt>  <tt class="py-line"><tt id="link-52" class="py-name" targets="Variable esapi.conf.settings.Validator_IPAddress=esapi.conf.settings-module.html#Validator_IPAddress,Variable esapi.test.conf.settings.Validator_IPAddress=esapi.test.conf.settings-module.html#Validator_IPAddress"><a title="esapi.conf.settings.Validator_IPAddress
+esapi.test.conf.settings.Validator_IPAddress" class="py-name" href="#" onclick="return doclink('link-52', 'Validator_IPAddress', 'link-52');">Validator_IPAddress</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$"</tt> </tt>
+<a name="L196"></a><tt class="py-lineno">196</tt>  <tt class="py-line"><tt id="link-53" class="py-name" targets="Variable esapi.conf.settings.Validator_URL=esapi.conf.settings-module.html#Validator_URL,Variable esapi.test.conf.settings.Validator_URL=esapi.test.conf.settings-module.html#Validator_URL"><a title="esapi.conf.settings.Validator_URL
+esapi.test.conf.settings.Validator_URL" class="py-name" href="#" onclick="return doclink('link-53', 'Validator_URL', 'link-53');">Validator_URL</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"^(ht|f)tp(s?)\\:\\/\\/[0-9a-zA-Z]([-.\\w]*[0-9a-zA-Z])*(:(0-9)*)*(\\/?)([a-zA-Z0-9\\-\\.\\?\\,\\:\\'\\/\\\\\\+=&amp;amp;%\\$#_]*)?$"</tt> </tt>
+<a name="L197"></a><tt class="py-lineno">197</tt>  <tt class="py-line"><tt id="link-54" class="py-name" targets="Variable esapi.conf.settings.Validator_CreditCard=esapi.conf.settings-module.html#Validator_CreditCard,Variable esapi.test.conf.settings.Validator_CreditCard=esapi.test.conf.settings-module.html#Validator_CreditCard"><a title="esapi.conf.settings.Validator_CreditCard
+esapi.test.conf.settings.Validator_CreditCard" class="py-name" href="#" onclick="return doclink('link-54', 'Validator_CreditCard', 'link-54');">Validator_CreditCard</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"^(\\d{4}[- ]?){3}\\d{4}$"</tt> </tt>
+<a name="L198"></a><tt class="py-lineno">198</tt>  <tt class="py-line"><tt id="link-55" class="py-name" targets="Variable esapi.conf.settings.Validator_SSN=esapi.conf.settings-module.html#Validator_SSN,Variable esapi.test.conf.settings.Validator_SSN=esapi.test.conf.settings-module.html#Validator_SSN"><a title="esapi.conf.settings.Validator_SSN
+esapi.test.conf.settings.Validator_SSN" class="py-name" href="#" onclick="return doclink('link-55', 'Validator_SSN', 'link-55');">Validator_SSN</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"^(?!000)([0-6]\\d{2}|7([0-6]\\d|7[012]))([ -]?)(?!00)\\d\\d\\3(?!0000)\\d{4}$"</tt> </tt>
+<a name="L199"></a><tt class="py-lineno">199</tt>  <tt class="py-line"> </tt>
+<a name="L200"></a><tt class="py-lineno">200</tt>  <tt class="py-line"><tt class="py-comment"># Validators used by ESAPI</tt> </tt>
+<a name="L201"></a><tt class="py-lineno">201</tt>  <tt class="py-line"><tt id="link-56" class="py-name" targets="Variable esapi.conf.settings.Validator_AccountName=esapi.conf.settings-module.html#Validator_AccountName,Variable esapi.test.conf.settings.Validator_AccountName=esapi.test.conf.settings-module.html#Validator_AccountName"><a title="esapi.conf.settings.Validator_AccountName
+esapi.test.conf.settings.Validator_AccountName" class="py-name" href="#" onclick="return doclink('link-56', 'Validator_AccountName', 'link-56');">Validator_AccountName</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"^[a-zA-Z0-9]{3,20}$"</tt> </tt>
+<a name="L202"></a><tt class="py-lineno">202</tt>  <tt class="py-line"><tt id="link-57" class="py-name" targets="Variable esapi.conf.settings.Validator_SystemCommand=esapi.conf.settings-module.html#Validator_SystemCommand,Variable esapi.test.conf.settings.Validator_SystemCommand=esapi.test.conf.settings-module.html#Validator_SystemCommand"><a title="esapi.conf.settings.Validator_SystemCommand
+esapi.test.conf.settings.Validator_SystemCommand" class="py-name" href="#" onclick="return doclink('link-57', 'Validator_SystemCommand', 'link-57');">Validator_SystemCommand</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"^[a-zA-Z\\-\\/]{0,64}$"</tt> </tt>
+<a name="L203"></a><tt class="py-lineno">203</tt>  <tt class="py-line"><tt id="link-58" class="py-name" targets="Variable esapi.conf.settings.Validator_RoleName=esapi.conf.settings-module.html#Validator_RoleName,Variable esapi.test.conf.settings.Validator_RoleName=esapi.test.conf.settings-module.html#Validator_RoleName"><a title="esapi.conf.settings.Validator_RoleName
+esapi.test.conf.settings.Validator_RoleName" class="py-name" href="#" onclick="return doclink('link-58', 'Validator_RoleName', 'link-58');">Validator_RoleName</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"^[a-z]{1,20}$"</tt> </tt>
+<a name="L204"></a><tt class="py-lineno">204</tt>  <tt class="py-line"><tt id="link-59" class="py-name" targets="Variable esapi.conf.settings.Validator_Redirect=esapi.conf.settings-module.html#Validator_Redirect,Variable esapi.test.conf.settings.Validator_Redirect=esapi.test.conf.settings-module.html#Validator_Redirect"><a title="esapi.conf.settings.Validator_Redirect
+esapi.test.conf.settings.Validator_Redirect" class="py-name" href="#" onclick="return doclink('link-59', 'Validator_Redirect', 'link-59');">Validator_Redirect</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"^\\/test.*$"</tt> </tt>
+<a name="L205"></a><tt class="py-lineno">205</tt>  <tt class="py-line"> </tt>
+<a name="L206"></a><tt class="py-lineno">206</tt>  <tt class="py-line"><tt class="py-comment"># Global HTTP Validation Rules</tt> </tt>
+<a name="L207"></a><tt class="py-lineno">207</tt>  <tt class="py-line"><tt class="py-comment"># Values with Base64 encoded data (e.g. encrypted state) will need at least [a-zA-Z0-9\/+=]</tt> </tt>
+<a name="L208"></a><tt class="py-lineno">208</tt>  <tt class="py-line"><tt id="link-60" class="py-name" targets="Variable esapi.conf.settings.Validator_HTTPScheme=esapi.conf.settings-module.html#Validator_HTTPScheme,Variable esapi.test.conf.settings.Validator_HTTPScheme=esapi.test.conf.settings-module.html#Validator_HTTPScheme"><a title="esapi.conf.settings.Validator_HTTPScheme
+esapi.test.conf.settings.Validator_HTTPScheme" class="py-name" href="#" onclick="return doclink('link-60', 'Validator_HTTPScheme', 'link-60');">Validator_HTTPScheme</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"^(http|https)$"</tt> </tt>
+<a name="L209"></a><tt class="py-lineno">209</tt>  <tt class="py-line"><tt id="link-61" class="py-name" targets="Variable esapi.conf.settings.Validator_HTTPServerName=esapi.conf.settings-module.html#Validator_HTTPServerName,Variable esapi.test.conf.settings.Validator_HTTPServerName=esapi.test.conf.settings-module.html#Validator_HTTPServerName"><a title="esapi.conf.settings.Validator_HTTPServerName
+esapi.test.conf.settings.Validator_HTTPServerName" class="py-name" href="#" onclick="return doclink('link-61', 'Validator_HTTPServerName', 'link-61');">Validator_HTTPServerName</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"^[a-zA-Z0-9_.\\-]*$"</tt> </tt>
+<a name="L210"></a><tt class="py-lineno">210</tt>  <tt class="py-line"><tt id="link-62" class="py-name" targets="Variable esapi.conf.settings.Validator_HTTPParameterName=esapi.conf.settings-module.html#Validator_HTTPParameterName,Variable esapi.test.conf.settings.Validator_HTTPParameterName=esapi.test.conf.settings-module.html#Validator_HTTPParameterName"><a title="esapi.conf.settings.Validator_HTTPParameterName
+esapi.test.conf.settings.Validator_HTTPParameterName" class="py-name" href="#" onclick="return doclink('link-62', 'Validator_HTTPParameterName', 'link-62');">Validator_HTTPParameterName</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"^[a-zA-Z0-9_]{0,32}$"</tt> </tt>
+<a name="L211"></a><tt class="py-lineno">211</tt>  <tt class="py-line"><tt id="link-63" class="py-name" targets="Variable esapi.conf.settings.Validator_HTTPParameterValue=esapi.conf.settings-module.html#Validator_HTTPParameterValue,Variable esapi.test.conf.settings.Validator_HTTPParameterValue=esapi.test.conf.settings-module.html#Validator_HTTPParameterValue"><a title="esapi.conf.settings.Validator_HTTPParameterValue
+esapi.test.conf.settings.Validator_HTTPParameterValue" class="py-name" href="#" onclick="return doclink('link-63', 'Validator_HTTPParameterValue', 'link-63');">Validator_HTTPParameterValue</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"^[a-zA-Z0-9.\\-\\/+=_ ]*$"</tt> </tt>
+<a name="L212"></a><tt class="py-lineno">212</tt>  <tt class="py-line"><tt id="link-64" class="py-name" targets="Variable esapi.conf.settings.Validator_HTTPCookieName=esapi.conf.settings-module.html#Validator_HTTPCookieName,Variable esapi.test.conf.settings.Validator_HTTPCookieName=esapi.test.conf.settings-module.html#Validator_HTTPCookieName"><a title="esapi.conf.settings.Validator_HTTPCookieName
+esapi.test.conf.settings.Validator_HTTPCookieName" class="py-name" href="#" onclick="return doclink('link-64', 'Validator_HTTPCookieName', 'link-64');">Validator_HTTPCookieName</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"^[a-zA-Z0-9\\-_]{0,32}$"</tt> </tt>
+<a name="L213"></a><tt class="py-lineno">213</tt>  <tt class="py-line"><tt id="link-65" class="py-name" targets="Variable esapi.conf.settings.Validator_HTTPCookieValue=esapi.conf.settings-module.html#Validator_HTTPCookieValue,Variable esapi.test.conf.settings.Validator_HTTPCookieValue=esapi.test.conf.settings-module.html#Validator_HTTPCookieValue"><a title="esapi.conf.settings.Validator_HTTPCookieValue
+esapi.test.conf.settings.Validator_HTTPCookieValue" class="py-name" href="#" onclick="return doclink('link-65', 'Validator_HTTPCookieValue', 'link-65');">Validator_HTTPCookieValue</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"^[a-zA-Z0-9\\-\\/+=_ ]*$"</tt> </tt>
+<a name="L214"></a><tt class="py-lineno">214</tt>  <tt class="py-line"><tt id="link-66" class="py-name" targets="Variable esapi.conf.settings.Validator_HTTPHeaderName=esapi.conf.settings-module.html#Validator_HTTPHeaderName,Variable esapi.test.conf.settings.Validator_HTTPHeaderName=esapi.test.conf.settings-module.html#Validator_HTTPHeaderName"><a title="esapi.conf.settings.Validator_HTTPHeaderName
+esapi.test.conf.settings.Validator_HTTPHeaderName" class="py-name" href="#" onclick="return doclink('link-66', 'Validator_HTTPHeaderName', 'link-66');">Validator_HTTPHeaderName</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"^[a-zA-Z0-9\\-_]{0,32}$"</tt> </tt>
+<a name="L215"></a><tt class="py-lineno">215</tt>  <tt class="py-line"><tt id="link-67" class="py-name" targets="Variable esapi.conf.settings.Validator_HTTPHeaderValue=esapi.conf.settings-module.html#Validator_HTTPHeaderValue,Variable esapi.test.conf.settings.Validator_HTTPHeaderValue=esapi.test.conf.settings-module.html#Validator_HTTPHeaderValue"><a title="esapi.conf.settings.Validator_HTTPHeaderValue
+esapi.test.conf.settings.Validator_HTTPHeaderValue" class="py-name" href="#" onclick="return doclink('link-67', 'Validator_HTTPHeaderValue', 'link-67');">Validator_HTTPHeaderValue</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"^[a-zA-Z0-9()\\-=\\*\\.\\?;,+\\/:&amp;_ ]*$"</tt> </tt>
+<a name="L216"></a><tt class="py-lineno">216</tt>  <tt class="py-line"><tt id="link-68" class="py-name" targets="Variable esapi.conf.settings.Validator_HTTPContextPath=esapi.conf.settings-module.html#Validator_HTTPContextPath,Variable esapi.test.conf.settings.Validator_HTTPContextPath=esapi.test.conf.settings-module.html#Validator_HTTPContextPath"><a title="esapi.conf.settings.Validator_HTTPContextPath
+esapi.test.conf.settings.Validator_HTTPContextPath" class="py-name" href="#" onclick="return doclink('link-68', 'Validator_HTTPContextPath', 'link-68');">Validator_HTTPContextPath</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"^[a-zA-Z0-9.\\-_]*$"</tt> </tt>
+<a name="L217"></a><tt class="py-lineno">217</tt>  <tt class="py-line"><tt id="link-69" class="py-name" targets="Variable esapi.conf.settings.Validator_HTTPPath=esapi.conf.settings-module.html#Validator_HTTPPath,Variable esapi.test.conf.settings.Validator_HTTPPath=esapi.test.conf.settings-module.html#Validator_HTTPPath"><a title="esapi.conf.settings.Validator_HTTPPath
+esapi.test.conf.settings.Validator_HTTPPath" class="py-name" href="#" onclick="return doclink('link-69', 'Validator_HTTPPath', 'link-69');">Validator_HTTPPath</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"^[a-zA-Z0-9.\\-_]*$"</tt> </tt>
+<a name="L218"></a><tt class="py-lineno">218</tt>  <tt class="py-line"><tt id="link-70" class="py-name" targets="Variable esapi.conf.settings.Validator_HTTPQueryString=esapi.conf.settings-module.html#Validator_HTTPQueryString,Variable esapi.test.conf.settings.Validator_HTTPQueryString=esapi.test.conf.settings-module.html#Validator_HTTPQueryString"><a title="esapi.conf.settings.Validator_HTTPQueryString
+esapi.test.conf.settings.Validator_HTTPQueryString" class="py-name" href="#" onclick="return doclink('link-70', 'Validator_HTTPQueryString', 'link-70');">Validator_HTTPQueryString</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"^[a-zA-Z0-9()\\-=\\*\\.\\?;,+\\/:&amp;_ ](1,50)$"</tt> </tt>
+<a name="L219"></a><tt class="py-lineno">219</tt>  <tt class="py-line"><tt id="link-71" class="py-name" targets="Variable esapi.conf.settings.Validator_HTTPURI=esapi.conf.settings-module.html#Validator_HTTPURI,Variable esapi.test.conf.settings.Validator_HTTPURI=esapi.test.conf.settings-module.html#Validator_HTTPURI"><a title="esapi.conf.settings.Validator_HTTPURI
+esapi.test.conf.settings.Validator_HTTPURI" class="py-name" href="#" onclick="return doclink('link-71', 'Validator_HTTPURI', 'link-71');">Validator_HTTPURI</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"^[a-zA-Z0-9()\\-=\\*\\.\\?;,+\\/:&amp;_ ]*$"</tt> </tt>
+<a name="L220"></a><tt class="py-lineno">220</tt>  <tt class="py-line"><tt id="link-72" class="py-name" targets="Variable esapi.conf.settings.Validator_HTTPURL=esapi.conf.settings-module.html#Validator_HTTPURL,Variable esapi.test.conf.settings.Validator_HTTPURL=esapi.test.conf.settings-module.html#Validator_HTTPURL"><a title="esapi.conf.settings.Validator_HTTPURL
+esapi.test.conf.settings.Validator_HTTPURL" class="py-name" href="#" onclick="return doclink('link-72', 'Validator_HTTPURL', 'link-72');">Validator_HTTPURL</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"^.*$"</tt> </tt>
+<a name="L221"></a><tt class="py-lineno">221</tt>  <tt class="py-line"><tt id="link-73" class="py-name" targets="Variable esapi.conf.settings.Validator_HTTPJSESSIONID=esapi.conf.settings-module.html#Validator_HTTPJSESSIONID,Variable esapi.test.conf.settings.Validator_HTTPJSESSIONID=esapi.test.conf.settings-module.html#Validator_HTTPJSESSIONID"><a title="esapi.conf.settings.Validator_HTTPJSESSIONID
+esapi.test.conf.settings.Validator_HTTPJSESSIONID" class="py-name" href="#" onclick="return doclink('link-73', 'Validator_HTTPJSESSIONID', 'link-73');">Validator_HTTPJSESSIONID</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"^[A-Z0-9]{10,30}$"</tt> </tt>
+<a name="L222"></a><tt class="py-lineno">222</tt>  <tt class="py-line"> </tt>
+<a name="L223"></a><tt class="py-lineno">223</tt>  <tt class="py-line"><tt class="py-comment"># Validation of file related input</tt> </tt>
+<a name="L224"></a><tt class="py-lineno">224</tt>  <tt class="py-line"><tt id="link-74" class="py-name" targets="Variable esapi.conf.settings.Validator_FileName=esapi.conf.settings-module.html#Validator_FileName,Variable esapi.test.conf.settings.Validator_FileName=esapi.test.conf.settings-module.html#Validator_FileName"><a title="esapi.conf.settings.Validator_FileName
+esapi.test.conf.settings.Validator_FileName" class="py-name" href="#" onclick="return doclink('link-74', 'Validator_FileName', 'link-74');">Validator_FileName</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"^[a-zA-Z0-9!@#$%^&amp;{}\\[\\]()_+\\-=,.~'` ]{0,255}$"</tt> </tt>
+<a name="L225"></a><tt class="py-lineno">225</tt>  <tt class="py-line"><tt id="link-75" class="py-name" targets="Variable esapi.conf.settings.Validator_DirectoryName=esapi.conf.settings-module.html#Validator_DirectoryName,Variable esapi.test.conf.settings.Validator_DirectoryName=esapi.test.conf.settings-module.html#Validator_DirectoryName"><a title="esapi.conf.settings.Validator_DirectoryName
+esapi.test.conf.settings.Validator_DirectoryName" class="py-name" href="#" onclick="return doclink('link-75', 'Validator_DirectoryName', 'link-75');">Validator_DirectoryName</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"^[a-zA-Z0-9:\\\\!@#$%^&amp;{}\\[\\]()_+\\-=,.~'` ]{0,255}$"</tt> </tt>
+<a name="L226"></a><tt class="py-lineno">226</tt>  <tt class="py-line"> </tt>
+<a name="L227"></a><tt class="py-lineno">227</tt>  <tt class="py-line"><tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L228"></a><tt class="py-lineno">228</tt>  <tt class="py-line">    <tt class="py-keyword">from</tt> <tt class="py-name">settings_local</tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L229"></a><tt class="py-lineno">229</tt>  <tt class="py-line"><tt class="py-keyword">except</tt> <tt class="py-name">ImportError</tt><tt class="py-op">:</tt> </tt>
+<a name="L230"></a><tt class="py-lineno">230</tt>  <tt class="py-line">    <tt class="py-keyword">pass</tt> </tt>
+<a name="L231"></a><tt class="py-lineno">231</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="esapi-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Wed Jun 24 17:08:25 2009
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>
