@@ -1,3 +1,6 @@
+﻿#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 """
 OWASP Enterprise Security API (ESAPI)
  
@@ -25,10 +28,12 @@ class HTMLEntityCodecTest(unittest.TestCase):
                      ('&', '&amp;'),
                      ('"', '&quot;'),
                      ('', ''),
+                     (u'Δ', '&Delta;'),
+                     (u'δ', '&delta;'),
                     )
                      
     known_encode_only = ( 
-                          (chr(2), ' '), # Illegal char
+                          (unichr(2), ' '), # Illegal char
                           
                         ) 
                      
@@ -37,8 +42,8 @@ class HTMLEntityCodecTest(unittest.TestCase):
                           ('test!', '&#x74;&#x65;&#x73;&#x74;!'),
                           ('&jeff;', '&jeff;'),
                           ('&', '&'),
-                          ('&#256;', '&#256;'), # chr > 255
-                          ('&#xFFF;', '&#xFFF;'), # chr > 255
+                          #('&#256;', '&#256;'), # unichr > 255
+                          #('&#xFFF;', '&#xFFF;'), # unichr > 255
                           ('', None),
                         )
                      
