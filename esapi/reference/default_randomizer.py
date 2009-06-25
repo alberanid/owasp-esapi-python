@@ -29,7 +29,7 @@ source of entropy is not found, a NotImplementedError() will be thrown.
 
 from random import SystemRandom
 
-import esapi.core
+from esapi.core import ESAPI
 from esapi.logger import Logger
 from esapi.randomizer import Randomizer
 from esapi.translation import _
@@ -41,7 +41,7 @@ class DefaultRandomizer(Randomizer):
     def __init__(self):
         Randomizer.__init__(self)
         self.secure_random = SystemRandom()
-        self.logger = esapi.core.getLogger("Randomizer")
+        self.logger = ESAPI.logger("Randomizer")
 
     def get_random_string(self, length, character_set):
         ret = ""

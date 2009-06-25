@@ -17,7 +17,7 @@ accept the LICENSE before you use, modify, and/or redistribute this software.
 
 import unittest
 
-import esapi.core
+from esapi.core import ESAPI
 
 class EncryptorTest(unittest.TestCase):
     """
@@ -35,7 +35,7 @@ class EncryptorTest(unittest.TestCase):
         unittest.TestCase.__init__(self, test_name)
     
     def test_hash(self):
-        instance = esapi.core.getEncryptor()
+        instance = ESAPI.encryptor()
         hash1 = instance.hash("test1", "salt")
         hash2 = instance.hash("test2", "salt")
         self.assertFalse(hash1 == hash2)
@@ -44,7 +44,7 @@ class EncryptorTest(unittest.TestCase):
         self.assertFalse(hash3 == hash4)
         
     def test_encrypt(self):
-        instance = esapi.core.getEncryptor()
+        instance = ESAPI.encryptor()
         plaintext = "test1234"
         ciphertext = instance.encrypt(plaintext)
         result = instance.decrypt(ciphertext)
@@ -52,7 +52,7 @@ class EncryptorTest(unittest.TestCase):
         
     def test_decrypt(self):
         try:
-            instance = esapi.core.getEncryptor()
+            instance = ESAPI.encryptor()
             plaintext = "test123"
             ciphertext = instance.encrypt(plaintext)
             self.assertFalse(plaintext == ciphertext)

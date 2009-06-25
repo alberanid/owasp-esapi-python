@@ -22,7 +22,7 @@ accept the LICENSE before you use, modify, and/or redistribute this software.
 
 import logging
 
-import esapi.core
+from esapi.core import ESAPI
 from esapi.log_factory import LogFactory
 from esapi.logger import Logger
 from esapi.translation import _
@@ -46,7 +46,8 @@ class PythonLogFactory(LogFactory):
         """
         Constructor for this implementation of the LogFactory interface.
         
-        @param application_name The name of the application this logger is being constructed for.
+        @param application_name The name of the application this logger is 
+        being constructed for.
         """
         LogFactory.__init__(self)
         self.application_name = application_name
@@ -64,8 +65,9 @@ class PythonLogFactory(LogFactory):
         """
         Reference implementation of the Logger interface.
         
-        It implements most of the recommendations defined in the Logger interface description. It does not
-        filter out any sensitive data specific to the current application or organization, such as credit
+        It implements most of the recommendations defined in the Logger 
+        interface description. It does not filter out any sensitive data 
+        specific to the current application or organization, such as credit 
         cards, social security numbers, etc.
         
         @author Craig Younkins (craig.younkins@owasp.org)
@@ -84,7 +86,8 @@ class PythonLogFactory(LogFactory):
         
         def __init__(self, application_name, module_name):
             """
-            Public constructor should only ever be called via the appropriate LogFactory
+            Public constructor should only ever be called via the appropriate 
+            LogFactory
             
             @param application_name the application name
             @param module_name the module name
@@ -120,8 +123,9 @@ class PythonLogFactory(LogFactory):
         def set_level(self, level):
             """
             Note: In this implementation, this change is not persistent,
-            meaning that if the application is restarted, the log level will revert to the level defined in the
-            ESAPI SecurityConfiguration properties file.
+            meaning that if the application is restarted, the log level will 
+            revert to the level defined in the ESAPI SecurityConfiguration 
+            properties file.
             """
             self.pyLogger.setLevel(level)
             
@@ -156,7 +160,8 @@ class PythonLogFactory(LogFactory):
             enabled, otherwise it will discard the message.
             
             @param level the severity level of the security event
-            @param event_type the event_type of the event (SECURITY, FUNCTIONALITY, etc.)
+            @param event_type the event_type of the event 
+                   (SECURITY, FUNCTIONALITY, etc.)
             @param message the message
             @param exception an exception
             """
@@ -179,14 +184,14 @@ class PythonLogFactory(LogFactory):
                 
             # ensure no CRLF injection into logs for forging records
             clean = message.replace('\n', '_').replace('\r', '_')
-            if esapi.core.getSecurityConfiguration().get_log_encoding_required():
-                clean = esapi.core.encoder().encode_for_html(message)
+            if ESAPI.security_configuration().get_log_encoding_required():
+                clean = ESAPI.encoder().encode_for_html(message)
                 if message != clean:
                     clean += " (Encoded)"
                       
             extra = {
                  'eventType' : str(event_type),
-                 'eventSuccess' : [_("SUCCESS"),_("FAILURE")][event_type.isSuccess()],
+                 'eventSuccess' : [_("SUCCESS"),_("FAILURE")][event_type.is_success()],
                  'user' : "user.getAccountName()",
                  'hostname' : "user.getLastHostAddress()",
                  'sessionID' : user_session_id_for_logging,

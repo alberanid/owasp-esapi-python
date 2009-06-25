@@ -19,11 +19,13 @@ accept the LICENSE before you use, modify, and/or redistribute this software.
 
 class LogFactory:
     """
-    The LogFactory interface is intended to allow substitution of various logging packages, while providing
-    a common interface to access them.
+    The LogFactory interface is intended to allow substitution of various 
+    logging packages, while providing a common interface to access them.
     
-    In the reference implementation, PythonLogFactory.py implements this interface.  PythonLogFactory.py also contains an
-    inner class called PythonLogger which implements Logger.java and uses the Python logging package to log events.
+    In the reference implementation, PythonLogFactory.py implements this 
+    interface.  PythonLogFactory.py also contains an inner class called 
+    PythonLogger which implements Logger.java and uses the Python logging 
+    package to log events.
     
     @see esapi.core
     
@@ -36,9 +38,11 @@ class LogFactory:
 
     def get_logger(self, key):
         """
-        Gets the logger associated with the specified module or class name. The module or class name is used by the logger to log which
-        module or class is generating the log events. The implementation of this method should return any preexisting Logger
-        associated with this module name, rather than creating a new Logger.
+        Gets the logger associated with the specified module or class name. 
+        The module or class name is used by the logger to log which module or 
+        class is generating the log events. The implementation of this method 
+        should return any preexisting Logger associated with this module name, 
+        rather than creating a new Logger.
         <br><br>
         The PythonLogFactory reference implementation meets these requirements.
         

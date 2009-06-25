@@ -15,7 +15,7 @@ accept the LICENSE before you use, modify, and/or redistribute this software.
 @author Craig Younkins (craig.younkins@owasp.org)
 """
 
-import esapi.core
+from esapi.core import ESAPI
 from esapi.encoder import Encoder
 from esapi.codecs.percent_codec import PercentCodec
 from esapi.logger import Logger
@@ -36,7 +36,7 @@ class DefaultEncoder(Encoder):
     #vbScriptCodec = VBScriptCodec()
     #cssCodec = CSSCodec()
     
-    logger = esapi.core.getLogger("Encoder")
+    logger = ESAPI.logger("Encoder")
     
     IMMUNE_HTML = ',.-_ '
     IMMUNE_HTMLATTR = ',.-_'

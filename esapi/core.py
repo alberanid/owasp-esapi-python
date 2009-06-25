@@ -17,11 +17,7 @@ accept the LICENSE before you use, modify, and/or redistribute this software.
 
 # Todo
 
-import sys
-
-from esapi.reference.python_log_factory import PythonLogFactory
-from esapi.reference.default_security_configuration import DefaultSecurityConfiguration
-from esapi.translation import _
+# IMPORTS AT THE BOTTOM TO PREVENT CIRCULAR IMPORTS
 
 """
 ESAPI locator class is provided to make it easy to gain access to the current 
@@ -29,269 +25,253 @@ ESAPI classes in use. Use the set methods to override the reference
 implementations with instances of any custom ESAPI implementations.
 """
 
-authenticator = None
-encoder = None
-logFactory = None
-accessController = None
-intrusionDetector = None
-randomizer = None
-encryptor = None
-executor = None
-validator = None
-httpUtilities = None
-defaultLogger = None
-securityConfiguration = None
-messageUtil = None
+class ESAPI():
+    _authenticator = None
+    _encoder = None
+    _log_factory = None
+    _access_controller = None
+    _intrusion_detector = None
+    _randomizer = None
+    _encryptor = None
+    _executor = None
+    _validator = None
+    _http_utilities = None
+    _default_logger = None
+    _security_configuration = None
+    _message_util = None
 
-#def currentRequest():
-#    """
-#    Get the current HTTP Servlet Request being processed.
-#    @return the current HTTP Servlet Request.
-#    """
-#    return self.httpUtilities().getCurrentRequest()
-#
-#def currentResponse():
-#    """
-#    Get the current HTTP Servlet Response being generated.
-#    @return the current HTTP Servlet Response.
-#    """
-#    return self.httpUtilities().getCurrentResponse()
-#   
-#def accessController():
-#    """
-#    @return the current ESAPI AccessController object being used to maintain the access control rules for this application.
-#    """
-#    if self.accessController is None:
-#        accessControllerName = cls.getSecurityConfiguration().getAccessControlImplementation()
-#        try:
-#            theClass = Class.forName(accessControllerName)
-#            cls.accessController = theClass.newInstance()
-#        except (IllegalAccessException, ), ex:
-#            print ex + " AccessController class (" + accessControllerName + " must be in class path."
-#            print ex + " AccessController class (" + accessControllerName + " must be concrete."
-#            print ex + " AccessController class (" + accessControllerName + " must have a no-arg constructor."
-#    return cls.accessController
-#
-#    
-#def setAccessController(cls, controller):
-#    ESAPI.cls.accessController = controller
-#
-#    
-#def authenticator(cls):
-#    if cls.authenticator is None:
-#        authenticatorName = cls.getSecurityConfiguration().getAuthenticationImplementation()
-#        try:
-#            theClass = Class.forName(authenticatorName)
-#            cls.authenticator = theClass.newInstance()
-#        except (IllegalAccessException, ), ex:
-#            print ex + " Authenticator class (" + authenticatorName + " must be in class path."
-#            print ex + " Authenticator class (" + authenticatorName + " must be concrete."
-#            print ex + " Authenticator class (" + authenticatorName + " must have a no-arg constructor."
-#    return cls.authenticator
-#
-#    
-#def setAuthenticator(cls, authenticator):
-#    ESAPI.cls.authenticator = cls.authenticator
-#
-#
+    #def currentRequest():
+    #    """
+    #    Get the current HTTP Servlet Request being processed.
+    #    @return the current HTTP Servlet Request.
+    #    """
+    #    return self.httpUtilities().getCurrentRequest()
+    #
+    #def currentResponse():
+    #    """
+    #    Get the current HTTP Servlet Response being generated.
+    #    @return the current HTTP Servlet Response.
+    #    """
+    #    return self.httpUtilities().getCurrentResponse()
+    #   
+    #def accessController():
+    #    """
+    #    @return the current ESAPI AccessController object being used to maintain the access control rules for this application.
+    #    """
+    #    if self.accessController is None:
+    #        accessControllerName = cls.security_configuration().getAccessControlImplementation()
+    #        try:
+    #            theClass = Class.forName(accessControllerName)
+    #            cls.accessController = theClass.newInstance()
+    #        except (IllegalAccessException, ), ex:
+    #            print ex + " AccessController class (" + accessControllerName + " must be in class path."
+    #            print ex + " AccessController class (" + accessControllerName + " must be concrete."
+    #            print ex + " AccessController class (" + accessControllerName + " must have a no-arg constructor."
+    #    return cls.accessController
+    #
+    #    
+    #def setAccessController(cls, controller):
+    #    ESAPI.cls.accessController = controller
+    #
+    #    
+    #def authenticator(cls):
+    #    if cls._authenticator is None:
+    #        authenticatorName = cls.security_configuration().getAuthenticationImplementation()
+    #        try:
+    #            theClass = Class.forName(authenticatorName)
+    #            cls._authenticator = theClass.newInstance()
+    #        except (IllegalAccessException, ), ex:
+    #            print ex + " Authenticator class (" + authenticatorName + " must be in class path."
+    #            print ex + " Authenticator class (" + authenticatorName + " must be concrete."
+    #            print ex + " Authenticator class (" + authenticatorName + " must have a no-arg constructor."
+    #    return cls._authenticator
+    #
+    #    
+    #def setAuthenticator(cls, authenticator):
+    #    ESAPI.cls._authenticator = cls._authenticator
+    #
+    #
 
-def get_encoder():
-    global encoder
+    @classmethod
+    def encoder(cls):
+        if cls._encoder is None:
+            fqn = cls.security_configuration().get_encoder_implementation()
+            module_name = '.'.join(fqn.split('.')[:-1])
+            __import__(module_name)
+            module = sys.modules[module_name]
+            class_name = fqn.split('.')[-1]
+            cls._encoder = getattr(module, class_name)()
+            
+        return cls._encoder
 
-    if encoder is None:
-        fqn = getSecurityConfiguration().getEncoderImplementation()
-        moduleName = '.'.join(fqn.split('.')[:-1])
-        __import__(moduleName)
-        module = sys.modules[moduleName]
-        className = fqn.split('.')[-1]
-        encoder = getattr(module, className)()
+    @classmethod
+    def set_encoder(cls, new_encoder):
+        cls._encoder = new_encoder
+
+    @classmethod
+    def encryptor(cls):
+        if cls._encryptor is None:
+            fqn = cls.security_configuration().get_encryption_implementation()
+            module_name = '.'.join(fqn.split('.')[:-1])
+            __import__(module_name)
+            module = sys.modules[module_name]
+            class_name = fqn.split('.')[-1]
+            cls._encryptor = getattr(module, class_name)()
+            
+        return cls._encryptor
+
+    @classmethod
+    def set_encryptor(cls, new_encryptor):
+        cls._encryptor = new_encryptor
+
+    #    
+    #def executor(cls):
+    #    if cls._executor is None:
+    #        executorName = cls.security_configuration().getExecutorImplementation()
+    #        try:
+    #            theClass = Class.forName(executorName)
+    #            cls._executor = theClass.newInstance()
+    #        except (IllegalAccessException, ), ex:
+    #            print ex + " Executor class (" + executorName + " must be in class path."
+    #            print ex + " Executor class (" + executorName + " must be concrete."
+    #            print ex + " Executor class (" + executorName + " must have a no-arg constructor."
+    #    return cls._executor
+    #
+    #    
+    #def setExecutor(cls, executor):
+    #    ESAPI.cls._executor = cls._executor
+    #
+    #
+    #def httpUtilities(self):
+    #    if self.httpUtilities is None:
+    #        httpUtilitiesName = self.get_security_configuration().getHTTPUtilitiesImplementation()
+    #        try:
+    #            theClass = Class.forName(httpUtilitiesName)
+    #            cls.httpUtilities = theClass.newInstance()
+    #        except (IllegalAccessException, ), ex:
+    #            print ex + " HTTPUtilities class (" + httpUtilitiesName + ") must be in class path."
+    #            print ex + " HTTPUtilities class (" + httpUtilitiesName + ") must be concrete."
+    #            print ex + " HTTPUtilities class (" + httpUtilitiesName + ") must have a no-arg constructor."
+    #    return self.httpUtilities
+    #
+    #    
+    #def setHttpUtilities(self, httpUtilities):
+    #    self.httpUtilities = httpUtilities
+    #
+    #    
+    #def intrusionDetector(cls):
+    #    if cls.intrusionDetector is None:
+    #        intrusionDetectorName = cls.security_configuration().getIntrusionDetectionImplementation()
+    #        try:
+    #            theClass = Class.forName(intrusionDetectorName)
+    #            cls.intrusionDetector = theClass.newInstance()
+    #        except (IllegalAccessException, ), ex:
+    #            print ex + " IntrusionDetector class (" + intrusionDetectorName + " must be in class path."
+    #            print ex + " IntrusionDetector class (" + intrusionDetectorName + " must be concrete."
+    #            print ex + " IntrusionDetector class (" + intrusionDetectorName + " must have a no-arg constructor."
+    #    return cls.intrusionDetector
+    #
+    #    
+    #def setIntrusionDetector(cls, intrusionDetector):
+    #    ESAPI.cls.intrusionDetector = cls.intrusionDetector
+    #
+    #    
+    @classmethod
+    def log_factory(cls):
+        """
+        Get the current LogFactory being used by ESAPI. If there isn't one yet,
+        it will create one, and then return this same LogFactory from then on.
+        @return The current LogFactory being used by ESAPI.
+        """
+        if cls._log_factory is None:
+            fqn = cls.security_configuration().get_log_implementation()
+            module_name = '.'.join(fqn.split('.')[:-1])
+            __import__(module_name)
+            module = sys.modules[module_name]
+            class_name = fqn.split('.')[-1]
+            cls._log_factory = getattr(module, class_name)()
+            cls._log_factory.set_application_name(cls.security_configuration().get_application_name())
+            
+        return cls._log_factory
+          
+    @classmethod
+    def logger(cls, key):
+        """
+        @param key The class or module to associate the logger with.
+        @return The current Logger associated with the specified class.
+        """
+        return cls.log_factory().get_logger(key)
+
+    @classmethod
+    def log(cls):
+        """
+        @return The default logger
+        """
+        if cls._default_logger is None:
+            cls._default_logger = cls._log_factory().get_logger("DefaultLogger")
+        return cls._default_logger
+
+    @classmethod
+    def set_log_factory(cls, factory):
+        """
+        Change the current ESAPI LogFactory to the LogFactory provided. 
+        @param factory
+               the LogFactory to set to be the current ESAPI LogFactory. 
+        """
+        cls._log_factory = factory
         
-    return encoder
+    @classmethod
+    def randomizer(cls):
+        if cls._randomizer is None:
+            fqn = cls.security_configuration().get_randomizer_implementation()
+            module_name = '.'.join(fqn.split('.')[:-1])
+            __import__(module_name)
+            module = sys.modules[module_name]
+            class_name = fqn.split('.')[-1]
+            cls._randomizer = getattr(module, class_name)()
+            
+        return cls._randomizer
 
-def setencoder(newEncoder):
-    global encoder
-    encoder = newEncoder
-#    
-#def encryptor(cls):
-#    if cls.encryptor is None:
-#        encryptorName = cls.getSecurityConfiguration().getEncryptionImplementation()
-#        try:
-#            theClass = Class.forName(encryptorName)
-#            cls.encryptor = theClass.newInstance()
-#        except (IllegalAccessException, ), ex:
-#            print ex + " Encryptor class (" + encryptorName + " must be in class path."
-#            print ex + " Encryptor class (" + encryptorName + " must be concrete."
-#            print ex + " Encryptor class (" + encryptorName + " must have a no-arg constructor."
-#    return cls.encryptor
-#
-#    
-#def setEncryptor(cls, encryptor):
-#    ESAPI.cls.encryptor = cls.encryptor
-#
+    @classmethod
+    def set_randomizer(cls, new_randomizer):
+        cls._randomizer = new_randomizer
 
-def getEncryptor():
-    global encryptor
+    @classmethod
+    def security_configuration(cls):       
+        if cls._security_configuration is None:
+            cls._security_configuration = DefaultSecurityConfiguration()
+        return cls._security_configuration
+       
+    @classmethod
+    def set_security_configuration(cls, new_security_config):
+        cls._security_configuration = new_security_config
 
-    if encryptor is None:
-        fqn = getSecurityConfiguration().getEncryptionImplementation()
-        moduleName = '.'.join(fqn.split('.')[:-1])
-        __import__(moduleName)
-        module = sys.modules[moduleName]
-        className = fqn.split('.')[-1]
-        encryptor = getattr(module, className)()
-        
-    return encryptor
+    #  
+    #def validator(cls):
+    #    if cls._validator is None:
+    #        validatorName = cls.security_configuration().getValidationImplementation()
+    #        try:
+    #            theClass = Class.forName(validatorName)
+    #            cls._validator = theClass.newInstance()
+    #        except (IllegalAccessException, ), ex:
+    #            print ex + " Validator class (" + validatorName + ") must be in class path."
+    #            print ex + " Validator class (" + validatorName + ") must be concrete."
+    #            print ex + " Validator class (" + validatorName + ") must have a no-arg constructor."
+    #    return cls._validator
+    #
+    #    
+    #def setValidator(cls, validator):
+    #    ESAPI.cls._validator = cls._validator
+    #
+    #    
+    #def messageUtil(cls):
+    #    if ESAPI.cls.messageUtil is None:
+    #        ESAPI.cls.messageUtil = DefaultMessageUtil()
+    #    return ESAPI.cls.messageUtil
 
-def setencryptor(newEncryptor):
-    global encryptor
-    encryptor = newEncryptor
-
-#    
-#def executor(cls):
-#    if cls.executor is None:
-#        executorName = cls.getSecurityConfiguration().getExecutorImplementation()
-#        try:
-#            theClass = Class.forName(executorName)
-#            cls.executor = theClass.newInstance()
-#        except (IllegalAccessException, ), ex:
-#            print ex + " Executor class (" + executorName + " must be in class path."
-#            print ex + " Executor class (" + executorName + " must be concrete."
-#            print ex + " Executor class (" + executorName + " must have a no-arg constructor."
-#    return cls.executor
-#
-#    
-#def setExecutor(cls, executor):
-#    ESAPI.cls.executor = cls.executor
-#
-#
-#def httpUtilities(self):
-#    if self.httpUtilities is None:
-#        httpUtilitiesName = self.getSecurityConfiguration().getHTTPUtilitiesImplementation()
-#        try:
-#            theClass = Class.forName(httpUtilitiesName)
-#            cls.httpUtilities = theClass.newInstance()
-#        except (IllegalAccessException, ), ex:
-#            print ex + " HTTPUtilities class (" + httpUtilitiesName + ") must be in class path."
-#            print ex + " HTTPUtilities class (" + httpUtilitiesName + ") must be concrete."
-#            print ex + " HTTPUtilities class (" + httpUtilitiesName + ") must have a no-arg constructor."
-#    return self.httpUtilities
-#
-#    
-#def setHttpUtilities(self, httpUtilities):
-#    self.httpUtilities = httpUtilities
-#
-#    
-#def intrusionDetector(cls):
-#    if cls.intrusionDetector is None:
-#        intrusionDetectorName = cls.getSecurityConfiguration().getIntrusionDetectionImplementation()
-#        try:
-#            theClass = Class.forName(intrusionDetectorName)
-#            cls.intrusionDetector = theClass.newInstance()
-#        except (IllegalAccessException, ), ex:
-#            print ex + " IntrusionDetector class (" + intrusionDetectorName + " must be in class path."
-#            print ex + " IntrusionDetector class (" + intrusionDetectorName + " must be concrete."
-#            print ex + " IntrusionDetector class (" + intrusionDetectorName + " must have a no-arg constructor."
-#    return cls.intrusionDetector
-#
-#    
-#def setIntrusionDetector(cls, intrusionDetector):
-#    ESAPI.cls.intrusionDetector = cls.intrusionDetector
-#
-#    
-def getLogFactory():
-    """
-    Get the current LogFactory being used by ESAPI. If there isn't one yet, it will create one, and then 
-    return this same LogFactory from then on.
-    @return The current LogFactory being used by ESAPI.
-    """
-    global logFactory
-
-    if logFactory is None:
-        fqn = getSecurityConfiguration().getLogImplementation()
-        moduleName = '.'.join(fqn.split('.')[:-1])
-        __import__(moduleName)
-        module = sys.modules[moduleName]
-        className = fqn.split('.')[-1]
-        logFactory = getattr(module, className)()
-        logFactory.setApplicationName(getSecurityConfiguration().getApplicationName())
-        
-    return logFactory
-      
-def getLogger(classOrMod):
-    """
-    @param classOrMod The class or module to associate the logger with.
-    @return The current Logger associated with the specified class.
-    """
-    return getLogFactory().getLogger(classOrMod)
-
-def log():
-    """
-    @return The default logger
-    """
-    global defaultLogger
     
-    if defaultLogger is None:
-        defaultLogger = logFactory().getLogger("DefaultLogger")
-    return defaultLogger
+import sys
 
-def setLogFactory(factory):
-    """
-    Change the current ESAPI LogFactory to the LogFactory provided. 
-    @param factory
-           the LogFactory to set to be the current ESAPI LogFactory. 
-    """
-    global logFactory
-    
-    logFactory = factory
-
-   
-def getRandomizer():
-    global randomizer
-
-    if randomizer is None:
-        fqn = getSecurityConfiguration().getRandomizerImplementation()
-        moduleName = '.'.join(fqn.split('.')[:-1])
-        __import__(moduleName)
-        module = sys.modules[moduleName]
-        className = fqn.split('.')[-1]
-        randomizer = getattr(module, className)()
-        
-    return randomizer
-
-def setRandomizer(newRandomizer):
-    global randomizer
-    randomizer = newRandomizer
-
-def getSecurityConfiguration():
-    global securityConfiguration
-    
-    if securityConfiguration is None:
-        securityConfiguration = DefaultSecurityConfiguration()
-    return securityConfiguration
-   
-def setSecurityConfiguration(newSecurityConfiguration):
-    global securityConfiguration
-    securityConfiguration = newSecurityConfiguration
-
-#  
-#def validator(cls):
-#    if cls.validator is None:
-#        validatorName = cls.getSecurityConfiguration().getValidationImplementation()
-#        try:
-#            theClass = Class.forName(validatorName)
-#            cls.validator = theClass.newInstance()
-#        except (IllegalAccessException, ), ex:
-#            print ex + " Validator class (" + validatorName + ") must be in class path."
-#            print ex + " Validator class (" + validatorName + ") must be concrete."
-#            print ex + " Validator class (" + validatorName + ") must have a no-arg constructor."
-#    return cls.validator
-#
-#    
-#def setValidator(cls, validator):
-#    ESAPI.cls.validator = cls.validator
-#
-#    
-#def messageUtil(cls):
-#    if ESAPI.cls.messageUtil is None:
-#        ESAPI.cls.messageUtil = DefaultMessageUtil()
-#    return ESAPI.cls.messageUtil
+from esapi.reference.python_log_factory import PythonLogFactory
+from esapi.reference.default_security_configuration import DefaultSecurityConfiguration
+from esapi.translation import _

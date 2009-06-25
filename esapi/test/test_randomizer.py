@@ -22,7 +22,7 @@ accept the LICENSE before you use, modify, and/or redistribute this software.
 import unittest
 import sys
 
-import esapi.core as core
+from esapi.core import ESAPI
 
 class RandomzerTest(unittest.TestCase):
     
@@ -48,7 +48,7 @@ class RandomzerTest(unittest.TestCase):
     
     def test_get_random_string(self):
         length = 20
-        instance = core.getRandomizer()
+        instance = ESAPI.randomizer()
         for i in range (100):
             result = instance.get_random_string(length, self.alpha_numerics)
             #print result
@@ -61,7 +61,7 @@ class RandomzerTest(unittest.TestCase):
     def test_get_random_integer(self):
         min_ = -20
         max_ = 100
-        instance = core.getRandomizer()
+        instance = ESAPI.randomizer()
         min_result = max_result = ( max_ - min_ ) / 2
         for i in range(100):
             result = instance.get_random_integer(min_, max_)
@@ -76,7 +76,7 @@ class RandomzerTest(unittest.TestCase):
     def test_get_random_float(self):
         min_ = -20.5234
         max_ = 100.12124
-        instance = core.getRandomizer()
+        instance = ESAPI.randomizer()
         min_result = max_result = ( max_ - min_ ) / 2
         for i in range(100):
             result = instance.get_random_float(min_, max_)
@@ -89,7 +89,7 @@ class RandomzerTest(unittest.TestCase):
         assert min_result >= min_ and max_result <= max_
   
     def test_get_random_guid(self):
-        instance = core.getRandomizer()
+        instance = ESAPI.randomizer()
         guids = []
         for i in range(100):
             guid = instance.get_random_guid()

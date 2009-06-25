@@ -17,7 +17,7 @@ accept the LICENSE before you use, modify, and/or redistribute this software.
 
 import unittest
 
-import esapi.core
+from esapi.core import ESAPI
 
 class EncoderTest(unittest.TestCase):
     
@@ -30,12 +30,12 @@ class EncoderTest(unittest.TestCase):
         unittest.TestCase.__init__(self, test_name)
         
     def test_encode_for_url(self):
-        instance = esapi.core.get_encoder()
+        instance = ESAPI.encoder()
         self.assertEquals(None, instance.encode_for_url(None))
         self.assertEquals("%3Cscript%3E", instance.encode_for_url("<script>"))
         
     def test_decode_from_url(self):
-        instance = esapi.core.get_encoder()
+        instance = ESAPI.encoder()
         self.assertEquals(None, instance.decode_from_url(None))
         self.assertEquals("<script>", instance.decode_from_url("%3Cscript%3E"))
         self.assertEquals("     ", instance.decode_from_url("+++++") )

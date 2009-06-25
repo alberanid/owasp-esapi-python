@@ -18,7 +18,7 @@ accept the LICENSE before you use, modify, and/or redistribute this software.
 import unittest
 import sys
 
-import esapi.core as core
+from esapi.core import ESAPI
 from esapi.logger import Logger
 
 class LoggerTest(unittest.TestCase):
@@ -40,7 +40,7 @@ class LoggerTest(unittest.TestCase):
         self.test_logger = None
     
     def setUp(self):
-        self.test_logger = core.getLogger("test" + str(LoggerTest.test_count))
+        self.test_logger = ESAPI.logger("test" + str(LoggerTest.test_count))
         LoggerTest.test_count += 1
         
         print "Test Logger: " + str(self.test_logger)
@@ -159,7 +159,7 @@ class LoggerTest(unittest.TestCase):
         self.assertFalse(self.test_logger.is_trace_enabled())
         
         # Now test to see if a change to the logging level in one log affects other logs
-        new_logger = core.getLogger("test_num2" )
+        new_logger = ESAPI.logger("test_num2" )
         self.test_logger.set_level( Logger.OFF )
         new_logger.set_level( Logger.INFO )
         self.assertFalse(self.test_logger.is_fatal_enabled())

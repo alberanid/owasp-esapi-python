@@ -24,7 +24,7 @@ import Crypto.Cipher.DES
 import Crypto.Cipher.DES3
 import os
 
-import esapi.core
+from esapi.core import ESAPI
 from esapi.encryptor import Encryptor
 from esapi.translation import _
 
@@ -39,24 +39,24 @@ class DefaultEncryptor(Encryptor):
     def __init__(self):
         Encryptor.__init__(self)
         # Hashing
-        self.hash_algorithm = esapi.core.getSecurityConfiguration().get_hash_algorithm()
-        self.hash_iterations = esapi.core.getSecurityConfiguration().get_hash_iterations()
+        self.hash_algorithm = ESAPI.security_configuration().get_hash_algorithm()
+        self.hash_iterations = ESAPI.security_configuration().get_hash_iterations()
         
         # Encryption
-        encrypt_algorithm = esapi.core.getSecurityConfiguration().get_encryption_algorithm()
+        encrypt_algorithm = ESAPI.security_configuration().get_encryption_algorithm()
         try:
             self.encrypt_algorithm_class = self.encrypt_algorithm_map[encrypt_algorithm]
         except KeyError:
             raise EncryptionException, _("Encryption Failure - Unknown algorithm: ") + self.encrypt_algorithm
         
-        self.encryption_key_length = esapi.core.getSecurityConfiguration().get_encryption_key_length()
-        self.master_key = esapi.core.getSecurityConfiguration().get_master_key()
-        self.master_salt = esapi.core.getSecurityConfiguration().get_master_salt()
+        self.encryption_key_length = ESAPI.security_configuration().get_encryption_key_length()
+        self.master_key = ESAPI.security_configuration().get_master_key()
+        self.master_salt = ESAPI.security_configuration().get_master_salt()
         
         # Public key crypto
-        self.signing_algorithm = esapi.core.getSecurityConfiguration().get_digital_signature_algorithm()
-        self.signing_key_length = esapi.core.getSecurityConfiguration().get_digital_signature_key_length()
-        self.signing_key_pair = esapi.core.getSecurityConfiguration().get_digital_signature_key()
+        self.signing_algorithm = ESAPI.security_configuration().get_digital_signature_algorithm()
+        self.signing_key_length = ESAPI.security_configuration().get_digital_signature_key_length()
+        self.signing_key_pair = ESAPI.security_configuration().get_digital_signature_key()
         
 
     def main(self):
@@ -112,17 +112,17 @@ class DefaultEncryptor(Encryptor):
         """
         pos_padding_len = text[-1]
         is_padding = True
-        for char in text[-ord(n):]:
+        for char in text[-ord(pos_padding_len):]:
             if char != pos_padding_len:
                 is_padding = False
                 
         if is_padding:
-            return text[:-ord(pos_padding_length)]
+            return text[:-ord(pos_padding_len)]
 
     def decrypt(self, ciphertext):
         crypt = self.encrypt_algorithm_class.new(self.master_key) 
         padded = crypt.decrypt(ciphertext)
-        return self._unpad(padded, crypt.block_size)
+        return self._unpad(padded)
 
     def sign(self, data):
         raise NotImplementedError()
