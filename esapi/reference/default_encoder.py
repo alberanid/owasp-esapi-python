@@ -15,6 +15,8 @@ accept the LICENSE before you use, modify, and/or redistribute this software.
 @author Craig Younkins (craig.younkins@owasp.org)
 """
 
+import base64
+
 from esapi.core import ESAPI
 from esapi.encoder import Encoder
 
@@ -34,9 +36,9 @@ class DefaultEncoder(Encoder):
     """
     
     codecs = []
-    #htmlCodec = HTMLEntityCodec()
+    _html_codec = HTMLEntityCodec()
     _percent_codec = PercentCodec()
-    #javaScriptCodec = JavaScriptCodec()
+    _javascript_codec = JavascriptCodec()
     #vbScriptCodec = VBScriptCodec()
     #cssCodec = CSSCodec()
     
@@ -58,9 +60,9 @@ class DefaultEncoder(Encoder):
     def __init__(self, codecs=None):
         Encoder.__init__(self)
         if codecs is None:
-            #self.codecs.append(self.html_codec)
+            self.codecs.append(self._html_codec)
             self.codecs.append(self._percent_codec)
-            #self.codecs.append(self.javascript_codec)
+            self.codecs.append(self._javascript_codec)
         else:
             self.codecs = codecs
 
@@ -171,13 +173,10 @@ class DefaultEncoder(Encoder):
         canonical = self.canonicalize(input_)
         return self._percent_codec.decode(canonical)
 
-    def encode_for_base64(self, input_, wrap):
-        options = 0
-        if not wrap:
-            options |= Base64.DONT_BREAK_LINES
-        return Base64.encode(input_, options)
+    def encode_for_base64(self, input_):
+        return base64.b64encode(input_)
 
     def decode_from_base64(self, input_):
-        raise NotImplementedError()
+        return base64.b64decode(input_)
 
 

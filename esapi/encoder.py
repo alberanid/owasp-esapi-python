@@ -394,14 +394,12 @@ class Encoder():
         """
         raise NotImplementedError()
 
-    def encode_for_base64(self, input_, wrap):
+    def encode_for_base64(self, input_):
         """
         Encode for Base64.
 
         @param input_
                 the text to encode for Base64
-        @param wrap
-                the encoder will wrap lines every 64 characters of output
 
         @return input encoded for Base64
         """
