@@ -48,9 +48,9 @@ class MySQLCodec(Codec):
         if char in immune:
             return char
             
-        #hex_str = esapi.codecs.codec.get_hex_for_non_alphanumeric(char)
-        #if hex_str is None:
-        #    return char
+        hex_str = esapi.codecs.codec.get_hex_for_non_alphanumeric(char)
+        if hex_str is None:
+            return char
             
         if self.mode == MySQLCodec.MYSQL_MODE:
             return self.encode_character_mysql(char)

@@ -22,7 +22,7 @@ from esapi.codecs.mysql import MySQLCodec
 class MySQLCodecTest(unittest.TestCase):
 
     mysql_known_values = ( 
-                     ('ac', '\\a\\c'),
+                     ('ac', 'ac'),
                      ('<', '\\<'),
                      (unichr(0), "\\0"),
                      ("'", "\\'"),
