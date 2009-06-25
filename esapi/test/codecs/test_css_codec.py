@@ -47,7 +47,7 @@ class CSSCodecTest(unittest.TestCase):
     
     def __init__(self, test_name=""):
         """
-        Instantiates a new HTMLEntityCodecTest test.
+        Instantiates a new CSSCodecTest test.
         
         @param test_name the test name
         """
