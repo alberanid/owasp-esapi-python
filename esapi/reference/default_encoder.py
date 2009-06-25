@@ -17,7 +17,11 @@ accept the LICENSE before you use, modify, and/or redistribute this software.
 
 from esapi.core import ESAPI
 from esapi.encoder import Encoder
-from esapi.codecs.percent_codec import PercentCodec
+
+from esapi.codecs.percent import PercentCodec
+from esapi.codecs.html_entity import HTMLEntityCodec
+from esapi.codecs.javascript import JavascriptCodec
+
 from esapi.logger import Logger
 
 class DefaultEncoder(Encoder):
