@@ -1,0 +1,2 @@
+settings could reference classes directly. ex: import foo; var = foo
+move multiplication from security_config to settings.py, get rid of security_config alltogether
