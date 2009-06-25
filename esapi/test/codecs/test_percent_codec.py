@@ -17,7 +17,7 @@ accept the LICENSE before you use, modify, and/or redistribute this software.
 
 import unittest
 
-from esapi.codecs.percent_codec import PercentCodec
+from esapi.codecs.percent import PercentCodec
 
 class PercentCodecTest(unittest.TestCase):
 

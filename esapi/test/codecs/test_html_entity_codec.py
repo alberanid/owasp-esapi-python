@@ -17,7 +17,7 @@ accept the LICENSE before you use, modify, and/or redistribute this software.
 
 import unittest
 
-from esapi.codecs.html_entity_codec import HTMLEntityCodec
+from esapi.codecs.html_entity import HTMLEntityCodec
 
 class HTMLEntityCodecTest(unittest.TestCase):
 

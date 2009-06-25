@@ -17,7 +17,7 @@ accept the LICENSE before you use, modify, and/or redistribute this software.
 
 import unittest
 
-from esapi.codecs.javascript_codec import JavascriptCodec
+from esapi.codecs.javascript import JavascriptCodec
 
 class JavascriptCodecTest(unittest.TestCase):
 
