@@ -8,16 +8,7 @@ DefaultSecurityConfiguration
 Randomizer
 Encryptor
 translation.py
-Codec
-PercentCodec
-PercentCodecTest
-PushbackString
-PushbackStringTest
-HTMLEntityCodec
-HTMLEntityCodecTest
-Encoder
-JavascriptCodec
-JavascriptCodecTest
+All Codecs
 
 Incomplete
 ---------

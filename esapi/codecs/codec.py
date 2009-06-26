@@ -58,9 +58,12 @@ class Codec():
         @return the encoded String
         """    
         ret = ''
-        for char in raw:
-            ret += self.encode_character(immune, char)
-        return ret
+        try:
+            for char in raw:
+                ret += self.encode_character(immune, char)
+            return ret
+        except TypeError:
+            return None
         
     def encode_character(self, immune, char):
         """

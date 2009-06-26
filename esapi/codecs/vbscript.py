@@ -99,11 +99,7 @@ class VBScriptCodec(Codec):
             
         # if this is not an encoded character, return None
         if first == '"':
-            second = pbs.next()
-            if second is None:
-                pbs.reset()
-                return None
-                
+            second = pbs.next()           
             return second
         elif first == 'c':
             # could be chrw(x)
