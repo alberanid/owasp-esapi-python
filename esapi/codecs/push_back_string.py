@@ -127,7 +127,7 @@ class PushbackString:
         Returns the next character without advancing the index.
         """
         if test_char:
-            if self._pushback is None and self._pushback == test_char: 
+            if self._pushback is not None and self._pushback == test_char: 
                 return True
             if self._input is None: 
                 return False
