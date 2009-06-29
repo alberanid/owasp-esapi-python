@@ -18,31 +18,61 @@ accept the LICENSE before you use, modify, and/or redistribute this software.
 import esapi.codecs.codec
 from esapi.codecs.codec import Codec
 
-class LDAPCodec(Codec):
+class LDAPDNCodec(Codec):
     """
-    Implementation of the Codec interface for LDAP encoding.
+    Implementation of the Codec interface for LDAP distinguished name encoding.
     """
    
     def __init__(self):
         """
-        Instantiates the LDAP codec.
+        Instantiates the LDAP DN codec.
         """
         Codec.__init__(self)
+        
+    def encode(self, immune, raw):
+        """
+        Encode a String so that it can be safely used in an LDAP distinguished
+        name.
+
+        @param immune
+        @param raw
+                the String to encode
+        @return the encoded String
+        """    
+        ret = ''
+        
+        # Add the leading backslash if needed
+        if  len(raw) > 0 and (raw[0] == ' ' or raw[0] == '#'):
+            ret += '\\'
+            
+        try:
+            for char in raw:
+                ret += self.encode_character(immune, char)
+        except TypeError:
+            return None
+            
+        # Add the trailing backslash if needed
+        if len(raw) > 1 and raw[-1] == ' ':
+            ret = ret[:-1] + "\\" + ret[-1]
+            
+        return ret
     
     def encode_character(self, immune, char):
         """
-        Returns a character encoded for LDAP.
+        
         """
         # Check for immunes
         if char in immune:
             return char
             
         replacement = {
-            '\\' : '\\5c',
-            '*'  : '\\2a',
-            '('  : '\\28',
-            ')'  : '\\29',
-            unichr(0) : '\\00',
+            '\\' : '\\\\',
+            ','  : '\\,',
+            '+'  : '\\+',
+            '"'  : '\\"',
+            '<'  : '\\<',
+            '>'  : '\\>',
+            ';'  : '\\;',
             }
             
         if replacement.has_key(char):
