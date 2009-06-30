@@ -15,6 +15,9 @@ accept the LICENSE before you use, modify, and/or redistribute this software.
 @author Craig Younkins (craig.younkins@owasp.org)
 """
 
+# Todo
+# After intrusion detector written, modify IntrusionException
+
 from esapi.core import ESAPI
 from esapi.logger import Logger
 
@@ -47,7 +50,7 @@ class EnterpriseSecurityException(Exception):
         @param log_message the message logged
         @param cause the Exception that caused this one
         """
-        Exception.__init__(user_message)
+        Exception.__init__(self, user_message)
         
         self.user_message = user_message
         self.log_message = log_message
@@ -211,7 +214,7 @@ class IntrusionException(Exception):
         @param log_message the message logged
         @param cause the Exception that caused this one
         """
-        Exception.__init__(user_message)
+        Exception.__init__(self, user_message)
         
         self.user_message = user_message
         self.log_message = log_message
@@ -220,7 +223,7 @@ class IntrusionException(Exception):
         self.logger = ESAPI.logger("IntrusionException")
         self.logger.error(Logger.SECURITY_FAILURE, "INTRUSION - " + self.log_message)
         
-        ESAPI.intrusion_detector().add_exception(self)
+#        ESAPI.intrusion_detector().add_exception(self)
         
     def get_user_message(self):
         """
