@@ -283,25 +283,25 @@ class EncoderTest(unittest.TestCase):
     def test_encode_for_css(self):
         instance = ESAPI.encoder()
         
-        self.assertEquals(None, instance.encode_for_css(None));
-        self.assertEquals("\\3c script\\3e ", instance.encode_for_css("<script>"));
-        self.assertEquals("\\21 \\40 \\24 \\25 \\28 \\29 \\3d \\2b \\7b \\7d \\5b \\5d ", instance.encode_for_css("!@$%()=+{}[]"));
+        self.assertEquals(None, instance.encode_for_css(None))
+        self.assertEquals("\\3c script\\3e ", instance.encode_for_css("<script>"))
+        self.assertEquals("\\21 \\40 \\24 \\25 \\28 \\29 \\3d \\2b \\7b \\7d \\5b \\5d ", instance.encode_for_css("!@$%()=+{}[]"))
             
     def test_encode_for_javascript(self):
-        instance = ESAPI.encoder();
-        self.assertEquals(None, instance.encode_for_javascript(None));
-        self.assertEquals("\\x3Cscript\\x3E", instance.encode_for_javascript("<script>"));
-        self.assertEquals(",.\\x2D_\\x20", instance.encode_for_javascript(",.-_ "));
-        self.assertEquals("\\x21\\x40\\x24\\x25\\x28\\x29\\x3D\\x2B\\x7B\\x7D\\x5B\\x5D", instance.encode_for_javascript("!@$%()=+{}[]"));
+        instance = ESAPI.encoder()
+        self.assertEquals(None, instance.encode_for_javascript(None))
+        self.assertEquals("\\x3Cscript\\x3E", instance.encode_for_javascript("<script>"))
+        self.assertEquals(",.\\x2D_\\x20", instance.encode_for_javascript(",.-_ "))
+        self.assertEquals("\\x21\\x40\\x24\\x25\\x28\\x29\\x3D\\x2B\\x7B\\x7D\\x5B\\x5D", instance.encode_for_javascript("!@$%()=+{}[]"))
     
     def test_encode_for_vbscript(self):
-        instance = ESAPI.encoder();
-        self.assertEquals(None, instance.encode_for_vbscript(None));
-        self.assertEquals( "chrw(60)&\"script\"&chrw(62)", instance.encode_for_vbscript("<script>"));
-        self.assertEquals( "x\"&chrw(32)&chrw(33)&chrw(64)&chrw(36)&chrw(37)&chrw(40)&chrw(41)&chrw(61)&chrw(43)&chrw(123)&chrw(125)&chrw(91)&chrw(93)", instance.encode_for_vbscript("x !@$%()=+{}[]"));
-        self.assertEquals( "alert\"&chrw(40)&chrw(39)&\"ESAPI\"&chrw(32)&\"test\"&chrw(33)&chrw(39)&chrw(41)", instance.encode_for_vbscript("alert('ESAPI test!')" ));
-        self.assertEquals( "jeff.williams\"&chrw(64)&\"aspectsecurity.com", instance.encode_for_vbscript("jeff.williams@aspectsecurity.com"));
-        self.assertEquals( "test\"&chrw(32)&chrw(60)&chrw(62)&chrw(32)&\"test", instance.encode_for_vbscript("test <> test" ));
+        instance = ESAPI.encoder()
+        self.assertEquals(None, instance.encode_for_vbscript(None))
+        self.assertEquals( "chrw(60)&\"script\"&chrw(62)", instance.encode_for_vbscript("<script>"))
+        self.assertEquals( "x\"&chrw(32)&chrw(33)&chrw(64)&chrw(36)&chrw(37)&chrw(40)&chrw(41)&chrw(61)&chrw(43)&chrw(123)&chrw(125)&chrw(91)&chrw(93)", instance.encode_for_vbscript("x !@$%()=+{}[]"))
+        self.assertEquals( "alert\"&chrw(40)&chrw(39)&\"ESAPI\"&chrw(32)&\"test\"&chrw(33)&chrw(39)&chrw(41)", instance.encode_for_vbscript("alert('ESAPI test!')" ))
+        self.assertEquals( "jeff.williams\"&chrw(64)&\"aspectsecurity.com", instance.encode_for_vbscript("jeff.williams@aspectsecurity.com"))
+        self.assertEquals( "test\"&chrw(32)&chrw(60)&chrw(62)&chrw(32)&\"test", instance.encode_for_vbscript("test <> test" ))
     
     def test_encode_for_xpath(self):
         instance = ESAPI.encoder()
@@ -309,160 +309,160 @@ class EncoderTest(unittest.TestCase):
         self.assertEquals("&#x27;or 1&#x3d;1", instance.encode_for_xpath("'or 1=1"))
         
     def test_encode_for_sql(self):
-        instance = ESAPI.encoder();
+        instance = ESAPI.encoder()
 
-        mySQL1 = MySQLCodec( MySQLCodec.ANSI_MODE );
-        self.assertEquals(None, instance.encode_for_sql(mySQL1, None));
-        self.assertEquals("Jeff'' or ''1''=''1", instance.encode_for_sql(mySQL1, "Jeff' or '1'='1"));
+        mySQL1 = MySQLCodec( MySQLCodec.ANSI_MODE )
+        self.assertEquals(None, instance.encode_for_sql(mySQL1, None))
+        self.assertEquals("Jeff'' or ''1''=''1", instance.encode_for_sql(mySQL1, "Jeff' or '1'='1"))
         
-        mySQL2 = MySQLCodec( MySQLCodec.MYSQL_MODE );
-        self.assertEquals(None, instance.encode_for_sql(mySQL2, None));
-        self.assertEquals("Jeff\\' or \\'1\\'\\=\\'1", instance.encode_for_sql(mySQL2, "Jeff' or '1'='1"));
+        mySQL2 = MySQLCodec( MySQLCodec.MYSQL_MODE )
+        self.assertEquals(None, instance.encode_for_sql(mySQL2, None))
+        self.assertEquals("Jeff\\' or \\'1\\'\\=\\'1", instance.encode_for_sql(mySQL2, "Jeff' or '1'='1"))
 
-        oracle = OracleCodec();
-        self.assertEquals(None, instance.encode_for_sql(oracle, None));
-        self.assertEquals("Jeff\\' or \\'1\\'\\=\\'1", instance.encode_for_sql(oracle, "Jeff' or '1'='1"));
+        oracle = OracleCodec()
+        self.assertEquals(None, instance.encode_for_sql(oracle, None))
+        self.assertEquals("Jeff\\' or \\'1\\'\\=\\'1", instance.encode_for_sql(oracle, "Jeff' or '1'='1"))
     
 
     def test_encode_for_ldap(self):
-        instance = ESAPI.encoder();
-        self.assertEquals(None, instance.encode_for_ldap(None));
-        self.assertEquals("Hi This is a test #ï¿½ï¿½", instance.encode_for_ldap("Hi This is a test #ï¿½ï¿½") ,"No special characters to escape");
-        self.assertEquals("Hi \\00", instance.encode_for_ldap("Hi " + unichr(0)), "Zeros");
-        self.assertEquals("Hi \\28This\\29 = is \\2a a \\5c test # ï¿½ ï¿½ ï¿½", instance.encode_for_ldap("Hi (This) = is * a \\ test # ï¿½ ï¿½ ï¿½"), "LDAP Christams Tree");
+        instance = ESAPI.encoder()
+        self.assertEquals(None, instance.encode_for_ldap(None))
+        self.assertEquals("Hi This is a test #ï¿½ï¿½", instance.encode_for_ldap("Hi This is a test #ï¿½ï¿½") ,"No special characters to escape")
+        self.assertEquals("Hi \\00", instance.encode_for_ldap("Hi " + unichr(0)), "Zeros")
+        self.assertEquals("Hi \\28This\\29 = is \\2a a \\5c test # ï¿½ ï¿½ ï¿½", instance.encode_for_ldap("Hi (This) = is * a \\ test # ï¿½ ï¿½ ï¿½"), "LDAP Christams Tree")
     
     def test_encode_for_dn(self):
-        instance = ESAPI.encoder();
-        self.assertEquals(None, instance.encode_for_dn(None));
-        self.assertEquals("Helloï¿½", instance.encode_for_dn("Helloï¿½"), "No special characters to escape");
-        self.assertEquals("\\# Helloï¿½", instance.encode_for_dn("# Helloï¿½"), "leading #");
-        self.assertEquals("\\ Helloï¿½", instance.encode_for_dn(" Helloï¿½"), "leading space");
-        self.assertEquals("Helloï¿½\\ ", instance.encode_for_dn("Helloï¿½ "), "trailing space");
-        self.assertEquals("Hello\\<\\>", instance.encode_for_dn("Hello<>"), "less than greater than");
-        self.assertEquals("\\  \\ ", instance.encode_for_dn("   "), "only 3 spaces");
-        self.assertEquals("\\ Hello\\\\ \\+ \\, \\\"World\\\" \\;\\ ", instance.encode_for_dn(" Hello\\ + , \"World\" ; "), "Christmas Tree DN");
+        instance = ESAPI.encoder()
+        self.assertEquals(None, instance.encode_for_dn(None))
+        self.assertEquals("Helloï¿½", instance.encode_for_dn("Helloï¿½"), "No special characters to escape")
+        self.assertEquals("\\# Helloï¿½", instance.encode_for_dn("# Helloï¿½"), "leading #")
+        self.assertEquals("\\ Helloï¿½", instance.encode_for_dn(" Helloï¿½"), "leading space")
+        self.assertEquals("Helloï¿½\\ ", instance.encode_for_dn("Helloï¿½ "), "trailing space")
+        self.assertEquals("Hello\\<\\>", instance.encode_for_dn("Hello<>"), "less than greater than")
+        self.assertEquals("\\  \\ ", instance.encode_for_dn("   "), "only 3 spaces")
+        self.assertEquals("\\ Hello\\\\ \\+ \\, \\\"World\\\" \\;\\ ", instance.encode_for_dn(" Hello\\ + , \"World\" ; "), "Christmas Tree DN")
     
     def test_encode_for_xml(self):
-        instance = ESAPI.encoder();
-        self.assertEquals(None, instance.encode_for_xml(None));
-        self.assertEquals(" ", instance.encode_for_xml(" "));
-        self.assertEquals("&lt;script&gt;", instance.encode_for_xml("<script>"));
-        self.assertEquals(",.-_", instance.encode_for_xml(",.-_"));
-        self.assertEquals("&#x21;&#x40;&#x24;&#x25;&#x28;&#x29;&#x3d;&#x2b;&#x7b;&#x7d;&#x5b;&#x5d;", instance.encode_for_xml("!@$%()=+{}[]"));
+        instance = ESAPI.encoder()
+        self.assertEquals(None, instance.encode_for_xml(None))
+        self.assertEquals(" ", instance.encode_for_xml(" "))
+        self.assertEquals("&lt;script&gt;", instance.encode_for_xml("<script>"))
+        self.assertEquals(",.-_", instance.encode_for_xml(",.-_"))
+        self.assertEquals("&#x21;&#x40;&#x24;&#x25;&#x28;&#x29;&#x3d;&#x2b;&#x7b;&#x7d;&#x5b;&#x5d;", instance.encode_for_xml("!@$%()=+{}[]"))
     
     def test_encode_for_xml_attribute(self):
-        instance = ESAPI.encoder();
-        self.assertEquals(None, instance.encode_for_xml_attribute(None));
-        self.assertEquals("&#x20;", instance.encode_for_xml_attribute(" "));
-        self.assertEquals("&lt;script&gt;", instance.encode_for_xml_attribute("<script>"));
-        self.assertEquals(",.-_", instance.encode_for_xml_attribute(",.-_"));
-        self.assertEquals("&#x20;&#x21;&#x40;&#x24;&#x25;&#x28;&#x29;&#x3d;&#x2b;&#x7b;&#x7d;&#x5b;&#x5d;", instance.encode_for_xml_attribute(" !@$%()=+{}[]"));
+        instance = ESAPI.encoder()
+        self.assertEquals(None, instance.encode_for_xml_attribute(None))
+        self.assertEquals("&#x20;", instance.encode_for_xml_attribute(" "))
+        self.assertEquals("&lt;script&gt;", instance.encode_for_xml_attribute("<script>"))
+        self.assertEquals(",.-_", instance.encode_for_xml_attribute(",.-_"))
+        self.assertEquals("&#x20;&#x21;&#x40;&#x24;&#x25;&#x28;&#x29;&#x3d;&#x2b;&#x7b;&#x7d;&#x5b;&#x5d;", instance.encode_for_xml_attribute(" !@$%()=+{}[]"))
     
     def test_encode_for_url(self):
-        instance = ESAPI.encoder();
-        self.assertEquals(None, instance.encode_for_url(None));
-        self.assertEquals("%3Cscript%3E", instance.encode_for_url("<script>"));
+        instance = ESAPI.encoder()
+        self.assertEquals(None, instance.encode_for_url(None))
+        self.assertEquals("%3Cscript%3E", instance.encode_for_url("<script>"))
 
     def test_decode_from_url(self):
-        instance = ESAPI.encoder();
-        self.assertEquals(None, instance.decode_from_url(None));
-        self.assertEquals("<script>", instance.decode_from_url("%3Cscript%3E"));
-        self.assertEquals("     ", instance.decode_from_url("+++++") );
+        instance = ESAPI.encoder()
+        self.assertEquals(None, instance.decode_from_url(None))
+        self.assertEquals("<script>", instance.decode_from_url("%3Cscript%3E"))
+        self.assertEquals("     ", instance.decode_from_url("+++++") )
 
         try:
-            instance.decode_from_url( "%3xridiculous" );
-            self.fail();
+            instance.decode_from_url( "%3xridiculous" )
+            self.fail()
         except:
             # expected
             pass
 
     def test_encode_for_base64(self):
-        instance = ESAPI.encoder();
+        instance = ESAPI.encoder()
         
-        self.assertEquals(None, instance.encode_for_base64(None));
-        self.assertEquals(None, instance.decode_from_base64(None));
+        self.assertEquals(None, instance.encode_for_base64(None))
+        self.assertEquals(None, instance.decode_from_base64(None))
         for i in range(100):
             random_string = ESAPI.randomizer().get_random_string( 20, DefaultEncoder.CHAR_SPECIALS )
-            encoded = instance.encode_for_base64( random_string );
-            decoded = instance.decode_from_base64( encoded );
-            self.assertEquals( random_string, decoded );
+            encoded = instance.encode_for_base64( random_string )
+            decoded = instance.decode_from_base64( encoded )
+            self.assertEquals( random_string, decoded )
     
     def test_decode_from_base64(self):
-        instance = ESAPI.encoder();
+        instance = ESAPI.encoder()
         for i in range(100):
             random_string = ESAPI.randomizer().get_random_string( 20, DefaultEncoder.CHAR_SPECIALS )
-            encoded = instance.encode_for_base64( random_string );
-            decoded = instance.decode_from_base64( encoded );
-            self.assertEqual( random_string, decoded );
+            encoded = instance.encode_for_base64( random_string )
+            decoded = instance.decode_from_base64( encoded )
+            self.assertEqual( random_string, decoded )
 
         for i in range(100):
             random_string = ESAPI.randomizer().get_random_string( 20, DefaultEncoder.CHAR_SPECIALS )
-            encoded = ESAPI.randomizer().get_random_string(1, DefaultEncoder.CHAR_ALPHANUMERICS) + instance.encode_for_base64( random_string );
-            decoded = instance.decode_from_base64( encoded );
-            self.assertFalse( random_string == decoded );
+            encoded = ESAPI.randomizer().get_random_string(1, DefaultEncoder.CHAR_ALPHANUMERICS) + instance.encode_for_base64( random_string )
+            decoded = instance.decode_from_base64( encoded )
+            self.assertFalse( random_string == decoded )
 
     def test_windows_codec(self):
-        instance = ESAPI.encoder();
+        instance = ESAPI.encoder()
 
-        win = WindowsCodec();
+        win = WindowsCodec()
         immune = []
-        self.assertEquals(None, instance.encode_for_os(win, None));
+        self.assertEquals(None, instance.encode_for_os(win, None))
         
-        npbs = PushbackString("n");
-        self.assertEquals(None, win.decode_character(npbs));
+        npbs = PushbackString("n")
+        self.assertEquals(None, win.decode_character(npbs))
 
-        epbs = PushbackString("");
-        self.assertEquals(None, win.decode_character(epbs));
+        epbs = PushbackString("")
+        self.assertEquals(None, win.decode_character(epbs))
         
         c = '<'
-        cpbs = PushbackString(win.encode_character(immune, c));
-        decoded = win.decode_character(cpbs);
-        self.assertEquals(c, decoded);
+        cpbs = PushbackString(win.encode_character(immune, c))
+        decoded = win.decode_character(cpbs)
+        self.assertEquals(c, decoded)
         
-        orig = "c:\\jeff";
-        enc = win.encode(DefaultEncoder.CHAR_ALPHANUMERICS, orig);
-        self.assertEquals(orig, win.decode(enc));
-        self.assertEquals(orig, win.decode(orig));
+        orig = "c:\\jeff"
+        enc = win.encode(DefaultEncoder.CHAR_ALPHANUMERICS, orig)
+        self.assertEquals(orig, win.decode(enc))
+        self.assertEquals(orig, win.decode(orig))
         
         # TODO: Check that these are acceptable for Windows
         self.assertEquals("c^:^\\jeff", instance.encode_for_os(win, "c:\\jeff"));		
-        self.assertEquals("c^:^\\jeff", win.encode(immune, "c:\\jeff"));
-        self.assertEquals("dir^ ^&^ foo", instance.encode_for_os(win, "dir & foo"));
-        self.assertEquals("dir^ ^&^ foo", win.encode(immune, "dir & foo"));
+        self.assertEquals("c^:^\\jeff", win.encode(immune, "c:\\jeff"))
+        self.assertEquals("dir^ ^&^ foo", instance.encode_for_os(win, "dir & foo"))
+        self.assertEquals("dir^ ^&^ foo", win.encode(immune, "dir & foo"))
     
     def test_unix_codec(self):
-        instance = ESAPI.encoder();
+        instance = ESAPI.encoder()
 
-        unix = UnixCodec();
+        unix = UnixCodec()
         immune = []
-        self.assertEquals(None, instance.encode_for_os(unix, None));
+        self.assertEquals(None, instance.encode_for_os(unix, None))
         
-        npbs = PushbackString("n");
-        self.assertEquals(None, unix.decode_character(npbs));
+        npbs = PushbackString("n")
+        self.assertEquals(None, unix.decode_character(npbs))
 
         c = '<'
-        cpbs = PushbackString(unix.encode_character(immune, c));
-        decoded = unix.decode_character(cpbs);
-        self.assertEquals(c, decoded);
+        cpbs = PushbackString(unix.encode_character(immune, c))
+        decoded = unix.decode_character(cpbs)
+        self.assertEquals(c, decoded)
         
-        epbs = PushbackString("");
-        self.assertEquals(None, unix.decode_character(epbs));
+        epbs = PushbackString("")
+        self.assertEquals(None, unix.decode_character(epbs))
 
-        orig = "/etc/passwd";
-        enc = unix.encode(immune, orig);
-        self.assertEquals(orig, unix.decode(enc));
-        self.assertEquals(orig, unix.decode(orig));
+        orig = "/etc/passwd"
+        enc = unix.encode(immune, orig)
+        self.assertEquals(orig, unix.decode(enc))
+        self.assertEquals(orig, unix.decode(orig))
         
         # TODO: Check that these are acceptable for Unix hosts
-        self.assertEquals("c\\:\\\\jeff", instance.encode_for_os(unix, "c:\\jeff"));
-        self.assertEquals("c\\:\\\\jeff", unix.encode(immune, "c:\\jeff"));
-        self.assertEquals("dir\\ \\&\\ foo", instance.encode_for_os(unix, "dir & foo"));
-        self.assertEquals("dir\\ \\&\\ foo", unix.encode(immune, "dir & foo"));
+        self.assertEquals("c\\:\\\\jeff", instance.encode_for_os(unix, "c:\\jeff"))
+        self.assertEquals("c\\:\\\\jeff", unix.encode(immune, "c:\\jeff"))
+        self.assertEquals("dir\\ \\&\\ foo", instance.encode_for_os(unix, "dir & foo"))
+        self.assertEquals("dir\\ \\&\\ foo", unix.encode(immune, "dir & foo"))
 
         # Unix paths (that must be encoded safely)
         # TODO: Check that these are acceptable for Unix
-        self.assertEquals("\\/etc\\/hosts", instance.encode_for_os(unix, "/etc/hosts"));
-        self.assertEquals("\\/etc\\/hosts\\;\\ ls\\ -l", instance.encode_for_os(unix, "/etc/hosts; ls -l"));
+        self.assertEquals("\\/etc\\/hosts", instance.encode_for_os(unix, "/etc/hosts"))
+        self.assertEquals("\\/etc\\/hosts\\;\\ ls\\ -l", instance.encode_for_os(unix, "/etc/hosts; ls -l"))
    
     def test_concurrency(self):
         for i in range(10):
