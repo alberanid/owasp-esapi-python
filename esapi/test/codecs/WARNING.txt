@@ -1,0 +1,3 @@
+Tests in this directory are old and may not function completely.
+
+All testing is now done in test_encoder.py

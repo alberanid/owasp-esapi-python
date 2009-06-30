@@ -1,3 +1,3 @@
 #!/bin/bash
 
-nosetests --with-coverage --cover-package=esapi . codecs
+nosetests --with-coverage --cover-package=esapi . 
