@@ -20,9 +20,18 @@ import base64
 from esapi.core import ESAPI
 from esapi.encoder import Encoder
 
-from esapi.codecs.percent import PercentCodec
+from esapi.codecs.codec import Codec
+
+from esapi.codecs.css import CSSCodec
 from esapi.codecs.html_entity import HTMLEntityCodec
 from esapi.codecs.javascript import JavascriptCodec
+from esapi.codecs.percent import PercentCodec
+from esapi.codecs.vbscript import VBScriptCodec
+from esapi.codecs.ldap_dn import LDAPDNCodec
+from esapi.codecs.ldap import LDAPCodec
+
+from esapi.exceptions import EncodingException
+from esapi.exceptions import IntrusionException
 
 from esapi.logger import Logger
 
@@ -35,37 +44,55 @@ class DefaultEncoder(Encoder):
     @author Craig Younkins (craig.younkins@owasp.org)
     """
     
-    codecs = []
-    _html_codec = HTMLEntityCodec()
-    _percent_codec = PercentCodec()
-    _javascript_codec = JavascriptCodec()
-    #vbScriptCodec = VBScriptCodec()
-    #cssCodec = CSSCodec()
-    
-    logger = ESAPI.logger("Encoder")
-    
     IMMUNE_HTML = ',.-_ '
     IMMUNE_HTMLATTR = ',.-_'
     IMMUNE_CSS = ''
     IMMUNE_JAVASCRIPT = ',._'
+    IMMUNE_VBSCRIPT = ',._'
     IMMUNE_XML = ',.-_ '
     IMMUNE_SQL = ' '
     IMMUNE_OS = '-'
     IMMUNE_XMLATTR = ',.-_'
     IMMUNE_XPATH = ',.-_ '
+    IMMUNE_LDAP = ''
+    IMMUNE_LDAP_DN = ''
     
     # Unreserved characters as specified in RFC 3986
     IMMUNE_URL = '-_.~'
     
     def __init__(self, codecs=None):
+        """
+        Instantiates a new DefaultEncoder.
+        
+        @param codecs a list of codec instances to use for canonicalization
+        """
         Encoder.__init__(self)
+        
+        self.html_codec = HTMLEntityCodec()
+        self.percent_codec = PercentCodec()
+        self.javascript_codec = JavascriptCodec()
+        self.vbscript_codec = VBScriptCodec()
+        self.css_codec = CSSCodec()
+        self.ldap_codec = LDAPCodec()
+        self.ldap_dn_codec = LDAPDNCodec()
+    
+        self.logger = ESAPI.logger("Encoder")
+        
+        # Used for canonicalization
+        self.codecs = []
         if codecs is None:
-            self.codecs.append(self._html_codec)
-            self.codecs.append(self._percent_codec)
-            self.codecs.append(self._javascript_codec)
+            self.codecs.append(self.html_codec)
+            self.codecs.append(self.percent_codec)
+            self.codecs.append(self.javascript_codec)
+            
+            # Leaving out css_codec because it eats / characters
+            # Leaving out vbscript_codec because it eats " characters
         else:
-            self.codecs = codecs
-
+            for codec in codecs:
+                if not isinstance(codec, Codec):
+                    raise TypeError("Codecs in list must be instances of children of Codec")
+                self.codecs.append(codec)
+                    
     def canonicalize(self, input_, strict=True):
         if input_ is None: 
             return None
@@ -125,58 +152,60 @@ class DefaultEncoder(Encoder):
         raise NotImplementedError()
 
     def encode_for_css(self, input_):
-        raise NotImplementedError()
+        return self.css_codec.encode( DefaultEncoder.IMMUNE_CSS, input_ )
 
     def encode_for_html(self, input_):
-        raise NotImplementedError()
+        return self.html_codec.encode( DefaultEncoder.IMMUNE_HTML, input_ )
 
     def encode_for_html_attribute(self, input_):
-        raise NotImplementedError()
+        return self.html_codec.encode( DefaultEncoder.IMMUNE_HTMLATTR, input_ )
 
     def encode_for_javascript(self, input_):
-        raise NotImplementedError()
+        return self.javascript_codec.encode( DefaultEncoder.IMMUNE_JAVASCRIPT, input_ )
 
     def encode_for_vbscript(self, input_):
-        raise NotImplementedError()
+        return self.vbscript_codec.encode( DefaultEncoder.IMMUNE_VBSCRIPT, input_ )
 
     def encode_for_sql(self, codec, input_):
-        raise NotImplementedError()
+        return codec.encode( DefaultEncoder.IMMUNE_SQL, input_ )
 
     def encode_for_os(self, codec, input_):
-        raise NotImplementedError()
+        return codec.encode( DefaultEncoder.IMMUNE_OS, input_ )
 
     def encode_for_ldap(self, input_):
-        raise NotImplementedError()
+        return self.ldap_codec.encode( DefaultEncoder.IMMUNE_LDAP, input_ )
 
     def encode_for_dn(self, input_):
-        raise NotImplementedError()
+        return self.ldap_dn_codec.encode( DefaultEncoder.IMMUNE_LDAP_DN, input_ )
 
     def encode_for_xpath(self, input_):
-        raise NotImplementedError()
+        return self.html_codec.encode( DefaultEncoder.IMMUNE_XPATH, input_ )
 
     def encode_for_xml(self, input_):
-        raise NotImplementedError()
+        return self.html_codec.encode( DefaultEncoder.IMMUNE_XML, input_ )
 
     def encode_for_xml_attribute(self, input_):
-        raise NotImplementedError()
+        return self.html_codec.encode( DefaultEncoder.IMMUNE_XMLATTR, input_ )
 
     def encode_for_url(self, input_):
-        if input_ is None: 
-            return None
-        
-        return self._percent_codec.encode(self.IMMUNE_URL, input_)
+        return self.percent_codec.encode(DefaultEncoder.IMMUNE_URL, input_)
 
     def decode_from_url(self, input_):
-        if input_ is None: 
+        if input_ is None:
             return None
-        
         canonical = self.canonicalize(input_)
-        return self._percent_codec.decode(canonical)
+        return self.percent_codec.decode(canonical)
 
     def encode_for_base64(self, input_):
-        return base64.b64encode(input_)
+        try:
+            return base64.b64encode(input_)
+        except:
+            return None
 
     def decode_from_base64(self, input_):
-        return base64.b64decode(input_)
+        try:
+            return base64.b64decode(input_)
+        except:
+            return None
 
 

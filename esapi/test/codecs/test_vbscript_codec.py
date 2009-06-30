@@ -23,6 +23,11 @@ class VBScriptCodecTest(unittest.TestCase):
 
     known_values = ( 
                      ('<', 'chrw(60)'),
+                     ('<script>', 'chrw(60)&"script"&chrw(62)'),
+                     ('x !@$%()=+{}[]', 'x"&chrw(32)&chrw(33)&chrw(64)&chrw(36)&chrw(37)&chrw(40)&chrw(41)&chrw(61)&chrw(43)&chrw(123)&chrw(125)&chrw(91)&chrw(93)'),
+                     ("alert('ESAPI test!')", "alert\"&chrw(40)&chrw(39)&\"ESAPI\"&chrw(32)&\"test\"&chrw(33)&chrw(39)&chrw(41)"),
+                     ('jeff.williams@aspectsecurity.com', "jeff.williams\"&chrw(64)&\"aspectsecurity.com"),
+                     ('test <> test', "test\"&chrw(32)&chrw(60)&chrw(62)&chrw(32)&\"test"),
                     )
                      
     known_encode_only = ( 

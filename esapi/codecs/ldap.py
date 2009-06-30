@@ -15,10 +15,9 @@ accept the LICENSE before you use, modify, and/or redistribute this software.
 @author Craig Younkins (craig.younkins@owasp.org)
 """
 
-import esapi.codecs.codec
-from esapi.codecs.codec import Codec
+import esapi.codecs.codec as codec
 
-class LDAPCodec(Codec):
+class LDAPCodec(codec.Codec):
     """
     Implementation of the Codec interface for LDAP encoding.
     """
@@ -27,7 +26,7 @@ class LDAPCodec(Codec):
         """
         Instantiates the LDAP codec.
         """
-        Codec.__init__(self)
+        codec.Codec.__init__(self)
     
     def encode_character(self, immune, char):
         """

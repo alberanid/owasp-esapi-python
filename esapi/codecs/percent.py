@@ -15,14 +15,16 @@ accept the LICENSE before you use, modify, and/or redistribute this software.
 @author Craig Younkins (craig.younkins@owasp.org)
 """
 
-import esapi.codecs.codec
-from esapi.codecs.codec import Codec
+import esapi.codecs.codec as codec
 
-class PercentCodec(Codec):
+class PercentCodec(codec.Codec):
     """
     Implementation of the Codec interface for percent encoding (aka URL
     encoding)
     """
+    
+    def __init__(self):
+        codec.Codec.__init__(self)
     
     def encode_character(self, immune, char):
         """
@@ -31,17 +33,22 @@ class PercentCodec(Codec):
         Spaces are replaced by '+'. All characters not in immune are escaped
         as described in http://tools.ietf.org/html/rfc3986#section-2.1 .
         """
-        
+        # check for immunes
         if char in immune:
             return char
             
         if char == ' ':
             return '+'
         
-        hex_str = esapi.codecs.codec.get_hex_for_non_alphanumeric(char)
-        if hex_str is None:
+        # Only look at 8-bit 
+        if not codec.is_8bit(char):
+            return char
+        
+        # Pass alphanumerics
+        if char.isalnum():  
             return char
             
+        hex_str = codec.get_hex_for_char(char).upper()
         if ord(char) < 0x10:
             hex_str = '0' + hex_str
             
@@ -78,8 +85,6 @@ class PercentCodec(Codec):
             try:
                 ret = unichr( int( hex_digits, 16 ) )
                 return ret
-            # Should never hit exception because cannot have int > 255
-            # with only 2 hex digits. 0xFF = 255
             except ValueError:
                 pass
                 # Malformed?

@@ -23,6 +23,7 @@ class HTMLEntityCodecTest(unittest.TestCase):
 
     known_values = ( 
                      ('test', 'test'),
+                     ('<script>', '&lt;script&gt;'),
                      ('<', '&lt;'),
                      ('>', '&gt;'),
                      ('&', '&amp;'),
@@ -30,11 +31,17 @@ class HTMLEntityCodecTest(unittest.TestCase):
                      ('', ''),
                      (u'Δ', '&Delta;'),
                      (u'δ', '&delta;'),
+                     ('dir&', 'dir&amp;'),
+                     ('one&two', 'one&amp;two'),
+                     (unichr(12345) + unichr(65533) + unichr(1244), unichr(12345) + unichr(65533) + unichr(1244)),
                     )
                      
     known_encode_only = ( 
-                          (unichr(2), ' '), # Illegal char
-                          
+      (unichr(2), ' '), # Illegal char
+      ("a" + unichr(0) + "b" + unichr(4) + "c" + unichr(128) + "d" + unichr(150) + "e" +unichr(159) + "f" + unichr(9) + "g", "a b c d e f&#x9;g"),
+      ("&lt;script&gt;", "&amp;lt&#x3b;script&amp;gt&#x3b;"),
+      ("!@$%()=+{}[]", "&#x21;&#x40;&#x24;&#x25;&#x28;&#x29;&#x3d;&#x2b;&#x7b;&#x7d;&#x5b;&#x5d;"),
+      
                         ) 
                      
     known_decode_only = ( 

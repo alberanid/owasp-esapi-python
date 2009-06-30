@@ -17,18 +17,35 @@ accept the LICENSE before you use, modify, and/or redistribute this software.
 
 from esapi.codecs.push_back_string import PushbackString
 
-def get_hex_for_non_alphanumeric(char):
+def is_ascii(string):
+    """
+    Determines if all the characters in the given string are part of the
+    128 characters of ascii. ord(char) must be in range(128)
+    """
+    try:
+        string.decode('ascii')
+        return True
+    except UnicodeDecodeError:
+        return False
+        
+def is_8bit(char):
+    """
+    Returns True if ord(char) < 256, False otherwise
+    """
+    return ord(char) < 256
+        
+def is_control_char(char):
+    if (ord(char) <= 0x1F or        # C0 control codes
+       0x7F <= ord(char) <= 0x9F):  # Del and C1 control codes
+        return True
+    
+    return False
+        
+def get_hex_for_char(char):
     """
     Returns the hex equivalent of the given character in the form 3C
     """
-    # Disabled for unicode
-    #if ord(char) > 0xFF: return None
-    if ('0' <= char <= '9' or
-        'a' <= char <= 'z' or
-        'A' <= char <= 'Z'):
-        return None
-    else:
-        return hex(ord(char))[2:].upper()
+    return hex(ord(char))[2:]
 
 class Codec():
     """

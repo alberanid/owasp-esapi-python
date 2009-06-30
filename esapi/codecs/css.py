@@ -15,31 +15,36 @@ accept the LICENSE before you use, modify, and/or redistribute this software.
 @author Craig Younkins (craig.younkins@owasp.org)
 """
 
-import esapi.codecs.codec
-from esapi.codecs.codec import Codec
+import esapi.codecs.codec as codec
 import esapi.codecs.push_back_string
 
-class CSSCodec(Codec):
+class CSSCodec(codec.Codec):
     """
-    Implementation of the Codec interface for backslash encoding used in CSS.
+    Implementation of the codec.Codec interface for backslash encoding used in CSS.
     """
    
     def __init__(self):
-        Codec.__init__(self)
+        codec.Codec.__init__(self)
 
     
     def encode_character(self, immune, char):
         """
         Encodes a character using CSS backslash style.
         """
+        # Check for immunes
         if char in immune:
             return char
             
-        hex_str = esapi.codecs.codec.get_hex_for_non_alphanumeric(char)
-        if hex_str is None:
+        # Only look at 8-bit 
+        if not codec.is_8bit(char):
+            return char
+        
+        # Pass alphanumerics
+        if char.isalnum():  
             return char
             
         # Return the hex and end in whitespace to terminate
+        hex_str = codec.get_hex_for_char(char)
         return "\\" + hex_str + " "
     
     def decode_character(self, pbs):

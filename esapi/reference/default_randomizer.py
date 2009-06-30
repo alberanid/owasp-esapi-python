@@ -25,7 +25,6 @@ source of entropy is not found, a NotImplementedError() will be thrown.
 """
 
 # Todo
-# Change alpha_numerics and hex once Encoder is written
 
 from random import SystemRandom
 
@@ -33,11 +32,9 @@ from esapi.core import ESAPI
 from esapi.logger import Logger
 from esapi.randomizer import Randomizer
 from esapi.translation import _
+from esapi.encoder import Encoder
 
 class DefaultRandomizer(Randomizer):
-    alpha_numerics = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
-    hex = '0123456789abcdef'
-
     def __init__(self):
         Randomizer.__init__(self)
         self.secure_random = SystemRandom()
@@ -56,7 +53,7 @@ class DefaultRandomizer(Randomizer):
         return self.secure_random.randint(min_, max_)
 
     def get_random_filename(self, extension):
-        filename = self.get_random_string(12, self.alpha_numerics) + \
+        filename = self.get_random_string(12, Encoder.CHAR_ALPHANUMERICS) + \
                    "." + extension
         self.logger.debug(Logger.SECURITY_SUCCESS, 
                           _("Generated a new random filename: ") + filename)
@@ -67,14 +64,14 @@ class DefaultRandomizer(Randomizer):
 
     def get_random_guid(self):
         parts = [None] * 5
-        parts[0] = self.get_random_string(8, self.hex)
-        parts[1] = self.get_random_string(4, self.hex)
+        parts[0] = self.get_random_string(8, Encoder.CHAR_LOWER_HEX)
+        parts[1] = self.get_random_string(4, Encoder.CHAR_LOWER_HEX)
         # Sets GUID version to 4 
-        parts[2] = '4' + self.get_random_string(3, self.hex)
+        parts[2] = '4' + self.get_random_string(3, Encoder.CHAR_LOWER_HEX)
         # Sets high bits
         parts[3] = self.get_random_choice('89ab') + \
-                   self.get_random_string(3, self.hex) 
-        parts[4] = self.get_random_string(12, self.hex)
+                   self.get_random_string(3, Encoder.CHAR_LOWER_HEX) 
+        parts[4] = self.get_random_string(12, Encoder.CHAR_LOWER_HEX)
         return '-'.join(parts)
                     
     def get_random_choice(self, seq):

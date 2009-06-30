@@ -15,11 +15,10 @@ accept the LICENSE before you use, modify, and/or redistribute this software.
 @author Craig Younkins (craig.younkins@owasp.org)
 """
 
-import esapi.codecs.codec
-from esapi.codecs.codec import Codec
+import esapi.codecs.codec as codec
 from esapi.encoder import Encoder
 
-class VBScriptCodec(Codec):
+class VBScriptCodec(codec.Codec):
     """
     Implementation of the Codec interface for 'quote' encoding from VBScript.
     """
@@ -28,7 +27,7 @@ class VBScriptCodec(Codec):
         """
         Instantiates the VBScript codec.
         """
-        Codec.__init__(self)
+        codec.Codec.__init__(self)
         
     def encode(self, immune, input_):
         """
@@ -42,27 +41,30 @@ class VBScriptCodec(Codec):
         encoding = False
         inquotes = False
         
-        for i in range(len(input_)):
-            char = input_[i]
-            # handle normal characters and surround them with quotes
-            if char in Encoder.CHAR_ALPHANUMERICS or char in immune:
-                if encoding and i > 0:
-                    buf += "&"
-                if not inquotes and i > 0:
-                    buf += '"'
-                buf += char
-                inquotes = True
-                encoding = False
-                
-            # handle characters than need encoding
-            else:
-                if inquotes:
-                    buf += '"'
-                if i > 0:
-                    buf += "&"
-                buf += self.encode_character(immune, char)
-                inquotes = False
-                encoding = True
+        try:
+            for i in range(len(input_)):
+                char = input_[i]
+                # handle normal characters and surround them with quotes
+                if char in Encoder.CHAR_ALPHANUMERICS or char in immune:
+                    if encoding and i > 0:
+                        buf += "&"
+                    if not inquotes and i > 0:
+                        buf += '"'
+                    buf += char
+                    inquotes = True
+                    encoding = False
+                    
+                # handle characters than need encoding
+                else:
+                    if inquotes:
+                        buf += '"'
+                    if i > 0:
+                        buf += "&"
+                    buf += self.encode_character(immune, char)
+                    inquotes = False
+                    encoding = True
+        except TypeError:
+            return None
                 
         return buf
     
@@ -74,9 +76,12 @@ class VBScriptCodec(Codec):
         if char in immune:
             return char
             
-        # Check for alphanumeric characters
-        hex_str = esapi.codecs.codec.get_hex_for_non_alphanumeric(char)
-        if hex_str is None:
+        # Only look at 8-bit 
+        if not codec.is_8bit(char):
+            return char
+        
+        # Pass alphanumerics
+        if char.isalnum():  
             return char
             
         return "chrw(" + str(ord(char)) + ")"

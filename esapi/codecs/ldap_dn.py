@@ -40,22 +40,24 @@ class LDAPDNCodec(Codec):
         @return the encoded String
         """    
         ret = ''
-        
-        # Add the leading backslash if needed
-        if  len(raw) > 0 and (raw[0] == ' ' or raw[0] == '#'):
-            ret += '\\'
-            
         try:
-            for char in raw:
-                ret += self.encode_character(immune, char)
+            # Add the leading backslash if needed
+            if  len(raw) > 0 and (raw[0] == ' ' or raw[0] == '#'):
+                ret += '\\'
+                
+            try:
+                for char in raw:
+                    ret += self.encode_character(immune, char)
+            except TypeError:
+                return None
+                
+            # Add the trailing backslash if needed
+            if len(raw) > 1 and raw[-1] == ' ':
+                ret = ret[:-1] + "\\" + ret[-1]
+                
+            return ret
         except TypeError:
             return None
-            
-        # Add the trailing backslash if needed
-        if len(raw) > 1 and raw[-1] == ' ':
-            ret = ret[:-1] + "\\" + ret[-1]
-            
-        return ret
     
     def encode_character(self, immune, char):
         """

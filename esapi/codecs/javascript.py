@@ -15,16 +15,16 @@ accept the LICENSE before you use, modify, and/or redistribute this software.
 @author Craig Younkins (craig.younkins@owasp.org)
 """
 
-import esapi.codecs.codec
-from esapi.codecs.codec import Codec
+import esapi.codecs.codec as codec
+import esapi.codecs.push_back_string as push_back_string
 
-class JavascriptCodec(Codec):
+class JavascriptCodec(codec.Codec):
     """
-    Implementation of the Codec interface for backslash encoding in JavaScript.
+    Implementation of the codec.Codec interface for backslash encoding in JavaScript.
     """
     
     def __init__(self):
-        Codec.__init__(self)
+        codec.Codec.__init__(self)
         pass
         
     def encode_character(self, immune, char):
@@ -32,15 +32,20 @@ class JavascriptCodec(Codec):
         Returns a backslash encoded numeric format. Does not use backslash
         character escapes as these can be used in attacks.
         """
+        # Check for immunes
         if char in immune:
             return char
             
-        hex_str = esapi.codecs.codec.get_hex_for_non_alphanumeric(char)
-        if hex_str is None:
+        # Only look at 8-bit 
+        if not codec.is_8bit(char):
+            return char
+        
+        # Pass alphanumerics
+        if char.isalnum():  
             return char
             
         # encode up to 256 with \\xHH
-        temp = hex(ord(char))[2:].upper()
+        temp = codec.get_hex_for_char(char).upper()
         if ord(char) < 256:
             padding = '00'[len(temp):]
             return "\\x" + padding + temp
@@ -123,14 +128,14 @@ class JavascriptCodec(Codec):
                 return None
                 
         # look for one, two, or three octal digits
-        if esapi.codecs.push_back_string.is_octal_digit(second):
+        if push_back_string.is_octal_digit(second):
             buf = ''
             # get digit 1
             buf += second
             
             # get digit 2 if present
             char2 = pbs.next()
-            if not esapi.codecs.push_back_string.is_octal_digit(char2):
+            if not push_back_string.is_octal_digit(char2):
                 pbs.pushback(char2)
             else:
                 buf += char2

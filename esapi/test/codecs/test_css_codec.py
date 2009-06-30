@@ -24,6 +24,8 @@ class CSSCodecTest(unittest.TestCase):
     known_values = ( 
                      ('test', 'test'),
                      ('<', '\\3C '),
+                     ('<script>', '\\3C script\\3E '),
+                     ('!@$%()=+{}[]', '\\21 \\40 \\24 \\25 \\28 \\29 \\3D \\2B \\7B \\7D \\5B \\5D '),
                     )
                      
     known_encode_only = ( 

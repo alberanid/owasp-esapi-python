@@ -27,6 +27,8 @@ class JavascriptCodecTest(unittest.TestCase):
                      ('~', '\\x7E'),
                      ('"', '\\x22'),
                      (u'Δ', '\\u0394'),
+                     ('<script>', '\\x3Cscript\\x3E'),
+                     ('!@$%()=+{}[]', '\\x21\\x40\\x24\\x25\\x28\\x29\\x3D\\x2B\\x7B\\x7D\\x5B\\x5D'),
                     )
                      
     known_encode_only = ( 

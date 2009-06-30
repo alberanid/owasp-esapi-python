@@ -15,16 +15,15 @@ accept the LICENSE before you use, modify, and/or redistribute this software.
 @author Craig Younkins (craig.younkins@owasp.org)
 """
 
-import esapi.codecs.codec
-from esapi.codecs.codec import Codec
+import esapi.codecs.codec as codec
 
-class HTMLEntityCodec(Codec):
+class HTMLEntityCodec(codec.Codec):
     """
     Implementation of the Codec interface for HTML entity encoding.
     """
    
     def __init__(self):
-        Codec.__init__(self)
+        codec.Codec.__init__(self)
         self.entity_values_to_names = None
         self.entity_names_to_values = None
     
@@ -38,18 +37,20 @@ class HTMLEntityCodec(Codec):
         # Check for immune
         if char in immune:
             return char
-
-        # Check for alphanumerics
-        hex_str = esapi.codecs.codec.get_hex_for_non_alphanumeric(char)
-        if hex_str is None:
+            
+        # Only look at 8-bit 
+        if not codec.is_8bit(char):
+            return char
+        
+        # Pass alphanumerics
+        if char.isalnum():  
             return char
             
         # Check for illegal characters
-        if ( (ord(char) <= 0x1F and 
+        if (codec.is_control_char(char) and 
                    char != "\t" and
                    char != "\n" and
-                   char != "\r") or
-                (0x7F <= ord(char) <= 0x9F) ):
+                   char != "\r"):
             return " "
           
         # Check if there's a defined entity
@@ -57,7 +58,8 @@ class HTMLEntityCodec(Codec):
         if entity_name is not None:
             return "&" + entity_name + ";"
             
-        # Return the hex entity as suggest in the spec
+        # Return the hex entity as suggested in the spec
+        hex_str = codec.get_hex_for_char(char).lower()
         return "&#x" + hex_str + ";"
     
     def decode_character(self, pbs):

@@ -52,6 +52,8 @@ class Encoder():
     CHAR_SPECIALS = '.-_!@$^*=~|+?'
     CHAR_LETTERS = CHAR_LOWERS + CHAR_UPPERS
     CHAR_ALPHANUMERICS = CHAR_LETTERS + CHAR_DIGITS
+    CHAR_LOWER_HEX = CHAR_DIGITS + 'abcdef'
+    CHAR_UPPER_HEX = CHAR_DIGITS + 'ABCDEF'
     
     """
     Password character set, is alphanumerics (without l, i, I, o, O, and 0)
