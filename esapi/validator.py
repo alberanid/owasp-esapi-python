@@ -42,7 +42,7 @@ class Validator():
 
     def is_valid_input(self, context,
                            input_,
-                           type,
+                           type_,
                            max_length,
                            allow_none):
         """
@@ -54,7 +54,7 @@ class Validator():
                 A descriptive name of the parameter that you are validating (e.g., LoginPage_UsernameField). This value is used by any logging or error handling that is done with respect to the value passed in.
         @param input_
                 The actual user input data to validate.
-        @param type
+        @param type_
                 The regular expression name that maps to the actual regular expression from "ESAPI.conf.settings".
         @param max_length
                 The maximum post-canonicalized String length allowed.
@@ -69,7 +69,7 @@ class Validator():
 
     def get_valid_input(self, context,
                               input_,
-                              type,
+                              type_,
                               max_length,
                               allow_none,
                               error_list=None):
@@ -82,7 +82,7 @@ class Validator():
                 A descriptive name of the parameter that you are validating (e.g., LoginPage_UsernameField). This value is used by any logging or error handling that is done with respect to the value passed in.
         @param input_
                 The actual user input data to validate.
-        @param type
+        @param type_
                 The regular expression name that maps to the actual regular expression from "ESAPI.conf.settings".
         @param max_length
                 The maximum post-canonicalized String length allowed.
@@ -97,7 +97,7 @@ class Validator():
         """
         raise NotImplementedError()
 
-    def is_valid_date(self, context, input_, format, allow_none):
+    def is_valid_date(self, context, input_, format_, allow_none):
         """
         Returns true if input is a valid date according to the specified date format.
 
@@ -105,7 +105,7 @@ class Validator():
                 A descriptive name of the parameter that you are validating (e.g., LoginPage_UsernameField). This value is used by any logging or error handling that is done with respect to the value passed in.
         @param input_
                 The actual user input data to validate.
-        @param format
+        @param format_
                 Required formatting of date inputted.
         @param allow_none
                 If allow_none is true then an input that is NONE or an empty string will be legal. If allow_none is false then NONE or an empty String will throw a ValidationException.
@@ -118,7 +118,7 @@ class Validator():
 
     def get_valid_date(self, context,
                              input_,
-                             format,
+                             format_,
                              allow_none,
                              error_list=None):
         """
@@ -130,7 +130,7 @@ class Validator():
                 A descriptive name of the parameter that you are validating (e.g., LoginPage_UsernameField). This value is used by any logging or error handling that is done with respect to the value passed in.
         @param input_
                 The actual user input data to validate.
-        @param format
+        @param format_
                 Required formatting of date inputted.
         @param allow_none
                 If allow_none is true then an input that is NONE or an empty string will be legal. If allow_none is false then NONE or an empty String will throw a ValidationException.
@@ -605,7 +605,7 @@ class Validator():
         """
         raise NotImplementedError()
 
-    def is_valid_list_item(self, context, input_, list):
+    def is_valid_list_item(self, context, input_, list_):
         """
         Returns true if input is a valid list item.
 
@@ -613,7 +613,7 @@ class Validator():
                 A descriptive name of the parameter that you are validating (e.g., LoginPage_UsernameField). This value is used by any logging or error handling that is done with respect to the value passed in.
         @param input_
                 The value to search 'list' for.
-        @param list
+        @param list_
                 The list to search for 'input'.
 
         @return true, if 'input' was found in 'list'.
@@ -622,7 +622,7 @@ class Validator():
         """
         raise NotImplementedError()
 
-    def get_valid_list_item(self, context, input_, list, error_list=None):
+    def get_valid_list_item(self, context, input_, list_, error_list=None):
         """
         Returns the list item that exactly matches the canonicalized input. Invalid or non-matching input
         will generate a descriptive ValidationException, and input that is clearly an attack
@@ -633,7 +633,7 @@ class Validator():
                 A descriptive name of the parameter that you are validating (e.g., LoginPage_UsernameField). This value is used by any logging or error handling that is done with respect to the value passed in.
         @param input_
                 The value to search 'list' for.
-        @param list
+        @param list_
                 The list to search for 'input'.
         @param error_list
                 If validation is in error, resulting error will be stored in the error_list by context
@@ -762,7 +762,7 @@ class Validator():
         """
         raise NotImplementedError()
 
-    def safe_read_line(self, inputStream, max_length):
+    def safe_read_line(self, input_stream, max_length):
         """
         Reads from an input stream until end-of-line or a maximum number of
         characters. This method protects against the inherent denial of service
@@ -771,7 +771,7 @@ class Validator():
         until all memory is exhausted and the platform throws an OutOfMemoryError
         and probably terminates.
 
-        @param inputStream
+        @param input_stream
                 The InputStream from which to read data
         @param max_length
                 Maximum characters allowed to be read in per line

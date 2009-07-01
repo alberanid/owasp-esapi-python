@@ -17,10 +17,7 @@ accept the LICENSE before you use, modify, and/or redistribute this software.
 
 from esapi.exceptions import ValidationException
 
-def ValidationRule:
-    def get_valid(self, context, input_):
-        raise NotImplementedError()
-        
+class ValidationRule:
     def set_allow_none(self, flag):
         raise NotImplementedError()
         
@@ -30,10 +27,10 @@ def ValidationRule:
     def set_type_name(self, type_name):
         raise NotImplementedError()
     
-    def assert_valid(self, context, input_, error_list):
+    def assert_valid(self, context, input_):
         raise NotImplementedError()
         
-    def get_valid(self, context, input_, error_list):
+    def get_valid(self, context, input_, error_list=None):
         raise NotImplementedError()
         
     def get_safe(self, context, input_):
