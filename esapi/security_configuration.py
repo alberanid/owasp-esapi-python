@@ -142,6 +142,12 @@ class SecurityConfiguration:
         implementation.
         """
         raise NotImplementedError()
+        
+    def get_validation_pattern(self, type_name):
+        """
+        Returns the validation pattern for a particular type.
+        """
+        raise NotImplementedError()
 
     def get_executor_implementation(self):
         """

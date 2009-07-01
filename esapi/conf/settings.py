@@ -38,7 +38,7 @@ ESAPI_HTTPUtilities = 'esapi.reference.DefaultHTTPUtilities'
 ESAPI_IntrusionDetector = 'esapi.reference.DefaultIntrusionDetector'
 ESAPI_Logger = 'esapi.reference.python_log_factory.PythonLogFactory'
 ESAPI_Randomizer = 'esapi.reference.default_randomizer.DefaultRandomizer'
-ESAPI_Validator = 'esapi.reference.DefaultValidator'
+ESAPI_Validator = 'esapi.reference.default_validator.DefaultValidator'
 
 #===========================================================================
 # ESAPI Authenticator
@@ -190,39 +190,39 @@ IntrusionDetector_esapi_errors_AuthenticationHostException_actions = ('log','log
 #   Validator.getInstance().getValidDataFromBrowser( "Email", input );
 #   Validator.getInstance().isValidDataFromBrowser( "Email", input );
 #
-Validator_SafeString = "^[\p{L}\p{N}.]{0,1024}$"
-Validator_Email = "^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\\.[a-zA-Z]{2,4}$"
-Validator_IPAddress = "^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$"
-Validator_URL = "^(ht|f)tp(s?)\\:\\/\\/[0-9a-zA-Z]([-.\\w]*[0-9a-zA-Z])*(:(0-9)*)*(\\/?)([a-zA-Z0-9\\-\\.\\?\\,\\:\\'\\/\\\\\\+=&amp;%\\$#_]*)?$"
-Validator_CreditCard = "^(\\d{4}[- ]?){3}\\d{4}$"
-Validator_SSN = "^(?!000)([0-6]\\d{2}|7([0-6]\\d|7[012]))([ -]?)(?!00)\\d\\d\\3(?!0000)\\d{4}$"
+Validator_SafeString = """^[\p{L}\p{N}.]{0,1024}$"""
+Validator_Email = """^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[a-zA-Z]{2,4}$"""
+Validator_IPAddress = """^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$"""
+Validator_URL = """^(ht|f)tp(s?)\:\/\/[0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*(:(0-9)*)*(\/?)([a-zA-Z0-9\-\.\?\,\:\'\/\\\+=&amp;%\$#_]*)?$"""
+Validator_CreditCard = """^(\d{4}[- ]?){3}\d{4}$"""
+Validator_SSN = """^(?!000)([0-6]\d{2}|7([0-6]\d|7[012]))([ -]?)(?!00)\d\d\3(?!0000)\d{4}$"""
 
 # Validators used by ESAPI
-Validator_AccountName = "^[a-zA-Z0-9]{3,20}$"
-Validator_SystemCommand = "^[a-zA-Z\\-\\/]{0,64}$"
-Validator_RoleName = "^[a-z]{1,20}$"
-Validator_Redirect = "^\\/test.*$"
+Validator_AccountName = """^[a-zA-Z0-9]{3,20}$"""
+Validator_SystemCommand = """^[a-zA-Z\-\/]{0,64}$"""
+Validator_RoleName = """^[a-z]{1,20}$"""
+Validator_Redirect = """^\/test.*$"""
 
 # Global HTTP Validation Rules
 # Values with Base64 encoded data (e.g. encrypted state) will need at least [a-zA-Z0-9\/+=]
-Validator_HTTPScheme = "^(http|https)$"
-Validator_HTTPServerName = "^[a-zA-Z0-9_.\\-]*$"
-Validator_HTTPParameterName = "^[a-zA-Z0-9_]{0,32}$"
-Validator_HTTPParameterValue = "^[a-zA-Z0-9.\\-\\/+=_ ]*$"
-Validator_HTTPCookieName = "^[a-zA-Z0-9\\-_]{0,32}$"
-Validator_HTTPCookieValue = "^[a-zA-Z0-9\\-\\/+=_ ]*$"
-Validator_HTTPHeaderName = "^[a-zA-Z0-9\\-_]{0,32}$"
-Validator_HTTPHeaderValue = "^[a-zA-Z0-9()\\-=\\*\\.\\?;,+\\/:&_ ]*$"
-Validator_HTTPContextPath = "^[a-zA-Z0-9.\\-_]*$"
-Validator_HTTPPath = "^[a-zA-Z0-9.\\-_]*$"
-Validator_HTTPQueryString = "^[a-zA-Z0-9()\\-=\\*\\.\\?;,+\\/:&_ ](1,50)$"
-Validator_HTTPURI = "^[a-zA-Z0-9()\\-=\\*\\.\\?;,+\\/:&_ ]*$"
-Validator_HTTPURL = "^.*$"
-Validator_HTTPJSESSIONID = "^[A-Z0-9]{10,30}$"
+Validator_HTTPScheme = """^(http|https)$"""
+Validator_HTTPServerName = """^[a-zA-Z0-9_.\-]*$"""
+Validator_HTTPParameterName = """^[a-zA-Z0-9_]{0,32}$"""
+Validator_HTTPParameterValue = """^[a-zA-Z0-9.\-\/+=_ ]*$"""
+Validator_HTTPCookieName = """^[a-zA-Z0-9\-_]{0,32}$"""
+Validator_HTTPCookieValue = """^[a-zA-Z0-9\-\/+=_ ]*$"""
+Validator_HTTPHeaderName = """^[a-zA-Z0-9\-_]{0,32}$"""
+Validator_HTTPHeaderValue = """^[a-zA-Z0-9()\-=\*\.\?;,+\/:&_ ]*$"""
+Validator_HTTPContextPath = """^[a-zA-Z0-9.\-_]*$"""
+Validator_HTTPPath = """^[a-zA-Z0-9.\-_]*$"""
+Validator_HTTPQueryString = """^[a-zA-Z0-9()\-=\*\.\?;,+\/:&_ ](1,50)$"""
+Validator_HTTPURI = """^[a-zA-Z0-9()\-=\*\.\?;,+\/:&_ ]*$"""
+Validator_HTTPURL = """^.*$"""
+Validator_HTTPJSESSIONID = """^[A-Z0-9]{10,30}$"""
 
 # Validation of file related input
-Validator_FileName = "^[a-zA-Z0-9!@#$%^&{}\\[\\]()_+\\-=,.~'` ]{0,255}$"
-Validator_DirectoryName = "^[a-zA-Z0-9:\\\\!@#$%^&{}\\[\\]()_+\\-=,.~'` ]{0,255}$"
+Validator_FileName = """^[a-zA-Z0-9!@#$%^&{}\[\]()_+\-=,.~'` ]{0,255}$"""
+Validator_DirectoryName = """^[a-zA-Z0-9:\\!@#$%^&{}\[\]()_+\-=,.~'` ]{0,255}$"""
 
 try:
     from settings_local import *

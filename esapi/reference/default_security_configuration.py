@@ -73,7 +73,18 @@ class DefaultSecurityConfiguration(SecurityConfiguration):
 
     def get_validation_implementation(self):
         return settings.ESAPI_Validator
-    
+        
+    def get_validation_pattern(self, key):
+        value = getattr(settings, "Validator_" + key, None)
+        if value is None: 
+            return None
+            
+        try:
+            return re.compile(value)
+        except Exception, extra:
+            self.log_special("SecurityConfiguration for " + key + " not a valid regex in ESAPI.properties. Returning null", None )
+            return None
+        
     def get_executor_implementation(self):
         return settings.ESAPI_Executor
     
