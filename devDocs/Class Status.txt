@@ -1,21 +1,29 @@
 Complete
 ---------
+translation.py
+
 Logger
 LoggerTest
 LogFactory
+
 SecurityConfiguration
 DefaultSecurityConfiguration
+
 Randomizer
+DefaultRandomizer
+RandomizerTest
+
 Encryptor
-translation.py
+
 All Codecs
+Encoder
+EncoderTest
+DefaultEncoder
 
 Incomplete
 ---------
 core.py - dep on everything
-PythonLogFactory - dep Authenticator, HTML Encoder
-DefaultRandomizer - dep on Encoder
-DefaultEncryptor - dep on Encoder.base64, on hold for crypto
+PythonLogFactory - dep Authenticator
+DefaultEncryptor - on hold for crypto
 EncryptorTest - Will code with DefaultEncryptor
-EncoderTest - dep on all encoders
-DefaultEncoder - Dep on IntrusionException, all codecs
+Exceptions - Dep on IntrusionDetector
