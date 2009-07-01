@@ -18,7 +18,6 @@ accept the LICENSE before you use, modify, and/or redistribute this software.
 # Todo: 
 # Add HTTP Session info to log method
 # Change log method after Authenticator has been written
-# Change log method after HTML Encoder are written
 
 import logging
 

@@ -79,8 +79,7 @@ class DefaultEncryptor(Encryptor):
                 digest.update(bytes)
                 bytes = digest.digest()
                 
-            import base64
-            encoded = base64.b64encode(bytes)
+            encoded = ESAPI.encoder().encode_for_base64(bytes)
             return encoded
             
         except ValueError, e:
