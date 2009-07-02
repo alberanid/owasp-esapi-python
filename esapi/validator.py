@@ -33,6 +33,9 @@ class Validator():
 
     @author Craig Younkins (craig.younkins@owasp.org)
     """
+    
+    def __init__(self):
+        pass
 
     def add_rule(self, rule):
         raise NotImplementedError()
