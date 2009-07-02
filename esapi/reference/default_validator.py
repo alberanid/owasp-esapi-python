@@ -26,6 +26,7 @@ from esapi.exceptions import ValidationException
 from esapi.reference.default_encoder import DefaultEncoder
 
 from esapi.reference.validation.credit_card_validation_rule import CreditCardValidationRule
+from esapi.reference.validation.date_validation_rule import DateValidationRule
 
 class DefaultValidator(Validator):
     """
@@ -87,4 +88,22 @@ class DefaultValidator(Validator):
         ccvr.set_allow_none(allow_none)
         return ccvr.get_valid(context, input_, errors)
     
-        
+    def is_valid_date(self, context, input_, format, allow_none):
+        """
+        Returns true if input is a valid date.
+        """
+        try:
+            self.get_valid_date( context, input_, allow_none )
+            return True
+        except ValidationException, extra:
+            return False
+            
+    def get_valid_date(self, context, input_, format, allow_none, errors=None):
+        """
+        Returns a valid date as a Date. Invalid input will generate a 
+        descriptive ValidationException, and input that is clearly an attack 
+        will generate a descriptive IntrusionException.
+        """
+        dvr = DateValidationRule("SimpleDate", self.encoder, format)
+        dvr.set_allow_none(allow_none)
+        return dvr.get_valid(context, input_, errors)

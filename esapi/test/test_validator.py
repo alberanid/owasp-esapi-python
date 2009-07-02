@@ -49,7 +49,17 @@ class ValidatorTest(unittest.TestCase):
         instance.get_valid_credit_card("cctest8", "4417 1234 5678 9112", False, errors);
         self.assertEquals( 2, len(errors) );
     
-    
+    def test_get_valid_date(self):
+        instance = ESAPI.validator()
+        errors = ValidationErrorList()
+        
+        self.assertTrue(instance.get_valid_date("datetest1", "June 23, 1967", "%B %d, %Y", False ))
+        instance.get_valid_date("datetest2", "freakshow", "%B %d, %Y", False, errors )
+        self.assertEquals( 1, len(errors) )
+        
+        instance.get_valid_date( "test", "June 32, 2008", "%B %d, %Y", False, errors )
+        self.assertEquals( 2, len(errors) )
+        
 if __name__ == "__main__":
     unittest.main()
 
