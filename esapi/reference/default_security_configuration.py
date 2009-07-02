@@ -19,6 +19,7 @@ accept the LICENSE before you use, modify, and/or redistribute this software.
 # After base64 decoder written, remove dependency in base64 in getMasterSalt and getMasterKey and getDigitalSignatureKey
 
 import pickle
+import re
 
 from esapi.security_configuration import SecurityConfiguration
 from esapi.translation import _
@@ -77,12 +78,13 @@ class DefaultSecurityConfiguration(SecurityConfiguration):
     def get_validation_pattern(self, key):
         value = getattr(settings, "Validator_" + key, None)
         if value is None: 
+            self.log_special("Trying to get validation pattern Validator_" + key + " failed because it doesn't exist")
             return None
             
         try:
             return re.compile(value)
         except Exception, extra:
-            self.log_special("SecurityConfiguration for " + key + " not a valid regex in ESAPI.properties. Returning null", None )
+            self.log_special("SecurityConfiguration for " + key + " not a valid regex in ESAPI.properties. Returning null" )
             return None
         
     def get_executor_implementation(self):
