@@ -109,7 +109,7 @@ class StringValidationRule(BaseValidationRule):
                     "%(context)s: Invalid input. Please conform to regex %(regex)s%(optional)s" %
                     { 'context' : context,
                       'regex' : pattern.pattern,
-                      'optional' : ('', ' with a maximum length of ' + self.max_length)[self.max_length == 2**31],},
+                      'optional' : ('', ' with a maximum length of ' + str(self.max_length))[self.max_length == 2**31],},
                     "Invalid input: context=%(context)s, type(%(type)s)=%(pattern)s, input=%(input)s" %
                     { 'context' : context,
                       'type' : self.get_type_name(),

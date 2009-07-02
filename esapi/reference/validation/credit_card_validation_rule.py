@@ -18,8 +18,6 @@ accept the LICENSE before you use, modify, and/or redistribute this software.
 from esapi.core import ESAPI
 from esapi.reference.default_encoder import DefaultEncoder
 
-from esapi.validation_rule import ValidationRule
-
 from esapi.reference.validation.base_validation_rule import BaseValidationRule
 from esapi.reference.validation.string_validation_rule import StringValidationRule
 
@@ -44,33 +42,42 @@ class CreditCardValidationRule(BaseValidationRule):
         return ccr
         
     def get_valid(self, context, input_, error_list=None):
-        # check null
-        if input_ is None or len(input_) == 0:
-            if self.allow_none:
-                return None
-            raise ValidationException( context + ": Input credit card required", 
-                    "Input credit card required: context=" + context + ", input=" + input_, context )
-                    
-        # canonicalize
-        canonical = self.ccrule.get_valid(context, input_)
-        
-        digits_only = ''.join([char for char in canonical if char.isdigit()])
-        
-        # Lugn alogrithm checking
-        sum_ = 0
-        times_two = False
-        for digit in reversed(digits_only):
-            assert 0 <= digit <= 9
-            if times_two:
-                digit *= 2
-                if digit > 9:
-                    digit -= 9
-            sum_ += digit
-            times_two = not times_two
-        if (sum_ % 10) != 0:
-            raise ValidationException( context + ": Invalid credit card input", "Invalid credit card input: context=" + context, context )
-
-        return canonical
+        try:
+            # check null
+            if input_ is None or len(input_) == 0:
+                if self.allow_none:
+                    return None
+                raise ValidationException( context + ": Input credit card required", 
+                        "Input credit card required: context=" + context + ", input=" + input_, context )
+                        
+            # canonicalize
+            canonical = self.ccrule.get_valid(context, input_)
+            
+            digits_only = ''.join([char for char in canonical if char.isdigit()])
+            
+            # Lugn alogrithm checking
+            sum_ = 0
+            times_two = False
+            for digit in reversed(digits_only):
+                digit = int(digit)
+                assert 0 <= digit <= 9
+                if times_two:
+                    digit *= 2
+                    if digit > 9:
+                        digit -= 9
+                sum_ += digit
+                times_two = not times_two
+            if (sum_ % 10) != 0:
+                raise ValidationException( context + ": Invalid credit card input", "Invalid credit card input: context=" + context, context )
+                
+            return canonical
+        except ValidationException, extra:
+            if error_list is not None:
+                error_list[context] = extra
+            else:
+                raise
+            
+        return None
         
     def sanitize(self, context, input_):
         return self.whitelist(input_, DefaultEncoder.CHAR_DIGITS)
