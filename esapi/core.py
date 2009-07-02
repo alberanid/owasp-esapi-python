@@ -246,22 +246,22 @@ class ESAPI():
     def set_security_configuration(cls, new_security_config):
         cls._security_configuration = new_security_config
 
-    #  
-    #def validator(cls):
-    #    if cls._validator is None:
-    #        validatorName = cls.security_configuration().getValidationImplementation()
-    #        try:
-    #            theClass = Class.forName(validatorName)
-    #            cls._validator = theClass.newInstance()
-    #        except (IllegalAccessException, ), ex:
-    #            print ex + " Validator class (" + validatorName + ") must be in class path."
-    #            print ex + " Validator class (" + validatorName + ") must be concrete."
-    #            print ex + " Validator class (" + validatorName + ") must have a no-arg constructor."
-    #    return cls._validator
-    #
-    #    
-    #def setValidator(cls, validator):
-    #    ESAPI.cls._validator = cls._validator
+    @classmethod
+    def validator(cls):
+        if cls._validator is None:
+            fqn = cls.security_configuration().get_validation_implementation()
+            module_name = '.'.join(fqn.split('.')[:-1])
+            __import__(module_name)
+            module = sys.modules[module_name]
+            class_name = fqn.split('.')[-1]
+            cls._validator = getattr(module, class_name)()
+            
+        return cls._validator
+
+    @classmethod
+    def set_validator(cls, new_validator):
+        cls._validator = new_validator
+     
     #
     #    
     #def messageUtil(cls):
