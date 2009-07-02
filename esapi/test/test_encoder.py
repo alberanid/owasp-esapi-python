@@ -468,7 +468,7 @@ class EncoderTest(unittest.TestCase):
         for i in range(10):
             self.EncoderConcurrencyMock(i).start()
             
-    class EncoderConcurrencyMock(threading.Thread, ):
+    class EncoderConcurrencyMock(threading.Thread):
         def __init__(self, num):
             threading.Thread.__init__(self)
             self.num = num
@@ -479,7 +479,7 @@ class EncoderTest(unittest.TestCase):
                 result = self.javascript_encode( nonce )
                 # randomize the threads
                 time.sleep( ESAPI.randomizer().get_random_integer( 100, 500 ) / 1000.0 )
-                self.assertEquals( result, self.javascript_encode( nonce ))
+                assert result == self.javascript_encode( nonce )
                 
         def javascript_encode(self, string):
             encoder = DefaultEncoder()
