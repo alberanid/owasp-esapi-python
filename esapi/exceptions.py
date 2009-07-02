@@ -16,7 +16,7 @@ accept the LICENSE before you use, modify, and/or redistribute this software.
 """
 
 # Todo
-# After intrusion detector written, modify IntrusionException
+# After intrusion detector written, modify IntrusionException and EnterpriseSecurityException
 
 from esapi.core import ESAPI
 from esapi.logger import Logger
@@ -59,7 +59,7 @@ class EnterpriseSecurityException(Exception):
         self.logger = ESAPI.logger("EnterpriseSecurityException")
         
         # Logging is done in add_exception()
-        ESAPI.intrusion_detector().add_exception(self)
+#        ESAPI.intrusion_detector().add_exception(self)
         
     def get_user_message(self):
         """
