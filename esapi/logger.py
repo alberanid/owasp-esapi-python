@@ -19,6 +19,8 @@ accept the LICENSE before you use, modify, and/or redistribute this software.
 
 from esapi.translation import _
 
+from esapi.conf.constants import MAX_INTEGER, MIN_INTEGER
+
 class Logger:
     """
     The Logger interface defines a set of methods that can be used to log
@@ -135,7 +137,7 @@ class Logger:
     
     # OFF indicates that no messages should be logged. This level is 
     # initialized to Java's Integer.MAX_VALUE.
-    OFF = 2 ** 31 -1
+    OFF = MAX_INTEGER -1
     
     # FATAL indicates that only FATAL messages should be logged. This level is 
     # initialized to 1000.
@@ -163,7 +165,7 @@ class Logger:
     
     # ALL indicates that all messages should be logged. This level is 
     # initialized to Java's Integer.MIN_VALUE.
-    ALL = -(2 ** 31)
+    ALL = MIN_INTEGER
     
     def __init__(self):
         pass

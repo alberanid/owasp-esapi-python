@@ -23,6 +23,8 @@ from esapi.reference.default_encoder import DefaultEncoder
 from esapi.exceptions import ValidationException
 from esapi.exceptions import EncodingException
 
+from esapi.conf.constants import MAX_INTEGER, MIN_INTEGER
+
 class StringValidationRule(BaseValidationRule):
     """
     This validator performs syntax validation of strings.
@@ -31,7 +33,7 @@ class StringValidationRule(BaseValidationRule):
         self.whitelist_patterns = []
         self.blacklist_patterns = []
         self.min_length = 0
-        self.max_length = 2**31
+        self.max_length = MAX_INTEGER
         
         BaseValidationRule.__init__(self, type_name, encoder)
         
@@ -109,7 +111,7 @@ class StringValidationRule(BaseValidationRule):
                     "%(context)s: Invalid input. Please conform to regex %(regex)s%(optional)s" %
                     { 'context' : context,
                       'regex' : pattern.pattern,
-                      'optional' : ('', ' with a maximum length of ' + str(self.max_length))[self.max_length == 2**31],},
+                      'optional' : ('', ' with a maximum length of ' + str(self.max_length))[self.max_length == MAX_INTEGER],},
                     "Invalid input: context=%(context)s, type(%(type)s)=%(pattern)s, input=%(input)s" %
                     { 'context' : context,
                       'type' : self.get_type_name(),
