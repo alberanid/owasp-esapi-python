@@ -27,6 +27,7 @@ from esapi.reference.default_encoder import DefaultEncoder
 
 from esapi.reference.validation.credit_card_validation_rule import CreditCardValidationRule
 from esapi.reference.validation.date_validation_rule import DateValidationRule
+from esapi.reference.validation.integer_validation_rule import IntegerValidationRule
 
 class DefaultValidator(Validator):
     """
@@ -107,3 +108,24 @@ class DefaultValidator(Validator):
         dvr = DateValidationRule("SimpleDate", self.encoder, format)
         dvr.set_allow_none(allow_none)
         return dvr.get_valid(context, input_, errors)
+        
+    def is_valid_integer(self, context, input_, min_value, max_value, allow_none):
+        """
+        Returns true if the input is a valid integer within the specified
+        range.
+        """
+        try:
+            self.get_valid_integer( context, input_, min_value, max_value, allow_none )
+            return True
+        except ValidationException, extra:
+            return False
+            
+    def get_valid_integer(self, context, input_, min_value, max_value, allow_none, errors=None):
+        """
+        Returns a valid integer. Invalid input will generate a 
+        descriptive ValidationException, and input that is clearly an attack 
+        will generate a descriptive IntrusionException.
+        """
+        ivr = IntegerValidationRule("number", self.encoder, min_value, max_value)
+        ivr.set_allow_none(allow_none)
+        return ivr.get_valid(context, input_, errors);

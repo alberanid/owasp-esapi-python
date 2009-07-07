@@ -41,7 +41,7 @@ class DateValidationRule(BaseValidationRule):
                 if self.allow_none:
                     return None
                 raise ValidationException( context + ": Input date required", 
-                        "Input date required: context=" + context + ", input=" + input_, context )
+                        "Input date required: context=" + context + ", input=''", context )
                         
             # canonicalize
             try:
