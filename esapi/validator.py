@@ -366,16 +366,19 @@ class Validator():
         """
         raise NotImplementedError()
 
-    def is_valid_integer(self, context,
+    def is_valid_number(self, context,
+                             num_type,
                              input_,
                              min_value,
                              max_value,
                              allow_none):
         """
-        Returns true if input is a valid integer within the range of min_value to max_value.
+        Returns true if input is a valid number within the range of min_value to max_value.
 
         @param context
                 A descriptive name of the parameter that you are validating (e.g., LoginPage_UsernameField). This value is used by any logging or error handling that is done with respect to the value passed in.
+        @param num_type
+                The type the given input should be of. Example: float or int types
         @param input_
                 The actual input data to validate.
         @param min_value
@@ -385,26 +388,29 @@ class Validator():
         @param allow_none
                 If allow_none is true then an input that is NONE or an empty string will be legal. If allow_none is false then NONE or an empty String will throw a ValidationException.
 
-        @return true, if input is a valid integer
+        @return true, if input is a valid number of type num_type
 
         @throws IntrusionException
         """
         raise NotImplementedError()
 
-    def get_valid_integer(self, context,
+    def get_valid_number(self, context,
+                                num_type,
                                 input_,
                                 min_value,
                                 max_value,
                                 allow_none,
                                 error_list=None):
         """
-        Returns a validated integer. Invalid input
+        Returns a validated number. Invalid input
         will generate a descriptive ValidationException, and input that is clearly an attack
         will generate a descriptive IntrusionException. Instead of throwing a ValidationException
         on error, this variant will store the exception inside of the ValidationErrorList.
 
         @param context
                 A descriptive name of the parameter that you are validating (e.g., LoginPage_UsernameField). This value is used by any logging or error handling that is done with respect to the value passed in.
+        @param num_type
+                The type the given input should be of. Example: float or int types
         @param input_
                 The actual input data to validate.
         @param min_value
@@ -416,64 +422,7 @@ class Validator():
         @param error_list
                 If validation is in error, resulting error will be stored in the error_list by context
 
-        @return A validated number as an integer.
-
-        @throws IntrusionException
-        """
-        raise NotImplementedError()
-
-    def is_valid_double(self, context,
-                            input_,
-                            min_value,
-                            max_value,
-                            allow_none):
-        """
-        Returns true if input is a valid double within the range of min_value to max_value.
-
-        @param context
-                A descriptive name of the parameter that you are validating (e.g., LoginPage_UsernameField). This value is used by any logging or error handling that is done with respect to the value passed in.
-        @param input_
-                The actual input data to validate.
-        @param min_value
-                Lowest legal value for input.
-        @param max_value
-                Highest legal value for input.
-        @param allow_none
-                If allow_none is true then an input that is NONE or an empty string will be legal. If allow_none is false then NONE or an empty String will throw a ValidationException.
-
-        @return true, if input is a valid double.
-
-        @throws IntrusionException
-
-        """
-        raise NotImplementedError()
-
-    def get_valid_double(self, context,
-                               input_,
-                               min_value,
-                               max_value,
-                               allow_none,
-                               error_list=None):
-        """
-        Returns a validated real number as a double. Invalid input
-        will generate a descriptive ValidationException, and input that is clearly an attack
-        will generate a descriptive IntrusionException. Instead of throwing a ValidationException
-        on error, this variant will store the exception inside of the ValidationErrorList.
-
-        @param context
-                A descriptive name of the parameter that you are validating (e.g., LoginPage_UsernameField). This value is used by any logging or error handling that is done with respect to the value passed in.
-        @param input_
-                The actual input data to validate.
-        @param min_value
-                Lowest legal value for input.
-        @param max_value
-                Highest legal value for input.
-        @param allow_none
-                If allow_none is true then an input that is NONE or an empty string will be legal. If allow_none is false then NONE or an empty String will throw a ValidationException.
-        @param error_list
-                If validation is in error, resulting error will be stored in the error_list by context
-
-        @return A validated real number as a double.
+        @return A validated number as a the given num_type.
 
         @throws IntrusionException
         """

@@ -20,12 +20,11 @@ from esapi.reference.validation.base_validation_rule import BaseValidationRule
 from esapi.exceptions import ValidationException
 from esapi.exceptions import EncodingException
 
-from esapi.conf.constants import MAX_INTEGER, MIN_INTEGER
-
-class IntegerValidationRule(BaseValidationRule):
-    def __init__(self, type_name, encoder, min_value=MIN_INTEGER, max_value=MAX_INTEGER):
+class NumberValidationRule(BaseValidationRule):
+    def __init__(self, type_name, num_type, encoder, min_value, max_value):
         BaseValidationRule.__init__(self, type_name, encoder)
         
+        self.num_type = num_type
         self.min_value = min_value
         self.max_value = max_value
         
@@ -48,19 +47,17 @@ class IntegerValidationRule(BaseValidationRule):
             if self.min_value > self.max_value:
                 raise ValidationException(context + ": Invalid number input: context", "Validation parameter error for number: max_value ( " + str(self.max_value) + ") must be greater than min_value ( " + str(self.min_value) + ") for " + context, context )
                 
-            # must be able to convert to int
+            # must be able to convert to intended type
             try:
-                integer = int(canonical)
+                typed_value = self.num_type(canonical)
             except ValueError, extra:
                 raise ValidationException(context + ": Invalid number input", "Invalid number input format: context=" + context + ", input=" + input_, None, context)
                 
             # validate min and max
-            if integer < self.min_value:
+            if not self.min_value <= typed_value <= self.max_value:
                 raise ValidationException( "Invalid number input must be between " + str(self.min_value) + " and " + str(self.max_value) + ": context=" + context, "Invalid number input must be between " + str(self.min_value) + " and " + str(self.max_value) + ": context=" + context + ", input=" + input_, context )
-            if integer > self.max_value:
-                raise ValidationException( "Invalid number input must be between " + str(self.min_value) + " and " + str(self.max_value) + ": context=" + context, "Invalid number input must be between " + str(self.min_value) + " and " + str(self.max_value) + ": context=" + context + ", input=" + input_, context )
-                
-            return integer
+
+            return typed_value
         except ValidationException, extra:
             if error_list is not None:
                 error_list[context] = extra

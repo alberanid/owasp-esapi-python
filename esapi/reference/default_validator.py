@@ -27,7 +27,7 @@ from esapi.reference.default_encoder import DefaultEncoder
 
 from esapi.reference.validation.credit_card_validation_rule import CreditCardValidationRule
 from esapi.reference.validation.date_validation_rule import DateValidationRule
-from esapi.reference.validation.integer_validation_rule import IntegerValidationRule
+from esapi.reference.validation.number_validation_rule import NumberValidationRule
 
 class DefaultValidator(Validator):
     """
@@ -94,7 +94,7 @@ class DefaultValidator(Validator):
         Returns true if input is a valid date.
         """
         try:
-            self.get_valid_date( context, input_, allow_none )
+            self.get_valid_date( context, input_, format, allow_none )
             return True
         except ValidationException, extra:
             return False
@@ -109,23 +109,23 @@ class DefaultValidator(Validator):
         dvr.set_allow_none(allow_none)
         return dvr.get_valid(context, input_, errors)
         
-    def is_valid_integer(self, context, input_, min_value, max_value, allow_none):
+    def is_valid_number(self, context, num_type, input_, min_value, max_value, allow_none):
         """
-        Returns true if the input is a valid integer within the specified
-        range.
+        Returns true if the input is a valid instance of the given type, and
+        within the specified range.
         """
         try:
-            self.get_valid_integer( context, input_, min_value, max_value, allow_none )
+            self.get_valid_number(context, num_type, input_, min_value, max_value, allow_none)
             return True
         except ValidationException, extra:
             return False
             
-    def get_valid_integer(self, context, input_, min_value, max_value, allow_none, errors=None):
+    def get_valid_number(self, context, num_type, input_, min_value, max_value, allow_none, errors=None):
         """
-        Returns a valid integer. Invalid input will generate a 
+        Returns a valid number of given num_type. Invalid input will generate a
         descriptive ValidationException, and input that is clearly an attack 
         will generate a descriptive IntrusionException.
         """
-        ivr = IntegerValidationRule("number", self.encoder, min_value, max_value)
-        ivr.set_allow_none(allow_none)
-        return ivr.get_valid(context, input_, errors);
+        nvr = NumberValidationRule("number", num_type, self.encoder, min_value, max_value)
+        nvr.set_allow_none(allow_none)
+        return nvr.get_valid(context, input_, errors)

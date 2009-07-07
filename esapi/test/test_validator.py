@@ -49,6 +49,13 @@ class ValidatorTest(unittest.TestCase):
         instance.get_valid_credit_card("cctest8", "4417 1234 5678 9112", False, errors);
         self.assertEquals( 2, len(errors) );
     
+    def test_is_valid_date(self):
+        instance = ESAPI.validator()
+        format = "%B %d, %Y"
+        self.assertTrue(instance.is_valid_date("datetest1", "September 11, 2001", format, True ) )
+        self.assertFalse( instance.is_valid_date("datetest2", None, format, False ) )
+        self.assertFalse( instance.is_valid_date("datetest3", "", format, False ) )
+    
     def test_get_valid_date(self):
         instance = ESAPI.validator()
         errors = ValidationErrorList()
@@ -60,43 +67,73 @@ class ValidatorTest(unittest.TestCase):
         instance.get_valid_date( "test", "June 32, 2008", "%B %d, %Y", False, errors )
         self.assertEquals( 2, len(errors) )
         
-    def test_is_valid_integer(self):
+    def test_is_valid_number(self):
         instance = ESAPI.validator();
+    
+        # Integer
+    
         # testing negative range
-        self.assertFalse(instance.is_valid_integer("test", "-4", 1, 10, False));
-        self.assertTrue(instance.is_valid_integer("test", "-4", -10, 10, False));
+        self.assertFalse(instance.is_valid_number("test", int, "-4", 1, 10, False));
+        self.assertTrue(instance.is_valid_number("test", int, "-4", -10, 10, False));
         # testing null value
-        self.assertTrue(instance.is_valid_integer("test", None, -10, 10, True));
-        self.assertFalse(instance.is_valid_integer("test", None, -10, 10, False));
+        self.assertTrue(instance.is_valid_number("test", int, None, -10, 10, True));
+        self.assertFalse(instance.is_valid_number("test", int, None, -10, 10, False));
         # testing empty string
-        self.assertTrue(instance.is_valid_integer("test", "", -10, 10, True));
-        self.assertFalse(instance.is_valid_integer("test", "", -10, 10, False));
+        self.assertTrue(instance.is_valid_number("test", int, "", -10, 10, True));
+        self.assertFalse(instance.is_valid_number("test", int, "", -10, 10, False));
         # testing improper range
-        self.assertFalse(instance.is_valid_integer("test", "5", 10, -10, False));
+        self.assertFalse(instance.is_valid_number("test", int, "5", 10, -10, False));
         # testing non-integers
-        self.assertFalse(instance.is_valid_integer("test", "4.3214", -10, 10, True));
-        self.assertFalse(instance.is_valid_integer("test", "-1.65", -10, 10, True));
+        self.assertFalse(instance.is_valid_number("test", int, "4.3214", -10, 10, True));
+        self.assertFalse(instance.is_valid_number("test", int, "-1.65", -10, 10, True));
         # other testing
-        self.assertTrue(instance.is_valid_integer("test", "4", 1, 10, False));
-        self.assertTrue(instance.is_valid_integer("test", "400", 1, 10000, False));
-        self.assertTrue(instance.is_valid_integer("test", "400000000", 1, 400000000, False));
-        self.assertFalse(instance.is_valid_integer("test", "4000000000000", 1, 10000, False));
-        self.assertFalse(instance.is_valid_integer("test", "alsdkf", 10, 10000, False));
-        self.assertFalse(instance.is_valid_integer("test", "--10", 10, 10000, False));
-        self.assertFalse(instance.is_valid_integer("test", "14.1414234x", 10, 10000, False));
-        self.assertFalse(instance.is_valid_integer("test", "Infinity", 10, 10000, False));
-        self.assertFalse(instance.is_valid_integer("test", "-Infinity", 10, 10000, False));
-        self.assertFalse(instance.is_valid_integer("test", "NaN", 10, 10000, False));
-        self.assertFalse(instance.is_valid_integer("test", "-NaN", 10, 10000, False));
-        self.assertFalse(instance.is_valid_integer("test", "+NaN", 10, 10000, False));
-        self.assertFalse(instance.is_valid_integer("test", "1e-6", -999999999, 999999999, False));
-        self.assertFalse(instance.is_valid_integer("test", "-1e-6", -999999999, 999999999, False));
+        self.assertTrue(instance.is_valid_number("test", int, "4", 1, 10, False));
+        self.assertTrue(instance.is_valid_number("test", int, "400", 1, 10000, False));
+        self.assertTrue(instance.is_valid_number("test", int, "400000000", 1, 400000000, False));
+        self.assertFalse(instance.is_valid_number("test", int, "4000000000000", 1, 10000, False));
+        self.assertFalse(instance.is_valid_number("test", int, "alsdkf", 10, 10000, False));
+        self.assertFalse(instance.is_valid_number("test", int, "--10", 10, 10000, False));
+        self.assertFalse(instance.is_valid_number("test", int, "14.1414234x", 10, 10000, False));
+        self.assertFalse(instance.is_valid_number("test", int, "Infinity", 10, 10000, False));
+        self.assertFalse(instance.is_valid_number("test", int, "-Infinity", 10, 10000, False));
+        self.assertFalse(instance.is_valid_number("test", int, "NaN", 10, 10000, False));
+        self.assertFalse(instance.is_valid_number("test", int, "-NaN", 10, 10000, False));
+        self.assertFalse(instance.is_valid_number("test", int, "+NaN", 10, 10000, False));
+        self.assertFalse(instance.is_valid_number("test", int, "1e-6", -999999999, 999999999, False));
+        self.assertFalse(instance.is_valid_number("test", int, "-1e-6", -999999999, 999999999, False));
         
-    def test_get_valid_integer(self):
-        instance = ESAPI.validator()
-        errors = ValidationErrorList()
+        # Floats
         
-        # no tests yet
+        # testing negative range
+        self.assertFalse(instance.is_valid_number("test", float, "-4", 1, 10, False));
+        self.assertTrue(instance.is_valid_number("test", float, "-4", -10, 10, False));
+        # testing null value
+        self.assertTrue(instance.is_valid_number("test", float, None, -10, 10, True));
+        self.assertFalse(instance.is_valid_number("test", float, None, -10, 10, False));
+        # testing empty string
+        self.assertTrue(instance.is_valid_number("test", float, "", -10, 10, True));
+        self.assertFalse(instance.is_valid_number("test", float, "", -10, 10, False));
+        # testing improper range
+        self.assertFalse(instance.is_valid_number("test", float, "5", 10, -10, False));
+        # testing non-integers
+        self.assertTrue(instance.is_valid_number("test", float, "4.3214", -10, 10, True));
+        self.assertTrue(instance.is_valid_number("test", float, "-1.65", -10, 10, True));
+        # other testing
+        self.assertTrue(instance.is_valid_number("test", float, "4", 1, 10, False));
+        self.assertTrue(instance.is_valid_number("test", float, "400", 1, 10000, False));
+        self.assertTrue(instance.is_valid_number("test", float, "400000000", 1, 400000000, False));
+        self.assertFalse(instance.is_valid_number("test", float, "4000000000000", 1, 10000, False));
+        self.assertFalse(instance.is_valid_number("test", float, "alsdkf", 10, 10000, False));
+        self.assertFalse(instance.is_valid_number("test", float, "--10", 10, 10000, False));
+        self.assertFalse(instance.is_valid_number("test", float, "14.1414234x", 10, 10000, False));
+        self.assertFalse(instance.is_valid_number("test", float, "Infinity", 10, 10000, False));
+        self.assertFalse(instance.is_valid_number("test", float, "-Infinity", 10, 10000, False));
+        self.assertFalse(instance.is_valid_number("test", float, "NaN", 10, 10000, False));
+        self.assertFalse(instance.is_valid_number("test", float, "-NaN", 10, 10000, False));
+        self.assertFalse(instance.is_valid_number("test", float, "+NaN", 10, 10000, False));
+        self.assertTrue(instance.is_valid_number("test", float, "1e-6", -999999999, 999999999, False));
+        self.assertTrue(instance.is_valid_number("test", float, "-1e-6", -999999999, 999999999, False));
+    
 if __name__ == "__main__":
     unittest.main()
 
