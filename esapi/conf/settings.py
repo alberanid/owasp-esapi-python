@@ -102,7 +102,7 @@ HttpUtilities_UploadDir = r'UploadDir'
 # Force HTTP only on all cookies in ESAPI SafeRequest
 HttpUtilities_ForceHTTPOnly = False
 # File upload configuration
-HttpUtilities_AllowedUploadExtensions = '.zip,.pdf,.tar,.gz,.xls,.properties,.txt,.xml'
+HttpUtilities_AllowedUploadExtensions = '.zip,.pdf,.tar,.gz,.xls,.properties,.txt,.xml'.lower().split(',')
 HttpUtilities_MaxUploadFileBytes = 5000000
 # Using UTF-8 throughout your stack is highly recommended. That includes your database driver,
 # container, and any other technologies you may be using. Failure to do this may expose you
@@ -184,45 +184,50 @@ IntrusionDetector_esapi_errors_AuthenticationHostException_actions = ('log','log
 #
 # First set up a pattern below. You can choose any name you want, prefixed by the word
 # "Validation." For example:
-#   Validation.Email=^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\\.[a-zA-Z]{2,4}$
+#   Validation.Email=^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\\\\.[a-zA-Z]{2,4}$
 # 
 # Then you can validate in your code against the pattern like this:
 #   Validator.getInstance().getValidDataFromBrowser( "Email", input );
 #   Validator.getInstance().isValidDataFromBrowser( "Email", input );
 #
-Validator_SafeString = """^[\p{L}\p{N}.]{0,1024}$"""
-Validator_Email = """^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[a-zA-Z]{2,4}$"""
-Validator_IPAddress = """^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$"""
-Validator_URL = """^(ht|f)tp(s?)\:\/\/[0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*(:(0-9)*)*(\/?)([a-zA-Z0-9\-\.\?\,\:\'\/\\\+=&amp;%\$#_]*)?$"""
-Validator_CreditCard = """^(\d{4}[- ]?){3}\d{4}$"""
-Validator_SSN = """^(?!000)([0-6]\d{2}|7([0-6]\d|7[012]))([ -]?)(?!00)\d\d\3(?!0000)\d{4}$"""
+# Converting Java regex to Python:
+# Replace \\ with \
+# Regex find\replace:  \\([^\\w\.\+\?\$\*\[\]])   ->  \1
+
+#Validator_SafeString = r"""^[\p{L}\p{N}.]{0,1024}$"""
+Validator_Email = r"""^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[a-zA-Z]{2,4}$"""
+Validator_IPAddress = r"""^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$"""
+# This regex modified slightly from Java version: ? just before $ has been removed
+Validator_URL = r"""^(ht|f)tp(s?)://[0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*(:(0-9)*)*(/?)([a-zA-Z0-9-\.\?,:'/\\\+=&amp;%\$#_]*)$"""
+Validator_CreditCard = r"""^(\d{4}[- ]?){3}\d{4}$"""
+Validator_SSN = r"""^(?!000)([0-6]\d{2}|7([0-6]\d|7[012]))([ -]?)(?!00)\d\d\3(?!0000)\d{4}$"""
 
 # Validators used by ESAPI
-Validator_AccountName = """^[a-zA-Z0-9]{3,20}$"""
-Validator_SystemCommand = """^[a-zA-Z\-\/]{0,64}$"""
-Validator_RoleName = """^[a-z]{1,20}$"""
-Validator_Redirect = """^\/test.*$"""
+Validator_AccountName = r"""^[a-zA-Z0-9]{3,20}$"""
+Validator_SystemCommand = r"""^[a-zA-Z-/]{0,64}$"""
+Validator_RoleName = r"""^[a-z]{1,20}$"""
+Validator_Redirect = r"""^/test.*$"""
 
 # Global HTTP Validation Rules
-# Values with Base64 encoded data (e.g. encrypted state) will need at least [a-zA-Z0-9\/+=]
-Validator_HTTPScheme = """^(http|https)$"""
-Validator_HTTPServerName = """^[a-zA-Z0-9_.\-]*$"""
-Validator_HTTPParameterName = """^[a-zA-Z0-9_]{0,32}$"""
-Validator_HTTPParameterValue = """^[a-zA-Z0-9.\-\/+=_ ]*$"""
-Validator_HTTPCookieName = """^[a-zA-Z0-9\-_]{0,32}$"""
-Validator_HTTPCookieValue = """^[a-zA-Z0-9\-\/+=_ ]*$"""
-Validator_HTTPHeaderName = """^[a-zA-Z0-9\-_]{0,32}$"""
-Validator_HTTPHeaderValue = """^[a-zA-Z0-9()\-=\*\.\?;,+\/:&_ ]*$"""
-Validator_HTTPContextPath = """^[a-zA-Z0-9.\-_]*$"""
-Validator_HTTPPath = """^[a-zA-Z0-9.\-_]*$"""
-Validator_HTTPQueryString = """^[a-zA-Z0-9()\-=\*\.\?;,+\/:&_ ](1,50)$"""
-Validator_HTTPURI = """^[a-zA-Z0-9()\-=\*\.\?;,+\/:&_ ]*$"""
-Validator_HTTPURL = """^.*$"""
-Validator_HTTPJSESSIONID = """^[A-Z0-9]{10,30}$"""
+# Values with Base64 encoded data (e.g. encrypted state) will need at least [a-zA-Z0-9/+=]
+Validator_HTTPScheme = r"""^(http|https)$"""
+Validator_HTTPServerName = r"""^[a-zA-Z0-9_.-]*$"""
+Validator_HTTPParameterName = r"""^[a-zA-Z0-9_]{0,32}$"""
+Validator_HTTPParameterValue = r"""^[a-zA-Z0-9.-/+=_ ]*$"""
+Validator_HTTPCookieName = r"""^[a-zA-Z0-9-_]{0,32}$"""
+Validator_HTTPCookieValue = r"""^[a-zA-Z0-9-/+=_ ]*$"""
+Validator_HTTPHeaderName = r"""^[a-zA-Z0-9-_]{0,32}$"""
+Validator_HTTPHeaderValue = r"""^[a-zA-Z0-9()-=\*\.\?;,+/:&_ ]*$"""
+Validator_HTTPContextPath = r"""^[a-zA-Z0-9.-_]*$"""
+Validator_HTTPPath = r"""^[a-zA-Z0-9.-_]*$"""
+Validator_HTTPQueryString = r"""^[a-zA-Z0-9()-=\*\.\?;,+/:&_ ](1,50)$"""
+Validator_HTTPURI = r"""^[a-zA-Z0-9()-=\*\.\?;,+/:&_ ]*$"""
+Validator_HTTPURL = r"""^.*$"""
+Validator_HTTPJSESSIONID = r"""^[A-Z0-9]{10,30}$"""
 
 # Validation of file related input
-Validator_FileName = """^[a-zA-Z0-9!@#$%^&{}\[\]()_+\-=,.~'` ]{0,255}$"""
-Validator_DirectoryName = """^[a-zA-Z0-9:\\!@#$%^&{}\[\]()_+\-=,.~'` ]{0,255}$"""
+Validator_Filename = r"""^[a-zA-Z0-9!@#$%^&{}\[\]()_+-=,.~'` ]{0,255}$"""
+Validator_DirectoryName = r"""^[a-zA-Z0-9:\\!@#$%^&{}\[\]()_+-=,.~'` ]{0,255}$"""
 
 try:
     from settings_local import *
