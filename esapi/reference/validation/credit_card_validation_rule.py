@@ -55,7 +55,7 @@ class CreditCardValidationRule(BaseValidationRule):
             
             digits_only = ''.join([char for char in canonical if char.isdigit()])
             
-            # Lugn alogrithm checking
+            # Luhn alogrithm checking
             sum_ = 0
             times_two = False
             for digit in reversed(digits_only):

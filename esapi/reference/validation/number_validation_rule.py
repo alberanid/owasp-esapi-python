@@ -29,8 +29,8 @@ class NumberValidationRule(BaseValidationRule):
         self.max_value = max_value
         
     def get_valid(self, context, input_, error_list=None):
-        try:
-            # check null
+        try:        
+            # check for none
             if input_ is None or len(input_) == 0:
                 if self.allow_none:
                     return None

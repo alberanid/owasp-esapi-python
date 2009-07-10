@@ -68,7 +68,7 @@ class StringValidationRule(BaseValidationRule):
             if self.allow_none:
                 return None
             raise ValidationException( context + ": Input required", 
-                    "Input required: context=" + context + ", input=" + input_, context )
+                    "Input required: context=" + context + ", input=''", context )
                     
         # canonicalize
         try:
