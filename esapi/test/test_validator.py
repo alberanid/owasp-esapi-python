@@ -17,6 +17,7 @@ accept the LICENSE before you use, modify, and/or redistribute this software.
 
 import unittest
 import os
+import os.path
 
 from esapi.core import ESAPI
 
@@ -36,37 +37,30 @@ class ValidatorTest(unittest.TestCase):
         @param test_name the test name
         """
         unittest.TestCase.__init__(self, test_name)
+             
+    def test_is_valid_cc(self):
+        instance = ESAPI.validator()
         
-    def test_add_rule(self):
-        validator = ESAPI.validator()
-        rule = StringValidationRule("ridiculous")
-        validator.add_rule(rule)
-        self.assertEquals(rule, validator.get_rule("ridiculous"))
-        
-    def test_get_rule(self):
-        validator = ESAPI.validator()
-        rule = StringValidationRule("rule")
-        validator.add_rule(rule)
-        self.assertEquals(rule, validator.get_rule("rule"))
-        self.assertFalse(rule == validator.get_rule("ridiculous"))
+        self.assertTrue(instance.is_valid_credit_card("cctest1", "1234 9876 0000 0008", False))
+        self.assertTrue(instance.is_valid_credit_card("cctest2", "1234987600000008", False))
+        self.assertFalse(instance.is_valid_credit_card("cctest3", "12349876000000081", False))
+        self.assertFalse(instance.is_valid_credit_card("cctest4", "4417 1234 5678 9112", False))
         
     def test_get_valid_cc(self):
         instance = ESAPI.validator()
         errors = ValidationErrorList()
         
-        self.assertTrue(instance.is_valid_credit_card("cctest1", "1234 9876 0000 0008", False));
-        self.assertTrue(instance.is_valid_credit_card("cctest2", "1234987600000008", False));
-        self.assertFalse(instance.is_valid_credit_card("cctest3", "12349876000000081", False));
-        self.assertFalse(instance.is_valid_credit_card("cctest4", "4417 1234 5678 9112", False));
-        
-        instance.get_valid_credit_card("cctest5", "1234 9876 0000 0008", False, errors);
-        self.assertEquals( 0, len(errors) );
-        instance.get_valid_credit_card("cctest6", "1234987600000008", False, errors);
-        self.assertEquals( 0, len(errors) );
-        instance.get_valid_credit_card("cctest7", "12349876000000081", False, errors);
-        self.assertEquals( 1, len(errors) );
-        instance.get_valid_credit_card("cctest8", "4417 1234 5678 9112", False, errors);
-        self.assertEquals( 2, len(errors) );
+        # Verify method strips spaces
+        self.assertEquals("1234987600000008", instance.get_valid_credit_card("cctest1", "1234 9876 0000 0008", False ))
+       
+        instance.get_valid_credit_card("cctest5", "1234 9876 0000 0008", False, errors)
+        self.assertEquals( 0, len(errors) )
+        instance.get_valid_credit_card("cctest6", "1234987600000008", False, errors)
+        self.assertEquals( 0, len(errors) )
+        instance.get_valid_credit_card("cctest7", "12349876000000081", False, errors)
+        self.assertEquals( 1, len(errors) )
+        instance.get_valid_credit_card("cctest8", "4417 1234 5678 9112", False, errors)
+        self.assertEquals( 2, len(errors) )
     
     def test_is_valid_date(self):
         instance = ESAPI.validator()
@@ -292,6 +286,101 @@ class ValidatorTest(unittest.TestCase):
 
         self.assertTrue(instance.is_valid_input("test", None, "Email", 100, True));
         self.assertFalse(instance.is_valid_input("test", None, "Email", 100, False));
+        
+    def test_get_valid_input(self):
+        pass
+
+    def test_is_valid_number(self):
+        instance = ESAPI.validator()
+        
+        # testing negative range
+        self.assertFalse(instance.is_valid_number("test", int, "-4", 1, 10, False))
+        self.assertTrue(instance.is_valid_number("test", int, "-4", -10, 10, False))
+        # testing null value
+        self.assertTrue(instance.is_valid_number("test", int, None, -10, 10, True))
+        self.assertFalse(instance.is_valid_number("test", int, None, -10, 10, False))
+        # testing empty string
+        self.assertTrue(instance.is_valid_number("test", int, "", -10, 10, True))
+        self.assertFalse(instance.is_valid_number("test", int, "", -10, 10, False))
+        # testing improper range
+        self.assertFalse(instance.is_valid_number("test", int, "5", 10, -10, False))
+        # testing non-integers
+        self.assertTrue(instance.is_valid_number("test", float, "4.3214", -10, 10, True))
+        self.assertTrue(instance.is_valid_number("test", float, "-1.65", -10, 10, True))
+        # other testing
+        self.assertTrue(instance.is_valid_number("test", int, "4", 1, 10, False))
+        self.assertTrue(instance.is_valid_number("test", int, "400", 1, 10000, False))
+        self.assertTrue(instance.is_valid_number("test", int, "400000000", 1, 400000000, False))
+        self.assertFalse(instance.is_valid_number("test", int, "4000000000000", 1, 10000, False))
+        self.assertFalse(instance.is_valid_number("test", int, "alsdkf", 10, 10000, False))
+        self.assertFalse(instance.is_valid_number("test", int, "--10", 10, 10000, False))
+        self.assertFalse(instance.is_valid_number("test", int, "14.1414234x", 10, 10000, False))
+        self.assertFalse(instance.is_valid_number("test", int, "Infinity", 10, 10000, False))
+        self.assertFalse(instance.is_valid_number("test", int, "-Infinity", 10, 10000, False))
+        self.assertFalse(instance.is_valid_number("test", int, "NaN", 10, 10000, False))
+        self.assertFalse(instance.is_valid_number("test", int, "-NaN", 10, 10000, False))
+        self.assertFalse(instance.is_valid_number("test", int, "+NaN", 10, 10000, False))
+                
+    def test_get_valid_number(self):
+        pass
+        
+    def test_is_valid_file_content(self):
+        instance = ESAPI.validator()
+        
+        content = "This is some file content"
+        self.assertTrue(instance.is_valid_file_content("test", content, 100, False))
+        
+    def test_get_valid_file_content(self):
+        instance = ESAPI.validator()
+        errors = ValidationErrorList()
+        
+        content = "12345"
+        instance.get_valid_file_content("test", content, 5, True, errors)
+        self.assertEquals(0, len(errors))
+        instance.get_valid_file_content("test", content, 4, True, errors)
+        self.assertEquals(1, len(errors))
+        
+    def test_is_valid_file_upload(self):
+        directory_path = os.path.expanduser('~')
+        if os.name == 'nt': # Windows
+            parent = "c:\\"
+        else:
+            parent = "/"
+        filename = "aspect.txt"
+        content = "This is some file content"
+        instance = ESAPI.validator()
+        self.assertTrue(instance.is_valid_file_upload("test", directory_path, parent, filename, content, 100, False))
+        
+        # Test invalid directory path
+        directory_path = "c:\\ridiculous"
+        self.assertFalse(instance.is_valid_file_upload("test", directory_path, parent, filename, content, 100, False))
+    
+    def test_assert_valid_file_upload(self):
+        pass
+        
+    def test_is_valid_http_request(self):
+        pass
+    
+    def test_assert_valid_http_request(self):
+        pass
+        
+    def test_is_valid_http_request_parameter_set(self):
+        pass
+        
+    def test_assert_is_valid_http_request_parameter_set(self):
+        pass
+        
+    def test_is_valid_redirect_location(self):
+        pass
+        
+    def test_get_valid_redirect_location(self):
+        pass
+        
+    def test_safe_read_line(self):
+        pass
+        
+    
+                
 if __name__ == "__main__":
     unittest.main()
 

@@ -68,9 +68,9 @@ class CreditCardValidationRule(BaseValidationRule):
                 sum_ += digit
                 times_two = not times_two
             if (sum_ % 10) != 0:
-                raise ValidationException( context + ": Invalid credit card input", "Invalid credit card input: context=" + context, context )
+                raise ValidationException( context + ": Invalid credit card input", "Invalid credit card input. Credit card number did not pass Luhn test: context=" + context, context )
                 
-            return canonical
+            return digits_only
         except ValidationException, extra:
             if error_list is not None:
                 error_list[context] = extra

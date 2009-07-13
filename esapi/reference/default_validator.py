@@ -39,7 +39,7 @@ class DefaultValidator(Validator):
     and several other classes to provide basic validation functions. This library
     has a heavy emphasis on whitelist validation and canonicalization. All double-encoded
     characters, even in multiple encoding schemes, such as <PRE>&amp;lt;</PRE> or
-    <PRE>%26lt;<PRE> or even <PRE>%25%26lt;</PRE> are disallowed.
+    <PRE>%26lt;</PRE> or even <PRE>%25%26lt;</PRE> are disallowed.
     """
     
     MAX_PARAMETER_NAME_LENGTH = 100
@@ -54,7 +54,6 @@ class DefaultValidator(Validator):
         else:
             self.encoder = ESAPI.encoder()
             
-        self.rules = {}
         self.make_file_validator()
         
     def make_file_validator(self):
@@ -69,14 +68,14 @@ class DefaultValidator(Validator):
         try:
             self.get_valid_input( context, input_, type_, max_length, allow_none)
             return True
-        except ValidationException, extra:
+        except ValidationException:
             return False
             
     def get_valid_input(self, context, input_, type_, max_length, allow_none, error_list=None):
         rvr = StringValidationRule( type_, self.encoder )
-        p = ESAPI.security_configuration().get_validation_pattern(type_)
-        if p is not None:
-            rvr.add_whitelist_pattern(p)
+        pattern = ESAPI.security_configuration().get_validation_pattern(type_)
+        if pattern is not None:
+            rvr.add_whitelist_pattern(pattern)
         else:
             rvr.add_whitelist_pattern(type_)
             
@@ -84,77 +83,38 @@ class DefaultValidator(Validator):
         rvr.set_allow_none(allow_none)
         return rvr.get_valid(context, input_)
         
-    def add_rule(self, rule):
-        """
-        Add a validation rule using the "type name" of the rule as the key.
-        """
-        self.rules[ rule.get_type_name() ] = rule
-        
-    def get_rule(self, name):
-        """
-        Get a validation rule using the given "type name" of the rule as the 
-        key.
-        """
-        return self.rules.get( name, None )
-        
     def is_valid_credit_card(self, context, input_, allow_none):
-        """
-        Returns true if input is a valid credit card.
-        """
         try:
             self.get_valid_credit_card( context, input_, allow_none )
             return True
-        except ValidationException, extra:
+        except ValidationException:
             return False
             
     def get_valid_credit_card(self, context, input_, allow_none, errors=None):
-        """
-        Returns a canonicalized and validated credit card number as a String. 
-        Invalid input will generate a descriptive ValidationException, and 
-        input that is clearly an attack will generate a descriptive 
-        IntrusionException. 
-        """
         ccvr = CreditCardValidationRule("creditcard", self.encoder)
         ccvr.set_allow_none(allow_none)
         return ccvr.get_valid(context, input_, errors)
     
-    def is_valid_date(self, context, input_, format, allow_none):
-        """
-        Returns true if input is a valid date.
-        """
+    def is_valid_date(self, context, input_, format_, allow_none):
         try:
-            self.get_valid_date( context, input_, format, allow_none )
+            self.get_valid_date( context, input_, format_, allow_none )
             return True
-        except ValidationException, extra:
+        except ValidationException:
             return False
             
-    def get_valid_date(self, context, input_, format, allow_none, errors=None):
-        """
-        Returns a valid date as a Date. Invalid input will generate a 
-        descriptive ValidationException, and input that is clearly an attack 
-        will generate a descriptive IntrusionException.
-        """
-        dvr = DateValidationRule("SimpleDate", self.encoder, format)
+    def get_valid_date(self, context, input_, format_, allow_none, errors=None):
+        dvr = DateValidationRule("SimpleDate", self.encoder, format_)
         dvr.set_allow_none(allow_none)
         return dvr.get_valid(context, input_, errors)
         
     def is_valid_number(self, context, num_type, input_, min_value, max_value, allow_none):
-        """
-        Returns true if the input is a valid instance of the given type, and
-        within the specified range.
-        """
         try:
             self.get_valid_number(context, num_type, input_, min_value, max_value, allow_none)
             return True
-        except ValidationException, extra:
+        except ValidationException:
             return False
             
     def get_valid_number(self, context, num_type, input_, min_value, max_value, allow_none, errors=None):
-        """
-        Returns a valid number of given num_type. Invalid input will generate a
-        descriptive ValidationException, and input that is clearly an attack 
-        will generate a descriptive IntrusionException.
-        """
         nvr = NumberValidationRule("number", num_type, self.encoder, min_value, max_value)
         nvr.set_allow_none(allow_none)
         return nvr.get_valid(context, input_, errors)
@@ -167,31 +127,21 @@ class DefaultValidator(Validator):
         fail canonicalization if the directory path is a symlink. For example,
         on MacOS X, /etc is actually /private/etc. If you mean to use /etc, use
         its real path (/private/etc), not the symlink (/etc).</p>
-        
-        To be a valid directory, the input_ must
-        * Exist on disk
-        * Be a directory
-        * Be a subdirectory of the parent_dir parameter,
-          which must also exist and be a directory
         """
         try:
             self.get_valid_directory_path( context, input_, parent_dir, allow_none )
             return True
-        except ValidationException, extra:
+        except ValidationException:
             return False
             
     def get_valid_directory_path(self, context, input_, parent_dir, allow_none, errors=None):
         """
         Returns a canonicalized and validated directory path as a String. 
-        Invalid input will generate a descriptive ValidationException, and 
-        input that is clearly an attack will generate a descriptive 
-        IntrusionException. 
         
-        To be a valid directory, the input_ must
-        * Exist on disk
-        * Be a directory
-        * Be a subdirectory of the parent_dir parameter, a full path to a 
-          parent directory, which must also exist and be a directory
+        <p><b>Note:</b> On platforms that support symlinks, this function will 
+        fail canonicalization if the directory path is a symlink. For example,
+        on MacOS X, /etc is actually /private/etc. If you mean to use /etc, use
+        its real path (/private/etc), not the symlink (/etc).</p>
         """
         try:
             # Check that input_ is provided
@@ -256,23 +206,13 @@ class DefaultValidator(Validator):
                 raise
             
     def is_valid_filename(self, context, input_, allow_none, allowed_extensions=None):
-        """
-        To be a valid filename, the input_ must be well formed. If a list of
-        allowed_extensions is provided, the extension of the input must be in
-        that list.
-        """
         try:
             self.get_valid_filename( context, input_, allow_none, allowed_extensions=allowed_extensions )
             return True
-        except ValidationException, extra:
+        except ValidationException:
             return False
             
     def get_valid_filename( self, context, input_, allow_none, error_list=None, allowed_extensions=None):
-        """
-        To be a valid filename, the input_ must be well formed. If a list of
-        allowed_extensions is provided, the extension of the input must be in
-        that list.
-        """
         try:
             if self.is_empty(input_):
                 if allow_none:
@@ -286,7 +226,7 @@ class DefaultValidator(Validator):
             if not allowed_extensions:
                 allowed_extensions = ESAPI.security_configuration().get_allowed_file_extensions()
                 
-            (root, file_ext) = os.path.splitext(input_)
+            file_ext = os.path.splitext(input_)[1]
             file_ext = file_ext.lower()
             if file_ext in allowed_extensions:
                 return input_
@@ -300,13 +240,23 @@ class DefaultValidator(Validator):
                 raise
                 
     def is_valid_file_content(self, context, input_, max_bytes, allow_none):
+        """
+        This implementation only verifies that the file size is less than or
+        equal to the max_bytes specified in the parameter and less than the
+        max bytes specified in ESAPI.conf.settings.py.
+        """
         try:
             self.get_valid_file_content( context, input_, max_bytes, allow_none )
             return True
-        except ValidationException, extra:
+        except ValidationException:
             return False
             
     def get_valid_file_content(self, context, input_, max_bytes, allow_none, errors=None ):
+        """
+        This implementation only verifies that the file size is less than or
+        equal to the max_bytes specified in the parameter and less than the
+        max bytes specified in ESAPI.conf.settings.py.
+        """
         try:
             if self.is_empty(input_):
                 if allow_none:
@@ -315,9 +265,9 @@ class DefaultValidator(Validator):
         
             esapi_max_bytes = ESAPI.security_configuration().get_allowed_file_upload_size()
             if len(input_) > esapi_max_bytes:
-                raise ValidationException( context + ": Invalid file content can not exceed " + esapi_max_bytes + " bytes", "Exceeded ESAPI max length", context )
+                raise ValidationException( context + ": Invalid file content can not exceed " + str(esapi_max_bytes) + " bytes", "Exceeded ESAPI max length", context )
             if len(input_) > max_bytes:
-                raise ValidationException( context + ": Invalid file content can not exceed " + max_bytes + " bytes", "Exceeded maxBytes ( " + len(input_) + ")", context )
+                raise ValidationException( context + ": Invalid file content can not exceed " + str(max_bytes) + " bytes", "Exceeded maxBytes ( " + str(len(input_)) + ")", context )
             
             return input_
         
@@ -326,15 +276,69 @@ class DefaultValidator(Validator):
                 errors[context] = extra
             else:
                 raise
-            
-    def is_empty(self, object):
+                
+    def is_valid_file_upload(self, context,
+                                directory_path,
+                                parent,
+                                filename,
+                                content,
+                                max_bytes,
+                                allow_none):
+        return (self.is_valid_filename( context, filename, allow_none ) and
+                self.is_valid_directory_path( context, directory_path, parent, allow_none ) and
+                self.is_valid_file_content( context, content, max_bytes, allow_none ))
+
+    def assert_valid_file_upload(self, context,
+                                      directory_path,
+                                      parent,
+                                      filename,
+                                      content,
+                                      max_bytes,
+                                      allow_none,
+                                      error_list=None):
+        self.get_valid_filename( context, filename, allow_none ) 
+        self.get_valid_directory_path( context, directory_path, parent, allow_none ) 
+        self.get_valid_file_content( context, content, max_bytes, allow_none )
+        
+    def is_valid_http_request(self, request):
+        raise NotImplementedError()
+
+    def assert_is_valid_http_request(self, request):
+        raise NotImplementedError()
+        
+    def is_valid_http_request_parameter_set(self, context, required, optional):
+        raise NotImplementedError()
+
+    def assert_is_valid_http_request_parameter_set(self, context, required, optional, error_list=None):
+        raise NotImplementedError()
+        
+    def is_valid_redirect_location(self, context, input_, allow_none):
+        return self.is_valid_input( context, input_, "Redirect", 512, allow_none)
+        
+    def get_valid_redirect_location(self, context, input_, allow_none, error_list=None):
+        return self.get_valid_input( context, input_, "Redirect", 512, allow_none, error_list )
+                                      
+    def safe_read_line(self, input_stream, max_length):
+        return input_stream.readline(max_length)
+        
+    def is_valid_safe_html(self, context, input_, max_length, allow_none):
+        raise NotImplementedError()
+        
+    def get_valid_safe_html(self, context,
+                                 input_,
+                                 max_length,
+                                 allow_none,
+                                 error_list=None):
+        raise NotImplementedError()
+                                      
+    def is_empty(self, obj):
         """
-        Checks if the given object is None or empty.
+        Checks if the given obj is None or empty.
         """
-        if object is None or len(object) == 0:
+        if obj is None or len(obj) == 0:
             return True
             
-        if isinstance(object, str) and len(object.strip()) == 0:
+        if isinstance(obj, str) and len(obj.strip()) == 0:
             return True
             
         return False

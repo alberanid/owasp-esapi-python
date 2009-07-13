@@ -23,13 +23,27 @@ from esapi.exceptions import ValidationException
 from esapi.exceptions import EncodingException
 
 class DateValidationRule(BaseValidationRule):
+    """
+    This date validator makes use of Python's 
+    <a href="http://docs.python.org/library/datetime.html">datetime.strptime</a>
+    to validate that given dates conform to a format string.
+    """
     def __init__(self, type_name, encoder, new_format):
+        """
+        @param new_format Required formatting of date in string form, according 
+               to Python's <a href="http://docs.python.org/library/datetime.html">datetime.strptime</a>.
+        """
         self.format = None
         
         BaseValidationRule.__init__(self, type_name, encoder)
         self.set_date_format(new_format)
         
     def set_date_format(self, new_format):
+        """
+        Sets the format string that input is tested against.
+        @param new_format Required formatting of date in string form, according 
+               to Python's <a href="http://docs.python.org/library/datetime.html">datetime.strptime</a>.
+        """
         if new_format is None:
             raise RuntimeError("DateValidationRule.set_date_format requires a non-null DateFormat")
         self.format = new_format

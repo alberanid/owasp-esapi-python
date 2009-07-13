@@ -1,6 +1,8 @@
 So you think you've finished a module?
 
 Look through the module to ensure it is complete
+Check that the documentation is good and sufficient.
+Are all the strings that could be translated in _("")?
 Ensure the test cases are written and test most of the functionality
 Ensure coverage is adaquate
 Run module throught PyLint for checking

@@ -19,17 +19,27 @@ class Validator():
     """
     The Validator interface defines a set of methods for canonicalizing and
     validating untrusted input. Implementors should feel free to extend this
-    interface to accommodate their own data formats. Rather than throw exceptions,
-    this interface returns boolean results because not all validation problems
-    are security issues. Boolean returns allow developers to handle both valid
-    and invalid results more cleanly than exceptions.
-    <P>
+    interface to accommodate their own data formats. Methods prefixed with "is"
+    should return boolean values. Methods with a "get" prefix should return
+    valid input or raise an exception.
+    
+    For "get" methods, invalid input should generate a descriptive 
+    ValidationException, and input that is clearly an attack should generate a
+    descriptive IntrusionException.
+    
+    "assert" and "get" methods should accept an optional error_list parameter 
+    to collect any thrown errors instead of raising them. This error_list 
+    parameter can accept an instance of the ValidationErrorList class. If the
+    errors_list is present, any exceptions are added to the list instead of 
+    being thrown, and the method returns None.
+    
+    <p>
     <img src="doc-files/Validator.jpg">
-    <P>
+    </p>
     Implementations must adopt a "whitelist" approach to validation where a
     specific pattern or character set is matched. "Blacklist" approaches that
     attempt to identify the invalid or disallowed characters are much more likely
-    to allow a bypass with encoding or other tricks.
+    to be fooled by encoding or other tricks.
 
     @author Craig Younkins (craig.younkins@owasp.org)
     """
@@ -37,34 +47,36 @@ class Validator():
     def __init__(self):
         pass
 
-    def add_rule(self, rule):
-        raise NotImplementedError()
-
-    def get_rule(self, name):
-        raise NotImplementedError()
-
     def is_valid_input(self, context,
                            input_,
                            type_,
                            max_length,
                            allow_none):
         """
-        Returns true if input is valid according to the specified type. The type parameter must be the name
-        of a defined type in the ESAPI configuration or a valid regular expression. Implementers should take
+        Returns true if input is valid according to the specified type. The 
+        type parameter must be the name of a defined type in the ESAPI 
+        configuration or a valid regular expression. Implementers should take
         care to make the type storage simple to understand and configure.
 
         @param context
-                A descriptive name of the parameter that you are validating (e.g., LoginPage_UsernameField). This value is used by any logging or error handling that is done with respect to the value passed in.
+                A descriptive name of the parameter that you are validating 
+                (e.g., LoginPage_UsernameField). This value is used by any 
+                logging or error handling that is done with respect to the 
+                value passed in.
         @param input_
                 The actual user input data to validate.
         @param type_
-                The regular expression name that maps to the actual regular expression from "ESAPI.conf.settings".
+                The regular expression name that maps to the actual regular 
+                expression from "ESAPI.conf.settings".
         @param max_length
                 The maximum post-canonicalized String length allowed.
         @param allow_none
-                If allow_none is true then an input that is NONE or an empty string will be legal. If allow_none is false then NONE or an empty String will throw a ValidationException.
+                If allow_none is true then an input that is NONE or an empty 
+                string will be legal. If allow_none is false then NONE or an 
+                empty String will throw a ValidationException.
 
         @return true, if the input is valid based on the rules set by 'type'
+                otherwise, false.
 
         @throws IntrusionException
         """
@@ -77,45 +89,57 @@ class Validator():
                               allow_none,
                               error_list=None):
         """
-        Returns canonicalized and validated input as a String. Invalid input will generate a descriptive ValidationException,
-        and input that is clearly an attack will generate a descriptive IntrusionException.  Instead of
-        throwing a ValidationException on error, this variant will store the exception inside of the ValidationErrorList.
+        Returns canonicalized and validated input as a String.
 
         @param context
-                A descriptive name of the parameter that you are validating (e.g., LoginPage_UsernameField). This value is used by any logging or error handling that is done with respect to the value passed in.
+                A descriptive name of the parameter that you are validating 
+                (e.g., LoginPage_UsernameField). This value is used by any 
+                logging or error handling that is done with respect to the 
+                value passed in.
         @param input_
                 The actual user input data to validate.
         @param type_
-                The regular expression name that maps to the actual regular expression from "ESAPI.conf.settings".
+                The regular expression name that maps to the actual regular 
+                expression from "ESAPI.conf.settings".
         @param max_length
                 The maximum post-canonicalized String length allowed.
         @param allow_none
-                If allow_none is true then an input that is NONE or an empty string will be legal. If allow_none is false then NONE or an empty String will throw a ValidationException.
+                If allow_none is true then an input that is NONE or an empty 
+                string will be legal. If allow_none is false then NONE or an 
+                empty String will throw a ValidationException.
         @param error_list
-                If validation is in error, resulting error will be stored in the error_list by context
+                If error_list exists, any errors will be captured in the list
+                instead of being thrown. The method will return None in this
+                case.
 
         @return The canonicalized user input.
 
-        @throws IntrusionException
+        @raise IntrusionException:
         """
         raise NotImplementedError()
 
     def is_valid_date(self, context, input_, format_, allow_none):
         """
-        Returns true if input is a valid date according to the specified date format.
+        Returns true if input is a valid date according to the specified date
+        format.
 
         @param context
-                A descriptive name of the parameter that you are validating (e.g., LoginPage_UsernameField). This value is used by any logging or error handling that is done with respect to the value passed in.
+                A descriptive name of the parameter that you are validating 
+                (e.g., LoginPage_UsernameField). This value is used by any 
+                logging or error handling that is done with respect to the 
+                value passed in.
         @param input_
                 The actual user input data to validate.
         @param format_
-                Required formatting of date inputted.
+                Required formatting of date in string form, according to
+                Python's <a href="http://docs.python.org/library/datetime.html">datetime.strptime</a>.
         @param allow_none
-                If allow_none is true then an input that is NONE or an empty string will be legal. If allow_none is false then NONE or an empty String will throw a ValidationException.
+                If allow_none is true then an input that is NONE or an empty 
+                string will be legal. If allow_none is false then NONE or an 
+                empty String will throw a ValidationException.
 
-        @return true, if input is a valid date according to the format specified by 'format'
-
-        @throws IntrusionException
+        @return true, if input is a valid date according to the format 
+        specified by 'format'. Otherwise, false.
         """
         raise NotImplementedError()
 
@@ -125,44 +149,54 @@ class Validator():
                              allow_none,
                              error_list=None):
         """
-        Returns a valid date as a Date. Invalid input will generate a descriptive ValidationException and store it inside of
-        the error_list argument, and input that is clearly an attack will generate a descriptive IntrusionException.  Instead of
-        throwing a ValidationException on error, this variant will store the exception inside of the ValidationErrorList.
+        Returns a valid date as a <a href="http://docs.python.org/library/datetime.html#datetime-objects">datetime</a> object. 
 
         @param context
-                A descriptive name of the parameter that you are validating (e.g., LoginPage_UsernameField). This value is used by any logging or error handling that is done with respect to the value passed in.
+                A descriptive name of the parameter that you are validating 
+                (e.g., LoginPage_UsernameField). This value is used by any 
+                logging or error handling that is done with respect to the 
+                value passed in.
         @param input_
                 The actual user input data to validate.
         @param format_
                 Required formatting of date inputted.
         @param allow_none
-                If allow_none is true then an input that is NONE or an empty string will be legal. If allow_none is false then NONE or an empty String will throw a ValidationException.
+                If allow_none is true then an input that is NONE or an empty 
+                string will be legal. If allow_none is false then NONE or an 
+                empty String will throw a ValidationException.
         @param error_list
-                If validation is in error, resulting error will be stored in the error_list by context
-
+                If error_list exists, any errors will be captured in the list
+                instead of being thrown. The method will return None in this
+                case.
         @return A valid date as a Date
 
-        @throws IntrusionException
+        @raise IntrusionException:
         """
         raise NotImplementedError()
 
     def is_valid_safe_html(self, context, input_, max_length, allow_none):
         """
-        Returns true if input is "safe" HTML. Implementors should reference the OWASP AntiSamy project for ideas
-        on how to do HTML validation in a whitelist way, as this is an extremely difficult problem.
+        Returns true if input is "safe" HTML. Implementors should reference the
+        OWASP AntiSamy project for ideas on how to do HTML validation in a 
+        whitelist way, as this is an extremely difficult problem.
 
         @param context
-                A descriptive name of the parameter that you are validating (e.g., LoginPage_UsernameField). This value is used by any logging or error handling that is done with respect to the value passed in.
+                A descriptive name of the parameter that you are validating 
+                (e.g., LoginPage_UsernameField). This value is used by any 
+                logging or error handling that is done with respect to the 
+                value passed in.
         @param input_
                 The actual user input data to validate.
         @param max_length
                 The maximum post-canonicalized String length allowed.
         @param allow_none
-                If allow_none is true then an input that is NONE or an empty string will be legal. If allow_none is false then NONE or an empty String will throw a ValidationException.
+                If allow_none is true then an input that is NONE or an empty 
+                string will be legal. If allow_none is false then NONE or an 
+                empty String will throw a ValidationException.
 
-        @return true, if input is valid safe HTML
+        @return true, if input is valid safe HTML. Otherwise false.
 
-        @throws IntrusionException
+        @raise IntrusionException:
         """
         raise NotImplementedError()
 
@@ -172,154 +206,222 @@ class Validator():
                                  allow_none,
                                  error_list=None):
         """
-        Returns canonicalized and validated "safe" HTML. Implementors should reference the OWASP AntiSamy project for ideas
-        on how to do HTML validation in a whitelist way, as this is an extremely difficult problem. Instead of
-        throwing a ValidationException on error, this variant will store the exception inside of the ValidationErrorList.
+        Returns canonicalized and validated "safe" HTML. Implementors should 
+        reference the OWASP AntiSamy project for ideas on how to do HTML 
+        validation in a whitelist way, as this is an extremely difficult 
+        problem.
 
         @param context
-                A descriptive name of the parameter that you are validating (e.g., LoginPage_UsernameField). This value is used by any logging or error handling that is done with respect to the value passed in.
+                A descriptive name of the parameter that you are validating 
+                (e.g., LoginPage_UsernameField). This value is used by any 
+                logging or error handling that is done with respect to the 
+                value passed in.
         @param input_
                 The actual user input data to validate.
         @param max_length
                 The maximum post-canonicalized String length allowed.
         @param allow_none
-                If allow_none is true then an input that is NONE or an empty string will be legal. If allow_none is false then NONE or an empty String will throw a ValidationException.
+                If allow_none is true then an input that is NONE or an empty 
+                string will be legal. If allow_none is false then NONE or an 
+                empty String will throw a ValidationException.
         @param error_list
-                If validation is in error, resulting error will be stored in the error_list by context
-
+                If error_list exists, any errors will be captured in the list
+                instead of being thrown. The method will return None in this
+                case.
         @return Valid safe HTML
 
-        @throws IntrusionException
+        @raise IntrusionException:
         """
         raise NotImplementedError()
 
     def is_valid_credit_card(self, context, input_, allow_none):
         """
-        Returns true if input is a valid credit card. Maxlength is mandated by valid credit card type.
+        Returns true if input is a valid credit card. Implementors should
+        use the Luhn algorithm at the very least.
 
         @param context
-                A descriptive name of the parameter that you are validating (e.g., LoginPage_UsernameField). This value is used by any logging or error handling that is done with respect to the value passed in.
+                A descriptive name of the parameter that you are validating 
+                (e.g., LoginPage_UsernameField). This value is used by any 
+                logging or error handling that is done with respect to the 
+                value passed in.
         @param input_
                 The actual user input data to validate.
         @param allow_none
-                If allow_none is true then an input that is NONE or an empty string will be legal. If allow_none is false then NONE or an empty String will throw a ValidationException.
+                If allow_none is true then an input that is NONE or an empty 
+                string will be legal. If allow_none is false then NONE or an 
+                empty String will throw a ValidationException.
 
-        @return true, if input is a valid credit card number
+        @return true, if input is a valid credit card number. Otherwise, false.
 
-        @throws IntrusionException
+        @raise IntrusionException:
         """
         raise NotImplementedError()
 
     def get_valid_credit_card(self, context, input_, allow_none, error_list=None):
         """
-        Returns a canonicalized and validated credit card number as a String. Invalid input
-        will generate a descriptive ValidationException, and input that is clearly an attack
-        will generate a descriptive IntrusionException. Instead of throwing a ValidationException
-        on error, this variant will store the exception inside of the ValidationErrorList.
+        Returns a canonicalized and validated credit card number as a String, 
+        including only the digits (no spaces).
 
         @param context
-                A descriptive name of the parameter that you are validating (e.g., LoginPage_UsernameField). This value is used by any logging or error handling that is done with respect to the value passed in.
+                A descriptive name of the parameter that you are validating 
+                (e.g., LoginPage_UsernameField). This value is used by any 
+                logging or error handling that is done with respect to the 
+                value passed in.
         @param input_
                 The actual input data to validate.
         @param allow_none
-                If allow_none is true then an input that is NONE or an empty string will be legal. If allow_none is false then NONE or an empty String will throw a ValidationException.
+                If allow_none is true then an input that is NONE or an empty 
+                string will be legal. If allow_none is false then NONE or an 
+                empty String will throw a ValidationException.
         @param error_list
-                If validation is in error, resulting error will be stored in the error_list by context
-
+                If error_list exists, any errors will be captured in the list
+                instead of being thrown. The method will return None in this
+                case.
+                
         @return A valid credit card number
 
-        @throws IntrusionException
+        @raise IntrusionException:
         """
         raise NotImplementedError()
 
-    def is_valid_directory_path(self, context, input_, allow_none):
+    def is_valid_directory_path(self, context, input_, parent_dir, allow_none):
         """
         Returns true if input is a valid directory path.
+        
+        To be a valid directory, the input_ must
+        * Exist on disk
+        * Be a directory
+        * Be a subdirectory of the parent_dir parameter, a full path to a 
+          parent directory, which must also exist and be a directory
 
         @param context
-                A descriptive name of the parameter that you are validating (e.g., LoginPage_UsernameField). This value is used by any logging or error handling that is done with respect to the value passed in.
+                A descriptive name of the parameter that you are validating 
+                (e.g., LoginPage_UsernameField). This value is used by any 
+                logging or error handling that is done with respect to the 
+                value passed in.
         @param input_
                 The actual input data to validate.
+        @param parent_dir
+                A parent directory that the input_ must be under. Use this to
+                ensure any uploads go into allowed directories.
         @param allow_none
-                If allow_none is true then an input that is NONE or an empty string will be legal. If allow_none is false then NONE or an empty String will throw a ValidationException.
+                If allow_none is true then an input that is NONE or an empty 
+                string will be legal. If allow_none is false then NONE or an 
+                empty String will throw a ValidationException.
 
-        @return true, if input is a valid directory path
+        @return true, if input is a valid directory path. Otherwise, false.
 
-        @throws IntrusionException
+        @raise IntrusionException:
         """
         raise NotImplementedError()
 
-    def get_valid_directory_path(self, context, input_, allow_none, error_list=None):
+    def get_valid_directory_path(self, context, input_, parent_dir, allow_none, errors=None):
         """
-        Returns a canonicalized and validated directory path as a String. Invalid input
-        will generate a descriptive ValidationException, and input that is clearly an attack
-        will generate a descriptive IntrusionException. Instead of throwing a ValidationException
-        on error, this variant will store the exception inside of the ValidationErrorList.
+        Returns a canonicalized and validated directory path as a String.
+        
+        To be a valid directory, the input_ must
+        * Exist on disk
+        * Be a directory
+        * Be a subdirectory of the parent_dir parameter, a full path to a 
+          parent directory, which must also exist and be a directory
 
         @param context
-                A descriptive name of the parameter that you are validating (e.g., LoginPage_UsernameField). This value is used by any logging or error handling that is done with respect to the value passed in.
+                A descriptive name of the parameter that you are validating 
+                (e.g., LoginPage_UsernameField). This value is used by any 
+                logging or error handling that is done with respect to the 
+                value passed in.
         @param input_
                 The actual input data to validate.
+        @param parent_dir
+                A parent directory that the input_ must be under. Use this to
+                ensure any uploads go into allowed directories.
         @param allow_none
-                If allow_none is true then an input that is NONE or an empty string will be legal. If allow_none is false then NONE or an empty String will throw a ValidationException.
+                If allow_none is true then an input that is NONE or an empty 
+                string will be legal. If allow_none is false then NONE or an 
+                empty String will throw a ValidationException.
         @param error_list
-                If validation is in error, resulting error will be stored in the error_list by context
+                If error_list exists, any errors will be captured in the list
+                instead of being thrown. The method will return None in this
+                case.
 
         @return A valid directory path
 
-        @throws IntrusionException
+        @raise IntrusionException:
         """
         raise NotImplementedError()
 
-    def is_valid_filename(self, context, input_, allow_none):
+    def is_valid_filename(self, context, input_, allow_none, allowed_extensions=None):
         """
         Returns true if input is a valid file name.
+        
+        To be a valid filename, the input_ must
+        * Be well formed
+        * Have an extension in allowed_extensions, or, if that list is None, in
+          the list defined by 
+          ESAPI.security_configuration().get_allowed_file_extensions()
 
         @param context
-                A descriptive name of the parameter that you are validating (e.g., LoginPage_UsernameField). This value is used by any logging or error handling that is done with respect to the value passed in.
+                A descriptive name of the parameter that you are validating 
+                (e.g., LoginPage_UsernameField). This value is used by any 
+                logging or error handling that is done with respect to the 
+                value passed in.
         @param input_
                 The actual input data to validate.
         @param allow_none
-                If allow_none is true then an input that is NONE or an empty string will be legal. If allow_none is false then NONE or an empty String will throw a ValidationException.
+                If allow_none is true then an input that is NONE or an empty 
+                string will be legal. If allow_none is false then NONE or an 
+                empty String will throw a ValidationException.
 
-        @return true, if input is a valid file name
+        @return true, if input is a valid file name. Otherwise, false.
 
-        @throws IntrusionException
+        @raise IntrusionException:
         """
         raise NotImplementedError()
 
-    def get_valid_filename(self, context, input_, allow_none, error_list=None):
+    def get_valid_filename(self, context, input_, allow_none, error_list=None, allowed_extensions=None):
         """
-        Returns a canonicalized and validated file name as a String. Implementors should check for allowed file extensions here, as well as allowed file name characters, as declared in "ESAPI.conf.settings".  Invalid input
-        will generate a descriptive ValidationException, and input that is clearly an attack
-        will generate a descriptive IntrusionException. Instead of throwing a ValidationException
-        on error, this variant will store the exception inside of the ValidationErrorList.
+        Returns a canonicalized and validated file name as a String. 
 
+        To be a valid filename, the input_ must
+        * Be well formed
+        * Have an extension in allowed_extensions, or, if that list is None, in
+          the list defined by 
+          ESAPI.security_configuration().get_allowed_file_extensions()
+        
         @param context
-                A descriptive name of the parameter that you are validating (e.g., LoginPage_UsernameField). This value is used by any logging or error handling that is done with respect to the value passed in.
+                A descriptive name of the parameter that you are validating 
+                (e.g., LoginPage_UsernameField). This value is used by any 
+                logging or error handling that is done with respect to the 
+                value passed in.
         @param input_
                 The actual input data to validate.
         @param allow_none
-                If allow_none is true then an input that is NONE or an empty string will be legal. If allow_none is false then NONE or an empty String will throw a ValidationException.
+                If allow_none is true then an input that is NONE or an empty 
+                string will be legal. If allow_none is false then NONE or an 
+                empty String will throw a ValidationException.
         @param error_list
-                If validation is in error, resulting error will be stored in the error_list by context
-
+                If error_list exists, any errors will be captured in the list
+                instead of being thrown. The method will return None in this
+                case.
+                
         @return A valid file name
 
-        @throws IntrusionException
+        @raise IntrusionException:
         """
         raise NotImplementedError()
 
-    def is_valid_number(self, context,
-                            input_,
-                            min_value,
-                            max_value,
-                            allow_none):
+    def is_valid_number(self, context, num_type, input_, min_value, max_value, allow_none):
         """
-        Returns true if input is a valid number within the range of min_value to max_value.
+        Returns true if input is a valid number within the range of min_value
+        to max_value. num_type is an important parameter - it sets the type the
+        number should be. This could be int or float, and so this method works
+        for these types and more.
 
         @param context
-                A descriptive name of the parameter that you are validating (e.g., LoginPage_UsernameField). This value is used by any logging or error handling that is done with respect to the value passed in.
+                A descriptive name of the parameter that you are validating 
+                (e.g., LoginPage_UsernameField). This value is used by any 
+                logging or error handling that is done with respect to the 
+                value passed in.
         @param input_
                 The actual input data to validate.
         @param min_value
@@ -327,28 +429,34 @@ class Validator():
         @param max_value
                 Highest legal value for input.
         @param allow_none
-                If allow_none is true then an input that is NONE or an empty string will be legal. If allow_none is false then NONE or an empty String will throw a ValidationException.
+                If allow_none is true then an input that is NONE or an empty 
+                string will be legal. If allow_none is false then NONE or an 
+                empty String will throw a ValidationException.
 
-        @return true, if input is a valid number
+        @return true, if input is a valid number. Otherwise, false.
 
-        @throws IntrusionException
+        @raise IntrusionException:
         """
         raise NotImplementedError()
 
-    def get_valid_number(self, context,
+    def get_valid_number(self, context, 
+                               num_type,
                                input_,
                                min_value,
                                max_value,
                                allow_none,
                                error_list=None):
         """
-        Returns a validated number as a double within the range of min_value to max_value. Invalid input
-        will generate a descriptive ValidationException, and input that is clearly an attack
-        will generate a descriptive IntrusionException. Instead of throwing a ValidationException
-        on error, this variant will store the exception inside of the ValidationErrorList.
+        Returns a validated number that is within the range of min_value
+        to max_value. num_type is an important parameter - it sets the type the
+        number should be. This could be int or float, and so this method works
+        for these types and more.
 
         @param context
-                A descriptive name of the parameter that you are validating (e.g., LoginPage_UsernameField). This value is used by any logging or error handling that is done with respect to the value passed in.
+                A descriptive name of the parameter that you are validating 
+                (e.g., LoginPage_UsernameField). This value is used by any 
+                logging or error handling that is done with respect to the 
+                value passed in.
         @param input_
                 The actual input data to validate.
         @param min_value
@@ -356,94 +464,42 @@ class Validator():
         @param max_value
                 Highest legal value for input.
         @param allow_none
-                If allow_none is true then an input that is NONE or an empty string will be legal. If allow_none is false then NONE or an empty String will throw a ValidationException.
+                If allow_none is true then an input that is NONE or an empty 
+                string will be legal. If allow_none is false then NONE or an 
+                empty String will throw a ValidationException.
         @param error_list
-                If validation is in error, resulting error will be stored in the error_list by context
-
+                If error_list exists, any errors will be captured in the list
+                instead of being thrown. The method will return None in this
+                case.
+                
         @return A validated number as a double.
 
-        @throws IntrusionException
-        """
-        raise NotImplementedError()
-
-    def is_valid_number(self, context,
-                             num_type,
-                             input_,
-                             min_value,
-                             max_value,
-                             allow_none):
-        """
-        Returns true if input is a valid number within the range of min_value to max_value.
-
-        @param context
-                A descriptive name of the parameter that you are validating (e.g., LoginPage_UsernameField). This value is used by any logging or error handling that is done with respect to the value passed in.
-        @param num_type
-                The type the given input should be of. Example: float or int types
-        @param input_
-                The actual input data to validate.
-        @param min_value
-                Lowest legal value for input.
-        @param max_value
-                Highest legal value for input.
-        @param allow_none
-                If allow_none is true then an input that is NONE or an empty string will be legal. If allow_none is false then NONE or an empty String will throw a ValidationException.
-
-        @return true, if input is a valid number of type num_type
-
-        @throws IntrusionException
-        """
-        raise NotImplementedError()
-
-    def get_valid_number(self, context,
-                                num_type,
-                                input_,
-                                min_value,
-                                max_value,
-                                allow_none,
-                                error_list=None):
-        """
-        Returns a validated number. Invalid input
-        will generate a descriptive ValidationException, and input that is clearly an attack
-        will generate a descriptive IntrusionException. Instead of throwing a ValidationException
-        on error, this variant will store the exception inside of the ValidationErrorList.
-
-        @param context
-                A descriptive name of the parameter that you are validating (e.g., LoginPage_UsernameField). This value is used by any logging or error handling that is done with respect to the value passed in.
-        @param num_type
-                The type the given input should be of. Example: float or int types
-        @param input_
-                The actual input data to validate.
-        @param min_value
-                Lowest legal value for input.
-        @param max_value
-                Highest legal value for input.
-        @param allow_none
-                If allow_none is true then an input that is NONE or an empty string will be legal. If allow_none is false then NONE or an empty String will throw a ValidationException.
-        @param error_list
-                If validation is in error, resulting error will be stored in the error_list by context
-
-        @return A validated number as a the given num_type.
-
-        @throws IntrusionException
+        @raise IntrusionException:
         """
         raise NotImplementedError()
 
     def is_valid_file_content(self, context, input_, max_bytes, allow_none):
         """
-        Returns true if input is valid file content.  This is a good place to check for max file size, allowed character sets, and do virus scans.
+        Returns true if input is valid file content. This is a good place to 
+        check for max file size, allowed character sets, and do virus scans.
 
         @param context
-                A descriptive name of the parameter that you are validating (e.g., LoginPage_UsernameField). This value is used by any logging or error handling that is done with respect to the value passed in.
+                A descriptive name of the parameter that you are validating 
+                e.g., LoginPage_UsernameField). This value is used by any 
+                logging or error handling that is done with respect to the 
+                value passed in.
         @param input_
                 The actual input data to validate.
         @param max_bytes
                 The maximum number of bytes allowed in a legal file.
         @param allow_none
-                If allow_none is true then an input that is NONE or an empty string will be legal. If allow_none is false then NONE or an empty String will throw a ValidationException.
+                If allow_none is true then an input that is NONE or an empty 
+                string will be legal. If allow_none is false then NONE or an 
+                empty String will throw a ValidationException.
 
-        @return true, if input contains valid file content.
+        @return true, if input contains valid file content. Otherwise, false.
 
-        @throws IntrusionException
+        @raise IntrusionException:
         """
         raise NotImplementedError()
 
@@ -453,41 +509,53 @@ class Validator():
                                     allow_none,
                                     error_list=None):
         """
-        Returns validated file content as a byte array. This is a good place to check for max file size, allowed character sets, and do virus scans.  Invalid input
-        will generate a descriptive ValidationException, and input that is clearly an attack
-        will generate a descriptive IntrusionException. Instead of throwing a ValidationException
-        on error, this variant will store the exception inside of the ValidationErrorList.
+        Returns validated file content as a string. This is a good place to 
+        check for max file size, allowed character sets, and do virus scans.  
 
         @param context
-                A descriptive name of the parameter that you are validating (e.g., LoginPage_UsernameField). This value is used by any logging or error handling that is done with respect to the value passed in.
+                A descriptive name of the parameter that you are validating 
+                (e.g., LoginPage_UsernameField). This value is used by any 
+                logging or error handling that is done with respect to the 
+                value passed in.
         @param input_
                 The actual input data to validate.
         @param max_bytes
                 The maximum number of bytes allowed in a legal file.
         @param allow_none
-                If allow_none is true then an input that is NONE or an empty string will be legal. If allow_none is false then NONE or an empty String will throw a ValidationException.
+                If allow_none is true then an input that is NONE or an empty 
+                string will be legal. If allow_none is false then NONE or an 
+                empty String will throw a ValidationException.
         @param error_list
-                If validation is in error, resulting error will be stored in the error_list by context.
+                If error_list exists, any errors will be captured in the list
+                instead of being thrown. The method will return None in this
+                case.
+                
+        @return A string containing valid file content.
 
-        @return A byte array containing valid file content.
-
-        @throws IntrusionException
+        @raise IntrusionException:
         """
         raise NotImplementedError()
 
     def is_valid_file_upload(self, context,
-                                filepath,
+                                directory_path,
+                                parent,
                                 filename,
                                 content,
                                 max_bytes,
                                 allow_none):
         """
-        Returns true if a file upload has a valid name, path, and content.
+        Returns true if the the directory, filename, and content of a file 
+        upload are all valid.
 
         @param context
-                A descriptive name of the parameter that you are validating (e.g., LoginPage_UsernameField). This value is used by any logging or error handling that is done with respect to the value passed in.
-        @param filepath
-                The file path of the uploaded file.
+                A descriptive name of the parameter that you are validating 
+                (e.g., LoginPage_UsernameField). This value is used by any 
+                logging or error handling that is done with respect to the 
+                value passed in.
+        @param directory_path
+                The directory path of the uploaded file.
+        @param parent
+                The parent directory that all uploads must be inside.
         @param filename
                 The filename of the uploaded file
         @param content
@@ -495,31 +563,36 @@ class Validator():
         @param max_bytes
                 The max number of bytes allowed for a legal file upload.
         @param allow_none
-                If allow_none is true then an input that is NONE or an empty string will be legal. If allow_none is false then NONE or an empty String will throw a ValidationException.
+                If allow_none is true then an input that is NONE or an empty 
+                string will be legal. If allow_none is false then NONE or an 
+                empty String will throw a ValidationException.
 
         @return true, if a file upload has a valid name, path, and content.
 
-        @throws IntrusionException
+        @raise IntrusionException:
         """
         raise NotImplementedError()
 
     def assert_valid_file_upload(self, context,
-                                      filepath,
+                                      directory_path,
+                                      parent,
                                       filename,
                                       content,
                                       max_bytes,
                                       allow_none,
                                       error_list=None):
         """
-        Validates the filepath, filename, and content of a file. Invalid input
-        will generate a descriptive ValidationException, and input that is clearly an attack
-        will generate a descriptive IntrusionException. Instead of throwing a ValidationException
-        on error, this variant will store the exception inside of the ValidationErrorList.
+        Validates the directory, filename, and content of a file upload.
 
         @param context
-                A descriptive name of the parameter that you are validating (e.g., LoginPage_UsernameField). This value is used by any logging or error handling that is done with respect to the value passed in.
-        @param filepath
-                The file path of the uploaded file.
+                A descriptive name of the parameter that you are validating 
+                (e.g., LoginPage_UsernameField). This value is used by any 
+                logging or error handling that is done with respect to the 
+                value passed in.
+        @param directory_path
+                The directory path of the uploaded file.
+        @param parent
+                The parent directory that all uploads must be inside.
         @param filename
                 The filename of the uploaded file
         @param content
@@ -527,11 +600,15 @@ class Validator():
         @param max_bytes
                 The max number of bytes allowed for a legal file upload.
         @param allow_none
-                If allow_none is true then an input that is NONE or an empty string will be legal. If allow_none is false then NONE or an empty String will throw a ValidationException.
+                If allow_none is true then an input that is NONE or an empty 
+                string will be legal. If allow_none is false then NONE or an 
+                empty String will throw a ValidationException.
         @param error_list
-                If validation is in error, resulting error will be stored in the error_list by context
+                If error_list exists, any errors will be captured in the list
+                instead of being thrown. The method will return None in this
+                case.
 
-        @throws IntrusionException
+        @raise IntrusionException:
         """
         raise NotImplementedError()
 
@@ -553,45 +630,6 @@ class Validator():
         will generate a descriptive IntrusionException.
 
         @throws ValidationException
-        @throws IntrusionException
-        """
-        raise NotImplementedError()
-
-    def is_valid_list_item(self, context, input_, list_):
-        """
-        Returns true if input is a valid list item.
-
-        @param context
-                A descriptive name of the parameter that you are validating (e.g., LoginPage_UsernameField). This value is used by any logging or error handling that is done with respect to the value passed in.
-        @param input_
-                The value to search 'list' for.
-        @param list_
-                The list to search for 'input'.
-
-        @return true, if 'input' was found in 'list'.
-
-        @throws IntrusionException
-        """
-        raise NotImplementedError()
-
-    def get_valid_list_item(self, context, input_, list_, error_list=None):
-        """
-        Returns the list item that exactly matches the canonicalized input. Invalid or non-matching input
-        will generate a descriptive ValidationException, and input that is clearly an attack
-        will generate a descriptive IntrusionException. Instead of throwing a ValidationException
-        on error, this variant will store the exception inside of the ValidationErrorList.
-
-        @param context
-                A descriptive name of the parameter that you are validating (e.g., LoginPage_UsernameField). This value is used by any logging or error handling that is done with respect to the value passed in.
-        @param input_
-                The value to search 'list' for.
-        @param list_
-                The list to search for 'input'.
-        @param error_list
-                If validation is in error, resulting error will be stored in the error_list by context
-
-        @return The list item that exactly matches the canonicalized input.
-
         @throws IntrusionException
         """
         raise NotImplementedError()
@@ -630,49 +668,6 @@ class Validator():
                 If validation is in error, resulting error will be stored in the error_list by context
 
         @throws IntrusionException
-        """
-        raise NotImplementedError()
-
-    def is_valid_printable(self, context, input_, max_length, allow_none):
-        """
-        Returns true if input contains only valid printable ASCII characters.
-
-        @param context
-                A descriptive name of the parameter that you are validating (e.g., LoginPage_UsernameField). This value is used by any logging or error handling that is done with respect to the value passed in.
-        @param input_
-                data to be checked for validity
-        @param max_length
-                Maximum number of bytes stored in 'input'
-        @param allow_none
-                If allow_none is true then an input that is NONE or an empty string will be legal. If allow_none is false then NONE or an empty String will throw a ValidationException.
-
-        @return true, if 'input' is less than max_length and contains only valid, printable characters
-
-        @throws IntrusionException
-        """
-        raise NotImplementedError()
-
-    def get_valid_printable(self, context,
-                                input_,
-                                max_length,
-                                allow_none,
-                                error_list=None):
-        """
-        Returns canonicalized and validated printable characters as a byte array. Invalid input will generate a descriptive ValidationException, and input that is clearly an attack
-        will generate a descriptive IntrusionException.
-
-         @param context
-                A descriptive name of the parameter that you are validating (e.g., LoginPage_UsernameField). This value is used by any logging or error handling that is done with respect to the value passed in.
-         @param input_
-                data to be returned as valid and printable
-         @param max_length
-                Maximum number of bytes stored in 'input'
-         @param allow_none
-                If allow_none is true then an input that is NONE or an empty string will be legal. If allow_none is false then NONE or an empty String will throw a ValidationException.
-
-         @return a byte array containing only printable characters, made up of data from 'input'
-
-         @throws ValidationException
         """
         raise NotImplementedError()
 
