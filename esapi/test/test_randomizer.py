@@ -16,17 +16,14 @@ accept the LICENSE before you use, modify, and/or redistribute this software.
 """
 
 # Todo
-# Change ascii_letters once Encoder is implemented
-# Change testGetRandomString when Codec is written
 
 import unittest
 import sys
 
 from esapi.core import ESAPI
+from esapi.encoder import Encoder
 
-class RandomzerTest(unittest.TestCase):
-    
-    alpha_numerics = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+class RandomizerTest(unittest.TestCase):
 
     def __init__(self, test_name=""):
         """
@@ -40,11 +37,10 @@ class RandomzerTest(unittest.TestCase):
         length = 20
         instance = ESAPI.randomizer()
         for i in range (100):
-            result = instance.get_random_string(length, self.alpha_numerics)
-            #print result
-            # for char is result:
-                # if !Codec.containsCharacter( result[j], self.alpha_numerics):
-                    # self.fail()
+            result = instance.get_random_string(length, Encoder.CHAR_ALPHANUMERICS)
+            for char in result:
+                if char not in Encoder.CHAR_ALPHANUMERICS:
+                    self.fail()
                     
             self.assertEquals(length, len(result))
     
