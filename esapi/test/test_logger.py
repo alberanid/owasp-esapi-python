@@ -50,16 +50,6 @@ class LoggerTest(unittest.TestCase):
         
     def runTest(self):
         assert self.test_logger.test() == True
-        
-    def suite(self):
-        """
-        Suite.
-        
-        @return the test
-        """
-        suite = unittest.makeSuite(Logger,'test')
-        
-        return suite
     
 #    def testLogHTTPRequest(self):
 #        """

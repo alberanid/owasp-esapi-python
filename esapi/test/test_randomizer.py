@@ -35,16 +35,6 @@ class RandomzerTest(unittest.TestCase):
         @param test_name the test name
         """
         unittest.TestCase.__init__(self, test_name)
-            
-    def suite(self):
-        """
-        Suite.
-        
-        @return the test
-        """
-        suite = unittest.makeSuite(Randomizer,'test')
-        
-        return suite
     
     def test_get_random_string(self):
         length = 20
