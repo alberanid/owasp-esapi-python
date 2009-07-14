@@ -37,9 +37,10 @@
   <tr valign="top">
     <td width="100%">
       <span class="breadcrumbs">
-        <a href="esapi-module.html">Package&nbsp;esapi</a> ::
-        <a href="esapi.codecs-module.html">Package&nbsp;codecs</a> ::
-        <a href="esapi.codecs.push_back_string-module.html">Module&nbsp;push_back_string</a> ::
+        esapi ::
+        codecs ::
+        push_back_string ::
+        PushbackString ::
         Class&nbsp;PushbackString
       </span>
     </td>
@@ -58,9 +59,9 @@
 </table>
 <!-- ==================== CLASS DESCRIPTION ==================== -->
 <h1 class="epydoc">Class PushbackString</h1><p class="nomargin-top"><span class="codelink"><a href="esapi.codecs.push_back_string-pysrc.html#PushbackString">source&nbsp;code</a></span></p>
-The pushback string is used by Codecs to allow them to push decoded 
-characters back onto a string for further decoding. This is necessary to 
-detect double-encoding.
+<p>A PushbackString is used by Codecs to allow them to push decoded 
+  characters back onto a string for further decoding. This is necessary to 
+  detect double-encoding.</p>
 
 <!-- ==================== INSTANCE METHODS ==================== -->
 <a name="section-InstanceMethods"></a>
@@ -139,7 +140,7 @@ detect double-encoding.
         <tr>
           <td><span class="summary-sig"><a name="has_next"></a><span class="summary-sig-name">has_next</span>(<span class="summary-sig-arg">self</span>)</span><br />
       Returns True if there is another character accesible by next(), False
-if not.</td>
+      if not.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="esapi.codecs.push_back_string-pysrc.html#PushbackString.has_next">source&nbsp;code</a></span>
             
@@ -157,7 +158,7 @@ if not.</td>
         <tr>
           <td><span class="summary-sig"><a name="next"></a><span class="summary-sig-name">next</span>(<span class="summary-sig-arg">self</span>)</span><br />
       Retrieves the next character in the string, according to the current 
-index.</td>
+      index.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="esapi.codecs.push_back_string-pysrc.html#PushbackString.next">source&nbsp;code</a></span>
             
@@ -226,7 +227,7 @@ index.</td>
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a name="mark"></a><span class="summary-sig-name">mark</span>(<span class="summary-sig-arg">self</span>)</span><br />
-      Mark the current index, so we can reset() to it if need be.</td>
+      Mark the current index, so the client can reset() to it if need be.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="esapi.codecs.push_back_string-pysrc.html#PushbackString.mark">source&nbsp;code</a></span>
             
@@ -260,8 +261,8 @@ index.</td>
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a name="remainder"></a><span class="summary-sig-name">remainder</span>(<span class="summary-sig-arg">self</span>)</span><br />
-      Get the remaining part of the string from the current index onward,
-including a pushback if it exists.</td>
+      Get the remaining part of the string from the current index onward, 
+      including a pushback if it exists.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="esapi.codecs.push_back_string-pysrc.html#PushbackString.remainder">source&nbsp;code</a></span>
             
@@ -293,21 +294,24 @@ including a pushback if it exists.</td>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="_input"></a><span class="summary-name">_input</span> = <code title="None">None</code>
+        <a name="_input"></a><span class="summary-name">_input</span> = <code title="None">None</code><br />
+      hash(x)
     </td>
   </tr>
 <tr class="private">
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="_pushback"></a><span class="summary-name">_pushback</span> = <code title="None">None</code>
+        <a name="_pushback"></a><span class="summary-name">_pushback</span> = <code title="None">None</code><br />
+      hash(x)
     </td>
   </tr>
 <tr class="private">
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="_temp"></a><span class="summary-name">_temp</span> = <code title="None">None</code>
+        <a name="_temp"></a><span class="summary-name">_temp</span> = <code title="None">None</code><br />
+      hash(x)
     </td>
   </tr>
 <tr class="private">
@@ -357,8 +361,8 @@ including a pushback if it exists.</td>
     </td>
   </tr></table>
   
-  Get the current index of the PushbackString. Typically used in error
-messages.
+  <p>Get the current index of the PushbackString. Typically used in error 
+  messages.</p>
   <dl class="fields">
   </dl>
 </td></tr></table>
@@ -390,7 +394,7 @@ messages.
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Wed Jun 24 17:08:24 2009
+    Generated by Epydoc 3.0.1 on Tue Jul 14 16:39:09 2009
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

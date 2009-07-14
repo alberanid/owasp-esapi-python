@@ -62,18 +62,18 @@
 <dl><dt>Known Subclasses:</dt>
 <dd>
       <ul class="subclass-list">
-<li><a href="esapi.codecs.html_entity_codec.HTMLEntityCodec-class.html">html_entity_codec.HTMLEntityCodec</a></li><li>, <a href="esapi.codecs.javascript_codec.JavascriptCodec-class.html">javascript_codec.JavascriptCodec</a></li><li>, <a href="esapi.codecs.percent_codec.PercentCodec-class.html">percent_codec.PercentCodec</a></li>  </ul>
+<li><a href="esapi.codecs.javascript.JavascriptCodec-class.html">javascript.JavascriptCodec</a></li><li>, <a href="esapi.codecs.windows.WindowsCodec-class.html">windows.WindowsCodec</a></li><li>, <a href="esapi.codecs.unix.UnixCodec-class.html">unix.UnixCodec</a></li><li>, <a href="esapi.codecs.ldap.LDAPCodec-class.html">ldap.LDAPCodec</a></li><li>, <a href="esapi.codecs.ldap_dn.LDAPDNCodec-class.html">ldap_dn.LDAPDNCodec</a></li><li>, <a href="esapi.codecs.vbscript.VBScriptCodec-class.html">vbscript.VBScriptCodec</a></li><li>, <a href="esapi.codecs.css.CSSCodec-class.html">css.CSSCodec</a></li><li>, <a href="esapi.codecs.html_entity.HTMLEntityCodec-class.html">html_entity.HTMLEntityCodec</a></li><li>, <a href="esapi.codecs.percent.PercentCodec-class.html">percent.PercentCodec</a></li><li>, <a href="esapi.codecs.oracle.OracleCodec-class.html">oracle.OracleCodec</a></li><li>, <a href="esapi.codecs.mysql.MySQLCodec-class.html">mysql.MySQLCodec</a></li>  </ul>
 </dd></dl>
 
 <hr />
-The Codec interface defines a set of methods for encoding and decoding 
-application level encoding schemes, such as HTML entity encoding and 
-percent encoding (aka URL encoding). Codecs are used in output encoding
-and canonicalization.  The design of these codecs allows for 
-character-by-character decoding, which is necessary to detect 
-double-encoding and the use of multiple encoding schemes, both of which are
-techniques used by attackers to bypass validation and bury encoded attacks
-in data.
+<p>The Codec interface defines a set of methods for encoding and decoding
+  application level encoding schemes, such as HTML entity encoding and 
+  percent encoding (aka URL encoding). Codecs are used in output encoding 
+  and canonicalization.  The design of these codecs allows for 
+  character-by-character decoding, which is necessary to detect 
+  double-encoding and the use of multiple encoding schemes, both of which 
+  are techniques used by attackers to bypass validation and bury encoded 
+  attacks in data.</p>
 
 <hr />
 <div class="fields">      <p><strong>Author:</strong>
@@ -161,7 +161,8 @@ in data.
         <tr>
           <td><span class="summary-sig"><a href="esapi.codecs.codec.Codec-class.html#decode" class="summary-sig-name">decode</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">encoded</span>)</span><br />
-      Decode a String that was encoded using the encode method in this Class</td>
+      Decode a String that was encoded using the encode method in this 
+      Class</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="esapi.codecs.codec-pysrc.html#Codec.decode">source&nbsp;code</a></span>
             
@@ -180,7 +181,7 @@ in data.
           <td><span class="summary-sig"><a href="esapi.codecs.codec.Codec-class.html#decode_character" class="summary-sig-name">decode_character</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">pbs</span>)</span><br />
       Returns the decoded version of the next character from the input 
-string and advances the current character in the PushbackString.</td>
+      string and advances the current character in the PushbackString.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="esapi.codecs.codec-pysrc.html#Codec.decode_character">source&nbsp;code</a></span>
             
@@ -225,12 +226,12 @@ string and advances the current character in the PushbackString.</td>
     </td>
   </tr></table>
   
-  Encode a String so that it can be safely used in a specific context.
+  <p>Encode a String so that it can be safely used in a specific 
+  context.</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>immune</code></strong></li>
-        <li><strong class="pname"><code>raw</code></strong> - the String to encode</li>
+        <li><strong class="pname"><code>immune</code></strong> - @param raw the String to encode</li>
     </ul></dd>
     <dt>Returns:</dt>
         <dd>the encoded String</dd>
@@ -253,12 +254,13 @@ string and advances the current character in the PushbackString.</td>
     </td>
   </tr></table>
   
-  Default implementation that should be overridden in specific codecs.
+  <p>Default implementation that should be overridden in specific 
+  codecs.</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>immune</code></strong></li>
-        <li><strong class="pname"><code>c</code></strong> - the Character to encode</li>
+        <li><strong class="pname"><code>immune</code></strong> - characters immune to encoding</li>
+        <li><strong class="pname"><code>char</code></strong> - the character to encode</li>
     </ul></dd>
     <dt>Returns:</dt>
         <dd>the encoded Character</dd>
@@ -280,14 +282,15 @@ string and advances the current character in the PushbackString.</td>
     </td>
   </tr></table>
   
-  Decode a String that was encoded using the encode method in this Class
+  <p>Decode a String that was encoded using the encode method in this 
+  Class</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>encoded</code></strong> - the String to decode</li>
+        <li><strong class="pname"><code>encoded</code></strong> - the string to decode</li>
     </ul></dd>
     <dt>Returns:</dt>
-        <dd>the decoded String</dd>
+        <dd>the decoded string</dd>
   </dl>
 </td></tr></table>
 </div>
@@ -306,10 +309,10 @@ string and advances the current character in the PushbackString.</td>
     </td>
   </tr></table>
   
-  Returns the decoded version of the next character from the input 
-string and advances the current character in the PushbackString.  
-If the current character is not encoded, this method MUST reset the 
-PushbackString.
+  <p>Returns the decoded version of the next character from the input 
+  string and advances the current character in the PushbackString. If the 
+  current character is not encoded, this method MUST reset the 
+  PushbackString.</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
@@ -347,7 +350,7 @@ PushbackString.
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Wed Jun 24 17:08:24 2009
+    Generated by Epydoc 3.0.1 on Tue Jul 14 16:39:09 2009
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

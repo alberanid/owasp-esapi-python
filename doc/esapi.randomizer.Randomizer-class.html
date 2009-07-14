@@ -64,11 +64,12 @@
 </dd></dl>
 
 <hr />
-The Randomizer interface defines a set of methods for creating
-cryptographically random numbers and strings. Implementers should be sure to
-use a strong cryptographic implementation, such as random.SystemRandom.
-Weak sources of randomness can undermine a wide variety of security
-mechanisms. The specific algorithm used is configurable in settings.py.
+<p>The Randomizer interface defines a set of methods for creating 
+  cryptographically random numbers and strings. Implementers should be sure
+  to use a strong cryptographic implementation, such as 
+  random.SystemRandom. Weak sources of randomness can undermine a wide 
+  variety of security mechanisms. The specific algorithm used is 
+  configurable in settings.py.</p>
 
 <hr />
 <div class="fields">      <p><strong>Author:</strong>
@@ -206,8 +207,9 @@ mechanisms. The specific algorithm used is configurable in settings.py.
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a href="esapi.randomizer.Randomizer-class.html#get_random_guid" class="summary-sig-name">get_random_guid</a>(<span class="summary-sig-arg">self</span>)</span><br />
-      Generates a random GUID according to 
-<a href="http://tools.ietf.org/html/rfc4122#section-4.1.3">RFC 4122 V4</a>.</td>
+      Generates a random GUID according to <a 
+      href="http://tools.ietf.org/html/rfc4122#section-4.1.3" 
+      target="_top">RFC 4122 V4</a>.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="esapi.randomizer-pysrc.html#Randomizer.get_random_guid">source&nbsp;code</a></span>
             
@@ -270,14 +272,14 @@ mechanisms. The specific algorithm used is configurable in settings.py.
     </td>
   </tr></table>
   
-  Gets a random string of a desired length and character set.  The use of
-random.SystemRandom is recommended because it provides a 
-cryptographically strong pseudo-random number generator. If 
-random.SystemRandom is not used, the pseudo-random number gernerator 
-used should comply with the statistical random number generator tests 
-specified in <a href="http://csrc.nist.gov/cryptval/140-2.htm">FIPS 
-140-2, Security Requirements for Cryptographic Modules</a>, section 
-4.9.1.
+  <p>Gets a random string of a desired length and character set.  The use 
+  of random.SystemRandom is recommended because it provides a 
+  cryptographically strong pseudo-random number generator. If 
+  random.SystemRandom is not used, the pseudo-random number gernerator used
+  should comply with the statistical random number generator tests 
+  specified in <a href="http://csrc.nist.gov/cryptval/140-2.htm" 
+  target="_top">FIPS 140-2, Security Requirements for Cryptographic 
+  Modules</a>, section 4.9.1.</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
@@ -303,14 +305,13 @@ specified in <a href="http://csrc.nist.gov/cryptval/140-2.htm">FIPS
     </td>
   </tr></table>
   
-  Returns a random boolean.  The use of random.SystemRandom
-is recommended because it provides a cryptographically strong 
-pseudo-random number generator. If random.SystemRandom is not used, 
-the pseudo-random number gernerator used should comply with the 
-statistical random number generator tests specified in 
-<a href="http://csrc.nist.gov/cryptval/140-2.htm">FIPS 
-140-2, Security Requirements for Cryptographic Modules</a>, section 
-4.9.1.
+  <p>Returns a random boolean.  The use of random.SystemRandom is 
+  recommended because it provides a cryptographically strong pseudo-random 
+  number generator. If random.SystemRandom is not used, the pseudo-random 
+  number gernerator used should comply with the statistical random number 
+  generator tests specified in <a 
+  href="http://csrc.nist.gov/cryptval/140-2.htm" target="_top">FIPS 140-2, 
+  Security Requirements for Cryptographic Modules</a>, section 4.9.1.</p>
   <dl class="fields">
     <dt>Returns:</dt>
         <dd>true or false, randomly</dd>
@@ -333,16 +334,15 @@ statistical random number generator tests specified in
     </td>
   </tr></table>
   
-  Returns a random integer or long.  The use of random.SystemRandom
-is recommended because it provides a cryptographically strong 
-pseudo-random number generator. If random.SystemRandom is not used, 
-the pseudo-random number gernerator used should comply with the 
-statistical random number generator tests specified in 
-<a href="http://csrc.nist.gov/cryptval/140-2.htm">FIPS 
-140-2, Security Requirements for Cryptographic Modules</a>, section 
-4.9.1.
-
-The lower bound (minimum) is inclusive and the upper bound (max) is also inclusive.
+  <p>Returns a random integer or long.  The use of random.SystemRandom is 
+  recommended because it provides a cryptographically strong pseudo-random 
+  number generator. If random.SystemRandom is not used, the pseudo-random 
+  number gernerator used should comply with the statistical random number 
+  generator tests specified in <a 
+  href="http://csrc.nist.gov/cryptval/140-2.htm" target="_top">FIPS 140-2, 
+  Security Requirements for Cryptographic Modules</a>, section 4.9.1.</p>
+  <p>The lower bound (minimum) is inclusive and the upper bound (max) is 
+  also inclusive.</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
@@ -369,10 +369,10 @@ The lower bound (minimum) is inclusive and the upper bound (max) is also inclusi
     </td>
   </tr></table>
   
-  Returns an unguessable random filename with the specified extension.  
-This method could call getRandomString(length, charset) from this 
-Class with the desired length and alphanumerics as the charset then 
-merely append "." + extension.
+  <p>Returns an unguessable random filename with the specified extension. 
+  This method could call getRandomString(length, charset) from this Class 
+  with the desired length and alphanumerics as the charset then merely 
+  append &quot;.&quot; + extension.</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
@@ -399,16 +399,16 @@ merely append "." + extension.
     </td>
   </tr></table>
   
-  Returns a random floating point number.  The use of random.SystemRandom
-is recommended because it provides a cryptographically strong 
-pseudo-random number generator. If random.SystemRandom is not used, 
-the pseudo-random number gernerator used should comply with the 
-statistical random number generator tests specified in 
-<a href="http://csrc.nist.gov/cryptval/140-2.htm">FIPS 
-140-2, Security Requirements for Cryptographic Modules</a>, section 
-4.9.1.
-
-The lower bound (minimum) is inclusive and the upper bound (max) is also inclusive.
+  <p>Returns a random floating point number.  The use of 
+  random.SystemRandom is recommended because it provides a 
+  cryptographically strong pseudo-random number generator. If 
+  random.SystemRandom is not used, the pseudo-random number gernerator used
+  should comply with the statistical random number generator tests 
+  specified in <a href="http://csrc.nist.gov/cryptval/140-2.htm" 
+  target="_top">FIPS 140-2, Security Requirements for Cryptographic 
+  Modules</a>, section 4.9.1.</p>
+  <p>The lower bound (minimum) is inclusive and the upper bound (max) is 
+  also inclusive.</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
@@ -434,12 +434,12 @@ The lower bound (minimum) is inclusive and the upper bound (max) is also inclusi
     </td>
   </tr></table>
   
-  Generates a random GUID according to 
-<a href="http://tools.ietf.org/html/rfc4122#section-4.1.3">RFC 4122 V4</a>.
-This should set the version to '4', and satisfy the high-bit 
-requirement by setting the correct position to '8','9','a', or 'b'.  
-The format is a well-defined sequence of 32 hex digits grouped into 
-chunks of 8-4-4-4-12.
+  <p>Generates a random GUID according to <a 
+  href="http://tools.ietf.org/html/rfc4122#section-4.1.3" target="_top">RFC
+  4122 V4</a>. This should set the version to '4', and satisfy the high-bit
+  requirement by setting the correct position to '8','9','a', or 'b'. The 
+  format is a well-defined sequence of 32 hex digits grouped into chunks of
+  8-4-4-4-12.</p>
   <dl class="fields">
     <dt>Returns:</dt>
         <dd>the GUID</dd>
@@ -461,7 +461,7 @@ chunks of 8-4-4-4-12.
     </td>
   </tr></table>
   
-  Selects a random element from the sequence.
+  <p>Selects a random element from the sequence.</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
@@ -499,7 +499,7 @@ chunks of 8-4-4-4-12.
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Wed Jun 24 17:08:25 2009
+    Generated by Epydoc 3.0.1 on Tue Jul 14 16:39:09 2009
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

@@ -55,29 +55,70 @@
 </b></center><br />
 <h1 class="epydoc">Class Hierarchy</h1>
 <ul class="nomargin-top">
+    <li> <strong class="uidlink"><a href="esapi.codecs.mysql.BadModeError-class.html">esapi.codecs.mysql.BadModeError</a></strong>
+    </li>
     <li> <strong class="uidlink"><a href="esapi.codecs.codec.Codec-class.html">esapi.codecs.codec.Codec</a></strong>:
-      <em class="summary">The Codec interface defines a set of methods for encoding and decoding 
-application level encoding schemes, such as HTML entity encoding and 
-percent encoding (aka URL encoding).</em>
+      <em class="summary">The Codec interface defines a set of methods for encoding and 
+        decoding application level encoding schemes, such as HTML entity 
+        encoding and percent encoding (aka URL encoding).</em>
     <ul>
-    <li> <strong class="uidlink"><a href="esapi.codecs.html_entity_codec.HTMLEntityCodec-class.html">esapi.codecs.html_entity_codec.HTMLEntityCodec</a></strong>:
+    <li> <strong class="uidlink"><a href="esapi.codecs.css.CSSCodec-class.html">esapi.codecs.css.CSSCodec</a></strong>:
+      <em class="summary">Implementation of the codec.Codec interface for backslash encoding 
+        used in CSS.</em>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.codecs.html_entity.HTMLEntityCodec-class.html">esapi.codecs.html_entity.HTMLEntityCodec</a></strong>:
       <em class="summary">Implementation of the Codec interface for HTML entity encoding.</em>
     </li>
-    <li> <strong class="uidlink"><a href="esapi.codecs.javascript_codec.JavascriptCodec-class.html">esapi.codecs.javascript_codec.JavascriptCodec</a></strong>:
-      <em class="summary">Implementation of the Codec interface for backslash encoding in JavaScript.</em>
+    <li> <strong class="uidlink"><a href="esapi.codecs.javascript.JavascriptCodec-class.html">esapi.codecs.javascript.JavascriptCodec</a></strong>:
+      <em class="summary">Implementation of the codec.Codec interface for backslash encoding 
+        in Javascript.</em>
     </li>
-    <li> <strong class="uidlink"><a href="esapi.codecs.percent_codec.PercentCodec-class.html">esapi.codecs.percent_codec.PercentCodec</a></strong>:
-      <em class="summary">Implementation of the Codec interface for percent encoding (aka URL...</em>
+    <li> <strong class="uidlink"><a href="esapi.codecs.ldap.LDAPCodec-class.html">esapi.codecs.ldap.LDAPCodec</a></strong>:
+      <em class="summary">Implementation of the Codec interface for LDAP encoding.</em>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.codecs.ldap_dn.LDAPDNCodec-class.html">esapi.codecs.ldap_dn.LDAPDNCodec</a></strong>:
+      <em class="summary">Implementation of the Codec interface for LDAP distinguished name 
+        encoding.</em>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.codecs.mysql.MySQLCodec-class.html">esapi.codecs.mysql.MySQLCodec</a></strong>:
+      <em class="summary">Implementation of the Codec interface for MySQL strings.</em>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.codecs.oracle.OracleCodec-class.html">esapi.codecs.oracle.OracleCodec</a></strong>:
+      <em class="summary">Implementation of the Codec interface for Oracle strings.</em>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.codecs.percent.PercentCodec-class.html">esapi.codecs.percent.PercentCodec</a></strong>:
+      <em class="summary">Implementation of the Codec interface for percent encoding (aka URL
+        encoding).</em>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.codecs.unix.UnixCodec-class.html">esapi.codecs.unix.UnixCodec</a></strong>:
+      <em class="summary">Implementation of the Codec interface for backslash encoding from 
+        Unix command shell.</em>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.codecs.vbscript.VBScriptCodec-class.html">esapi.codecs.vbscript.VBScriptCodec</a></strong>:
+      <em class="summary">Implementation of the Codec interface for 'quote' encoding from 
+        VBScript.</em>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.codecs.windows.WindowsCodec-class.html">esapi.codecs.windows.WindowsCodec</a></strong>:
+      <em class="summary">Implementation of the Codec interface for '^' encoding from Windows
+        command shell.</em>
     </li>
     </ul>
     </li>
+    <li> <strong class="uidlink"><a href="esapi.core.ESAPI-class.html">esapi.core.ESAPI</a></strong>
+    </li>
     <li> <strong class="uidlink"><a href="esapi.encoder.Encoder-class.html">esapi.encoder.Encoder</a></strong>:
-      <em class="summary">The Encoder interface contains a number of methods for decoding input and encoding output
-so that it will be safe for a variety of interpreters.</em>
+      <em class="summary">The Encoder interface contains a number of methods for decoding 
+        input and encoding output so that it will be safe for a variety of 
+        interpreters.</em>
+    <ul>
+    <li> <strong class="uidlink"><a href="esapi.reference.default_encoder.DefaultEncoder-class.html">esapi.reference.default_encoder.DefaultEncoder</a></strong>:
+      <em class="summary">Reference implementation of the Encoder interface.</em>
+    </li>
+    </ul>
     </li>
     <li> <strong class="uidlink"><a href="esapi.encryptor.Encryptor-class.html">esapi.encryptor.Encryptor</a></strong>:
-      <em class="summary">The Encryptor interface provides a set of methods for performing common
-encryption and hashing operations.</em>
+      <em class="summary">The Encryptor interface provides a set of methods for performing 
+        common encryption and hashing operations.</em>
     <ul>
     <li> <strong class="uidlink"><a href="esapi.reference.default_encryptor.DefaultEncryptor-class.html">esapi.reference.default_encryptor.DefaultEncryptor</a></strong>
     </li>
@@ -89,8 +130,9 @@ encryption and hashing operations.</em>
     <li> <strong class="uidlink"><a href="esapi.reference.default_security_configuration.ImportSettingsError-class.html">esapi.reference.default_security_configuration.ImportSettingsError</a></strong>
     </li>
     <li> <strong class="uidlink"><a href="esapi.log_factory.LogFactory-class.html">esapi.log_factory.LogFactory</a></strong>:
-      <em class="summary">The LogFactory interface is intended to allow substitution of various logging packages, while providing
-a common interface to access them.</em>
+      <em class="summary">The LogFactory interface is intended to allow substitution of 
+        various logging packages, while providing a common interface to 
+        access them.</em>
     <ul>
     <li> <strong class="uidlink"><a href="esapi.reference.python_log_factory.PythonLogFactory-class.html">esapi.reference.python_log_factory.PythonLogFactory</a></strong>:
       <em class="summary">Reference implementation of the LogFactory and Logger interfaces.</em>
@@ -98,8 +140,8 @@ a common interface to access them.</em>
     </ul>
     </li>
     <li> <strong class="uidlink"><a href="esapi.logger.Logger-class.html">esapi.logger.Logger</a></strong>:
-      <em class="summary">The Logger interface defines a set of methods that can be used to log
-security events.</em>
+      <em class="summary">The Logger interface defines a set of methods that can be used to 
+        log security events.</em>
     <ul>
     <li> <strong class="uidlink"><a href="esapi.reference.python_log_factory.PythonLogFactory.PythonLogger-class.html">esapi.reference.python_log_factory.PythonLogFactory.PythonLogger</a></strong>:
       <em class="summary">Reference implementation of the Logger interface.</em>
@@ -107,28 +149,65 @@ security events.</em>
     </ul>
     </li>
     <li> <strong class="uidlink"><a href="esapi.codecs.push_back_string.PushbackString-class.html">esapi.codecs.push_back_string.PushbackString</a></strong>:
-      <em class="summary">The pushback string is used by Codecs to allow them to push decoded 
-characters back onto a string for further decoding.</em>
+      <em class="summary">A PushbackString is used by Codecs to allow them to push decoded 
+        characters back onto a string for further decoding.</em>
     </li>
     <li> <strong class="uidlink"><a href="esapi.randomizer.Randomizer-class.html">esapi.randomizer.Randomizer</a></strong>:
-      <em class="summary">The Randomizer interface defines a set of methods for creating
-cryptographically random numbers and strings.</em>
+      <em class="summary">The Randomizer interface defines a set of methods for creating 
+        cryptographically random numbers and strings.</em>
     <ul>
     <li> <strong class="uidlink"><a href="esapi.reference.default_randomizer.DefaultRandomizer-class.html">esapi.reference.default_randomizer.DefaultRandomizer</a></strong>
     </li>
     </ul>
     </li>
     <li> <strong class="uidlink"><a href="esapi.security_configuration.SecurityConfiguration-class.html">esapi.security_configuration.SecurityConfiguration</a></strong>:
-      <em class="summary">The SecurityConfiguration interface stores all configuration information
-that directs the behavior of the ESAPI implementation.</em>
+      <em class="summary">The SecurityConfiguration interface stores all configuration 
+        information that directs the behavior of the ESAPI implementation.</em>
     <ul>
     <li> <strong class="uidlink"><a href="esapi.reference.default_security_configuration.DefaultSecurityConfiguration-class.html">esapi.reference.default_security_configuration.DefaultSecurityConfiguration</a></strong>
     </li>
     </ul>
     </li>
     <li> <strong class="uidlink"><a href="esapi.security_configuration.SecurityConfiguration.Threshold-class.html">esapi.security_configuration.SecurityConfiguration.Threshold</a></strong>:
-      <em class="summary">Models a simple threshold as a count and an interval, along with a set 
-of actions to take if the threshold is exceeded.</em>
+      <em class="summary">Models a simple threshold as a count and an interval, along with a 
+        set of actions to take if the threshold is exceeded.</em>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.validation_rule.ValidationRule-class.html">esapi.validation_rule.ValidationRule</a></strong>
+    <ul>
+    <li> <strong class="uidlink"><a href="esapi.reference.validation.base_validation_rule.BaseValidationRule-class.html">esapi.reference.validation.base_validation_rule.BaseValidationRule</a></strong>:
+      <em class="summary">A BaseValidationRule performs syntax and possibly semantic 
+        validation of a single piece of data from an untrusted source.</em>
+    <ul>
+    <li> <strong class="uidlink"><a href="esapi.reference.validation.credit_card_validation_rule.CreditCardValidationRule-class.html">esapi.reference.validation.credit_card_validation_rule.CreditCardValidationRule</a></strong>:
+      <em class="summary">This validator is used to perform syntax and semantic validation of
+        a credit card number using the Luhn algorithm.</em>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.reference.validation.date_validation_rule.DateValidationRule-class.html">esapi.reference.validation.date_validation_rule.DateValidationRule</a></strong>:
+      <em class="summary">This date validator makes use of Python's <a 
+        href="http://docs.python.org/library/datetime.html" 
+        target="_top">datetime.strptime</a> to validate that given dates 
+        conform to a format string.</em>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.reference.validation.html_validation_rule.HTMLValidationRule-class.html">esapi.reference.validation.html_validation_rule.HTMLValidationRule</a></strong>:
+      <em class="summary">This validator performs syntax validation of strings.</em>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.reference.validation.number_validation_rule.NumberValidationRule-class.html">esapi.reference.validation.number_validation_rule.NumberValidationRule</a></strong>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.reference.validation.string_validation_rule.StringValidationRule-class.html">esapi.reference.validation.string_validation_rule.StringValidationRule</a></strong>:
+      <em class="summary">This validator performs syntax validation of strings.</em>
+    </li>
+    </ul>
+    </li>
+    </ul>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.validator.Validator-class.html">esapi.validator.Validator</a></strong>:
+      <em class="summary">The Validator interface defines a set of methods for canonicalizing
+        and validating untrusted input.</em>
+    <ul>
+    <li> <strong class="uidlink"><a href="esapi.reference.default_validator.DefaultValidator-class.html">esapi.reference.default_validator.DefaultValidator</a></strong>:
+      <em class="summary">Reference implementation of the Validator interface.</em>
+    </li>
+    </ul>
     </li>
     <li> <strong class="uidlink">object</strong>:
       <em class="summary">The most base type</em>
@@ -139,11 +218,72 @@ of actions to take if the threshold is exceeded.</em>
     <li> <strong class="uidlink">exceptions.Exception</strong>:
       <em class="summary">Common base class for all non-exit exceptions.</em>
     <ul>
-    <li> <strong class="uidlink"><a href="esapi.reference.default_encryptor.EncryptionException-class.html">esapi.reference.default_encryptor.EncryptionException</a></strong>
+    <li> <strong class="uidlink"><a href="esapi.exceptions.EnterpriseSecurityException-class.html">esapi.exceptions.EnterpriseSecurityException</a></strong>:
+      <em class="summary">EnterpriseSecurityException is the base class for all security 
+        related exceptions.</em>
+    <ul>
+    <li> <strong class="uidlink"><a href="esapi.exceptions.AccessControlException-class.html">esapi.exceptions.AccessControlException</a></strong>:
+      <em class="summary">An AccessControlException should be thrown when a user attempts to 
+        access a resource that they are not authorized for.</em>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.exceptions.AuthenticationException-class.html">esapi.exceptions.AuthenticationException</a></strong>:
+      <em class="summary">An AuthenticationException should be thrown when anything goes 
+        wrong during login or logout.</em>
+    <ul>
+    <li> <strong class="uidlink"><a href="esapi.exceptions.AuthenticationAccountsException-class.html">esapi.exceptions.AuthenticationAccountsException</a></strong>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.exceptions.AuthenticationCredentialsException-class.html">esapi.exceptions.AuthenticationCredentialsException</a></strong>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.exceptions.AuthenticationHostException-class.html">esapi.exceptions.AuthenticationHostException</a></strong>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.exceptions.AuthenticationLoginException-class.html">esapi.exceptions.AuthenticationLoginException</a></strong>
+    </li>
+    </ul>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.exceptions.AvailabilityException-class.html">esapi.exceptions.AvailabilityException</a></strong>:
+      <em class="summary">An AvailabilityException should be thrown when the availability of 
+        a limited resource is in jeopardy.</em>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.exceptions.CertificateException-class.html">esapi.exceptions.CertificateException</a></strong>:
+      <em class="summary">A CertificateException should be thrown for any problems that arise
+        during processing of digital certificates.</em>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.exceptions.EncodingException-class.html">esapi.exceptions.EncodingException</a></strong>:
+      <em class="summary">An ExecutorException should be thrown for any problems that occur 
+        when encoding or decoding data.</em>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.exceptions.EncryptionException-class.html">esapi.exceptions.EncryptionException</a></strong>:
+      <em class="summary">An EncryptionException should be thrown for any problems related to
+        encryption, hashing, or digital signatures.</em>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.exceptions.ExecutorException-class.html">esapi.exceptions.ExecutorException</a></strong>:
+      <em class="summary">An ExecutorException should be thrown for any problems that arise 
+        during the execution of a system executable.</em>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.exceptions.IntegrityException-class.html">esapi.exceptions.IntegrityException</a></strong>:
+      <em class="summary">An AvailabilityException should be thrown when the availability of 
+        a limited resource is in jeopardy.</em>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.exceptions.ValidationException-class.html">esapi.exceptions.ValidationException</a></strong>:
+      <em class="summary">A ValidationException should be thrown to indicate that the data 
+        provided by the user or from some other external source does not 
+        match the validation rules that have been specified for that data.</em>
+    <ul>
+    <li> <strong class="uidlink"><a href="esapi.exceptions.ValidationAvailabilityException-class.html">esapi.exceptions.ValidationAvailabilityException</a></strong>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.exceptions.ValidationUploadException-class.html">esapi.exceptions.ValidationUploadException</a></strong>
+    </li>
+    </ul>
+    </li>
+    </ul>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.exceptions.IntrusionException-class.html">esapi.exceptions.IntrusionException</a></strong>:
+      <em class="summary">An IntrusionException should be thrown anytime an error condition 
+        arises that is likely to be the result of an attack in progress.</em>
     </li>
     <li> <strong class="uidlink">exceptions.StandardError</strong>:
       <em class="summary">Base class for all standard Python exceptions that do not represent
-interpreter exiting.</em>
+        interpreter exiting.</em>
     <ul>
     <li> <strong class="uidlink"><a href="exceptions.AssertionError-class.html">exceptions.AssertionError</a></strong>:
       <em class="summary">Assertion failed.</em>
@@ -162,10 +302,30 @@ interpreter exiting.</em>
     <li> <strong class="uidlink"><a href="esapi.test.test_encryptor.EncryptorTest-class.html">esapi.test.test_encryptor.EncryptorTest</a></strong>:
       <em class="summary">The Class EncryptorTest</em>
     </li>
-    <li> <strong class="uidlink"><a href="esapi.test.test_logger.LoggerTest-class.html">esapi.test.test_logger.LoggerTest</a></strong>:
-      <em class="summary">The Class LoggerTest</em>
+    <li> <strong class="uidlink"><a href="esapi.test.test_logger.LoggerTest-class.html">esapi.test.test_logger.LoggerTest</a></strong>
     </li>
-    <li> <strong class="uidlink"><a href="esapi.test.test_randomizer.RandomzerTest-class.html">esapi.test.test_randomizer.RandomzerTest</a></strong>
+    <li> <strong class="uidlink"><a href="esapi.test.test_randomizer.RandomizerTest-class.html">esapi.test.test_randomizer.RandomizerTest</a></strong>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.test.test_validator.ValidatorTest-class.html">esapi.test.test_validator.ValidatorTest</a></strong>
+    </li>
+    </ul>
+    </li>
+    <li> <strong class="uidlink">threading._Verbose</strong>
+    <ul>
+    <li> <strong class="uidlink">threading.Thread</strong>
+    <ul>
+    <li> <strong class="uidlink"><a href="esapi.test.test_encoder.EncoderTest.EncoderConcurrencyMock-class.html">esapi.test.test_encoder.EncoderTest.EncoderConcurrencyMock</a></strong>
+    </li>
+    </ul>
+    </li>
+    </ul>
+    </li>
+    <li> <strong class="uidlink">dict</strong>:
+      <em class="summary">dict() -&gt; new empty dictionary.</em>
+    <ul>
+    <li> <strong class="uidlink"><a href="esapi.validation_error_list.ValidationErrorList-class.html">esapi.validation_error_list.ValidationErrorList</a></strong>:
+      <em class="summary">The ValidationErrorList is a specialized dictionary to collect 
+        ValidationExceptions.</em>
     </li>
     </ul>
     </li>
@@ -198,7 +358,7 @@ interpreter exiting.</em>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Wed Jun 24 17:08:23 2009
+    Generated by Epydoc 3.0.1 on Tue Jul 14 16:39:07 2009
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

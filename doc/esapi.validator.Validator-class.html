@@ -1,0 +1,1861 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>esapi.validator.Validator</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="esapi-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="esapi-module.html">Package&nbsp;esapi</a> ::
+        <a href="esapi.validator-module.html">Module&nbsp;validator</a> ::
+        Class&nbsp;Validator
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="esapi.validator.Validator-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class Validator</h1><p class="nomargin-top"><span class="codelink"><a href="esapi.validator-pysrc.html#Validator">source&nbsp;code</a></span></p>
+<dl><dt>Known Subclasses:</dt>
+<dd>
+      <ul class="subclass-list">
+<li><a href="esapi.reference.default_validator.DefaultValidator-class.html">reference.default_validator.DefaultValidator</a></li>  </ul>
+</dd></dl>
+
+<hr />
+<p>The Validator interface defines a set of methods for canonicalizing 
+  and validating untrusted input. Implementors should feel free to extend 
+  this interface to accommodate their own data formats. Methods prefixed 
+  with &quot;is&quot; should return boolean values. Methods with a 
+  &quot;get&quot; prefix should return valid input or raise an 
+  exception.</p>
+  <p>For &quot;get&quot; methods, invalid input should generate a 
+  descriptive ValidationException, and input that is clearly an attack 
+  should generate a descriptive IntrusionException.</p>
+  <p>&quot;assert&quot; and &quot;get&quot; methods should accept an 
+  optional error_list parameter to collect any thrown errors instead of 
+  raising them. This error_list parameter can accept an instance of the 
+  ValidationErrorList class. If the errors_list is present, any exceptions 
+  are added to the list instead of being thrown, and the method returns 
+  None.</p>
+  <p>Implementations must adopt a &quot;whitelist&quot; approach to 
+  validation where a specific pattern or character set is matched. 
+  &quot;Blacklist&quot; approaches that attempt to identify the invalid or 
+  disallowed characters are much more likely to be fooled by encoding or 
+  other tricks.</p>
+
+<hr />
+<div class="fields">      <p><strong>Author:</strong>
+        Craig Younkins (craig.younkins@owasp.org)
+      </p>
+</div><!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__init__"></a><span class="summary-sig-name">__init__</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.validator-pysrc.html#Validator.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.validator.Validator-class.html#is_valid_input" class="summary-sig-name">is_valid_input</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">context</span>,
+        <span class="summary-sig-arg">input_</span>,
+        <span class="summary-sig-arg">type_</span>,
+        <span class="summary-sig-arg">max_length</span>,
+        <span class="summary-sig-arg">allow_none</span>)</span><br />
+      Returns true if input is valid according to the specified type.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.validator-pysrc.html#Validator.is_valid_input">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.validator.Validator-class.html#get_valid_input" class="summary-sig-name">get_valid_input</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">context</span>,
+        <span class="summary-sig-arg">input_</span>,
+        <span class="summary-sig-arg">type_</span>,
+        <span class="summary-sig-arg">max_length</span>,
+        <span class="summary-sig-arg">allow_none</span>,
+        <span class="summary-sig-arg">error_list</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Returns canonicalized and validated input as a String.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.validator-pysrc.html#Validator.get_valid_input">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.validator.Validator-class.html#is_valid_date" class="summary-sig-name">is_valid_date</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">context</span>,
+        <span class="summary-sig-arg">input_</span>,
+        <span class="summary-sig-arg">format_</span>,
+        <span class="summary-sig-arg">allow_none</span>)</span><br />
+      Returns true if input is a valid date according to the specified date
+      format.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.validator-pysrc.html#Validator.is_valid_date">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.validator.Validator-class.html#get_valid_date" class="summary-sig-name">get_valid_date</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">context</span>,
+        <span class="summary-sig-arg">input_</span>,
+        <span class="summary-sig-arg">format_</span>,
+        <span class="summary-sig-arg">allow_none</span>,
+        <span class="summary-sig-arg">error_list</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Returns a valid date as a <a 
+      href="http://docs.python.org/library/datetime.html#datetime-objects" 
+      target="_top">datetime</a> object.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.validator-pysrc.html#Validator.get_valid_date">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.validator.Validator-class.html#is_valid_safe_html" class="summary-sig-name">is_valid_safe_html</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">context</span>,
+        <span class="summary-sig-arg">input_</span>,
+        <span class="summary-sig-arg">max_length</span>,
+        <span class="summary-sig-arg">allow_none</span>)</span><br />
+      Returns true if input is &quot;safe&quot; HTML.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.validator-pysrc.html#Validator.is_valid_safe_html">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.validator.Validator-class.html#get_valid_safe_html" class="summary-sig-name">get_valid_safe_html</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">context</span>,
+        <span class="summary-sig-arg">input_</span>,
+        <span class="summary-sig-arg">max_length</span>,
+        <span class="summary-sig-arg">allow_none</span>,
+        <span class="summary-sig-arg">error_list</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Returns canonicalized and validated &quot;safe&quot; HTML.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.validator-pysrc.html#Validator.get_valid_safe_html">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.validator.Validator-class.html#is_valid_credit_card" class="summary-sig-name">is_valid_credit_card</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">context</span>,
+        <span class="summary-sig-arg">input_</span>,
+        <span class="summary-sig-arg">allow_none</span>)</span><br />
+      Returns true if input is a valid credit card.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.validator-pysrc.html#Validator.is_valid_credit_card">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.validator.Validator-class.html#get_valid_credit_card" class="summary-sig-name">get_valid_credit_card</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">context</span>,
+        <span class="summary-sig-arg">input_</span>,
+        <span class="summary-sig-arg">allow_none</span>,
+        <span class="summary-sig-arg">error_list</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Returns a canonicalized and validated credit card number as a String,
+      including only the digits (no spaces).</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.validator-pysrc.html#Validator.get_valid_credit_card">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.validator.Validator-class.html#is_valid_directory_path" class="summary-sig-name">is_valid_directory_path</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">context</span>,
+        <span class="summary-sig-arg">input_</span>,
+        <span class="summary-sig-arg">parent_dir</span>,
+        <span class="summary-sig-arg">allow_none</span>)</span><br />
+      Returns true if input is a valid directory path.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.validator-pysrc.html#Validator.is_valid_directory_path">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.validator.Validator-class.html#get_valid_directory_path" class="summary-sig-name">get_valid_directory_path</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">context</span>,
+        <span class="summary-sig-arg">input_</span>,
+        <span class="summary-sig-arg">parent_dir</span>,
+        <span class="summary-sig-arg">allow_none</span>,
+        <span class="summary-sig-arg">error_list</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Returns a canonicalized and validated directory path as a String.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.validator-pysrc.html#Validator.get_valid_directory_path">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.validator.Validator-class.html#is_valid_filename" class="summary-sig-name">is_valid_filename</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">context</span>,
+        <span class="summary-sig-arg">input_</span>,
+        <span class="summary-sig-arg">allow_none</span>,
+        <span class="summary-sig-arg">allowed_extensions</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Returns true if input is a valid file name.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.validator-pysrc.html#Validator.is_valid_filename">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.validator.Validator-class.html#get_valid_filename" class="summary-sig-name">get_valid_filename</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">context</span>,
+        <span class="summary-sig-arg">input_</span>,
+        <span class="summary-sig-arg">allow_none</span>,
+        <span class="summary-sig-arg">error_list</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">allowed_extensions</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Returns a canonicalized and validated file name as a String.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.validator-pysrc.html#Validator.get_valid_filename">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.validator.Validator-class.html#is_valid_number" class="summary-sig-name">is_valid_number</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">context</span>,
+        <span class="summary-sig-arg">num_type</span>,
+        <span class="summary-sig-arg">input_</span>,
+        <span class="summary-sig-arg">min_value</span>,
+        <span class="summary-sig-arg">max_value</span>,
+        <span class="summary-sig-arg">allow_none</span>)</span><br />
+      Returns true if input is a valid number within the range of min_value
+      to max_value.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.validator-pysrc.html#Validator.is_valid_number">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.validator.Validator-class.html#get_valid_number" class="summary-sig-name">get_valid_number</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">context</span>,
+        <span class="summary-sig-arg">num_type</span>,
+        <span class="summary-sig-arg">input_</span>,
+        <span class="summary-sig-arg">min_value</span>,
+        <span class="summary-sig-arg">max_value</span>,
+        <span class="summary-sig-arg">allow_none</span>,
+        <span class="summary-sig-arg">error_list</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Returns a validated number that is within the range of min_value to 
+      max_value.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.validator-pysrc.html#Validator.get_valid_number">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.validator.Validator-class.html#is_valid_file_content" class="summary-sig-name">is_valid_file_content</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">context</span>,
+        <span class="summary-sig-arg">input_</span>,
+        <span class="summary-sig-arg">max_bytes</span>,
+        <span class="summary-sig-arg">allow_none</span>)</span><br />
+      Returns true if input is valid file content.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.validator-pysrc.html#Validator.is_valid_file_content">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.validator.Validator-class.html#get_valid_file_content" class="summary-sig-name">get_valid_file_content</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">context</span>,
+        <span class="summary-sig-arg">input_</span>,
+        <span class="summary-sig-arg">max_bytes</span>,
+        <span class="summary-sig-arg">allow_none</span>,
+        <span class="summary-sig-arg">error_list</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Returns validated file content as a string.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.validator-pysrc.html#Validator.get_valid_file_content">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.validator.Validator-class.html#is_valid_file_upload" class="summary-sig-name">is_valid_file_upload</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">context</span>,
+        <span class="summary-sig-arg">directory_path</span>,
+        <span class="summary-sig-arg">parent</span>,
+        <span class="summary-sig-arg">filename</span>,
+        <span class="summary-sig-arg">content</span>,
+        <span class="summary-sig-arg">max_bytes</span>,
+        <span class="summary-sig-arg">allow_none</span>)</span><br />
+      Returns true if the the directory, filename, and content of a file 
+      upload are all valid.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.validator-pysrc.html#Validator.is_valid_file_upload">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.validator.Validator-class.html#assert_valid_file_upload" class="summary-sig-name">assert_valid_file_upload</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">context</span>,
+        <span class="summary-sig-arg">directory_path</span>,
+        <span class="summary-sig-arg">parent</span>,
+        <span class="summary-sig-arg">filename</span>,
+        <span class="summary-sig-arg">content</span>,
+        <span class="summary-sig-arg">max_bytes</span>,
+        <span class="summary-sig-arg">allow_none</span>,
+        <span class="summary-sig-arg">error_list</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Validates the directory, filename, and content of a file upload.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.validator-pysrc.html#Validator.assert_valid_file_upload">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.validator.Validator-class.html#is_valid_http_request" class="summary-sig-name">is_valid_http_request</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">request</span>)</span><br />
+      Validate the current HTTP request by comparing parameters, headers, 
+      and cookies to a predefined whitelist of allowed characters.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.validator-pysrc.html#Validator.is_valid_http_request">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.validator.Validator-class.html#assert_is_valid_http_request" class="summary-sig-name">assert_is_valid_http_request</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">request</span>)</span><br />
+      Validates the current HTTP request by comparing parameters, headers, 
+      and cookies to a predefined whitelist of allowed characters.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.validator-pysrc.html#Validator.assert_is_valid_http_request">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.validator.Validator-class.html#is_valid_http_request_parameter_set" class="summary-sig-name">is_valid_http_request_parameter_set</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">context</span>,
+        <span class="summary-sig-arg">required</span>,
+        <span class="summary-sig-arg">optional</span>)</span><br />
+      Returns true if the parameters in the current request contain all 
+      required parameters and only optional ones in addition.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.validator-pysrc.html#Validator.is_valid_http_request_parameter_set">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.validator.Validator-class.html#assert_is_valid_http_request_parameter_set" class="summary-sig-name">assert_is_valid_http_request_parameter_set</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">context</span>,
+        <span class="summary-sig-arg">required</span>,
+        <span class="summary-sig-arg">optional</span>,
+        <span class="summary-sig-arg">error_list</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Validates that the parameters in the current request contain all 
+      required parameters and only optional ones in addition.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.validator-pysrc.html#Validator.assert_is_valid_http_request_parameter_set">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.validator.Validator-class.html#is_valid_redirect_location" class="summary-sig-name">is_valid_redirect_location</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">context</span>,
+        <span class="summary-sig-arg">input_</span>,
+        <span class="summary-sig-arg">allow_none</span>)</span><br />
+      Returns true if input is a valid redirect location, as defined by 
+      &quot;ESAPI.conf.settings&quot;.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.validator-pysrc.html#Validator.is_valid_redirect_location">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.validator.Validator-class.html#get_valid_redirect_location" class="summary-sig-name">get_valid_redirect_location</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">context</span>,
+        <span class="summary-sig-arg">input_</span>,
+        <span class="summary-sig-arg">allow_none</span>,
+        <span class="summary-sig-arg">error_list</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Returns a canonicalized and validated redirect location as a String.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.validator-pysrc.html#Validator.get_valid_redirect_location">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.validator.Validator-class.html#safe_read_line" class="summary-sig-name">safe_read_line</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">input_stream</span>,
+        <span class="summary-sig-arg">max_length</span>)</span><br />
+      Reads from an input stream until end-of-line or a maximum number of 
+      characters.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.validator-pysrc.html#Validator.safe_read_line">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="is_valid_input"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">is_valid_input</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">context</span>,
+        <span class="sig-arg">input_</span>,
+        <span class="sig-arg">type_</span>,
+        <span class="sig-arg">max_length</span>,
+        <span class="sig-arg">allow_none</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.validator-pysrc.html#Validator.is_valid_input">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns true if input is valid according to the specified type. The 
+  type parameter must be the name of a defined type in the ESAPI 
+  configuration or a valid regular expression. Implementers should take 
+  care to make the type storage simple to understand and configure.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>context</code></strong> - A descriptive name of the parameter that you are validating 
+          (e.g., LoginPage_UsernameField). This value is used by any 
+          logging or error handling that is done with respect to the value 
+          passed in.</li>
+        <li><strong class="pname"><code>input_</code></strong> - The actual user input data to validate.</li>
+        <li><strong class="pname"><code>type_</code></strong> - The regular expression name that maps to the actual regular 
+          expression from &quot;ESAPI.conf.settings&quot;.</li>
+        <li><strong class="pname"><code>max_length</code></strong> - The maximum post-canonicalized String length allowed.</li>
+        <li><strong class="pname"><code>allow_none</code></strong> - If allow_none is true then an input that is NONE or an empty 
+          string will be legal. If allow_none is false then NONE or an 
+          empty String will throw a ValidationException.</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>true, if the input is valid based on the rules set by 'type' 
+          otherwise, false.</dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.IntrusionException-class.html">IntrusionException</a></strong></code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_valid_input"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_valid_input</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">context</span>,
+        <span class="sig-arg">input_</span>,
+        <span class="sig-arg">type_</span>,
+        <span class="sig-arg">max_length</span>,
+        <span class="sig-arg">allow_none</span>,
+        <span class="sig-arg">error_list</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.validator-pysrc.html#Validator.get_valid_input">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns canonicalized and validated input as a String.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>context</code></strong> - A descriptive name of the parameter that you are validating 
+          (e.g., LoginPage_UsernameField). This value is used by any 
+          logging or error handling that is done with respect to the value 
+          passed in.</li>
+        <li><strong class="pname"><code>input_</code></strong> - The actual user input data to validate.</li>
+        <li><strong class="pname"><code>type_</code></strong> - The regular expression name that maps to the actual regular 
+          expression from &quot;ESAPI.conf.settings&quot;.</li>
+        <li><strong class="pname"><code>max_length</code></strong> - The maximum post-canonicalized String length allowed.</li>
+        <li><strong class="pname"><code>allow_none</code></strong> - If allow_none is true then an input that is NONE or an empty 
+          string will be legal. If allow_none is false then NONE or an 
+          empty String will throw a ValidationException.</li>
+        <li><strong class="pname"><code>error_list</code></strong> - If error_list exists, any errors will be captured in the list 
+          instead of being thrown. The method will return None in this 
+          case.</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>The canonicalized user input.</dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.IntrusionException-class.html">IntrusionException</a></strong></code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="is_valid_date"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">is_valid_date</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">context</span>,
+        <span class="sig-arg">input_</span>,
+        <span class="sig-arg">format_</span>,
+        <span class="sig-arg">allow_none</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.validator-pysrc.html#Validator.is_valid_date">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns true if input is a valid date according to the specified date 
+  format.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>context</code></strong> - A descriptive name of the parameter that you are validating 
+          (e.g., LoginPage_UsernameField). This value is used by any 
+          logging or error handling that is done with respect to the value 
+          passed in.</li>
+        <li><strong class="pname"><code>input_</code></strong> - The actual user input data to validate.</li>
+        <li><strong class="pname"><code>format_</code></strong> - Required formatting of date in string form, according to Python's
+          <a href="http://docs.python.org/library/datetime.html" 
+          target="_top">datetime.strptime</a>.</li>
+        <li><strong class="pname"><code>allow_none</code></strong> - If allow_none is true then an input that is NONE or an empty 
+          string will be legal. If allow_none is false then NONE or an 
+          empty String will throw a ValidationException.</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>true, if input is a valid date according to the format specified 
+          by 'format'. Otherwise, false.</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_valid_date"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_valid_date</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">context</span>,
+        <span class="sig-arg">input_</span>,
+        <span class="sig-arg">format_</span>,
+        <span class="sig-arg">allow_none</span>,
+        <span class="sig-arg">error_list</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.validator-pysrc.html#Validator.get_valid_date">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns a valid date as a <a 
+  href="http://docs.python.org/library/datetime.html#datetime-objects" 
+  target="_top">datetime</a> object.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>context</code></strong> - A descriptive name of the parameter that you are validating 
+          (e.g., LoginPage_UsernameField). This value is used by any 
+          logging or error handling that is done with respect to the value 
+          passed in.</li>
+        <li><strong class="pname"><code>input_</code></strong> - The actual user input data to validate.</li>
+        <li><strong class="pname"><code>format_</code></strong> - Required formatting of date inputted.</li>
+        <li><strong class="pname"><code>allow_none</code></strong> - If allow_none is true then an input that is NONE or an empty 
+          string will be legal. If allow_none is false then NONE or an 
+          empty String will throw a ValidationException.</li>
+        <li><strong class="pname"><code>error_list</code></strong> - If error_list exists, any errors will be captured in the list 
+          instead of being thrown. The method will return None in this 
+          case.</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>A valid date as a Date</dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.IntrusionException-class.html">IntrusionException</a></strong></code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="is_valid_safe_html"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">is_valid_safe_html</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">context</span>,
+        <span class="sig-arg">input_</span>,
+        <span class="sig-arg">max_length</span>,
+        <span class="sig-arg">allow_none</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.validator-pysrc.html#Validator.is_valid_safe_html">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns true if input is &quot;safe&quot; HTML. Implementors should 
+  reference the OWASP AntiSamy project for ideas on how to do HTML 
+  validation in a whitelist way, as this is an extremely difficult 
+  problem.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>context</code></strong> - A descriptive name of the parameter that you are validating 
+          (e.g., LoginPage_UsernameField). This value is used by any 
+          logging or error handling that is done with respect to the value 
+          passed in.</li>
+        <li><strong class="pname"><code>input_</code></strong> - The actual user input data to validate.</li>
+        <li><strong class="pname"><code>max_length</code></strong> - The maximum post-canonicalized String length allowed.</li>
+        <li><strong class="pname"><code>allow_none</code></strong> - If allow_none is true then an input that is NONE or an empty 
+          string will be legal. If allow_none is false then NONE or an 
+          empty String will throw a ValidationException.</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>true, if input is valid safe HTML. Otherwise false.</dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.IntrusionException-class.html">IntrusionException</a></strong></code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_valid_safe_html"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_valid_safe_html</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">context</span>,
+        <span class="sig-arg">input_</span>,
+        <span class="sig-arg">max_length</span>,
+        <span class="sig-arg">allow_none</span>,
+        <span class="sig-arg">error_list</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.validator-pysrc.html#Validator.get_valid_safe_html">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns canonicalized and validated &quot;safe&quot; HTML. 
+  Implementors should reference the OWASP AntiSamy project for ideas on how
+  to do HTML validation in a whitelist way, as this is an extremely 
+  difficult problem.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>context</code></strong> - A descriptive name of the parameter that you are validating 
+          (e.g., LoginPage_UsernameField). This value is used by any 
+          logging or error handling that is done with respect to the value 
+          passed in.</li>
+        <li><strong class="pname"><code>input_</code></strong> - The actual user input data to validate.</li>
+        <li><strong class="pname"><code>max_length</code></strong> - The maximum post-canonicalized String length allowed.</li>
+        <li><strong class="pname"><code>allow_none</code></strong> - If allow_none is true then an input that is NONE or an empty 
+          string will be legal. If allow_none is false then NONE or an 
+          empty String will throw a ValidationException.</li>
+        <li><strong class="pname"><code>error_list</code></strong> - If error_list exists, any errors will be captured in the list 
+          instead of being thrown. The method will return None in this 
+          case.</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>Valid safe HTML</dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.IntrusionException-class.html">IntrusionException</a></strong></code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="is_valid_credit_card"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">is_valid_credit_card</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">context</span>,
+        <span class="sig-arg">input_</span>,
+        <span class="sig-arg">allow_none</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.validator-pysrc.html#Validator.is_valid_credit_card">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns true if input is a valid credit card. Implementors should use 
+  the Luhn algorithm at the very least.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>context</code></strong> - A descriptive name of the parameter that you are validating 
+          (e.g., LoginPage_UsernameField). This value is used by any 
+          logging or error handling that is done with respect to the value 
+          passed in.</li>
+        <li><strong class="pname"><code>input_</code></strong> - The actual user input data to validate.</li>
+        <li><strong class="pname"><code>allow_none</code></strong> - If allow_none is true then an input that is NONE or an empty 
+          string will be legal. If allow_none is false then NONE or an 
+          empty String will throw a ValidationException.</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>true, if input is a valid credit card number. Otherwise, false.</dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.IntrusionException-class.html">IntrusionException</a></strong></code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_valid_credit_card"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_valid_credit_card</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">context</span>,
+        <span class="sig-arg">input_</span>,
+        <span class="sig-arg">allow_none</span>,
+        <span class="sig-arg">error_list</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.validator-pysrc.html#Validator.get_valid_credit_card">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns a canonicalized and validated credit card number as a String, 
+  including only the digits (no spaces).</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>context</code></strong> - A descriptive name of the parameter that you are validating 
+          (e.g., LoginPage_UsernameField). This value is used by any 
+          logging or error handling that is done with respect to the value 
+          passed in.</li>
+        <li><strong class="pname"><code>input_</code></strong> - The actual input data to validate.</li>
+        <li><strong class="pname"><code>allow_none</code></strong> - If allow_none is true then an input that is NONE or an empty 
+          string will be legal. If allow_none is false then NONE or an 
+          empty String will throw a ValidationException.</li>
+        <li><strong class="pname"><code>error_list</code></strong> - If error_list exists, any errors will be captured in the list 
+          instead of being thrown. The method will return None in this 
+          case.</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>A valid credit card number</dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.IntrusionException-class.html">IntrusionException</a></strong></code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="is_valid_directory_path"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">is_valid_directory_path</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">context</span>,
+        <span class="sig-arg">input_</span>,
+        <span class="sig-arg">parent_dir</span>,
+        <span class="sig-arg">allow_none</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.validator-pysrc.html#Validator.is_valid_directory_path">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns true if input is a valid directory path.</p>
+  <p>To be a valid directory, the input_ must</p>
+  <ul>
+    <li>
+      Exist on disk
+    </li>
+    <li>
+      Be a directory
+    </li>
+    <li>
+      Be a subdirectory of the parent_dir parameter, a full path to a 
+      parent directory, which must also exist and be a directory
+    </li>
+  </ul>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>context</code></strong> - A descriptive name of the parameter that you are validating 
+          (e.g., LoginPage_UsernameField). This value is used by any 
+          logging or error handling that is done with respect to the value 
+          passed in.</li>
+        <li><strong class="pname"><code>input_</code></strong> - The actual input data to validate.</li>
+        <li><strong class="pname"><code>parent_dir</code></strong> - A parent directory that the input_ must be under. Use this to 
+          ensure any uploads go into allowed directories.</li>
+        <li><strong class="pname"><code>allow_none</code></strong> - If allow_none is true then an input that is NONE or an empty 
+          string will be legal. If allow_none is false then NONE or an 
+          empty String will throw a ValidationException.</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>true, if input is a valid directory path. Otherwise, false.</dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.IntrusionException-class.html">IntrusionException</a></strong></code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_valid_directory_path"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_valid_directory_path</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">context</span>,
+        <span class="sig-arg">input_</span>,
+        <span class="sig-arg">parent_dir</span>,
+        <span class="sig-arg">allow_none</span>,
+        <span class="sig-arg">error_list</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.validator-pysrc.html#Validator.get_valid_directory_path">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns a canonicalized and validated directory path as a String.</p>
+  <p>To be a valid directory, the input_ must</p>
+  <ul>
+    <li>
+      Exist on disk
+    </li>
+    <li>
+      Be a directory
+    </li>
+    <li>
+      Be a subdirectory of the parent_dir parameter, a full path to a 
+      parent directory, which must also exist and be a directory
+    </li>
+  </ul>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>context</code></strong> - A descriptive name of the parameter that you are validating 
+          (e.g., LoginPage_UsernameField). This value is used by any 
+          logging or error handling that is done with respect to the value 
+          passed in.</li>
+        <li><strong class="pname"><code>input_</code></strong> - The actual input data to validate.</li>
+        <li><strong class="pname"><code>parent_dir</code></strong> - A parent directory that the input_ must be under. Use this to 
+          ensure any uploads go into allowed directories.</li>
+        <li><strong class="pname"><code>allow_none</code></strong> - If allow_none is true then an input that is NONE or an empty 
+          string will be legal. If allow_none is false then NONE or an 
+          empty String will throw a ValidationException.</li>
+        <li><strong class="pname"><code>error_list</code></strong> - If error_list exists, any errors will be captured in the list 
+          instead of being thrown. The method will return None in this 
+          case.</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>A valid directory path</dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.IntrusionException-class.html">IntrusionException</a></strong></code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="is_valid_filename"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">is_valid_filename</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">context</span>,
+        <span class="sig-arg">input_</span>,
+        <span class="sig-arg">allow_none</span>,
+        <span class="sig-arg">allowed_extensions</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.validator-pysrc.html#Validator.is_valid_filename">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns true if input is a valid file name.</p>
+  <p>To be a valid filename, the input_ must</p>
+  <ul>
+    <li>
+      Be well formed
+    </li>
+    <li>
+      Have an extension in allowed_extensions, or, if that list is None, in
+      the list defined by 
+      ESAPI.security_configuration().get_allowed_file_extensions()
+    </li>
+  </ul>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>context</code></strong> - A descriptive name of the parameter that you are validating 
+          (e.g., LoginPage_UsernameField). This value is used by any 
+          logging or error handling that is done with respect to the value 
+          passed in.</li>
+        <li><strong class="pname"><code>input_</code></strong> - The actual input data to validate.</li>
+        <li><strong class="pname"><code>allow_none</code></strong> - If allow_none is true then an input that is NONE or an empty 
+          string will be legal. If allow_none is false then NONE or an 
+          empty String will throw a ValidationException.</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>true, if input is a valid file name. Otherwise, false.</dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.IntrusionException-class.html">IntrusionException</a></strong></code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_valid_filename"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_valid_filename</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">context</span>,
+        <span class="sig-arg">input_</span>,
+        <span class="sig-arg">allow_none</span>,
+        <span class="sig-arg">error_list</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">allowed_extensions</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.validator-pysrc.html#Validator.get_valid_filename">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns a canonicalized and validated file name as a String.</p>
+  <p>To be a valid filename, the input_ must</p>
+  <ul>
+    <li>
+      Be well formed
+    </li>
+    <li>
+      Have an extension in allowed_extensions, or, if that list is None, in
+      the list defined by 
+      ESAPI.security_configuration().get_allowed_file_extensions()
+    </li>
+  </ul>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>context</code></strong> - A descriptive name of the parameter that you are validating 
+          (e.g., LoginPage_UsernameField). This value is used by any 
+          logging or error handling that is done with respect to the value 
+          passed in.</li>
+        <li><strong class="pname"><code>input_</code></strong> - The actual input data to validate.</li>
+        <li><strong class="pname"><code>allow_none</code></strong> - If allow_none is true then an input that is NONE or an empty 
+          string will be legal. If allow_none is false then NONE or an 
+          empty String will throw a ValidationException.</li>
+        <li><strong class="pname"><code>error_list</code></strong> - If error_list exists, any errors will be captured in the list 
+          instead of being thrown. The method will return None in this 
+          case.</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>A valid file name</dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.IntrusionException-class.html">IntrusionException</a></strong></code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="is_valid_number"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">is_valid_number</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">context</span>,
+        <span class="sig-arg">num_type</span>,
+        <span class="sig-arg">input_</span>,
+        <span class="sig-arg">min_value</span>,
+        <span class="sig-arg">max_value</span>,
+        <span class="sig-arg">allow_none</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.validator-pysrc.html#Validator.is_valid_number">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns true if input is a valid number within the range of min_value 
+  to max_value. num_type is an important parameter - it sets the type the 
+  number should be. This could be int or float, and so this method works 
+  for these types and more.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>context</code></strong> - A descriptive name of the parameter that you are validating 
+          (e.g., LoginPage_UsernameField). This value is used by any 
+          logging or error handling that is done with respect to the value 
+          passed in.</li>
+        <li><strong class="pname"><code>input_</code></strong> - The actual input data to validate.</li>
+        <li><strong class="pname"><code>min_value</code></strong> - Lowest legal value for input.</li>
+        <li><strong class="pname"><code>max_value</code></strong> - Highest legal value for input.</li>
+        <li><strong class="pname"><code>allow_none</code></strong> - If allow_none is true then an input that is NONE or an empty 
+          string will be legal. If allow_none is false then NONE or an 
+          empty String will throw a ValidationException.</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>true, if input is a valid number. Otherwise, false.</dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.IntrusionException-class.html">IntrusionException</a></strong></code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_valid_number"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_valid_number</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">context</span>,
+        <span class="sig-arg">num_type</span>,
+        <span class="sig-arg">input_</span>,
+        <span class="sig-arg">min_value</span>,
+        <span class="sig-arg">max_value</span>,
+        <span class="sig-arg">allow_none</span>,
+        <span class="sig-arg">error_list</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.validator-pysrc.html#Validator.get_valid_number">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns a validated number that is within the range of min_value to 
+  max_value. num_type is an important parameter - it sets the type the 
+  number should be. This could be int or float, and so this method works 
+  for these types and more.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>context</code></strong> - A descriptive name of the parameter that you are validating 
+          (e.g., LoginPage_UsernameField). This value is used by any 
+          logging or error handling that is done with respect to the value 
+          passed in.</li>
+        <li><strong class="pname"><code>input_</code></strong> - The actual input data to validate.</li>
+        <li><strong class="pname"><code>min_value</code></strong> - Lowest legal value for input.</li>
+        <li><strong class="pname"><code>max_value</code></strong> - Highest legal value for input.</li>
+        <li><strong class="pname"><code>allow_none</code></strong> - If allow_none is true then an input that is NONE or an empty 
+          string will be legal. If allow_none is false then NONE or an 
+          empty String will throw a ValidationException.</li>
+        <li><strong class="pname"><code>error_list</code></strong> - If error_list exists, any errors will be captured in the list 
+          instead of being thrown. The method will return None in this 
+          case.</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>A validated number as a double.</dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.IntrusionException-class.html">IntrusionException</a></strong></code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="is_valid_file_content"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">is_valid_file_content</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">context</span>,
+        <span class="sig-arg">input_</span>,
+        <span class="sig-arg">max_bytes</span>,
+        <span class="sig-arg">allow_none</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.validator-pysrc.html#Validator.is_valid_file_content">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns true if input is valid file content. This is a good place to 
+  check for max file size, allowed character sets, and do virus scans.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>context</code></strong> - A descriptive name of the parameter that you are validating e.g.,
+          LoginPage_UsernameField). This value is used by any logging or 
+          error handling that is done with respect to the value passed in.</li>
+        <li><strong class="pname"><code>input_</code></strong> - The actual input data to validate.</li>
+        <li><strong class="pname"><code>max_bytes</code></strong> - The maximum number of bytes allowed in a legal file.</li>
+        <li><strong class="pname"><code>allow_none</code></strong> - If allow_none is true then an input that is NONE or an empty 
+          string will be legal. If allow_none is false then NONE or an 
+          empty String will throw a ValidationException.</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>true, if input contains valid file content. Otherwise, false.</dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.IntrusionException-class.html">IntrusionException</a></strong></code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_valid_file_content"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_valid_file_content</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">context</span>,
+        <span class="sig-arg">input_</span>,
+        <span class="sig-arg">max_bytes</span>,
+        <span class="sig-arg">allow_none</span>,
+        <span class="sig-arg">error_list</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.validator-pysrc.html#Validator.get_valid_file_content">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns validated file content as a string. This is a good place to 
+  check for max file size, allowed character sets, and do virus scans.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>context</code></strong> - A descriptive name of the parameter that you are validating 
+          (e.g., LoginPage_UsernameField). This value is used by any 
+          logging or error handling that is done with respect to the value 
+          passed in.</li>
+        <li><strong class="pname"><code>input_</code></strong> - The actual input data to validate.</li>
+        <li><strong class="pname"><code>max_bytes</code></strong> - The maximum number of bytes allowed in a legal file.</li>
+        <li><strong class="pname"><code>allow_none</code></strong> - If allow_none is true then an input that is NONE or an empty 
+          string will be legal. If allow_none is false then NONE or an 
+          empty String will throw a ValidationException.</li>
+        <li><strong class="pname"><code>error_list</code></strong> - If error_list exists, any errors will be captured in the list 
+          instead of being thrown. The method will return None in this 
+          case.</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>A string containing valid file content.</dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.IntrusionException-class.html">IntrusionException</a></strong></code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="is_valid_file_upload"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">is_valid_file_upload</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">context</span>,
+        <span class="sig-arg">directory_path</span>,
+        <span class="sig-arg">parent</span>,
+        <span class="sig-arg">filename</span>,
+        <span class="sig-arg">content</span>,
+        <span class="sig-arg">max_bytes</span>,
+        <span class="sig-arg">allow_none</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.validator-pysrc.html#Validator.is_valid_file_upload">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns true if the the directory, filename, and content of a file 
+  upload are all valid.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>context</code></strong> - A descriptive name of the parameter that you are validating 
+          (e.g., LoginPage_UsernameField). This value is used by any 
+          logging or error handling that is done with respect to the value 
+          passed in.</li>
+        <li><strong class="pname"><code>directory_path</code></strong> - The directory path of the uploaded file.</li>
+        <li><strong class="pname"><code>parent</code></strong> - The parent directory that all uploads must be inside.</li>
+        <li><strong class="pname"><code>filename</code></strong> - The filename of the uploaded file</li>
+        <li><strong class="pname"><code>content</code></strong> - A byte array containing the content of the uploaded file.</li>
+        <li><strong class="pname"><code>max_bytes</code></strong> - The max number of bytes allowed for a legal file upload.</li>
+        <li><strong class="pname"><code>allow_none</code></strong> - If allow_none is true then an input that is NONE or an empty 
+          string will be legal. If allow_none is false then NONE or an 
+          empty String will throw a ValidationException.</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>true, if a file upload has a valid name, path, and content.</dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.IntrusionException-class.html">IntrusionException</a></strong></code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="assert_valid_file_upload"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">assert_valid_file_upload</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">context</span>,
+        <span class="sig-arg">directory_path</span>,
+        <span class="sig-arg">parent</span>,
+        <span class="sig-arg">filename</span>,
+        <span class="sig-arg">content</span>,
+        <span class="sig-arg">max_bytes</span>,
+        <span class="sig-arg">allow_none</span>,
+        <span class="sig-arg">error_list</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.validator-pysrc.html#Validator.assert_valid_file_upload">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Validates the directory, filename, and content of a file upload.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>context</code></strong> - A descriptive name of the parameter that you are validating 
+          (e.g., LoginPage_UsernameField). This value is used by any 
+          logging or error handling that is done with respect to the value 
+          passed in.</li>
+        <li><strong class="pname"><code>directory_path</code></strong> - The directory path of the uploaded file.</li>
+        <li><strong class="pname"><code>parent</code></strong> - The parent directory that all uploads must be inside.</li>
+        <li><strong class="pname"><code>filename</code></strong> - The filename of the uploaded file</li>
+        <li><strong class="pname"><code>content</code></strong> - A byte array containing the content of the uploaded file.</li>
+        <li><strong class="pname"><code>max_bytes</code></strong> - The max number of bytes allowed for a legal file upload.</li>
+        <li><strong class="pname"><code>allow_none</code></strong> - If allow_none is true then an input that is NONE or an empty 
+          string will be legal. If allow_none is false then NONE or an 
+          empty String will throw a ValidationException.</li>
+        <li><strong class="pname"><code>error_list</code></strong> - If error_list exists, any errors will be captured in the list 
+          instead of being thrown. The method will return None in this 
+          case.</li>
+    </ul></dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.IntrusionException-class.html">IntrusionException</a></strong></code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="is_valid_http_request"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">is_valid_http_request</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">request</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.validator-pysrc.html#Validator.is_valid_http_request">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Validate the current HTTP request by comparing parameters, headers, 
+  and cookies to a predefined whitelist of allowed characters. See the 
+  SecurityConfiguration class for the methods to retrieve the 
+  whitelists.</p>
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd>true, if is a valid HTTP request</dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.IntrusionException-class.html">IntrusionException</a></strong></code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="assert_is_valid_http_request"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">assert_is_valid_http_request</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">request</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.validator-pysrc.html#Validator.assert_is_valid_http_request">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Validates the current HTTP request by comparing parameters, headers, 
+  and cookies to a predefined whitelist of allowed characters.</p>
+  <dl class="fields">
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.ValidationException-class.html">ValidationException</a></strong></code> - @raises IntrusionException</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="is_valid_http_request_parameter_set"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">is_valid_http_request_parameter_set</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">context</span>,
+        <span class="sig-arg">required</span>,
+        <span class="sig-arg">optional</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.validator-pysrc.html#Validator.is_valid_http_request_parameter_set">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns true if the parameters in the current request contain all 
+  required parameters and only optional ones in addition.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>context</code></strong> - A descriptive name of the parameter that you are validating 
+          (e.g., LoginPage_UsernameField). This value is used by any 
+          logging or error handling that is done with respect to the value 
+          passed in.</li>
+        <li><strong class="pname"><code>required</code></strong> - parameters that are required to be in HTTP request</li>
+        <li><strong class="pname"><code>optional</code></strong> - additional parameters that may be in HTTP request</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>true, if all required parameters are in HTTP request and only 
+          optional parameters in addition.  Returns false if parameters are
+          found in HTTP request that are not in either set (required or 
+          optional), or if any required parameters are missing from 
+          request.</dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.IntrusionException-class.html">IntrusionException</a></strong></code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="assert_is_valid_http_request_parameter_set"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">assert_is_valid_http_request_parameter_set</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">context</span>,
+        <span class="sig-arg">required</span>,
+        <span class="sig-arg">optional</span>,
+        <span class="sig-arg">error_list</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.validator-pysrc.html#Validator.assert_is_valid_http_request_parameter_set">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Validates that the parameters in the current request contain all 
+  required parameters and only optional ones in addition.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>context</code></strong> - A descriptive name of the parameter that you are validating 
+          (e.g., LoginPage_UsernameField). This value is used by any 
+          logging or error handling that is done with respect to the value 
+          passed in.</li>
+        <li><strong class="pname"><code>required</code></strong> - parameters that are required to be in HTTP request</li>
+        <li><strong class="pname"><code>optional</code></strong> - additional parameters that may be in HTTP request</li>
+        <li><strong class="pname"><code>error_list</code></strong> - If validation is in error, resulting error will be stored in the 
+          error_list by context</li>
+    </ul></dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.IntrusionException-class.html">IntrusionException</a></strong></code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="is_valid_redirect_location"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">is_valid_redirect_location</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">context</span>,
+        <span class="sig-arg">input_</span>,
+        <span class="sig-arg">allow_none</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.validator-pysrc.html#Validator.is_valid_redirect_location">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns true if input is a valid redirect location, as defined by 
+  &quot;ESAPI.conf.settings&quot;.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>context</code></strong> - A descriptive name of the parameter that you are validating 
+          (e.g., LoginPage_UsernameField). This value is used by any 
+          logging or error handling that is done with respect to the value 
+          passed in.</li>
+        <li><strong class="pname"><code>input_</code></strong> - redirect location to be checked for validity, according to rules 
+          set in &quot;ESAPI.conf.settings&quot;</li>
+        <li><strong class="pname"><code>allow_none</code></strong> - If allow_none is true then an input that is NONE or an empty 
+          string will be legal. If allow_none is false then NONE or an 
+          empty String will throw a ValidationException.</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>true, if 'input' is a valid redirect location, as defined by 
+          &quot;ESAPI.conf.settings&quot;, false otherwise.</dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.IntrusionException-class.html">IntrusionException</a></strong></code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_valid_redirect_location"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_valid_redirect_location</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">context</span>,
+        <span class="sig-arg">input_</span>,
+        <span class="sig-arg">allow_none</span>,
+        <span class="sig-arg">error_list</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.validator-pysrc.html#Validator.get_valid_redirect_location">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns a canonicalized and validated redirect location as a String. 
+  Invalid input will generate a descriptive ValidationException, and input 
+  that is clearly an attack will generate a descriptive IntrusionException.
+  Instead of throwing a ValidationException on error, this variant will 
+  store the exception inside of the ValidationErrorList.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>context</code></strong> - A descriptive name of the parameter that you are validating 
+          (e.g., LoginPage_UsernameField). This value is used by any 
+          logging or error handling that is done with respect to the value 
+          passed in.</li>
+        <li><strong class="pname"><code>input_</code></strong> - redirect location to be returned as valid, according to encoding 
+          rules set in &quot;ESAPI.conf.settings&quot;</li>
+        <li><strong class="pname"><code>allow_none</code></strong> - If allow_none is true then an input that is NONE or an empty 
+          string will be legal. If allow_none is false then NONE or an 
+          empty String will throw a ValidationException.</li>
+        <li><strong class="pname"><code>error_list</code></strong> - If validation is in error, resulting error will be stored in the 
+          error_list by context</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>A canonicalized and validated redirect location, as defined in 
+          &quot;ESAPI.conf.settings&quot;</dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.IntrusionException-class.html">IntrusionException</a></strong></code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="safe_read_line"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">safe_read_line</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">input_stream</span>,
+        <span class="sig-arg">max_length</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.validator-pysrc.html#Validator.safe_read_line">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Reads from an input stream until end-of-line or a maximum number of 
+  characters. This method protects against the inherent denial of service 
+  attack in reading until the end of a line. If an attacker doesn't ever 
+  send a newline character, then a normal input stream reader will read 
+  until all memory is exhausted and the platform raises an OutOfMemoryError
+  and probably terminates.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>input_stream</code></strong> - The InputStream from which to read data</li>
+        <li><strong class="pname"><code>max_length</code></strong> - Maximum characters allowed to be read in per line</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>a String containing the current line of inputStream</dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.ValidationException-class.html">ValidationException</a></strong></code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="esapi-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Tue Jul 14 16:39:10 2009
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

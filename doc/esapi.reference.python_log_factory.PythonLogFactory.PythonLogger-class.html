@@ -66,11 +66,11 @@
 </pre>
 
 <hr />
-Reference implementation of the Logger interface.
-
-It implements most of the recommendations defined in the Logger interface description. It does not
-filter out any sensitive data specific to the current application or organization, such as credit
-cards, social security numbers, etc.
+<p>Reference implementation of the Logger interface.</p>
+  <p>It implements most of the recommendations defined in the Logger 
+  interface description. It does not filter out any sensitive data specific
+  to the current application or organization, such as credit cards, social 
+  security numbers, etc.</p>
 
 <hr />
 <div class="fields">      <p><strong>Author:</strong>
@@ -80,7 +80,8 @@ cards, social security numbers, etc.
         June 1, 2009
       </p>
       <p><strong>See Also:</strong>
-        <a href="esapi.log_factory.LogFactory-class.html" class="link">esapi.LogFactory</a>
+        <a href="esapi.log_factory.LogFactory-class.html" 
+        class="link">esapi.LogFactory</a>
       </p>
 </div><!-- ==================== NESTED CLASSES ==================== -->
 <a name="section-NestedClasses"></a>
@@ -99,15 +100,11 @@ cards, social security numbers, etc.
     </table>
   </td>
 </tr>
-<tr bgcolor="#e8f0f8" >
-  <th colspan="2" class="group-header"
-    >&nbsp;&nbsp;&nbsp;&nbsp;Inherited from <a href="esapi.logger.Logger-class.html">logger.Logger</a></th></tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a href="esapi.logger.Logger.EventType-class.html" class="summary-name">EventType</a><br />
-      Defines the type of log event that is being generated.
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="esapi.logger.Logger-class.html">logger.Logger</a></code></b>:
+      <code><a href="esapi.logger.Logger.EventType-class.html">EventType</a></code>
+      </p>
     </td>
   </tr>
 </table>
@@ -137,7 +134,8 @@ cards, social security numbers, etc.
           <td><span class="summary-sig"><a href="esapi.reference.python_log_factory.PythonLogFactory.PythonLogger-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">application_name</span>,
         <span class="summary-sig-arg">module_name</span>)</span><br />
-      Public constructor should only ever be called via the appropriate LogFactory</td>
+      Public constructor should only ever be called via the appropriate 
+      LogFactory</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="esapi.reference.python_log_factory-pysrc.html#PythonLogFactory.PythonLogger.__init__">source&nbsp;code</a></span>
             
@@ -155,9 +153,9 @@ cards, social security numbers, etc.
         <tr>
           <td><span class="summary-sig"><a href="esapi.reference.python_log_factory.PythonLogFactory.PythonLogger-class.html#set_level" class="summary-sig-name">set_level</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">level</span>)</span><br />
-      Note: In this implementation, this change is not persistent,
-meaning that if the application is restarted, the log level will revert to the level defined in the
-ESAPI SecurityConfiguration properties file.</td>
+      Note: In this implementation, this change is not persistent, meaning 
+      that if the application is restarted, the log level will revert to 
+      the level defined in the ESAPI SecurityConfiguration properties file.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="esapi.reference.python_log_factory-pysrc.html#PythonLogFactory.PythonLogger.set_level">source&nbsp;code</a></span>
             
@@ -178,7 +176,7 @@ ESAPI SecurityConfiguration properties file.</td>
         <span class="summary-sig-arg">message</span>,
         <span class="summary-sig-arg">exception</span>=<span class="summary-sig-default">None</span>)</span><br />
       Log a trace level security event if 'trace' level logging is enabled 
-and also record the stack trace associated with the event.</td>
+      and also record the stack trace associated with the event.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="esapi.reference.python_log_factory-pysrc.html#PythonLogFactory.PythonLogger.trace">source&nbsp;code</a></span>
             
@@ -199,7 +197,7 @@ and also record the stack trace associated with the event.</td>
         <span class="summary-sig-arg">message</span>,
         <span class="summary-sig-arg">exception</span>=<span class="summary-sig-default">None</span>)</span><br />
       Log a debug level security event if 'debug' level logging is enabled 
-and also record the stack trace associated with the event.</td>
+      and also record the stack trace associated with the event.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="esapi.reference.python_log_factory-pysrc.html#PythonLogFactory.PythonLogger.debug">source&nbsp;code</a></span>
             
@@ -220,7 +218,7 @@ and also record the stack trace associated with the event.</td>
         <span class="summary-sig-arg">message</span>,
         <span class="summary-sig-arg">exception</span>=<span class="summary-sig-default">None</span>)</span><br />
       Log an info level security event if 'info' level logging is enabled 
-and also record the stack trace associated with the event.</td>
+      and also record the stack trace associated with the event.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="esapi.reference.python_log_factory-pysrc.html#PythonLogFactory.PythonLogger.info">source&nbsp;code</a></span>
             
@@ -241,7 +239,7 @@ and also record the stack trace associated with the event.</td>
         <span class="summary-sig-arg">message</span>,
         <span class="summary-sig-arg">exception</span>=<span class="summary-sig-default">None</span>)</span><br />
       Log a warning level security event if 'warning' level logging is 
-enabled and also record the stack trace associated with the event.</td>
+      enabled and also record the stack trace associated with the event.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="esapi.reference.python_log_factory-pysrc.html#PythonLogFactory.PythonLogger.warning">source&nbsp;code</a></span>
             
@@ -261,8 +259,8 @@ enabled and also record the stack trace associated with the event.</td>
         <span class="summary-sig-arg">event_type</span>,
         <span class="summary-sig-arg">message</span>,
         <span class="summary-sig-arg">exception</span>=<span class="summary-sig-default">None</span>)</span><br />
-      Log an error level security event if 'error' level logging is enabled 
-and also record the stack trace associated with the event.</td>
+      Log an error level security event if 'error' level logging is enabled
+      and also record the stack trace associated with the event.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="esapi.reference.python_log_factory-pysrc.html#PythonLogFactory.PythonLogger.error">source&nbsp;code</a></span>
             
@@ -283,7 +281,7 @@ and also record the stack trace associated with the event.</td>
         <span class="summary-sig-arg">message</span>,
         <span class="summary-sig-arg">exception</span>=<span class="summary-sig-default">None</span>)</span><br />
       Log a fatal level security event if 'fatal' level logging is enabled 
-and also record the stack trace associated with the event.</td>
+      and also record the stack trace associated with the event.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="esapi.reference.python_log_factory-pysrc.html#PythonLogFactory.PythonLogger.fatal">source&nbsp;code</a></span>
             
@@ -304,8 +302,8 @@ and also record the stack trace associated with the event.</td>
         <span class="summary-sig-arg">event_type</span>,
         <span class="summary-sig-arg">message</span>,
         <span class="summary-sig-arg">exception</span>=<span class="summary-sig-default">None</span>)</span><br />
-      Log the message after optionally encoding any special characters 
-that might be dangerous when viewed by an HTML based log viewer.</td>
+      Log the message after optionally encoding any special characters that
+      might be dangerous when viewed by an HTML based log viewer.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="esapi.reference.python_log_factory-pysrc.html#PythonLogFactory.PythonLogger.log">source&nbsp;code</a></span>
             
@@ -322,8 +320,8 @@ that might be dangerous when viewed by an HTML based log viewer.</td>
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a href="esapi.reference.python_log_factory.PythonLogFactory.PythonLogger-class.html#is_debug_enabled" class="summary-sig-name">is_debug_enabled</a>(<span class="summary-sig-arg">self</span>)</span><br />
-      Allows the caller to determine if messages logged at this level
-will be discarded, to avoid performing expensive processing.</td>
+      Allows the caller to determine if messages logged at this level will 
+      be discarded, to avoid performing expensive processing.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="esapi.reference.python_log_factory-pysrc.html#PythonLogFactory.PythonLogger.is_debug_enabled">source&nbsp;code</a></span>
             
@@ -340,8 +338,8 @@ will be discarded, to avoid performing expensive processing.</td>
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a href="esapi.reference.python_log_factory.PythonLogFactory.PythonLogger-class.html#is_error_enabled" class="summary-sig-name">is_error_enabled</a>(<span class="summary-sig-arg">self</span>)</span><br />
-      Allows the caller to determine if messages logged at this level
-will be discarded, to avoid performing expensive processing.</td>
+      Allows the caller to determine if messages logged at this level will 
+      be discarded, to avoid performing expensive processing.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="esapi.reference.python_log_factory-pysrc.html#PythonLogFactory.PythonLogger.is_error_enabled">source&nbsp;code</a></span>
             
@@ -358,8 +356,8 @@ will be discarded, to avoid performing expensive processing.</td>
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a href="esapi.reference.python_log_factory.PythonLogFactory.PythonLogger-class.html#is_fatal_enabled" class="summary-sig-name">is_fatal_enabled</a>(<span class="summary-sig-arg">self</span>)</span><br />
-      Allows the caller to determine if messages logged at this level
-will be discarded, to avoid performing expensive processing.</td>
+      Allows the caller to determine if messages logged at this level will 
+      be discarded, to avoid performing expensive processing.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="esapi.reference.python_log_factory-pysrc.html#PythonLogFactory.PythonLogger.is_fatal_enabled">source&nbsp;code</a></span>
             
@@ -376,8 +374,8 @@ will be discarded, to avoid performing expensive processing.</td>
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a href="esapi.reference.python_log_factory.PythonLogFactory.PythonLogger-class.html#is_info_enabled" class="summary-sig-name">is_info_enabled</a>(<span class="summary-sig-arg">self</span>)</span><br />
-      Allows the caller to determine if messages logged at this level
-will be discarded, to avoid performing expensive processing.</td>
+      Allows the caller to determine if messages logged at this level will 
+      be discarded, to avoid performing expensive processing.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="esapi.reference.python_log_factory-pysrc.html#PythonLogFactory.PythonLogger.is_info_enabled">source&nbsp;code</a></span>
             
@@ -394,8 +392,8 @@ will be discarded, to avoid performing expensive processing.</td>
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a href="esapi.reference.python_log_factory.PythonLogFactory.PythonLogger-class.html#is_trace_enabled" class="summary-sig-name">is_trace_enabled</a>(<span class="summary-sig-arg">self</span>)</span><br />
-      Allows the caller to determine if messages logged at this level
-will be discarded, to avoid performing expensive processing.</td>
+      Allows the caller to determine if messages logged at this level will 
+      be discarded, to avoid performing expensive processing.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="esapi.reference.python_log_factory-pysrc.html#PythonLogFactory.PythonLogger.is_trace_enabled">source&nbsp;code</a></span>
             
@@ -412,8 +410,8 @@ will be discarded, to avoid performing expensive processing.</td>
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a href="esapi.reference.python_log_factory.PythonLogFactory.PythonLogger-class.html#is_warning_enabled" class="summary-sig-name">is_warning_enabled</a>(<span class="summary-sig-arg">self</span>)</span><br />
-      Allows the caller to determine if messages logged at this level
-will be discarded, to avoid performing expensive processing.</td>
+      Allows the caller to determine if messages logged at this level will 
+      be discarded, to avoid performing expensive processing.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="esapi.reference.python_log_factory-pysrc.html#PythonLogFactory.PythonLogger.is_warning_enabled">source&nbsp;code</a></span>
             
@@ -445,108 +443,42 @@ will be discarded, to avoid performing expensive processing.</td>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="pyLogger"></a><span class="summary-name">pyLogger</span> = <code title="None">None</code>
+        <a name="pyLogger"></a><span class="summary-name">pyLogger</span> = <code title="None">None</code><br />
+      hash(x)
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="application_name"></a><span class="summary-name">application_name</span> = <code title="None">None</code>
+        <a name="application_name"></a><span class="summary-name">application_name</span> = <code title="None">None</code><br />
+      hash(x)
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="module_name"></a><span class="summary-name">module_name</span> = <code title="None">None</code>
+        <a name="module_name"></a><span class="summary-name">module_name</span> = <code title="None">None</code><br />
+      hash(x)
     </td>
   </tr>
-<tr bgcolor="#e8f0f8" >
-  <th colspan="2" class="group-header"
-    >&nbsp;&nbsp;&nbsp;&nbsp;Inherited from <a href="esapi.logger.Logger-class.html">logger.Logger</a></th></tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a name="ALL"></a><span class="summary-name">ALL</span> = <code title="-2147483648">-2147483648</code>
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a name="DEBUG"></a><span class="summary-name">DEBUG</span> = <code title="200">200</code>
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a name="ERROR"></a><span class="summary-name">ERROR</span> = <code title="800">800</code>
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a name="EVENT_FAILURE"></a><span class="summary-name">EVENT_FAILURE</span> = <code title="EventType(&quot;EVENT FAILURE&quot;, False)">EventType(&quot;EVENT FAILURE&quot;, False)</code>
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a name="EVENT_SUCCESS"></a><span class="summary-name">EVENT_SUCCESS</span> = <code title="EventType(&quot;EVENT SUCCESS&quot;, True)">EventType(&quot;EVENT SUCCESS&quot;, True)</code>
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a name="FATAL"></a><span class="summary-name">FATAL</span> = <code title="1000">1000</code>
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a name="INFO"></a><span class="summary-name">INFO</span> = <code title="400">400</code>
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a name="OFF"></a><span class="summary-name">OFF</span> = <code title="2147483647">2147483647</code>
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a name="SECURITY_FAILURE"></a><span class="summary-name">SECURITY_FAILURE</span> = <code title="EventType(&quot;SECURITY FAILURE&quot;, False)">EventType(&quot;SECURITY FAILURE&quot;, False)</code>
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a name="SECURITY_SUCCESS"></a><span class="summary-name">SECURITY_SUCCESS</span> = <code title="EventType(&quot;SECURITY SUCCESS&quot;, True)">EventType(&quot;SECURITY SUCCESS&quot;, True)</code>
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a name="TRACE"></a><span class="summary-name">TRACE</span> = <code title="100">100</code>
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a name="WARNING"></a><span class="summary-name">WARNING</span> = <code title="600">600</code>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="esapi.logger.Logger-class.html">logger.Logger</a></code></b>:
+      <code><a href="esapi.logger.Logger-class.html#ALL">ALL</a></code>,
+      <code><a href="esapi.logger.Logger-class.html#DEBUG">DEBUG</a></code>,
+      <code><a href="esapi.logger.Logger-class.html#ERROR">ERROR</a></code>,
+      <code><a href="esapi.logger.Logger-class.html#EVENT_FAILURE">EVENT_FAILURE</a></code>,
+      <code><a href="esapi.logger.Logger-class.html#EVENT_SUCCESS">EVENT_SUCCESS</a></code>,
+      <code><a href="esapi.logger.Logger-class.html#FATAL">FATAL</a></code>,
+      <code><a href="esapi.logger.Logger-class.html#INFO">INFO</a></code>,
+      <code><a href="esapi.logger.Logger-class.html#OFF">OFF</a></code>,
+      <code><a href="esapi.logger.Logger-class.html#SECURITY_FAILURE">SECURITY_FAILURE</a></code>,
+      <code><a href="esapi.logger.Logger-class.html#SECURITY_SUCCESS">SECURITY_SUCCESS</a></code>,
+      <code><a href="esapi.logger.Logger-class.html#TRACE">TRACE</a></code>,
+      <code><a href="esapi.logger.Logger-class.html#WARNING">WARNING</a></code>
+      </p>
     </td>
   </tr>
 </table>
@@ -585,7 +517,8 @@ will be discarded, to avoid performing expensive processing.</td>
     </td>
   </tr></table>
   
-  Public constructor should only ever be called via the appropriate LogFactory
+  <p>Public constructor should only ever be called via the appropriate 
+  LogFactory</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
@@ -613,9 +546,9 @@ will be discarded, to avoid performing expensive processing.</td>
     </td>
   </tr></table>
   
-  Note: In this implementation, this change is not persistent,
-meaning that if the application is restarted, the log level will revert to the level defined in the
-ESAPI SecurityConfiguration properties file.
+  <p>Note: In this implementation, this change is not persistent, meaning 
+  that if the application is restarted, the log level will revert to the 
+  level defined in the ESAPI SecurityConfiguration properties file.</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
@@ -644,8 +577,8 @@ ESAPI SecurityConfiguration properties file.
     </td>
   </tr></table>
   
-  Log a trace level security event if 'trace' level logging is enabled 
-and also record the stack trace associated with the event.
+  <p>Log a trace level security event if 'trace' level logging is enabled 
+  and also record the stack trace associated with the event.</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
@@ -677,8 +610,8 @@ and also record the stack trace associated with the event.
     </td>
   </tr></table>
   
-  Log a debug level security event if 'debug' level logging is enabled 
-and also record the stack trace associated with the event.
+  <p>Log a debug level security event if 'debug' level logging is enabled 
+  and also record the stack trace associated with the event.</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
@@ -710,8 +643,8 @@ and also record the stack trace associated with the event.
     </td>
   </tr></table>
   
-  Log an info level security event if 'info' level logging is enabled 
-and also record the stack trace associated with the event.
+  <p>Log an info level security event if 'info' level logging is enabled 
+  and also record the stack trace associated with the event.</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
@@ -743,8 +676,8 @@ and also record the stack trace associated with the event.
     </td>
   </tr></table>
   
-  Log a warning level security event if 'warning' level logging is 
-enabled and also record the stack trace associated with the event.
+  <p>Log a warning level security event if 'warning' level logging is 
+  enabled and also record the stack trace associated with the event.</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
@@ -776,8 +709,8 @@ enabled and also record the stack trace associated with the event.
     </td>
   </tr></table>
   
-  Log an error level security event if 'error' level logging is enabled 
-and also record the stack trace associated with the event.
+  <p>Log an error level security event if 'error' level logging is enabled 
+  and also record the stack trace associated with the event.</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
@@ -809,8 +742,8 @@ and also record the stack trace associated with the event.
     </td>
   </tr></table>
   
-  Log a fatal level security event if 'fatal' level logging is enabled 
-and also record the stack trace associated with the event.
+  <p>Log a fatal level security event if 'fatal' level logging is enabled 
+  and also record the stack trace associated with the event.</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
@@ -843,15 +776,13 @@ and also record the stack trace associated with the event.
     </td>
   </tr></table>
   
-  Log the message after optionally encoding any special characters 
-that might be dangerous when viewed by an HTML based log viewer. 
-Also encode any carriage returns and line feeds to prevent log
-injection attacks. This logs all the supplied parameters plus the 
-user ID, user's source IP, a logging specific session ID, and the 
-current date/time.
-
-It will only log the message if the current logging level is 
-enabled, otherwise it will discard the message.
+  <p>Log the message after optionally encoding any special characters that 
+  might be dangerous when viewed by an HTML based log viewer. Also encode 
+  any carriage returns and line feeds to prevent log injection attacks. 
+  This logs all the supplied parameters plus the user ID, user's source IP,
+  a logging specific session ID, and the current date/time.</p>
+  <p>It will only log the message if the current logging level is enabled, 
+  otherwise it will discard the message.</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
@@ -877,8 +808,8 @@ enabled, otherwise it will discard the message.
     </td>
   </tr></table>
   
-  Allows the caller to determine if messages logged at this level
-will be discarded, to avoid performing expensive processing.
+  <p>Allows the caller to determine if messages logged at this level will 
+  be discarded, to avoid performing expensive processing.</p>
   <dl class="fields">
     <dt>Returns:</dt>
         <dd>True if debug level messages will be output to the log</dd>
@@ -903,8 +834,8 @@ will be discarded, to avoid performing expensive processing.
     </td>
   </tr></table>
   
-  Allows the caller to determine if messages logged at this level
-will be discarded, to avoid performing expensive processing.
+  <p>Allows the caller to determine if messages logged at this level will 
+  be discarded, to avoid performing expensive processing.</p>
   <dl class="fields">
     <dt>Returns:</dt>
         <dd>True if error level messages will be output to the log</dd>
@@ -929,8 +860,8 @@ will be discarded, to avoid performing expensive processing.
     </td>
   </tr></table>
   
-  Allows the caller to determine if messages logged at this level
-will be discarded, to avoid performing expensive processing.
+  <p>Allows the caller to determine if messages logged at this level will 
+  be discarded, to avoid performing expensive processing.</p>
   <dl class="fields">
     <dt>Returns:</dt>
         <dd>True if fatal level messages will be output to the log</dd>
@@ -955,8 +886,8 @@ will be discarded, to avoid performing expensive processing.
     </td>
   </tr></table>
   
-  Allows the caller to determine if messages logged at this level
-will be discarded, to avoid performing expensive processing.
+  <p>Allows the caller to determine if messages logged at this level will 
+  be discarded, to avoid performing expensive processing.</p>
   <dl class="fields">
     <dt>Returns:</dt>
         <dd>True if info level messages will be output to the log</dd>
@@ -981,8 +912,8 @@ will be discarded, to avoid performing expensive processing.
     </td>
   </tr></table>
   
-  Allows the caller to determine if messages logged at this level
-will be discarded, to avoid performing expensive processing.
+  <p>Allows the caller to determine if messages logged at this level will 
+  be discarded, to avoid performing expensive processing.</p>
   <dl class="fields">
     <dt>Returns:</dt>
         <dd>True if the trace level messages will be output to the log</dd>
@@ -1007,8 +938,8 @@ will be discarded, to avoid performing expensive processing.
     </td>
   </tr></table>
   
-  Allows the caller to determine if messages logged at this level
-will be discarded, to avoid performing expensive processing.
+  <p>Allows the caller to determine if messages logged at this level will 
+  be discarded, to avoid performing expensive processing.</p>
   <dl class="fields">
     <dt>Returns:</dt>
         <dd>True if warning level messages will be output to the log</dd>
@@ -1046,7 +977,7 @@ will be discarded, to avoid performing expensive processing.
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Wed Jun 24 17:08:25 2009
+    Generated by Epydoc 3.0.1 on Tue Jul 14 16:39:10 2009
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

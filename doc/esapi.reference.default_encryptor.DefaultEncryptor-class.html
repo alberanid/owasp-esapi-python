@@ -124,8 +124,8 @@
         <span class="summary-sig-arg">plaintext</span>,
         <span class="summary-sig-arg">salt</span>,
         <span class="summary-sig-arg">iterations</span>=<span class="summary-sig-default">None</span>)</span><br />
-      Returns a string representation of the hash of the provided plaintext and
-salt.</td>
+      Returns a string representation of the hash of the provided plaintext
+      and salt.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="esapi.reference.default_encryptor-pysrc.html#DefaultEncryptor.hash">source&nbsp;code</a></span>
             
@@ -198,8 +198,8 @@ salt.</td>
         <tr>
           <td><span class="summary-sig"><a href="esapi.reference.default_encryptor.DefaultEncryptor-class.html#decrypt" class="summary-sig-name">decrypt</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">ciphertext</span>)</span><br />
-      Decrypts the provided ciphertext string (encrypted with the encrypt
-method) and returns a plaintext string.</td>
+      Decrypts the provided ciphertext string (encrypted with the encrypt 
+      method) and returns a plaintext string.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="esapi.reference.default_encryptor-pysrc.html#DefaultEncryptor.decrypt">source&nbsp;code</a></span>
             
@@ -217,8 +217,8 @@ method) and returns a plaintext string.</td>
         <tr>
           <td><span class="summary-sig"><a href="esapi.reference.default_encryptor.DefaultEncryptor-class.html#sign" class="summary-sig-name">sign</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">data</span>)</span><br />
-      Create a digital signature for the provided data and return it in a
-string.</td>
+      Create a digital signature for the provided data and returns it in a 
+      string.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="esapi.reference.default_encryptor-pysrc.html#DefaultEncryptor.sign">source&nbsp;code</a></span>
             
@@ -237,8 +237,8 @@ string.</td>
           <td><span class="summary-sig"><a href="esapi.reference.default_encryptor.DefaultEncryptor-class.html#verify_signature" class="summary-sig-name">verify_signature</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">signature</span>,
         <span class="summary-sig-arg">data</span>)</span><br />
-      Verifies a digital signature (created with the sign method) and returns
-the boolean result.</td>
+      Verifies a digital signature (created with the sign method) and 
+      return s the boolean result.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="esapi.reference.default_encryptor-pysrc.html#DefaultEncryptor.verify_signature">source&nbsp;code</a></span>
             
@@ -257,7 +257,8 @@ the boolean result.</td>
           <td><span class="summary-sig"><a href="esapi.reference.default_encryptor.DefaultEncryptor-class.html#seal" class="summary-sig-name">seal</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">data</span>,
         <span class="summary-sig-arg">timestamp</span>)</span><br />
-      Creates a seal that binds a set of data and includes an expiration timestamp.</td>
+      Creates a seal that binds a set of data and includes an expiration 
+      timestamp.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="esapi.reference.default_encryptor-pysrc.html#DefaultEncryptor.seal">source&nbsp;code</a></span>
             
@@ -275,9 +276,10 @@ the boolean result.</td>
         <tr>
           <td><span class="summary-sig"><a href="esapi.reference.default_encryptor.DefaultEncryptor-class.html#unseal" class="summary-sig-name">unseal</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">seal</span>)</span><br />
-      Unseals data (created with the seal method) and throws an exception
-describing any of the various problems that could exist with a seal, such
-as an invalid seal format, expired timestamp, or decryption error.</td>
+      Unseals data (created with the seal method) and raises an exception 
+      describing any of the various problems that could exist with a seal, 
+      such as an invalid seal format, expired timestamp, or decryption 
+      error.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="esapi.reference.default_encryptor-pysrc.html#DefaultEncryptor.unseal">source&nbsp;code</a></span>
             
@@ -295,9 +297,10 @@ as an invalid seal format, expired timestamp, or decryption error.</td>
         <tr>
           <td><span class="summary-sig"><a href="esapi.reference.default_encryptor.DefaultEncryptor-class.html#verify_seal" class="summary-sig-name">verify_seal</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">seal</span>)</span><br />
-      Verifies a seal (created with the seal method) and throws an exception
-describing any of the various problems that could exist with a seal, such
-as an invalid seal format, expired timestamp, or data mismatch.</td>
+      Verifies a seal (created with the seal method) and raises an 
+      exception describing any of the various problems that could exist 
+      with a seal, such as an invalid seal format, expired timestamp, or 
+      data mismatch.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="esapi.reference.default_encryptor-pysrc.html#DefaultEncryptor.verify_seal">source&nbsp;code</a></span>
             
@@ -315,8 +318,8 @@ as an invalid seal format, expired timestamp, or data mismatch.</td>
         <tr>
           <td><span class="summary-sig"><a href="esapi.reference.default_encryptor.DefaultEncryptor-class.html#get_relative_timestamp" class="summary-sig-name">get_relative_timestamp</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">offset</span>)</span><br />
-      Gets an absolute timestamp representing an offset from the current time to be used by
-other functions in the library.</td>
+      Gets an absolute timestamp representing an offset from the current 
+      time to be used by other functions in the library.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="esapi.reference.default_encryptor-pysrc.html#DefaultEncryptor.get_relative_timestamp">source&nbsp;code</a></span>
             
@@ -334,7 +337,7 @@ other functions in the library.</td>
         <tr>
           <td><span class="summary-sig"><a href="esapi.reference.default_encryptor.DefaultEncryptor-class.html#get_timestamp" class="summary-sig-name">get_timestamp</a>(<span class="summary-sig-arg">self</span>)</span><br />
       Gets a timestamp representing the current date and time to be used by
-other functions in the library.</td>
+      other functions in the library.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="esapi.reference.default_encryptor-pysrc.html#DefaultEncryptor.get_timestamp">source&nbsp;code</a></span>
             
@@ -433,13 +436,14 @@ ges\Crypto\Cipher\DES3.pyd'&gt;}"><code class="variable-group">{</code><code cla
     </td>
   </tr></table>
   
-  Returns a string representation of the hash of the provided plaintext and
-salt. The salt helps to protect against a rainbow table attack by mixing
-in some extra data with the plaintext. Some good choices for a salt might
-be an account name or some other string that is known to the application
-but not to an attacker.
-See <a href="http://www.matasano.com/log/958/enough-with-the-rainbow-tables-what-you-need-to-know-about-secure-password-schemes/">
-this article</a> for more information about hashing as it pertains to password schemes.
+  <p>Returns a string representation of the hash of the provided plaintext 
+  and salt. The salt helps to protect against a rainbow table attack by 
+  mixing in some extra data with the plaintext. Some good choices for a 
+  salt might be an account name or some other string that is known to the 
+  application but not to an attacker. See <a 
+  href="http://www.matasano.com/log/958/enough-with-the-rainbow-tables-what-you-need-to-know-about-secure-password-schemes/"
+  target="_top">this article</a> for more information about hashing as it 
+  pertains to password schemes.</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
@@ -449,6 +453,11 @@ this article</a> for more information about hashing as it pertains to password s
     </ul></dd>
     <dt>Returns:</dt>
         <dd>the encrypted hash of 'plaintext' stored as a String</dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.EncryptionException-class.html">EncryptionException</a></strong></code> - if the specified hash algorithm could not be found or another 
+        problem exists with the hashing of 'plaintext'</li>
+    </ul></dd>
     <dt>Overrides:
         <a href="esapi.encryptor.Encryptor-class.html#hash">encryptor.Encryptor.hash</a>
         <dd><em class="note">(inherited documentation)</em></dd>
@@ -471,7 +480,7 @@ this article</a> for more information about hashing as it pertains to password s
     </td>
   </tr></table>
   
-  Encrypts the provided plaintext and returns a ciphertext string.
+  <p>Encrypts the provided plaintext and returns a ciphertext string.</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
@@ -479,6 +488,11 @@ this article</a> for more information about hashing as it pertains to password s
     </ul></dd>
     <dt>Returns:</dt>
         <dd>the encrypted string representation of 'plaintext'</dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.EncryptionException-class.html">EncryptionException</a></strong></code> - if the specified encryption algorithm could not be found or another
+        problem exists with the encryption of 'plaintext'</li>
+    </ul></dd>
     <dt>Overrides:
         <a href="esapi.encryptor.Encryptor-class.html#encrypt">encryptor.Encryptor.encrypt</a>
         <dd><em class="note">(inherited documentation)</em></dd>
@@ -502,9 +516,9 @@ this article</a> for more information about hashing as it pertains to password s
     </td>
   </tr></table>
   
-  Pads the text according to RFC 1423 / PKCS5.
-First the number of bytes needed for padding is found.
-Then that number (say, n) is appended to the string n times.
+  <p>Pads the text according to RFC 1423 / PKCS5. First the number of bytes
+  needed for padding is found. Then that number (say, n) is appended to the
+  string n times.</p>
   <dl class="fields">
   </dl>
 </td></tr></table>
@@ -524,13 +538,12 @@ Then that number (say, n) is appended to the string n times.
     </td>
   </tr></table>
   
-  Unpads the text according to RFC 1423 / PKCS5.
-First the last byte of the string is taken. It is possibly
-the number of padded bytes. Working backwards, we test every character
-to ensure it is equal to the last byte, and it conforms
-to the padding scheme. It is possible, though improbable,
-that this will remove part of the data that looks like padding
-but is not.
+  <p>Unpads the text according to RFC 1423 / PKCS5. First the last byte of 
+  the string is taken. It is possibly the number of padded bytes. Working 
+  backwards, we test every character to ensure it is equal to the last 
+  byte, and it conforms to the padding scheme. It is possible, though 
+  improbable, that this will remove part of the data that looks like 
+  padding but is not.</p>
   <dl class="fields">
   </dl>
 </td></tr></table>
@@ -550,8 +563,8 @@ but is not.
     </td>
   </tr></table>
   
-  Decrypts the provided ciphertext string (encrypted with the encrypt
-method) and returns a plaintext string.
+  <p>Decrypts the provided ciphertext string (encrypted with the encrypt 
+  method) and returns a plaintext string.</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
@@ -559,6 +572,11 @@ method) and returns a plaintext string.
     </ul></dd>
     <dt>Returns:</dt>
         <dd>the decrypted ciphertext</dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.EncryptionException-class.html">EncryptionException</a></strong></code> - if the specified encryption algorithm could not be found or another
+        problem exists with the encryption of 'plaintext'</li>
+    </ul></dd>
     <dt>Overrides:
         <a href="esapi.encryptor.Encryptor-class.html#decrypt">encryptor.Encryptor.decrypt</a>
         <dd><em class="note">(inherited documentation)</em></dd>
@@ -581,8 +599,8 @@ method) and returns a plaintext string.
     </td>
   </tr></table>
   
-  Create a digital signature for the provided data and return it in a
-string.
+  <p>Create a digital signature for the provided data and returns it in a 
+  string.</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
@@ -590,6 +608,10 @@ string.
     </ul></dd>
     <dt>Returns:</dt>
         <dd>the digital signature stored as a String</dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.EncryptionException-class.html">EncryptionException</a></strong></code> - if the specified signature algorithm cannot be found</li>
+    </ul></dd>
     <dt>Overrides:
         <a href="esapi.encryptor.Encryptor-class.html#sign">encryptor.Encryptor.sign</a>
         <dd><em class="note">(inherited documentation)</em></dd>
@@ -613,8 +635,8 @@ string.
     </td>
   </tr></table>
   
-  Verifies a digital signature (created with the sign method) and returns
-the boolean result.
+  <p>Verifies a digital signature (created with the sign method) and return
+  s the boolean result.</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
@@ -646,15 +668,21 @@ the boolean result.
     </td>
   </tr></table>
   
-  Creates a seal that binds a set of data and includes an expiration timestamp.
+  <p>Creates a seal that binds a set of data and includes an expiration 
+  timestamp.</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
         <li><strong class="pname"><code>data</code></strong> - the data to seal</li>
-        <li><strong class="pname"><code>timestamp</code></strong> - the absolute expiration date of the data, expressed as seconds since the epoch</li>
+        <li><strong class="pname"><code>timestamp</code></strong> - the absolute expiration date of the data, expressed as seconds 
+          since the epoch</li>
     </ul></dd>
     <dt>Returns:</dt>
         <dd>the seal</dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.IntegrityException-class.html">IntegrityException</a></strong></code></li>
+    </ul></dd>
     <dt>Overrides:
         <a href="esapi.encryptor.Encryptor-class.html#seal">encryptor.Encryptor.seal</a>
         <dd><em class="note">(inherited documentation)</em></dd>
@@ -677,9 +705,9 @@ the boolean result.
     </td>
   </tr></table>
   
-  Unseals data (created with the seal method) and throws an exception
-describing any of the various problems that could exist with a seal, such
-as an invalid seal format, expired timestamp, or decryption error.
+  <p>Unseals data (created with the seal method) and raises an exception 
+  describing any of the various problems that could exist with a seal, such
+  as an invalid seal format, expired timestamp, or decryption error.</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
@@ -687,6 +715,10 @@ as an invalid seal format, expired timestamp, or decryption error.
     </ul></dd>
     <dt>Returns:</dt>
         <dd>the original (unsealed) data</dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.EncryptionException-class.html">EncryptionException</a></strong></code> - if the unsealed data cannot be retrieved for any reason</li>
+    </ul></dd>
     <dt>Overrides:
         <a href="esapi.encryptor.Encryptor-class.html#unseal">encryptor.Encryptor.unseal</a>
         <dd><em class="note">(inherited documentation)</em></dd>
@@ -709,9 +741,9 @@ as an invalid seal format, expired timestamp, or decryption error.
     </td>
   </tr></table>
   
-  Verifies a seal (created with the seal method) and throws an exception
-describing any of the various problems that could exist with a seal, such
-as an invalid seal format, expired timestamp, or data mismatch.
+  <p>Verifies a seal (created with the seal method) and raises an exception
+  describing any of the various problems that could exist with a seal, such
+  as an invalid seal format, expired timestamp, or data mismatch.</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
@@ -741,8 +773,8 @@ as an invalid seal format, expired timestamp, or data mismatch.
     </td>
   </tr></table>
   
-  Gets an absolute timestamp representing an offset from the current time to be used by
-other functions in the library.
+  <p>Gets an absolute timestamp representing an offset from the current 
+  time to be used by other functions in the library.</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
@@ -771,8 +803,8 @@ other functions in the library.
     </td>
   </tr></table>
   
-  Gets a timestamp representing the current date and time to be used by
-other functions in the library.
+  <p>Gets a timestamp representing the current date and time to be used by 
+  other functions in the library.</p>
   <dl class="fields">
     <dt>Returns:</dt>
         <dd>a timestamp representing the current time</dd>
@@ -852,7 +884,7 @@ ges\Crypto\Cipher\DES3.pyd'&gt;<code class="variable-group">}</code>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Wed Jun 24 17:08:25 2009
+    Generated by Epydoc 3.0.1 on Tue Jul 14 16:39:09 2009
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

@@ -141,7 +141,7 @@
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="ESAPI_Validator"></a><span class="summary-name">ESAPI_Validator</span> = <code title="'esapi.reference.DefaultValidator'"><code class="variable-quote">'</code><code class="variable-string">esapi.reference.DefaultValidator</code><code class="variable-quote">'</code></code>
+        <a href="esapi.conf.settings-module.html#ESAPI_Validator" class="summary-name">ESAPI_Validator</a> = <code title="'esapi.reference.default_validator.DefaultValidator'"><code class="variable-quote">'</code><code class="variable-string">esapi.reference.default_validator.DefaultVa</code><code class="variable-ellipsis">...</code></code>
     </td>
   </tr>
 <tr>
@@ -289,7 +289,7 @@ TIxMTYwODY5MjY2ODQxNzA2OTQ4NzM0Mjc1NTI1MDg0MzMyODQ3NzQyNjY2Mjg5MUwKc1M\
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="esapi.conf.settings-module.html#HttpUtilities_AllowedUploadExtensions" class="summary-name">HttpUtilities_AllowedUploadExtensions</a> = <code title="'.zip,.pdf,.tar,.gz,.xls,.properties,.txt,.xml'"><code class="variable-quote">'</code><code class="variable-string">.zip,.pdf,.tar,.gz,.x</code><code class="variable-ellipsis">...</code></code>
+        <a href="esapi.conf.settings-module.html#HttpUtilities_AllowedUploadExtensions" class="summary-name">HttpUtilities_AllowedUploadExtensions</a> = <code title="['.zip', '.pdf', '.tar', '.gz', '.xls', '.properties', '.txt', '.xml']"><code class="variable-group">[</code><code class="variable-quote">'</code><code class="variable-string">.zip</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">.pdf</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">.tar</code><code class="variable-ellipsis">...</code></code>
     </td>
   </tr>
 <tr>
@@ -436,13 +436,6 @@ TIxMTYwODY5MjY2ODQxNzA2OTQ4NzM0Mjc1NTI1MDg0MzMyODQ3NzQyNjY2Mjg5MUwKc1M\
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="Validator_SafeString"></a><span class="summary-name">Validator_SafeString</span> = <code title="'^[\\p{L}\\p{N}.]{0,1024}$'"><code class="variable-quote">'</code><code class="variable-string">^[\\p{L}\\p{N}.]{0,1024}$</code><code class="variable-quote">'</code></code>
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
         <a href="esapi.conf.settings-module.html#Validator_Email" class="summary-name">Validator_Email</a> = <code title="'^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\\.[a-zA-Z]{2,4}$'"><code class="variable-quote">'</code><code class="variable-string">^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\\.[a-zA-Z]</code><code class="variable-ellipsis">...</code></code>
     </td>
   </tr>
@@ -458,8 +451,8 @@ TIxMTYwODY5MjY2ODQxNzA2OTQ4NzM0Mjc1NTI1MDg0MzMyODQ3NzQyNjY2Mjg5MUwKc1M\
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="esapi.conf.settings-module.html#Validator_URL" class="summary-name">Validator_URL</a> = <code title="'^(ht|f)tp(s?)\\:\\/\\/[0-9a-zA-Z]([-.\\w]*[0-9a-zA-Z])*(:(0-9)*)*(\\/\
-?)([a-zA-Z0-9\\-\\.\\?\\,\\:\\\'\\/\\\\\\+=&amp;amp;%\\$#_]*)?$'"><code class="variable-quote">'</code><code class="variable-string">^(ht|f)tp(s?)\\:\\/\\/[0-9a-zA-Z]([-.\\w]*[0-</code><code class="variable-ellipsis">...</code></code>
+        <a href="esapi.conf.settings-module.html#Validator_URL" class="summary-name">Validator_URL</a> = <code title="'^(ht|f)tp(s?)://[0-9a-zA-Z]([-.\\w]*[0-9a-zA-Z])*(:(0-9)*)*(/?)([a-zA\
+-Z0-9-\\.\\?,:\'/\\\\\\+=&amp;amp;%\\$#_]*)$'"><code class="variable-quote">'</code><code class="variable-string">^(ht|f)tp(s?)://[0-9a-zA-Z]([-.\\w]*[0-9a-zA-</code><code class="variable-ellipsis">...</code></code>
     </td>
   </tr>
 <tr>
@@ -488,7 +481,7 @@ TIxMTYwODY5MjY2ODQxNzA2OTQ4NzM0Mjc1NTI1MDg0MzMyODQ3NzQyNjY2Mjg5MUwKc1M\
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="Validator_SystemCommand"></a><span class="summary-name">Validator_SystemCommand</span> = <code title="'^[a-zA-Z\\-\\/]{0,64}$'"><code class="variable-quote">'</code><code class="variable-string">^[a-zA-Z\\-\\/]{0,64}$</code><code class="variable-quote">'</code></code>
+        <a name="Validator_SystemCommand"></a><span class="summary-name">Validator_SystemCommand</span> = <code title="'^[a-zA-Z-/]{0,64}$'"><code class="variable-quote">'</code><code class="variable-string">^[a-zA-Z-/]{0,64}$</code><code class="variable-quote">'</code></code>
     </td>
   </tr>
 <tr>
@@ -502,7 +495,7 @@ TIxMTYwODY5MjY2ODQxNzA2OTQ4NzM0Mjc1NTI1MDg0MzMyODQ3NzQyNjY2Mjg5MUwKc1M\
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="Validator_Redirect"></a><span class="summary-name">Validator_Redirect</span> = <code title="'^\\/test.*$'"><code class="variable-quote">'</code><code class="variable-string">^\\/test.*$</code><code class="variable-quote">'</code></code>
+        <a name="Validator_Redirect"></a><span class="summary-name">Validator_Redirect</span> = <code title="'^/test.*$'"><code class="variable-quote">'</code><code class="variable-string">^/test.*$</code><code class="variable-quote">'</code></code>
     </td>
   </tr>
 <tr>
@@ -516,7 +509,7 @@ TIxMTYwODY5MjY2ODQxNzA2OTQ4NzM0Mjc1NTI1MDg0MzMyODQ3NzQyNjY2Mjg5MUwKc1M\
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="Validator_HTTPServerName"></a><span class="summary-name">Validator_HTTPServerName</span> = <code title="'^[a-zA-Z0-9_.\\-]*$'"><code class="variable-quote">'</code><code class="variable-string">^[a-zA-Z0-9_.\\-]*$</code><code class="variable-quote">'</code></code>
+        <a name="Validator_HTTPServerName"></a><span class="summary-name">Validator_HTTPServerName</span> = <code title="'^[a-zA-Z0-9_.-]*$'"><code class="variable-quote">'</code><code class="variable-string">^[a-zA-Z0-9_.-]*$</code><code class="variable-quote">'</code></code>
     </td>
   </tr>
 <tr>
@@ -530,63 +523,63 @@ TIxMTYwODY5MjY2ODQxNzA2OTQ4NzM0Mjc1NTI1MDg0MzMyODQ3NzQyNjY2Mjg5MUwKc1M\
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="Validator_HTTPParameterValue"></a><span class="summary-name">Validator_HTTPParameterValue</span> = <code title="'^[a-zA-Z0-9.\\-\\/+=_ ]*$'"><code class="variable-quote">'</code><code class="variable-string">^[a-zA-Z0-9.\\-\\/+=_ ]*$</code><code class="variable-quote">'</code></code>
+        <a name="Validator_HTTPParameterValue"></a><span class="summary-name">Validator_HTTPParameterValue</span> = <code title="'^[a-zA-Z0-9.-/+=_ ]*$'"><code class="variable-quote">'</code><code class="variable-string">^[a-zA-Z0-9.-/+=_ ]*$</code><code class="variable-quote">'</code></code>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="Validator_HTTPCookieName"></a><span class="summary-name">Validator_HTTPCookieName</span> = <code title="'^[a-zA-Z0-9\\-_]{0,32}$'"><code class="variable-quote">'</code><code class="variable-string">^[a-zA-Z0-9\\-_]{0,32}$</code><code class="variable-quote">'</code></code>
+        <a name="Validator_HTTPCookieName"></a><span class="summary-name">Validator_HTTPCookieName</span> = <code title="'^[a-zA-Z0-9-_]{0,32}$'"><code class="variable-quote">'</code><code class="variable-string">^[a-zA-Z0-9-_]{0,32}$</code><code class="variable-quote">'</code></code>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="Validator_HTTPCookieValue"></a><span class="summary-name">Validator_HTTPCookieValue</span> = <code title="'^[a-zA-Z0-9\\-\\/+=_ ]*$'"><code class="variable-quote">'</code><code class="variable-string">^[a-zA-Z0-9\\-\\/+=_ ]*$</code><code class="variable-quote">'</code></code>
+        <a name="Validator_HTTPCookieValue"></a><span class="summary-name">Validator_HTTPCookieValue</span> = <code title="'^[a-zA-Z0-9-/+=_ ]*$'"><code class="variable-quote">'</code><code class="variable-string">^[a-zA-Z0-9-/+=_ ]*$</code><code class="variable-quote">'</code></code>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="Validator_HTTPHeaderName"></a><span class="summary-name">Validator_HTTPHeaderName</span> = <code title="'^[a-zA-Z0-9\\-_]{0,32}$'"><code class="variable-quote">'</code><code class="variable-string">^[a-zA-Z0-9\\-_]{0,32}$</code><code class="variable-quote">'</code></code>
+        <a name="Validator_HTTPHeaderName"></a><span class="summary-name">Validator_HTTPHeaderName</span> = <code title="'^[a-zA-Z0-9-_]{0,32}$'"><code class="variable-quote">'</code><code class="variable-string">^[a-zA-Z0-9-_]{0,32}$</code><code class="variable-quote">'</code></code>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="esapi.conf.settings-module.html#Validator_HTTPHeaderValue" class="summary-name">Validator_HTTPHeaderValue</a> = <code title="'^[a-zA-Z0-9()\\-=\\*\\.\\?;,+\\/:&amp;_ ]*$'"><code class="variable-quote">'</code><code class="variable-string">^[a-zA-Z0-9()\\-=\\*\\.\\?;,+\\/:</code><code class="variable-ellipsis">...</code></code>
+        <a name="Validator_HTTPHeaderValue"></a><span class="summary-name">Validator_HTTPHeaderValue</span> = <code title="'^[a-zA-Z0-9()-=\\*\\.\\?;,+/:&amp;_ ]*$'"><code class="variable-quote">'</code><code class="variable-string">^[a-zA-Z0-9()-=\\*\\.\\?;,+/:&amp;_ ]*$</code><code class="variable-quote">'</code></code>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="Validator_HTTPContextPath"></a><span class="summary-name">Validator_HTTPContextPath</span> = <code title="'^[a-zA-Z0-9.\\-_]*$'"><code class="variable-quote">'</code><code class="variable-string">^[a-zA-Z0-9.\\-_]*$</code><code class="variable-quote">'</code></code>
+        <a name="Validator_HTTPContextPath"></a><span class="summary-name">Validator_HTTPContextPath</span> = <code title="'^[a-zA-Z0-9.-_]*$'"><code class="variable-quote">'</code><code class="variable-string">^[a-zA-Z0-9.-_]*$</code><code class="variable-quote">'</code></code>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="Validator_HTTPPath"></a><span class="summary-name">Validator_HTTPPath</span> = <code title="'^[a-zA-Z0-9.\\-_]*$'"><code class="variable-quote">'</code><code class="variable-string">^[a-zA-Z0-9.\\-_]*$</code><code class="variable-quote">'</code></code>
+        <a name="Validator_HTTPPath"></a><span class="summary-name">Validator_HTTPPath</span> = <code title="'^[a-zA-Z0-9.-_]*$'"><code class="variable-quote">'</code><code class="variable-string">^[a-zA-Z0-9.-_]*$</code><code class="variable-quote">'</code></code>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="esapi.conf.settings-module.html#Validator_HTTPQueryString" class="summary-name">Validator_HTTPQueryString</a> = <code title="'^[a-zA-Z0-9()\\-=\\*\\.\\?;,+\\/:&amp;_ ](1,50)$'"><code class="variable-quote">'</code><code class="variable-string">^[a-zA-Z0-9()\\-=\\*\\.\\?;,+\\/:</code><code class="variable-ellipsis">...</code></code>
+        <a href="esapi.conf.settings-module.html#Validator_HTTPQueryString" class="summary-name">Validator_HTTPQueryString</a> = <code title="'^[a-zA-Z0-9()-=\\*\\.\\?;,+/:&amp;_ ](1,50)$'"><code class="variable-quote">'</code><code class="variable-string">^[a-zA-Z0-9()-=\\*\\.\\?;,+/:&amp;_ ]</code><code class="variable-ellipsis">...</code></code>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="Validator_HTTPURI"></a><span class="summary-name">Validator_HTTPURI</span> = <code title="'^[a-zA-Z0-9()\\-=\\*\\.\\?;,+\\/:&amp;_ ]*$'"><code class="variable-quote">'</code><code class="variable-string">^[a-zA-Z0-9()\\-=\\*\\.\\?;,+\\/:&amp;_ ]*$</code><code class="variable-quote">'</code></code>
+        <a name="Validator_HTTPURI"></a><span class="summary-name">Validator_HTTPURI</span> = <code title="'^[a-zA-Z0-9()-=\\*\\.\\?;,+/:&amp;_ ]*$'"><code class="variable-quote">'</code><code class="variable-string">^[a-zA-Z0-9()-=\\*\\.\\?;,+/:&amp;_ ]*$</code><code class="variable-quote">'</code></code>
     </td>
   </tr>
 <tr>
@@ -607,14 +600,14 @@ TIxMTYwODY5MjY2ODQxNzA2OTQ4NzM0Mjc1NTI1MDg0MzMyODQ3NzQyNjY2Mjg5MUwKc1M\
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="esapi.conf.settings-module.html#Validator_FileName" class="summary-name">Validator_FileName</a> = <code title="'^[a-zA-Z0-9!@#$%^&amp;{}\\[\\]()_+\\-=,.~\'` ]{0,255}$'"><code class="variable-quote">'</code><code class="variable-string">^[a-zA-Z0-9!@#$%^&amp;{}\\[\\]()_+\\-=,.~\'`</code><code class="variable-ellipsis">...</code></code>
+        <a href="esapi.conf.settings-module.html#Validator_Filename" class="summary-name">Validator_Filename</a> = <code title="'^[a-zA-Z0-9!@#$%^&amp;{}\\[\\]()_+-=,.~\'` ]{0,255}$'"><code class="variable-quote">'</code><code class="variable-string">^[a-zA-Z0-9!@#$%^&amp;{}\\[\\]()_+-=,.~\'` ]</code><code class="variable-ellipsis">...</code></code>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="esapi.conf.settings-module.html#Validator_DirectoryName" class="summary-name">Validator_DirectoryName</a> = <code title="'^[a-zA-Z0-9:\\\\!@#$%^&amp;{}\\[\\]()_+\\-=,.~\'` ]{0,255}$'"><code class="variable-quote">'</code><code class="variable-string">^[a-zA-Z0-9:\\\\!@#$%^&amp;{}\\[\\]()_+</code><code class="variable-ellipsis">...</code></code>
+        <a href="esapi.conf.settings-module.html#Validator_DirectoryName" class="summary-name">Validator_DirectoryName</a> = <code title="'^[a-zA-Z0-9:\\\\!@#$%^&amp;{}\\[\\]()_+-=,.~\'` ]{0,255}$'"><code class="variable-quote">'</code><code class="variable-string">^[a-zA-Z0-9:\\\\!@#$%^&amp;{}\\[\\]()_+</code><code class="variable-ellipsis">...</code></code>
     </td>
   </tr>
 <tr>
@@ -733,6 +726,24 @@ TIxMTYwODY5MjY2ODQxNzA2OTQ4NzM0Mjc1NTI1MDg0MzMyODQ3NzQyNjY2Mjg5MUwKc1M\
   </dl>
 </td></tr></table>
 </div>
+<a name="ESAPI_Validator"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">ESAPI_Validator</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-quote">'</code><code class="variable-string">esapi.reference.default_validator.DefaultValidator</code><code class="variable-quote">'</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
 <a name="Encryptor_MasterKey"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
@@ -789,7 +800,7 @@ TIxMTYwODY5MjY2ODQxNzA2OTQ4NzM0Mjc1NTI1MDg0MzMyODQ3NzQyNjY2Mjg5MUwKc1M\
   <dl class="fields">
     <dt>Value:</dt>
       <dd><table><tr><td><pre class="variable">
-<code class="variable-quote">'</code><code class="variable-string">.zip,.pdf,.tar,.gz,.xls,.properties,.txt,.xml</code><code class="variable-quote">'</code>
+<code class="variable-group">[</code><code class="variable-quote">'</code><code class="variable-string">.zip</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">.pdf</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">.tar</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">.gz</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">.xls</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">.properties</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">.txt</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">.xml</code><code class="variable-quote">'</code><code class="variable-group">]</code>
 </pre></td></tr></table>
 </dd>
   </dl>
@@ -934,8 +945,8 @@ TIxMTYwODY5MjY2ODQxNzA2OTQ4NzM0Mjc1NTI1MDg0MzMyODQ3NzQyNjY2Mjg5MUwKc1M\
   <dl class="fields">
     <dt>Value:</dt>
       <dd><table><tr><td><pre class="variable">
-<code class="variable-quote">'</code><code class="variable-string">^(ht|f)tp(s?)\\:\\/\\/[0-9a-zA-Z]([-.\\w]*[0-9a-zA-Z])*(:(0-9)*)*(\\/</code><span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
-<code class="variable-string">?)([a-zA-Z0-9\\-\\.\\?\\,\\:\\\'\\/\\\\\\+=&amp;amp;%\\$#_]*)?$</code><code class="variable-quote">'</code>
+<code class="variable-quote">'</code><code class="variable-string">^(ht|f)tp(s?)://[0-9a-zA-Z]([-.\\w]*[0-9a-zA-Z])*(:(0-9)*)*(/?)([a-zA</code><span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+<code class="variable-string">-Z0-9-\\.\\?,:\'/\\\\\\+=&amp;amp;%\\$#_]*)$</code><code class="variable-quote">'</code>
 </pre></td></tr></table>
 </dd>
   </dl>
@@ -960,24 +971,6 @@ TIxMTYwODY5MjY2ODQxNzA2OTQ4NzM0Mjc1NTI1MDg0MzMyODQ3NzQyNjY2Mjg5MUwKc1M\
   </dl>
 </td></tr></table>
 </div>
-<a name="Validator_HTTPHeaderValue"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <h3 class="epydoc">Validator_HTTPHeaderValue</h3>
-  
-  <dl class="fields">
-  </dl>
-  <dl class="fields">
-    <dt>Value:</dt>
-      <dd><table><tr><td><pre class="variable">
-<code class="variable-quote">'</code><code class="variable-string">^[a-zA-Z0-9()\\-=\\*\\.\\?;,+\\/:&amp;_ ]*$</code><code class="variable-quote">'</code>
-</pre></td></tr></table>
-</dd>
-  </dl>
-</td></tr></table>
-</div>
 <a name="Validator_HTTPQueryString"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
@@ -990,25 +983,25 @@ TIxMTYwODY5MjY2ODQxNzA2OTQ4NzM0Mjc1NTI1MDg0MzMyODQ3NzQyNjY2Mjg5MUwKc1M\
   <dl class="fields">
     <dt>Value:</dt>
       <dd><table><tr><td><pre class="variable">
-<code class="variable-quote">'</code><code class="variable-string">^[a-zA-Z0-9()\\-=\\*\\.\\?;,+\\/:&amp;_ ](1,50)$</code><code class="variable-quote">'</code>
+<code class="variable-quote">'</code><code class="variable-string">^[a-zA-Z0-9()-=\\*\\.\\?;,+/:&amp;_ ](1,50)$</code><code class="variable-quote">'</code>
 </pre></td></tr></table>
 </dd>
   </dl>
 </td></tr></table>
 </div>
-<a name="Validator_FileName"></a>
+<a name="Validator_Filename"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
-  <h3 class="epydoc">Validator_FileName</h3>
+  <h3 class="epydoc">Validator_Filename</h3>
   
   <dl class="fields">
   </dl>
   <dl class="fields">
     <dt>Value:</dt>
       <dd><table><tr><td><pre class="variable">
-<code class="variable-quote">'</code><code class="variable-string">^[a-zA-Z0-9!@#$%^&amp;{}\\[\\]()_+\\-=,.~\'` ]{0,255}$</code><code class="variable-quote">'</code>
+<code class="variable-quote">'</code><code class="variable-string">^[a-zA-Z0-9!@#$%^&amp;{}\\[\\]()_+-=,.~\'` ]{0,255}$</code><code class="variable-quote">'</code>
 </pre></td></tr></table>
 </dd>
   </dl>
@@ -1026,7 +1019,7 @@ TIxMTYwODY5MjY2ODQxNzA2OTQ4NzM0Mjc1NTI1MDg0MzMyODQ3NzQyNjY2Mjg5MUwKc1M\
   <dl class="fields">
     <dt>Value:</dt>
       <dd><table><tr><td><pre class="variable">
-<code class="variable-quote">'</code><code class="variable-string">^[a-zA-Z0-9:\\\\!@#$%^&amp;{}\\[\\]()_+\\-=,.~\'` ]{0,255}$</code><code class="variable-quote">'</code>
+<code class="variable-quote">'</code><code class="variable-string">^[a-zA-Z0-9:\\\\!@#$%^&amp;{}\\[\\]()_+-=,.~\'` ]{0,255}$</code><code class="variable-quote">'</code>
 </pre></td></tr></table>
 </dd>
   </dl>
@@ -1059,7 +1052,7 @@ TIxMTYwODY5MjY2ODQxNzA2OTQ4NzM0Mjc1NTI1MDg0MzMyODQ3NzQyNjY2Mjg5MUwKc1M\
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Wed Jun 24 17:08:24 2009
+    Generated by Epydoc 3.0.1 on Tue Jul 14 16:39:08 2009
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"
