@@ -2,17 +2,18 @@
 # -*- coding: utf-8 -*-
 
 """
-OWASP Enterprise Security API (ESAPI)
- 
-This file is part of the Open Web Application Security Project (OWASP)
-Enterprise Security API (ESAPI) project. For details, please see
-<a href="http://www.owasp.org/index.php/ESAPI">http://www.owasp.org/index.php/ESAPI</a>.
-Copyright (c) 2009 - The OWASP Foundation
+@license: OWASP Enterprise Security API (ESAPI)
+     
+    This file is part of the Open Web Application Security Project (OWASP)
+    Enterprise Security API (ESAPI) project. For details, please see
+    U{http://www.owasp.org/index.php/ESAPI<http://www.owasp.org/index.php/ESAPI>}.
 
-The ESAPI is published by OWASP under the BSD license. You should read and 
-accept the LICENSE before you use, modify, and/or redistribute this software.
-
-@author Craig Younkins (craig.younkins@owasp.org)
+    The ESAPI is published by OWASP under the BSD license. You should read and 
+    accept the LICENSE before you use, modify, and/or redistribute this software.
+    
+@summary: Reference implementation of the LogFactory and Logger interfaces.
+@copyright: Copyright (c) 2009 - The OWASP Foundation
+@author: Craig Younkins (craig.younkins@owasp.org)
 """
 
 # Todo: 
@@ -33,9 +34,9 @@ class PythonLogFactory(LogFactory):
     with the currently logged in user and the word "SECURITY" for security 
     related events. 
     
-    @author Craig Younkins (craig.younkins@owasp.org)
-    @see esapi.log_factory
-    @see esapi.reference.python_log_factory.PythonLogFactory.PythonLogger
+    @author: Craig Younkins (craig.younkins@owasp.org)
+    @see: L{esapi.log_factory}
+    @see: L{esapi.reference.python_log_factory.PythonLogFactory.PythonLogger}
     """
     
     application_name = None
@@ -45,8 +46,8 @@ class PythonLogFactory(LogFactory):
         """
         Constructor for this implementation of the LogFactory interface.
         
-        @param application_name The name of the application this logger is 
-        being constructed for.
+        @param application_name: The name of the application this logger is 
+            being constructed for.
         """
         LogFactory.__init__(self)
         self.application_name = application_name
@@ -69,9 +70,9 @@ class PythonLogFactory(LogFactory):
         specific to the current application or organization, such as credit 
         cards, social security numbers, etc.
         
-        @author Craig Younkins (craig.younkins@owasp.org)
-        @since June 1, 2009
-        @see esapi.LogFactory
+        @author: Craig Younkins (craig.younkins@owasp.org)
+        @since: June 1, 2009
+        @see: L{esapi.LogFactory}
         """
                
         # The logging object used by this class to log everything.
@@ -88,8 +89,8 @@ class PythonLogFactory(LogFactory):
             Public constructor should only ever be called via the appropriate 
             LogFactory
             
-            @param application_name the application name
-            @param module_name the module name
+            @param application_name: the application name
+            @param module_name: the module name
             """
             Logger.__init__(self)
             
@@ -158,11 +159,11 @@ class PythonLogFactory(LogFactory):
             It will only log the message if the current logging level is 
             enabled, otherwise it will discard the message.
             
-            @param level the severity level of the security event
-            @param event_type the event_type of the event 
-                   (SECURITY, FUNCTIONALITY, etc.)
-            @param message the message
-            @param exception an exception
+            @param level: the severity level of the security event
+            @param event_type: the event_type of the event 
+                (SECURITY, FUNCTIONALITY, etc.)
+            @param message: the message
+            @param exception: an exception
             """
             # Before we waste all kinds of time preparing this event for the 
             # log, let check to see if its loggable

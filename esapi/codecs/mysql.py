@@ -2,17 +2,18 @@
 # -*- coding: utf-8 -*-
 
 """
-OWASP Enterprise Security API (ESAPI)
- 
-This file is part of the Open Web Application Security Project (OWASP)
-Enterprise Security API (ESAPI) project. For details, please see
-<a href="http://www.owasp.org/index.php/ESAPI">http://www.owasp.org/index.php/ESAPI</a>.
-Copyright (c) 2009 - The OWASP Foundation
+@license: OWASP Enterprise Security API (ESAPI)
+     
+    This file is part of the Open Web Application Security Project (OWASP)
+    Enterprise Security API (ESAPI) project. For details, please see
+    U{http://www.owasp.org/index.php/ESAPI<http://www.owasp.org/index.php/ESAPI>}.
 
-The ESAPI is published by OWASP under the BSD license. You should read and 
-accept the LICENSE before you use, modify, and/or redistribute this software.
-
-@author Craig Younkins (craig.younkins@owasp.org)
+    The ESAPI is published by OWASP under the BSD license. You should read and 
+    accept the LICENSE before you use, modify, and/or redistribute this software.
+    
+@summary: Implementation of the Codec interface for MySQL strings.
+@copyright: Copyright (c) 2009 - The OWASP Foundation
+@author: Craig Younkins (craig.younkins@owasp.org)
 """
 
 import esapi.codecs.codec as codec
@@ -22,7 +23,7 @@ class BadModeError(): pass
 class MySQLCodec(codec.Codec):
     """
     Implementation of the Codec interface for MySQL strings. See 
-    http://mirror.yandex.ru/mirrors/ftp.mysql.com/doc/refman/5.0/en/string-syntax.html
+    U{here<http://dev.mysql.com/doc/refman/5.0/en/string-syntax.html>}
     or more information.
     """
     
@@ -33,7 +34,8 @@ class MySQLCodec(codec.Codec):
         """
         Instantiates the MySQL codec.
         
-        @param mode Either MYSQL_MODE or ANSI_MODE, changes the encoding
+        @param mode: Either MySQLCodec.MYSQL_MODE or MySQLCodec.ANSI_MODE,
+            changes the encoding
         """
         codec.Codec.__init__(self)
         if mode != 0 and mode != 1:
@@ -121,8 +123,8 @@ class MySQLCodec(codec.Codec):
         """
         Decodes the next character from an ANSI SQL escaping.
         
-        @param pbs A PushbackString with the characters you want to decode
-        @return a single character, decoded
+        @param pbs: A PushbackString with the characters you want to decode
+        @return: a single character, decoded
         """
         pbs.mark()
         
@@ -150,10 +152,11 @@ class MySQLCodec(codec.Codec):
         
     def decode_character_mysql(self, pbs):
         """
-        Decode the next character in the PushbackString according to MySQL mode
+        Decode the next character in the PushbackString according to MySQL 
+        mode.
         
-        @param a PushbackString 
-        @return the next character, decoded
+        @param pbs: A PushbackString to decode the next character from
+        @return: the next character, decoded
         """
         pbs.mark()
         

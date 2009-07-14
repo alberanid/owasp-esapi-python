@@ -2,17 +2,19 @@
 # -*- coding: utf-8 -*-
 
 """
-OWASP Enterprise Security API (ESAPI)
- 
-This file is part of the Open Web Application Security Project (OWASP)
-Enterprise Security API (ESAPI) project. For details, please see
-<a href="http://www.owasp.org/index.php/ESAPI">http://www.owasp.org/index.php/ESAPI</a>.
-Copyright (c) 2009 - The OWASP Foundation
+@license: OWASP Enterprise Security API (ESAPI)
+     
+    This file is part of the Open Web Application Security Project (OWASP)
+    Enterprise Security API (ESAPI) project. For details, please see
+    U{http://www.owasp.org/index.php/ESAPI<http://www.owasp.org/index.php/ESAPI>}.
 
-The ESAPI is published by OWASP under the BSD license. You should read and 
-accept the LICENSE before you use, modify, and/or redistribute this software.
-
-@author Craig Younkins (craig.younkins@owasp.org)
+    The ESAPI is published by OWASP under the BSD license. You should read and 
+    accept the LICENSE before you use, modify, and/or redistribute this software.
+    
+@summary: ESAPI locator class is provided to make it easy to gain access to the
+    current ESAPI classes in use.
+@copyright: Copyright (c) 2009 - The OWASP Foundation
+@author: Craig Younkins (craig.younkins@owasp.org)
 """
 
 # Todo
@@ -181,7 +183,8 @@ class ESAPI():
         """
         Get the current LogFactory being used by ESAPI. If there isn't one yet,
         it will create one, and then return this same LogFactory from then on.
-        @return The current LogFactory being used by ESAPI.
+        
+        @return: The current LogFactory being used by ESAPI.
         """
         if cls._log_factory is None:
             fqn = cls.security_configuration().get_log_implementation()
@@ -197,15 +200,15 @@ class ESAPI():
     @classmethod
     def logger(cls, key):
         """
-        @param key The class or module to associate the logger with.
-        @return The current Logger associated with the specified class.
+        @param key: The class or module to associate the logger with.
+        @return: The current Logger associated with the specified class.
         """
         return cls.log_factory().get_logger(key)
 
     @classmethod
     def log(cls):
         """
-        @return The default logger
+        @return: The default logger
         """
         if cls._default_logger is None:
             cls._default_logger = cls._log_factory().get_logger("DefaultLogger")
@@ -215,8 +218,7 @@ class ESAPI():
     def set_log_factory(cls, factory):
         """
         Change the current ESAPI LogFactory to the LogFactory provided. 
-        @param factory
-               the LogFactory to set to be the current ESAPI LogFactory. 
+        @param factory: the LogFactory to set to be the current ESAPI LogFactory. 
         """
         cls._log_factory = factory
         

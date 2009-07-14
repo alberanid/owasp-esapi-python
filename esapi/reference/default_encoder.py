@@ -2,17 +2,18 @@
 # -*- coding: utf-8 -*-
 
 """
-OWASP Enterprise Security API (ESAPI)
- 
-This file is part of the Open Web Application Security Project (OWASP)
-Enterprise Security API (ESAPI) project. For details, please see
-<a href="http://www.owasp.org/index.php/ESAPI">http://www.owasp.org/index.php/ESAPI</a>.
-Copyright (c) 2009 - The OWASP Foundation
+@license: OWASP Enterprise Security API (ESAPI)
+     
+    This file is part of the Open Web Application Security Project (OWASP)
+    Enterprise Security API (ESAPI) project. For details, please see
+    U{http://www.owasp.org/index.php/ESAPI<http://www.owasp.org/index.php/ESAPI>}.
 
-The ESAPI is published by OWASP under the BSD license. You should read and 
-accept the LICENSE before you use, modify, and/or redistribute this software.
-
-@author Craig Younkins (craig.younkins@owasp.org)
+    The ESAPI is published by OWASP under the BSD license. You should read and 
+    accept the LICENSE before you use, modify, and/or redistribute this software.
+    
+@copyright: Copyright (c) 2009 - The OWASP Foundation
+@summary: Reference implementation of the Encoder interface.
+@author: Craig Younkins (craig.younkins@owasp.org)
 """
 
 import base64
@@ -41,7 +42,7 @@ class DefaultEncoder(Encoder):
     takes a whitelist approach to encoding, meaning that everything not 
     specifically identified in a list of "immune" characters is encoded.
 
-    @author Craig Younkins (craig.younkins@owasp.org)
+    @author: Craig Younkins (craig.younkins@owasp.org)
     """
     
     IMMUNE_HTML = ',.-_ '
@@ -64,7 +65,7 @@ class DefaultEncoder(Encoder):
         """
         Instantiates a new DefaultEncoder.
         
-        @param codecs a list of codec instances to use for canonicalization
+        @param codecs: : a list of codec instances to use for canonicalization
         """
         Encoder.__init__(self)
         

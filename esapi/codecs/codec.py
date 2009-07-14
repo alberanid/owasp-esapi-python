@@ -2,17 +2,19 @@
 # -*- coding: utf-8 -*-
 
 """
-OWASP Enterprise Security API (ESAPI)
- 
-This file is part of the Open Web Application Security Project (OWASP)
-Enterprise Security API (ESAPI) project. For details, please see
-<a href="http://www.owasp.org/index.php/ESAPI">http://www.owasp.org/index.php/ESAPI</a>.
-Copyright (c) 2009 - The OWASP Foundation
+@license: OWASP Enterprise Security API (ESAPI)
+     
+    This file is part of the Open Web Application Security Project (OWASP)
+    Enterprise Security API (ESAPI) project. For details, please see
+    U{http://www.owasp.org/index.php/ESAPI<http://www.owasp.org/index.php/ESAPI>}.
 
-The ESAPI is published by OWASP under the BSD license. You should read and 
-accept the LICENSE before you use, modify, and/or redistribute this software.
-
-@author Craig Younkins (craig.younkins@owasp.org)
+    The ESAPI is published by OWASP under the BSD license. You should read and 
+    accept the LICENSE before you use, modify, and/or redistribute this software.
+    
+@summary: The Codec interface defines a set of methods for encoding and 
+    decoding application level encoding schemes.
+@copyright: Copyright (c) 2009 - The OWASP Foundation
+@author: Craig Younkins (craig.younkins@owasp.org)
 """
 
 from esapi.codecs.push_back_string import PushbackString
@@ -58,8 +60,8 @@ class Codec():
     techniques used by attackers to bypass validation and bury encoded attacks
     in data.
 
-    @author Craig Younkins (craig.younkins@owasp.org)
-    @see esapi.encoder
+    @author: Craig Younkins (craig.younkins@owasp.org)
+    @see: L{esapi.encoder}
     """
     
     def __init__(self):
@@ -69,10 +71,9 @@ class Codec():
         """
         Encode a String so that it can be safely used in a specific context.
 
-        @param immune
-        @param raw
+        @param immune: @param raw
                 the String to encode
-        @return the encoded String
+        @return: the encoded String
         """    
         ret = ''
         try:
@@ -86,11 +87,9 @@ class Codec():
         """
         Default implementation that should be overridden in specific codecs.
 
-        @param immune
-        @param c
-                the Character to encode
-        @return
-                the encoded Character
+        @param immune: characters immune to encoding
+        @param char: the character to encode
+        @return: the encoded Character
         """
         raise NotImplementedError()
         
@@ -98,10 +97,8 @@ class Codec():
         """
         Decode a String that was encoded using the encode method in this Class
 
-        @param encoded
-                the String to decode
-        @return
-                the decoded String
+        @param encoded: the string to decode
+        @return: the decoded string
         """
         buf = ''
         pbs = PushbackString(encoded)
@@ -120,8 +117,8 @@ class Codec():
         If the current character is not encoded, this method MUST reset the 
         PushbackString.
 
-        @param pbs	the PushBackString to decode a character from
+        @param pbs: the PushBackString to decode a character from
 
-        @return the decoded Character
+        @return: the decoded Character
         """
         raise NotImplementedError()

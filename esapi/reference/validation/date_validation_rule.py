@@ -2,17 +2,18 @@
 # -*- coding: utf-8 -*-
 
 """
-OWASP Enterprise Security API (ESAPI)
- 
-This file is part of the Open Web Application Security Project (OWASP)
-Enterprise Security API (ESAPI) project. For details, please see
-<a href="http://www.owasp.org/index.php/ESAPI">http://www.owasp.org/index.php/ESAPI</a>.
-Copyright (c) 2009 - The OWASP Foundation
+@license: OWASP Enterprise Security API (ESAPI)
+     
+    This file is part of the Open Web Application Security Project (OWASP)
+    Enterprise Security API (ESAPI) project. For details, please see
+    U{http://www.owasp.org/index.php/ESAPI<http://www.owasp.org/index.php/ESAPI>}.
 
-The ESAPI is published by OWASP under the BSD license. You should read and 
-accept the LICENSE before you use, modify, and/or redistribute this software.
-
-@author Craig Younkins (craig.younkins@owasp.org)
+    The ESAPI is published by OWASP under the BSD license. You should read and 
+    accept the LICENSE before you use, modify, and/or redistribute this software.
+    
+@summary: A ValidationRule for dates. 
+@copyright: Copyright (c) 2009 - The OWASP Foundation
+@author: Craig Younkins (craig.younkins@owasp.org)
 """
 
 from datetime import datetime
@@ -25,13 +26,13 @@ from esapi.exceptions import EncodingException
 class DateValidationRule(BaseValidationRule):
     """
     This date validator makes use of Python's 
-    <a href="http://docs.python.org/library/datetime.html">datetime.strptime</a>
+    U{datetime.strptime<http://docs.python.org/library/datetime.html>}
     to validate that given dates conform to a format string.
     """
     def __init__(self, type_name, encoder, new_format):
         """
-        @param new_format Required formatting of date in string form, according 
-               to Python's <a href="http://docs.python.org/library/datetime.html">datetime.strptime</a>.
+        @param new_format: Required formatting of date in string form, according 
+               to Python's U{datetime.strptime<http://docs.python.org/library/datetime.html>}.
         """
         self.format = None
         
@@ -41,8 +42,8 @@ class DateValidationRule(BaseValidationRule):
     def set_date_format(self, new_format):
         """
         Sets the format string that input is tested against.
-        @param new_format Required formatting of date in string form, according 
-               to Python's <a href="http://docs.python.org/library/datetime.html">datetime.strptime</a>.
+        @param new_format: Required formatting of date in string form, according 
+               to Python's U{datetime.strptime<http://docs.python.org/library/datetime.html>}.
         """
         if new_format is None:
             raise RuntimeError("DateValidationRule.set_date_format requires a non-null DateFormat")

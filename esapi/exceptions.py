@@ -2,17 +2,18 @@
 # -*- coding: utf-8 -*-
 
 """
-OWASP Enterprise Security API (ESAPI)
- 
-This file is part of the Open Web Application Security Project (OWASP)
-Enterprise Security API (ESAPI) project. For details, please see
-<a href="http://www.owasp.org/index.php/ESAPI">http://www.owasp.org/index.php/ESAPI</a>.
-Copyright (c) 2009 - The OWASP Foundation
+@license: OWASP Enterprise Security API (ESAPI)
+     
+    This file is part of the Open Web Application Security Project (OWASP)
+    Enterprise Security API (ESAPI) project. For details, please see
+    U{http://www.owasp.org/index.php/ESAPI<http://www.owasp.org/index.php/ESAPI>}.
 
-The ESAPI is published by OWASP under the BSD license. You should read and 
-accept the LICENSE before you use, modify, and/or redistribute this software.
-
-@author Craig Younkins (craig.younkins@owasp.org)
+    The ESAPI is published by OWASP under the BSD license. You should read and 
+    accept the LICENSE before you use, modify, and/or redistribute this software.
+    
+@summary: All the exceptions used by ESAPI.
+@copyright: Copyright (c) 2009 - The OWASP Foundation
+@author: Craig Younkins (craig.younkins@owasp.org)
 """
 
 # Todo
@@ -29,11 +30,11 @@ class EnterpriseSecurityException(Exception):
     EnterpriseSecurityException is the base class for all security related exceptions. You should pass in the root cause
     exception where possible. Constructors for classes extending EnterpriseSecurityException should be sure to call the
     appropriate super() method in order to ensure that logging and intrusion detection occur properly.
-    <P>
+    
     All EnterpriseSecurityExceptions have two messages, one for the user and one for the log file. This way, a message
     can be shown to the user that doesn't contain sensitive information or unnecessary implementation details. Meanwhile,
     all the critical information can be included in the exception so that it gets logged.
-    <P>
+    
     Note that the "logMessage" for ALL EnterpriseSecurityExceptions is logged in the log file. This feature should be
     used extensively throughout ESAPI implementations and the result is a fairly complete set of security log records.
     ALL EnterpriseSecurityExceptions are also sent to the IntrusionDetector for use in detecting anomolous patterns of
@@ -46,9 +47,9 @@ class EnterpriseSecurityException(Exception):
         using this API, applications will generate an extensive security log. In addition, this exception is
         automatically registered with the IntrusionDetector, so that quotas can be checked.
         
-        @param user_message the message displayed to the user
-        @param log_message the message logged
-        @param cause the Exception that caused this one
+        @param user_message: the message displayed to the user
+        @param log_message: the message logged
+        @param cause: the Exception that caused this one
         """
         Exception.__init__(self, user_message)
         
@@ -65,7 +66,7 @@ class EnterpriseSecurityException(Exception):
         """
         Returns the message that is safe to display to users.
         
-        @return a string containing the message that is safe to display to
+        @return: a string containing the message that is safe to display to
         users
         """
         return self.user_message
@@ -75,7 +76,7 @@ class EnterpriseSecurityException(Exception):
         Returns a message that is safe to display in logs, but probably not to
         users
         
-        @return a string containing a message that is safe to display in logs
+        @return: a string containing a message that is safe to display in logs
         """
         return self.log_message
         
@@ -83,7 +84,7 @@ class EnterpriseSecurityException(Exception):
         """
         Returns the cause associated with this Exception
         
-        @return the Exception cause associated with this Exception
+        @return: the Exception cause associated with this Exception
         """
         return self.cause
         
@@ -210,9 +211,9 @@ class IntrusionException(Exception):
         """
         Creates a new instance of IntrusionException.
         
-        @param user_message the message displayed to the user
-        @param log_message the message logged
-        @param cause the Exception that caused this one
+        @param user_message: the message displayed to the user
+        @param log_message: the message logged
+        @param cause: the Exception that caused this one
         """
         Exception.__init__(self, user_message)
         
@@ -229,7 +230,7 @@ class IntrusionException(Exception):
         """
         Returns the message that is safe to display to users.
         
-        @return a string containing the message that is safe to display to
+        @return: a string containing the message that is safe to display to
         users
         """
         return self.user_message
@@ -239,7 +240,7 @@ class IntrusionException(Exception):
         Returns a message that is safe to display in logs, but probably not to
         users
         
-        @return a string containing a message that is safe to display in logs
+        @return: a string containing a message that is safe to display in logs
         """
         return self.log_message
         
@@ -247,7 +248,7 @@ class IntrusionException(Exception):
         """
         Returns the cause associated with this Exception
         
-        @return the Exception cause associated with this Exception
+        @return: the Exception cause associated with this Exception
         """
         return self.cause
         
@@ -264,10 +265,10 @@ class ValidationException(EnterpriseSecurityException):
         """
         Creates a new instance of ValidationException.
         
-        @param user_message the message displayed to the user
-        @param log_message the message logged
-        @param cause the Exception that caused this one
-        @param context the source that caused this Exception
+        @param user_message: the message displayed to the user
+        @param log_message: the message logged
+        @param cause: the Exception that caused this one
+        @param context: the source that caused this Exception
         """
         
         EnterpriseSecurityException.__init__(self, user_message, log_message, cause)
@@ -280,7 +281,7 @@ class ValidationException(EnterpriseSecurityException):
         """
         Returns the UI reference that caused this Exception
         
-        @return the context (source) that caused this Exception, as a string
+        @return: the context (source) that caused this Exception, as a string
         """
         return self.context
     
@@ -288,7 +289,7 @@ class ValidationException(EnterpriseSecurityException):
         """
         Sets the UI reference that caused this ValidationException
         
-        @param context the context to set, as a string
+        @param context: the context to set, as a string
         """
         # The UI reference that caused this ValidationException
         self.context = context

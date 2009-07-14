@@ -2,17 +2,18 @@
 # -*- coding: utf-8 -*-
 
 """
-OWASP Enterprise Security API (ESAPI)
- 
-This file is part of the Open Web Application Security Project (OWASP)
-Enterprise Security API (ESAPI) project. For details, please see
-<a href="http://www.owasp.org/index.php/ESAPI">http://www.owasp.org/index.php/ESAPI</a>.
-Copyright (c) 2009 - The OWASP Foundation
+@license: OWASP Enterprise Security API (ESAPI)
+     
+    This file is part of the Open Web Application Security Project (OWASP)
+    Enterprise Security API (ESAPI) project. For details, please see
+    U{http://www.owasp.org/index.php/ESAPI<http://www.owasp.org/index.php/ESAPI>}.
 
-The ESAPI is published by OWASP under the BSD license. You should read and 
-accept the LICENSE before you use, modify, and/or redistribute this software.
-
-@author Craig Younkins (craig.younkins@owasp.org)
+    The ESAPI is published by OWASP under the BSD license. You should read and 
+    accept the LICENSE before you use, modify, and/or redistribute this software.
+    
+@summary: Reference implementation of the Validator interface. 
+@copyright: Copyright (c) 2009 - The OWASP Foundation
+@author: Craig Younkins (craig.younkins@owasp.org)
 """
 
 import os.path
@@ -35,11 +36,11 @@ from esapi.reference.validation.string_validation_rule import StringValidationRu
 class DefaultValidator(Validator):
     """
     Reference implementation of the Validator interface. This implementation
-    relies on the ESAPI Encoder, re's regex,
-    and several other classes to provide basic validation functions. This library
-    has a heavy emphasis on whitelist validation and canonicalization. All double-encoded
-    characters, even in multiple encoding schemes, such as <PRE>&amp;lt;</PRE> or
-    <PRE>%26lt;</PRE> or even <PRE>%25%26lt;</PRE> are disallowed.
+    relies on the ESAPI Encoder, re's regex, and several other classes to 
+    provide basic validation functions. This library has a heavy emphasis on 
+    whitelist validation and canonicalization. All double-encoded
+    characters, even in multiple encoding schemes, such as &amp;lt; or
+    %26lt; or even %25%26lt; are disallowed.
     """
     
     MAX_PARAMETER_NAME_LENGTH = 100
@@ -243,7 +244,7 @@ class DefaultValidator(Validator):
         """
         This implementation only verifies that the file size is less than or
         equal to the max_bytes specified in the parameter and less than the
-        max bytes specified in ESAPI.conf.settings.py.
+        max bytes specified in ESAPI.conf.settings.
         """
         try:
             self.get_valid_file_content( context, input_, max_bytes, allow_none )
@@ -255,7 +256,7 @@ class DefaultValidator(Validator):
         """
         This implementation only verifies that the file size is less than or
         equal to the max_bytes specified in the parameter and less than the
-        max bytes specified in ESAPI.conf.settings.py.
+        max bytes specified in ESAPI.conf.settings.
         """
         try:
             if self.is_empty(input_):

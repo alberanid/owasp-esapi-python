@@ -2,17 +2,19 @@
 # -*- coding: utf-8 -*-
 
 """
-OWASP Enterprise Security API (ESAPI)
- 
-This file is part of the Open Web Application Security Project (OWASP)
-Enterprise Security API (ESAPI) project. For details, please see
-<a href="http://www.owasp.org/index.php/ESAPI">http://www.owasp.org/index.php/ESAPI</a>.
-Copyright (c) 2009 - The OWASP Foundation
+@license: OWASP Enterprise Security API (ESAPI)
+     
+    This file is part of the Open Web Application Security Project (OWASP)
+    Enterprise Security API (ESAPI) project. For details, please see
+    U{http://www.owasp.org/index.php/ESAPI<http://www.owasp.org/index.php/ESAPI>}.
 
-The ESAPI is published by OWASP under the BSD license. You should read and 
-accept the LICENSE before you use, modify, and/or redistribute this software.
-
-@author Craig Younkins (craig.younkins@owasp.org)
+    The ESAPI is published by OWASP under the BSD license. You should read and 
+    accept the LICENSE before you use, modify, and/or redistribute this software.
+    
+@summary: Implementation of the codec.Codec interface for backslash encoding 
+    used in CSS.
+@copyright: Copyright (c) 2009 - The OWASP Foundation
+@author: Craig Younkins (craig.younkins@owasp.org)
 """
 
 import esapi.codecs.codec as codec
@@ -20,13 +22,13 @@ import esapi.codecs.push_back_string
 
 class CSSCodec(codec.Codec):
     """
-    Implementation of the codec.Codec interface for backslash encoding used in CSS.
+    Implementation of the codec.Codec interface for backslash encoding used in 
+    CSS.
     """
    
     def __init__(self):
         codec.Codec.__init__(self)
 
-    
     def encode_character(self, immune, char):
         """
         Encodes a character using CSS backslash style.

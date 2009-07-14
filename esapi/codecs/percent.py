@@ -2,17 +2,19 @@
 # -*- coding: utf-8 -*-
 
 """
-OWASP Enterprise Security API (ESAPI)
- 
-This file is part of the Open Web Application Security Project (OWASP)
-Enterprise Security API (ESAPI) project. For details, please see
-<a href="http://www.owasp.org/index.php/ESAPI">http://www.owasp.org/index.php/ESAPI</a>.
-Copyright (c) 2009 - The OWASP Foundation
+@license: OWASP Enterprise Security API (ESAPI)
+     
+    This file is part of the Open Web Application Security Project (OWASP)
+    Enterprise Security API (ESAPI) project. For details, please see
+    U{http://www.owasp.org/index.php/ESAPI<http://www.owasp.org/index.php/ESAPI>}.
 
-The ESAPI is published by OWASP under the BSD license. You should read and 
-accept the LICENSE before you use, modify, and/or redistribute this software.
-
-@author Craig Younkins (craig.younkins@owasp.org)
+    The ESAPI is published by OWASP under the BSD license. You should read and 
+    accept the LICENSE before you use, modify, and/or redistribute this software.
+    
+@summary: Implementation of the Codec interface for percent encoding (aka URL
+    encoding)
+@copyright: Copyright (c) 2009 - The OWASP Foundation
+@author: Craig Younkins (craig.younkins@owasp.org)
 """
 
 import esapi.codecs.codec as codec
@@ -20,7 +22,7 @@ import esapi.codecs.codec as codec
 class PercentCodec(codec.Codec):
     """
     Implementation of the Codec interface for percent encoding (aka URL
-    encoding)
+    encoding).
     """
     
     def __init__(self):
@@ -28,10 +30,10 @@ class PercentCodec(codec.Codec):
     
     def encode_character(self, immune, char):
         """
-        Encodes a single character according to the spec at:
-        http://www.w3.org/TR/html401/interact/forms.html#h-17.13.4.1
+        Encodes a single character according to the spec at 
+        U{W3.org<http://www.w3.org/TR/html401/interact/forms.html#h-17.13.4.1>}.
         Spaces are replaced by '+'. All characters not in immune are escaped
-        as described in http://tools.ietf.org/html/rfc3986#section-2.1 .
+        as described in U{this document<http://tools.ietf.org/html/rfc3986#section-2.1>}.
         """
         # check for immunes
         if char in immune:
@@ -57,9 +59,9 @@ class PercentCodec(codec.Codec):
     def decode_character(self, pbs):
         """
         Decodes a single character according to the spec at:
-        http://www.w3.org/TR/html401/interact/forms.html#h-17.13.4.1
+        U{W3.org<http://www.w3.org/TR/html401/interact/forms.html#h-17.13.4.1>}.
         '+' decodes to ' '. All characters not in immune are escaped
-        as described in http://tools.ietf.org/html/rfc3986#section-2.1 .
+        as described in U{this document<http://tools.ietf.org/html/rfc3986#section-2.1>}.
         """
         pbs.mark()
         

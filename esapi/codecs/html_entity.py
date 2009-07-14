@@ -2,17 +2,18 @@
 # -*- coding: utf-8 -*-
 
 """
-OWASP Enterprise Security API (ESAPI)
- 
-This file is part of the Open Web Application Security Project (OWASP)
-Enterprise Security API (ESAPI) project. For details, please see
-<a href="http://www.owasp.org/index.php/ESAPI">http://www.owasp.org/index.php/ESAPI</a>.
-Copyright (c) 2009 - The OWASP Foundation
+@license: OWASP Enterprise Security API (ESAPI)
+     
+    This file is part of the Open Web Application Security Project (OWASP)
+    Enterprise Security API (ESAPI) project. For details, please see
+    U{http://www.owasp.org/index.php/ESAPI<http://www.owasp.org/index.php/ESAPI>}.
 
-The ESAPI is published by OWASP under the BSD license. You should read and 
-accept the LICENSE before you use, modify, and/or redistribute this software.
-
-@author Craig Younkins (craig.younkins@owasp.org)
+    The ESAPI is published by OWASP under the BSD license. You should read and 
+    accept the LICENSE before you use, modify, and/or redistribute this software.
+    
+@summary: Implementation of the Codec interface for HTML entity encoding.
+@copyright: Copyright (c) 2009 - The OWASP Foundation
+@author: Craig Younkins (craig.younkins@owasp.org)
 """
 
 import esapi.codecs.codec as codec
@@ -104,8 +105,9 @@ class HTMLEntityCodec(codec.Codec):
         """
         Checks input to see if it is a numeric entity and returns it if it is.
         
-        @param pbs the PushbackString 
-        @return None if the input is None, the character of pbs after decoding
+        @param pbs: the PushbackString 
+        @return: None if the input is None, or the character of pbs after 
+            decoding
         """
         
         first = pbs.peek()
@@ -120,11 +122,11 @@ class HTMLEntityCodec(codec.Codec):
         
     def parse_number(self, pbs):
         """
-        Parse a decimal number, such as those from JavaScript's 
+        Parse a decimal number, such as those from Javascript's 
         String.fromCharCode(value)
         
-        @param pbs the PushbackString
-        @return character representation of the decimal value
+        @param pbs: the PushbackString
+        @return: character representation of the decimal value
         """
         buf = ''
         
@@ -152,8 +154,8 @@ class HTMLEntityCodec(codec.Codec):
         """
         Parse a hex encoded entity
         
-        @param pbs the PushbackString
-        @return a single character from the string
+        @param pbs: the PushbackString
+        @return: a single character from the string
         """
         buf = ''
         
@@ -193,8 +195,8 @@ class HTMLEntityCodec(codec.Codec):
         &aaaaaa;
         &aaaaaaa;
         
-        @param input a string containing a named entity like &quot;
-        @return the decoded version of the character starting at index, or
+        @param pbs: a PushBackString containing a named entity like &quot;
+        @return: the decoded version of the character starting at index, or
         None if no decoding is possible.
         """
         

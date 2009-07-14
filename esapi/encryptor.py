@@ -2,17 +2,19 @@
 # -*- coding: utf-8 -*-
 
 """
-OWASP Enterprise Security API (ESAPI)
- 
-This file is part of the Open Web Application Security Project (OWASP)
-Enterprise Security API (ESAPI) project. For details, please see
-<a href="http://www.owasp.org/index.php/ESAPI">http://www.owasp.org/index.php/ESAPI</a>.
-Copyright (c) 2009 - The OWASP Foundation
+@license: OWASP Enterprise Security API (ESAPI)
+     
+    This file is part of the Open Web Application Security Project (OWASP)
+    Enterprise Security API (ESAPI) project. For details, please see
+    U{http://www.owasp.org/index.php/ESAPI<http://www.owasp.org/index.php/ESAPI>}.
 
-The ESAPI is published by OWASP under the BSD license. You should read and 
-accept the LICENSE before you use, modify, and/or redistribute this software.
-
-@author Craig Younkins (craig.younkins@owasp.org)
+    The ESAPI is published by OWASP under the BSD license. You should read and 
+    accept the LICENSE before you use, modify, and/or redistribute this software.
+    
+@summary: The Encryptor interface provides a set of methods for performing 
+    common encryption and hashing operations. 
+@copyright: Copyright (c) 2009 - The OWASP Foundation
+@author: Craig Younkins (craig.younkins@owasp.org)
 """
 
 class Encryptor():
@@ -23,15 +25,12 @@ class Encryptor():
     Implementors should take care to ensure that they initialize their
     implementation with a strong "master key", and that they protect this secret
     as much as possible.
-    <P>
-    <img src="doc-files/Encryptor.jpg">
-    <P>
+    
     Possible future enhancements (depending on feedback) might include:
-    <UL>
-    <LI>encryptFile</LI>
-    </UL>
 
-    @author Craig Younkins (craig.younkins@owasp.org)
+        - encryptFile
+
+    @author: Craig Younkins (craig.younkins@owasp.org)
     """
     
     def __init__(self):
@@ -44,22 +43,17 @@ class Encryptor():
         in some extra data with the plaintext. Some good choices for a salt might
         be an account name or some other string that is known to the application
         but not to an attacker.
-        See <a href="http://www.matasano.com/log/958/enough-with-the-rainbow-tables-what-you-need-to-know-about-secure-password-schemes/">
-        this article</a> for more information about hashing as it pertains to password schemes.
+        See U{this article<http://www.matasano.com/log/958/enough-with-the-rainbow-tables-what-you-need-to-know-about-secure-password-schemes/>} 
+        for more information about hashing as it pertains to password schemes.
 
-        @param plaintext
-                the plaintext string to encrypt
-        @param salt
-             the string salt to add to the plaintext string before hashing
-        @param iterations
-            the number of times to iterate the hash. Defaults to 1.
+        @param plaintext: the plaintext string to encrypt
+        @param salt: the string salt to add to the plaintext string before hashing
+        @param iterations: the number of times to iterate the hash. Defaults to 1.
              
-        @return
-                the encrypted hash of 'plaintext' stored as a String
+        @return: the encrypted hash of 'plaintext' stored as a String
 
-        @throws EncryptionException
-             if the specified hash algorithm could not be found or another problem exists with
-             the hashing of 'plaintext'
+        @raises EncryptionException: if the specified hash algorithm could not 
+            be found or another problem exists with the hashing of 'plaintext'
         """
         raise NotImplementedError()
 
@@ -67,15 +61,13 @@ class Encryptor():
         """
         Encrypts the provided plaintext and returns a ciphertext string.
 
-        @param plaintext
-             the plaintext string to encrypt
+        @param plaintext: the plaintext string to encrypt
 
-        @return
-                the encrypted string representation of 'plaintext'
+        @return: the encrypted string representation of 'plaintext'
 
-        @throws EncryptionException
-             if the specified encryption algorithm could not be found or another problem exists with
-             the encryption of 'plaintext'
+        @raises EncryptionException: if the specified encryption algorithm 
+            could not be found or another problem exists with the encryption 
+            of 'plaintext'
         """
         raise NotImplementedError()
 
@@ -84,94 +76,81 @@ class Encryptor():
         Decrypts the provided ciphertext string (encrypted with the encrypt
         method) and returns a plaintext string.
 
-        @param ciphertext
-             the ciphertext (encrypted plaintext)
+        @param ciphertext: the ciphertext (encrypted plaintext)
 
-        @return
-                the decrypted ciphertext
+        @return: the decrypted ciphertext
 
-        @throws EncryptionException
-             if the specified encryption algorithm could not be found or another problem exists with
-             the encryption of 'plaintext'
+        @raises EncryptionException: if the specified encryption algorithm 
+            could not be found or another problem exists with the encryption 
+            of 'plaintext'
         """
         raise NotImplementedError()
 
     def sign(self, data):
         """
-        Create a digital signature for the provided data and return it in a
+        Create a digital signature for the provided data and returns it in a
         string.
 
-        @param data
-             the data to sign
+        @param data: the data to sign
 
-        @return
-                the digital signature stored as a String
+        @return: the digital signature stored as a String
 
-        @throws EncryptionException
-                if the specified signature algorithm cannot be found
+        @raises EncryptionException: if the specified signature algorithm 
+            cannot be found
         """
         raise NotImplementedError()
 
     def verify_signature(self, signature, data):
         """
-        Verifies a digital signature (created with the sign method) and returns
+        Verifies a digital signature (created with the sign method) and return s
         the boolean result.
 
-        @param signature
-             the signature to verify against 'data'
-        @param data
-             the data to verify against 'signature'
+        @param signature: the signature to verify against 'data'
+        @param data: the data to verify against 'signature'
 
-        @return
-                true, if the signature is verified, false otherwise
+        @return: true, if the signature is verified, false otherwise
 
         """
         raise NotImplementedError()
 
     def seal(self, data, timestamp):
         """
-        Creates a seal that binds a set of data and includes an expiration timestamp.
+        Creates a seal that binds a set of data and includes an expiration 
+        timestamp.
 
-        @param data
-             the data to seal
-        @param timestamp
-             the absolute expiration date of the data, expressed as seconds since the epoch
+        @param data: the data to seal
+        @param timestamp: the absolute expiration date of the data, expressed 
+        as seconds since the epoch
 
-        @return
-                the seal
-        @throws IntegrityException
-
+        @return: the seal
+        @raises IntegrityException: 
         """
         raise NotImplementedError()
 
     def unseal(self, seal):
         """
-        Unseals data (created with the seal method) and throws an exception
-        describing any of the various problems that could exist with a seal, such
-        as an invalid seal format, expired timestamp, or decryption error.
+        Unseals data (created with the seal method) and raises an exception
+        describing any of the various problems that could exist with a seal, 
+        such as an invalid seal format, expired timestamp, or decryption error.
 
-        @param seal
-             the sealed data
+        @param seal: the sealed data
 
-        @return
-                the original (unsealed) data
+        @return: the original (unsealed) data
 
-        @throws EncryptionException
-                if the unsealed data cannot be retrieved for any reason
+        @raises EncryptionException: if the unsealed data cannot be retrieved 
+            for any reason
         """
         raise NotImplementedError()
 
     def verify_seal(self, seal):
         """
-        Verifies a seal (created with the seal method) and throws an exception
+        Verifies a seal (created with the seal method) and raises an exception
         describing any of the various problems that could exist with a seal, such
         as an invalid seal format, expired timestamp, or data mismatch.
 
-        @param seal
-             the seal to verify
+        @param seal: the seal to verify
 
-        @return
-                true, if the seal is valid.  False otherwise
+        @return: true, if the seal is valid.  False otherwise
         """
         raise NotImplementedError()
 
@@ -180,11 +159,9 @@ class Encryptor():
         Gets an absolute timestamp representing an offset from the current time to be used by
         other functions in the library.
 
-        @param offset
-                the offset to add to the current time
+        @param offset: the offset to add to the current time
 
-        @return
-                the absolute timestamp
+        @return: the absolute timestamp
         """
         raise NotImplementedError()
 
@@ -193,9 +170,6 @@ class Encryptor():
         Gets a timestamp representing the current date and time to be used by
         other functions in the library.
 
-        @return
-                a timestamp representing the current time
+        @return: a timestamp representing the current time
         """
         raise NotImplementedError()
-
-

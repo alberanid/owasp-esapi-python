@@ -2,17 +2,19 @@
 # -*- coding: utf-8 -*-
 
 """
-OWASP Enterprise Security API (ESAPI)
- 
-This file is part of the Open Web Application Security Project (OWASP)
-Enterprise Security API (ESAPI) project. For details, please see
-<a href="http://www.owasp.org/index.php/ESAPI">http://www.owasp.org/index.php/ESAPI</a>.
-Copyright (c) 2009 - The OWASP Foundation
+@license: OWASP Enterprise Security API (ESAPI)
+     
+    This file is part of the Open Web Application Security Project (OWASP)
+    Enterprise Security API (ESAPI) project. For details, please see
+    U{http://www.owasp.org/index.php/ESAPI<http://www.owasp.org/index.php/ESAPI>}.
 
-The ESAPI is published by OWASP under the BSD license. You should read and 
-accept the LICENSE before you use, modify, and/or redistribute this software.
-
-@author Craig Younkins (craig.younkins@owasp.org)
+    The ESAPI is published by OWASP under the BSD license. You should read and 
+    accept the LICENSE before you use, modify, and/or redistribute this software.
+    
+@summary: The LogFactory interface is intended to allow substitution of various 
+    logging packages, while providing a common interface to access them.
+@copyright: Copyright (c) 2009 - The OWASP Foundation
+@author: Craig Younkins (craig.younkins@owasp.org)
 """
 
 # Todo
@@ -27,9 +29,7 @@ class LogFactory:
     PythonLogger which implements Logger.java and uses the Python logging 
     package to log events.
     
-    @see esapi.core
-    
-    @author Craig Younkins (craig.younkins@owasp.org)
+    @author: Craig Younkins (craig.younkins@owasp.org)
     
     """
     
@@ -43,13 +43,11 @@ class LogFactory:
         class is generating the log events. The implementation of this method 
         should return any preexisting Logger associated with this module name, 
         rather than creating a new Logger.
-        <br><br>
+        
         The PythonLogFactory reference implementation meets these requirements.
         
-        @param key
-                    The name of the class or module requesting the logger.
-        @return
-                    The Logger associated with this module.
+        @param key: The name of the class or module requesting the logger.
+        @return: The Logger associated with this module.
         """
         raise NotImplementedError()
     
@@ -57,7 +55,6 @@ class LogFactory:
         """
         This is needed to allow for null argument construction of log factories.
         
-        @param application_name
-                    A unique name to identify the application being logged.
+        @param application_name: A unique name to identify the application being logged.
         """
         raise NotImplementedError()
