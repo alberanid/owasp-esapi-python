@@ -18,6 +18,7 @@
 
 import re
 
+from esapi.translation import _
 from esapi.reference.validation.base_validation_rule import BaseValidationRule
 from esapi.reference.default_encoder import DefaultEncoder
 
@@ -46,16 +47,18 @@ class StringValidationRule(BaseValidationRule):
             pattern = re.compile( pattern_string )
             self.whitelist_patterns.append(pattern)
         except Exception, extra:
-            raise RuntimeError("Validation misconfiguration, problem with specified pattern: " + 
-                  pattern_string, extra )
+            raise RuntimeError( _("Validation misconfiguration, problem with specified pattern: %(pattern)s") %             
+                               {'pattern' : pattern_string}, 
+                               extra )
             
     def add_blacklist_pattern(self, pattern_string):
         try:
             pattern = re.compile( pattern_string )
             self.blacklist_patterns.append(pattern)
         except Exception, extra:
-            raise RuntimeError("Validation misconfiguration, problem with specified pattern: " + 
-            pattern_string, extra )
+            raise RuntimeError( _("Validation misconfiguration, problem with specified pattern: %(pattern)s") %             
+                               {'pattern' : pattern_string},
+                               extra )
             
     def set_minimum_length(self, length):
         self.min_length = length
@@ -68,23 +71,30 @@ class StringValidationRule(BaseValidationRule):
         if input_ is None or len(input_) == 0:
             if self.allow_none:
                 return None
-            raise ValidationException( context + ": Input required", 
-                    "Input required: context=" + context + ", input=''", context )
+            raise ValidationException( _("%(context)s: Input required") % 
+                                       {'context' : context}, 
+                                       _("Input required: context=%(context)s, input=%(input)s") % 
+                                       {'context' : context,
+                                        'input' : input_}, 
+                                       context )
                     
         # canonicalize
         try:
             canonical = self.encoder.canonicalize( input_ )
         except EncodingException, extra:
-            raise ValidationException(context + ": Invalid input. Encoding problem detected.", 
-                  "Error canonicalizing user input", extra, context)
+            raise ValidationException( _("%(context)s: Invalid input. Encoding problem detected.") % 
+                                       {'context' : context}, 
+                                       _("Error canonicalizing user input"), 
+                                       extra, 
+                                       context )
             
         # check length
         if len(canonical) < self.min_length:           
             raise ValidationException(
-                "%(context)s: Invalid input. The minimum length of %(min_length)s characters was not met." %
+                _("%(context)s: Invalid input. The minimum length of %(min_length)s characters was not met.") %
                 { 'context' : context,
                   'min_length' : self.min_length, },
-                "Input failed to meet minimum length of %(min_length)s by %(diff)s characters: context=%(context)s, type=%(type)s, input=%(input)s" %
+                _("Input failed to meet minimum length of %(min_length)s by %(diff)s characters: context=%(context)s, type=%(type)s, input=%(input)s") %
                 { 'min_length' : self.min_length,
                   'diff' : self.min_length - len(canonical),
                   'context' : context,
@@ -94,10 +104,10 @@ class StringValidationRule(BaseValidationRule):
             
         if len(canonical) > self.max_length:
             raise ValidationException(
-                "%(context)s: Invalid input. The maximum length of %(max_length)s characters was exceeded." %
+                _("%(context)s: Invalid input. The maximum length of %(max_length)s characters was exceeded.") %
                 { 'context' : context,
                   'max_length' : self.max_length, },
-                "Input exceeds maximum allowed length of %(max_length)s by %(diff)s characters: context=%(context)s, type=%(type)s, input=%(input)s" %
+                _("Input exceeds maximum allowed length of %(max_length)s by %(diff)s characters: context=%(context)s, type=%(type)s, input=%(input)s") %
                 { 'max_length' : self.max_length,
                   'diff' : len(canonical) - self.max_length,
                   'context' : context,
@@ -109,11 +119,11 @@ class StringValidationRule(BaseValidationRule):
         for pattern in self.whitelist_patterns:
             if not pattern.match(canonical):
                 raise ValidationException(
-                    "%(context)s: Invalid input. Please conform to regex %(regex)s%(optional)s" %
+                    _("%(context)s: Invalid input. Please conform to regex %(regex)s%(optional)s") %
                     { 'context' : context,
                       'regex' : pattern.pattern,
                       'optional' : ('', ' with a maximum length of ' + str(self.max_length))[self.max_length == MAX_INTEGER],},
-                    "Invalid input: context=%(context)s, type(%(type)s)=%(pattern)s, input=%(input)s" %
+                    _("Invalid input: context=%(context)s, type(%(type)s)=%(pattern)s, input=%(input)s") %
                     { 'context' : context,
                       'type' : self.get_type_name(),
                       'pattern' : pattern.pattern,
@@ -124,10 +134,10 @@ class StringValidationRule(BaseValidationRule):
         for pattern in self.blacklist_patterns:
             if pattern.match(canonical):
                 raise ValidationException(
-                    "%(context)s: Invalid input. Dangerous input matching %(pattern)s detected." %
+                    _("%(context)s: Invalid input. Dangerous input matching %(pattern)s detected.") %
                     { 'context' : context,
                       'pattern' : pattern.pattern,},
-                    "Dangerous input: context=%(context)s, type(%(type)s)=%(pattern)s, input=%(input)s" %
+                    _("Dangerous input: context=%(context)s, type(%(type)s)=%(pattern)s, input=%(input)s") %
                     { 'context' : context,
                       'type' : self.get_type_name(),
                       'pattern' : pattern.pattern,

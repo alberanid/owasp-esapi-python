@@ -533,7 +533,8 @@ class Validator():
 
         @return: true, if is a valid HTTP request
 
-        @raises IntrusionException: """
+        @raises IntrusionException: 
+        """
         raise NotImplementedError()
 
     def assert_is_valid_http_request(self, request):
@@ -562,7 +563,8 @@ class Validator():
             found in HTTP request that are not in either set (required or 
             optional), or if any required parameters are missing from request.
 
-        @raises IntrusionException: """
+        @raises IntrusionException: 
+        """
         raise NotImplementedError()
 
     def assert_is_valid_http_request_parameter_set(self, 
@@ -582,7 +584,8 @@ class Validator():
         @param optional: additional parameters that may be in HTTP request
         @param error_list: If validation is in error, resulting error will be stored in the error_list by context
 
-        @raises IntrusionException: """
+        @raises IntrusionException: 
+        """
         raise NotImplementedError()
 
     def is_valid_redirect_location(self, context, input_, allow_none):
@@ -595,7 +598,8 @@ class Validator():
 
         @return: true, if 'input' is a valid redirect location, as defined by "ESAPI.conf.settings", false otherwise.
 
-        @raises IntrusionException: """
+        @raises IntrusionException: 
+        """
         raise NotImplementedError()
 
     def get_valid_redirect_location(self, context, input_, allow_none, error_list=None):
@@ -611,7 +615,8 @@ class Validator():
 
         @return: A canonicalized and validated redirect location, as defined in "ESAPI.conf.settings"
 
-        @raises IntrusionException: """
+        @raises IntrusionException: 
+        """
         raise NotImplementedError()
 
     def safe_read_line(self, input_stream, max_length):

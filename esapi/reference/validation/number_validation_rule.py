@@ -17,6 +17,7 @@
 """
 
 from esapi.reference.validation.base_validation_rule import BaseValidationRule
+from esapi.translation import _
 
 from esapi.exceptions import ValidationException
 from esapi.exceptions import EncodingException
@@ -35,28 +36,56 @@ class NumberValidationRule(BaseValidationRule):
             if input_ is None or len(input_) == 0:
                 if self.allow_none:
                     return None
-                raise ValidationException( context + ": Input number required", 
-                        "Input number required: context=" + context + ", input=''", context )
+                raise ValidationException( _("%(context)s: Input number required") %
+                                           {'context' : context}, 
+                                           _("Input number required: context=%(context)s, input=%(input)s") % 
+                                           {'context' :context,
+                                            'input' : input_}, 
+                                           context )
                         
             # canonicalize
             try:
                 canonical = self.encoder.canonicalize( input_ )
             except EncodingException, extra:
-                raise ValidationException( context + ": Invalid number input. Encoding problem detected.", 
-                                           "Error canonicalizing user input", extra, context)
+                raise ValidationException( _("%(context)s: Invalid number input. Encoding problem detected.") %
+                                           {'context' : context}, 
+                                           _("Error canonicalizing user input"), 
+                                           extra, 
+                                           context )
                 
             if self.min_value > self.max_value:
-                raise ValidationException(context + ": Invalid number input: context", "Validation parameter error for number: max_value ( " + str(self.max_value) + ") must be greater than min_value ( " + str(self.min_value) + ") for " + context, context )
+                raise ValidationException( _("%(context)s: Invalid number input: context") % 
+                                           {'context' : context}, 
+                                           _("Validation parameter error for number: max_value ( %(max_value)s ) must be greater than min_value ( %(min_value)s ) for %(context)s") % 
+                                          {'max_value' : self.max_value,
+                                           'min_value' : self.min_value,
+                                           'context' : context}, 
+                                          context )
                 
             # must be able to convert to intended type
             try:
                 typed_value = self.num_type(canonical)
             except ValueError, extra:
-                raise ValidationException(context + ": Invalid number input", "Invalid number input format: context=" + context + ", input=" + input_, None, context)
+                raise ValidationException( _("%(context)s: Invalid number input") % 
+                                           {'context' : context}, 
+                                           _("Invalid number input format: context=%(context)s, input=%(input)s") %
+                                           {'context' : context,
+                                           'input' : input_}, 
+                                          None, 
+                                          context)
                 
             # validate min and max
             if not self.min_value <= typed_value <= self.max_value:
-                raise ValidationException( "Invalid number input must be between " + str(self.min_value) + " and " + str(self.max_value) + ": context=" + context, "Invalid number input must be between " + str(self.min_value) + " and " + str(self.max_value) + ": context=" + context + ", input=" + input_, context )
+                raise ValidationException( "Invalid number input must be between %(min_value)s and %(max_value)s: context=%(context)s" % 
+                                           {'context' : context,
+                                            'min_value' : self.min_value,
+                                            'max_value' : self.max_value}, 
+                                           "Invalid number input must be between %(min_value)s and %(max_value)s: context=%(context)s, input=%(input)s" % 
+                                           {'context' : context,
+                                            'min_value' : self.min_value,
+                                            'max_value' : self.max_value,
+                                            'input' : input_}, 
+                                           context )
 
             return typed_value
         except ValidationException, extra:

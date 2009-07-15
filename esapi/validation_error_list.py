@@ -17,6 +17,8 @@
 @author: Craig Younkins (craig.younkins@owasp.org)
 """
 
+from esapi.translation import _
+
 class ValidationErrorList(dict):
     """
     The ValidationErrorList is a specialized dictionary to collect 
@@ -25,10 +27,11 @@ class ValidationErrorList(dict):
     """
     def __setitem__(self, context, validation_exception):
         if context is None:
-            raise RuntimeError("context cannot be None")
+            raise RuntimeError(_("context parameter cannot be None"))
         if validation_exception is None:
-            raise RuntimeError("validation_exception cannot be None")
+            raise RuntimeError(_("validation_exception parameter cannot be None"))
         if self.has_key(context):
-            raise RuntimeError("Context (%s) already exists, must be unique" % context)
+            raise RuntimeError(_("Context %(context)s already exists, must be unique") % 
+                {'context' : context})
             
         dict.__setitem__(self, context, validation_exception)

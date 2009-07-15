@@ -25,12 +25,10 @@ import re
 from esapi.security_configuration import SecurityConfiguration
 from esapi.translation import _
 
-class ImportSettingsError(): pass
-
 try:
     import esapi.conf.settings as settings
 except ImportError:
-    raise ImportSettingsError, _("Unable to import settings file - Check settings.py")
+    raise ImportError, _("Unable to import settings file - Check settings.py")
 
 class DefaultSecurityConfiguration(SecurityConfiguration):
     def __init__(self):
@@ -79,13 +77,15 @@ class DefaultSecurityConfiguration(SecurityConfiguration):
     def get_validation_pattern(self, key):
         value = getattr(settings, "Validator_" + key, None)
         if value is None: 
-            self.log_special("Trying to get validation pattern Validator_" + key + " failed because it doesn't exist")
+            self.log_special(_("Trying to get validation pattern Validator_%(key)s failed because it doesn't exist") %
+            {'key' : key})
             return None
             
         try:
             return re.compile(value)
         except Exception, extra:
-            self.log_special("SecurityConfiguration for " + key + " not a valid regex in ESAPI.properties. Returning null" )
+            self.log_special(_("SecurityConfiguration for Validator_%(key)s is not a valid regex in settings. Returning None.") % 
+                {'key' : key})
             return None
         
     def get_executor_implementation(self):

@@ -136,18 +136,6 @@ class Encoder():
         @raises EncodingException: if canonicalization fails
         """
         raise NotImplementedError()
-        
-    def normalize(self, input_):
-        """
-        Reduce all non-ascii characters to their ASCII form so that simpler
-        validation rules can be applied. For example, an accented-e character
-        will be changed into a regular ASCII e character.
-
-        @param input_: the text to normalize
-
-        @return: a normalized string
-        """
-        raise NotImplementedError()
 
     def encode_for_css(self, input_):
         """

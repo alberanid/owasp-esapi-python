@@ -18,6 +18,7 @@
 
 from esapi.core import ESAPI
 from esapi.reference.default_encoder import DefaultEncoder
+from esapi.translation import _
 
 from esapi.reference.validation.base_validation_rule import BaseValidationRule
 from esapi.reference.validation.string_validation_rule import StringValidationRule
@@ -48,8 +49,12 @@ class CreditCardValidationRule(BaseValidationRule):
             if input_ is None or len(input_) == 0:
                 if self.allow_none:
                     return None
-                raise ValidationException( context + ": Input credit card required", 
-                        "Input credit card required: context=" + context + ", input=" + input_, context )
+                raise ValidationException( _("%(context)s: Input credit card required") % 
+                                           {'context' : context}, 
+                                           _("Input credit card required: context=%(context)s, input=%(input)s") % 
+                                           {'context' : context,
+                                            'input' : input_}, 
+                                           context )
                         
             # canonicalize
             canonical = self.ccrule.get_valid(context, input_)
@@ -69,7 +74,11 @@ class CreditCardValidationRule(BaseValidationRule):
                 sum_ += digit
                 times_two = not times_two
             if (sum_ % 10) != 0:
-                raise ValidationException( context + ": Invalid credit card input", "Invalid credit card input. Credit card number did not pass Luhn test: context=" + context, context )
+                raise ValidationException( _("%(context)s: Invalid credit card input") % 
+                                           {'context' : context}, 
+                                           _("Invalid credit card input. Credit card number did not pass Luhn test: context=%(context)s") % 
+                                           {'context' : context}, 
+                                          context )
                 
             return digits_only
         except ValidationException, extra:

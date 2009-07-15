@@ -18,6 +18,7 @@
 
 # Todo
 # Change hash after Encoder and Base64 encoder have been written
+# Check EncryptionException
 
 import hashlib
 import Crypto.Cipher.AES

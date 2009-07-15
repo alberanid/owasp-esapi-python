@@ -21,6 +21,7 @@
 
 from esapi.core import ESAPI
 from esapi.logger import Logger
+from esapi.translation import _
 
 #####################
 # EnterpriseSecurityException
@@ -222,7 +223,7 @@ class IntrusionException(Exception):
         self.cause = cause
         
         self.logger = ESAPI.logger("IntrusionException")
-        self.logger.error(Logger.SECURITY_FAILURE, "INTRUSION - " + self.log_message)
+        self.logger.error(Logger.SECURITY_FAILURE, _("INTRUSION") + " - " + self.log_message)
         
 #        ESAPI.intrusion_detector().add_exception(self)
         
@@ -307,3 +308,4 @@ class ValidationUploadException(ValidationException):
     """
     def __init__(self, user_message, log_message, cause=None, context=None):
         ValidationException.__init__(self, user_message, log_message, cause, context)
+        

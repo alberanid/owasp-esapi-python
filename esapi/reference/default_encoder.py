@@ -20,9 +20,10 @@ import base64
 
 from esapi.core import ESAPI
 from esapi.encoder import Encoder
+from esapi.logger import Logger
+from esapi.translation import _
 
 from esapi.codecs.codec import Codec
-
 from esapi.codecs.css import CSSCodec
 from esapi.codecs.html_entity import HTMLEntityCodec
 from esapi.codecs.javascript import JavascriptCodec
@@ -33,8 +34,6 @@ from esapi.codecs.ldap import LDAPCodec
 
 from esapi.exceptions import EncodingException
 from esapi.exceptions import IntrusionException
-
-from esapi.logger import Logger
 
 class DefaultEncoder(Encoder):
     """
@@ -91,7 +90,7 @@ class DefaultEncoder(Encoder):
         else:
             for codec in codecs:
                 if not isinstance(codec, Codec):
-                    raise TypeError("Codecs in list must be instances of children of Codec")
+                    raise TypeError(_("Codecs in list must be instances of children of Codec"))
                 self.codecs.append(codec)
                     
     def canonicalize(self, input_, strict=True):
@@ -119,38 +118,44 @@ class DefaultEncoder(Encoder):
                     
         if found_count >= 2 and len(codecs_found) > 1:
             if strict:
-                raise IntrusionException( "Input validation failure", 
-                "Multiple (%sx) and mixed encoding (%s) detected in %s" %
-                (found_count, str(codecs_found), input_))
+                raise IntrusionException( _("Input validation failure"), 
+                    _("Multiple (%(times_encoded)sx) and mixed encoding (%(codecs_found)s) detected in %(input)s") %
+                    {'times_encoded' : found_count, 
+                     'codecs_found' : str(codecs_found), 
+                     'input' : input_})
+                
             else:
                 self.logger.warning( Logger.SECURITY_FAILURE, 
-                "Multiple (%sx) and mixed encoding (%s) detected in %s" %
-                (found_count, str(codecs_found), input_))
+                    _("Multiple (%s(times_encoded)x) and mixed encoding (%(codecs_found)s) detected in %(input)s") %
+                    {'times_encoded' : found_count, 
+                     'codecs_found' : str(codecs_found), 
+                     'input' : input_})
             
         elif found_count >= 2:
             if strict:
-                raise IntrusionException( "Input validation failure",
-                "Multiple (%sx) encoding detected in %s" %
-                (found_count, input_))
+                raise IntrusionException( _("Input validation failure"),
+                    _("Multiple (%s(times_encoded)x) encoding detected in %(input)s") %
+                    {'times_encoded' : found_count, 
+                     'input' : input_})
             else:
                 self.logger.warning( Logger.SECURITY_FAILURE,
-                "Multiple (%sx) encoding detected in %s" %
-                (found_count, input_))
+                    _("Multiple (%s(times_encoded)x) encoding detected in %(input)s") %
+                    {'times_encoded' : found_count, 
+                     'input' : input_})
                 
         elif len(codecs_found) > 1:
             if strict:
-                raise IntrusionException( "Input validation failure",
-                "Mixed encoding (%s) detected in %s" % 
-                (str(codecs_found), input_))
+                raise IntrusionException( _("Input validation failure"),
+                    _("Mixed encoding (%(codecs_found)s) detected in %(input)s") % 
+                    {'codecs_found' : str(codecs_found), 
+                     'input' : input_})
             else:
                 self.logger.warning( Logger.SECURITY_FAILURE,
-                "Mixed encoding (%s) detected in %s" % 
-                (str(codecs_found), input_))
+                    _("Mixed encoding (%(codecs_found)s) detected in %(input)s") % 
+                    {'codecs_found' : str(codecs_found), 
+                     'input' : input_})
                 
         return working
-        
-    def normalize(self, input_):
-        raise NotImplementedError()
 
     def encode_for_css(self, input_):
         return self.css_codec.encode( DefaultEncoder.IMMUNE_CSS, input_ )
