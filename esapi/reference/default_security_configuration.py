@@ -17,11 +17,11 @@
 """
 
 # Todo
-# After base64 decoder written, remove dependency in base64 in getMasterSalt and getMasterKey and getDigitalSignatureKey
 
 import pickle
 import re
 
+from esapi.core import ESAPI
 from esapi.security_configuration import SecurityConfiguration
 from esapi.translation import _
 
@@ -95,8 +95,7 @@ class DefaultSecurityConfiguration(SecurityConfiguration):
         return settings.ESAPI_HTTPUtilities
     
     def get_master_key(self):
-        import base64
-        return base64.b64decode(settings.Encryptor_MasterKey)
+        return ESAPI.encoder().decode_from_base64(settings.Encryptor_MasterKey)
     
     def get_upload_directory(self):
         return settings.HttpUtilities_UploadDir
@@ -105,8 +104,7 @@ class DefaultSecurityConfiguration(SecurityConfiguration):
         return settings.Encryptor_EncryptionKeyLength
 
     def get_master_salt(self):
-        import base64
-        return base64.b64decode(settings.Encryptor_MasterSalt)
+        return ESAPI.encoder().decode_from_base64(settings.Encryptor_MasterSalt)
 
     def get_allowed_executables(self):
         return settings.HttpUtilities_AllowedUploadExtensions
@@ -143,8 +141,7 @@ class DefaultSecurityConfiguration(SecurityConfiguration):
 
     def get_digital_signature_key(self):
         raw = settings.Encryptor_DigitalSignatureMasterKey
-        import base64
-        decoded = base64.b64decode(raw)
+        decoded = ESAPI.encoder().decode_from_base64(raw)
         obj = pickle.loads(decoded)
         return obj
 
