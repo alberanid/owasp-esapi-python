@@ -7,6 +7,7 @@ LoggerTest
 LogFactory
 
 SecurityConfiguration
+DefaultSecurityConfiguration
 
 Randomizer
 DefaultRandomizer
@@ -21,6 +22,8 @@ DefaultEncoder
 
 Validator
 
+User
+
 Incomplete
 ---------
 core.py - dep on everything
@@ -33,5 +36,6 @@ DefaultValidator - Depends on AntiSamy on python from Marcin
                    is_valid_http_request_parameter_set, assert_is_valid_http_request_parameter_set,
                    depends on HTTPRequests
 ValidatorTest - Dep on DefaultValidator
-DefaultSecurityConfiguration - Dep on encoders
+DefaultUser - Dep on Authenticator, HTTPUtilities
+UserTest
                     
