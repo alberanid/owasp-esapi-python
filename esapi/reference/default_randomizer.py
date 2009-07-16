@@ -34,6 +34,7 @@ from esapi.logger import Logger
 from esapi.randomizer import Randomizer
 from esapi.translation import _
 from esapi.encoder import Encoder
+from esapi.conf.constants import MAX_INTEGER, MIN_INTEGER, MAX_FLOAT, MIN_FLOAT
 
 class DefaultRandomizer(Randomizer):
     def __init__(self):
@@ -50,7 +51,7 @@ class DefaultRandomizer(Randomizer):
     def get_random_boolean(self):
         return self.get_random_choice([True, False])
 
-    def get_random_integer(self, min_, max_):
+    def get_random_integer(self, min_=MIN_INTEGER, max_=MAX_INTEGER):
         return self.secure_random.randint(min_, max_)
 
     def get_random_filename(self, extension):
@@ -60,7 +61,7 @@ class DefaultRandomizer(Randomizer):
                           _("Generated a new random filename: ") + filename)
         return filename
         
-    def get_random_float(self, min_, max_):
+    def get_random_float(self, min_=MIN_FLOAT, max_=MAX_FLOAT):
         return self.secure_random.uniform(min_, max_)
 
     def get_random_guid(self):

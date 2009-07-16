@@ -17,6 +17,8 @@
 @author: Craig Younkins (craig.younkins@owasp.org)
 """
 
+from esapi.conf.constants import MAX_INTEGER, MIN_INTEGER, MAX_FLOAT, MIN_FLOAT
+
 class Randomizer():
     """
     The Randomizer interface defines a set of methods for creating
@@ -61,7 +63,7 @@ class Randomizer():
         """
         raise NotImplementedError()
 
-    def get_random_integer(self, min_, max_):
+    def get_random_integer(self, min_=MIN_INTEGER, max_=MAX_INTEGER):
         """
         Returns a random integer or long.  The use of random.SystemRandom
         is recommended because it provides a cryptographically strong 
@@ -93,7 +95,7 @@ class Randomizer():
         """
         raise NotImplementedError()
        
-    def get_random_float(self, min_, max_):
+    def get_random_float(self, min_=MIN_FLOAT, max_=MAX_FLOAT):
         """
         Returns a random floating point number.  The use of random.SystemRandom
         is recommended because it provides a cryptographically strong 
