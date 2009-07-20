@@ -37,5 +37,5 @@ DefaultValidator - Depends on AntiSamy on python from Marcin
                    depends on HTTPRequests
 ValidatorTest - Dep on DefaultValidator
 DefaultUser - Dep on Authenticator, HTTPUtilities
-UserTest
+UserTest - Dep on DefaultUser
                     

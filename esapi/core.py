@@ -21,12 +21,67 @@
 
 # IMPORTS AT THE BOTTOM TO PREVENT CIRCULAR IMPORTS
 
-"""
-ESAPI locator class is provided to make it easy to gain access to the current 
-ESAPI classes in use. Use the set methods to override the reference 
-implementations with instances of any custom ESAPI implementations.
-"""
+def from_fqn_get_instance(fqn):
+    """
+    Given a fully-qualified name of a python class in dotted notation, this
+    function returns an instance of the referenced class.
+    """
+    try:
+        dot = fqn.rindex('.')
+    except ValueError, extra:
+        raise ConfigurationException( _('There is an error in the application configuration'), 
+            _("Fully-qualified name is malformed: %(name)s") % 
+            {'name' : fqn},
+            extra )
+        
+    modulename = fqn[:dot]
+    classname = fqn[dot+1:]
+    
+    __import__(modulename)
+    module = sys.modules[modulename]
+    return getattr(module, classname)()
+    
 
+#theoretical new locator class
+#class ESAPI(object):
+#    """
+#    ESAPI locator class is provided to make it easy to gain access to the current 
+#    ESAPI classes in use. Use the set methods to override the reference 
+#    implementations with instances of any custom ESAPI implementations.
+#    """
+#    @classmethod
+#    def __getattr__(cls, interface_name):
+#        prop = "ESAPI_%s" % interface_name
+#        fqn = getattr(settings, prop)
+#        instance = from_fqn_get_instance(fqn)
+#        self.__setattr__(interface_name, instance)
+#        
+#    @classmethod
+#    def load_security_configuration(cls):
+#        if cls.security_configuration:
+#            return
+#            
+#        fqn = 'settings.ESAPI_Security_Configuration'
+#        self.security_configuration = from_fqn_get_instance(fqn)
+#        
+#    @classmethod
+#    def logger(cls, key):
+#        """
+#        @param key: The class or module to associate the logger with.
+#        @return: The current Logger associated with the specified class.
+#        """
+#        return cls.log_factory.get_logger(key)
+#
+#    @classmethod
+#    def log(cls):
+#        """
+#        @return: The default logger
+#        """
+#        if cls.default_logger is None:
+#            cls._default_logger = cls._log_factory().get_logger("DefaultLogger")
+#        return cls._default_logger
+
+        
 class ESAPI():
     _authenticator = None
     _encoder = None
@@ -98,11 +153,7 @@ class ESAPI():
     def encoder(cls):
         if cls._encoder is None:
             fqn = cls.security_configuration().get_encoder_implementation()
-            module_name = '.'.join(fqn.split('.')[:-1])
-            __import__(module_name)
-            module = sys.modules[module_name]
-            class_name = fqn.split('.')[-1]
-            cls._encoder = getattr(module, class_name)()
+            cls._encoder = from_fqn_get_instance(fqn)
             
         return cls._encoder
 
@@ -114,11 +165,7 @@ class ESAPI():
     def encryptor(cls):
         if cls._encryptor is None:
             fqn = cls.security_configuration().get_encryption_implementation()
-            module_name = '.'.join(fqn.split('.')[:-1])
-            __import__(module_name)
-            module = sys.modules[module_name]
-            class_name = fqn.split('.')[-1]
-            cls._encryptor = getattr(module, class_name)()
+            cls._encryptor = from_fqn_get_instance(fqn)
             
         return cls._encryptor
 
@@ -188,11 +235,7 @@ class ESAPI():
         """
         if cls._log_factory is None:
             fqn = cls.security_configuration().get_log_implementation()
-            module_name = '.'.join(fqn.split('.')[:-1])
-            __import__(module_name)
-            module = sys.modules[module_name]
-            class_name = fqn.split('.')[-1]
-            cls._log_factory = getattr(module, class_name)()
+            cls._log_factory = from_fqn_get_instance(fqn)
             cls._log_factory.set_application_name(cls.security_configuration().get_application_name())
             
         return cls._log_factory
@@ -226,11 +269,7 @@ class ESAPI():
     def randomizer(cls):
         if cls._randomizer is None:
             fqn = cls.security_configuration().get_randomizer_implementation()
-            module_name = '.'.join(fqn.split('.')[:-1])
-            __import__(module_name)
-            module = sys.modules[module_name]
-            class_name = fqn.split('.')[-1]
-            cls._randomizer = getattr(module, class_name)()
+            cls._randomizer = from_fqn_get_instance(fqn)
             
         return cls._randomizer
 
@@ -252,11 +291,7 @@ class ESAPI():
     def validator(cls):
         if cls._validator is None:
             fqn = cls.security_configuration().get_validation_implementation()
-            module_name = '.'.join(fqn.split('.')[:-1])
-            __import__(module_name)
-            module = sys.modules[module_name]
-            class_name = fqn.split('.')[-1]
-            cls._validator = getattr(module, class_name)()
+            cls._validator = from_fqn_get_instance(fqn)
             
         return cls._validator
 
@@ -274,6 +309,9 @@ class ESAPI():
     
 import sys
 
+import esapi.conf.settings as settings
 from esapi.reference.python_log_factory import PythonLogFactory
 from esapi.reference.default_security_configuration import DefaultSecurityConfiguration
 from esapi.translation import _
+
+from esapi.exceptions import ConfigurationException
