@@ -94,7 +94,7 @@ class EnterpriseSecurityException(Exception):
 #####################  
 class AccessControlException(EnterpriseSecurityException):
     """
-    An AccessControlException should be thrown when a user attempts to access a
+    An AccessControlException should be raised when a user attempts to access a
     resource that they are not authorized for.
     """
     def __init__(self, user_message, log_message, cause=None):
@@ -105,7 +105,7 @@ class AccessControlException(EnterpriseSecurityException):
 #####################
 class AuthenticationException(EnterpriseSecurityException):
     """
-    An AuthenticationException should be thrown when anything goes wrong during
+    An AuthenticationException should be raised when anything goes wrong during
     login or logout. They are also appropriate for any problems related to
     identity management.
     """
@@ -133,9 +133,9 @@ class AuthenticationLoginException(AuthenticationException):
 #####################
 class AvailabilityException(EnterpriseSecurityException):
     """
-    An AvailabilityException should be thrown when the availability of a limited
+    An AvailabilityException should be raised when the availability of a limited
     resource is in jeopardy. For example, if a database connection pool runs out
-    of connections, an availability exception should be thrown.
+    of connections, an availability exception should be raised.
     """
     def __init__(self, user_message, log_message, cause=None):
         EnterpriseSecurityException.__init__(self, user_message, log_message, cause)
@@ -145,8 +145,20 @@ class AvailabilityException(EnterpriseSecurityException):
 #####################
 class CertificateException(EnterpriseSecurityException):
     """
-    A CertificateException should be thrown for any problems that arise during
+    A CertificateException should be raised for any problems that arise during
     processing of digital certificates.
+    """
+    def __init__(self, user_message, log_message, cause=None):
+        EnterpriseSecurityException.__init__(self, user_message, log_message, cause)
+      
+#####################
+# ConfigurationException
+#####################
+      
+class ConfigurationException(EnterpriseSecurityException):
+    """
+    A ConfigurationException should be raised for any problems related to 
+    importing or parsing esapi.conf.settings.
     """
     def __init__(self, user_message, log_message, cause=None):
         EnterpriseSecurityException.__init__(self, user_message, log_message, cause)
@@ -156,7 +168,7 @@ class CertificateException(EnterpriseSecurityException):
 #####################
 class EncodingException(EnterpriseSecurityException):
     """
-    An ExecutorException should be thrown for any problems that occur when
+    An ExecutorException should be raised for any problems that occur when
     encoding or decoding data.
     """
     def __init__(self, user_message, log_message, cause=None):
@@ -167,7 +179,7 @@ class EncodingException(EnterpriseSecurityException):
 #####################
 class EncryptionException(EnterpriseSecurityException):
     """
-    An EncryptionException should be thrown for any problems related to
+    An EncryptionException should be raised for any problems related to
     encryption, hashing, or digital signatures.
     """
     def __init__(self, user_message, log_message, cause=None):
@@ -178,7 +190,7 @@ class EncryptionException(EnterpriseSecurityException):
 #####################
 class ExecutorException(EnterpriseSecurityException):
     """
-    An ExecutorException should be thrown for any problems that arise during the
+    An ExecutorException should be raised for any problems that arise during the
     execution of a system executable.
     """
     def __init__(self, user_message, log_message, cause=None):
@@ -189,9 +201,9 @@ class ExecutorException(EnterpriseSecurityException):
 #####################
 class IntegrityException(EnterpriseSecurityException):
     """
-    An AvailabilityException should be thrown when the availability of a limited
+    An AvailabilityException should be raised when the availability of a limited
     resource is in jeopardy. For example, if a database connection pool runs out
-    of connections, an availability exception should be thrown.
+    of connections, an availability exception should be raised.
     """
     def __init__(self, user_message, log_message, cause=None):
         EnterpriseSecurityException.__init__(self, user_message, log_message, cause)
@@ -201,7 +213,7 @@ class IntegrityException(EnterpriseSecurityException):
 #####################
 class IntrusionException(Exception):
     """
-    An IntrusionException should be thrown anytime an error condition arises 
+    An IntrusionException should be raised anytime an error condition arises 
     that is likely to be the result of an attack in progress. 
     IntrusionExceptions are handled specially by the IntrusionDetector, which 
     is equipped to respond by either specially logging the event, logging out 
@@ -258,7 +270,7 @@ class IntrusionException(Exception):
 #####################
 class ValidationException(EnterpriseSecurityException):
     """
-    A ValidationException should be thrown to indicate that the data provided 
+    A ValidationException should be raised to indicate that the data provided 
     by the user or from some other external source does not match the 
     validation rules that have been specified for that data.
     """
