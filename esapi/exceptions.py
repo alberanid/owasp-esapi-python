@@ -201,9 +201,8 @@ class ExecutorException(EnterpriseSecurityException):
 #####################
 class IntegrityException(EnterpriseSecurityException):
     """
-    An AvailabilityException should be raised when the availability of a limited
-    resource is in jeopardy. For example, if a database connection pool runs out
-    of connections, an availability exception should be raised.
+    An IntegrityException should be raised when an integrity problem is 
+    detected in a piece of data.
     """
     def __init__(self, user_message, log_message, cause=None):
         EnterpriseSecurityException.__init__(self, user_message, log_message, cause)
