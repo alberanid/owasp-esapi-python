@@ -88,93 +88,18 @@ class SecurityConfiguration:
         @return: the name of the current application
         """
         raise NotImplementedError()
-
-    def get_log_implementation(self):
-        """
-        Returns the fully qualified classname of the ESAPI Logging 
-        implementation.
-        """
-        raise NotImplementedError()
         
     def get_class_for_interface(self, interface):
         """
         Returns the class for a given interface name.
-        """
-        raise NotImplementedError()
-
-    def get_authentication_implementation(self):
-        """
-        Returns the fully qualified classname of the ESAPI Authentication 
-        implementation.
-        """
-        raise NotImplementedError()
-
-    def get_encoder_implementation(self):
-        """
-        Returns the fully qualified classname of the ESAPI Encoder 
-        implementation.
-        """
-        raise NotImplementedError()
-
-    def get_access_control_implementation(self):
-        """
-        Returns the fully qualified classname of the ESAPI Access Control 
-        implementation.
-        """
-        raise NotImplementedError()
-
-    def get_intrusion_detection_implementation(self):
-        """
-        Returns the fully qualified classname of the ESAPI Intrusion Detection 
-        implementation.
-        """
-        raise NotImplementedError()
-
-    def get_randomizer_implementation(self):
-        """
-        Returns the fully qualified classname of the ESAPI Randomizer 
-        implementation.
-        """
-        raise NotImplementedError()
-
-    def get_encryptor_implementation(self):
-        """
-        Returns the fully qualified classname of the ESAPI Encryption 
-        implementation.
-        """
-        raise NotImplementedError()
         
-    def get_user_implementation(self):
-        """
-        Returns the fully qualified classname of the ESAPI User
-        implementation.
+        @param interface: the module name in lowercase, eg. 'user' or 'encryptor'
         """
         raise NotImplementedError()
 
-    def get_validator_implementation(self):
-        """
-        Returns the fully qualified classname of the ESAPI Validation 
-        implementation.
-        """
-        raise NotImplementedError()
-        
     def get_validation_pattern(self, type_name):
         """
         Returns the validation pattern for a particular type.
-        """
-        raise NotImplementedError()
-
-    def get_executor_implementation(self):
-        """
-        Returns the fully qualified classname of the ESAPI OS Execution 
-        implementation.
-        """
-        raise NotImplementedError()
-
-    def get_http_utilities_implementation(self):
-        """
-        Returns the fully qualified classname of the ESAPI HTTPUtilities 
-        implementation.
         """
         raise NotImplementedError()
 

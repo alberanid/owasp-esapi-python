@@ -51,9 +51,6 @@ class DefaultSecurityConfiguration(SecurityConfiguration):
            
     def get_application_name(self):
         return settings.Logger_ApplicationName
-
-    def get_logger_implementation(self):
-        return self.get_class_for_interface('log_factory')
         
     def get_class_for_interface(self, interface):
         interface = interface.lower()
@@ -91,30 +88,6 @@ class DefaultSecurityConfiguration(SecurityConfiguration):
                  'module' : modulename,},
                  extra )
 
-    def get_authenticator_implementation(self):
-        return self.get_class_for_interface('authenticator')
-
-    def get_encoder_implementation(self):
-        return self.get_class_for_interface('encoder')
-
-    def get_access_control_implementation(self):
-        return self.get_class_for_interface('access_control')
-
-    def get_intrusion_detector_implementation(self):
-        return self.get_class_for_interface('intrusion_detector')
-
-    def get_randomizer_implementation(self):
-        return self.get_class_for_interface('randomizer')
-
-    def get_encryptor_implementation(self):
-        return self.get_class_for_interface('encryptor')
-        
-    def get_user_implementation(self):
-        return self.get_class_for_interface('user')
-
-    def get_validator_implementation(self):
-        return self.get_class_for_interface('validator')
-        
     def get_validation_pattern(self, key):
         value = getattr(settings, "Validator_" + key, None)
         if value is None: 
@@ -128,12 +101,6 @@ class DefaultSecurityConfiguration(SecurityConfiguration):
             self.log_special(_("SecurityConfiguration for Validator_%(key)s is not a valid regex in settings. Returning None.") % 
                 {'key' : key})
             return None
-        
-    def get_executor_implementation(self):
-        return settings.ESAPI_Executor
-    
-    def get_http_utilities_implementation(self):
-        return settings.ESAPI_HTTPUtilities
     
     def get_master_key(self):
         return ESAPI.encoder().decode_from_base64(settings.Encryptor_MasterKey)
