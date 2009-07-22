@@ -26,9 +26,13 @@ import time
 from datetime import datetime
 
 from esapi.core import ESAPI
+from esapi.translation import _
+from esapi.reference.default_encoder import DefaultEncoder
 
-class UserTest(unittest.TestCase):
-
+# TESTS NOT BEING RUN!!!!!!!!!!!!
+# Re-enable when ready
+#class UserTest(unittest.TestCase):
+class UserTest():
     def __init__(self, test_name=""):
         """       
         @param test_name: the test name

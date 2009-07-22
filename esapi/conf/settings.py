@@ -28,18 +28,18 @@
 # entire application.
 #
 # DefaultAccessController requires ESAPI-AccessControlPolicy.xml in .esapi directory
-ESAPI_AccessControl = 'esapi.reference.accesscontrol.DefaultAccessController'
+ESAPI_access_control = 'esapi.reference.accesscontrol.DefaultAccessController'
 # FileBasedAuthenticator requires users.txt file in .esapi directory
-ESAPI_Authenticator = 'esapi.reference.FileBasedAuthenticator'
-ESAPI_Encoder = 'esapi.reference.default_encoder.DefaultEncoder'
-ESAPI_Encryptor = 'esapi.reference.default_encryptor.DefaultEncryptor'
-ESAPI_Executor = 'esapi.reference.DefaultExecutor'
-ESAPI_HTTPUtilities = 'esapi.reference.DefaultHTTPUtilities'
-ESAPI_IntrusionDetector = 'esapi.reference.DefaultIntrusionDetector'
-ESAPI_Logger = 'esapi.reference.python_log_factory.PythonLogFactory'
-ESAPI_Randomizer = 'esapi.reference.default_randomizer.DefaultRandomizer'
-ESAPI_Security_Configuration = 'esapi.reference.default_security_configuration.DefaultSecurityConfiguration'
-ESAPI_Validator = 'esapi.reference.default_validator.DefaultValidator'
+ESAPI_authenticator = 'esapi.reference.FileBasedAuthenticator'
+ESAPI_encoder = 'esapi.reference.default_encoder.DefaultEncoder'
+ESAPI_encryptor = 'esapi.reference.default_encryptor.DefaultEncryptor'
+ESAPI_executor = 'esapi.reference.DefaultExecutor'
+ESAPI_httputilities = 'esapi.reference.DefaultHTTPUtilities'
+ESAPI_intrusion_detector = 'esapi.reference.DefaultIntrusionDetector'
+ESAPI_log_factory = 'esapi.reference.python_log_factory.PythonLogFactory'
+ESAPI_randomizer = 'esapi.reference.default_randomizer.DefaultRandomizer'
+ESAPI_validator = 'esapi.reference.default_validator.DefaultValidator'
+ESAPI_bogus = 'esapi.reference.bashau'
 
 #===========================================================================
 # ESAPI Authenticator

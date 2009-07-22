@@ -20,10 +20,12 @@
 
 import pickle
 import re
+import sys
 
 from esapi.core import ESAPI
 from esapi.security_configuration import SecurityConfiguration
 from esapi.translation import _
+from esapi.exceptions import ConfigurationException
 
 try:
     import esapi.conf.settings as settings
@@ -50,29 +52,68 @@ class DefaultSecurityConfiguration(SecurityConfiguration):
     def get_application_name(self):
         return settings.Logger_ApplicationName
 
-    def get_log_implementation(self):
-        return settings.ESAPI_Logger
+    def get_logger_implementation(self):
+        return self.get_class_for_interface('log_factory')
+        
+    def get_class_for_interface(self, interface):
+        interface = interface.lower()
+        prop = "ESAPI_%s" % (interface,)
+        
+        try:
+            fqn = getattr(settings, prop)
+        except AttributeError, extra:
+            raise ConfigurationException( 
+                _('There is an error in the application configuration'), 
+                _("Class for this interface not specified in settings: %(interface)s") % 
+                {'interface' : interface},
+                extra )
+        
+        try:
+            dot = fqn.rindex('.')
+            modulename = fqn[:dot]
+            classname = fqn[dot+1:]
+        except ValueError, extra:
+            raise ConfigurationException( 
+                _('There is an error in the application configuration'), 
+                _("Fully-qualified name is malformed: %(name)s") % 
+                {'name' : fqn},
+                extra )
+        
+        try:
+            __import__(modulename)
+            module = sys.modules[modulename]
+            return getattr(module, classname)
+        except (ImportError, AttributeError), extra:
+            raise ConfigurationException(
+                _('There is an error in the application configuration'),
+                _('Error getting class %(class)s from module %(module)s') %
+                {'class' : classname,
+                 'module' : modulename,},
+                 extra )
 
-    def get_authentication_implementation(self):
-        return settings.ESAPI_Authenticator
+    def get_authenticator_implementation(self):
+        return self.get_class_for_interface('authenticator')
 
     def get_encoder_implementation(self):
-        return settings.ESAPI_Encoder
+        return self.get_class_for_interface('encoder')
 
     def get_access_control_implementation(self):
-        return settings.ESAPI_AccessControl
+        return self.get_class_for_interface('access_control')
 
-    def get_intrusion_detection_implementation(self):
-        return settings.ESAPI_IntrusionDetector
+    def get_intrusion_detector_implementation(self):
+        return self.get_class_for_interface('intrusion_detector')
 
     def get_randomizer_implementation(self):
-        return settings.ESAPI_Randomizer
+        return self.get_class_for_interface('randomizer')
 
-    def get_encryption_implementation(self):
-        return settings.ESAPI_Encryptor
+    def get_encryptor_implementation(self):
+        return self.get_class_for_interface('encryptor')
+        
+    def get_user_implementation(self):
+        return self.get_class_for_interface('user')
 
-    def get_validation_implementation(self):
-        return settings.ESAPI_Validator
+    def get_validator_implementation(self):
+        return self.get_class_for_interface('validator')
         
     def get_validation_pattern(self, key):
         value = getattr(settings, "Validator_" + key, None)

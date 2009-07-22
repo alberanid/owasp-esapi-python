@@ -95,6 +95,12 @@ class SecurityConfiguration:
         implementation.
         """
         raise NotImplementedError()
+        
+    def get_class_for_interface(self, interface):
+        """
+        Returns the class for a given interface name.
+        """
+        raise NotImplementedError()
 
     def get_authentication_implementation(self):
         """
@@ -131,14 +137,21 @@ class SecurityConfiguration:
         """
         raise NotImplementedError()
 
-    def get_encryption_implementation(self):
+    def get_encryptor_implementation(self):
         """
         Returns the fully qualified classname of the ESAPI Encryption 
         implementation.
         """
         raise NotImplementedError()
+        
+    def get_user_implementation(self):
+        """
+        Returns the fully qualified classname of the ESAPI User
+        implementation.
+        """
+        raise NotImplementedError()
 
-    def get_validation_implementation(self):
+    def get_validator_implementation(self):
         """
         Returns the fully qualified classname of the ESAPI Validation 
         implementation.
