@@ -45,12 +45,16 @@ class ESAPI():
         @classmethod
         def func(cls, new_value):
             cls.__dict__[priv_attr] = new_value
-       
-    encoder = gen_get_method('encoder')
-    set_encoder = gen_set_method('encoder')
+            
     
     access_controller = gen_get_method('access_controller')
     set_access_controller = gen_get_method('access_controller')
+            
+    authenticator = gen_get_method('authenticator')
+    set_authenticator = gen_set_method('authenticator')
+       
+    encoder = gen_get_method('encoder')
+    set_encoder = gen_set_method('encoder')
     
     encryptor = gen_get_method('encryptor')
     set_encryptor = gen_set_method('encryptor')
@@ -58,11 +62,11 @@ class ESAPI():
     randomizer = gen_get_method('randomizer')
     set_randomizer = gen_set_method('randomizer')
     
-    validator = gen_get_method('validator')
-    set_validator = gen_set_method('validator')
-    
     user = gen_get_method('user')
     set_user = gen_set_method('user')
+    
+    validator = gen_get_method('validator')
+    set_validator = gen_set_method('validator')
 
     @classmethod
     def log_factory(cls):

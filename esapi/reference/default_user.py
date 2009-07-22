@@ -26,6 +26,7 @@ from datetime import datetime
 from esapi.core import ESAPI
 from esapi.translation import _
 from esapi.user import User
+from esapi.encoder import Encoder
 from esapi.exceptions import AuthenticationAccountsException, AuthenticationLoginExecption, AuthenticationHostException
 from esapi.logger import Logger
 
@@ -281,7 +282,7 @@ class DefaultUser(User):
         
     def reset_csrf_token(self):
         self._csrf_token = ESAPI.randomizer().get_random_string(8, 
-            DefaultEncoder.CHAR_ALPHANUMERICS)
+            Encoder.CHAR_ALPHANUMERICS)
         return self.csrf_token
         
     # Expiration

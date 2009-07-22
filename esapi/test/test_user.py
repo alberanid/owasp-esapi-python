@@ -38,6 +38,7 @@ class UserTest():
         @param test_name: the test name
         """
         unittest.TestCase.__init__(self, test_name)
+        self.user_class = ESAPI.security_configuration().get_class_for_interface('user')
              
     def create_test_user(self, username=None, password=None):
         """
@@ -56,6 +57,7 @@ class UserTest():
         print (_("Creating user %(username)s for %(caller)s") %
             {'username' : username,
              'caller' : caller})
+        # Not sure if User tests should be coupled with Authenticator...
         user = ESAPI.authenticator().create_user(username, password, password)
         return user
         

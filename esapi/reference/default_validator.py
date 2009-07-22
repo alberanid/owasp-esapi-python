@@ -27,8 +27,6 @@ from esapi.codecs.percent import PercentCodec
 
 from esapi.exceptions import ValidationException
 
-from esapi.reference.default_encoder import DefaultEncoder
-
 from esapi.reference.validation.credit_card_validation_rule import CreditCardValidationRule
 from esapi.reference.validation.date_validation_rule import DateValidationRule
 from esapi.reference.validation.number_validation_rule import NumberValidationRule
@@ -63,7 +61,8 @@ class DefaultValidator(Validator):
             return
         DefaultValidator.file_validator = 'fail'
         file_codecs = [HTMLEntityCodec(), PercentCodec()]
-        file_encoder = DefaultEncoder(file_codecs)
+        encoder_class = ESAPI.security_configuration().get_class_for_interface('encoder')
+        file_encoder = encoder_class(file_codecs)
         DefaultValidator.file_validator = DefaultValidator( file_encoder )
         
     def is_valid_input(self, context, input_, type_, max_length, allow_none):
@@ -151,22 +150,22 @@ class DefaultValidator(Validator):
                 if allow_none:
                     return None
                 raise ValidationException( _("%(context)s: Input directory path required") %
-                                           {'context' : context}, 
-                                           _("Input directory path required: context=%(context)s, input=%(input)s") %
-                                           {'context' : context,
-                                            'input' : input_}, 
-                                           context )
+                   {'context' : context}, 
+                   _("Input directory path required: context=%(context)s, input=%(input)s") %
+                   {'context' : context,
+                    'input' : input_}, 
+                   context )
                 
             
             # Check that parent_dir is provided
             if self.is_empty(parent_dir):
                 raise ValidationException( _("%(context)s: Invalid directory name") %
-                                           {'context' : context}, 
-                                           _("Parent directory required: context=%(context)s, input=%(input)s, parent_dir=%(parent_dir)s") % 
-                                           {'context' : context,
-                                            'input' : input_,
-                                            'parent_dir' : parent_dir},
-                                           context )
+                   {'context' : context}, 
+                   _("Parent directory required: context=%(context)s, input=%(input)s, parent_dir=%(parent_dir)s") % 
+                   {'context' : context,
+                    'input' : input_,
+                    'parent_dir' : parent_dir},
+                   context )
            
             ################################
             
@@ -183,12 +182,12 @@ class DefaultValidator(Validator):
             # On case-insensitive filesystems, this normalizes case for the comparison
             if canonical_input != os.path.normcase(input_):
                 raise ValidationException( _("%(context)s: Invalid directory name") %
-                                           {'context' : context}, 
-                                           _("Invalid directory name does not match the canonical path: context=%(context)s, input=%(input)s, canonical=%(canonical_input)s") %
-                                           {'context' : context,
-                                            'input' : input_,
-                                            'canonical_input' : canonical_input}, 
-                                           context )
+                   {'context' : context}, 
+                   _("Invalid directory name does not match the canonical path: context=%(context)s, input=%(input)s, canonical=%(canonical_input)s") %
+                   {'context' : context,
+                    'input' : input_,
+                    'canonical_input' : canonical_input}, 
+                   context )
                 
             # Canonicalize parent_dir
             canonical_parent2 = os.path.realpath(parent_dir)
@@ -200,45 +199,45 @@ class DefaultValidator(Validator):
             # On case-insensitive filesystems, this normalizes case for the comparison
             if canonical_parent != os.path.normcase(parent_dir):
                 raise ValidationException( _("%(context)s: Invalid directory name") % 
-                                           {'context' : context}, 
-                                           _("Invalid parent directory name does not match the canonical path: context=%(context)s, input=%(input)s, parent_dir=%(parent_dir)s, canonical_parent=%(canonical_parent)s") % 
-                                           {'context' : context,
-                                            'input' : input_,
-                                            'parent_dir' : parent_dir,
-                                            'canonical_parent' : canonical_parent},
-                                           context )
+                   {'context' : context}, 
+                   _("Invalid parent directory name does not match the canonical path: context=%(context)s, input=%(input)s, parent_dir=%(parent_dir)s, canonical_parent=%(canonical_parent)s") % 
+                   {'context' : context,
+                    'input' : input_,
+                    'parent_dir' : parent_dir,
+                    'canonical_parent' : canonical_parent},
+                   context )
                              
             ################################
                              
             # Check that the input dir exists on disk and is a directory
             if not os.path.isdir(canonical_input):
                 raise ValidationException( _("%(context)s: Invalid directory name") % 
-                                           {'context' : context}, 
-                                           _("Invalid directory name does not exist: context=%(context)s, input=%(input)s") %
-                                           {'context' : context,
-                                            'input' : canonical_input}, 
-                                           context )
+                   {'context' : context}, 
+                   _("Invalid directory name does not exist: context=%(context)s, input=%(input)s") %
+                   {'context' : context,
+                    'input' : canonical_input}, 
+                   context )
         
             # Check that the parent dir exists on disk and is a directory
             if not os.path.isdir(canonical_parent):
                 raise ValidationException( _("%(context)s: Invalid directory name") % 
-                                           {'context' : context}, 
-                                           _("Invalid parent directory name does not exist: context=%(context)s, parent_dir=%(parent_dir)s") % 
-                                           {'context' : context,
-                                            'parent_dir' : canonical_parent}, 
-                                           context )
+                   {'context' : context}, 
+                   _("Invalid parent directory name does not exist: context=%(context)s, parent_dir=%(parent_dir)s") % 
+                   {'context' : context,
+                    'parent_dir' : canonical_parent}, 
+                   context )
                 
             ###############################3
             
             # Check that the input_ starts with the parent_dir
             if not canonical_input.startswith(canonical_parent):
                 raise ValidationException( _("%(context)s: Invalid directory name") % 
-                                           {'context' : context}, 
-                                           _("Input directory is not inside given parent directory: context=%(context)s,  input=%(input)s, parent_dir=%(parent_dir)s") % 
-                                           {'context' : context,
-                                            'input' : canonical_input,
-                                            'parent_dir' : canonical_parent}, 
-                                           context )
+                   {'context' : context}, 
+                   _("Input directory is not inside given parent directory: context=%(context)s,  input=%(input)s, parent_dir=%(parent_dir)s") % 
+                   {'context' : context,
+                    'input' : canonical_input,
+                    'parent_dir' : canonical_parent}, 
+                   context )
                 
             return canonical_input
             
@@ -261,11 +260,11 @@ class DefaultValidator(Validator):
                 if allow_none:
                     return None
                 raise ValidationException( _("%(context)s: Input file name required") % 
-                                           {'context' : context}, 
-                                           _("Input required: context=%(context)s, input=%(input)s") % 
-                                           {'context' : context,
-                                            'input' : input_}, 
-                                           context )
+                   {'context' : context}, 
+                   _("Input required: context=%(context)s, input=%(input)s") % 
+                   {'context' : context,
+                    'input' : input_}, 
+                   context )
             
             # Do basic validation
             self.get_valid_input(context, input_, "Filename", 255, True)
@@ -279,14 +278,15 @@ class DefaultValidator(Validator):
             if file_ext in allowed_extensions:
                 return input_
             else:
-                raise ValidationException( _("%(context)s: Invalid file name does not have valid extension ( %(allowed_extensions)s )") % 
-                                          {'context' : context,
-                                          'allowed_extensions' : allowed_extensions}, 
-                                          _("Invalid file name does not have valid extension ( %(allowed_extensions)s ): context=%(context)s, input=%(input)s") % 
-                                          {'allowed_extensions' : allowed_extensions,
-                                           'context' : context,
-                                           'input' : input_},
-                                          context )
+                raise ValidationException( 
+                    _("%(context)s: Invalid file name does not have valid extension ( %(allowed_extensions)s )") % 
+                  {'context' : context,
+                  'allowed_extensions' : allowed_extensions}, 
+                  _("Invalid file name does not have valid extension ( %(allowed_extensions)s ): context=%(context)s, input=%(input)s") % 
+                  {'allowed_extensions' : allowed_extensions,
+                   'context' : context,
+                   'input' : input_},
+                  context )
             
         except ValidationException, extra:
             if error_list is not None:
@@ -317,29 +317,31 @@ class DefaultValidator(Validator):
                 if allow_none:
                     return None
                 raise ValidationException( _("%(context)s: Input required") % 
-                                           {'context' : context}, 
-                                           _("Input required: context=%(context)s, input=%(input)s") % 
-                                           {'context' : context,
-                                            'input' : input_}, 
-                                           context )
+                   {'context' : context}, 
+                   _("Input required: context=%(context)s, input=%(input)s") % 
+                   {'context' : context,
+                    'input' : input_}, 
+                   context )
         
             esapi_max_bytes = ESAPI.security_configuration().get_allowed_file_upload_size()
             if len(input_) > esapi_max_bytes:
-                raise ValidationException( _("%(context)s: Invalid file content can not exceed %(max_bytes)s bytes") % 
-                                           {'context' : context,
-                                            'max_bytes' : esapi_max_bytes}, 
-                                           _("Exceeded ESAPI max length of %(max_bytes) bytes by %(exceeded)s bytes") % 
-                                           {'max_bytes' : esapi_max_bytes,
-                                            'exceeded' : len(input_) - esapi_max_bytes}, 
-                                          context )
+                raise ValidationException( 
+                    _("%(context)s: Invalid file content can not exceed %(max_bytes)s bytes") % 
+                   {'context' : context,
+                    'max_bytes' : esapi_max_bytes}, 
+                   _("Exceeded ESAPI max length of %(max_bytes) bytes by %(exceeded)s bytes") % 
+                   {'max_bytes' : esapi_max_bytes,
+                    'exceeded' : len(input_) - esapi_max_bytes}, 
+                  context )
             if len(input_) > max_bytes:
-                raise ValidationException( _("%(context)s: Invalid file content can not exceed %(max_bytes)s bytes") % 
-                                           {'context' : context,
-                                            'max_bytes' : max_bytes}, 
-                                           _("Exceeded max_bytes of %(max_bytes)s bytes by %(exceeded)s bytes") % 
-                                           {'max_bytes' : max_bytes,
-                                            'exceeded' : len(input_) - max_bytes}, 
-                                           context )
+                raise ValidationException( 
+                    _("%(context)s: Invalid file content can not exceed %(max_bytes)s bytes") % 
+                   {'context' : context,
+                    'max_bytes' : max_bytes}, 
+                   _("Exceeded max_bytes of %(max_bytes)s bytes by %(exceeded)s bytes") % 
+                   {'max_bytes' : max_bytes,
+                    'exceeded' : len(input_) - max_bytes}, 
+                   context )
             
             return input_
         

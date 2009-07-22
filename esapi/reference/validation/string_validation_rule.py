@@ -20,7 +20,6 @@ import re
 
 from esapi.translation import _
 from esapi.reference.validation.base_validation_rule import BaseValidationRule
-from esapi.reference.default_encoder import DefaultEncoder
 
 from esapi.exceptions import ValidationException
 from esapi.exceptions import EncodingException
@@ -47,18 +46,20 @@ class StringValidationRule(BaseValidationRule):
             pattern = re.compile( pattern_string )
             self.whitelist_patterns.append(pattern)
         except Exception, extra:
-            raise RuntimeError( _("Validation misconfiguration, problem with specified pattern: %(pattern)s") %             
-                               {'pattern' : pattern_string}, 
-                               extra )
+            raise RuntimeError( 
+                _("Validation misconfiguration, problem with specified pattern: %(pattern)s") %             
+               {'pattern' : pattern_string}, 
+               extra )
             
     def add_blacklist_pattern(self, pattern_string):
         try:
             pattern = re.compile( pattern_string )
             self.blacklist_patterns.append(pattern)
         except Exception, extra:
-            raise RuntimeError( _("Validation misconfiguration, problem with specified pattern: %(pattern)s") %             
-                               {'pattern' : pattern_string},
-                               extra )
+            raise RuntimeError( 
+                _("Validation misconfiguration, problem with specified pattern: %(pattern)s") %             
+               {'pattern' : pattern_string},
+               extra )
             
     def set_minimum_length(self, length):
         self.min_length = length
@@ -71,22 +72,24 @@ class StringValidationRule(BaseValidationRule):
         if input_ is None or len(input_) == 0:
             if self.allow_none:
                 return None
-            raise ValidationException( _("%(context)s: Input required") % 
-                                       {'context' : context}, 
-                                       _("Input required: context=%(context)s, input=%(input)s") % 
-                                       {'context' : context,
-                                        'input' : input_}, 
-                                       context )
+            raise ValidationException( 
+                _("%(context)s: Input required") % 
+               {'context' : context}, 
+               _("Input required: context=%(context)s, input=%(input)s") % 
+               {'context' : context,
+                'input' : input_}, 
+               context )
                     
         # canonicalize
         try:
             canonical = self.encoder.canonicalize( input_ )
         except EncodingException, extra:
-            raise ValidationException( _("%(context)s: Invalid input. Encoding problem detected.") % 
-                                       {'context' : context}, 
-                                       _("Error canonicalizing user input"), 
-                                       extra, 
-                                       context )
+            raise ValidationException( 
+                _("%(context)s: Invalid input. Encoding problem detected.") % 
+               {'context' : context}, 
+               _("Error canonicalizing user input"), 
+               extra, 
+               context )
             
         # check length
         if len(canonical) < self.min_length:           
@@ -100,7 +103,7 @@ class StringValidationRule(BaseValidationRule):
                   'context' : context,
                   'type' : self.get_type_name(),
                   'input' : input_,},
-                context)
+                context )
             
         if len(canonical) > self.max_length:
             raise ValidationException(
@@ -113,7 +116,7 @@ class StringValidationRule(BaseValidationRule):
                   'context' : context,
                   'type' : self.get_type_name(),
                   'input' : input_,},
-                context)
+                context )
             
         # check whitelist patterns
         for pattern in self.whitelist_patterns:
@@ -128,7 +131,7 @@ class StringValidationRule(BaseValidationRule):
                       'type' : self.get_type_name(),
                       'pattern' : pattern.pattern,
                       'input' : input_},
-                    context)
+                    context )
                       
         # check blacklist patterns
         for pattern in self.blacklist_patterns:
@@ -142,10 +145,10 @@ class StringValidationRule(BaseValidationRule):
                       'type' : self.get_type_name(),
                       'pattern' : pattern.pattern,
                       'input' : input_,},
-                    context)
+                    context )
                       
         # validation passed
         return canonical
         
     def sanitize(self, context, input_):
-        return self.whitelist(input_, DefaultEncoder.CHAR_ALPHANUMERICS)
+        return self.whitelist(input_, Encoder.CHAR_ALPHANUMERICS)

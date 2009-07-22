@@ -22,10 +22,8 @@ import os.path
 
 from esapi.core import ESAPI
 
-from esapi.reference.default_encoder import DefaultEncoder
 from esapi.codecs.html_entity import HTMLEntityCodec
 
-from esapi.reference.default_validator import DefaultValidator
 from esapi.validation_error_list import ValidationErrorList
 from esapi.reference.validation.string_validation_rule import StringValidationRule
 
@@ -165,8 +163,10 @@ class ValidatorTest(unittest.TestCase):
         self.assertEquals( 3, len(errors) );
     
     def test_is_valid_dir_path(self):
-        encoder = DefaultEncoder([HTMLEntityCodec()])
-        instance = DefaultValidator(encoder)
+        encoder_class = ESAPI.security_configuration().get_class_for_interface('encoder')
+        validator_class = ESAPI.security_configuration().get_class_for_interface('validator')
+        encoder = encoder_class([HTMLEntityCodec()])
+        instance = validator_class(encoder)
         
         if os.name == 'nt': # Windows
             # Windows paths that don't exist and thus should fail
@@ -379,8 +379,6 @@ class ValidatorTest(unittest.TestCase):
         
     def test_safe_read_line(self):
         pass
-        
-    
                 
 if __name__ == "__main__":
     unittest.main()

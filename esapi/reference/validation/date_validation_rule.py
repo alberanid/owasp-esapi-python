@@ -56,36 +56,39 @@ class DateValidationRule(BaseValidationRule):
             if input_ is None or len(input_) == 0:
                 if self.allow_none:
                     return None
-                raise ValidationException( _("%(context)s: Input date required") % 
-                                           {'context' : context}, 
-                                           _("Input date required: context=%(context)s, input=%(context)s") % 
-                                           {'context' : context,
-                                            'input' : input_}, 
-                                           context )
+                raise ValidationException( 
+                   _("%(context)s: Input date required") % 
+                   {'context' : context}, 
+                   _("Input date required: context=%(context)s, input=%(context)s") % 
+                   {'context' : context,
+                    'input' : input_}, 
+                   context )
                         
             # canonicalize
             try:
                 canonical = self.encoder.canonicalize( input_ )
             except EncodingException, extra:
-                raise ValidationException( _("%(context): Invalid date input. Encoding problem detected.") % 
-                                           {'context' : context}, 
-                                           _("Error canonicalizing user input"), 
-                                           extra, 
-                                           context )
+                raise ValidationException( 
+                   _("%(context): Invalid date input. Encoding problem detected.") % 
+                   {'context' : context}, 
+                   _("Error canonicalizing user input"), 
+                   extra, 
+                   context )
                 
             try:
                 date = datetime.strptime(canonical, self.format)
                 return date
             except Exception, extra:
-                raise ValidationException( _("%(context)s: Invalid date must follow the %(format)s format") % 
-                                           {'context' : context,
-                                            'format' : self.format}, 
-                                           _("Invalid date: context=%(context)s, format=%(format)s, input=%(input)s") %
-                                           {'context' : context,
-                                            'format' : self.format,
-                                            'input' : input_}, 
-                                           extra, 
-                                           context )
+                raise ValidationException( 
+                   _("%(context)s: Invalid date must follow the %(format)s format") % 
+                   {'context' : context,
+                    'format' : self.format}, 
+                   _("Invalid date: context=%(context)s, format=%(format)s, input=%(input)s") %
+                   {'context' : context,
+                    'format' : self.format,
+                    'input' : input_}, 
+                   extra, 
+                   context )
                 
         except ValidationException, extra:
             if error_list is not None:

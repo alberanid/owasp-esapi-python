@@ -21,8 +21,8 @@ import threading
 import time
 
 from esapi.core import ESAPI
-from esapi.reference.default_encoder import DefaultEncoder
 from esapi.codecs.push_back_string import PushbackString
+from esapi.encoder import Encoder
 
 from esapi.codecs.css import CSSCodec
 from esapi.codecs.html_entity import HTMLEntityCodec
@@ -45,13 +45,13 @@ class EncoderTest(unittest.TestCase):
         """
         unittest.TestCase.__init__(self, test_name)
         
-    def test_default_encoder_exception(self):
+    def test_encoder_constructor_exception(self):
         """
         Checks that only valid codecs are allowed.
         """
         codecs = [CSSCodec(), str]
         try:
-            instance = DefaultEncoder(codecs)
+            instance = ESAPI.encoder(codecs)
             self.fail()
         except TypeError:
             # Expected
@@ -59,7 +59,8 @@ class EncoderTest(unittest.TestCase):
             
     def test_canonicalize(self):
         codecs = [HTMLEntityCodec(), PercentCodec()]
-        instance = DefaultEncoder(codecs)
+        encoder_class = ESAPI.security_configuration().get_class_for_interface('encoder')
+        instance = encoder_class(codecs)
         
         # Test None paths
         self.assertEquals( None, instance.canonicalize(None))
@@ -171,7 +172,7 @@ class EncoderTest(unittest.TestCase):
         
         # javascript escape syntax
         js = [JavascriptCodec()]
-        instance = DefaultEncoder( js )
+        instance = encoder_class( js )
 
         self.assertEquals( "\0", instance.canonicalize("\\0"))
         self.assertEquals( "\b", instance.canonicalize("\\b"))
@@ -197,7 +198,7 @@ class EncoderTest(unittest.TestCase):
         # css escape syntax
         # be careful because some codecs see \0 as null byte
         css = [CSSCodec()]
-        instance = DefaultEncoder( css )
+        instance = encoder_class( css )
         self.assertEquals( "<", instance.canonicalize("\\3c"));  # add strings to prevent null byte
         self.assertEquals( "<", instance.canonicalize("\\03c"))
         self.assertEquals( "<", instance.canonicalize("\\003c"))
@@ -383,7 +384,7 @@ class EncoderTest(unittest.TestCase):
         self.assertEquals(None, instance.encode_for_base64(None))
         self.assertEquals(None, instance.decode_from_base64(None))
         for i in range(100):
-            random_string = ESAPI.randomizer().get_random_string( 20, DefaultEncoder.CHAR_SPECIALS )
+            random_string = ESAPI.randomizer().get_random_string( 20, Encoder.CHAR_SPECIALS )
             encoded = instance.encode_for_base64( random_string )
             decoded = instance.decode_from_base64( encoded )
             self.assertEquals( random_string, decoded )
@@ -391,14 +392,14 @@ class EncoderTest(unittest.TestCase):
     def test_decode_from_base64(self):
         instance = ESAPI.encoder()
         for i in range(100):
-            random_string = ESAPI.randomizer().get_random_string( 20, DefaultEncoder.CHAR_SPECIALS )
+            random_string = ESAPI.randomizer().get_random_string( 20, Encoder.CHAR_SPECIALS )
             encoded = instance.encode_for_base64( random_string )
             decoded = instance.decode_from_base64( encoded )
             self.assertEqual( random_string, decoded )
 
         for i in range(100):
-            random_string = ESAPI.randomizer().get_random_string( 20, DefaultEncoder.CHAR_SPECIALS )
-            encoded = ESAPI.randomizer().get_random_string(1, DefaultEncoder.CHAR_ALPHANUMERICS) + instance.encode_for_base64( random_string )
+            random_string = ESAPI.randomizer().get_random_string( 20, Encoder.CHAR_SPECIALS )
+            encoded = ESAPI.randomizer().get_random_string(1, Encoder.CHAR_ALPHANUMERICS) + instance.encode_for_base64( random_string )
             decoded = instance.decode_from_base64( encoded )
             self.assertFalse( random_string == decoded )
 
@@ -421,7 +422,7 @@ class EncoderTest(unittest.TestCase):
         self.assertEquals(c, decoded)
         
         orig = "c:\\jeff"
-        enc = win.encode(DefaultEncoder.CHAR_ALPHANUMERICS, orig)
+        enc = win.encode(Encoder.CHAR_ALPHANUMERICS, orig)
         self.assertEquals(orig, win.decode(enc))
         self.assertEquals(orig, win.decode(orig))
         
@@ -476,14 +477,14 @@ class EncoderTest(unittest.TestCase):
             
         def run(self):
             while True:
-                nonce = ESAPI.randomizer().get_random_string(20, DefaultEncoder.CHAR_SPECIALS )
+                nonce = ESAPI.randomizer().get_random_string(20, Encoder.CHAR_SPECIALS )
                 result = self.javascript_encode( nonce )
                 # randomize the threads
                 time.sleep( ESAPI.randomizer().get_random_integer( 100, 500 ) / 1000.0 )
                 assert result == self.javascript_encode( nonce )
                 
         def javascript_encode(self, string):
-            encoder = DefaultEncoder()
+            encoder = ESAPI.security_configuration().get_class_for_interface('encoder')()
             return encoder.encode_for_javascript(string)
 
 if __name__ == "__main__":

@@ -39,7 +39,7 @@ ESAPI_intrusion_detector = 'esapi.reference.DefaultIntrusionDetector'
 ESAPI_log_factory = 'esapi.reference.python_log_factory.PythonLogFactory'
 ESAPI_randomizer = 'esapi.reference.default_randomizer.DefaultRandomizer'
 ESAPI_validator = 'esapi.reference.default_validator.DefaultValidator'
-ESAPI_bogus = 'esapi.reference.bashau'
+ESAPI_user = 'esapi.reference.default_user.DefaultUser'
 
 #===========================================================================
 # ESAPI Authenticator
