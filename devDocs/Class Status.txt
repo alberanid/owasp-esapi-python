@@ -38,7 +38,7 @@ DefaultValidator - Depends on AntiSamy on python from Marcin
 ValidatorTest - Dep on DefaultValidator
 DefaultUser - Dep on Authenticator, HTTPUtilities
 UserTest - Dep on DefaultUser
-                    
+HTTPUtilities - What are we doing with File objects?
                     
 Without unsatisfied dependencies
 --------
