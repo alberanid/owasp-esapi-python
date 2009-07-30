@@ -34,7 +34,7 @@ ESAPI_authenticator = 'esapi.reference.FileBasedAuthenticator'
 ESAPI_encoder = 'esapi.reference.default_encoder.DefaultEncoder'
 ESAPI_encryptor = 'esapi.reference.default_encryptor.DefaultEncryptor'
 ESAPI_executor = 'esapi.reference.DefaultExecutor'
-ESAPI_httputilities = 'esapi.reference.DefaultHTTPUtilities'
+ESAPI_http_utilities = 'esapi.reference.default_http_utilities.DefaultHTTPUtilities'
 ESAPI_intrusion_detector = 'esapi.reference.DefaultIntrusionDetector'
 ESAPI_log_factory = 'esapi.reference.python_log_factory.PythonLogFactory'
 ESAPI_randomizer = 'esapi.reference.default_randomizer.DefaultRandomizer'
@@ -101,7 +101,10 @@ Encryptor_CharacterEncoding = 'UTF-8'
 #
 HttpUtilities_UploadDir = r'UploadDir'
 # Force HTTP only on all cookies in ESAPI SafeRequest
-HttpUtilities_ForceHTTPOnly = False
+HttpUtilities_ForceHttpOnlySession = False
+HttpUtilities_ForceSecureSession = False
+HttpUtilities_ForceHttpOnlyCookies = True
+HttpUtilities_ForceSecureCookies = True
 # File upload configuration
 HttpUtilities_AllowedUploadExtensions = '.zip,.pdf,.tar,.gz,.xls,.properties,.txt,.xml'.lower().split(',')
 HttpUtilities_MaxUploadFileBytes = 5000000

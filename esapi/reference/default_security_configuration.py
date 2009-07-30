@@ -166,8 +166,11 @@ class DefaultSecurityConfiguration(SecurityConfiguration):
         if count > 0 and interval > 0 and len(actions) > 0:
             return SecurityConfiguration.Threshold( event_name, count, interval, actions)
 
-    def get_force_http_only(self):
-        return settings.HttpUtilities_ForceHTTPOnly
+    def get_force_http_only_cookies(self):
+        return settings.HttpUtilities_ForceHttpOnlyCookies
+        
+    def get_force_secure_cookies(self):
+        return settings.HttpUtilities_ForceSecureCookies
 
     def get_response_content_type(self):
         return settings.HttpUtilities_ResponseContentType

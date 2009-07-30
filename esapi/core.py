@@ -67,6 +67,9 @@ class ESAPI():
     
     validator = gen_get_method('validator')
     set_validator = gen_set_method('validator')
+    
+    http_utilities = gen_get_method('http_utilities')
+    set_http_utilities = gen_set_method('http_utilities')
 
     @classmethod
     def log_factory(cls):

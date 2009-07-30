@@ -288,11 +288,17 @@ class SecurityConfiguration:
         """
         raise NotImplementedError()
 
-    def get_force_http_only(self):
+    def get_force_http_only_cookies(self):
         """
         Forces new cookie headers with HttpOnly on first and second responses
         in public HttpSession esapi.filters.SafeRequest.getSession() and
         esapi.filters.getSession(boolean create)
+        """
+        raise NotImplementedError()
+        
+    def get_force_secure_cookies(self):
+        """
+        Forces new cookies to have Secure flag set.
         """
         raise NotImplementedError()
 
