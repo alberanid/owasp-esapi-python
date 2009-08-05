@@ -29,7 +29,9 @@ class MockHttpRequest():
         self.POST = {}
     
         # The full URL to which the request was directed
-        self.url = "https://www.example.com?pid=1&qid=test"
+        self.url = "https://www.example.com/example/?pid=1&qid=test"
+        
+        self.path = "/example/?pid=1&qid=test"
         
         # The HTTP method used in the request. Must be uppercase.
         # EX: 'GET' or 'POST'
@@ -45,7 +47,10 @@ class MockHttpRequest():
         
         # The headers in a dictionary-like object
         # string name -> string value
-        self.headers = {}
+        self.headers = {
+            'Accept-Language' : 'en-us', }
+        
+        self.remote_host = '64.14.103.52'
     
     def is_secure(self):
         """

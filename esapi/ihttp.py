@@ -30,6 +30,12 @@ class IHttpRequest():
         # The headers in a dictionary-like object
         # string name -> string value
         self.headers = None
+        
+        # The IP address of the request originator
+        self.remote_host = None
+        
+        # The Accept-Language header 
+        self.accept_language = None
     
     def is_secure(self):
         """
@@ -44,18 +50,27 @@ class IHttpResponse():
         # Headers as a dictionary-like object
         self.headers = None
         
+        # The cookies available as a dictionary of string name -> Morsel
+        # We need the Morsel object to expose the path and domain of client's
+        # cookies so that we can clear them
+        self.cookies = None
+        
     def delete_cookie(self, key, path='/', domain=None):
         """
         Deletes a cookie from the client by setting the cookie to an empty
         string, and max_age=0 so it should expire immediately.
         """
         pass
+        
+    def set_cookie(self, **kwargs):
+        pass
     
         
 class ISession():
     
     def __init__(self):
-        self.session = None
+        # The session attributes
+        self.attributes = {}
         
     def invalidate(self):
         """
@@ -63,4 +78,5 @@ class ISession():
         
         Proxied to flush() in Django, and invalidate() in Beaker.
         """
+        pass
         

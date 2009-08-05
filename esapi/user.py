@@ -53,7 +53,8 @@ class User(object):
         
     def logout(self):
         """
-        Logout this user.
+        Logout this user. Implementations should call
+        ESAPI.authenticator().logout(self)
         """
         raise NotImplementedError()
         
@@ -493,4 +494,202 @@ class User(object):
         
 ######################
 
-# ANONYMOUS = ?
+class AnonymousUser(object):  
+    def __init__(self):
+        self._account_name = 'Anonymous'
+        
+    # Login
+    def login_with_password(self, password):
+        raise NotImplementedError()
+        
+    def logout(self):
+        raise NotImplementedError()
+        
+    def is_logged_in(self):
+        raise NotImplementedError()
+        
+    # Locale
+    def _get_locale(self):
+        raise NotImplementedError()
+        
+    def _set_locale(self, locale):
+        raise NotImplementedError()
+        
+    locale = property( _get_locale, _set_locale )
+        
+    # Roles
+    def add_role(self, role):
+        raise NotImplementedError()
+        
+    def remove_role(self, role):
+        raise NotImplementedError()
+        
+    def is_in_role(self, role):
+        raise NotImplementedError()
+        
+    def _get_roles(self):
+        raise NotImplementedError()
+
+    def _set_roles(self, roles):
+        raise NotImplementedError()
+    
+    roles = property( _get_roles,
+                      _set_roles,
+                      doc="The roles assigned to a particular user" )
+      
+    def add_roles(self, roles):
+        raise NotImplementedError()
+      
+    # Passwords
+    def verify_password(self, password):
+        raise NotImplementedError()
+        
+    def change_password(self, old_password, new_password1, new_password2):
+        raise NotImplementedError()
+        
+    def _get_last_password_change_time(self):
+        raise NotImplementedError()
+        
+    def _set_last_password_change_time(self, time):
+        raise NotImplementedError()
+        
+    last_password_change_time = property( _get_last_password_change_time,
+        _set_last_password_change_time,
+        doc="The time of the last password change for this user." )
+        
+    # Enable/Disable
+    def disable(self):
+        raise NotImplementedError()
+        
+    def enable(self):
+        raise NotImplementedError()
+        
+    def is_enabled(self):
+        raise NotImplementedError()
+        
+    # Account id
+    def _get_account_id(self):
+        raise NotImplementedError()
+        
+    account_id = property(_get_account_id,
+                          doc="The User's account ID")
+        
+    # Account name
+    def _get_account_name(self):
+        return self._account_name
+        
+    def _set_account_name(self, name):
+        raise NotImplementedError()
+        
+    account_name = property(_get_account_name, 
+                            _set_account_name,
+                            doc="The User's account name")
+        
+    # CSRF tokens
+    def _get_csrf_token(self):
+        return ""
+    
+    csrf_token = property( _get_csrf_token,
+                           doc="The User's CSRF token")
+        
+    def reset_csrf_token(self):
+        raise NotImplementedError()
+        
+    # Expiration
+    def _get_expiration_time(self):
+        raise NotImplementedError()
+        
+    def _set_expiration_time(self, expiration_time):
+        raise NotImplementedError()
+       
+    expiration_time = property( _get_expiration_time,
+                                _set_expiration_time,
+                                doc="The date and time that this User's account will expire" )
+        
+    def is_expired(self):
+        raise NotImplementedError()
+        
+    # Failed logins
+    def get_failed_login_count(self):
+        raise NotImplementedError()
+        
+    def increment_failed_login_count(self):
+        raise NotImplementedError()
+        
+    def _get_last_failed_login_time(self):
+        raise NotImplementedError()
+        
+    def _set_last_failed_login_time(self, time):
+        raise NotImplementedError()
+        
+    last_failed_login_time = property( _get_last_failed_login_time,
+        _set_last_failed_login_time,
+        doc="The date and time of the last failed login for the user." )
+        
+    # Host address
+    def _get_last_host_address(self):
+        raise NotImplementedError()
+        
+    def _set_last_host_address(self, address):
+        raise NotImplementedError()
+        
+    last_host_address = property( _get_last_host_address,
+                             _set_last_host_address,
+                             doc="The last host address used by this user" )
+        
+    # Login times
+    def _get_last_login_time(self):
+        raise NotImplementedError()
+        
+    def _set_last_login_time(self, time):
+        raise NotImplementedError()
+        
+    last_login_time = property( _get_last_login_time,
+                                _set_last_login_time,
+                                doc="The date and time the user last successfully logged in." )
+       
+    # Screen names  
+    def _get_screen_name(self):
+        raise NotImplementedError()
+        
+    def _set_screen_name(self, new_screen_name):
+        raise NotImplementedError()
+        
+    screen_name = property( _get_screen_name,
+                            _set_screen_name,
+                            doc="The screen name or alias for the User" )
+                            
+    # Session
+    def add_session(self, session):
+        return None
+        
+    def remove_session(self, session):
+        return None
+        
+    def get_sessions(self):
+        raise NotImplementedError()
+    
+    # Anonymous user
+    def is_anonymous(self):
+        return True
+        
+    # Timeouts
+    def is_session_absolute_timeout(self):
+        raise NotImplementedError()
+        
+    def is_session_timeout(self):
+        raise NotImplementedError()
+    
+    # Locking
+    def lock(self):
+        raise NotImplementedError()
+        
+    def unlock(self):
+        raise NotImplementedError()
+        
+    def is_locked(self):
+        raise NotImplementedError()
+       
+    # Security event dictionary 
+    def get_event_dict(self):
+        raise NotImplementedError()

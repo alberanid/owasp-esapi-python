@@ -59,7 +59,6 @@ class DefaultEncryptor(Encryptor):
         self.signing_key_length = ESAPI.security_configuration().get_digital_signature_key_length()
         self.signing_key_pair = ESAPI.security_configuration().get_digital_signature_key()
         
-
     def main(self):
         # Generate a new DSA key
         DSAKey = DSA.generate(self.signing_key_length, os.urandom)

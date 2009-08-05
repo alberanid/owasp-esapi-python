@@ -82,7 +82,7 @@ class DefaultValidator(Validator):
             
         rvr.set_maximum_length(max_length)
         rvr.set_allow_none(allow_none)
-        return rvr.get_valid(context, input_)
+        return rvr.get_valid(context, input_, error_list)
         
     def is_valid_credit_card(self, context, input_, allow_none):
         try:

@@ -21,15 +21,14 @@
 # Some methods not implemented
 # Safe initial values
 
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from esapi.core import ESAPI
 from esapi.translation import _
 from esapi.user import User
 from esapi.encoder import Encoder
-from esapi.exceptions import AuthenticationAccountsException, AuthenticationLoginExecption, AuthenticationHostException
+from esapi.exceptions import AuthenticationAccountsException, AuthenticationLoginException, AuthenticationHostException
 from esapi.logger import Logger
-
 
 class DefaultUser(User):
     """
@@ -51,30 +50,31 @@ class DefaultUser(User):
         """
         User.__init__(self)
         
-        self.account_name = account_name
+        self._account_name = None
+        self._set_account_name(account_name)
         
         # Get random numbers until we find an unused account number
         while True:
             id = ESAPI.randomizer().get_random_integer(1)
             #if ESAPI.authenticator().get_user(id) is None and id != 0:
-            self.account_id = id
+            self._account_id = id
             break
         
-        self._logger = ESAPI.get_logger("DefaultUser")
+        self.logger = ESAPI.logger("DefaultUser")
         self._screen_name = None
         self._csrf_token = self.reset_csrf_token()
         self._roles = []
-        self._locked = None
+        self._locked = False
         self._logged_in = None
-        self._enabled = None
+        self._enabled = False
         self._last_host_address = None
         self._last_password_change_time = None
-        self._last_login_time = None
-        self._last_failed_login_time = None
-        self._expiration_time = None
+        self._last_login_time = datetime.min
+        self._last_failed_login_time = datetime.min
+        self._expiration_time = datetime.max
         self._sessions = []
         self._event_map = {}
-        self._failed_login_count = None
+        self._failed_login_count = 0
         self._locale = None
         
     # Login
@@ -113,10 +113,10 @@ class DefaultUser(User):
         self.logout()
         if self.verify_password( password ):
             self._logged_in = True
-            #ESAPI.http_utilities().change_session_identifier( ESAPI.current_request() )
-            #ESAPI.authenticator().set_current_user(self)
+            ESAPI.http_utilities().change_session_identifier( ESAPI.current_request() )
+            ESAPI.authenticator().current_user = self
             self.last_login_time = datetime.now()
-            #self.last_host_address = ESAPI.http_utilities().get_current_request().get_remote_addr()
+            self.last_host_address = ESAPI.http_utilities().get_current_request().remote_host
             self.logger.trace(Logger.SECURITY_SUCCESS, 
                 _("User logged in: %(account_name)s") %
                 {'account_name' : self.account_name})
@@ -124,31 +124,14 @@ class DefaultUser(User):
             self._logged_in = False
             self.last_failed_login_time = datetime.now()
             self.increment_failed_login_count()
-            if self.failed_login_count >= ESAPI.security_configuration().get_allowed_login_attempts():
+            if self.get_failed_login_count() >= ESAPI.security_configuration().get_allowed_login_attempts():
                 self.lock()
             raise AuthenticationLoginException( _("Login failed"),
                 _("Incorrect password provided for %(account_name)s") %
                 {'account_name' : self.account_name})
         
     def logout(self):
-        #ESAPI.http_utilities().kill_cookie( ESAPI.current_request(), 
-        #    ESAPI.current_response(),
-        #    HTTPUtilities.REMEMBER_TOKEN_COOKIE_NAME )
-            
-        #session = ESAPI.current_request().get_session(False)
-        #remove me
-        session = None
-        
-        if session is not None:
-            self.remove_session(session)
-            session.invalidate()
-            
-        #ESAPI.http_utilities().kill_cookie( ESAPI.current_request(),
-        #    ESAPI.current_response(),
-        #    "SESSIONID" )
-        self._logged_in = False
-        self.logger.info(Logger.SECURITY_SUCCESS, _("Logout successful"))
-        #ESAPI.authenticator().set_current_user(User.ANONYMOUS)
+        return ESAPI.authenticator().logout(self)
         
     def is_logged_in(self):
         return self._logged_in
@@ -159,6 +142,8 @@ class DefaultUser(User):
         
     def _set_locale(self, locale):
         self._locale = locale
+       
+    locale = property( _get_locale, _set_locale )
         
     # Roles
     def add_role(self, role):
@@ -221,15 +206,13 @@ class DefaultUser(User):
       
     # Passwords
     def verify_password(self, password):
-        #return ESAPI.authenticator().verify_password(self, password)
-        return None
+        return ESAPI.authenticator().verify_password(self, password)
         
     def change_password(self, old_password, new_password1, new_password2):
-        #ESAPI.authenticator().change_password(self, 
-        #    old_passowrd, 
-        #    new_password1, 
-        #    new_passord2)
-        return None
+        ESAPI.authenticator().change_password(self, 
+            old_passowrd, 
+            new_password1, 
+            new_password2)
         
     def _get_last_password_change_time(self):
         return self._last_password_change_time
@@ -240,6 +223,10 @@ class DefaultUser(User):
             _("Set last password change time to %(time)s for %(account_name)s") %
             {'time' : time,
              'account_name' : self.account_name})
+        
+    last_password_change_time = property( _get_last_password_change_time,
+                                          _set_last_password_change_time,
+                                          doc="The time of the last password change for this user." )
         
     # Enable/Disable
     def disable(self):
@@ -261,24 +248,34 @@ class DefaultUser(User):
     def _get_account_id(self):
         return self._account_id
         
+    account_id = property(_get_account_id,
+                          doc="The User's account ID")
+        
     # Account name
     def _get_account_name(self):
         return self._account_name
         
     def _set_account_name(self, name):
         old = self.account_name
-        self._account_name = lower(name)
-        if old != None
+        self._account_name = name.lower()
+        if old is not None:
             if old == "":
                 old = "[nothing]"
             self.logger.info( Logger.SECURITY_SUCCESS,
                 _("Account name changed from %(old)s to %(new)s") %
                 {'old' : old,
-                 'new' : self.account_name}
+                 'new' : self.account_name} )
+                 
+    account_name = property(_get_account_name, 
+                            _set_account_name,
+                            doc="The User's account name")
         
     # CSRF tokens
     def _get_csrf_token(self):
         return self._csrf_token
+        
+    csrf_token = property( _get_csrf_token,
+                           doc="The User's CSRF token")
         
     def reset_csrf_token(self):
         self._csrf_token = ESAPI.randomizer().get_random_string(8, 
@@ -295,7 +292,11 @@ class DefaultUser(User):
             _("Account expiration time was set to %(time)s for %(account_name)s") %
             {'time' : expiration_time,
              'account_name' : self.account_name})
-        
+
+    expiration_time = property( _get_expiration_time,
+                _set_expiration_time,
+                doc="The date and time that this User's account will expire" )
+
     def is_expired(self):
         return self.expiration_time < datetime.now()
         
@@ -311,10 +312,14 @@ class DefaultUser(User):
         
     def _set_last_failed_login_time(self, time):
         self._last_failed_login_time = time
-        logger.info( Logger.SECURITY_SUCCESS, 
+        self.logger.info( Logger.SECURITY_SUCCESS, 
             _("Set last failed login time to %(time)s for %(user)s") %
             {'time' : time,
              'user' : self.account_name})
+             
+    last_failed_login_time = property( _get_last_failed_login_time,
+                                       _set_last_failed_login_time,
+                                       doc="The date and time of the last failed login for the user." )
         
     # Host address
     def _get_last_host_address(self):
@@ -331,6 +336,10 @@ class DefaultUser(User):
                  'new' : address})
         self._last_host_address = address
         
+    last_host_address = property( _get_last_host_address,
+                             _set_last_host_address,
+                             doc="The last host address used by this user" )
+        
     # Login times
     def _get_last_login_time(self):
         return self._last_login_time
@@ -341,6 +350,10 @@ class DefaultUser(User):
             _("Set last successful login time to %(time)s for %(account_name)s") %
             {'time' : time,
              'account_name' : self.account_name})
+             
+    last_login_time = property( _get_last_login_time,
+        _set_last_login_time,
+        doc="The date and time the user last successfully logged in." )
        
     # Screen names  
     def _get_screen_name(self):
@@ -352,14 +365,18 @@ class DefaultUser(User):
             _("ScreenName changed to %(new)s for %(account_name)s") %
             {'new' : new_screen_name,
              'account_name' : self.account_name})
+             
+    screen_name = property( _get_screen_name,
+                            _set_screen_name,
+                            doc="The screen name or alias for the User" )
                             
     # Session
     def add_session(self, session):
-        self._session.append(session)
+        self._sessions.append(session)
         
     def remove_session(self, session):
         try:
-            self._session.remove(session)
+            self._sessions.remove(session)
         except Exception:
             pass
         
@@ -368,14 +385,24 @@ class DefaultUser(User):
     
     # Anonymous user
     def is_anonymous(self):
-        raise NotImplementedError()
+        return False
         
     # Timeouts
     def is_session_absolute_timeout(self):
-        raise NotImplementedError()
+        session = ESAPI.http_utilities().current_request.session
+        if session is None:
+            return True
+            
+        deadline = session.creation_time + timedelta(milliseconds=self.ABSOLUTE_TIMEOUT_LENGTH)
+        return datetime.now() > deadline
         
     def is_session_timeout(self):
-        raise NotImplementedError()
+        session = ESAPI.http_utilities().current_request.session
+        if session is None:
+            return True
+            
+        deadline = session.last_accessed_time + timedelta(milliseconds=self.IDLE_TIMEOUT_LENGTH)
+        return datetime.now() > deadline
     
     # Locking
     def lock(self):
@@ -397,3 +424,17 @@ class DefaultUser(User):
     # Security event dictionary 
     def get_event_dict(self):
         raise NotImplementedError()
+        
+    def __getstate__(self):
+        # Copy the object's state from self.__dict__ which contains
+        # all our instance attributes. Always use the dict.copy()
+        # method to avoid modifying the original state.
+        state = self.__dict__.copy()
+        # Remove the unpicklable entries.
+        del state['logger']
+        return state
+
+    def __setstate__(self, state):
+        # Restore instance attributes (i.e., filename and lineno).
+        self.__dict__.update(state)
+        self.logger = ESAPI.logger("DefaultUser")

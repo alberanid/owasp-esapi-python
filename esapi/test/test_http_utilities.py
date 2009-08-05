@@ -35,12 +35,15 @@ class HTTPUtilitiesTest(unittest.TestCase):
         @param test_name: the test name
         """
         unittest.TestCase.__init__(self, test_name)
+        
+    def setUp(self):
+        ESAPI.authenticator().clear_all_data()
     
     def test_csrf_token(self):
-        username = "username"
+        username = "testCSRFUser"
         password = "addCSRFToken"
         user = ESAPI.authenticator().create_user(username, password, password)
-        ESAPI.authenticator().set_current_user( user )
+        ESAPI.authenticator().current_user = user 
         token = ESAPI.http_utilities().get_csrf_token()
         self.assertEquals(8, len(token))
         request = MockHttpRequest()
@@ -56,10 +59,10 @@ class HTTPUtilitiesTest(unittest.TestCase):
         
     def test_add_csrf_token(self):
         instance = ESAPI.authenticator()
-        username = "username"
+        username = "addCSRFUser"
         password = 'addCSRFToken'
         user = instance.create_user(username, password, password)
-        instance.set_current_user(user)
+        instance.current_user = user
         
         csrf1 = ESAPI.http_utilities().add_csrf_token('/test1')
         self.assertTrue(csrf1.find('?') > -1)
@@ -115,16 +118,18 @@ class HTTPUtilitiesTest(unittest.TestCase):
         ESAPI.http_utilities().set_current_http(request, response)
         self.assertTrue(len(response.cookies) == 0)
         
-        new_cookies = []
+        new_cookies = {}
         m = Morsel()
-        m['test1'] = '1'
-        new_cookies.append(m)
+        m.key = 'test1'
+        m.value = '1'
+        new_cookies[m.key] = m
         
         m = Morsel()
-        m['test2'] = '2'
-        new_cookies.append(m)
+        m.key = 'test2'
+        m.value = '2'
+        new_cookies[m.key] = m
         
-        request.set_cookies(new_cookies)
+        request.cookies = new_cookies
         ESAPI.http_utilities().kill_cookie( "test1", request, response )
         self.assertTrue(len(response.cookies) == 1)
         
@@ -158,19 +163,16 @@ class HTTPUtilitiesTest(unittest.TestCase):
         response = MockHttpResponse()
         
         empty = ESAPI.http_utilities().decrypt_state_from_cookie(request)
-        self.assertEquals(0, len(empty))
+        self.assertEquals({}, empty)
         
         m = {'one' : 'aspect',
              'two' : 'ridiculous',
              'test_hard' : "&(@#*!^|;,." }
              
-        try:
-            ESAPI.http_utilities().encrypt_state_in_cookie(response, m)
-            value = respanse.headers['Set-Cookie']
-            encrypted = value[value.find('='):value.find(';')]
-            ESAPI.encryptor().decrypt(encrypted)
-        except:
-            self.fail()
+        ESAPI.http_utilities().encrypt_state_in_cookie(m, response)
+        value = response.headers['Set-Cookie']
+        encrypted = value[value.find('='):value.find(';')]
+        ESAPI.encryptor().decrypt(encrypted)
             
     def test_save_too_long_state_in_cookie(self):
         request = MockHttpRequest()
@@ -192,9 +194,9 @@ class HTTPUtilitiesTest(unittest.TestCase):
         ESAPI.http_utilities().set_current_http(request, response)
         self.assertEquals(0, len(response.headers))
         
-        response.add_header("test1", "1")
-        response.add_header("test2", "2")
-        response.add_header("test3", "3")
+        response.headers["test1"] = "1"
+        response.headers["test2"] = "2"
+        response.headers["test3"] = "3"
         
         self.assertEquals(3, len(response.headers))
         ESAPI.http_utilities().set_no_cache_headers( response )
@@ -204,7 +206,7 @@ class HTTPUtilitiesTest(unittest.TestCase):
     def test_set_remember_token(self):
         instance = ESAPI.authenticator()
         
-        account_name = "joesaccount"
+        account_name = "joestheplumber"
         password = instance.generate_strong_password()
         user = instance.create_user(account_name, password, password)
         user.enable()
@@ -215,7 +217,7 @@ class HTTPUtilitiesTest(unittest.TestCase):
         instance.login(request, response)
         
         max_age = 60 * 60 * 24 * 14
-        ESAPI.http_utilities().set_remember_token( request, response, password, max_age, "domain", '/')
+        ESAPI.http_utilities().set_remember_token( password, max_age, "domain", '/', request, response )
         
 if __name__ == "__main__":
     unittest.main()

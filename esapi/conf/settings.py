@@ -30,7 +30,7 @@
 # DefaultAccessController requires ESAPI-AccessControlPolicy.xml in .esapi directory
 ESAPI_access_control = 'esapi.reference.accesscontrol.DefaultAccessController'
 # FileBasedAuthenticator requires users.txt file in .esapi directory
-ESAPI_authenticator = 'esapi.reference.FileBasedAuthenticator'
+ESAPI_authenticator = 'esapi.reference.shelve_authenticator.ShelveAuthenticator'
 ESAPI_encoder = 'esapi.reference.default_encoder.DefaultEncoder'
 ESAPI_encryptor = 'esapi.reference.default_encryptor.DefaultEncryptor'
 ESAPI_executor = 'esapi.reference.DefaultExecutor'

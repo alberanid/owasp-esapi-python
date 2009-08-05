@@ -35,6 +35,7 @@ class HTTPUtilities():
     MAX_COOKIE_PAIRS = 20 # From RFC 2109
     CSRF_TOKEN_NAME = "ctoken"
     ESAPI_STATE = "estate"
+    SESSION_TOKEN_NAME = "JSESSIONID"
     
     PARAMETER = 0
     HEADER = 1

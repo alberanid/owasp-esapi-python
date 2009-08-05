@@ -18,6 +18,8 @@
 
 # Todo
 
+from datetime import datetime
+
 class MockSession():
     count = 0
     
@@ -27,18 +29,34 @@ class MockSession():
         MockSession.count += 1
         self.id = MockSession.count
         
-    def delete_cookie(self, key, path='/', domain=None):
+        self.creation_time = datetime.now()
+        self.last_accessed_time = datetime.now()
+        
+    def invalidate(self):
         """
-        Deletes a cookie from the client by setting the cookie to an empty
-        string, and max_age=0 so it should expire immediately.
+        Invalidates the session.
         """
-        pass
+        MockSession.count += 1
+        self.id = MockSession.count
         
     def __getitem__(self, item):
+        self._update_accessed_time()
         return self.attributes[item]
         
     def __setitem__(self, key, value):
+        self._update_accessed_time()
         self.attributes[key] = value
         
     def items(self):
+        self._update_accessed_time()
         return self.attributes.items()
+        
+    def get(self, key, default):
+        self._update_accessed_time()
+        if self.attributes.has_key(key):
+            return self.attributes[key]
+        
+        return default
+        
+    def _update_accessed_time(self):
+        self.last_accessed_time = datetime.now()

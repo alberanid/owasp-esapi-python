@@ -77,13 +77,13 @@ class DefaultHTTPUtilities(HTTPUtilities):
             _("Attempt to add unsafe data to cookie (skip mode). Skipping cookie and continuing.") )
        
     def add_csrf_token(self, href):
-        user = ESAPI.authenticator().get_current_user()
+        user = ESAPI.authenticator().current_user
         if user.is_anonymous():
             return href
             
         # If there are already parameters, append with an &, otherwise append
         # with a ?
-        token = self.CSRF_TOKEN_NAME + "=" + user.get_csrf_token()
+        token = self.CSRF_TOKEN_NAME + "=" + user.csrf_token
         if href.find('?') == -1:
             # No params yet
             return href + "?" + token
@@ -131,14 +131,14 @@ class DefaultHTTPUtilities(HTTPUtilities):
             temp[key] = value
             
         # Kill old session and create a new one
-        user = ESAPI.authenticator().get_current_user()
+        user = ESAPI.authenticator().current_user
         user.remove_session(request.session)
         
         request.session.invalidate()
         user.add_session(request.session)
         
         # Copy back the session content
-        for key, value in temp:
+        for key, value in temp.items():
             request.session[key] = value
             
         return request.session
@@ -190,12 +190,12 @@ class DefaultHTTPUtilities(HTTPUtilities):
     def encrypt_query_string(self, query):
         return ESAPI.encryptor().encrypt(query)
         
-    def encrypt_state_in_cookie(self, cleartext, response=None):
+    def encrypt_state_in_cookie(self, cleartext_map, response=None):
         if response is None:
             response = self.current_response
             
         buf = ''
-        for key, value in cleartext:
+        for key, value in cleartext_map.items():
             if buf != '':
                 buf += '&'
         
@@ -217,22 +217,26 @@ class DefaultHTTPUtilities(HTTPUtilities):
                 {'len' : len(encrypted),
                  'allowed' : self.MAX_COOKIE_LEN} )
                  
-        self.add_cookie( self.ESAPI_STATE, encrypted )
+        self.add_cookie( key=self.ESAPI_STATE, value=encrypted )
         
     def get_cookie(self, name, request=None):
         if request is None:
             request = self.current_request
             
-        value = request.cookies[name]
+        morsel = request.cookies.get(name, None)
+        
+        if morsel is None:
+            return None
+            
         return ESAPI.validator().get_valid_input(
-            "HTTP cookie value: %s " % (value,), 
-            value, "HTTPCookieValue", 1000, False )
+            "HTTP cookie value: %s " % morsel.value, 
+            morsel.value, "HTTPCookieValue", 1000, False )
         
     def get_csrf_token(self):
-        user = ESAPI.authenticator().get_current_user()
+        user = ESAPI.authenticator().current_user
         if user is None:
             return None
-        return user.get_csrf_token()
+        return user.csrf_token
         
     def get_current_request(self):
         return self.current_request
@@ -303,7 +307,7 @@ class DefaultHTTPUtilities(HTTPUtilities):
         if parameters_to_obfuscate is None:
             parameters_to_obfuscate = []
             
-        parameters_to_obfuscate.append('JSESSIONID')
+        parameters_to_obfuscate.append(self.SESSION_TOKEN_NAME)
             
         param_string = ''
         for list_ in [request.GET, request.POST]:
@@ -373,9 +377,9 @@ class DefaultHTTPUtilities(HTTPUtilities):
         if response is None:
             response = self.current_response
             
-        user = ESAPI.authenticator().get_current_user()
+        user = ESAPI.authenticator().current_user
         try:
-            self.kill_cookie(request, response, self.REMEMBER_TOKEN_COOKIE_NAME)
+            self.kill_cookie(self.REMEMBER_TOKEN_COOKIE_NAME, request, response)
             # Seal already contains random data
             clear_token = user.account_name + "|" + password
             expiry = ESAPI.encryptor().get_relative_timestamp(max_age * 1000)
@@ -400,10 +404,14 @@ class DefaultHTTPUtilities(HTTPUtilities):
         if request is None:
             request = self.current_request
             
-        user = ESAPI.authenticator().get_current_user()
+        user = ESAPI.authenticator().current_user
+        
+        # check if user authenticated with this request - no CSRF protection required
+        if request.headers.has_key(user.csrf_token):
+            return
         
         token = request.GET.get(self.CSRF_TOKEN_NAME)
-        if user.get_csrf_token() != token:
+        if user.csrf_token != token:
             raise IntrusionException(
                 _("Authentication failed"),
                 _("Possibly forged HTTP request without proper CSRF token detected") )

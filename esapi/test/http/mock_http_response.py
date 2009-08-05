@@ -18,14 +18,40 @@
 
 # Todo
 
+from Cookie import Morsel
+
 class MockHttpResponse():
     
     def __init__(self):
         self.headers = {}
+        self.cookies = {}
         
     def delete_cookie(self, key, path='/', domain=None):
         """
         Deletes a cookie from the client by setting the cookie to an empty
         string, and max_age=0 so it should expire immediately.
         """
-        pass
+        if self.cookies.has_key(key):
+            self.cookies[key].value = ''
+            self.cookies[key]['max-age'] = 0
+        else:
+            m = Morsel()
+            m.key = key
+            m.value = ''
+            m.path = path
+            m.domain = domain
+            m['max-age'] = 0
+            self.cookies[key] = m
+        
+    def set_cookie(self, **kwargs):
+        key = kwargs['key']
+        m = Morsel()
+        m.key = key
+        m.value = kwargs['value']
+        for k, v in kwargs.items():
+            try:
+                m[k] = v
+            except:
+                pass
+        self.cookies[key] = m
+        

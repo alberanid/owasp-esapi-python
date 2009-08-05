@@ -118,6 +118,14 @@ class ESAPI():
         return cls._security_configuration
        
     set_security_configuration = gen_set_method('security_configuration')
+    
+    @classmethod
+    def current_request(cls):
+        return cls.http_utilities().current_request
+    
+    @classmethod
+    def current_response(cls):
+        return cls.http_utilities().current_response
 
     
 import sys

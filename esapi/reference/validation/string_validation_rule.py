@@ -68,87 +68,94 @@ class StringValidationRule(BaseValidationRule):
         self.max_length = length
         
     def get_valid(self, context, input_, error_list=None):
-        # check none
-        if input_ is None or len(input_) == 0:
-            if self.allow_none:
-                return None
-            raise ValidationException( 
-                _("%(context)s: Input required") % 
-               {'context' : context}, 
-               _("Input required: context=%(context)s, input=%(input)s") % 
-               {'context' : context,
-                'input' : input_}, 
-               context )
-                    
-        # canonicalize
         try:
-            canonical = self.encoder.canonicalize( input_ )
-        except EncodingException, extra:
-            raise ValidationException( 
-                _("%(context)s: Invalid input. Encoding problem detected.") % 
-               {'context' : context}, 
-               _("Error canonicalizing user input"), 
-               extra, 
-               context )
-            
-        # check length
-        if len(canonical) < self.min_length:           
-            raise ValidationException(
-                _("%(context)s: Invalid input. The minimum length of %(min_length)s characters was not met.") %
-                { 'context' : context,
-                  'min_length' : self.min_length, },
-                _("Input failed to meet minimum length of %(min_length)s by %(diff)s characters: context=%(context)s, type=%(type)s, input=%(input)s") %
-                { 'min_length' : self.min_length,
-                  'diff' : self.min_length - len(canonical),
-                  'context' : context,
-                  'type' : self.get_type_name(),
-                  'input' : input_,},
-                context )
-            
-        if len(canonical) > self.max_length:
-            raise ValidationException(
-                _("%(context)s: Invalid input. The maximum length of %(max_length)s characters was exceeded.") %
-                { 'context' : context,
-                  'max_length' : self.max_length, },
-                _("Input exceeds maximum allowed length of %(max_length)s by %(diff)s characters: context=%(context)s, type=%(type)s, input=%(input)s") %
-                { 'max_length' : self.max_length,
-                  'diff' : len(canonical) - self.max_length,
-                  'context' : context,
-                  'type' : self.get_type_name(),
-                  'input' : input_,},
-                context )
-            
-        # check whitelist patterns
-        for pattern in self.whitelist_patterns:
-            if not pattern.match(canonical):
+            # check none
+            if input_ is None or len(input_) == 0:
+                if self.allow_none:
+                    return None
+                raise ValidationException( 
+                    _("%(context)s: Input required") % 
+                   {'context' : context}, 
+                   _("Input required: context=%(context)s, input=%(input)s") % 
+                   {'context' : context,
+                    'input' : input_}, 
+                   context )
+                        
+            # canonicalize
+            try:
+                canonical = self.encoder.canonicalize( input_ )
+            except EncodingException, extra:
+                raise ValidationException( 
+                    _("%(context)s: Invalid input. Encoding problem detected.") % 
+                   {'context' : context}, 
+                   _("Error canonicalizing user input"), 
+                   extra, 
+                   context )
+                
+            # check length
+            if len(canonical) < self.min_length:           
                 raise ValidationException(
-                    _("%(context)s: Invalid input. Please conform to regex %(regex)s%(optional)s") %
+                    _("%(context)s: Invalid input. The minimum length of %(min_length)s characters was not met.") %
                     { 'context' : context,
-                      'regex' : pattern.pattern,
-                      'optional' : ('', ' with a maximum length of ' + str(self.max_length))[self.max_length == MAX_INTEGER],},
-                    _("Invalid input: context=%(context)s, type(%(type)s)=%(pattern)s, input=%(input)s") %
-                    { 'context' : context,
+                      'min_length' : self.min_length, },
+                    _("Input failed to meet minimum length of %(min_length)s by %(diff)s characters: context=%(context)s, type=%(type)s, input=%(input)s") %
+                    { 'min_length' : self.min_length,
+                      'diff' : self.min_length - len(canonical),
+                      'context' : context,
                       'type' : self.get_type_name(),
-                      'pattern' : pattern.pattern,
-                      'input' : input_},
-                    context )
-                      
-        # check blacklist patterns
-        for pattern in self.blacklist_patterns:
-            if pattern.match(canonical):
-                raise ValidationException(
-                    _("%(context)s: Invalid input. Dangerous input matching %(pattern)s detected.") %
-                    { 'context' : context,
-                      'pattern' : pattern.pattern,},
-                    _("Dangerous input: context=%(context)s, type(%(type)s)=%(pattern)s, input=%(input)s") %
-                    { 'context' : context,
-                      'type' : self.get_type_name(),
-                      'pattern' : pattern.pattern,
                       'input' : input_,},
                     context )
-                      
-        # validation passed
-        return canonical
+                
+            if len(canonical) > self.max_length:
+                raise ValidationException(
+                    _("%(context)s: Invalid input. The maximum length of %(max_length)s characters was exceeded.") %
+                    { 'context' : context,
+                      'max_length' : self.max_length, },
+                    _("Input exceeds maximum allowed length of %(max_length)s by %(diff)s characters: context=%(context)s, type=%(type)s, input=%(input)s") %
+                    { 'max_length' : self.max_length,
+                      'diff' : len(canonical) - self.max_length,
+                      'context' : context,
+                      'type' : self.get_type_name(),
+                      'input' : input_,},
+                    context )
+                
+            # check whitelist patterns
+            for pattern in self.whitelist_patterns:
+                if not pattern.match(canonical):
+                    raise ValidationException(
+                        _("%(context)s: Invalid input. Please conform to regex %(regex)s%(optional)s") %
+                        { 'context' : context,
+                          'regex' : pattern.pattern,
+                          'optional' : ('', ' with a maximum length of ' + str(self.max_length))[self.max_length == MAX_INTEGER],},
+                        _("Invalid input: context=%(context)s, type(%(type)s)=%(pattern)s, input=%(input)s") %
+                        { 'context' : context,
+                          'type' : self.get_type_name(),
+                          'pattern' : pattern.pattern,
+                          'input' : input_},
+                        context )
+                          
+            # check blacklist patterns
+            for pattern in self.blacklist_patterns:
+                if pattern.match(canonical):
+                    raise ValidationException(
+                        _("%(context)s: Invalid input. Dangerous input matching %(pattern)s detected.") %
+                        { 'context' : context,
+                          'pattern' : pattern.pattern,},
+                        _("Dangerous input: context=%(context)s, type(%(type)s)=%(pattern)s, input=%(input)s") %
+                        { 'context' : context,
+                          'type' : self.get_type_name(),
+                          'pattern' : pattern.pattern,
+                          'input' : input_,},
+                        context )
+                          
+            # validation passed
+            return canonical
+    
+        except ValidationException, extra:
+            if error_list is not None:
+                error_list[context] = extra
+            else:
+                raise
         
     def sanitize(self, context, input_):
         return self.whitelist(input_, Encoder.CHAR_ALPHANUMERICS)
