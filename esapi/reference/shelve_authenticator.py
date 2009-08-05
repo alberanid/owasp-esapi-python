@@ -49,7 +49,7 @@ class ShelveAuthenticator(Authenticator):
         self.logger = ESAPI.logger("Authenticator")
         self.user_shelf = shelve.open(self.USERS_FILENAME, writeback=True)
         self.cred_shelf = shelve.open(self.CREDS_FILENAME, writeback=True)
-        self.current_user = None
+        self.current_user = esapi.user.AnonymousUser()
         
     def clear_current(self):
         self.current_user = None

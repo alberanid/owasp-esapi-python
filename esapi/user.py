@@ -628,7 +628,7 @@ class AnonymousUser(object):
         
     # Host address
     def _get_last_host_address(self):
-        raise NotImplementedError()
+        return "unknown"
         
     def _set_last_host_address(self, address):
         raise NotImplementedError()

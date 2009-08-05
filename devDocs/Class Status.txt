@@ -5,6 +5,7 @@ translation.py
 Logger
 LoggerTest
 LogFactory
+PythonLogFactory
 
 SecurityConfiguration
 DefaultSecurityConfiguration
@@ -23,11 +24,16 @@ DefaultEncoder
 Validator
 
 User
+DefaultUser
+UserTest
+
+HTTPUtilities
+DefaultHTTPUtilities
+HTTPUtilitiesTest
 
 Incomplete
 ---------
 core.py - dep on everything
-PythonLogFactory - dep Authenticator
 DefaultEncryptor - on hold for crypto
 EncryptorTest - Will code with DefaultEncryptor
 Exceptions - Dep on IntrusionDetector
@@ -36,10 +42,7 @@ DefaultValidator - Depends on AntiSamy on python from Marcin
                    is_valid_http_request_parameter_set, assert_is_valid_http_request_parameter_set,
                    depends on HTTPRequests
 ValidatorTest - Dep on DefaultValidator
-DefaultUser - Dep on Authenticator, HTTPUtilities
-UserTest - Dep on DefaultUser
-HTTPUtilities - What are we doing with File objects?
-                    
+    
 Without unsatisfied dependencies
 --------
 Executor / DefaultExecutor

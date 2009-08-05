@@ -170,13 +170,22 @@ class PythonLogFactory(LogFactory):
             if not self.pyLogger.isEnabledFor(level): 
                 return
             
-            #user = ESAPI.authenticator().getCurrentUser()
+            user = ESAPI.authenticator().current_user
             
             # create a random session number for the user to represent the 
             # user's 'session', if it doesn't exist already
-            user_session_id_for_logging = _("unknown")
-            
-            # Add HTTP Session information here
+            sid = _("unknown")
+            request = ESAPI.http_utilities().current_request
+            if request is not None:
+                session = request.session
+                if session is not None:
+                    sid = session.get('ESAPI_SESSION', None)
+                    
+                    # if there is no session id for the user yet, create one
+                    # and store it in the user's session
+                    if sid is None:
+                        sid = str(ESAPI.randomizer().get_random_integer(0, 1000000))
+                        session['ESAPI_SESSION'] = sid
             
             # ensure there's something to log
             if message is None:
@@ -188,13 +197,13 @@ class PythonLogFactory(LogFactory):
                 clean = ESAPI.encoder().encode_for_html(message)
                 if message != clean:
                     clean += " (Encoded)"
-                      
+                                          
             extra = {
                  'eventType' : str(event_type),
                  'eventSuccess' : [_("SUCCESS"),_("FAILURE")][event_type.is_success()],
-                 'user' : "user.getAccountName()",
-                 'hostname' : "user.getLastHostAddress()",
-                 'sessionID' : user_session_id_for_logging,
+                 'user' : user.account_name,
+                 'hostname' : user.last_host_address,
+                 'sessionID' : sid,
                  }
             self.pyLogger.log(level, clean, extra=extra) 
                         
