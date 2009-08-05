@@ -3,21 +3,26 @@ class IHttpRequest():
     This is the interface that ESAPI uses to interact with HTTP request
     objects. To use this with a framework like Django or Pylons, an adapter
     must be written.
+    
+    Data values are examples.
     """
     
     def __init__(self):
         # A dictionary-like object containing the decoded HTTP GET parameters
-        self.GET = None
+        self.GET = {'pid' : '1'}
         
         # A dictionary-like object containing the decoded HTTP POST parameters
-        self.POST = None
+        self.POST = {'username' : 'bob'}
     
         # The full URL to which the request was directed
-        self.url = None
+        self.url = "https://www.example.com/example/?pid=1&qid=test"
+        
+        # The path including querystring
+        self.path = "/example/?pid=1&qid=test"
         
         # The HTTP method used in the request. Must be uppercase.
         # EX: 'GET' or 'POST'
-        self.method = None
+        self.method = 'POST'
         
         # The session associated with the request, probably set by middleware
         self.session = None
@@ -25,17 +30,14 @@ class IHttpRequest():
         # The cookies available as a dictionary of string name -> Morsel
         # We need the Morsel object to expose the path and domain of client's
         # cookies so that we can clear them
-        self.cookies = None
+        self.cookies = {}
         
         # The headers in a dictionary-like object
         # string name -> string value
-        self.headers = None
+        self.headers = { 'Accept-Language' : 'en-us' }
         
         # The IP address of the request originator
-        self.remote_host = None
-        
-        # The Accept-Language header 
-        self.accept_language = None
+        self.remote_host = '127.0.0.1'
     
     def is_secure(self):
         """
@@ -45,15 +47,23 @@ class IHttpRequest():
         pass
         
 class IHttpResponse():
+    """
+    This is the interface that ESAPI uses to interact with HTTP response
+    objects. To use this with a framework like Django or Pylons, an adapter
+    must be written.
+    
+    Data values are examples.
+    """
     
     def __init__(self):
         # Headers as a dictionary-like object
-        self.headers = None
+        self.headers = {
+            'Content-Type' : 'application/x-www-form-urlencoded' }
         
         # The cookies available as a dictionary of string name -> Morsel
         # We need the Morsel object to expose the path and domain of client's
         # cookies so that we can clear them
-        self.cookies = None
+        self.cookies = {}
         
     def delete_cookie(self, key, path='/', domain=None):
         """
@@ -63,20 +73,62 @@ class IHttpResponse():
         pass
         
     def set_cookie(self, **kwargs):
+        """
+        Sets a cookie on the client my creating a Morsel and adding it to the
+        headers.
+        """
         pass
     
         
 class ISession():
+    """
+    This is the interface that ESAPI uses to interact with session
+    objects. To use this with a framework like Django or Pylons, an adapter
+    must be written.
+    
+    Data values are examples.
+    """
     
     def __init__(self):
         # The session attributes
         self.attributes = {}
+        
+        # A unique session id
+        self.id = 1
+        
+        # The time the session was last accessed as a datetime object
+        self.last_accessed_time = None
         
     def invalidate(self):
         """
         Delete the session data and starts a new session.
         
         Proxied to flush() in Django, and invalidate() in Beaker.
+        """
+        pass
+        
+    def __getitem__(self, item):
+        """
+        Access the given item in the attribute list.
+        """
+        pass
+        
+    def __setitem__(self, key, value):
+        """
+        Sets a given value to the attribute dictionary using the key.
+        """
+        pass
+        
+    def items(self):
+        """
+        Get the attributes as a list of tuples.
+        """
+        pass
+        
+    def get(self, key, default):
+        """
+        Get the specified attribute from the attributes list, returning
+        default if the key does not exist.
         """
         pass
         
