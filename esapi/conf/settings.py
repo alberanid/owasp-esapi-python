@@ -230,8 +230,8 @@ Validator_HTTPURL = r"""^.*$"""
 Validator_HTTPJSESSIONID = r"""^[A-Z0-9]{10,30}$"""
 
 # Validation of file related input
-Validator_Filename = r"""^[a-zA-Z0-9!@#$%^&{}\[\]()_+-=,.~'` ]{0,255}$"""
-Validator_DirectoryName = r"""^[a-zA-Z0-9:\\!@#$%^&{}\[\]()_+-=,.~'` ]{0,255}$"""
+Validator_Filename = r"""^[a-zA-Z0-9!@#$%^&{}\[\]()_+-=,.~'` ]{1,255}$"""
+Validator_DirectoryName = r"""^[a-zA-Z0-9:\\!@#$%^&{}\[\]()_+-=,.~'` ]{1,255}$"""
 
 try:
     from settings_local import *
