@@ -3,3 +3,4 @@ syntax: glob
 .metadata
 *.pyc
 .coverage
+*.shelf
