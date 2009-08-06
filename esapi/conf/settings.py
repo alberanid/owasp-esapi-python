@@ -35,7 +35,7 @@ ESAPI_encoder = 'esapi.reference.default_encoder.DefaultEncoder'
 ESAPI_encryptor = 'esapi.reference.default_encryptor.DefaultEncryptor'
 ESAPI_executor = 'esapi.reference.DefaultExecutor'
 ESAPI_http_utilities = 'esapi.reference.default_http_utilities.DefaultHTTPUtilities'
-ESAPI_intrusion_detector = 'esapi.reference.DefaultIntrusionDetector'
+ESAPI_intrusion_detector = 'esapi.reference.default_intrusion_detector.DefaultIntrusionDetector'
 ESAPI_log_factory = 'esapi.reference.python_log_factory.PythonLogFactory'
 ESAPI_randomizer = 'esapi.reference.default_randomizer.DefaultRandomizer'
 ESAPI_validator = 'esapi.reference.default_validator.DefaultValidator'
@@ -156,14 +156,14 @@ IntrusionDetector_event_test_actions = ('disable','log')
 # Use the fully qualified classname of the exception as the base
 
 # any intrusion is an attack
-IntrusionDetector_esapi_errors_IntrusionException_count = 1
-IntrusionDetector_esapi_errors_IntrusionException_interval = 1
-IntrusionDetector_esapi_errors_IntrusionException_actions = ('log','disable','logout')
+IntrusionDetector_IntrusionException_count = 1
+IntrusionDetector_IntrusionException_interval = 1
+IntrusionDetector_IntrusionException_actions = ('log','disable','logout')
 
 # for test purposes
-IntrusionDetector_esapi_errors_IntegrityException_count = 10
-IntrusionDetector_esapi_errors_IntegrityException_interval = 5
-IntrusionDetector_esapi_errors_IntegrityException_actions = ('log','disable','logout')
+IntrusionDetector_IntegrityException_count = 10
+IntrusionDetector_IntegrityException_interval = 5
+IntrusionDetector_IntegrityException_actions = ('log','disable','logout')
 
 # rapid validation errors indicate scans or attacks in progress
 # esapi.errors.ValidationException.count=10
@@ -171,9 +171,9 @@ IntrusionDetector_esapi_errors_IntegrityException_actions = ('log','disable','lo
 # esapi.errors.ValidationException.actions=log,logout
 
 # sessions jumping between hosts indicates session hijacking
-IntrusionDetector_esapi_errors_AuthenticationHostException_count = 2
-IntrusionDetector_esapi_errors_AuthenticationHostException_interval = 10
-IntrusionDetector_esapi_errors_AuthenticationHostException_actions = ('log','logout')
+IntrusionDetector_AuthenticationHostException_count = 2
+IntrusionDetector_AuthenticationHostException_interval = 10
+IntrusionDetector_AuthenticationHostException_actions = ('log','logout')
 
 
 #===========================================================================

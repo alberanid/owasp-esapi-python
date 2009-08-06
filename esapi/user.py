@@ -39,7 +39,8 @@ class User(object):
     """
     
     def __init__(self):
-        pass
+        # Security event dictionary, used by the IntrusionDetector
+        self.event_map = {}
         
     # Login
     def login_with_password(self, password):

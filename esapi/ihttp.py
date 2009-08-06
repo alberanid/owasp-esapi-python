@@ -58,7 +58,7 @@ class IHttpResponse():
     def __init__(self):
         # Headers as a dictionary-like object
         self.headers = {
-            'Content-Type' : 'application/x-www-form-urlencoded' }
+            'Content-Type' : 'text/html; charset=utf-8' }
         
         # The cookies available as a dictionary of string name -> Morsel
         # We need the Morsel object to expose the path and domain of client's

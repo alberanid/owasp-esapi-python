@@ -65,7 +65,7 @@ class DefaultUser(User):
         self._csrf_token = self.reset_csrf_token()
         self._roles = []
         self._locked = False
-        self._logged_in = None
+        self._logged_in = False
         self._enabled = False
         self._last_host_address = None
         self._last_password_change_time = None
@@ -73,7 +73,10 @@ class DefaultUser(User):
         self._last_failed_login_time = datetime.min
         self._expiration_time = datetime.max
         self._sessions = []
-        self._event_map = {}
+        
+        # Security event dictionary, used by the IntrusionDetector
+        self.event_map = {}
+        
         self._failed_login_count = 0
         self._locale = None
         
@@ -420,10 +423,6 @@ class DefaultUser(User):
         
     def is_locked(self):
         return self._locked
-       
-    # Security event dictionary 
-    def get_event_dict(self):
-        raise NotImplementedError()
         
     def __getstate__(self):
         # Copy the object's state from self.__dict__ which contains
@@ -435,6 +434,8 @@ class DefaultUser(User):
         return state
 
     def __setstate__(self, state):
-        # Restore instance attributes (i.e., filename and lineno).
+        """
+        Restore unpickleable instance attributes like logger.
+        """
         self.__dict__.update(state)
         self.logger = ESAPI.logger("DefaultUser")

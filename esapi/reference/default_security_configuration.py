@@ -162,7 +162,7 @@ class DefaultSecurityConfiguration(SecurityConfiguration):
     def get_quota(self, event_name):
         count = getattr(settings, "IntrusionDetector_" + event_name + "_count", 0)
         interval = getattr(settings, "IntrusionDetector_" + event_name + "_interval", 0)
-        actions = interval = getattr(settings, "IntrusionDetector_" + event_name + "_actions", ())
+        actions = getattr(settings, "IntrusionDetector_" + event_name + "_actions", ())
         if count > 0 and interval > 0 and len(actions) > 0:
             return SecurityConfiguration.Threshold( event_name, count, interval, actions)
 

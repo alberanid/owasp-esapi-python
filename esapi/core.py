@@ -70,6 +70,9 @@ class ESAPI():
     
     http_utilities = gen_get_method('http_utilities')
     set_http_utilities = gen_set_method('http_utilities')
+    
+    intrusion_detector = gen_get_method('intrusion_detector')
+    set_intrusion_detector = gen_set_method('intrusion_detector')
 
     @classmethod
     def log_factory(cls):

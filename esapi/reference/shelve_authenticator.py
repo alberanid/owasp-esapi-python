@@ -293,7 +293,7 @@ class ShelveAuthenticator(Authenticator):
                 ESAPI.http_utilities().SESSION_TOKEN_NAME, 
                 ESAPI.current_request(),
                 ESAPI.current_response() )
-            self._logged_in = False
+            user._logged_in = False
             self.logger.info(Logger.SECURITY_SUCCESS, _("Logout successful"))
             self.current_user = esapi.user.AnonymousUser()
             
