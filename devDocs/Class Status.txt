@@ -36,6 +36,10 @@ IntrusionDetector
 DefaultIntrusionDetector
 IntrusionDetectorTest
 
+AccessReferenceMap
+RandomAccessReferenceMap
+AccessReferenceMapTest
+
 Incomplete
 ---------
 core.py - dep on everything
