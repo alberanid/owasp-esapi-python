@@ -19,6 +19,7 @@
 # Todo
 
 import Cookie
+from datetime import datetime, timedelta
 
 from esapi.core import ESAPI
 from esapi.translation import _
@@ -382,7 +383,7 @@ class DefaultHTTPUtilities(HTTPUtilities):
             self.kill_cookie(self.REMEMBER_TOKEN_COOKIE_NAME, request, response)
             # Seal already contains random data
             clear_token = user.account_name + "|" + password
-            expiry = ESAPI.encryptor().get_relative_timestamp(max_age * 1000)
+            expiry = datetime.now() + timedelta(seconds=max_age * 1000)
             crypt_token = ESAPI.encryptor().seal(clear_token, expiry)
             morsel = Cookie.Morsel()
             morsel.value = crypt_token

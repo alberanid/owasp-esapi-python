@@ -113,14 +113,21 @@ class Encryptor():
         """
         raise NotImplementedError()
 
-    def seal(self, data, timestamp):
+    def seal(self, data, expiration):
         """
         Creates a seal that binds a set of data and includes an expiration 
         timestamp.
 
         @param data: the data to seal
-        @param timestamp: the absolute expiration date of the data, expressed 
-        as seconds since the epoch
+        @param expiration: The relative or absolute time the seal should expire.
+            If a datetime object is passed in, it should be converted to
+            seconds since the epoch.
+            
+            If a timedelta object is passed in, it should be added to
+            datetime.now() and converted to seconds since the epoch.
+            
+            If an int is passed in, it will be treated as the seconds since
+            the epoch.
 
         @return: the seal
         @raises IntegrityException: 
@@ -144,32 +151,11 @@ class Encryptor():
 
     def verify_seal(self, seal):
         """
-        Verifies a seal (created with the seal method) and raises an exception
-        describing any of the various problems that could exist with a seal, such
-        as an invalid seal format, expired timestamp, or data mismatch.
+        Verifies a seal (created with the seal method) and returns True or False,
+        indicating whether or not the seal is valid.
 
         @param seal: the seal to verify
 
         @return: true, if the seal is valid.  False otherwise
-        """
-        raise NotImplementedError()
-
-    def get_relative_timestamp(self, offset):
-        """
-        Gets an absolute timestamp representing an offset from the current time to be used by
-        other functions in the library.
-
-        @param offset: the offset to add to the current time
-
-        @return: the absolute timestamp
-        """
-        raise NotImplementedError()
-
-    def get_timestamp(self):
-        """
-        Gets a timestamp representing the current date and time to be used by
-        other functions in the library.
-
-        @return: a timestamp representing the current time
         """
         raise NotImplementedError()

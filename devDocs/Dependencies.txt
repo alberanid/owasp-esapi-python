@@ -1,0 +1,9 @@
+Google Keyczar for encryption - http://code.google.com/p/keyczar/
+    PyCrypto - http://www.amk.ca/python/code/crypto
+        'easy_install pycrypto'
+    PyAsn1 - http://pyasn1.sourceforge.net/
+        'easy_install pyasn1'
+    simplejson - http://pypi.python.org/pypi/simplejson
+        Part of standard library since 2.6, so you only need to install
+        manually if < 2.6
+        'easy_install simplejson'
