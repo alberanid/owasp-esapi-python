@@ -81,6 +81,7 @@ class SecurityConfiguration:
     def __init__(self):
         pass
 
+    # General   
     def get_application_name(self):
         """
         Gets the application name, used for logging
@@ -96,75 +97,58 @@ class SecurityConfiguration:
         @param interface: the module name in lowercase, eg. 'user' or 'encryptor'
         """
         raise NotImplementedError()
-
-    def get_validation_pattern(self, type_name):
-        """
-        Returns the validation pattern for a particular type.
-        """
-        raise NotImplementedError()
-
-    def get_master_key(self):
-        """
-        Gets the master key. This password is used to encrypt/decrypt other 
-        files or types of data that need to be protected by your application.
         
-        @return: the current master key
+    def set_resource_directory(self, directory):
         """
-        raise NotImplementedError()
-
-    def get_upload_directory(self):
-        """
-        Retrieves the default upload directory declared in the ESAPI 
-        properties file.
+        Sets the ESAPI resource directory.
         
-        @return: the default upload directory declared in the ESAPI 
-                properties file
+        @param directory: The location of the resource directory.
         """
         raise NotImplementedError()
-
-    def get_encryption_key_length(self):
-        """
-        Gets the key length to use in cryptographic operations declared in the 
-        ESAPI properties file.
         
-        @return: the key length.
+    def get_resource_file(self, filename):
         """
-        raise NotImplementedError()
-
-    def get_master_salt(self):
-        """
-        Gets the master salt that is used to salt stored password hashes and 
-        any other location where a salt is needed.
+        Gets a file from the resource directory
         
-        @return: the current master salt
+        @param filename: 
         """
         raise NotImplementedError()
-
-    def get_allowed_executables(self):
-        """
-        Gets the allowed executables to run with the Executor.
         
-        @return: a list of the current allowed file extensions
+    def get_resource_stream(self, filename):
         """
-        raise NotImplementedError()
-
-    def get_allowed_file_extensions(self):
-        """
-        Gets the allowed file extensions for files that are uploaded to this 
-        application.
+        Gets an InputStream to a file in the resource directory
         
-        @return: a list of the current allowed file extensions
+        @param filename: @return
+        @raise IOException
         """
         raise NotImplementedError()
-
-    def get_allowed_file_upload_size(self):
-        """
-        Gets the maximum allowed file upload size.
         
-        @return: the current allowed file upload size
+    def get_character_encoding(self):
+        """
+        Gets the character encoding scheme supported by this application. This 
+        is used to set the character encoding scheme on requests and responses 
+        when set_character_encoding() is called on SafeRequests and 
+        SafeResponses. This scheme is also used for encoding/decoding URLs and 
+        any other place where the current encoding scheme needs to be known.
+        
+        Note: This does not get the configured response content type. That is 
+        accessed by calling get_response_content_type().
+        
+        @return: the current character encoding scheme
         """
         raise NotImplementedError()
 
+    # Authenticator
+    def get_max_old_password_hashes(self):
+        """
+        Gets the maximum number of old password hashes that should be retained. 
+        These hashes can be used to ensure that the user doesn't reuse the 
+        specified number of previous passwords when they change their password.
+        
+        @return: the number of old hashed passwords to retain
+        """
+        raise NotImplementedError()
+        
     def get_password_parameter_name(self):
         """
         Gets the name of the password parameter used during user 
@@ -182,155 +166,7 @@ class SecurityConfiguration:
         @return: the name of the username parameter
         """
         raise NotImplementedError()
-
-    def get_encryption_algorithm(self):
-        """
-        Gets the encryption algorithm used by ESAPI to protect data.
         
-        @return: the current encryption algorithm
-        """
-        raise NotImplementedError()
-
-    def get_hash_algorithm(self):
-        """
-        Gets the hashing algorithm used by ESAPI to hash data.
-        
-        @return: the current hashing algorithm
-        """
-        raise NotImplementedError()
-
-    def get_hash_iterations(self):
-        """
-        Gets the hash iterations used by ESAPI to hash data.
-        
-        @return: the current hashing algorithm
-        """
-        raise NotImplementedError()
-
-    def get_character_encoding(self):
-        """
-        Gets the character encoding scheme supported by this application. This 
-        is used to set the character encoding scheme on requests and responses 
-        when set_character_encoding() is called on SafeRequests and 
-        SafeResponses. This scheme is also used for encoding/decoding URLs and 
-        any other place where the current encoding scheme needs to be known.
-        
-        Note: This does not get the configured response content type. That is 
-        accessed by calling get_response_content_type().
-        
-        @return: the current character encoding scheme
-        """
-        raise NotImplementedError()
-
-    def get_digital_signature_algorithm(self):
-        """
-        Gets the digital signature algorithm used by ESAPI to generate and 
-        verify signatures.
-        
-        @return: the current digital signature algorithm
-        """
-        raise NotImplementedError()
-
-    def get_digital_signature_key_length(self):
-        """
-        Gets the digital signature key length used by ESAPI to generate and 
-        verify signatures.
-        
-        @return: the current digital signature key length
-        """
-        raise NotImplementedError()
-
-    def get_digital_signature_key(self):
-        """
-        Gets the object associated with the digital signing keypair.
-        
-        @return: the object of the keypair
-        """
-        raise NotImplementedError()
-
-    def get_allowed_login_attempts(self):
-        """
-        Gets the number of login attempts allowed before the user's account is 
-        locked. If this many failures are detected within the alloted time 
-        period, the user's account will be locked.
-        
-        @return: the number of failed login attempts that cause an account to 
-            be locked
-        """
-        raise NotImplementedError()
-
-    def get_max_old_password_hashes(self):
-        """
-        Gets the maximum number of old password hashes that should be retained. 
-        These hashes can be used to ensure that the user doesn't reuse the 
-        specified number of previous passwords when they change their password.
-        
-        @return: the number of old hashed passwords to retain
-        """
-        raise NotImplementedError()
-
-    def get_quota(self, event_name):
-        """
-        Gets the intrusion detection quota for the specified event.
-        
-        @param event_name: the name of the event whose quota is desired
-        
-        @return: the Quota that has been configured for the specified type of 
-                event
-        """
-        raise NotImplementedError()
-
-    def get_resource_file(self, filename):
-        """
-        Gets a file from the resource directory
-        
-        @param filename: 
-        """
-        raise NotImplementedError()
-
-    def get_force_http_only_cookies(self):
-        """
-        Forces new cookie headers with HttpOnly on first and second responses
-        in public HttpSession esapi.filters.SafeRequest.getSession() and
-        esapi.filters.getSession(boolean create)
-        """
-        raise NotImplementedError()
-        
-    def get_force_secure_cookies(self):
-        """
-        Forces new cookies to have Secure flag set.
-        """
-        raise NotImplementedError()
-
-    def get_resource_stream(self, filename):
-        """
-        Gets an InputStream to a file in the resource directory
-        
-        @param filename: @return
-        @raise IOException
-        """
-        raise NotImplementedError()
-
-    def set_resource_directory(self, directory):
-        """
-        Sets the ESAPI resource directory.
-        
-        @param directory: The location of the resource directory.
-        """
-        raise NotImplementedError()
-
-    def get_response_content_type(self):
-        """
-        Gets the content type for responses used when set_safe_content_type() 
-        is called.
-        
-        Note: This does not get the configured character encoding scheme. That 
-        is accessed by calling get_character_encoding().
-        
-        @return: The current content-type set for responses.
-        """
-        raise NotImplementedError()
-
     def get_remember_token_duration(self):
         """
         Gets the length of the time to live window for remember me tokens 
@@ -363,7 +199,171 @@ class SecurityConfiguration:
         @return: The session absolute timeout length.
         """
         raise NotImplementedError()
+        
+    def get_allowed_login_attempts(self):
+        """
+        Gets the number of login attempts allowed before the user's account is 
+        locked. If this many failures are detected within the alloted time 
+        period, the user's account will be locked.
+        
+        @return: the number of failed login attempts that cause an account to 
+            be locked
+        """
+        raise NotImplementedError()
+        
+    # Encryption
+    def get_encryption_keys_location(self):
+        """
+        Gets the directory that the encryption keys are under.
+        
+        @return: the directory of the encryption keys
+        """
+        raise NotImplementedError()
+        
+    def get_encryption_algorithm(self):
+        """
+        Gets the encryption algorithm used by ESAPI to protect data.
+        
+        @return: the current encryption algorithm
+        """
+        raise NotImplementedError()
 
+    def get_encryption_key_length(self):
+        """
+        Gets the key length to use in cryptographic operations declared in the 
+        ESAPI properties file.
+        
+        @return: the key length.
+        """
+        raise NotImplementedError()
+        
+    def get_digital_signature_algorithm(self):
+        """
+        Gets the digital signature algorithm used by ESAPI to generate and 
+        verify signatures.
+        
+        @return: the current digital signature algorithm
+        """
+        raise NotImplementedError()
+
+    def get_digital_signature_key_length(self):
+        """
+        Gets the digital signature key length used by ESAPI to generate and 
+        verify signatures.
+        
+        @return: the current digital signature key length
+        """
+        raise NotImplementedError()
+        
+    # Executor
+    def get_working_directory(self):
+        """
+        Returns the default working directory for executing native processes 
+        with os.exec().
+        """
+        raise NotImplementedError()
+    
+    def get_allowed_executables(self):
+        """
+        Gets the allowed executables to run with the Executor.
+        
+        @return: a list of the current allowed executables
+        """
+        raise NotImplementedError()
+        
+    # Hashing
+    def get_master_salt(self):
+        """
+        Gets the master salt that is used to salt stored password hashes and 
+        any other location where a salt is needed.
+        
+        @return: the current master salt
+        """
+        raise NotImplementedError()
+
+    def get_hash_algorithm(self):
+        """
+        Gets the hashing algorithm used by ESAPI to hash data.
+        
+        @return: the current hashing algorithm
+        """
+        raise NotImplementedError()
+
+    def get_hash_iterations(self):
+        """
+        Gets the hash iterations used by ESAPI to hash data.
+        
+        @return: the current hashing algorithm
+        """
+        raise NotImplementedError()
+        
+    # HttpUtilities
+    def get_force_http_only_cookies(self):
+        """
+        Forces new cookie headers with HttpOnly on first and second responses
+        in public HttpSession esapi.filters.SafeRequest.getSession() and
+        esapi.filters.getSession(boolean create)
+        """
+        raise NotImplementedError()
+        
+    def get_force_secure_cookies(self):
+        """
+        Forces new cookies to have Secure flag set.
+        """
+        raise NotImplementedError()
+        
+    def get_upload_directory(self):
+        """
+        Retrieves the default upload directory declared in the ESAPI 
+        properties file.
+        
+        @return: the default upload directory declared in the ESAPI 
+                properties file
+        """
+        raise NotImplementedError()
+        
+    def get_allowed_file_upload_size(self):
+        """
+        Gets the maximum allowed file upload size.
+        
+        @return: the current allowed file upload size
+        """
+        raise NotImplementedError()
+        
+    def get_response_content_type(self):
+        """
+        Gets the content type for responses used when set_safe_content_type() 
+        is called.
+        
+        Note: This does not get the configured character encoding scheme. That 
+        is accessed by calling get_character_encoding().
+        
+        @return: The current content-type set for responses.
+        """
+        raise NotImplementedError()
+        
+    def get_allowed_file_extensions(self):
+        """
+        Gets the allowed file extensions for files that are uploaded to this 
+        application.
+        
+        @return: a list of the current allowed file extensions
+        """
+        raise NotImplementedError()
+        
+    # Intrusion Detector
+    def get_quota(self, event_name):
+        """
+        Gets the intrusion detection quota for the specified event.
+        
+        @param event_name: the name of the event whose quota is desired
+        
+        @return: the Quota that has been configured for the specified type of 
+                event
+        """
+        raise NotImplementedError()
+        
+    # Logging
     def get_log_encoding_required(self):
         """
         Returns whether HTML entity encoding should be applied to log entries.
@@ -391,10 +391,10 @@ class SecurityConfiguration:
         @return: the maximum size of a single log file (in bytes).
         """
         raise NotImplementedError()
-
-    def get_working_directory(self):
+        
+    # Validation
+    def get_validation_pattern(self, type_name):
         """
-        Returns the default working directory for executing native processes 
-        with os.exec().
+        Returns the validation pattern for a particular type.
         """
         raise NotImplementedError()

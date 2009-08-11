@@ -43,6 +43,12 @@ ESAPI_validator = 'esapi.reference.default_validator.DefaultValidator'
 ESAPI_user = 'esapi.reference.default_user.DefaultUser'
 
 #===========================================================================
+# General Application configuration
+#
+# Set the application name if these logs are combined with other applications
+General_ApplicationName = 'ESAPITest'
+
+#===========================================================================
 # ESAPI Authenticator
 #
 Authenticator_AllowedLoginAttempts = 5
@@ -68,27 +74,22 @@ Authenticator_AbsoluteTimeoutDuration = 20
 # unlimited strength policy files and install in the lib directory of your JRE/JDK.
 # See http://java.sun.com/javase/downloads/index.jsp for more information.
 #
-Encryptor_MasterKey = 'pJhlri8JbuFYDgkqtHmm9s0Ziug2PE7ovZDyEPm4j14='
+
+# KeysLocation should have a trailing slash
+Encryptor_KeysLocation = 'C:/keys/'
+
 Encryptor_MasterSalt = 'SbftnvmEWD5ZHHP+pX3fqugNysc='
 
 # AES is the most widely used and strongest encryption algorithm
-Encryptor_EncryptionKeyLength = 256
 Encryptor_EncryptionAlgorithm = 'AES'
-
-# Do not use DES except in a legacy situation
-#Encryptor_EncryptionKeyLength=56
-#Encryptor_EncryptionAlgorithm=DES
-
-# TripleDES is considered strong enough for most purposes
-#Encryptor_EncryptionKeyLength=168
-#Encryptor_EncryptionAlgorithm=DESede
+Encryptor_EncryptionKeyLength = 256
 
 Encryptor_HashAlgorithm = 'SHA512'
 Encryptor_HashIterations = 1024
-Encryptor_DigitalSignatureMasterKey = 'KGlDcnlwdG8uUHVibGljS2V5LkRTQQpEU0FvYmoKcDAKKGRwMgpTJ3EnCnAzCkw5MDc3OTYyMjQyNjY4NDY3NTIwNTE3NjA1NDAzNTY5Nzg4MTMwMDEzMDExODc3MjlMCnNTJ3AnCnA0Ckw4OTg4NDY1Njc0MzExNTc5NTQzMzI3NjI2OTM4NTcwMjczOTc3MzM3NDcwNTk0ODc4MDA5ODY1NzU4NjY0OTk0NTYwNTU0NDgyODk1ODM1ODIzMjI1Mjc4NDI5NDA3MjM4NzIwODA2MDA5NDY0NzU4MTA2NDkwMzY1MDA5MzY2MjAwMzI1MTk0NzE3OTM2ODA3MzUzMDMzNjE0MjA5NjEzOTQ1NzEyMzQyNjYyNTE2NTgxNTIxMTI0MjcxNjA4NTA2MTU0NjU3NjA3MDU0NDAxODQ1MDgxNTI1Mjk1NTg5Nzk4Mjc4MjU5NDgwOTA5OTM2MDQyMDIxMjcwNzk5MDc4MDAzNTIxMTYwODY5MjY2ODQxNzA2OTQ4NzM0Mjc1NTI1MDg0MzMyODQ3NzQyNjY2Mjg5MUwKc1MneScKcDUKTDc5NDcwOTg5MTY5Njk0MDAxOTAxNDQxOTgzMzQ0MjUwNTQ1MzYyMjMzOTU1NTEyNTM3OTc4Njg5MzI2MDM5NjA0NjMzNTg3OTg4NDcxMzE4OTQ4NDIxNTUzNTc2OTEzNzUzNTgyMjcxMjc2NTYzNjI2OTI1MTY0MzA2MTI3NDQ5MjQ5OTAwMjExMDYzNDkyMjc2NTgwMDUyMzcwMTM0ODY1MjExMDA3MzcxMDIxMjYwMDM5NTU0OTEwNTQwMjU4NjUyMzI1MDMxMzI3MDY2OTE5MjQzOTYyNzg1MTczODc0OTA4MjM4ODcyMDI1MDkzNTg5MDA3MDg0NTM0ODc3MjIyNDA2MTcyNTE2MjYzODMwNzU5MzU3MTE3NTI5NDk1NDkyNDkyNzMxMTY0NDQzMTY5NDQ3TApzUydnJwpwNgpMMTYxMzUxODk2MjE3MjY1NzQ1NzAwNTQ0ODM4MjExMjQ3ODE5NTE2MzMyNDk1MzEwNjk3MzAxNTQ5MzE2NDAyNzE3MDE3MDEwODM0NDUzOTQzOTYwOTIzNjMwNzI2MTA1MjcwNDc2MzU0ODY5NDMzNzI3NDg3OTc2Mzg0NzY1NjAwMzI5MDQ5NzM3NjMzNTAzNzEzODU4ODEzMzE0OTQ2MzQ3MDkwOTQ3MDg4NDQ0NjE4ODg2OTcyMjcyNDI2ODQ1NjkwNzk0OTIxNDg5NjcwMDExMTg2ODgwMTkyNTQ2OTE4NTI0MDYwMzk3MTYxMDExMzIzNjEyNzgzNjUzMDk1MjI5MDM0NTUzODA4Mjk5MDIxOTc5MTkyMjYyMzIxNDgzNzYxMDU0MjI3MDc3NjAxOTgwNzRMCnNTJ3gnCnA3Ckw3OTE5MzAyOTA4NjI2MTI0MTk5NTk0ODE5NDg0MDc5MDI4MjcyODA0MDg5OTY1NjVMCnNiLg=='
-Encryptor_DigitalSignatureAlgorithm = 'SHAwithDSA'
+
+Encryptor_DigitalSignatureAlgorithm = 'DSA'
 Encryptor_DigitalSignatureKeyLength = 1024
-#Encryptor_RandomAlgorithm = 'SHA1PRNG'
+
 Encryptor_CharacterEncoding = 'UTF-8'
 
 
@@ -124,8 +125,6 @@ Executor_ApprovedExecutables = ()
 
 #===========================================================================
 # ESAPI Logging
-# Set the application name if these logs are combined with other applications
-Logger_ApplicationName = 'ESAPITest'
 # If you use an HTML log viewer that does not properly HTML escape log data, you can set LogEncodingRequired to true
 Logger_LogEncodingRequired = False
 # LogFileName, the name of the logging file. Provide a full directory path (e.g., C:\\ESAPI\\ESAPI_logging_file) if you

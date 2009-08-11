@@ -37,7 +37,8 @@ class DefaultSecurityConfiguration(SecurityConfiguration):
         """Instantiates a new configuration"""
         SecurityConfiguration.__init__(self)
         self.load_configuration()
-            
+        
+    # Helper
     def load_configuration(self):
         """Load configuration"""
             
@@ -48,9 +49,13 @@ class DefaultSecurityConfiguration(SecurityConfiguration):
         for option in dir(settings):
             if "Master" not in option and option[0] != "_":
                 self.log_special("  |   %(key)s = %(value)s" % {"key": option, "value": str(settings.__dict__[option])})
+    
+    def log_special(self, text):
+        print text
            
+    # General
     def get_application_name(self):
-        return settings.Logger_ApplicationName
+        return settings.General_ApplicationName
         
     def get_class_for_interface(self, interface):
         interface = interface.lower()
@@ -87,94 +92,29 @@ class DefaultSecurityConfiguration(SecurityConfiguration):
                 {'class' : classname,
                  'module' : modulename,},
                  extra )
-
-    def get_validation_pattern(self, key):
-        value = getattr(settings, "Validator_" + key, None)
-        if value is None: 
-            self.log_special(_("Trying to get validation pattern Validator_%(key)s failed because it doesn't exist") %
-            {'key' : key})
-            return None
-            
-        try:
-            return re.compile(value)
-        except Exception, extra:
-            self.log_special(_("SecurityConfiguration for Validator_%(key)s is not a valid regex in settings. Returning None.") % 
-                {'key' : key})
-            return None
+                 
+    def set_resource_directory(self, directory):
+        raise NotImplementedError()
     
-    def get_master_key(self):
-        return ESAPI.encoder().decode_from_base64(settings.Encryptor_MasterKey)
+    def get_resource_file(self, filename):
+        raise NotImplementedError()
+        
+    def get_resource_stream(self, filename):
+        raise NotImplementedError()
+
+    def get_character_encoding(self):
+        return settings.General_CharacterEncoding
     
-    def get_upload_directory(self):
-        return settings.HttpUtilities_UploadDir
-
-    def get_encryption_key_length(self):
-        return settings.Encryptor_EncryptionKeyLength
-
-    def get_master_salt(self):
-        return ESAPI.encoder().decode_from_base64(settings.Encryptor_MasterSalt)
-
-    def get_allowed_executables(self):
-        return settings.HttpUtilities_AllowedUploadExtensions
-
-    def get_allowed_file_extensions(self):
-        return settings.HttpUtilities_AllowedUploadExtensions
-
-    def get_allowed_file_upload_size(self):
-        return settings.HttpUtilities_MaxUploadFileBytes
-
+    # Authenticator
+    def get_max_old_password_hashes(self):
+        return settings.Authenticator_MaxOldPasswordHashes
+        
     def get_password_parameter_name(self):
         return settings.Authenticator_PasswordParameterName
 
     def get_username_parameter_name(self):
         return settings.Authenticator_UsernameParameterName
-
-    def get_encryption_algorithm(self):
-        return settings.Encryptor_EncryptionAlgorithm
-
-    def get_hash_algorithm(self):
-        return settings.Encryptor_HashAlgorithm
-
-    def get_hash_iterations(self):
-        return settings.Encryptor_HashIterations
-
-    def get_character_encoding(self):
-        return settings.Encryptor_CharacterEncoding
-
-    def get_digital_signature_algorithm(self):
-        return settings.Encryptor_DigitalSignatureAlgorithm
-
-    def get_digital_signature_key_length(self):
-        return settings.Encryptor_DigitalSignatureKeyLength
-
-    def get_digital_signature_key(self):
-        raw = settings.Encryptor_DigitalSignatureMasterKey
-        decoded = ESAPI.encoder().decode_from_base64(raw)
-        obj = pickle.loads(decoded)
-        return obj
-
-    def get_allowed_login_attempts(self):
-        return settings.Authenticator_AllowedLoginAttempts
-
-    def get_max_old_password_hashes(self):
-        return settings.Authenticator_MaxOldPasswordHashes
-
-    def get_quota(self, event_name):
-        count = getattr(settings, "IntrusionDetector_" + event_name + "_count", 0)
-        interval = getattr(settings, "IntrusionDetector_" + event_name + "_interval", 0)
-        actions = getattr(settings, "IntrusionDetector_" + event_name + "_actions", ())
-        if count > 0 and interval > 0 and len(actions) > 0:
-            return SecurityConfiguration.Threshold( event_name, count, interval, actions)
-
-    def get_force_http_only_cookies(self):
-        return settings.HttpUtilities_ForceHttpOnlyCookies
         
-    def get_force_secure_cookies(self):
-        return settings.HttpUtilities_ForceSecureCookies
-
-    def get_response_content_type(self):
-        return settings.HttpUtilities_ResponseContentType
-
     def get_remember_token_duration(self):
         days = settings.Authenticator_RememberTokenDuration
         duration = 1000 * 60 * 60 * 24 * days
@@ -189,7 +129,71 @@ class DefaultSecurityConfiguration(SecurityConfiguration):
         minutes = settings.Authenticator_AbsoluteTimeoutDuration
         duration = 1000 * 60 * minutes
         return duration
+        
+    def get_allowed_login_attempts(self):
+        return settings.Authenticator_AllowedLoginAttempts
+        
+    # Encryption
+    def get_encryption_keys_location(self):
+        return settings.Encryptor_KeysLocation
+        
+    def get_encryption_algorithm(self):
+        return settings.Encryptor_EncryptionAlgorithm
 
+    def get_encryption_key_length(self):
+        return settings.Encryptor_EncryptionKeyLength
+        
+    def get_digital_signature_algorithm(self):
+        return settings.Encryptor_DigitalSignatureAlgorithm
+
+    def get_digital_signature_key_length(self):
+        return settings.Encryptor_DigitalSignatureKeyLength
+    
+    # Executor
+    def get_working_directory(self):
+        return settings.Executor_WorkingDirectory
+        
+    def get_allowed_executables(self):
+        return settings.Executor_AllowedExecutables
+    
+    # Hashing
+    def get_master_salt(self):
+        return ESAPI.encoder().decode_from_base64(settings.Encryptor_MasterSalt)
+
+    def get_hash_algorithm(self):
+        return settings.Encryptor_HashAlgorithm
+
+    def get_hash_iterations(self):
+        return settings.Encryptor_HashIterations
+        
+    # HttpUtilities
+    def get_force_http_only_cookies(self):
+        return settings.HttpUtilities_ForceHttpOnlyCookies
+        
+    def get_force_secure_cookies(self):
+        return settings.HttpUtilities_ForceSecureCookies
+        
+    def get_upload_directory(self):
+        return settings.HttpUtilities_UploadDir
+        
+    def get_allowed_file_upload_size(self):
+        return settings.HttpUtilities_MaxUploadFileBytes
+        
+    def get_response_content_type(self):
+        return settings.HttpUtilities_ResponseContentType
+        
+    def get_allowed_file_extensions(self):
+        return settings.HttpUtilities_AllowedUploadExtensions
+        
+    # Intrusion Detector
+    def get_quota(self, event_name):
+        count = getattr(settings, "IntrusionDetector_" + event_name + "_count", 0)
+        interval = getattr(settings, "IntrusionDetector_" + event_name + "_interval", 0)
+        actions = getattr(settings, "IntrusionDetector_" + event_name + "_actions", ())
+        if count > 0 and interval > 0 and len(actions) > 0:
+            return SecurityConfiguration.Threshold( event_name, count, interval, actions)
+            
+    # Logging
     def get_log_encoding_required(self):
         return settings.Logger_LogEncodingRequired
 
@@ -198,9 +202,19 @@ class DefaultSecurityConfiguration(SecurityConfiguration):
     
     def get_max_log_filesize(self):
         return settings.Logger_MaxLogFileSize
-
-    def get_working_directory(self):
-        return settings.Executor_WorkingDirectory
-    
-    def log_special(self, text):
-        print text
+        
+    # Validation
+    def get_validation_pattern(self, key):
+        value = getattr(settings, "Validator_" + key, None)
+        if value is None: 
+            self.log_special(_("Trying to get validation pattern Validator_%(key)s failed because it doesn't exist") %
+            {'key' : key})
+            return None
+            
+        try:
+            return re.compile(value)
+        except Exception, extra:
+            self.log_special(_("SecurityConfiguration for Validator_%(key)s is not a valid regex in settings. Returning None.") % 
+                {'key' : key})
+            return None
+   
