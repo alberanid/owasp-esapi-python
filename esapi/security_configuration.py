@@ -108,18 +108,11 @@ class SecurityConfiguration:
         
     def get_resource_file(self, filename):
         """
-        Gets a file from the resource directory
+        Returns the full path to the filename in the resource directory. The
+        file does not have to exist, as the caller may create it.
         
-        @param filename: 
-        """
-        raise NotImplementedError()
-        
-    def get_resource_stream(self, filename):
-        """
-        Gets an InputStream to a file in the resource directory
-        
-        @param filename: @return
-        @raise IOException
+        @param filename: the filename to access inside the resources directory
+        @return: The full path to the resource.
         """
         raise NotImplementedError()
         

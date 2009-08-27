@@ -21,11 +21,13 @@
 import pickle
 import re
 import sys
+import os.path
 
 from esapi.core import ESAPI
 from esapi.security_configuration import SecurityConfiguration
 from esapi.translation import _
 from esapi.exceptions import ConfigurationException
+import esapi.conf.resources
 
 try:
     import esapi.conf.settings as settings
@@ -37,6 +39,8 @@ class DefaultSecurityConfiguration(SecurityConfiguration):
         """Instantiates a new configuration"""
         SecurityConfiguration.__init__(self)
         self.load_configuration()
+        
+        self.resource_dir = esapi.conf.resources.__path__[0]
         
     # Helper
     def load_configuration(self):
@@ -94,13 +98,10 @@ class DefaultSecurityConfiguration(SecurityConfiguration):
                  extra )
                  
     def set_resource_directory(self, directory):
-        raise NotImplementedError()
+        self.resource_dir = directory
     
     def get_resource_file(self, filename):
-        raise NotImplementedError()
-        
-    def get_resource_stream(self, filename):
-        raise NotImplementedError()
+        return self.resource_dir + "\\" + filename
 
     def get_character_encoding(self):
         return settings.General_CharacterEncoding
