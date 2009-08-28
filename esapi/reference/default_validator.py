@@ -124,10 +124,10 @@ class DefaultValidator(Validator):
         """
         Returns true if the directory path (not including a filename) is valid.
 	  
-        <p><b>Note:</b> On platforms that support symlinks, this function will 
+        Note: On platforms that support symlinks, this function will 
         fail canonicalization if the directory path is a symlink. For example,
         on MacOS X, /etc is actually /private/etc. If you mean to use /etc, use
-        its real path (/private/etc), not the symlink (/etc).</p>
+        its real path (/private/etc), not the symlink (/etc).
         """
         try:
             self.get_valid_directory_path( context, input_, parent_dir, allow_none )
@@ -139,10 +139,10 @@ class DefaultValidator(Validator):
         """
         Returns a canonicalized and validated directory path as a String. 
         
-        <p><b>Note:</b> On platforms that support symlinks, this function will 
+        Note: On platforms that support symlinks, this function will 
         fail canonicalization if the directory path is a symlink. For example,
         on MacOS X, /etc is actually /private/etc. If you mean to use /etc, use
-        its real path (/private/etc), not the symlink (/etc).</p>
+        its real path (/private/etc), not the symlink (/etc).
         """
         try:
             # Check that input_ is provided
@@ -170,9 +170,6 @@ class DefaultValidator(Validator):
             ################################
             
             # Canonicalize input_
-            # abspath - 
-            # normpath - 
-            # realpath - On windows, = abspath
             canonical_input2 = os.path.realpath(input_)
             canonical_input1 = DefaultValidator.file_validator.get_valid_input(context, canonical_input2, "DirectoryName", 255, False)
             canonical_input = os.path.normcase(canonical_input1)
