@@ -154,7 +154,7 @@ class DefaultUser(User):
         If role is a string, it will be lower()'d.
         """
         if isinstance(role, str):
-            role = lower(role)
+            role = role.lower()
             
         if ESAPI.validator().is_valid_input("addRole",
                             role, 
@@ -202,6 +202,10 @@ class DefaultUser(User):
 
     def _set_roles(self, roles):
         self._roles = list(roles)[:]
+        
+    roles = property( _get_roles,
+                      _set_roles,
+                      doc="The roles assigned to a particular user" )
       
     def add_roles(self, roles):
         for role in roles:

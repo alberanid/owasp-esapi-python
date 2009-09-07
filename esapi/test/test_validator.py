@@ -203,22 +203,23 @@ class ValidatorTest(unittest.TestCase):
             self.assertFalse(instance.is_valid_directory_path("test", "/tmp/../etc", "/", False))
         else:
             # Windows paths should fail
-            self.assertFalse(instance.is_valid_directory_path("test", "c:\\ridiculous", False))
-            self.assertFalse(instance.is_valid_directory_path("test", "c:\\temp\\..\\etc", False))
+            self.assertFalse(instance.is_valid_directory_path("test", "c:\\ridiculous", "c:\\", False))
+            self.assertFalse(instance.is_valid_directory_path("test", "c:\\temp\\..\\etc", "c:\\", False))
 
             # Standard Windows locations should fail
-            self.assertFalse(instance.is_valid_directory_path("test", "c:\\", False));								# Windows root directory
-            self.assertFalse(instance.is_valid_directory_path("test", "c:\\Windows\\temp", False));					# Windows temporary directory
-            self.assertFalse(instance.is_valid_directory_path("test", "c:\\Windows\\System32\\cmd.exe", False));	# Windows command shell	
+            self.assertFalse(instance.is_valid_directory_path("test", "c:\\", "c:\\", False))
+            self.assertFalse(instance.is_valid_directory_path("test", "c:\\Windows\\temp", "c:\\", False))
+            self.assertFalse(instance.is_valid_directory_path("test", "c:\\Windows\\System32\\cmd.exe", "c:\\", False))
             
             # Unix specific paths should pass
-            self.assertTrue(instance.is_valid_directory_path("test", "/", False));			# Root directory
-            self.assertTrue(instance.is_valid_directory_path("test", "/bin", False));		# Always exist directory
-            self.assertTrue(instance.is_valid_directory_path("test", "/bin/sh", False));	# Standard shell	
+            # Root
+            self.assertTrue(instance.is_valid_directory_path("test", "/", "/", False))
+            # /bin
+            self.assertTrue(instance.is_valid_directory_path("test", "/bin", "/", False))
             
             # Unix specific paths that should not exist or work
-            self.assertFalse(instance.is_valid_directory_path("test", "/etc/ridiculous", False));
-            self.assertFalse(instance.is_valid_directory_path("test", "/tmp/../etc", False)); 
+            self.assertFalse(instance.is_valid_directory_path("test", "/etc/ridiculous", "/", False))
+            self.assertFalse(instance.is_valid_directory_path("test", "/tmp/../etc", "/", False))
         
     def test_get_valid_dir_path(self):
         instance = ESAPI.validator()

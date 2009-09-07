@@ -101,7 +101,7 @@ class DefaultSecurityConfiguration(SecurityConfiguration):
         self.resource_dir = directory
     
     def get_resource_file(self, filename):
-        return self.resource_dir + "\\" + filename
+        return self.resource_dir + "/" + filename
 
     def get_character_encoding(self):
         return settings.General_CharacterEncoding

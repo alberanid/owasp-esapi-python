@@ -28,7 +28,7 @@
 # entire application.
 #
 # DefaultAccessController requires ESAPI-AccessControlPolicy.xml in .esapi directory
-ESAPI_access_control = 'esapi.reference.accesscontrol.DefaultAccessController'
+ESAPI_access_controller = 'esapi.reference.file_based_access_controller.FileBasedAccessController'
 # FileBasedAuthenticator requires users.txt file in .esapi directory
 ESAPI_access_reference_map = 'esapi.reference.random_access_reference_map.RandomAccessReferenceMap'
 ESAPI_authenticator = 'esapi.reference.shelve_authenticator.ShelveAuthenticator'
@@ -76,7 +76,7 @@ Authenticator_AbsoluteTimeoutDuration = 20
 #
 
 # KeysLocation should have a trailing slash
-Encryptor_KeysLocation = 'C:/keys/'
+Encryptor_KeysLocation = '/tmp/esapi/keyring/'
 
 Encryptor_MasterSalt = 'SbftnvmEWD5ZHHP+pX3fqugNysc='
 
@@ -205,6 +205,9 @@ Validator_IPAddress = r"""^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:2
 Validator_URL = r"""^(ht|f)tp(s?)://[0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*(:(0-9)*)*(/?)([a-zA-Z0-9-\.\?,:'/\\\+=&amp;%\$#_]*)$"""
 Validator_CreditCard = r"""^(\d{4}[- ]?){3}\d{4}$"""
 Validator_SSN = r"""^(?!000)([0-6]\d{2}|7([0-6]\d|7[012]))([ -]?)(?!00)\d\d\3(?!0000)\d{4}$"""
+
+# Validators for AccessControl
+Validator_AccessControlRule = r"""^[a-zA-Z0-9_]{0,10}$"""
 
 # Validators used by ESAPI
 Validator_AccountName = r"""^[a-zA-Z0-9]{3,20}$"""

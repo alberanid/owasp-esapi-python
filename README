@@ -5,7 +5,20 @@ Requirements:
     Coverage module by Ned Batchelder - Only needed if you want coverage analysis
     Nose - Only needed if you want to run unit tests together and combine it with coverage analysis
 
+To adapt to your project:
+    
+
 To enable internationalization:
     Set the 'LANGUAGE' environment variable with your locale
     On *nix: export LANGUAGE=en_US
     On Windows: set LANGUAGE=en_US
+
+To set up a crypto keyring:
+    Select a root directory for your keyring, like /esapi/keyring/, and set Encryptor_KeysLocation in settings.py to this string
+    Create a 'symmetric' directory inside your keyring directory
+    Create a 'asymmetric-private' directory inside your keyring directory
+    Create a 'asymmetric-public' directory inside your keyring directory
+
+    Open a python interactive shell and execute:
+        from esapi.core import ESAPI
+        ESAPI.encryptor().gen_keys()

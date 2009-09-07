@@ -42,6 +42,10 @@ AccessReferenceMap
 RandomAccessReferenceMap
 AccessReferenceMapTest
 
+AccessController
+FileBasedAccessController
+AccessControllerTest
+
 Incomplete
 ---------
 core.py - dep on everything

@@ -529,7 +529,7 @@ class AnonymousUser(object):
         raise NotImplementedError()
         
     def _get_roles(self):
-        raise NotImplementedError()
+        return []
 
     def _set_roles(self, roles):
         raise NotImplementedError()

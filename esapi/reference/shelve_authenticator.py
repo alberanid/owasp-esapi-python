@@ -56,7 +56,7 @@ class ShelveAuthenticator(Authenticator):
         self.current_user = esapi.user.AnonymousUser()
         
     def clear_current(self):
-        self.current_user = None
+        self.current_user = esapi.user.AnonymousUser()
         
     def clear_all_data(self):
         self.user_shelf.clear()
@@ -191,10 +191,7 @@ class ShelveAuthenticator(Authenticator):
             return None
         return session.get(self.USER, None)
         
-    def get_user_from_remember_token(self):
-        #REMOVE ME!
-        return None
-    
+    def get_user_from_remember_token(self):   
         try:
             token = ESAPI.http_utilities().get_cookie(  
                 HTTPUtilities.REMEMBER_TOKEN_COOKIE_NAME,
