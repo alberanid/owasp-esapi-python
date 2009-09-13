@@ -156,6 +156,9 @@ class DefaultSecurityConfiguration(SecurityConfiguration):
         
     def get_allowed_executables(self):
         return settings.Executor_AllowedExecutables
+        
+    def get_max_running_time(self):
+        return settings.Executor_MaxRunningTime
     
     # Hashing
     def get_master_salt(self):

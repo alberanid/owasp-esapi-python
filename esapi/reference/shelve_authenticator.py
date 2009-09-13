@@ -198,14 +198,14 @@ class ShelveAuthenticator(Authenticator):
                 ESAPI.current_request() )
             if token is None:
                 return None
-            data = ESAPI.encryptor().unseal( token ).split('\\|')
+            data = ESAPI.encryptor().unseal( token ).split('|')
             if len(data) != 2:
                 self.logger.warning( Logger.SECURITY_FAILURE,
                     _("Found corrupt or expired remember token") )
                 ESAPI.http_utilities().kill_cookie( 
+                    HTTPUtilities.REMEMBER_TOKEN_COOKIE_NAME,
                     ESAPI.current_request(), 
-                    ESAPI.current_response(), 
-                    HTTPUtilities.REMEMBER_TOKEN_COOKIE_NAME )
+                    ESAPI.current_response() )
                 return None
             
             username, password = data
@@ -310,6 +310,7 @@ class ShelveAuthenticator(Authenticator):
                 _("Duplicate user creation denied for %(user)s") % 
                 {'user' : account_name} )
         
+        account_name = account_name.lower()
         self.verify_account_name_strength(account_name)
         
         if password1 is None or password2 is None:
@@ -412,6 +413,7 @@ class ShelveAuthenticator(Authenticator):
                 extra )
         
     def get_user(self, account_name):
+        account_name = account_name.lower()
         return self.user_shelf.get(account_name, None)
     
     def hash_password(self, password, account_name):
@@ -419,6 +421,7 @@ class ShelveAuthenticator(Authenticator):
         return ESAPI.encryptor().hash(password, salt)
         
     def remove_user(self, account_name):
+        account_name = account_name.lower()
         user = self.get_user(account_name)
         if user is None:
             raise AuthenticationAccountsException(
@@ -485,4 +488,5 @@ class ShelveAuthenticator(Authenticator):
                 _("New password is not long or complex enough") )
         
     def exists(self, account_name):
+        account_name = account_name.lower()
         return self.user_shelf.has_key(account_name)

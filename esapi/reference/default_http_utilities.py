@@ -212,13 +212,13 @@ class DefaultHTTPUtilities(HTTPUtilities):
         encrypted = ESAPI.encryptor().encrypt(buf)
         if len(encrypted) > self.MAX_COOKIE_LEN:
             self.logger.error( Logger.SECURITY_FAILURE,
-                _("Problem encrypting state in cookie - skipping entry") )
+                _("Problem encrypting state in cookie because of max cookie length") )
             raise EncryptionException( _("Encryption Exception"),
                 _("Encrypted cookie state length of %(len)s is longer than allowed %(allowed)s.") % 
                 {'len' : len(encrypted),
                  'allowed' : self.MAX_COOKIE_LEN} )
                  
-        self.add_cookie( key=self.ESAPI_STATE, value=encrypted )
+        self.add_cookie( response, key=self.ESAPI_STATE, value=encrypted )
         
     def get_cookie(self, name, request=None):
         if request is None:
@@ -383,7 +383,7 @@ class DefaultHTTPUtilities(HTTPUtilities):
             self.kill_cookie(self.REMEMBER_TOKEN_COOKIE_NAME, request, response)
             # Seal already contains random data
             clear_token = user.account_name + "|" + password
-            expiry = datetime.now() + timedelta(seconds=max_age * 1000)
+            expiry = datetime.now() + timedelta(seconds=max_age)
             crypt_token = ESAPI.encryptor().seal(clear_token, expiry)
             morsel = Cookie.Morsel()
             morsel.value = crypt_token

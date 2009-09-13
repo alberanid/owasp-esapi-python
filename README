@@ -15,9 +15,6 @@ To enable internationalization:
 
 To set up a crypto keyring:
     Select a root directory for your keyring, like /esapi/keyring/, and set Encryptor_KeysLocation in settings.py to this string
-    Create a 'symmetric' directory inside your keyring directory
-    Create a 'asymmetric-private' directory inside your keyring directory
-    Create a 'asymmetric-public' directory inside your keyring directory
 
     Open a python interactive shell and execute:
         from esapi.core import ESAPI

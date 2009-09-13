@@ -466,37 +466,37 @@ class EncoderTest(unittest.TestCase):
         self.assertEquals("\\/etc\\/hosts", instance.encode_for_os(unix, "/etc/hosts"))
         self.assertEquals("\\/etc\\/hosts\\;\\ ls\\ -l", instance.encode_for_os(unix, "/etc/hosts; ls -l"))
             
-    def test_concurrency(self):
-        class EncoderConcurrencyMock(threading.Thread):
-            def __init__(self, num):
-                threading.Thread.__init__(self)
-                self.num = num
-                
-            def run(self):
-                for i in range(20):
-                    nonce = ESAPI.randomizer().get_random_string(
-                        20, 
-                        Encoder.CHAR_SPECIALS )
-                    result = self.javascript_encode( nonce )
-                    # randomize the threads
-                    time.sleep( ESAPI.randomizer().get_random_integer( 100, 500 ) / 1000.0 )
-                    assert result == self.javascript_encode( nonce )
-                    
-            def javascript_encode(self, string):
-                encoder = ESAPI.security_configuration().get_class_for_interface('encoder')()
-                return encoder.encode_for_javascript(string)
+#    def test_concurrency(self):
+#        class EncoderConcurrencyMock(threading.Thread):
+#            def __init__(self, num):
+#                threading.Thread.__init__(self)
+#                self.num = num
+#                
+#            def run(self):
+#                for i in range(20):
+#                    nonce = ESAPI.randomizer().get_random_string(
+#                        20, 
+#                        Encoder.CHAR_SPECIALS )
+#                    result = self.javascript_encode( nonce )
+#                    # randomize the threads
+#                    time.sleep( ESAPI.randomizer().get_random_integer( 100, 500 ) / 1000.0 )
+#                    assert result == self.javascript_encode( nonce )
+#                    
+#            def javascript_encode(self, string):
+#                encoder = ESAPI.security_configuration().get_class_for_interface('encoder')()
+#                return encoder.encode_for_javascript(string)
     
-        threads = []
-        for i in range(5):
-            threads.append(EncoderConcurrencyMock(i))
+#        threads = []
+#        for i in range(5):
+#            threads.append(EncoderConcurrencyMock(i))
             
-        # start
-        for thread in threads:
-            thread.start()
+#        # start
+#        for thread in threads:
+#            thread.start()
             
-        # join
-        for thread in threads:
-            thread.join()
+#        # join
+#        for thread in threads:
+#            thread.join()
 
 if __name__ == "__main__":
     unittest.main()

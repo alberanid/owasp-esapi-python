@@ -36,7 +36,7 @@ except ImportError, err:
 
 from esapi.core import ESAPI
 from esapi.logger import Logger
-from esapi.exceptions import EncryptionException
+from esapi.exceptions import EncryptionException, IntegrityException
 from esapi.encryptor import Encryptor
 from esapi.encoder import Encoder
 from esapi.translation import _
@@ -220,6 +220,7 @@ class DefaultEncryptor(Encryptor):
             {'location' : self.keys_location} )
             
         # Create symmetric key
+        os.makedirs(self.keys_symmetric_location)
         keyczartool.main(
             ['create', 
              "--location=%s" % self.keys_symmetric_location,
@@ -231,6 +232,7 @@ class DefaultEncryptor(Encryptor):
              "--size=%s" % self.encryption_key_length] )
              
         # Create asymmetric private keys for signing
+        os.makedirs(self.keys_asymmetric_private_location)
         keyczartool.main(
             ['create', 
              "--location=%s" % self.keys_asymmetric_private_location,
@@ -243,6 +245,7 @@ class DefaultEncryptor(Encryptor):
              "--size=%s" % self.signing_key_length] )
              
         # Extract public keys for signing
+        os.makedirs(self.keys_asymmetric_public_location)
         keyczartool.main(
             ['create', 
              "--location=%s" % self.keys_asymmetric_public_location,

@@ -35,6 +35,10 @@ class ValidatorTest(unittest.TestCase):
         unittest.TestCase.__init__(self, test_name)
         
     def setUp(self):
+        request = MockHttpRequest()
+        response = MockHttpResponse()
+        ESAPI.http_utilities().set_current_http(request, response)
+        ESAPI.authenticator().logout()
         ESAPI.authenticator().clear_all_data()
         
     def test_create_user(self):
@@ -161,6 +165,7 @@ class ValidatorTest(unittest.TestCase):
         user = instance.create_user(account_name, password, password)
         user.enable()
         
+        ###
         request = MockHttpRequest()
         response = MockHttpResponse()
         ESAPI.http_utilities().set_current_http(request, response)
@@ -171,16 +176,18 @@ class ValidatorTest(unittest.TestCase):
         request.cookies[m.key] = m
         # Wrong cookie should fail
         self.assertRaises(AuthenticationException, instance.login, request, response)
+        user.logout()
+        ###
         
         request = MockHttpRequest()
-        ESAPI.http_utilities().set_current_http(request, response)
+        response = MockHttpResponse()
         ESAPI.authenticator().current_user = user
         new_token = ESAPI.http_utilities().set_remember_token(
             password, 10000, "test.com", request.path, request, response )
-        request.set_cookie( HTTPUtilities.REMEMBER_TOKEN_COOKIE_NAME, new_token )
+        request.set_cookie( key=HTTPUtilities.REMEMBER_TOKEN_COOKIE_NAME, value=new_token )
+        ESAPI.http_utilities().set_current_http(request, response)
         
         # Logout the current user so we can log them in with the remember cookie
-        user.logout()
         user2 = instance.login(request, response)
         self.assertEquals(user, user2)
         

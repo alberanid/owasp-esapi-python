@@ -48,10 +48,13 @@ class MockHttpResponse():
         m = Morsel()
         m.key = key
         m.value = kwargs['value']
+        m.coded_value = kwargs['value']
         for k, v in kwargs.items():
             try:
                 m[k] = v
             except:
                 pass
+
         self.cookies[key] = m
+        self.headers['Set-Cookie'] = str(m)
         

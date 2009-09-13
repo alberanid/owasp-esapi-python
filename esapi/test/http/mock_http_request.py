@@ -19,6 +19,7 @@
 # Todo
 
 from mock_session import MockSession
+from Cookie import Morsel
 
 class MockHttpRequest():
     def __init__(self):
@@ -58,3 +59,17 @@ class MockHttpRequest():
         if the request was made over SSL (HTTPS).
         """
         return self.url.startswith("https")
+
+    def set_cookie(self, **kwargs):
+        key = kwargs['key']
+        m = Morsel()
+        m.key = key
+        m.value = kwargs['value']
+        m.coded_value = kwargs['value']
+        for k, v in kwargs.items():
+            try:
+                m[k] = v
+            except:
+                pass
+        self.cookies[key] = m
+        self.headers['Set-Cookie'] = str(m)

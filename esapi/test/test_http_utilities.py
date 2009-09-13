@@ -171,7 +171,7 @@ class HTTPUtilitiesTest(unittest.TestCase):
              
         ESAPI.http_utilities().encrypt_state_in_cookie(m, response)
         value = response.headers['Set-Cookie']
-        encrypted = value[value.find('='):value.find(';')]
+        encrypted = value[value.find('=')+1:value.find(';')]
         ESAPI.encryptor().decrypt(encrypted)
             
     def test_save_too_long_state_in_cookie(self):

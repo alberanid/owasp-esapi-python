@@ -34,7 +34,7 @@ ESAPI_access_reference_map = 'esapi.reference.random_access_reference_map.Random
 ESAPI_authenticator = 'esapi.reference.shelve_authenticator.ShelveAuthenticator'
 ESAPI_encoder = 'esapi.reference.default_encoder.DefaultEncoder'
 ESAPI_encryptor = 'esapi.reference.default_encryptor.DefaultEncryptor'
-ESAPI_executor = 'esapi.reference.DefaultExecutor'
+ESAPI_executor = 'esapi.reference.default_executor.DefaultExecutor'
 ESAPI_http_utilities = 'esapi.reference.default_http_utilities.DefaultHTTPUtilities'
 ESAPI_intrusion_detector = 'esapi.reference.default_intrusion_detector.DefaultIntrusionDetector'
 ESAPI_log_factory = 'esapi.reference.python_log_factory.PythonLogFactory'
@@ -119,8 +119,10 @@ HttpUtilities_ResponseContentType = 'text/html; charset=UTF-8'
 
 #===========================================================================
 # ESAPI Executor
-Executor_WorkingDirectory = r'C:\Windows\Temp'
-Executor_ApprovedExecutables = ()
+Executor_WorkingDirectory = r'/tmp'
+Executor_AllowedExecutables = ('/bin/sh')
+# In seconds
+Executor_MaxRunningTime = 10
 
 
 #===========================================================================

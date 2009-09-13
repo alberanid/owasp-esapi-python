@@ -73,6 +73,9 @@ class ESAPI():
     
     intrusion_detector = gen_get_method('intrusion_detector')
     set_intrusion_detector = gen_set_method('intrusion_detector')
+    
+    executor = gen_get_method('executor')
+    set_executor = gen_set_method('executor')
 
     @classmethod
     def log_factory(cls):
