@@ -1,5 +1,5 @@
 Requirements:
-    **If you have setuptools installed, you should be able to install all except KeyCzar and Visual C++ 2008 by doing 'easy_install <packagename>' it a shell or command prompt.**
+    **If you have setuptools installed, you should be able to install all except KeyCzar and Visual C++ 2008 by doing 'easy_install <packagename>' in a shell or command prompt.**
 
     PyCrypto 2.01 - http://www.amk.ca/python/code/crypto
         PyCrypto requires a C Compiler. Windows users can us Visual C++ 2008 Express Edition - http://www.microsoft.com/express/vc/#webInstall
