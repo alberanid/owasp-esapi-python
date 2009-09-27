@@ -21,12 +21,7 @@ Installation:
     Note: Running all tests may appear to block or pause, particularly on Windows. This may be be due to exahaustion of the entropy pool. If it blocks, try moving the mouse, typing, or generating some disk activity.
 
 To adapt and integrate with your project:
-    
-
-To enable internationalization:
-    Set the 'LANGUAGE' environment variable with your locale
-    On *nix: export LANGUAGE=en_US
-    On Windows: set LANGUAGE=en_US
+    You can use as much or as little of ESAPI as you would like. You'll want to do a 'from esapi.core import ESAPI' and use the methods that class provides.
 
 To set up a crypto keyring:
     Select a root directory for your keyring, like /esapi/keyring/, and set Encryptor_KeysLocation in settings.py to this string if you have not already.
@@ -36,3 +31,9 @@ To set up a crypto keyring:
         ESAPI.encryptor().gen_keys()    
     Modify esapi/conf/settings.py according to the output by replacing the Encryptor_MasterSalt line with the one given.
 
+To enable internationalization:
+    Set the 'LANGUAGE' environment variable with your locale
+    On *nix: export LANGUAGE=en_US
+    On Windows: set LANGUAGE=en_US
+    
+    Please note that as of this writing, no translation files are available. A GNU gettext .po file is available in esapi/conf/locale . 
