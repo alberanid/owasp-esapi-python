@@ -1,3 +1,27 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+"""
+@license: OWASP Enterprise Security API (ESAPI)
+     
+    This file is part of the Open Web Application Security Project (OWASP)
+    Enterprise Security API (ESAPI) project. For details, please see
+    U{http://www.owasp.org/index.php/ESAPI<http://www.owasp.org/index.php/ESAPI>}.
+
+    The ESAPI is published by OWASP under the BSD license. You should read and 
+    accept the LICENSE before you use, modify, and/or redistribute this software.
+    
+@summary: A set of interfaces for HTTP requests, responses, and sessions.
+@copyright: Copyright (c) 2009 - The OWASP Foundation
+@author: Craig Younkins (craig.younkins@owasp.org)
+"""
+
+"""
+These are the expected interfaces of HTTP requests, responses, and sessions. Very naive sample implementations exist in esapi/test/http
+
+To use these functions with your Python webapp, you must write adapters to your requests, responses, and sessions so that they conform to this interface.
+"""
+
 class IHttpRequest():
     """
     This is the interface that ESAPI uses to interact with HTTP request

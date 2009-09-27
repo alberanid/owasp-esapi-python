@@ -256,3 +256,11 @@ class DefaultEncryptor(Encryptor):
              "--location=%s" % self.keys_asymmetric_private_location,
              "--status=primary",
              "--destination=%s" % self.keys_asymmetric_public_location] )
+             
+        # Gen a new master salt
+        from os import urandom
+        salt = urandom(20)
+        print "Please modify this line in esapi/conf/settings.py:"
+        print "Encryptor_MasterSalt = '" + ESAPI.encoder().encode_for_base64(salt) + "'"
+             
+        print "Done!"

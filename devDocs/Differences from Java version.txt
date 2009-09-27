@@ -1,4 +1,4 @@
-Documentation built with epydoc using *Javadocs*
+Documentation built with epydoc
 
 toString() -> __str__()
 

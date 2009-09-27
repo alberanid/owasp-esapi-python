@@ -79,5 +79,3 @@ class DefaultRandomizer(Randomizer):
     def get_random_choice(self, seq):
         return self.secure_random.choice(seq)
         
-
-
