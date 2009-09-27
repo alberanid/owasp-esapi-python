@@ -220,7 +220,7 @@
         <tr>
           <td><span class="summary-sig"><a href="esapi.encryptor.Encryptor-class.html#seal" class="summary-sig-name">seal</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">data</span>,
-        <span class="summary-sig-arg">timestamp</span>)</span><br />
+        <span class="summary-sig-arg">expiration</span>)</span><br />
       Creates a seal that binds a set of data and includes an expiration 
       timestamp.</td>
           <td align="right" valign="top">
@@ -261,49 +261,10 @@
         <tr>
           <td><span class="summary-sig"><a href="esapi.encryptor.Encryptor-class.html#verify_seal" class="summary-sig-name">verify_seal</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">seal</span>)</span><br />
-      Verifies a seal (created with the seal method) and raises an 
-      exception describing any of the various problems that could exist 
-      with a seal, such as an invalid seal format, expired timestamp, or 
-      data mismatch.</td>
+      Verifies a seal (created with the seal method) and returns True or 
+      False, indicating whether or not the seal is valid.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="esapi.encryptor-pysrc.html#Encryptor.verify_seal">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a href="esapi.encryptor.Encryptor-class.html#get_relative_timestamp" class="summary-sig-name">get_relative_timestamp</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">offset</span>)</span><br />
-      Gets an absolute timestamp representing an offset from the current 
-      time to be used by other functions in the library.</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="esapi.encryptor-pysrc.html#Encryptor.get_relative_timestamp">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a href="esapi.encryptor.Encryptor-class.html#get_timestamp" class="summary-sig-name">get_timestamp</a>(<span class="summary-sig-arg">self</span>)</span><br />
-      Gets a timestamp representing the current date and time to be used by
-      other functions in the library.</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="esapi.encryptor-pysrc.html#Encryptor.get_timestamp">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -504,7 +465,7 @@
   <tr valign="top"><td>
   <h3 class="epydoc"><span class="sig"><span class="sig-name">seal</span>(<span class="sig-arg">self</span>,
         <span class="sig-arg">data</span>,
-        <span class="sig-arg">timestamp</span>)</span>
+        <span class="sig-arg">expiration</span>)</span>
   </h3>
   </td><td align="right" valign="top"
     ><span class="codelink"><a href="esapi.encryptor-pysrc.html#Encryptor.seal">source&nbsp;code</a></span>&nbsp;
@@ -517,8 +478,13 @@
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
         <li><strong class="pname"><code>data</code></strong> - the data to seal</li>
-        <li><strong class="pname"><code>timestamp</code></strong> - the absolute expiration date of the data, expressed as seconds 
-          since the epoch</li>
+        <li><strong class="pname"><code>expiration</code></strong> - The relative or absolute time the seal should expire. If a 
+          datetime object is passed in, it should be converted to seconds 
+          since the epoch.
+          <p>If a timedelta object is passed in, it should be added to 
+          datetime.now() and converted to seconds since the epoch.</p>
+          <p>If an int is passed in, it will be treated as the seconds 
+          since the epoch.</p></li>
     </ul></dd>
     <dt>Returns:</dt>
         <dd>the seal</dd>
@@ -576,9 +542,8 @@
     </td>
   </tr></table>
   
-  <p>Verifies a seal (created with the seal method) and raises an exception
-  describing any of the various problems that could exist with a seal, such
-  as an invalid seal format, expired timestamp, or data mismatch.</p>
+  <p>Verifies a seal (created with the seal method) and returns True or 
+  False, indicating whether or not the seal is valid.</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
@@ -586,55 +551,6 @@
     </ul></dd>
     <dt>Returns:</dt>
         <dd>true, if the seal is valid.  False otherwise</dd>
-  </dl>
-</td></tr></table>
-</div>
-<a name="get_relative_timestamp"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_relative_timestamp</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">offset</span>)</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="esapi.encryptor-pysrc.html#Encryptor.get_relative_timestamp">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  <p>Gets an absolute timestamp representing an offset from the current 
-  time to be used by other functions in the library.</p>
-  <dl class="fields">
-    <dt>Parameters:</dt>
-    <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>offset</code></strong> - the offset to add to the current time</li>
-    </ul></dd>
-    <dt>Returns:</dt>
-        <dd>the absolute timestamp</dd>
-  </dl>
-</td></tr></table>
-</div>
-<a name="get_timestamp"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_timestamp</span>(<span class="sig-arg">self</span>)</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="esapi.encryptor-pysrc.html#Encryptor.get_timestamp">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  <p>Gets a timestamp representing the current date and time to be used by 
-  other functions in the library.</p>
-  <dl class="fields">
-    <dt>Returns:</dt>
-        <dd>a timestamp representing the current time</dd>
   </dl>
 </td></tr></table>
 </div>
@@ -665,7 +581,7 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Tue Jul 14 16:39:09 2009
+    Generated by Epydoc 3.0.1 on Sun Sep 27 16:34:57 2009
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

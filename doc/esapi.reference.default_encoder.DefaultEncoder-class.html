@@ -135,25 +135,6 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="esapi.reference.default_encoder.DefaultEncoder-class.html#normalize" class="summary-sig-name">normalize</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">input_</span>)</span><br />
-      Reduce all non-ascii characters to their ASCII form so that simpler 
-      validation rules can be applied.</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="esapi.reference.default_encoder-pysrc.html#DefaultEncoder.normalize">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
           <td><span class="summary-sig"><a href="esapi.reference.default_encoder.DefaultEncoder-class.html#encode_for_css" class="summary-sig-name">encode_for_css</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">input_</span>)</span><br />
       Encode data for use in Cascading Style Sheets (CSS) content.</td>
@@ -559,6 +540,7 @@
       <code><a href="esapi.encoder.Encoder-class.html#CHAR_LETTERS">CHAR_LETTERS</a></code>,
       <code><a href="esapi.encoder.Encoder-class.html#CHAR_LOWERS">CHAR_LOWERS</a></code>,
       <code><a href="esapi.encoder.Encoder-class.html#CHAR_LOWER_HEX">CHAR_LOWER_HEX</a></code>,
+      <code><a href="esapi.encoder.Encoder-class.html#CHAR_PASSWORD_ALL">CHAR_PASSWORD_ALL</a></code>,
       <code><a href="esapi.encoder.Encoder-class.html#CHAR_PASSWORD_DIGITS">CHAR_PASSWORD_DIGITS</a></code>,
       <code><a href="esapi.encoder.Encoder-class.html#CHAR_PASSWORD_LETTERS">CHAR_PASSWORD_LETTERS</a></code>,
       <code><a href="esapi.encoder.Encoder-class.html#CHAR_PASSWORD_LOWERS">CHAR_PASSWORD_LOWERS</a></code>,
@@ -713,42 +695,10 @@
         <dd>a string containing the canonicalized text</dd>
     <dt>Raises:</dt>
     <dd><ul class="nomargin-top">
-        <li><code><strong class='fraise'><a href="esapi.exceptions.EncodingException-class.html">EncodingException</a></strong></code> - if canonicalization fails</li>
+        <li><code><strong class='fraise'><a href="esapi.exceptions-module.html#EncodingException">EncodingException</a></strong></code> - if canonicalization fails</li>
     </ul></dd>
     <dt>Overrides:
         <a href="esapi.encoder.Encoder-class.html#canonicalize">encoder.Encoder.canonicalize</a>
-        <dd><em class="note">(inherited documentation)</em></dd>
-    </dt>
-  </dl>
-</td></tr></table>
-</div>
-<a name="normalize"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">normalize</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">input_</span>)</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="esapi.reference.default_encoder-pysrc.html#DefaultEncoder.normalize">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  <p>Reduce all non-ascii characters to their ASCII form so that simpler 
-  validation rules can be applied. For example, an accented-e character 
-  will be changed into a regular ASCII e character.</p>
-  <dl class="fields">
-    <dt>Parameters:</dt>
-    <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>input_</code></strong> - the text to normalize</li>
-    </ul></dd>
-    <dt>Returns:</dt>
-        <dd>a normalized string</dd>
-    <dt>Overrides:
-        <a href="esapi.encoder.Encoder-class.html#normalize">encoder.Encoder.normalize</a>
         <dd><em class="note">(inherited documentation)</em></dd>
     </dt>
   </dl>
@@ -1192,7 +1142,7 @@
         <dd>input_ encoded for use in a URL</dd>
     <dt>Raises:</dt>
     <dd><ul class="nomargin-top">
-        <li><code><strong class='fraise'><a href="esapi.exceptions.EncodingException-class.html">EncodingException</a></strong></code> - if encoding fails</li>
+        <li><code><strong class='fraise'><a href="esapi.exceptions-module.html#EncodingException">EncodingException</a></strong></code> - if encoding fails</li>
     </ul></dd>
     <dt>Overrides:
         <a href="esapi.encoder.Encoder-class.html#encode_for_url">encoder.Encoder.encode_for_url</a>
@@ -1228,7 +1178,7 @@
         <dd>the decoded URL value</dd>
     <dt>Raises:</dt>
     <dd><ul class="nomargin-top">
-        <li><code><strong class='fraise'><a href="esapi.exceptions.EncodingException-class.html">EncodingException</a></strong></code> - if decoding fails</li>
+        <li><code><strong class='fraise'><a href="esapi.exceptions-module.html#EncodingException">EncodingException</a></strong></code> - if decoding fails</li>
     </ul></dd>
     <dt>Overrides:
         <a href="esapi.encoder.Encoder-class.html#decode_from_url">encoder.Encoder.decode_from_url</a>
@@ -1328,7 +1278,7 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Tue Jul 14 16:39:09 2009
+    Generated by Epydoc 3.0.1 on Sun Sep 27 16:34:57 2009
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

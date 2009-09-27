@@ -104,8 +104,8 @@
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
         <a href="esapi.exceptions.AccessControlException-class.html" class="summary-name">AccessControlException</a><br />
-      An AccessControlException should be thrown when a user attempts to 
-        access a resource that they are not authorized for.
+      An AccessControlException should be raised when a user attempts to 
+      access a resource that they are not authorized for.
     </td>
   </tr>
 <tr>
@@ -113,8 +113,8 @@
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
         <a href="esapi.exceptions.AuthenticationException-class.html" class="summary-name">AuthenticationException</a><br />
-      An AuthenticationException should be thrown when anything goes 
-        wrong during login or logout.
+      An AuthenticationException should be raised when anything goes wrong 
+      during login or logout.
     </td>
   </tr>
 <tr>
@@ -150,8 +150,8 @@
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
         <a href="esapi.exceptions.AvailabilityException-class.html" class="summary-name">AvailabilityException</a><br />
-      An AvailabilityException should be thrown when the availability of 
-        a limited resource is in jeopardy.
+      An AvailabilityException should be raised when the availability of a 
+      limited resource is in jeopardy.
     </td>
   </tr>
 <tr>
@@ -159,8 +159,17 @@
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
         <a href="esapi.exceptions.CertificateException-class.html" class="summary-name">CertificateException</a><br />
-      A CertificateException should be thrown for any problems that arise
-        during processing of digital certificates.
+      A CertificateException should be raised for any problems that arise 
+      during processing of digital certificates.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="esapi.exceptions.ConfigurationException-class.html" class="summary-name">ConfigurationException</a><br />
+      A ConfigurationException should be raised for any problems related to
+      importing or parsing esapi.conf.settings.
     </td>
   </tr>
 <tr>
@@ -168,8 +177,8 @@
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
         <a href="esapi.exceptions.EncodingException-class.html" class="summary-name">EncodingException</a><br />
-      An ExecutorException should be thrown for any problems that occur 
-        when encoding or decoding data.
+      An ExecutorException should be raised for any problems that occur 
+      when encoding or decoding data.
     </td>
   </tr>
 <tr>
@@ -177,8 +186,8 @@
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
         <a href="esapi.exceptions.EncryptionException-class.html" class="summary-name">EncryptionException</a><br />
-      An EncryptionException should be thrown for any problems related to
-        encryption, hashing, or digital signatures.
+      An EncryptionException should be raised for any problems related to 
+      encryption, hashing, or digital signatures.
     </td>
   </tr>
 <tr>
@@ -186,8 +195,8 @@
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
         <a href="esapi.exceptions.ExecutorException-class.html" class="summary-name">ExecutorException</a><br />
-      An ExecutorException should be thrown for any problems that arise 
-        during the execution of a system executable.
+      An ExecutorException should be raised for any problems that arise 
+      during the execution of a system executable.
     </td>
   </tr>
 <tr>
@@ -195,8 +204,8 @@
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
         <a href="esapi.exceptions.IntegrityException-class.html" class="summary-name">IntegrityException</a><br />
-      An AvailabilityException should be thrown when the availability of 
-        a limited resource is in jeopardy.
+      An IntegrityException should be raised when an integrity problem is 
+      detected in a piece of data.
     </td>
   </tr>
 <tr>
@@ -204,7 +213,7 @@
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
         <a href="esapi.exceptions.IntrusionException-class.html" class="summary-name">IntrusionException</a><br />
-      An IntrusionException should be thrown anytime an error condition 
+      An IntrusionException should be raised anytime an error condition 
         arises that is likely to be the result of an attack in progress.
     </td>
   </tr>
@@ -213,9 +222,9 @@
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
         <a href="esapi.exceptions.ValidationException-class.html" class="summary-name">ValidationException</a><br />
-      A ValidationException should be thrown to indicate that the data 
-        provided by the user or from some other external source does not 
-        match the validation rules that have been specified for that data.
+      A ValidationException should be raised to indicate that the data 
+      provided by the user or from some other external source does not 
+      match the validation rules that have been specified for that data.
     </td>
   </tr>
 <tr>
@@ -230,31 +239,6 @@
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
         <a href="esapi.exceptions.ValidationUploadException-class.html" class="summary-name">ValidationUploadException</a>
-    </td>
-  </tr>
-</table>
-<!-- ==================== VARIABLES ==================== -->
-<a name="section-Variables"></a>
-<table class="summary" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr bgcolor="#70b0f0" class="table-header">
-  <td colspan="2" class="table-header">
-    <table border="0" cellpadding="0" cellspacing="0" width="100%">
-      <tr valign="top">
-        <td align="left"><span class="table-header">Variables</span></td>
-        <td align="right" valign="top"
-         ><span class="options">[<a href="#section-Variables"
-         class="privatelink" onclick="toggle_private();"
-         >hide private</a>]</span></td>
-      </tr>
-    </table>
-  </td>
-</tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-        <a name="__package__"></a><span class="summary-name">__package__</span> = <code title="'esapi'"><code class="variable-quote">'</code><code class="variable-string">esapi</code><code class="variable-quote">'</code></code>
     </td>
   </tr>
 </table>
@@ -284,7 +268,7 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Tue Jul 14 16:39:08 2009
+    Generated by Epydoc 3.0.1 on Sun Sep 27 16:34:56 2009
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

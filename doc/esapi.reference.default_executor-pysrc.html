@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>esapi.reference.default_executor</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="esapi-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="esapi-module.html">Package&nbsp;esapi</a> ::
+        <a href="esapi.reference-module.html">Package&nbsp;reference</a> ::
+        Module&nbsp;default_executor
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="esapi.reference.default_executor-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="esapi.reference.default_executor-module.html">Module esapi.reference.default_executor</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment">#!/usr/bin/python</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: utf-8 -*-</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-docstring">@license: OWASP Enterprise Security API (ESAPI)</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-docstring">     </tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-docstring">    This file is part of the Open Web Application Security Project (OWASP)</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-docstring">    Enterprise Security API (ESAPI) project. For details, please see</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-docstring">    U{http://www.owasp.org/index.php/ESAPI&lt;http://www.owasp.org/index.php/ESAPI&gt;}.</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-docstring">    The ESAPI is published by OWASP under the BSD license. You should read and </tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-docstring">    accept the LICENSE before you use, modify, and/or redistribute this software.</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-docstring">    </tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"><tt class="py-docstring">@copyright: Copyright (c) 2009 - The OWASP Foundation</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt class="py-docstring">@summary: The default implementation of the Executor interface.</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"><tt class="py-docstring">@author: Craig Younkins (craig.younkins@owasp.org)</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">os</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">subprocess</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">datetime</tt> <tt class="py-keyword">import</tt> <tt class="py-name">datetime</tt><tt class="py-op">,</tt> <tt class="py-name">timedelta</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">time</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Package esapi=esapi-module.html"><a title="esapi" class="py-name" href="#" onclick="return doclink('link-0', 'esapi', 'link-0');">esapi</a></tt><tt class="py-op">.</tt><tt id="link-1" class="py-name" targets="Module esapi.core=esapi.core-module.html"><a title="esapi.core" class="py-name" href="#" onclick="return doclink('link-1', 'core', 'link-1');">core</a></tt> <tt class="py-keyword">import</tt> <tt id="link-2" class="py-name" targets="Class esapi.core.ESAPI=esapi.core.ESAPI-class.html"><a title="esapi.core.ESAPI" class="py-name" href="#" onclick="return doclink('link-2', 'ESAPI', 'link-2');">ESAPI</a></tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-3" class="py-name"><a title="esapi" class="py-name" href="#" onclick="return doclink('link-3', 'esapi', 'link-0');">esapi</a></tt><tt class="py-op">.</tt><tt id="link-4" class="py-name" targets="Class Method esapi.core.ESAPI.logger()=esapi.core.ESAPI-class.html#logger,Module esapi.logger=esapi.logger-module.html"><a title="esapi.core.ESAPI.logger
+esapi.logger" class="py-name" href="#" onclick="return doclink('link-4', 'logger', 'link-4');">logger</a></tt> <tt class="py-keyword">import</tt> <tt id="link-5" class="py-name" targets="Class esapi.logger.Logger=esapi.logger.Logger-class.html"><a title="esapi.logger.Logger" class="py-name" href="#" onclick="return doclink('link-5', 'Logger', 'link-5');">Logger</a></tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-6" class="py-name"><a title="esapi" class="py-name" href="#" onclick="return doclink('link-6', 'esapi', 'link-0');">esapi</a></tt><tt class="py-op">.</tt><tt id="link-7" class="py-name" targets="Module esapi.translation=esapi.translation-module.html"><a title="esapi.translation" class="py-name" href="#" onclick="return doclink('link-7', 'translation', 'link-7');">translation</a></tt> <tt class="py-keyword">import</tt> <tt class="py-name">_</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-8" class="py-name"><a title="esapi" class="py-name" href="#" onclick="return doclink('link-8', 'esapi', 'link-0');">esapi</a></tt><tt class="py-op">.</tt><tt id="link-9" class="py-name" targets="Class Method esapi.core.ESAPI.executor()=esapi.core.ESAPI-class.html#executor,Module esapi.executor=esapi.executor-module.html"><a title="esapi.core.ESAPI.executor
+esapi.executor" class="py-name" href="#" onclick="return doclink('link-9', 'executor', 'link-9');">executor</a></tt> <tt class="py-keyword">import</tt> <tt id="link-10" class="py-name" targets="Class esapi.executor.Executor=esapi.executor.Executor-class.html"><a title="esapi.executor.Executor" class="py-name" href="#" onclick="return doclink('link-10', 'Executor', 'link-10');">Executor</a></tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-11" class="py-name"><a title="esapi" class="py-name" href="#" onclick="return doclink('link-11', 'esapi', 'link-0');">esapi</a></tt><tt class="py-op">.</tt><tt id="link-12" class="py-name" targets="Package esapi.codecs=esapi.codecs-module.html"><a title="esapi.codecs" class="py-name" href="#" onclick="return doclink('link-12', 'codecs', 'link-12');">codecs</a></tt><tt class="py-op">.</tt><tt id="link-13" class="py-name" targets="Module esapi.codecs.windows=esapi.codecs.windows-module.html"><a title="esapi.codecs.windows" class="py-name" href="#" onclick="return doclink('link-13', 'windows', 'link-13');">windows</a></tt> <tt class="py-keyword">import</tt> <tt id="link-14" class="py-name" targets="Class esapi.codecs.windows.WindowsCodec=esapi.codecs.windows.WindowsCodec-class.html"><a title="esapi.codecs.windows.WindowsCodec" class="py-name" href="#" onclick="return doclink('link-14', 'WindowsCodec', 'link-14');">WindowsCodec</a></tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-15" class="py-name"><a title="esapi" class="py-name" href="#" onclick="return doclink('link-15', 'esapi', 'link-0');">esapi</a></tt><tt class="py-op">.</tt><tt id="link-16" class="py-name"><a title="esapi.codecs" class="py-name" href="#" onclick="return doclink('link-16', 'codecs', 'link-12');">codecs</a></tt><tt class="py-op">.</tt><tt id="link-17" class="py-name" targets="Module esapi.codecs.unix=esapi.codecs.unix-module.html"><a title="esapi.codecs.unix" class="py-name" href="#" onclick="return doclink('link-17', 'unix', 'link-17');">unix</a></tt> <tt class="py-keyword">import</tt> <tt id="link-18" class="py-name" targets="Class esapi.codecs.unix.UnixCodec=esapi.codecs.unix.UnixCodec-class.html"><a title="esapi.codecs.unix.UnixCodec" class="py-name" href="#" onclick="return doclink('link-18', 'UnixCodec', 'link-18');">UnixCodec</a></tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-19" class="py-name"><a title="esapi" class="py-name" href="#" onclick="return doclink('link-19', 'esapi', 'link-0');">esapi</a></tt><tt class="py-op">.</tt><tt id="link-20" class="py-name" targets="Module esapi.exceptions=esapi.exceptions-module.html"><a title="esapi.exceptions" class="py-name" href="#" onclick="return doclink('link-20', 'exceptions', 'link-20');">exceptions</a></tt> <tt class="py-keyword">import</tt> <tt id="link-21" class="py-name" targets="Class esapi.exceptions.ExecutorException=esapi.exceptions.ExecutorException-class.html"><a title="esapi.exceptions.ExecutorException" class="py-name" href="#" onclick="return doclink('link-21', 'ExecutorException', 'link-21');">ExecutorException</a></tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"> </tt>
+<a name="DefaultExecutor"></a><div id="DefaultExecutor-def"><a name="L33"></a><tt class="py-lineno"> 33</tt> <a class="py-toggle" href="#" id="DefaultExecutor-toggle" onclick="return toggle('DefaultExecutor');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="esapi.reference.default_executor.DefaultExecutor-class.html">DefaultExecutor</a><tt class="py-op">(</tt><tt class="py-base-class">Executor</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DefaultExecutor-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="DefaultExecutor-expanded"><a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line"><tt class="py-docstring">    The reference implementation of the Executor interface. This implementation</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line"><tt class="py-docstring">    is very restrictive. Commands must match the canonical path and pass</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line"><tt class="py-docstring">    Validator.is_valid_directory_path and Validator.is_valid_filename.</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line"><tt class="py-docstring">    </tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line"><tt class="py-docstring">    @author: Craig Younkins (craig.younkins@owasp.org)</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="DefaultExecutor.__init__"></a><div id="DefaultExecutor.__init__-def"><a name="L41"></a><tt class="py-lineno"> 41</tt> <a class="py-toggle" href="#" id="DefaultExecutor.__init__-toggle" onclick="return toggle('DefaultExecutor.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.reference.default_executor.DefaultExecutor-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DefaultExecutor.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="DefaultExecutor.__init__-expanded"><a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-22" class="py-name"><a title="esapi.core.ESAPI.logger
+esapi.logger" class="py-name" href="#" onclick="return doclink('link-22', 'logger', 'link-4');">logger</a></tt> <tt class="py-op">=</tt> <tt id="link-23" class="py-name"><a title="esapi.core.ESAPI" class="py-name" href="#" onclick="return doclink('link-23', 'ESAPI', 'link-2');">ESAPI</a></tt><tt class="py-op">.</tt><tt id="link-24" class="py-name"><a title="esapi.core.ESAPI.logger
+esapi.logger" class="py-name" href="#" onclick="return doclink('link-24', 'logger', 'link-4');">logger</a></tt><tt class="py-op">(</tt><tt class="py-string">"Executor"</tt><tt class="py-op">)</tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">working_dir</tt> <tt class="py-op">=</tt> <tt id="link-25" class="py-name"><a title="esapi.core.ESAPI" class="py-name" href="#" onclick="return doclink('link-25', 'ESAPI', 'link-2');">ESAPI</a></tt><tt class="py-op">.</tt><tt id="link-26" class="py-name" targets="Class Method esapi.core.ESAPI.security_configuration()=esapi.core.ESAPI-class.html#security_configuration,Module esapi.security_configuration=esapi.security_configuration-module.html"><a title="esapi.core.ESAPI.security_configuration
+esapi.security_configuration" class="py-name" href="#" onclick="return doclink('link-26', 'security_configuration', 'link-26');">security_configuration</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-27" class="py-name" targets="Method esapi.reference.default_security_configuration.DefaultSecurityConfiguration.get_working_directory()=esapi.reference.default_security_configuration.DefaultSecurityConfiguration-class.html#get_working_directory,Method esapi.security_configuration.SecurityConfiguration.get_working_directory()=esapi.security_configuration.SecurityConfiguration-class.html#get_working_directory"><a title="esapi.reference.default_security_configuration.DefaultSecurityConfiguration.get_working_directory
+esapi.security_configuration.SecurityConfiguration.get_working_directory" class="py-name" href="#" onclick="return doclink('link-27', 'get_working_directory', 'link-27');">get_working_directory</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">        <tt class="py-name">max_running_sec</tt> <tt class="py-op">=</tt> <tt id="link-28" class="py-name"><a title="esapi.core.ESAPI" class="py-name" href="#" onclick="return doclink('link-28', 'ESAPI', 'link-2');">ESAPI</a></tt><tt class="py-op">.</tt><tt id="link-29" class="py-name"><a title="esapi.core.ESAPI.security_configuration
+esapi.security_configuration" class="py-name" href="#" onclick="return doclink('link-29', 'security_configuration', 'link-26');">security_configuration</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-30" class="py-name" targets="Method esapi.reference.default_security_configuration.DefaultSecurityConfiguration.get_max_running_time()=esapi.reference.default_security_configuration.DefaultSecurityConfiguration-class.html#get_max_running_time"><a title="esapi.reference.default_security_configuration.DefaultSecurityConfiguration.get_max_running_time" class="py-name" href="#" onclick="return doclink('link-30', 'get_max_running_time', 'link-30');">get_max_running_time</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">max_running_time</tt> <tt class="py-op">=</tt> <tt class="py-name">timedelta</tt><tt class="py-op">(</tt><tt class="py-name">seconds</tt><tt class="py-op">=</tt><tt class="py-name">max_running_sec</tt><tt class="py-op">)</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt id="link-31" class="py-name" targets="Variable esapi.security_configuration.SecurityConfiguration.Threshold.name=esapi.security_configuration.SecurityConfiguration.Threshold-class.html#name"><a title="esapi.security_configuration.SecurityConfiguration.Threshold.name" class="py-name" href="#" onclick="return doclink('link-31', 'name', 'link-31');">name</a></tt> <tt class="py-op">==</tt> <tt class="py-string">'nt'</tt><tt class="py-op">:</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-32" class="py-name"><a title="esapi.core.ESAPI.logger
+esapi.logger" class="py-name" href="#" onclick="return doclink('link-32', 'logger', 'link-4');">logger</a></tt><tt class="py-op">.</tt><tt id="link-33" class="py-name" targets="Method esapi.logger.Logger.warning()=esapi.logger.Logger-class.html#warning,Method esapi.reference.python_log_factory.PythonLogFactory.PythonLogger.warning()=esapi.reference.python_log_factory.PythonLogFactory.PythonLogger-class.html#warning"><a title="esapi.logger.Logger.warning
+esapi.reference.python_log_factory.PythonLogFactory.PythonLogger.warning" class="py-name" href="#" onclick="return doclink('link-33', 'warning', 'link-33');">warning</a></tt><tt class="py-op">(</tt> <tt id="link-34" class="py-name"><a title="esapi.logger.Logger" class="py-name" href="#" onclick="return doclink('link-34', 'Logger', 'link-5');">Logger</a></tt><tt class="py-op">.</tt><tt id="link-35" class="py-name" targets="Variable esapi.logger.Logger.SECURITY_SUCCESS=esapi.logger.Logger-class.html#SECURITY_SUCCESS"><a title="esapi.logger.Logger.SECURITY_SUCCESS" class="py-name" href="#" onclick="return doclink('link-35', 'SECURITY_SUCCESS', 'link-35');">SECURITY_SUCCESS</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line">                <tt class="py-name">_</tt><tt class="py-op">(</tt><tt class="py-string">"Using WindowsCodec for Executor. If this is not running on Windows, this could allow for injection"</tt><tt class="py-op">)</tt> <tt class="py-op">)</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-36" class="py-name" targets="Module esapi.codecs.codec=esapi.codecs.codec-module.html"><a title="esapi.codecs.codec" class="py-name" href="#" onclick="return doclink('link-36', 'codec', 'link-36');">codec</a></tt> <tt class="py-op">=</tt> <tt id="link-37" class="py-name"><a title="esapi.codecs.windows.WindowsCodec" class="py-name" href="#" onclick="return doclink('link-37', 'WindowsCodec', 'link-14');">WindowsCodec</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-38" class="py-name"><a title="esapi.core.ESAPI.logger
+esapi.logger" class="py-name" href="#" onclick="return doclink('link-38', 'logger', 'link-4');">logger</a></tt><tt class="py-op">.</tt><tt id="link-39" class="py-name"><a title="esapi.logger.Logger.warning
+esapi.reference.python_log_factory.PythonLogFactory.PythonLogger.warning" class="py-name" href="#" onclick="return doclink('link-39', 'warning', 'link-33');">warning</a></tt><tt class="py-op">(</tt> <tt id="link-40" class="py-name"><a title="esapi.logger.Logger" class="py-name" href="#" onclick="return doclink('link-40', 'Logger', 'link-5');">Logger</a></tt><tt class="py-op">.</tt><tt id="link-41" class="py-name"><a title="esapi.logger.Logger.SECURITY_SUCCESS" class="py-name" href="#" onclick="return doclink('link-41', 'SECURITY_SUCCESS', 'link-35');">SECURITY_SUCCESS</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line">                <tt class="py-name">_</tt><tt class="py-op">(</tt><tt class="py-string">"Using UnixCodec for Executor. If this is not running on Unix, this could allow injection"</tt><tt class="py-op">)</tt> <tt class="py-op">)</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-42" class="py-name"><a title="esapi.codecs.codec" class="py-name" href="#" onclick="return doclink('link-42', 'codec', 'link-36');">codec</a></tt> <tt class="py-op">=</tt> <tt id="link-43" class="py-name"><a title="esapi.codecs.unix.UnixCodec" class="py-name" href="#" onclick="return doclink('link-43', 'UnixCodec', 'link-18');">UnixCodec</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line">         </tt>
+<a name="DefaultExecutor.execute_system_command"></a><div id="DefaultExecutor.execute_system_command-def"><a name="L55"></a><tt class="py-lineno"> 55</tt> <a class="py-toggle" href="#" id="DefaultExecutor.execute_system_command-toggle" onclick="return toggle('DefaultExecutor.execute_system_command');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.reference.default_executor.DefaultExecutor-class.html#execute_system_command">execute_system_command</a><tt class="py-op">(</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">            <tt class="py-param">self</tt><tt class="py-op">,</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line">            <tt class="py-param">executable</tt><tt class="py-op">,</tt>  </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">            <tt class="py-param">params</tt><tt class="py-op">,</tt>  </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">            <tt class="py-param">parent_dir</tt><tt class="py-op">,</tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">            <tt class="py-param">working_dir</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">            <tt class="py-param">codec</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt>  </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">            <tt class="py-param">log_params</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DefaultExecutor.execute_system_command-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="DefaultExecutor.execute_system_command-expanded"><a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">             </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt id="link-44" class="py-name"><a title="esapi.codecs.codec" class="py-name" href="#" onclick="return doclink('link-44', 'codec', 'link-36');">codec</a></tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">            <tt id="link-45" class="py-name"><a title="esapi.codecs.codec" class="py-name" href="#" onclick="return doclink('link-45', 'codec', 'link-36');">codec</a></tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-46" class="py-name"><a title="esapi.codecs.codec" class="py-name" href="#" onclick="return doclink('link-46', 'codec', 'link-36');">codec</a></tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">             </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">working_dir</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">            <tt class="py-name">working_dir</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">working_dir</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">             </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line">            <tt class="py-comment"># Executable must exist</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt id="link-47" class="py-name" targets="Method esapi.authenticator.Authenticator.exists()=esapi.authenticator.Authenticator-class.html#exists,Method esapi.reference.shelve_authenticator.ShelveAuthenticator.exists()=esapi.reference.shelve_authenticator.ShelveAuthenticator-class.html#exists"><a title="esapi.authenticator.Authenticator.exists
+esapi.reference.shelve_authenticator.ShelveAuthenticator.exists" class="py-name" href="#" onclick="return doclink('link-47', 'exists', 'link-47');">exists</a></tt><tt class="py-op">(</tt><tt class="py-name">executable</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">                <tt class="py-keyword">raise</tt> <tt id="link-48" class="py-name"><a title="esapi.exceptions.ExecutorException" class="py-name" href="#" onclick="return doclink('link-48', 'ExecutorException', 'link-21');">ExecutorException</a></tt><tt class="py-op">(</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">                    <tt class="py-name">_</tt><tt class="py-op">(</tt><tt class="py-string">"Execution failure"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">                    <tt class="py-name">_</tt><tt class="py-op">(</tt><tt class="py-string">"No such executable: %(executable)s"</tt><tt class="py-op">)</tt> <tt class="py-op">%</tt>  </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">                    <tt class="py-op">{</tt><tt class="py-string">'executable'</tt> <tt class="py-op">:</tt> <tt class="py-name">executable</tt><tt class="py-op">}</tt> <tt class="py-op">)</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">             </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">            <tt class="py-name">directory</tt><tt class="py-op">,</tt> <tt class="py-name">filename</tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">split</tt><tt class="py-op">(</tt><tt class="py-name">executable</tt><tt class="py-op">)</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line"> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">            <tt class="py-comment"># executable must use canonical path</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt id="link-49" class="py-name"><a title="esapi.core.ESAPI" class="py-name" href="#" onclick="return doclink('link-49', 'ESAPI', 'link-2');">ESAPI</a></tt><tt class="py-op">.</tt><tt id="link-50" class="py-name" targets="Class Method esapi.core.ESAPI.validator()=esapi.core.ESAPI-class.html#validator,Module esapi.validator=esapi.validator-module.html"><a title="esapi.core.ESAPI.validator
+esapi.validator" class="py-name" href="#" onclick="return doclink('link-50', 'validator', 'link-50');">validator</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-51" class="py-name" targets="Method esapi.reference.default_validator.DefaultValidator.is_valid_directory_path()=esapi.reference.default_validator.DefaultValidator-class.html#is_valid_directory_path,Method esapi.validator.Validator.is_valid_directory_path()=esapi.validator.Validator-class.html#is_valid_directory_path"><a title="esapi.reference.default_validator.DefaultValidator.is_valid_directory_path
+esapi.validator.Validator.is_valid_directory_path" class="py-name" href="#" onclick="return doclink('link-51', 'is_valid_directory_path', 'link-51');">is_valid_directory_path</a></tt><tt class="py-op">(</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">                <tt class="py-string">"Executor"</tt><tt class="py-op">,</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">                <tt class="py-name">directory</tt><tt class="py-op">,</tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">                <tt class="py-name">parent_dir</tt><tt class="py-op">,</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line">                <tt class="py-name">False</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line">                <tt class="py-keyword">raise</tt> <tt id="link-52" class="py-name"><a title="esapi.exceptions.ExecutorException" class="py-name" href="#" onclick="return doclink('link-52', 'ExecutorException', 'link-21');">ExecutorException</a></tt><tt class="py-op">(</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">                    <tt class="py-name">_</tt><tt class="py-op">(</tt><tt class="py-string">"Execution failure"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">                    <tt class="py-name">_</tt><tt class="py-op">(</tt><tt class="py-string">"Directory did not pass validation: %(dir)s"</tt><tt class="py-op">)</tt> <tt class="py-op">%</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">                    <tt class="py-op">{</tt> <tt class="py-string">'dir'</tt> <tt class="py-op">:</tt> <tt class="py-name">directory</tt> <tt class="py-op">}</tt> <tt class="py-op">)</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">                     </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">            <tt class="py-comment"># Must be in approved list</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">            <tt class="py-name">approved</tt> <tt class="py-op">=</tt> <tt id="link-53" class="py-name"><a title="esapi.core.ESAPI" class="py-name" href="#" onclick="return doclink('link-53', 'ESAPI', 'link-2');">ESAPI</a></tt><tt class="py-op">.</tt><tt id="link-54" class="py-name"><a title="esapi.core.ESAPI.security_configuration
+esapi.security_configuration" class="py-name" href="#" onclick="return doclink('link-54', 'security_configuration', 'link-26');">security_configuration</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-55" class="py-name" targets="Method esapi.reference.default_security_configuration.DefaultSecurityConfiguration.get_allowed_executables()=esapi.reference.default_security_configuration.DefaultSecurityConfiguration-class.html#get_allowed_executables,Method esapi.security_configuration.SecurityConfiguration.get_allowed_executables()=esapi.security_configuration.SecurityConfiguration-class.html#get_allowed_executables"><a title="esapi.reference.default_security_configuration.DefaultSecurityConfiguration.get_allowed_executables
+esapi.security_configuration.SecurityConfiguration.get_allowed_executables" class="py-name" href="#" onclick="return doclink('link-55', 'get_allowed_executables', 'link-55');">get_allowed_executables</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">executable</tt> <tt class="py-keyword">not</tt> <tt class="py-keyword">in</tt> <tt class="py-name">approved</tt><tt class="py-op">:</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">                <tt class="py-keyword">raise</tt> <tt id="link-56" class="py-name"><a title="esapi.exceptions.ExecutorException" class="py-name" href="#" onclick="return doclink('link-56', 'ExecutorException', 'link-21');">ExecutorException</a></tt><tt class="py-op">(</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">                    <tt class="py-name">_</tt><tt class="py-op">(</tt><tt class="py-string">"Execution failure"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">                    <tt class="py-name">_</tt><tt class="py-op">(</tt><tt class="py-string">"Attempt to invoke executable that is not listed as an approved executable in configuration: %(executable)s"</tt><tt class="py-op">)</tt> <tt class="py-op">%</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line">                    <tt class="py-op">{</tt><tt class="py-string">'executable'</tt> <tt class="py-op">:</tt> <tt class="py-name">executable</tt><tt class="py-op">}</tt> <tt class="py-op">)</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">                     </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">            <tt class="py-comment"># Escape parameters</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line">            <tt class="py-name">params</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt id="link-57" class="py-name"><a title="esapi.core.ESAPI" class="py-name" href="#" onclick="return doclink('link-57', 'ESAPI', 'link-2');">ESAPI</a></tt><tt class="py-op">.</tt><tt id="link-58" class="py-name" targets="Class Method esapi.core.ESAPI.encoder()=esapi.core.ESAPI-class.html#encoder,Module esapi.encoder=esapi.encoder-module.html"><a title="esapi.core.ESAPI.encoder
+esapi.encoder" class="py-name" href="#" onclick="return doclink('link-58', 'encoder', 'link-58');">encoder</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-59" class="py-name" targets="Method esapi.encoder.Encoder.encode_for_os()=esapi.encoder.Encoder-class.html#encode_for_os,Method esapi.reference.default_encoder.DefaultEncoder.encode_for_os()=esapi.reference.default_encoder.DefaultEncoder-class.html#encode_for_os"><a title="esapi.encoder.Encoder.encode_for_os
+esapi.reference.default_encoder.DefaultEncoder.encode_for_os" class="py-name" href="#" onclick="return doclink('link-59', 'encode_for_os', 'link-59');">encode_for_os</a></tt><tt class="py-op">(</tt><tt id="link-60" class="py-name"><a title="esapi.codecs.codec" class="py-name" href="#" onclick="return doclink('link-60', 'codec', 'link-36');">codec</a></tt><tt class="py-op">,</tt><tt class="py-name">param</tt><tt class="py-op">)</tt> <tt class="py-keyword">for</tt> <tt class="py-name">param</tt> <tt class="py-keyword">in</tt> <tt class="py-name">params</tt><tt class="py-op">]</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line">             </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">            <tt class="py-comment"># Working directory must exist</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt id="link-61" class="py-name"><a title="esapi.authenticator.Authenticator.exists
+esapi.reference.shelve_authenticator.ShelveAuthenticator.exists" class="py-name" href="#" onclick="return doclink('link-61', 'exists', 'link-47');">exists</a></tt><tt class="py-op">(</tt><tt class="py-name">working_dir</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">                <tt class="py-keyword">raise</tt> <tt id="link-62" class="py-name"><a title="esapi.exceptions.ExecutorException" class="py-name" href="#" onclick="return doclink('link-62', 'ExecutorException', 'link-21');">ExecutorException</a></tt><tt class="py-op">(</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">                    <tt class="py-name">_</tt><tt class="py-op">(</tt><tt class="py-string">"Execution failure"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">                    <tt class="py-name">_</tt><tt class="py-op">(</tt><tt class="py-string">"No such working directory for running executable: %(dir)s"</tt><tt class="py-op">)</tt> <tt class="py-op">%</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">                    <tt class="py-op">{</tt><tt class="py-string">'dir'</tt> <tt class="py-op">:</tt> <tt class="py-name">working_dir</tt><tt class="py-op">}</tt> <tt class="py-op">)</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">                     </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">            <tt class="py-name">args</tt> <tt class="py-op">=</tt> <tt class="py-name">params</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">            <tt class="py-name">args</tt><tt class="py-op">.</tt><tt class="py-name">insert</tt><tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt> <tt class="py-name">executable</tt><tt class="py-op">)</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">            <tt class="py-name">start_time</tt> <tt class="py-op">=</tt> <tt class="py-name">datetime</tt><tt class="py-op">.</tt><tt class="py-name">now</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">            <tt class="py-name">proc</tt> <tt class="py-op">=</tt> <tt class="py-name">subprocess</tt><tt class="py-op">.</tt><tt class="py-name">Popen</tt><tt class="py-op">(</tt> <tt class="py-name">args</tt><tt class="py-op">,</tt> <tt class="py-name">stdout</tt><tt class="py-op">=</tt><tt class="py-name">subprocess</tt><tt class="py-op">.</tt><tt class="py-name">PIPE</tt><tt class="py-op">,</tt> <tt class="py-name">stderr</tt><tt class="py-op">=</tt><tt class="py-name">subprocess</tt><tt class="py-op">.</tt><tt class="py-name">STDOUT</tt><tt class="py-op">,</tt> <tt class="py-name">cwd</tt><tt class="py-op">=</tt><tt class="py-name">working_dir</tt> <tt class="py-op">)</tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">             </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">log_params</tt><tt class="py-op">:</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-63" class="py-name"><a title="esapi.core.ESAPI.logger
+esapi.logger" class="py-name" href="#" onclick="return doclink('link-63', 'logger', 'link-4');">logger</a></tt><tt class="py-op">.</tt><tt id="link-64" class="py-name"><a title="esapi.logger.Logger.warning
+esapi.reference.python_log_factory.PythonLogFactory.PythonLogger.warning" class="py-name" href="#" onclick="return doclink('link-64', 'warning', 'link-33');">warning</a></tt><tt class="py-op">(</tt> <tt id="link-65" class="py-name"><a title="esapi.logger.Logger" class="py-name" href="#" onclick="return doclink('link-65', 'Logger', 'link-5');">Logger</a></tt><tt class="py-op">.</tt><tt id="link-66" class="py-name"><a title="esapi.logger.Logger.SECURITY_SUCCESS" class="py-name" href="#" onclick="return doclink('link-66', 'SECURITY_SUCCESS', 'link-35');">SECURITY_SUCCESS</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line">                    <tt class="py-name">_</tt><tt class="py-op">(</tt><tt class="py-string">"Initiating executable %(args)s in %(dir)s"</tt> <tt class="py-op">)</tt> <tt class="py-op">%</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line">                    <tt class="py-op">{</tt><tt class="py-string">'args'</tt> <tt class="py-op">:</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">args</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">                     <tt class="py-string">'dir'</tt> <tt class="py-op">:</tt> <tt class="py-name">working_dir</tt> <tt class="py-op">}</tt> <tt class="py-op">)</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line">            <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-67" class="py-name"><a title="esapi.core.ESAPI.logger
+esapi.logger" class="py-name" href="#" onclick="return doclink('link-67', 'logger', 'link-4');">logger</a></tt><tt class="py-op">.</tt><tt id="link-68" class="py-name"><a title="esapi.logger.Logger.warning
+esapi.reference.python_log_factory.PythonLogFactory.PythonLogger.warning" class="py-name" href="#" onclick="return doclink('link-68', 'warning', 'link-33');">warning</a></tt><tt class="py-op">(</tt> <tt id="link-69" class="py-name"><a title="esapi.logger.Logger" class="py-name" href="#" onclick="return doclink('link-69', 'Logger', 'link-5');">Logger</a></tt><tt class="py-op">.</tt><tt id="link-70" class="py-name"><a title="esapi.logger.Logger.SECURITY_SUCCESS" class="py-name" href="#" onclick="return doclink('link-70', 'SECURITY_SUCCESS', 'link-35');">SECURITY_SUCCESS</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line">                    <tt class="py-name">_</tt><tt class="py-op">(</tt><tt class="py-string">"Initiating executable %(executable)s in %(dir)s"</tt> <tt class="py-op">)</tt> <tt class="py-op">%</tt> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line">                    <tt class="py-op">{</tt><tt class="py-string">'executable'</tt> <tt class="py-op">:</tt> <tt class="py-name">args</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line">                     <tt class="py-string">'dir'</tt> <tt class="py-op">:</tt> <tt class="py-name">working_dir</tt> <tt class="py-op">}</tt> <tt class="py-op">)</tt> </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line">                      </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line">            <tt class="py-keyword">while</tt> <tt class="py-op">(</tt><tt class="py-name">proc</tt><tt class="py-op">.</tt><tt class="py-name">poll</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt> <tt class="py-keyword">and</tt>  </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line">                   <tt class="py-name">datetime</tt><tt class="py-op">.</tt><tt class="py-name">now</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">-</tt> <tt class="py-name">start_time</tt> <tt class="py-op">&lt;</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">max_running_time</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line">                <tt class="py-name">time</tt><tt class="py-op">.</tt><tt class="py-name">sleep</tt><tt class="py-op">(</tt><tt class="py-number">1</tt><tt class="py-op">)</tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line">                 </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">proc</tt><tt class="py-op">.</tt><tt class="py-name">poll</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">                <tt class="py-comment"># Kill the process because it ran too long</tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line">                <tt class="py-name">proc</tt><tt class="py-op">.</tt><tt class="py-name">terminate</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line">                <tt class="py-name">time</tt><tt class="py-op">.</tt><tt class="py-name">sleep</tt><tt class="py-op">(</tt><tt class="py-number">1</tt><tt class="py-op">)</tt> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">proc</tt><tt class="py-op">.</tt><tt class="py-name">poll</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line">                    <tt class="py-name">proc</tt><tt class="py-op">.</tt><tt class="py-name">kill</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line">                <tt class="py-keyword">raise</tt> <tt id="link-71" class="py-name"><a title="esapi.exceptions.ExecutorException" class="py-name" href="#" onclick="return doclink('link-71', 'ExecutorException', 'link-21');">ExecutorException</a></tt><tt class="py-op">(</tt> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line">                    <tt class="py-name">_</tt><tt class="py-op">(</tt><tt class="py-string">"Execution failure"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line">                    <tt class="py-name">_</tt><tt class="py-op">(</tt><tt class="py-string">"Process exceeded maximum running time and was killed: %(executable)s"</tt><tt class="py-op">)</tt> <tt class="py-op">%</tt> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line">                    <tt class="py-op">{</tt><tt class="py-string">'executable'</tt> <tt class="py-op">:</tt> <tt class="py-name">executable</tt><tt class="py-op">}</tt> <tt class="py-op">)</tt> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line">                     </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line">            <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line">                <tt class="py-comment"># Process terminated in allotted timeframe</tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line">                <tt class="py-name">stdout_and_err</tt> <tt class="py-op">=</tt> <tt class="py-name">proc</tt><tt class="py-op">.</tt><tt class="py-name">communicate</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">stdout_and_err</tt> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">Exception</tt><tt class="py-op">,</tt> <tt class="py-name">extra</tt><tt class="py-op">:</tt> </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt id="link-72" class="py-name"><a title="esapi.exceptions.ExecutorException" class="py-name" href="#" onclick="return doclink('link-72', 'ExecutorException', 'link-21');">ExecutorException</a></tt><tt class="py-op">(</tt> </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line">                <tt class="py-name">_</tt><tt class="py-op">(</tt><tt class="py-string">"Execution failure"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line">                <tt class="py-name">_</tt><tt class="py-op">(</tt><tt class="py-string">"Exception thrown during execution of system command"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line">                <tt class="py-name">extra</tt> <tt class="py-op">)</tt> </tt>
+</div></div><a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="esapi-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Sun Sep 27 16:34:58 2009
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

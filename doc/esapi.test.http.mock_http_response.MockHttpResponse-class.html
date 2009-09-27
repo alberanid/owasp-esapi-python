@@ -3,7 +3,7 @@
           "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>esapi.test.conf</title>
+  <title>esapi.test.http.mock_http_response.MockHttpResponse</title>
   <link rel="stylesheet" href="epydoc.css" type="text/css" />
   <script type="text/javascript" src="epydoc.js"></script>
 </head>
@@ -39,7 +39,9 @@
       <span class="breadcrumbs">
         <a href="esapi-module.html">Package&nbsp;esapi</a> ::
         <a href="esapi.test-module.html">Package&nbsp;test</a> ::
-        Package&nbsp;conf
+        <a href="esapi.test.http-module.html">Package&nbsp;http</a> ::
+        <a href="esapi.test.http.mock_http_response-module.html">Module&nbsp;mock_http_response</a> ::
+        Class&nbsp;MockHttpResponse
       </span>
     </td>
     <td>
@@ -49,49 +51,25 @@
     onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
         <tr><td align="right"><span class="options"
             >[<a href="frames.html" target="_top">frames</a
-            >]&nbsp;|&nbsp;<a href="esapi.test.conf-module.html"
+            >]&nbsp;|&nbsp;<a href="esapi.test.http.mock_http_response.MockHttpResponse-class.html"
             target="_top">no&nbsp;frames</a>]</span></td></tr>
       </table>
     </td>
   </tr>
 </table>
-<!-- ==================== PACKAGE DESCRIPTION ==================== -->
-<h1 class="epydoc">Package conf</h1><p class="nomargin-top"><span class="codelink"><a href="esapi.test.conf-pysrc.html">source&nbsp;code</a></span></p>
-<!-- ==================== SUBMODULES ==================== -->
-<a name="section-Submodules"></a>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class MockHttpResponse</h1><p class="nomargin-top"><span class="codelink"><a href="esapi.test.http.mock_http_response-pysrc.html#MockHttpResponse">source&nbsp;code</a></span></p>
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
 <table class="summary" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr bgcolor="#70b0f0" class="table-header">
   <td colspan="2" class="table-header">
     <table border="0" cellpadding="0" cellspacing="0" width="100%">
       <tr valign="top">
-        <td align="left"><span class="table-header">Submodules</span></td>
+        <td align="left"><span class="table-header">Instance Methods</span></td>
         <td align="right" valign="top"
-         ><span class="options">[<a href="#section-Submodules"
-         class="privatelink" onclick="toggle_private();"
-         >hide private</a>]</span></td>
-      </tr>
-    </table>
-  </td>
-</tr>
-  <tr><td class="summary">
-  <ul class="nomargin">
-    <li> <strong class="uidlink"><a href="esapi.test.conf.settings-module.html">esapi.test.conf.settings</a></strong>    </li>
-  </ul></td></tr>
-</table>
-
-<br />
-<!-- ==================== VARIABLES ==================== -->
-<a name="section-Variables"></a>
-<table class="summary" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr bgcolor="#70b0f0" class="table-header">
-  <td colspan="2" class="table-header">
-    <table border="0" cellpadding="0" cellspacing="0" width="100%">
-      <tr valign="top">
-        <td align="left"><span class="table-header">Variables</span></td>
-        <td align="right" valign="top"
-         ><span class="options">[<a href="#section-Variables"
+         ><span class="options">[<a href="#section-InstanceMethods"
          class="privatelink" onclick="toggle_private();"
          >hide private</a>]</span></td>
       </tr>
@@ -102,8 +80,54 @@
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="__package__"></a><span class="summary-name">__package__</span> = <code title="None">None</code><br />
-      hash(x)
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__init__"></a><span class="summary-sig-name">__init__</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.test.http.mock_http_response-pysrc.html#MockHttpResponse.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="delete_cookie"></a><span class="summary-sig-name">delete_cookie</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">key</span>,
+        <span class="summary-sig-arg">path</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string">/</code><code class="variable-quote">'</code></span>,
+        <span class="summary-sig-arg">domain</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Deletes a cookie from the client by setting the cookie to an empty 
+      string, and max_age=0 so it should expire immediately.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.test.http.mock_http_response-pysrc.html#MockHttpResponse.delete_cookie">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="set_cookie"></a><span class="summary-sig-name">set_cookie</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">**kwargs</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.test.http.mock_http_response-pysrc.html#MockHttpResponse.set_cookie">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
     </td>
   </tr>
 </table>
@@ -133,7 +157,7 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Tue Jul 14 16:39:08 2009
+    Generated by Epydoc 3.0.1 on Sun Sep 27 16:34:57 2009
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

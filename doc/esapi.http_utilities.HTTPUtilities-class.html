@@ -1,0 +1,1773 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>esapi.http_utilities.HTTPUtilities</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="esapi-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="esapi-module.html">Package&nbsp;esapi</a> ::
+        <a href="esapi.http_utilities-module.html">Module&nbsp;http_utilities</a> ::
+        Class&nbsp;HTTPUtilities
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="esapi.http_utilities.HTTPUtilities-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class HTTPUtilities</h1><p class="nomargin-top"><span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities">source&nbsp;code</a></span></p>
+<dl><dt>Known Subclasses:</dt>
+<dd>
+      <ul class="subclass-list">
+<li><a href="esapi.reference.default_http_utilities.DefaultHTTPUtilities-class.html">reference.default_http_utilities.DefaultHTTPUtilities</a></li>  </ul>
+</dd></dl>
+
+<hr />
+<p>The HTTPUtilities interface is a collection of methods that provide 
+  additional security related methods to HTTP requests, responses, 
+  sessions, cookies, headers, and logging.</p>
+
+<hr />
+<div class="fields">      <p><strong>Author:</strong>
+        Craig Younkins (craig.younkins@owasp.org)
+      </p>
+</div><!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__init__"></a><span class="summary-sig-name">__init__</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.http_utilities.HTTPUtilities-class.html#add_cookie" class="summary-sig-name">add_cookie</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">response</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">**kwargs</span>)</span><br />
+      If response is None, response refers to the current response.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.add_cookie">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.http_utilities.HTTPUtilities-class.html#add_csrf_token" class="summary-sig-name">add_csrf_token</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">href</span>)</span><br />
+      Adds the current user's CSRF token to the URL to prevent CSRF 
+      attacks.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.add_csrf_token">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.http_utilities.HTTPUtilities-class.html#add_header" class="summary-sig-name">add_header</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">name</span>,
+        <span class="summary-sig-arg">value</span>,
+        <span class="summary-sig-arg">response</span>=<span class="summary-sig-default">None</span>)</span><br />
+      If response is None, response refers to the current response.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.add_header">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.http_utilities.HTTPUtilities-class.html#assert_secure_request" class="summary-sig-name">assert_secure_request</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">request</span>=<span class="summary-sig-default">None</span>)</span><br />
+      If request is None, request refers to the current request.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.assert_secure_request">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.http_utilities.HTTPUtilities-class.html#change_session_identifier" class="summary-sig-name">change_session_identifier</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">request</span>=<span class="summary-sig-default">None</span>)</span><br />
+      If request is None, request refers to the current request.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.change_session_identifier">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="clear_current"></a><span class="summary-sig-name">clear_current</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Clears the current HttpRequest and HttpResponse associated with the 
+      current thread.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.clear_current">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.http_utilities.HTTPUtilities-class.html#decrypt_hidden_field" class="summary-sig-name">decrypt_hidden_field</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">encrypted</span>)</span><br />
+      Decrypts an encrypted hidden field value and returns the cleartext.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.decrypt_hidden_field">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.http_utilities.HTTPUtilities-class.html#decrypt_query_string" class="summary-sig-name">decrypt_query_string</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">encrypted</span>)</span><br />
+      Takes an encrypted querystring and returns a dictionary containing 
+      the original parameters.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.decrypt_query_string">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.http_utilities.HTTPUtilities-class.html#decrypt_state_from_cookie" class="summary-sig-name">decrypt_state_from_cookie</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">request</span>=<span class="summary-sig-default">None</span>)</span><br />
+      If request is None, request refers to the current request.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.decrypt_state_from_cookie">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.http_utilities.HTTPUtilities-class.html#encrypt_hidden_field" class="summary-sig-name">encrypt_hidden_field</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">value</span>)</span><br />
+      Encrypts a hidden field for use in HTML.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.encrypt_hidden_field">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.http_utilities.HTTPUtilities-class.html#encrypt_query_string" class="summary-sig-name">encrypt_query_string</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">query</span>)</span><br />
+      Takes the querystring (everything after the question mark in the URL)
+      and returns an encrypted string containing the parameters.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.encrypt_query_string">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.http_utilities.HTTPUtilities-class.html#encrypt_state_in_cookie" class="summary-sig-name">encrypt_state_in_cookie</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">cleartext</span>,
+        <span class="summary-sig-arg">response</span>=<span class="summary-sig-default">None</span>)</span><br />
+      If response is None, response refers to the current response.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.encrypt_state_in_cookie">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.http_utilities.HTTPUtilities-class.html#get_cookie" class="summary-sig-name">get_cookie</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">name</span>,
+        <span class="summary-sig-arg">request</span>=<span class="summary-sig-default">None</span>)</span><br />
+      If request is None, request refers to the current request.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.get_cookie">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.http_utilities.HTTPUtilities-class.html#get_csrf_token" class="summary-sig-name">get_csrf_token</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Returns the current user's CSRF token.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.get_csrf_token">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.http_utilities.HTTPUtilities-class.html#get_current_request" class="summary-sig-name">get_current_request</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Retrieves the current request.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.get_current_request">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.http_utilities.HTTPUtilities-class.html#get_current_response" class="summary-sig-name">get_current_response</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Retrieves the current response.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.get_current_response">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.http_utilities.HTTPUtilities-class.html#get_file_uploads" class="summary-sig-name">get_file_uploads</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">request</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">upload_dir</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">allowed_extensions</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Extract the uploaded files from multipart HTTP requests.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.get_file_uploads">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.http_utilities.HTTPUtilities-class.html#get_header" class="summary-sig-name">get_header</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">name</span>,
+        <span class="summary-sig-arg">request</span>=<span class="summary-sig-default">None</span>)</span><br />
+      If request is none, request refers to the current request.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.get_header">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.http_utilities.HTTPUtilities-class.html#get_parameter" class="summary-sig-name">get_parameter</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">name</span>,
+        <span class="summary-sig-arg">request</span>=<span class="summary-sig-default">None</span>)</span><br />
+      If request is None, request refers to the current request.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.get_parameter">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.http_utilities.HTTPUtilities-class.html#kill_all_cookies" class="summary-sig-name">kill_all_cookies</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">request</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">response</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Kill all cookies received in the last request from the browser.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.kill_all_cookies">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.http_utilities.HTTPUtilities-class.html#kill_cookie" class="summary-sig-name">kill_cookie</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">name</span>,
+        <span class="summary-sig-arg">request</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">response</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Kills the specified cookie by setting a new cookie that expires 
+      immediately.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.kill_cookie">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.http_utilities.HTTPUtilities-class.html#log_http_request" class="summary-sig-name">log_http_request</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">request</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">logger</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">parameters_to_obfuscate</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Format the source IP address, URL, URL parameters, and all form 
+      parameters into a string suitable for the log file.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.log_http_request">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.http_utilities.HTTPUtilities-class.html#send_redirect" class="summary-sig-name">send_redirect</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">location</span>,
+        <span class="summary-sig-arg">response</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Performs a redirect to the given location.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.send_redirect">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.http_utilities.HTTPUtilities-class.html#set_content_type" class="summary-sig-name">set_content_type</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">response</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Set the content type character encoding header on every response in 
+      order to limit the ways in which input can be represented.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.set_content_type">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.http_utilities.HTTPUtilities-class.html#set_current_http" class="summary-sig-name">set_current_http</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">request</span>,
+        <span class="summary-sig-arg">response</span>)</span><br />
+      Stores the current request and response so that they may be readily 
+      accessed throughout ESAPI (and elsewhere)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.set_current_http">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.http_utilities.HTTPUtilities-class.html#set_header" class="summary-sig-name">set_header</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">name</span>,
+        <span class="summary-sig-arg">value</span>,
+        <span class="summary-sig-arg">response</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Add a header to the response after ensuring that there are no encoded
+      or illegal characters in the name and value.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.set_header">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.http_utilities.HTTPUtilities-class.html#set_no_cache_headers" class="summary-sig-name">set_no_cache_headers</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">response</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Set headers to protect sensitive information against being cached in 
+      the browser.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.set_no_cache_headers">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.http_utilities.HTTPUtilities-class.html#set_remember_token" class="summary-sig-name">set_remember_token</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">password</span>,
+        <span class="summary-sig-arg">max_age</span>,
+        <span class="summary-sig-arg">domain</span>,
+        <span class="summary-sig-arg">path</span>,
+        <span class="summary-sig-arg">request</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">response</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Set a cookie containing the current user's remember me token for 
+      automatic authentication.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.set_remember_token">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.http_utilities.HTTPUtilities-class.html#verify_csrf_token" class="summary-sig-name">verify_csrf_token</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">request</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Checks the CSRF token in the URL against the user's CSRF token and 
+      raises an IntrusionException if it is missing.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.verify_csrf_token">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="REMEMBER_TOKEN_COOKIE_NAME"></a><span class="summary-name">REMEMBER_TOKEN_COOKIE_NAME</span> = <code title="'rtoken'"><code class="variable-quote">'</code><code class="variable-string">rtoken</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="MAX_COOKIE_LEN"></a><span class="summary-name">MAX_COOKIE_LEN</span> = <code title="4096">4096</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="MAX_COOKIE_PAIRS"></a><span class="summary-name">MAX_COOKIE_PAIRS</span> = <code title="20">20</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="CSRF_TOKEN_NAME"></a><span class="summary-name">CSRF_TOKEN_NAME</span> = <code title="'ctoken'"><code class="variable-quote">'</code><code class="variable-string">ctoken</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="ESAPI_STATE"></a><span class="summary-name">ESAPI_STATE</span> = <code title="'estate'"><code class="variable-quote">'</code><code class="variable-string">estate</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="SESSION_TOKEN_NAME"></a><span class="summary-name">SESSION_TOKEN_NAME</span> = <code title="'JSESSIONID'"><code class="variable-quote">'</code><code class="variable-string">JSESSIONID</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="PARAMETER"></a><span class="summary-name">PARAMETER</span> = <code title="0">0</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="HEADER"></a><span class="summary-name">HEADER</span> = <code title="1">1</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="COOKIE"></a><span class="summary-name">COOKIE</span> = <code title="2">2</code>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="add_cookie"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">add_cookie</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">response</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">**kwargs</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.add_cookie">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>If response is None, response refers to the current response.</p>
+  <p>This method is intended to be called with keyword arguments the same 
+  as Django or Pylons/WebOb set_cookie().</p>
+  <p>add_cookie(key, value='', max_age=None, path='/', domain=None, 
+  secure=None, httponly=False, version=None, comment=None, 
+  expires=None)</p>
+  <p>Adds a cookie to the response after ensuring that there are no encoded
+  or illegal characters in the name and value. This method sets the secure 
+  and HttpOnly flags on the cookie if they are to be forced, according to 
+  SecurityConfiguration.get_force_secure_cookies() and 
+  get_force_http_only_cookies().</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>response</code></strong> - Optional parameter to specify the response to add the cookie to. 
+          Defaults to the current response.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="add_csrf_token"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">add_csrf_token</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">href</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.add_csrf_token">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Adds the current user's CSRF token to the URL to prevent CSRF attacks.
+  This method should be used on all URLs to be put into links and forms 
+  that the application generates.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>href</code></strong> - the URL to which the CSRF token will be appended</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>the updated URL with the CSRF token parameter added</dd>
+  </dl>
+<div class="fields">      <p><strong>See Also:</strong>
+        <code class="link">esapi.user.get_csrf_token</code>
+      </p>
+</div></td></tr></table>
+</div>
+<a name="add_header"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">add_header</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">name</span>,
+        <span class="sig-arg">value</span>,
+        <span class="sig-arg">response</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.add_header">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>If response is None, response refers to the current response.</p>
+  <p>Add a header to the response after ensuring that there are no encoded 
+  or illegal characters in the name and value. This implementation follows 
+  the following recommendation: &quot;A recipient MAY replace any linear 
+  white space with a single SP before interpreting the field value or 
+  forwarding the message downstream.&quot;</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>response</code></strong> - Optional response the header will be appended to. Defaults to the
+          current response.</li>
+        <li><strong class="pname"><code>name</code></strong> - the header name</li>
+        <li><strong class="pname"><code>value</code></strong> - the value of the header</li>
+    </ul></dd>
+  </dl>
+<div class="fields">      <p><strong>See Also:</strong>
+        <a 
+        href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec2.html#sec2.2"
+        
+        target="_top">http://www.w3.org/Protocols/rfc2616/rfc2616-sec2.html#sec2.2</a>
+      </p>
+</div></td></tr></table>
+</div>
+<a name="assert_secure_request"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">assert_secure_request</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">request</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.assert_secure_request">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>If request is None, request refers to the current request.</p>
+  <p>Ensures that the request uses SSL and POST to protect any sensitive 
+  parameters in the querystring from being sniffed, logged, bookmarked, 
+  included in the referrer header, etc... This method should be called for 
+  any request that contains sensitive data from a web form.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>request</code></strong> - Optional parameter to specify the request to check. Defaults to 
+          the current request.</li>
+    </ul></dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.AccessControlException-class.html">AccessControlException</a></strong></code> - if security constraints are not met</li>
+    </ul></dd>
+  </dl>
+<div class="fields">      <p><strong>See Also:</strong>
+        <a 
+        href="esapi.http_utilities.HTTPUtilities-class.html#set_current_http"
+        class="link">HTTPUtilities.set_current_http</a>
+      </p>
+</div></td></tr></table>
+</div>
+<a name="change_session_identifier"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">change_session_identifier</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">request</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.change_session_identifier">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>If request is None, request refers to the current request.</p>
+  <p>Invalidate the existing session after copying all of its content to a 
+  newly created session with a new session id.</p>
+  <p>Note that this is different from logging out and creating a new 
+  session identifier that does not contain the existing session contents. 
+  Care should be taken to use this only when the existing session does not 
+  contain hazardous contents.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>request</code></strong> - Optional parameter to specify the request. Defaults to the 
+          current request.</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>the new HTTPSession with a changed id</dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.AuthenticationException-class.html">AuthenticationException</a></strong></code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="decrypt_hidden_field"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">decrypt_hidden_field</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">encrypted</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.decrypt_hidden_field">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Decrypts an encrypted hidden field value and returns the 
+  cleartext.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>encrypted</code></strong> - the hidden field to decrypt</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>decrypted hidden field</dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.IntrusionException-class.html">IntrusionException</a></strong></code> - If the field does not decrypt properly, indicating possible 
+        tampering.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="decrypt_query_string"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">decrypt_query_string</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">encrypted</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.decrypt_query_string">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Takes an encrypted querystring and returns a dictionary containing the
+  original parameters.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>encrypted</code></strong> - the encrypted querystring</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>a dict containing the decrypted querystring</dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.EncryptionException-class.html">EncryptionException</a></strong></code> - when something goes wrong with decryption</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="decrypt_state_from_cookie"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">decrypt_state_from_cookie</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">request</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.decrypt_state_from_cookie">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>If request is None, request refers to the current request.</p>
+  <p>Retrieves a dict of data from a cookie encrypted with 
+  encrypt_state_in_cookie().</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>request</code></strong> - Optional parameter specifying the request to look for cookies in.</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>A dictionary containing the decrypted cookie state value</dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.EncryptionException-class.html">EncryptionException</a></strong></code> - when something goes wrong with decryption.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="encrypt_hidden_field"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">encrypt_hidden_field</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">value</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.encrypt_hidden_field">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Encrypts a hidden field for use in HTML.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>value</code></strong> - the cleartext value of the hidden field</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>the encrypted value of the hidden field</dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.EncryptionException-class.html">EncryptionException</a></strong></code> - when something goes wrong with encryption.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="encrypt_query_string"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">encrypt_query_string</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">query</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.encrypt_query_string">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Takes the querystring (everything after the question mark in the URL) 
+  and returns an encrypted string containing the parameters.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>query</code></strong> - the querystring to encrypt</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>encrypted querystring stored as string</dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.EncryptionException-class.html">EncryptionException</a></strong></code> - when something goes wrong with encryption.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="encrypt_state_in_cookie"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">encrypt_state_in_cookie</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">cleartext</span>,
+        <span class="sig-arg">response</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.encrypt_state_in_cookie">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>If response is None, response refers to the current response.</p>
+  <p>Stores the name-value pairs from the cleartext in an encrypted cookie.
+  Generally the session is a better place to store state information, as it
+  does not expose it to the user at all. If there is a requirement not to 
+  use sessions, or the data should be store across sessions (for a long 
+  time), the use of encrypted cookies is an effective way to prevent the 
+  exposure.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>response</code></strong> - Optional parameter specifying the response to put the encrypted 
+          cookie in. Defaults to the current response.</li>
+        <li><strong class="pname"><code>cleartext</code></strong> - a dictionary containing the state information.</li>
+    </ul></dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.EncryptionException-class.html">EncryptionException</a></strong></code> - when something goes wrong in encryption.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_cookie"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_cookie</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">name</span>,
+        <span class="sig-arg">request</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.get_cookie">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>If request is None, request refers to the current request.</p>
+  <p>A safer way to access cookies. This method returns the canonicalized 
+  value of the named cookie after &quot;global&quot; validation against the
+  general type defined in esapi.conf.settings. This should not be 
+  considered a replacement for more specific validation.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>request</code></strong> - Optional parameter to specify the request. Defaults to the 
+          current request.</li>
+        <li><strong class="pname"><code>name</code></strong> - the name of the cookie</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>the requested cookie value</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_csrf_token"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_csrf_token</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.get_csrf_token">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns the current user's CSRF token. If there is no current user 
+  then return None.</p>
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd>the current user's CSRF token.</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_current_request"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_current_request</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.get_current_request">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Retrieves the current request.</p>
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd>the current request</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_current_response"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_current_response</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.get_current_response">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Retrieves the current response.</p>
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd>the current response</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_file_uploads"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_file_uploads</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">request</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">upload_dir</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">allowed_extensions</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.get_file_uploads">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Extract the uploaded files from multipart HTTP requests. 
+  Implementations must check the content to ensure that it is safe before 
+  making a permanent copy on the local filesystem. Checks should include 
+  length and content checks, possibly virus checking, and path and name 
+  checks. Refer to the file checking methods in Validator for more 
+  information.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>request</code></strong> - Optional parameter to specify the request. Defaults to the 
+          current request.</li>
+        <li><strong class="pname"><code>upload_dir</code></strong> - Optional directory in which the uploaded file will be placed. 
+          Defaults to the default upload directory specified in 
+          esapi.conf.settings.</li>
+        <li><strong class="pname"><code>allowed_extensions</code></strong> - An optional list of allowed extensions for the files. Defaults to
+          the setting provided by SecurityConfiguration's 
+          get_allowed_file_extensions() method.</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>the</dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.ValidationException-class.html">ValidationException</a></strong></code> - if the file fails validation.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_header"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_header</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">name</span>,
+        <span class="sig-arg">request</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.get_header">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>If request is none, request refers to the current request.</p>
+  <p>A safer way to access headers. This returns the canonicalized value of
+  the named header after &quot;global&quot; validation against the general 
+  type defined in SecurityConfiguration settings. This should not be 
+  considered a replacement for more specific validation.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>request</code></strong> - Optional request to get the header from. Defaults to the current 
+          request.</li>
+        <li><strong class="pname"><code>name</code></strong> - the name of the header</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>the requested header value</dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.ValidationException-class.html">ValidationException</a></strong></code> - if the header fails validation</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_parameter"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_parameter</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">name</span>,
+        <span class="sig-arg">request</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.get_parameter">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>If request is None, request refers to the current request.</p>
+  <p>A safer way to access parameters. This method returns the 
+  canonicalized value of the named parameter after &quot;global&quot; 
+  validation against the general type defined in SecurityConfiguration(). 
+  This should not be considered a replacement for more specific 
+  validation.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>request</code></strong> - Optional request to get the parameter from. Defaults to the 
+          current request.</li>
+        <li><strong class="pname"><code>name</code></strong> - the name of the parameter.</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>the requested parameter value.</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="kill_all_cookies"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">kill_all_cookies</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">request</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">response</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.kill_all_cookies">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Kill all cookies received in the last request from the browser. Note 
+  that new cookies set by the application in this response may not be 
+  killed by this method.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>request</code></strong> - Optional request to act upon. Defaults to the current request.</li>
+        <li><strong class="pname"><code>response</code></strong> - Optional response to act upon. Defaults to the current response.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="kill_cookie"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">kill_cookie</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">name</span>,
+        <span class="sig-arg">request</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">response</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.kill_cookie">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Kills the specified cookie by setting a new cookie that expires 
+  immediately. Note that this method does not delete new cookies that are 
+  being set by the application for this response.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>name</code></strong> - the name of the cookie</li>
+        <li><strong class="pname"><code>request</code></strong> - Optional request to act upon. Defaults to the current request.</li>
+        <li><strong class="pname"><code>response</code></strong> - Optional response to act upon. Defaults to the current response.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="log_http_request"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">log_http_request</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">request</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">logger</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">parameters_to_obfuscate</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.log_http_request">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Format the source IP address, URL, URL parameters, and all form 
+  parameters into a string suitable for the log file.</p>
+  <p>The list of parameters to obfuscate should be specified in order to 
+  prevent sensitive sensitive information from being logged. If the list is
+  not provided, then all parameters will be logged. If HTTP request logging
+  is done in a central place, the parameters_to_obfuscate could be made a 
+  configuration parameter. We include it here in case different parts of 
+  the application need to obfuscate different parameters.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>request</code></strong> - Optional request to act upon. Defaults to the current request.</li>
+        <li><strong class="pname"><code>logger</code></strong> - Optional logger to write the request to. Defaults to the current 
+          logger.</li>
+        <li><strong class="pname"><code>parameters_to_obfuscate</code></strong> - the sensitive parameters</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="send_redirect"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">send_redirect</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">location</span>,
+        <span class="sig-arg">response</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.send_redirect">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Performs a redirect to the given location. Beware that forwarding to 
+  publicly accessible resources can be dangerous, as the request will have 
+  already passed the URL based access control check. This method ensures 
+  that you can only forward to non-publicly accessible resources.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>location</code></strong> - the URL to forward to, including parameters</li>
+        <li><strong class="pname"><code>response</code></strong> - Optional response to act upon. Defaults to the current response.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="set_content_type"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">set_content_type</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">response</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.set_content_type">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Set the content type character encoding header on every response in 
+  order to limit the ways in which input can be represented. This prevents 
+  malicious users from using encoding and multi-byte escape sequences to 
+  bypass input validation routines.</p>
+  <p>Implementations of this method should set the content type header to a
+  safe value for your environment. The default is text/html; charset=UTF-8 
+  character encoding, which is the default in early versions of HTML and 
+  HTTP. See <a href="http://ds.internic.net/rfc/rfc2045.txt" 
+  target="_top">RFC 2047</a> for more information about character encoding 
+  and MIME.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>response</code></strong> - Optional response to act upon. Defaults to the current response.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="set_current_http"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">set_current_http</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">request</span>,
+        <span class="sig-arg">response</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.set_current_http">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Stores the current request and response so that they may be readily 
+  accessed throughout ESAPI (and elsewhere)</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>request</code></strong> - the request</li>
+        <li><strong class="pname"><code>response</code></strong> - the response</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="set_header"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">set_header</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">name</span>,
+        <span class="sig-arg">value</span>,
+        <span class="sig-arg">response</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.set_header">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Add a header to the response after ensuring that there are no encoded 
+  or illegal characters in the name and value. &quot;A recipient MAY 
+  replace any linear whitespace with a single SP before interpreting the 
+  field value or forwarding the message downstream.&quot;</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>name</code></strong> - the header's name</li>
+        <li><strong class="pname"><code>value</code></strong> - the header's value</li>
+        <li><strong class="pname"><code>response</code></strong> - Optional response to act upon. Defaults to the current response.</li>
+    </ul></dd>
+  </dl>
+<div class="fields">      <p><strong>See Also:</strong>
+        <a 
+        href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec2.html#sec2.2"
+        target="_top">RFC 2616</a>
+      </p>
+</div></td></tr></table>
+</div>
+<a name="set_no_cache_headers"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">set_no_cache_headers</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">response</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.set_no_cache_headers">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Set headers to protect sensitive information against being cached in 
+  the browser. Developers should make this call for any HTTP responses that
+  contain any sensitive data that should not be cached within the browser 
+  or any intermediate proxies or caches. Implementations should set headers
+  for the expected browsers. The safest approach is to set all relevant 
+  headers to their most restrictive setting. This include:</p>
+  <ul>
+    <li>
+      Cache-Control: no-store
+    </li>
+    <li>
+      Cache-Control: no-cache
+    </li>
+    <li>
+      Cache-Control: must-revalidate
+    </li>
+    <li>
+      Expires: -1
+    </li>
+  </ul>
+  <p>Note that the header &quot;pragma: no-cache&quot; is intended only for
+  use in HTTP requests, not HTTP responses. However, Microsoft has chosen 
+  to directly violate the standards, so we need to include that header 
+  here. For more information, refer to the relevant standards:</p>
+  <ul>
+    <li>
+      <a 
+      href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9.1"
+      target="_top">HTTP/1.1 Cache-Control &quot;no-cache&quot;</a>
+    </li>
+    <li>
+      <a 
+      href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9.2"
+      target="_top">HTTP/1.1 Cache-Control &quot;no-store&quot;</a>
+    </li>
+    <li>
+      <a 
+      href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.32"
+      target="_top">HTTP/1.0 Pragma &quot;no-cache&quot;</a>
+    </li>
+    <li>
+      <a 
+      href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.21"
+      target="_top">HTTP/1.0 Expires</a>
+    </li>
+    <li>
+      <a href="http://support.microsoft.com/kb/937479" target="_top">IE 6 
+      Caching Issues</a>
+    </li>
+    <li>
+      <a href="http://support.microsoft.com/kb/234067" 
+      target="_top">Microsoft directly violates specification for pragma: 
+      no-cache</a>
+    </li>
+    <li>
+      <a 
+      href="https://developer.mozilla.org/en/Mozilla_Networking_Preferences#Cache"
+      target="_top">Firefox browser.cache.disk_cache_ssl</a>
+    </li>
+  </ul>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>response</code></strong> - Optional response to act upon. Defaults to the current response.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="set_remember_token"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">set_remember_token</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">password</span>,
+        <span class="sig-arg">max_age</span>,
+        <span class="sig-arg">domain</span>,
+        <span class="sig-arg">path</span>,
+        <span class="sig-arg">request</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">response</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.set_remember_token">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Set a cookie containing the current user's remember me token for 
+  automatic authentication. The use of remember me tokens is generally not 
+  recommended, but this method will help do it as safely as possible. The 
+  user interface should warn the user that this should only be enabled on 
+  computers where no other users will have access.</p>
+  <p>Implementations should save the user's remember me data in an 
+  encrypted cookie and send it to the user. Any old remember me cookie 
+  should be destroyed first. Setting this cookie should keep the user 
+  logged in until max_age passes, the password is changed, or the cookie is
+  deleted. If the cookie exists for the current user, it should 
+  automatically be used by ESAPI to log the user in, if the data is valid 
+  and not expired.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>password</code></strong> - the user's password</li>
+        <li><strong class="pname"><code>max_age</code></strong> - the length of time that the token should be valid for in relative
+          seconds</li>
+        <li><strong class="pname"><code>domain</code></strong> - the domain to restrict the token to or None</li>
+        <li><strong class="pname"><code>path</code></strong> - the path to restrict the token to or None</li>
+        <li><strong class="pname"><code>request</code></strong> - Optional request to act upon. Defaults to the current request.</li>
+        <li><strong class="pname"><code>response</code></strong> - Optional response to act upon. Defaults to the current response.</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>Encrypted &quot;Remember me&quot; token stored as string</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="verify_csrf_token"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">verify_csrf_token</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">request</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.http_utilities-pysrc.html#HTTPUtilities.verify_csrf_token">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Checks the CSRF token in the URL against the user's CSRF token and 
+  raises an IntrusionException if it is missing.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>request</code></strong> - Option request to act upon. Defaults to the current request.</li>
+    </ul></dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.IntrusionException-class.html">IntrusionException</a></strong></code> - if CSRF token is missing or incorrect</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="esapi-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Sun Sep 27 16:34:57 2009
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

@@ -3,7 +3,7 @@
           "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>esapi.test.test_encoder.EncoderTest.EncoderConcurrencyMock</title>
+  <title>esapi.intrusion_detector.IntrusionDetector</title>
   <link rel="stylesheet" href="epydoc.css" type="text/css" />
   <script type="text/javascript" src="epydoc.js"></script>
 </head>
@@ -38,10 +38,8 @@
     <td width="100%">
       <span class="breadcrumbs">
         <a href="esapi-module.html">Package&nbsp;esapi</a> ::
-        <a href="esapi.test-module.html">Package&nbsp;test</a> ::
-        <a href="esapi.test.test_encoder-module.html">Module&nbsp;test_encoder</a> ::
-        <a href="esapi.test.test_encoder.EncoderTest-class.html">Class&nbsp;EncoderTest</a> ::
-        Class&nbsp;EncoderConcurrencyMock
+        <a href="esapi.intrusion_detector-module.html">Module&nbsp;intrusion_detector</a> ::
+        Class&nbsp;IntrusionDetector
       </span>
     </td>
     <td>
@@ -51,26 +49,40 @@
     onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
         <tr><td align="right"><span class="options"
             >[<a href="frames.html" target="_top">frames</a
-            >]&nbsp;|&nbsp;<a href="esapi.test.test_encoder.EncoderTest.EncoderConcurrencyMock-class.html"
+            >]&nbsp;|&nbsp;<a href="esapi.intrusion_detector.IntrusionDetector-class.html"
             target="_top">no&nbsp;frames</a>]</span></td></tr>
       </table>
     </td>
   </tr>
 </table>
 <!-- ==================== CLASS DESCRIPTION ==================== -->
-<h1 class="epydoc">Class EncoderConcurrencyMock</h1><p class="nomargin-top"><span class="codelink"><a href="esapi.test.test_encoder-pysrc.html#EncoderTest.EncoderConcurrencyMock">source&nbsp;code</a></span></p>
+<h1 class="epydoc">Class IntrusionDetector</h1><p class="nomargin-top"><span class="codelink"><a href="esapi.intrusion_detector-pysrc.html#IntrusionDetector">source&nbsp;code</a></span></p>
 <pre class="base-tree">
-        object --+        
-                 |        
-threading._Verbose --+    
-                     |    
-      threading.Thread --+
-                         |
-                        <strong class="uidshort">EncoderTest.EncoderConcurrencyMock</strong>
+object --+
+         |
+        <strong class="uidshort">IntrusionDetector</strong>
 </pre>
 
+<dl><dt>Known Subclasses:</dt>
+<dd>
+      <ul class="subclass-list">
+<li><a href="esapi.reference.default_intrusion_detector.DefaultIntrusionDetector-class.html">reference.default_intrusion_detector.DefaultIntrusionDetector</a></li>  </ul>
+</dd></dl>
+
 <hr />
-<!-- ==================== INSTANCE METHODS ==================== -->
+<p>The IntrusionDetector interface is intended to track security relevant
+  events and identify attack behavior. The implementation can use as much 
+  state as necessary to detect attacks, but note that storing too much 
+  state will burden your system.</p>
+  <p>The interface is currently designed to accept exceptions as well as 
+  custom events. Implementations can use this stream of information to 
+  detect both normal and abnormal behavior.</p>
+
+<hr />
+<div class="fields">      <p><strong>Author:</strong>
+        Craig Younkins (craig.younkins@owasp.org)
+      </p>
+</div><!-- ==================== INSTANCE METHODS ==================== -->
 <a name="section-InstanceMethods"></a>
 <table class="summary" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
@@ -93,11 +105,11 @@ threading._Verbose --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="esapi.test.test_encoder.EncoderTest.EncoderConcurrencyMock-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">num</span>)</span><br />
-      x.__init__(...) initializes x; see x.__class__.__doc__ for signature</td>
+          <td><span class="summary-sig"><a href="esapi.intrusion_detector.IntrusionDetector-class.html#add_exception" class="summary-sig-name">add_exception</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">exception</span>)</span><br />
+      Adds the exception to the IntrusionDetector.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="esapi.test.test_encoder-pysrc.html#EncoderTest.EncoderConcurrencyMock.__init__">source&nbsp;code</a></span>
+            <span class="codelink"><a href="esapi.intrusion_detector-pysrc.html#IntrusionDetector.add_exception">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -111,26 +123,12 @@ threading._Verbose --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="esapi.test.test_encoder.EncoderTest.EncoderConcurrencyMock-class.html#run" class="summary-sig-name">run</a>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td><span class="summary-sig"><a href="esapi.intrusion_detector.IntrusionDetector-class.html#add_event" class="summary-sig-name">add_event</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event_name</span>,
+        <span class="summary-sig-arg">log_message</span>)</span><br />
+      Adds the event to the IntrusionDetector.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="esapi.test.test_encoder-pysrc.html#EncoderTest.EncoderConcurrencyMock.run">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a name="javascript_encode"></a><span class="summary-sig-name">javascript_encode</span>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">string</span>)</span></td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="esapi.test.test_encoder-pysrc.html#EncoderTest.EncoderConcurrencyMock.javascript_encode">source&nbsp;code</a></span>
+            <span class="codelink"><a href="esapi.intrusion_detector-pysrc.html#IntrusionDetector.add_event">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -140,32 +138,16 @@ threading._Verbose --+
   </tr>
   <tr>
     <td colspan="2" class="summary">
-    <p class="indent-wrapped-lines"><b>Inherited from <code>threading.Thread</code></b>:
-      <code>__repr__</code>,
-      <code>getName</code>,
-      <code>isAlive</code>,
-      <code>isDaemon</code>,
-      <code>is_alive</code>,
-      <code>join</code>,
-      <code>setDaemon</code>,
-      <code>setName</code>,
-      <code>start</code>
-      </p>
-    <div class="private">    <p class="indent-wrapped-lines"><b>Inherited from <code>threading.Thread</code></b> (private):
-      <code>_set_daemon</code>,
-      <code>_set_ident</code>
-      </p></div>
-    <div class="private">    <p class="indent-wrapped-lines"><b>Inherited from <code>threading._Verbose</code></b> (private):
-      <code>_note</code>
-      </p></div>
     <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
       <code>__delattr__</code>,
       <code>__format__</code>,
       <code>__getattribute__</code>,
       <code>__hash__</code>,
+      <code>__init__</code>,
       <code>__new__</code>,
       <code>__reduce__</code>,
       <code>__reduce_ex__</code>,
+      <code>__repr__</code>,
       <code>__setattr__</code>,
       <code>__sizeof__</code>,
       <code>__str__</code>,
@@ -193,11 +175,6 @@ threading._Verbose --+
 </tr>
   <tr>
     <td colspan="2" class="summary">
-    <p class="indent-wrapped-lines"><b>Inherited from <code>threading.Thread</code></b>:
-      <code>daemon</code>,
-      <code>ident</code>,
-      <code>name</code>
-      </p>
     <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
       <code>__class__</code>
       </p>
@@ -222,51 +199,73 @@ threading._Verbose --+
   </td>
 </tr>
 </table>
-<a name="__init__"></a>
+<a name="add_exception"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">num</span>)</span>
-    <br /><em class="fname">(Constructor)</em>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">add_exception</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">exception</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="esapi.test.test_encoder-pysrc.html#EncoderTest.EncoderConcurrencyMock.__init__">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="esapi.intrusion_detector-pysrc.html#IntrusionDetector.add_exception">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  <p>x.__init__(...) initializes x; see x.__class__.__doc__ for 
-  signature</p>
+  <p>Adds the exception to the IntrusionDetector.</p>
+  <p>The implementation should store the exception somewhere for the 
+  current user in order to check if the user has reached the threshold for 
+  any type of security exception. The user object is the recommended place 
+  for storing these exceptions. If the user has reached any security 
+  thresholds, an appropriate security action, such as locking the user 
+  account, can be taken and logged.</p>
   <dl class="fields">
-    <dt>Overrides:
-        object.__init__
-        <dd><em class="note">(inherited documentation)</em></dd>
-    </dt>
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>exception</code></strong> - the exception thrown</li>
+    </ul></dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.IntrusionException-class.html">IntrusionException</a></strong></code> - Indicates an intrusion</li>
+    </ul></dd>
   </dl>
 </td></tr></table>
 </div>
-<a name="run"></a>
+<a name="add_event"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">run</span>(<span class="sig-arg">self</span>)</span>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">add_event</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">event_name</span>,
+        <span class="sig-arg">log_message</span>)</span>
   </h3>
   </td><td align="right" valign="top"
-    ><span class="codelink"><a href="esapi.test.test_encoder-pysrc.html#EncoderTest.EncoderConcurrencyMock.run">source&nbsp;code</a></span>&nbsp;
+    ><span class="codelink"><a href="esapi.intrusion_detector-pysrc.html#IntrusionDetector.add_event">source&nbsp;code</a></span>&nbsp;
     </td>
   </tr></table>
   
-  
+  <p>Adds the event to the IntrusionDetector.</p>
+  <p>The implementation should store the exception somewhere for the 
+  current user in order to check if the user has reached the threshold for 
+  any type of security exception. The user object is the recommended place 
+  for storing these exceptions. If the user has reached any security 
+  thresholds, an appropriate security action, such as locking the user 
+  account, can be taken and logged.</p>
   <dl class="fields">
-    <dt>Overrides:
-        threading.Thread.run
-    </dt>
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>event_name</code></strong> - the event to add</li>
+        <li><strong class="pname"><code>log_message</code></strong> - the message to log with the event</li>
+    </ul></dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.IntrusionException-class.html">IntrusionException</a></strong></code> - Indicates an intrusion</li>
+    </ul></dd>
   </dl>
 </td></tr></table>
 </div>
@@ -297,7 +296,7 @@ threading._Verbose --+
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Tue Jul 14 16:39:10 2009
+    Generated by Epydoc 3.0.1 on Sun Sep 27 16:34:57 2009
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

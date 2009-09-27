@@ -365,8 +365,6 @@ class HTTPUtilities():
         ensures that you can only forward to non-publicly accessible resources.
         
         @param location: the URL to forward to, including parameters
-        @param request: Optional request to act upon. Defaults to the current
-            request.
         @param response: Optional response to act upon. Defaults to the current
             response.
         """
@@ -470,7 +468,7 @@ class HTTPUtilities():
         @param path: the path to restrict the token to or None
         @param request: Optional request to act upon. Defaults to the current
             request.
-        @param respons: Optional response to act upon. Defaults to the current
+        @param response: Optional response to act upon. Defaults to the current
             response.
         @return: Encrypted "Remember me" token stored as string
         """

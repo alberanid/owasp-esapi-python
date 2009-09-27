@@ -61,7 +61,8 @@ class IntrusionDetector(object):
         security thresholds, an appropriate security action, such as locking
         the user account, can be taken and logged.
         
-        @param exception: the exception thrown
+        @param event_name: the event to add
+        @param log_message: the message to log with the event
         @raises IntrusionException: Indicates an intrusion
         """
         raise NotImplementedError()

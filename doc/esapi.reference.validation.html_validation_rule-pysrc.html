@@ -58,35 +58,35 @@
 </table>
 <h1 class="epydoc">Source Code for <a href="esapi.reference.validation.html_validation_rule-module.html">Module esapi.reference.validation.html_validation_rule</a></h1>
 <pre class="py-src">
-<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-comment">#!/usr/bin/python</tt> </tt>
-<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: utf-8 -*-</tt> </tt>
-<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"> </tt>
-<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
-<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-docstring">@license: OWASP Enterprise Security API (ESAPI)</tt> </tt>
-<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-docstring">     </tt> </tt>
-<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-docstring">    This file is part of the Open Web Application Security Project (OWASP)</tt> </tt>
-<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-docstring">    Enterprise Security API (ESAPI) project. For details, please see</tt> </tt>
-<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-docstring">    U{http://www.owasp.org/index.php/ESAPI&lt;http://www.owasp.org/index.php/ESAPI&gt;}.</tt> </tt>
-<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
-<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"><tt class="py-docstring">    The ESAPI is published by OWASP under the BSD license. You should read and </tt> </tt>
-<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"><tt class="py-docstring">    accept the LICENSE before you use, modify, and/or redistribute this software.</tt> </tt>
-<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"><tt class="py-docstring">    </tt> </tt>
-<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line"><tt class="py-docstring">@summary: An HTML validator using OWASP's AntiSamy.</tt> </tt>
-<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"><tt class="py-docstring">@copyright: Copyright (c) 2009 - The OWASP Foundation</tt> </tt>
-<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line"><tt class="py-docstring">@author: Craig Younkins (craig.younkins@owasp.org)</tt> </tt>
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-comment">#!/usr/bin/python</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: utf-8 -*-</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-docstring">@license: OWASP Enterprise Security API (ESAPI)</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-docstring">     </tt> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-docstring">    This file is part of the Open Web Application Security Project (OWASP)</tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-docstring">    Enterprise Security API (ESAPI) project. For details, please see</tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-docstring">    U{http://www.owasp.org/index.php/ESAPI&lt;http://www.owasp.org/index.php/ESAPI&gt;}.</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"><tt class="py-docstring">    The ESAPI is published by OWASP under the BSD license. You should read and </tt> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"><tt class="py-docstring">    accept the LICENSE before you use, modify, and/or redistribute this software.</tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"><tt class="py-docstring">    </tt> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line"><tt class="py-docstring">@summary: An HTML validator using OWASP's AntiSamy.</tt> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"><tt class="py-docstring">@copyright: Copyright (c) 2009 - The OWASP Foundation</tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line"><tt class="py-docstring">@author: Craig Younkins (craig.younkins@owasp.org)</tt> </tt>
 <a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
-<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line"> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line"> </tt>
 <a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">re</tt> </tt>
-<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line"> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line"> </tt>
 <a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Package esapi=esapi-module.html"><a title="esapi" class="py-name" href="#" onclick="return doclink('link-0', 'esapi', 'link-0');">esapi</a></tt><tt class="py-op">.</tt><tt id="link-1" class="py-name" targets="Package esapi.reference=esapi.reference-module.html"><a title="esapi.reference" class="py-name" href="#" onclick="return doclink('link-1', 'reference', 'link-1');">reference</a></tt><tt class="py-op">.</tt><tt id="link-2" class="py-name" targets="Package esapi.reference.validation=esapi.reference.validation-module.html"><a title="esapi.reference.validation" class="py-name" href="#" onclick="return doclink('link-2', 'validation', 'link-2');">validation</a></tt><tt class="py-op">.</tt><tt id="link-3" class="py-name" targets="Module esapi.reference.validation.base_validation_rule=esapi.reference.validation.base_validation_rule-module.html"><a title="esapi.reference.validation.base_validation_rule" class="py-name" href="#" onclick="return doclink('link-3', 'base_validation_rule', 'link-3');">base_validation_rule</a></tt> <tt class="py-keyword">import</tt> <tt id="link-4" class="py-name" targets="Class esapi.reference.validation.base_validation_rule.BaseValidationRule=esapi.reference.validation.base_validation_rule.BaseValidationRule-class.html"><a title="esapi.reference.validation.base_validation_rule.BaseValidationRule" class="py-name" href="#" onclick="return doclink('link-4', 'BaseValidationRule', 'link-4');">BaseValidationRule</a></tt> </tt>
 <a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-5" class="py-name"><a title="esapi" class="py-name" href="#" onclick="return doclink('link-5', 'esapi', 'link-0');">esapi</a></tt><tt class="py-op">.</tt><tt id="link-6" class="py-name"><a title="esapi.reference" class="py-name" href="#" onclick="return doclink('link-6', 'reference', 'link-1');">reference</a></tt><tt class="py-op">.</tt><tt id="link-7" class="py-name" targets="Module esapi.reference.default_encoder=esapi.reference.default_encoder-module.html"><a title="esapi.reference.default_encoder" class="py-name" href="#" onclick="return doclink('link-7', 'default_encoder', 'link-7');">default_encoder</a></tt> <tt class="py-keyword">import</tt> <tt id="link-8" class="py-name" targets="Class esapi.reference.default_encoder.DefaultEncoder=esapi.reference.default_encoder.DefaultEncoder-class.html"><a title="esapi.reference.default_encoder.DefaultEncoder" class="py-name" href="#" onclick="return doclink('link-8', 'DefaultEncoder', 'link-8');">DefaultEncoder</a></tt> </tt>
-<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line"> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line"> </tt>
 <a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-9" class="py-name"><a title="esapi" class="py-name" href="#" onclick="return doclink('link-9', 'esapi', 'link-0');">esapi</a></tt><tt class="py-op">.</tt><tt id="link-10" class="py-name" targets="Module esapi.exceptions=esapi.exceptions-module.html"><a title="esapi.exceptions" class="py-name" href="#" onclick="return doclink('link-10', 'exceptions', 'link-10');">exceptions</a></tt> <tt class="py-keyword">import</tt> <tt id="link-11" class="py-name" targets="Class esapi.exceptions.ValidationException=esapi.exceptions.ValidationException-class.html"><a title="esapi.exceptions.ValidationException" class="py-name" href="#" onclick="return doclink('link-11', 'ValidationException', 'link-11');">ValidationException</a></tt> </tt>
 <a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-12" class="py-name"><a title="esapi" class="py-name" href="#" onclick="return doclink('link-12', 'esapi', 'link-0');">esapi</a></tt><tt class="py-op">.</tt><tt id="link-13" class="py-name"><a title="esapi.exceptions" class="py-name" href="#" onclick="return doclink('link-13', 'exceptions', 'link-10');">exceptions</a></tt> <tt class="py-keyword">import</tt> <tt id="link-14" class="py-name" targets="Class esapi.exceptions.EncodingException=esapi.exceptions.EncodingException-class.html"><a title="esapi.exceptions.EncodingException" class="py-name" href="#" onclick="return doclink('link-14', 'EncodingException', 'link-14');">EncodingException</a></tt> </tt>
-<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line"> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line"> </tt>
 <a name="HTMLValidationRule"></a><div id="HTMLValidationRule-def"><a name="L27"></a><tt class="py-lineno">27</tt> <a class="py-toggle" href="#" id="HTMLValidationRule-toggle" onclick="return toggle('HTMLValidationRule');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="esapi.reference.validation.html_validation_rule.HTMLValidationRule-class.html">HTMLValidationRule</a><tt class="py-op">(</tt><tt class="py-base-class">BaseValidationRule</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="HTMLValidationRule-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="HTMLValidationRule-expanded"><a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
-<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line"><tt class="py-docstring">    This validator performs syntax validation of strings.</tt> </tt>
+</div><div id="HTMLValidationRule-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="HTMLValidationRule-expanded"><a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line"><tt class="py-docstring">    This validator performs syntax validation of strings.</tt> </tt>
 <a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
 </div><a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line"> </tt><script type="text/javascript">
 <!--
@@ -121,7 +121,7 @@ expandto(location.href);
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Tue Jul 14 16:39:11 2009
+    Generated by Epydoc 3.0.1 on Sun Sep 27 16:35:00 2009
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

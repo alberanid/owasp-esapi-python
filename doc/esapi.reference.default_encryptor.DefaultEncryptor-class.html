@@ -65,6 +65,9 @@
 </pre>
 
 <hr />
+<p>Default implementation of the Encryptor interface using Google's 
+  Keyczar.</p>
+
 <!-- ==================== INSTANCE METHODS ==================== -->
 <a name="section-InstanceMethods"></a>
 <table class="summary" border="1" cellpadding="3"
@@ -104,22 +107,6 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="main"></a><span class="summary-sig-name">main</span>(<span class="summary-sig-arg">self</span>)</span></td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="esapi.reference.default_encryptor-pysrc.html#DefaultEncryptor.main">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
           <td><span class="summary-sig"><a href="esapi.reference.default_encryptor.DefaultEncryptor-class.html#hash" class="summary-sig-name">hash</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">plaintext</span>,
         <span class="summary-sig-arg">salt</span>,
@@ -146,43 +133,6 @@
       Encrypts the provided plaintext and returns a ciphertext string.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="esapi.reference.default_encryptor-pysrc.html#DefaultEncryptor.encrypt">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr class="private">
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a href="esapi.reference.default_encryptor.DefaultEncryptor-class.html#_pad" class="summary-sig-name" onclick="show_private();">_pad</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">text</span>,
-        <span class="summary-sig-arg">block_size</span>)</span><br />
-      Pads the text according to RFC 1423 / PKCS5.</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="esapi.reference.default_encryptor-pysrc.html#DefaultEncryptor._pad">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr class="private">
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a href="esapi.reference.default_encryptor.DefaultEncryptor-class.html#_unpad" class="summary-sig-name" onclick="show_private();">_unpad</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">text</span>)</span><br />
-      Unpads the text according to RFC 1423 / PKCS5.</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="esapi.reference.default_encryptor-pysrc.html#DefaultEncryptor._unpad">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -256,7 +206,7 @@
         <tr>
           <td><span class="summary-sig"><a href="esapi.reference.default_encryptor.DefaultEncryptor-class.html#seal" class="summary-sig-name">seal</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">data</span>,
-        <span class="summary-sig-arg">timestamp</span>)</span><br />
+        <span class="summary-sig-arg">expiration</span>)</span><br />
       Creates a seal that binds a set of data and includes an expiration 
       timestamp.</td>
           <td align="right" valign="top">
@@ -297,10 +247,8 @@
         <tr>
           <td><span class="summary-sig"><a href="esapi.reference.default_encryptor.DefaultEncryptor-class.html#verify_seal" class="summary-sig-name">verify_seal</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">seal</span>)</span><br />
-      Verifies a seal (created with the seal method) and raises an 
-      exception describing any of the various problems that could exist 
-      with a seal, such as an invalid seal format, expired timestamp, or 
-      data mismatch.</td>
+      Verifies a seal (created with the seal method) and returns True or 
+      False, indicating whether or not the seal is valid.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="esapi.reference.default_encryptor-pysrc.html#DefaultEncryptor.verify_seal">source&nbsp;code</a></span>
             
@@ -316,30 +264,10 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="esapi.reference.default_encryptor.DefaultEncryptor-class.html#get_relative_timestamp" class="summary-sig-name">get_relative_timestamp</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">offset</span>)</span><br />
-      Gets an absolute timestamp representing an offset from the current 
-      time to be used by other functions in the library.</td>
+          <td><span class="summary-sig"><a name="gen_keys"></a><span class="summary-sig-name">gen_keys</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Create new keys.</td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="esapi.reference.default_encryptor-pysrc.html#DefaultEncryptor.get_relative_timestamp">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a href="esapi.reference.default_encryptor.DefaultEncryptor-class.html#get_timestamp" class="summary-sig-name">get_timestamp</a>(<span class="summary-sig-arg">self</span>)</span><br />
-      Gets a timestamp representing the current date and time to be used by
-      other functions in the library.</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="esapi.reference.default_encryptor-pysrc.html#DefaultEncryptor.get_timestamp">source&nbsp;code</a></span>
+            <span class="codelink"><a href="esapi.reference.default_encryptor-pysrc.html#DefaultEncryptor.gen_keys">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -369,12 +297,14 @@
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="esapi.reference.default_encryptor.DefaultEncryptor-class.html#encrypt_algorithm_map" class="summary-name">encrypt_algorithm_map</a> = <code title="{'AES': &lt;module 'Crypto.Cipher.AES' from 'C:\Python26\lib\site-package\
-s\Crypto\Cipher\AES.pyd'&gt;,
- 'DES': &lt;module 'Crypto.Cipher.DES' from 'C:\Python26\lib\site-package\
-s\Crypto\Cipher\DES.pyd'&gt;,
- 'DES3': &lt;module 'Crypto.Cipher.DES3' from 'C:\Python26\lib\site-packa\
-ges\Crypto\Cipher\DES3.pyd'&gt;}"><code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">AES</code><code class="variable-quote">'</code><code class="variable-op">: </code>&lt;module 'Crypto.Cipher.AES' fr<code class="variable-ellipsis">...</code></code>
+        <a name="VALID_ENCRYPTION_ALGOS"></a><span class="summary-name">VALID_ENCRYPTION_ALGOS</span> = <code title="'AES'"><code class="variable-quote">'</code><code class="variable-string">AES</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="VALID_SIGNING_ALGOS"></a><span class="summary-name">VALID_SIGNING_ALGOS</span> = <code title="('DSA', 'DSA')"><code class="variable-group">(</code><code class="variable-quote">'</code><code class="variable-string">DSA</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">DSA</code><code class="variable-quote">'</code><code class="variable-group">)</code></code>
     </td>
   </tr>
 </table>
@@ -455,7 +385,7 @@ ges\Crypto\Cipher\DES3.pyd'&gt;}"><code class="variable-group">{</code><code cla
         <dd>the encrypted hash of 'plaintext' stored as a String</dd>
     <dt>Raises:</dt>
     <dd><ul class="nomargin-top">
-        <li><code><strong class='fraise'><a href="esapi.exceptions.EncryptionException-class.html">EncryptionException</a></strong></code> - if the specified hash algorithm could not be found or another 
+        <li><code><strong class='fraise'><a href="esapi.exceptions-module.html#EncryptionException">EncryptionException</a></strong></code> - if the specified hash algorithm could not be found or another 
         problem exists with the hashing of 'plaintext'</li>
     </ul></dd>
     <dt>Overrides:
@@ -490,61 +420,13 @@ ges\Crypto\Cipher\DES3.pyd'&gt;}"><code class="variable-group">{</code><code cla
         <dd>the encrypted string representation of 'plaintext'</dd>
     <dt>Raises:</dt>
     <dd><ul class="nomargin-top">
-        <li><code><strong class='fraise'><a href="esapi.exceptions.EncryptionException-class.html">EncryptionException</a></strong></code> - if the specified encryption algorithm could not be found or another
+        <li><code><strong class='fraise'><a href="esapi.exceptions-module.html#EncryptionException">EncryptionException</a></strong></code> - if the specified encryption algorithm could not be found or another
         problem exists with the encryption of 'plaintext'</li>
     </ul></dd>
     <dt>Overrides:
         <a href="esapi.encryptor.Encryptor-class.html#encrypt">encryptor.Encryptor.encrypt</a>
         <dd><em class="note">(inherited documentation)</em></dd>
     </dt>
-  </dl>
-</td></tr></table>
-</div>
-<a name="_pad"></a>
-<div class="private">
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">_pad</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">text</span>,
-        <span class="sig-arg">block_size</span>)</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="esapi.reference.default_encryptor-pysrc.html#DefaultEncryptor._pad">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  <p>Pads the text according to RFC 1423 / PKCS5. First the number of bytes
-  needed for padding is found. Then that number (say, n) is appended to the
-  string n times.</p>
-  <dl class="fields">
-  </dl>
-</td></tr></table>
-</div>
-<a name="_unpad"></a>
-<div class="private">
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">_unpad</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">text</span>)</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="esapi.reference.default_encryptor-pysrc.html#DefaultEncryptor._unpad">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  <p>Unpads the text according to RFC 1423 / PKCS5. First the last byte of 
-  the string is taken. It is possibly the number of padded bytes. Working 
-  backwards, we test every character to ensure it is equal to the last 
-  byte, and it conforms to the padding scheme. It is possible, though 
-  improbable, that this will remove part of the data that looks like 
-  padding but is not.</p>
-  <dl class="fields">
   </dl>
 </td></tr></table>
 </div>
@@ -574,7 +456,7 @@ ges\Crypto\Cipher\DES3.pyd'&gt;}"><code class="variable-group">{</code><code cla
         <dd>the decrypted ciphertext</dd>
     <dt>Raises:</dt>
     <dd><ul class="nomargin-top">
-        <li><code><strong class='fraise'><a href="esapi.exceptions.EncryptionException-class.html">EncryptionException</a></strong></code> - if the specified encryption algorithm could not be found or another
+        <li><code><strong class='fraise'><a href="esapi.exceptions-module.html#EncryptionException">EncryptionException</a></strong></code> - if the specified encryption algorithm could not be found or another
         problem exists with the encryption of 'plaintext'</li>
     </ul></dd>
     <dt>Overrides:
@@ -610,7 +492,7 @@ ges\Crypto\Cipher\DES3.pyd'&gt;}"><code class="variable-group">{</code><code cla
         <dd>the digital signature stored as a String</dd>
     <dt>Raises:</dt>
     <dd><ul class="nomargin-top">
-        <li><code><strong class='fraise'><a href="esapi.exceptions.EncryptionException-class.html">EncryptionException</a></strong></code> - if the specified signature algorithm cannot be found</li>
+        <li><code><strong class='fraise'><a href="esapi.exceptions-module.html#EncryptionException">EncryptionException</a></strong></code> - if the specified signature algorithm cannot be found</li>
     </ul></dd>
     <dt>Overrides:
         <a href="esapi.encryptor.Encryptor-class.html#sign">encryptor.Encryptor.sign</a>
@@ -661,7 +543,7 @@ ges\Crypto\Cipher\DES3.pyd'&gt;}"><code class="variable-group">{</code><code cla
   <tr valign="top"><td>
   <h3 class="epydoc"><span class="sig"><span class="sig-name">seal</span>(<span class="sig-arg">self</span>,
         <span class="sig-arg">data</span>,
-        <span class="sig-arg">timestamp</span>)</span>
+        <span class="sig-arg">expiration</span>)</span>
   </h3>
   </td><td align="right" valign="top"
     ><span class="codelink"><a href="esapi.reference.default_encryptor-pysrc.html#DefaultEncryptor.seal">source&nbsp;code</a></span>&nbsp;
@@ -674,14 +556,19 @@ ges\Crypto\Cipher\DES3.pyd'&gt;}"><code class="variable-group">{</code><code cla
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
         <li><strong class="pname"><code>data</code></strong> - the data to seal</li>
-        <li><strong class="pname"><code>timestamp</code></strong> - the absolute expiration date of the data, expressed as seconds 
-          since the epoch</li>
+        <li><strong class="pname"><code>expiration</code></strong> - The relative or absolute time the seal should expire. If a 
+          datetime object is passed in, it should be converted to seconds 
+          since the epoch.
+          <p>If a timedelta object is passed in, it should be added to 
+          datetime.now() and converted to seconds since the epoch.</p>
+          <p>If an int is passed in, it will be treated as the seconds 
+          since the epoch.</p></li>
     </ul></dd>
     <dt>Returns:</dt>
         <dd>the seal</dd>
     <dt>Raises:</dt>
     <dd><ul class="nomargin-top">
-        <li><code><strong class='fraise'><a href="esapi.exceptions.IntegrityException-class.html">IntegrityException</a></strong></code></li>
+        <li><code><strong class='fraise'><a href="esapi.exceptions-module.html#IntegrityException">IntegrityException</a></strong></code></li>
     </ul></dd>
     <dt>Overrides:
         <a href="esapi.encryptor.Encryptor-class.html#seal">encryptor.Encryptor.seal</a>
@@ -717,7 +604,7 @@ ges\Crypto\Cipher\DES3.pyd'&gt;}"><code class="variable-group">{</code><code cla
         <dd>the original (unsealed) data</dd>
     <dt>Raises:</dt>
     <dd><ul class="nomargin-top">
-        <li><code><strong class='fraise'><a href="esapi.exceptions.EncryptionException-class.html">EncryptionException</a></strong></code> - if the unsealed data cannot be retrieved for any reason</li>
+        <li><code><strong class='fraise'><a href="esapi.exceptions-module.html#EncryptionException">EncryptionException</a></strong></code> - if the unsealed data cannot be retrieved for any reason</li>
     </ul></dd>
     <dt>Overrides:
         <a href="esapi.encryptor.Encryptor-class.html#unseal">encryptor.Encryptor.unseal</a>
@@ -741,9 +628,8 @@ ges\Crypto\Cipher\DES3.pyd'&gt;}"><code class="variable-group">{</code><code cla
     </td>
   </tr></table>
   
-  <p>Verifies a seal (created with the seal method) and raises an exception
-  describing any of the various problems that could exist with a seal, such
-  as an invalid seal format, expired timestamp, or data mismatch.</p>
+  <p>Verifies a seal (created with the seal method) and returns True or 
+  False, indicating whether or not the seal is valid.</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
@@ -755,105 +641,6 @@ ges\Crypto\Cipher\DES3.pyd'&gt;}"><code class="variable-group">{</code><code cla
         <a href="esapi.encryptor.Encryptor-class.html#verify_seal">encryptor.Encryptor.verify_seal</a>
         <dd><em class="note">(inherited documentation)</em></dd>
     </dt>
-  </dl>
-</td></tr></table>
-</div>
-<a name="get_relative_timestamp"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_relative_timestamp</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">offset</span>)</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="esapi.reference.default_encryptor-pysrc.html#DefaultEncryptor.get_relative_timestamp">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  <p>Gets an absolute timestamp representing an offset from the current 
-  time to be used by other functions in the library.</p>
-  <dl class="fields">
-    <dt>Parameters:</dt>
-    <dd><ul class="nomargin-top">
-        <li><strong class="pname"><code>offset</code></strong> - the offset to add to the current time</li>
-    </ul></dd>
-    <dt>Returns:</dt>
-        <dd>the absolute timestamp</dd>
-    <dt>Overrides:
-        <a href="esapi.encryptor.Encryptor-class.html#get_relative_timestamp">encryptor.Encryptor.get_relative_timestamp</a>
-        <dd><em class="note">(inherited documentation)</em></dd>
-    </dt>
-  </dl>
-</td></tr></table>
-</div>
-<a name="get_timestamp"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_timestamp</span>(<span class="sig-arg">self</span>)</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="esapi.reference.default_encryptor-pysrc.html#DefaultEncryptor.get_timestamp">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  <p>Gets a timestamp representing the current date and time to be used by 
-  other functions in the library.</p>
-  <dl class="fields">
-    <dt>Returns:</dt>
-        <dd>a timestamp representing the current time</dd>
-    <dt>Overrides:
-        <a href="esapi.encryptor.Encryptor-class.html#get_timestamp">encryptor.Encryptor.get_timestamp</a>
-        <dd><em class="note">(inherited documentation)</em></dd>
-    </dt>
-  </dl>
-</td></tr></table>
-</div>
-<br />
-<!-- ==================== CLASS VARIABLE DETAILS ==================== -->
-<a name="section-ClassVariableDetails"></a>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr bgcolor="#70b0f0" class="table-header">
-  <td colspan="2" class="table-header">
-    <table border="0" cellpadding="0" cellspacing="0" width="100%">
-      <tr valign="top">
-        <td align="left"><span class="table-header">Class Variable Details</span></td>
-        <td align="right" valign="top"
-         ><span class="options">[<a href="#section-ClassVariableDetails"
-         class="privatelink" onclick="toggle_private();"
-         >hide private</a>]</span></td>
-      </tr>
-    </table>
-  </td>
-</tr>
-</table>
-<a name="encrypt_algorithm_map"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <h3 class="epydoc">encrypt_algorithm_map</h3>
-  
-  <dl class="fields">
-  </dl>
-  <dl class="fields">
-    <dt>Value:</dt>
-      <dd><table><tr><td><pre class="variable">
-<code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">AES</code><code class="variable-quote">'</code><code class="variable-op">: </code>&lt;module 'Crypto.Cipher.AES' from 'C:\Python26\lib\site-package<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
-s\Crypto\Cipher\AES.pyd'&gt;<code class="variable-op">,</code>
- <code class="variable-quote">'</code><code class="variable-string">DES</code><code class="variable-quote">'</code><code class="variable-op">: </code>&lt;module 'Crypto.Cipher.DES' from 'C:\Python26\lib\site-package<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
-s\Crypto\Cipher\DES.pyd'&gt;<code class="variable-op">,</code>
- <code class="variable-quote">'</code><code class="variable-string">DES3</code><code class="variable-quote">'</code><code class="variable-op">: </code>&lt;module 'Crypto.Cipher.DES3' from 'C:\Python26\lib\site-packa<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
-ges\Crypto\Cipher\DES3.pyd'&gt;<code class="variable-group">}</code>
-</pre></td></tr></table>
-</dd>
   </dl>
 </td></tr></table>
 </div>
@@ -884,7 +671,7 @@ ges\Crypto\Cipher\DES3.pyd'&gt;<code class="variable-group">}</code>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Tue Jul 14 16:39:09 2009
+    Generated by Epydoc 3.0.1 on Sun Sep 27 16:34:57 2009
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

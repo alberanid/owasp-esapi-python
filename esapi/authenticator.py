@@ -64,7 +64,7 @@ class Authenticator():
         The implementation should do the following:
             1. Check if the user is already store in the session
                 A. If so, check that the session absolute and inactivity
-                  timeouts have not expired.
+                   timeouts have not expired.
                 B. Step 2 may not be required if 1A has been satisfied.
             2. Verify user credentials
             3. Set the last host of the user 

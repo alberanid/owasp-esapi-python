@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>esapi.test.test_access_controller</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="esapi-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="esapi-module.html">Package&nbsp;esapi</a> ::
+        <a href="esapi.test-module.html">Package&nbsp;test</a> ::
+        Module&nbsp;test_access_controller
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="esapi.test.test_access_controller-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="esapi.test.test_access_controller-module.html">Module esapi.test.test_access_controller</a></h1>
+<pre class="py-src">
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+"""
+@license: OWASP Enterprise Security API (ESAPI)
+     
+    This file is part of the Open Web Application Security Project (OWASP)
+    Enterprise Security API (ESAPI) project. For details, please see
+    U{http://www.owasp.org/index.php/ESAPI<http://www.owasp.org/index.php/ESAPI>}.
+
+    The ESAPI is published by OWASP under the BSD license. You should read and 
+    accept the LICENSE before you use, modify, and/or redistribute this software.
+    
+@summary: Test suite for AccessController interface.
+@copyright: Copyright (c) 2009 - The OWASP Foundation
+@author: Craig Younkins (craig.younkins@owasp.org)
+"""
+
+import unittest
+import os
+from esapi.core import ESAPI
+from esapi.exceptions import AccessControlException
+
+class AccessControllerTest(unittest.TestCase):
+    def __init__(self, test_name=""):
+        unittest.TestCase.__init__(self, test_name)
+        
+    def setUp(self):
+        auth = ESAPI.authenticator()
+        auth.clear_all_data()
+        password = "passwordForAC"
+        
+        # create user 'ACAlice' with 'user' role
+        user = auth.get_user('ACAlice')
+        if user is None:
+            user = auth.create_user('ACAlice', password, password)
+        user.add_role('user')
+        
+        # create user 'ACBob' with 'admin' role
+        user = auth.get_user('ACBob')
+        if user is None:
+            user = auth.create_user('ACBob', password, password)
+        user.add_role('admin')
+        
+        # create user 'ACMitch' with 'user' and 'admin' roles
+        user = auth.get_user('ACMitch')
+        if user is None:
+            user = auth.create_user('ACMitch', password, password)
+        user.add_role('user')
+        user.add_role('admin')  
+            
+    def test_match_rule(self):
+        self.assertFalse(ESAPI.access_controller().is_authorized_for_url('/nobody'))
+             
+    def test_is_authorized_for_url(self):
+        instance = ESAPI.access_controller()
+        auth = ESAPI.authenticator()
+        
+        auth.current_user = auth.get_user("ACAlice")
+        self.assertFalse(instance.is_authorized_for_url("/nobody"))
+        self.assertFalse(instance.is_authorized_for_url("/test/admin"))
+        self.assertTrue(instance.is_authorized_for_url("/test/user"))
+        self.assertTrue(instance.is_authorized_for_url("/test/all"))
+        self.assertFalse(instance.is_authorized_for_url("/test/none"))
+        self.assertTrue(instance.is_authorized_for_url("/test/none/test.gif"))
+        self.assertFalse(instance.is_authorized_for_url("/test/none/test.exe"))
+        self.assertTrue(instance.is_authorized_for_url("/test/none/test.png"))
+        self.assertFalse(instance.is_authorized_for_url("/test/moderator"))
+        self.assertTrue(instance.is_authorized_for_url("/test/profile"))
+        self.assertFalse(instance.is_authorized_for_url("/upload"))
+
+        auth.current_user = auth.get_user("ACBob")
+        self.assertFalse(instance.is_authorized_for_url("/nobody"))
+        self.assertTrue(instance.is_authorized_for_url("/test/admin"))
+        self.assertFalse(instance.is_authorized_for_url("/test/user"))
+        self.assertTrue(instance.is_authorized_for_url("/test/all"))
+        self.assertFalse(instance.is_authorized_for_url("/test/none"))
+        self.assertTrue(instance.is_authorized_for_url("/test/none/test.png"))
+        self.assertFalse(instance.is_authorized_for_url("/test/moderator"))
+        self.assertTrue(instance.is_authorized_for_url("/test/profile"))
+        self.assertFalse(instance.is_authorized_for_url("/upload"))
+
+        auth.current_user = auth.get_user("ACMitch")
+        self.assertFalse(instance.is_authorized_for_url("/nobody"))
+        self.assertTrue(instance.is_authorized_for_url("/test/admin"))
+        self.assertTrue(instance.is_authorized_for_url("/test/user"))
+        self.assertTrue(instance.is_authorized_for_url("/test/all"))
+        self.assertFalse(instance.is_authorized_for_url("/test/none"))
+        self.assertTrue(instance.is_authorized_for_url("/test/none/test.png"))
+        self.assertFalse(instance.is_authorized_for_url("/test/moderator"))
+        self.assertTrue(instance.is_authorized_for_url("/test/profile"))
+        self.assertFalse(instance.is_authorized_for_url("/upload"))
+
+        instance.assert_authorized_for_url( "/test/admin" )
+        self.assertRaises(AccessControlException, instance.assert_authorized_for_url, "/nobody" )
+        
+    def test_is_authorized_for_function(self):
+        instance = ESAPI.access_controller()
+        auth = ESAPI.authenticator()
+
+        auth.current_user = auth.get_user("ACAlice")
+        self.assertTrue(instance.is_authorized_for_function("/FunctionA"))
+        self.assertFalse(instance.is_authorized_for_function("/FunctionAdeny"))
+        self.assertFalse(instance.is_authorized_for_function("/FunctionB"))
+        self.assertFalse(instance.is_authorized_for_function("/FunctionBdeny"))
+        self.assertTrue(instance.is_authorized_for_function("/FunctionC"))
+        self.assertFalse(instance.is_authorized_for_function("/FunctionCdeny"))
+
+        auth.current_user = auth.get_user("ACBob")
+        self.assertFalse(instance.is_authorized_for_function("/FunctionA"))
+        self.assertFalse(instance.is_authorized_for_function("/FunctionAdeny"))
+        self.assertTrue(instance.is_authorized_for_function("/FunctionB"))
+        self.assertFalse(instance.is_authorized_for_function("/FunctionBdeny"))
+        self.assertTrue(instance.is_authorized_for_function("/FunctionD"))
+        self.assertFalse(instance.is_authorized_for_function("/FunctionDdeny"))
+
+        auth.current_user = auth.get_user("ACMitch") 
+        self.assertTrue(instance.is_authorized_for_function("/FunctionA"))
+        self.assertFalse(instance.is_authorized_for_function("/FunctionAdeny"))
+        self.assertTrue(instance.is_authorized_for_function("/FunctionB"))
+        self.assertFalse(instance.is_authorized_for_function("/FunctionBdeny"))
+        self.assertTrue(instance.is_authorized_for_function("/FunctionC"))
+        self.assertFalse(instance.is_authorized_for_function("/FunctionCdeny"))
+
+        instance.assert_authorized_for_function("/FunctionA")
+        self.assertRaises(AccessControlException, instance.assert_authorized_for_function, "/FunctionDdeny" )
+                
+    def test_is_authorized_for_data(self):
+        instance = ESAPI.access_controller()
+        auth = ESAPI.authenticator()
+
+        adminR = "java.util.ArrayList"
+        adminRW = "java.lang.Math"
+        userW = "java.util.Date"
+        userRW = "java.lang.String"
+        anyR = "java.io.BufferedReader"
+        userAdminR = "java.util.Random"
+        userAdminRW = "java.awt.event.MouseWheelEvent"
+        undefined = "java.io.FileWriter"
+
+        # test User
+        auth.current_user = auth.get_user("ACAlice")
+        self.assertTrue(instance.is_authorized_for_data("read", userRW))
+        self.assertFalse(instance.is_authorized_for_data("read", undefined))
+        self.assertFalse(instance.is_authorized_for_data("write", undefined))
+        self.assertFalse(instance.is_authorized_for_data("read", userW))
+        self.assertFalse(instance.is_authorized_for_data("read", adminRW))
+        self.assertTrue(instance.is_authorized_for_data("write", userRW))
+        self.assertTrue(instance.is_authorized_for_data("write", userW))
+        self.assertFalse(instance.is_authorized_for_data("write", anyR))
+        self.assertTrue(instance.is_authorized_for_data("read", anyR))
+        self.assertTrue(instance.is_authorized_for_data("read", userAdminR))
+        self.assertTrue(instance.is_authorized_for_data("write", userAdminRW))
+
+        # test Admin
+        auth.current_user = auth.get_user("ACBob")
+        self.assertTrue(instance.is_authorized_for_data("read", adminRW))
+        self.assertFalse(instance.is_authorized_for_data("read", undefined))
+        self.assertFalse(instance.is_authorized_for_data("write", undefined))
+        self.assertFalse(instance.is_authorized_for_data("read", userRW))
+        self.assertTrue(instance.is_authorized_for_data("write", adminRW))
+        self.assertFalse(instance.is_authorized_for_data("write", anyR))
+        self.assertTrue(instance.is_authorized_for_data("read", anyR))
+        self.assertTrue(instance.is_authorized_for_data("read", userAdminR))
+        self.assertTrue(instance.is_authorized_for_data("write", userAdminRW))
+
+        # test User/Admin
+        auth.current_user = auth.get_user("ACMitch")
+        self.assertTrue(instance.is_authorized_for_data("read", userRW))
+        self.assertFalse(instance.is_authorized_for_data("read", undefined))
+        self.assertFalse(instance.is_authorized_for_data("write", undefined))
+        self.assertFalse(instance.is_authorized_for_data("read", userW))
+        self.assertTrue(instance.is_authorized_for_data("read", adminR))
+        self.assertTrue(instance.is_authorized_for_data("write", userRW))
+        self.assertTrue(instance.is_authorized_for_data("write", userW))
+        self.assertFalse(instance.is_authorized_for_data("write", anyR))
+        self.assertTrue(instance.is_authorized_for_data("read", anyR))
+        self.assertTrue(instance.is_authorized_for_data("read", userAdminR))
+        self.assertTrue(instance.is_authorized_for_data("write", userAdminRW))
+
+        instance.assert_authorized_for_data("read", userRW)
+        self.assertRaises(AccessControlException, instance.assert_authorized_for_data, "write", adminR )
+
+    def test_is_authorized_for_file(self):
+        instance = ESAPI.access_controller()
+        auth = ESAPI.authenticator()
+
+        auth.current_user = auth.get_user("ACAlice")
+        self.assertTrue(instance.is_authorized_for_file("/Dir/File1"))
+        self.assertFalse(instance.is_authorized_for_file("/Dir/File2"))
+        self.assertTrue(instance.is_authorized_for_file("/Dir/File3"))
+        self.assertFalse(instance.is_authorized_for_file("/Dir/ridiculous"))
+
+        auth.current_user = auth.get_user("ACBob")
+        self.assertFalse(instance.is_authorized_for_file("/Dir/File1"))
+        self.assertTrue(instance.is_authorized_for_file("/Dir/File2"))
+        self.assertTrue(instance.is_authorized_for_file("/Dir/File4"))
+        self.assertFalse(instance.is_authorized_for_file("/Dir/ridiculous"))
+
+        auth.current_user = auth.get_user("ACMitch")
+        self.assertTrue(instance.is_authorized_for_file("/Dir/File1"))
+        self.assertTrue(instance.is_authorized_for_file("/Dir/File2"))
+        self.assertFalse(instance.is_authorized_for_file("/Dir/File5"))
+        self.assertFalse(instance.is_authorized_for_file("/Dir/ridiculous"))
+
+        instance.assert_authorized_for_file("/Dir/File1")
+        self.assertRaises(AccessControlException, instance.assert_authorized_for_file, "/Dir/File6" )
+    def test_is_authorized_for_service(self):
+        instance = ESAPI.access_controller()
+        auth = ESAPI.authenticator()
+
+        auth.current_user = auth.get_user("ACAlice")
+        self.assertTrue(instance.is_authorized_for_service("/services/ServiceA"))
+        self.assertFalse(instance.is_authorized_for_service("/services/ServiceB"))
+        self.assertTrue(instance.is_authorized_for_service("/services/ServiceC"))
+
+        self.assertFalse(instance.is_authorized_for_service("/test/ridiculous"))
+
+        auth.current_user = auth.get_user("ACBob")
+        self.assertFalse(instance.is_authorized_for_service("/services/ServiceA"))
+        self.assertTrue(instance.is_authorized_for_service("/services/ServiceB"))
+        self.assertFalse(instance.is_authorized_for_service("/services/ServiceF"))
+        self.assertFalse(instance.is_authorized_for_service("/test/ridiculous"))
+
+        auth.current_user = auth.get_user("ACMitch")
+        self.assertTrue(instance.is_authorized_for_service("/services/ServiceA"))
+        self.assertTrue(instance.is_authorized_for_service("/services/ServiceB"))
+        self.assertFalse(instance.is_authorized_for_service("/services/ServiceE"))
+        self.assertFalse(instance.is_authorized_for_service("/test/ridiculous"))
+
+        instance.assert_authorized_for_service("/services/ServiceD")
+        self.assertRaises(AccessControlException, instance.assert_authorized_for_service, "/test/ridiculous" )
+        
+if __name__ == "__main__":
+    unittest.main()
+<script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="esapi-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Sun Sep 27 16:34:59 2009
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

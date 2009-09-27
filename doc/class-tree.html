@@ -55,6 +55,25 @@
 </b></center><br />
 <h1 class="epydoc">Class Hierarchy</h1>
 <ul class="nomargin-top">
+    <li> <strong class="uidlink"><a href="esapi.access_controller.AccessController-class.html">esapi.access_controller.AccessController</a></strong>:
+      <em class="summary">The AccessController interface defines a set of methods that can be used in
+a wide variety of applications to enforce access control.</em>
+    <ul>
+    <li> <strong class="uidlink"><a href="esapi.reference.file_based_access_controller.FileBasedAccessController-class.html">esapi.reference.file_based_access_controller.FileBasedAccessController</a></strong>:
+      <em class="summary">Reference implementation of the AccessController interface.</em>
+    </li>
+    </ul>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.authenticator.Authenticator-class.html">esapi.authenticator.Authenticator</a></strong>:
+      <em class="summary">The Authenticator interface defines a set of methods for generating
+        and handling account credentials and session identifiers.</em>
+    <ul>
+    <li> <strong class="uidlink"><a href="esapi.reference.shelve_authenticator.ShelveAuthenticator-class.html">esapi.reference.shelve_authenticator.ShelveAuthenticator</a></strong>:
+      <em class="summary">This implementation uses Python's shelve module to store serialized
+        user objects in a binary file.</em>
+    </li>
+    </ul>
+    </li>
     <li> <strong class="uidlink"><a href="esapi.codecs.mysql.BadModeError-class.html">esapi.codecs.mysql.BadModeError</a></strong>
     </li>
     <li> <strong class="uidlink"><a href="esapi.codecs.codec.Codec-class.html">esapi.codecs.codec.Codec</a></strong>:
@@ -120,14 +139,47 @@
       <em class="summary">The Encryptor interface provides a set of methods for performing 
         common encryption and hashing operations.</em>
     <ul>
-    <li> <strong class="uidlink"><a href="esapi.reference.default_encryptor.DefaultEncryptor-class.html">esapi.reference.default_encryptor.DefaultEncryptor</a></strong>
+    <li> <strong class="uidlink"><a href="esapi.reference.default_encryptor.DefaultEncryptor-class.html">esapi.reference.default_encryptor.DefaultEncryptor</a></strong>:
+      <em class="summary">Default implementation of the Encryptor interface using Google's 
+        Keyczar.</em>
     </li>
     </ul>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.reference.default_intrusion_detector.DefaultIntrusionDetector.Event-class.html">esapi.reference.default_intrusion_detector.DefaultIntrusionDetector.Event</a></strong>
     </li>
     <li> <strong class="uidlink"><a href="esapi.logger.Logger.EventType-class.html">esapi.logger.Logger.EventType</a></strong>:
       <em class="summary">Defines the type of log event that is being generated.</em>
     </li>
-    <li> <strong class="uidlink"><a href="esapi.reference.default_security_configuration.ImportSettingsError-class.html">esapi.reference.default_security_configuration.ImportSettingsError</a></strong>
+    <li> <strong class="uidlink"><a href="esapi.executor.Executor-class.html">esapi.executor.Executor</a></strong>:
+      <em class="summary">The Executor interface is used to run an OS command with reduced 
+        security risk.</em>
+    <ul>
+    <li> <strong class="uidlink"><a href="esapi.reference.default_executor.DefaultExecutor-class.html">esapi.reference.default_executor.DefaultExecutor</a></strong>:
+      <em class="summary">The reference implementation of the Executor interface.</em>
+    </li>
+    </ul>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.http_utilities.HTTPUtilities-class.html">esapi.http_utilities.HTTPUtilities</a></strong>:
+      <em class="summary">The HTTPUtilities interface is a collection of methods that provide
+        additional security related methods to HTTP requests, responses, 
+        sessions, cookies, headers, and logging.</em>
+    <ul>
+    <li> <strong class="uidlink"><a href="esapi.reference.default_http_utilities.DefaultHTTPUtilities-class.html">esapi.reference.default_http_utilities.DefaultHTTPUtilities</a></strong>:
+      <em class="summary">The default implementation of the HTTPUtilities class.</em>
+    </li>
+    </ul>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.ihttp.IHttpRequest-class.html">esapi.ihttp.IHttpRequest</a></strong>:
+      <em class="summary">This is the interface that ESAPI uses to interact with HTTP request
+        objects.</em>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.ihttp.IHttpResponse-class.html">esapi.ihttp.IHttpResponse</a></strong>:
+      <em class="summary">This is the interface that ESAPI uses to interact with HTTP 
+        response objects.</em>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.ihttp.ISession-class.html">esapi.ihttp.ISession</a></strong>:
+      <em class="summary">This is the interface that ESAPI uses to interact with session 
+        objects.</em>
     </li>
     <li> <strong class="uidlink"><a href="esapi.log_factory.LogFactory-class.html">esapi.log_factory.LogFactory</a></strong>:
       <em class="summary">The LogFactory interface is intended to allow substitution of 
@@ -148,6 +200,12 @@
     </li>
     </ul>
     </li>
+    <li> <strong class="uidlink"><a href="esapi.test.http.mock_http_request.MockHttpRequest-class.html">esapi.test.http.mock_http_request.MockHttpRequest</a></strong>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.test.http.mock_http_response.MockHttpResponse-class.html">esapi.test.http.mock_http_response.MockHttpResponse</a></strong>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.test.http.mock_session.MockSession-class.html">esapi.test.http.mock_session.MockSession</a></strong>
+    </li>
     <li> <strong class="uidlink"><a href="esapi.codecs.push_back_string.PushbackString-class.html">esapi.codecs.push_back_string.PushbackString</a></strong>:
       <em class="summary">A PushbackString is used by Codecs to allow them to push decoded 
         characters back onto a string for further decoding.</em>
@@ -160,6 +218,8 @@
     </li>
     </ul>
     </li>
+    <li> <strong class="uidlink"><a href="esapi.reference.file_based_access_controller.Rule-class.html">esapi.reference.file_based_access_controller.Rule</a></strong>
+    </li>
     <li> <strong class="uidlink"><a href="esapi.security_configuration.SecurityConfiguration-class.html">esapi.security_configuration.SecurityConfiguration</a></strong>:
       <em class="summary">The SecurityConfiguration interface stores all configuration 
         information that directs the behavior of the ESAPI implementation.</em>
@@ -171,6 +231,12 @@
     <li> <strong class="uidlink"><a href="esapi.security_configuration.SecurityConfiguration.Threshold-class.html">esapi.security_configuration.SecurityConfiguration.Threshold</a></strong>:
       <em class="summary">Models a simple threshold as a count and an interval, along with a 
         set of actions to take if the threshold is exceeded.</em>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.reference.user_credentials.UserCredentials-class.html">esapi.reference.user_credentials.UserCredentials</a></strong>:
+      <em class="summary">The UserCredentials class holds the credentials used to 
+        authenticate a User.</em>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.test.test_user.UserTest-class.html">esapi.test.test_user.UserTest</a></strong>
     </li>
     <li> <strong class="uidlink"><a href="esapi.validation_rule.ValidationRule-class.html">esapi.validation_rule.ValidationRule</a></strong>
     <ul>
@@ -212,6 +278,18 @@
     <li> <strong class="uidlink">object</strong>:
       <em class="summary">The most base type</em>
     <ul>
+    <li> <strong class="uidlink"><a href="esapi.access_reference_map.AccessReferenceMap-class.html">esapi.access_reference_map.AccessReferenceMap</a></strong>:
+      <em class="summary">The AccessReferenceMap interface is used to map from a set of 
+        internal direct object references to a set of indirect references 
+        that are safe to disclose publicly.</em>
+    <ul>
+    <li> <strong class="uidlink"><a href="esapi.reference.random_access_reference_map.RandomAccessReferenceMap-class.html">esapi.reference.random_access_reference_map.RandomAccessReferenceMap</a></strong>:
+      <em class="summary">Reference implementation of the AccessReferenceMap interface.</em>
+    </li>
+    </ul>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.user.AnonymousUser-class.html">esapi.user.AnonymousUser</a></strong>
+    </li>
     <li> <strong class="uidlink">exceptions.BaseException</strong>:
       <em class="summary">Common base class for all exceptions</em>
     <ul>
@@ -221,64 +299,9 @@
     <li> <strong class="uidlink"><a href="esapi.exceptions.EnterpriseSecurityException-class.html">esapi.exceptions.EnterpriseSecurityException</a></strong>:
       <em class="summary">EnterpriseSecurityException is the base class for all security 
         related exceptions.</em>
-    <ul>
-    <li> <strong class="uidlink"><a href="esapi.exceptions.AccessControlException-class.html">esapi.exceptions.AccessControlException</a></strong>:
-      <em class="summary">An AccessControlException should be thrown when a user attempts to 
-        access a resource that they are not authorized for.</em>
-    </li>
-    <li> <strong class="uidlink"><a href="esapi.exceptions.AuthenticationException-class.html">esapi.exceptions.AuthenticationException</a></strong>:
-      <em class="summary">An AuthenticationException should be thrown when anything goes 
-        wrong during login or logout.</em>
-    <ul>
-    <li> <strong class="uidlink"><a href="esapi.exceptions.AuthenticationAccountsException-class.html">esapi.exceptions.AuthenticationAccountsException</a></strong>
-    </li>
-    <li> <strong class="uidlink"><a href="esapi.exceptions.AuthenticationCredentialsException-class.html">esapi.exceptions.AuthenticationCredentialsException</a></strong>
-    </li>
-    <li> <strong class="uidlink"><a href="esapi.exceptions.AuthenticationHostException-class.html">esapi.exceptions.AuthenticationHostException</a></strong>
-    </li>
-    <li> <strong class="uidlink"><a href="esapi.exceptions.AuthenticationLoginException-class.html">esapi.exceptions.AuthenticationLoginException</a></strong>
-    </li>
-    </ul>
-    </li>
-    <li> <strong class="uidlink"><a href="esapi.exceptions.AvailabilityException-class.html">esapi.exceptions.AvailabilityException</a></strong>:
-      <em class="summary">An AvailabilityException should be thrown when the availability of 
-        a limited resource is in jeopardy.</em>
-    </li>
-    <li> <strong class="uidlink"><a href="esapi.exceptions.CertificateException-class.html">esapi.exceptions.CertificateException</a></strong>:
-      <em class="summary">A CertificateException should be thrown for any problems that arise
-        during processing of digital certificates.</em>
-    </li>
-    <li> <strong class="uidlink"><a href="esapi.exceptions.EncodingException-class.html">esapi.exceptions.EncodingException</a></strong>:
-      <em class="summary">An ExecutorException should be thrown for any problems that occur 
-        when encoding or decoding data.</em>
-    </li>
-    <li> <strong class="uidlink"><a href="esapi.exceptions.EncryptionException-class.html">esapi.exceptions.EncryptionException</a></strong>:
-      <em class="summary">An EncryptionException should be thrown for any problems related to
-        encryption, hashing, or digital signatures.</em>
-    </li>
-    <li> <strong class="uidlink"><a href="esapi.exceptions.ExecutorException-class.html">esapi.exceptions.ExecutorException</a></strong>:
-      <em class="summary">An ExecutorException should be thrown for any problems that arise 
-        during the execution of a system executable.</em>
-    </li>
-    <li> <strong class="uidlink"><a href="esapi.exceptions.IntegrityException-class.html">esapi.exceptions.IntegrityException</a></strong>:
-      <em class="summary">An AvailabilityException should be thrown when the availability of 
-        a limited resource is in jeopardy.</em>
-    </li>
-    <li> <strong class="uidlink"><a href="esapi.exceptions.ValidationException-class.html">esapi.exceptions.ValidationException</a></strong>:
-      <em class="summary">A ValidationException should be thrown to indicate that the data 
-        provided by the user or from some other external source does not 
-        match the validation rules that have been specified for that data.</em>
-    <ul>
-    <li> <strong class="uidlink"><a href="esapi.exceptions.ValidationAvailabilityException-class.html">esapi.exceptions.ValidationAvailabilityException</a></strong>
-    </li>
-    <li> <strong class="uidlink"><a href="esapi.exceptions.ValidationUploadException-class.html">esapi.exceptions.ValidationUploadException</a></strong>
-    </li>
-    </ul>
-    </li>
-    </ul>
     </li>
     <li> <strong class="uidlink"><a href="esapi.exceptions.IntrusionException-class.html">esapi.exceptions.IntrusionException</a></strong>:
-      <em class="summary">An IntrusionException should be thrown anytime an error condition 
+      <em class="summary">An IntrusionException should be raised anytime an error condition 
         arises that is likely to be the result of an attack in progress.</em>
     </li>
     <li> <strong class="uidlink">exceptions.StandardError</strong>:
@@ -294,29 +317,48 @@
     </li>
     </ul>
     </li>
+    <li> <strong class="uidlink"><a href="esapi.intrusion_detector.IntrusionDetector-class.html">esapi.intrusion_detector.IntrusionDetector</a></strong>:
+      <em class="summary">The IntrusionDetector interface is intended to track security 
+        relevant events and identify attack behavior.</em>
+    <ul>
+    <li> <strong class="uidlink"><a href="esapi.reference.default_intrusion_detector.DefaultIntrusionDetector-class.html">esapi.reference.default_intrusion_detector.DefaultIntrusionDetector</a></strong>:
+      <em class="summary">Reference implementation of the IntrusionDetector interface.</em>
+    </li>
+    </ul>
+    </li>
     <li> <strong class="uidlink">unittest.TestCase</strong>:
       <em class="summary">A class whose instances are single test cases.</em>
     <ul>
+    <li> <strong class="uidlink"><a href="esapi.test.test_random_access_map.ARMTest-class.html">esapi.test.test_random_access_map.ARMTest</a></strong>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.test.test_access_controller.AccessControllerTest-class.html">esapi.test.test_access_controller.AccessControllerTest</a></strong>
+    </li>
     <li> <strong class="uidlink"><a href="esapi.test.test_encoder.EncoderTest-class.html">esapi.test.test_encoder.EncoderTest</a></strong>
     </li>
     <li> <strong class="uidlink"><a href="esapi.test.test_encryptor.EncryptorTest-class.html">esapi.test.test_encryptor.EncryptorTest</a></strong>:
       <em class="summary">The Class EncryptorTest</em>
     </li>
+    <li> <strong class="uidlink"><a href="esapi.test.test_executor.ExecutorTest-class.html">esapi.test.test_executor.ExecutorTest</a></strong>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.test.test_http_utilities.HTTPUtilitiesTest-class.html">esapi.test.test_http_utilities.HTTPUtilitiesTest</a></strong>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.test.test_intrusion_detector.IntrusionDetectorTest-class.html">esapi.test.test_intrusion_detector.IntrusionDetectorTest</a></strong>
+    </li>
     <li> <strong class="uidlink"><a href="esapi.test.test_logger.LoggerTest-class.html">esapi.test.test_logger.LoggerTest</a></strong>
     </li>
     <li> <strong class="uidlink"><a href="esapi.test.test_randomizer.RandomizerTest-class.html">esapi.test.test_randomizer.RandomizerTest</a></strong>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.test.test_authenticator.ValidatorTest-class.html">esapi.test.test_authenticator.ValidatorTest</a></strong>
     </li>
     <li> <strong class="uidlink"><a href="esapi.test.test_validator.ValidatorTest-class.html">esapi.test.test_validator.ValidatorTest</a></strong>
     </li>
     </ul>
     </li>
-    <li> <strong class="uidlink">threading._Verbose</strong>
+    <li> <strong class="uidlink"><a href="esapi.user.User-class.html">esapi.user.User</a></strong>:
+      <em class="summary">The User interface represents an application user or user account.</em>
     <ul>
-    <li> <strong class="uidlink">threading.Thread</strong>
-    <ul>
-    <li> <strong class="uidlink"><a href="esapi.test.test_encoder.EncoderTest.EncoderConcurrencyMock-class.html">esapi.test.test_encoder.EncoderTest.EncoderConcurrencyMock</a></strong>
-    </li>
-    </ul>
+    <li> <strong class="uidlink"><a href="esapi.reference.default_user.DefaultUser-class.html">esapi.reference.default_user.DefaultUser</a></strong>:
+      <em class="summary">The reference implementation of the User interface.</em>
     </li>
     </ul>
     </li>
@@ -358,7 +400,7 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Tue Jul 14 16:39:07 2009
+    Generated by Epydoc 3.0.1 on Sun Sep 27 16:34:56 2009
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

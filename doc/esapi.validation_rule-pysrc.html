@@ -56,45 +56,45 @@
 </table>
 <h1 class="epydoc">Source Code for <a href="esapi.validation_rule-module.html">Module esapi.validation_rule</a></h1>
 <pre class="py-src">
-<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-comment">#!/usr/bin/python</tt> </tt>
-<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: utf-8 -*-</tt> </tt>
-<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"> </tt>
-<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
-<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-docstring">@license: OWASP Enterprise Security API (ESAPI)</tt> </tt>
-<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-docstring">     </tt> </tt>
-<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-docstring">    This file is part of the Open Web Application Security Project (OWASP)</tt> </tt>
-<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-docstring">    Enterprise Security API (ESAPI) project. For details, please see</tt> </tt>
-<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-docstring">    U{http://www.owasp.org/index.php/ESAPI&lt;http://www.owasp.org/index.php/ESAPI&gt;}.</tt> </tt>
-<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
-<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"><tt class="py-docstring">    The ESAPI is published by OWASP under the BSD license. You should read and </tt> </tt>
-<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"><tt class="py-docstring">    accept the LICENSE before you use, modify, and/or redistribute this software.</tt> </tt>
-<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"><tt class="py-docstring">    </tt> </tt>
-<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line"><tt class="py-docstring">@summary: The ValidationRule class is the parent class for the validators.</tt> </tt>
-<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"><tt class="py-docstring">@copyright: Copyright (c) 2009 - The OWASP Foundation</tt> </tt>
-<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line"><tt class="py-docstring">@author: Craig Younkins (craig.younkins@owasp.org)</tt> </tt>
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-comment">#!/usr/bin/python</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: utf-8 -*-</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-docstring">@license: OWASP Enterprise Security API (ESAPI)</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-docstring">     </tt> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-docstring">    This file is part of the Open Web Application Security Project (OWASP)</tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-docstring">    Enterprise Security API (ESAPI) project. For details, please see</tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-docstring">    U{http://www.owasp.org/index.php/ESAPI&lt;http://www.owasp.org/index.php/ESAPI&gt;}.</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"><tt class="py-docstring">    The ESAPI is published by OWASP under the BSD license. You should read and </tt> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"><tt class="py-docstring">    accept the LICENSE before you use, modify, and/or redistribute this software.</tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"><tt class="py-docstring">    </tt> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line"><tt class="py-docstring">@summary: The ValidationRule class is the parent class for the validators.</tt> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"><tt class="py-docstring">@copyright: Copyright (c) 2009 - The OWASP Foundation</tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line"><tt class="py-docstring">@author: Craig Younkins (craig.younkins@owasp.org)</tt> </tt>
 <a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
-<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line"> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line"> </tt>
 <a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Package esapi=esapi-module.html"><a title="esapi" class="py-name" href="#" onclick="return doclink('link-0', 'esapi', 'link-0');">esapi</a></tt><tt class="py-op">.</tt><tt id="link-1" class="py-name" targets="Module esapi.exceptions=esapi.exceptions-module.html"><a title="esapi.exceptions" class="py-name" href="#" onclick="return doclink('link-1', 'exceptions', 'link-1');">exceptions</a></tt> <tt class="py-keyword">import</tt> <tt id="link-2" class="py-name" targets="Class esapi.exceptions.ValidationException=esapi.exceptions.ValidationException-class.html"><a title="esapi.exceptions.ValidationException" class="py-name" href="#" onclick="return doclink('link-2', 'ValidationException', 'link-2');">ValidationException</a></tt> </tt>
-<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line"> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line"> </tt>
 <a name="ValidationRule"></a><div id="ValidationRule-def"><a name="L21"></a><tt class="py-lineno">21</tt> <a class="py-toggle" href="#" id="ValidationRule-toggle" onclick="return toggle('ValidationRule');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="esapi.validation_rule.ValidationRule-class.html">ValidationRule</a><tt class="py-op">:</tt> </tt>
 </div><div id="ValidationRule-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="ValidationRule-expanded"><a name="ValidationRule.set_allow_none"></a><div id="ValidationRule.set_allow_none-def"><a name="L22"></a><tt class="py-lineno">22</tt> <a class="py-toggle" href="#" id="ValidationRule.set_allow_none-toggle" onclick="return toggle('ValidationRule.set_allow_none');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.validation_rule.ValidationRule-class.html#set_allow_none">set_allow_none</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">flag</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
 </div><div id="ValidationRule.set_allow_none-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="ValidationRule.set_allow_none-expanded"><a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
-</div><a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line">         </tt>
+</div><a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line">         </tt>
 <a name="ValidationRule.get_type_name"></a><div id="ValidationRule.get_type_name-def"><a name="L25"></a><tt class="py-lineno">25</tt> <a class="py-toggle" href="#" id="ValidationRule.get_type_name-toggle" onclick="return toggle('ValidationRule.get_type_name');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.validation_rule.ValidationRule-class.html#get_type_name">get_type_name</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
 </div><div id="ValidationRule.get_type_name-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="ValidationRule.get_type_name-expanded"><a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
-</div><a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line">         </tt>
+</div><a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line">         </tt>
 <a name="ValidationRule.set_type_name"></a><div id="ValidationRule.set_type_name-def"><a name="L28"></a><tt class="py-lineno">28</tt> <a class="py-toggle" href="#" id="ValidationRule.set_type_name-toggle" onclick="return toggle('ValidationRule.set_type_name');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.validation_rule.ValidationRule-class.html#set_type_name">set_type_name</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">type_name</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
 </div><div id="ValidationRule.set_type_name-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="ValidationRule.set_type_name-expanded"><a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
-</div><a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line">     </tt>
+</div><a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line">     </tt>
 <a name="ValidationRule.assert_valid"></a><div id="ValidationRule.assert_valid-def"><a name="L31"></a><tt class="py-lineno">31</tt> <a class="py-toggle" href="#" id="ValidationRule.assert_valid-toggle" onclick="return toggle('ValidationRule.assert_valid');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.validation_rule.ValidationRule-class.html#assert_valid">assert_valid</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">context</tt><tt class="py-op">,</tt> <tt class="py-param">input_</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
 </div><div id="ValidationRule.assert_valid-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="ValidationRule.assert_valid-expanded"><a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
-</div><a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line">         </tt>
+</div><a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line">         </tt>
 <a name="ValidationRule.get_valid"></a><div id="ValidationRule.get_valid-def"><a name="L34"></a><tt class="py-lineno">34</tt> <a class="py-toggle" href="#" id="ValidationRule.get_valid-toggle" onclick="return toggle('ValidationRule.get_valid');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.validation_rule.ValidationRule-class.html#get_valid">get_valid</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">context</tt><tt class="py-op">,</tt> <tt class="py-param">input_</tt><tt class="py-op">,</tt> <tt class="py-param">error_list</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
 </div><div id="ValidationRule.get_valid-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="ValidationRule.get_valid-expanded"><a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
-</div><a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line">         </tt>
+</div><a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line">         </tt>
 <a name="ValidationRule.is_valid"></a><div id="ValidationRule.is_valid-def"><a name="L37"></a><tt class="py-lineno">37</tt> <a class="py-toggle" href="#" id="ValidationRule.is_valid-toggle" onclick="return toggle('ValidationRule.is_valid');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.validation_rule.ValidationRule-class.html#is_valid">is_valid</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">context</tt><tt class="py-op">,</tt> <tt class="py-param">input_</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
 </div><div id="ValidationRule.is_valid-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="ValidationRule.is_valid-expanded"><a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
-</div><a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line">         </tt>
+</div><a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line">         </tt>
 <a name="ValidationRule.whitelist"></a><div id="ValidationRule.whitelist-def"><a name="L40"></a><tt class="py-lineno">40</tt> <a class="py-toggle" href="#" id="ValidationRule.whitelist-toggle" onclick="return toggle('ValidationRule.whitelist');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.validation_rule.ValidationRule-class.html#whitelist">whitelist</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">input_</tt><tt class="py-op">,</tt> <tt class="py-param">whitelist</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
 </div><div id="ValidationRule.whitelist-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="ValidationRule.whitelist-expanded"><a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
 </div></div><a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line"> </tt><script type="text/javascript">
@@ -130,7 +130,7 @@ expandto(location.href);
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Tue Jul 14 16:39:10 2009
+    Generated by Epydoc 3.0.1 on Sun Sep 27 16:35:00 2009
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

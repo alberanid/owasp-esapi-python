@@ -57,6 +57,13 @@
 <ul class="nomargin-top">
     <li> <strong class="uidlink"><a href="esapi-module.html">esapi</a></strong>
     <ul>
+    <li> <strong class="uidlink"><a href="esapi.access_controller-module.html">esapi.access_controller</a></strong>: <em class="summary">The AccessController interface defines a set of methods that can be
+        used in a wide variety of applications to enforce access control.</em>    </li>
+    <li> <strong class="uidlink"><a href="esapi.access_reference_map-module.html">esapi.access_reference_map</a></strong>: <em class="summary">The AccessReferenceMap interface is used to map from a set of 
+        internal direct object references to a set of indirect references 
+        that are safe to disclose publicly.</em>    </li>
+    <li> <strong class="uidlink"><a href="esapi.authenticator-module.html">esapi.authenticator</a></strong>: <em class="summary">The Authenticator interface defines a set of methods for generating
+        and handling account credentials and session identifiers.</em>    </li>
     <li> <strong class="uidlink"><a href="esapi.codecs-module.html">esapi.codecs</a></strong>
     <ul>
     <li> <strong class="uidlink"><a href="esapi.codecs.codec-module.html">esapi.codecs.codec</a></strong>: <em class="summary">The Codec interface defines a set of methods for encoding and 
@@ -86,6 +93,7 @@
     <li> <strong class="uidlink"><a href="esapi.conf-module.html">esapi.conf</a></strong>
     <ul>
     <li> <strong class="uidlink"><a href="esapi.conf.constants-module.html">esapi.conf.constants</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="esapi.conf.resources-module.html">esapi.conf.resources</a></strong>    </li>
     <li> <strong class="uidlink"><a href="esapi.conf.settings-module.html">esapi.conf.settings</a></strong>    </li>
     </ul>
     </li>
@@ -97,6 +105,14 @@
     <li> <strong class="uidlink"><a href="esapi.encryptor-module.html">esapi.encryptor</a></strong>: <em class="summary">The Encryptor interface provides a set of methods for performing 
         common encryption and hashing operations.</em>    </li>
     <li> <strong class="uidlink"><a href="esapi.exceptions-module.html">esapi.exceptions</a></strong>: <em class="summary">All the exceptions used by ESAPI.</em>    </li>
+    <li> <strong class="uidlink"><a href="esapi.executor-module.html">esapi.executor</a></strong>: <em class="summary">The Executor interface is used to run an OS command with reduced 
+        security risk.</em>    </li>
+    <li> <strong class="uidlink"><a href="esapi.http_utilities-module.html">esapi.http_utilities</a></strong>: <em class="summary">The HTTPUtilities interface is a collection of methods that provide
+        additional security related to HTTP requests, responses, sessions, 
+        cookies, headers, and logging.</em>    </li>
+    <li> <strong class="uidlink"><a href="esapi.ihttp-module.html">esapi.ihttp</a></strong>: <em class="summary">A set of interfaces for HTTP requests, responses, and sessions.</em>    </li>
+    <li> <strong class="uidlink"><a href="esapi.intrusion_detector-module.html">esapi.intrusion_detector</a></strong>: <em class="summary">The IntrusionDetector interface is intended to track security 
+        relevant events and identify attack behavior.</em>    </li>
     <li> <strong class="uidlink"><a href="esapi.log_factory-module.html">esapi.log_factory</a></strong>: <em class="summary">The LogFactory interface is intended to allow substitution of 
         various logging packages, while providing a common interface to 
         access them.</em>    </li>
@@ -107,11 +123,21 @@
     <li> <strong class="uidlink"><a href="esapi.reference-module.html">esapi.reference</a></strong>
     <ul>
     <li> <strong class="uidlink"><a href="esapi.reference.default_encoder-module.html">esapi.reference.default_encoder</a></strong>: <em class="summary">Reference implementation of the Encoder interface.</em>    </li>
-    <li> <strong class="uidlink"><a href="esapi.reference.default_encryptor-module.html">esapi.reference.default_encryptor</a></strong>: <em class="summary">Reference implementation of the Encoder interface.</em>    </li>
+    <li> <strong class="uidlink"><a href="esapi.reference.default_encryptor-module.html">esapi.reference.default_encryptor</a></strong>: <em class="summary">Default implementation of the Encryptor interface using Google's 
+        Keyczar.</em>    </li>
+    <li> <strong class="uidlink"><a href="esapi.reference.default_executor-module.html">esapi.reference.default_executor</a></strong>: <em class="summary">The default implementation of the Executor interface.</em>    </li>
+    <li> <strong class="uidlink"><a href="esapi.reference.default_http_utilities-module.html">esapi.reference.default_http_utilities</a></strong>: <em class="summary">Reference implementation of HTTPUtilities interface.</em>    </li>
+    <li> <strong class="uidlink"><a href="esapi.reference.default_intrusion_detector-module.html">esapi.reference.default_intrusion_detector</a></strong>: <em class="summary">Reference implementation of the IntrusionDetector interface.</em>    </li>
     <li> <strong class="uidlink"><a href="esapi.reference.default_randomizer-module.html">esapi.reference.default_randomizer</a></strong>: <em class="summary">Reference implementation of the Randomizer interface.</em>    </li>
     <li> <strong class="uidlink"><a href="esapi.reference.default_security_configuration-module.html">esapi.reference.default_security_configuration</a></strong>: <em class="summary">Reference implementation of the SecurityConfiguration interface.</em>    </li>
+    <li> <strong class="uidlink"><a href="esapi.reference.default_user-module.html">esapi.reference.default_user</a></strong>: <em class="summary">The User interface represents an application user or user account.</em>    </li>
     <li> <strong class="uidlink"><a href="esapi.reference.default_validator-module.html">esapi.reference.default_validator</a></strong>: <em class="summary">Reference implementation of the Validator interface.</em>    </li>
+    <li> <strong class="uidlink"><a href="esapi.reference.file_based_access_controller-module.html">esapi.reference.file_based_access_controller</a></strong>: <em class="summary">Reference implementation of the AccessController interface.</em>    </li>
     <li> <strong class="uidlink"><a href="esapi.reference.python_log_factory-module.html">esapi.reference.python_log_factory</a></strong>: <em class="summary">Reference implementation of the LogFactory and Logger interfaces.</em>    </li>
+    <li> <strong class="uidlink"><a href="esapi.reference.random_access_reference_map-module.html">esapi.reference.random_access_reference_map</a></strong>: <em class="summary">&nbsp;</em>    </li>
+    <li> <strong class="uidlink"><a href="esapi.reference.shelve_authenticator-module.html">esapi.reference.shelve_authenticator</a></strong>: <em class="summary">A reference implementation</em>    </li>
+    <li> <strong class="uidlink"><a href="esapi.reference.user_credentials-module.html">esapi.reference.user_credentials</a></strong>: <em class="summary">The UserCredentials class holds the credentials used to 
+        authenticate a User.</em>    </li>
     <li> <strong class="uidlink"><a href="esapi.reference.validation-module.html">esapi.reference.validation</a></strong>
     <ul>
     <li> <strong class="uidlink"><a href="esapi.reference.validation.base_validation_rule-module.html">esapi.reference.validation.base_validation_rule</a></strong>: <em class="summary">A BaseValidationRule performs syntax and possibly semantic 
@@ -129,19 +155,29 @@
         information that directs the behavior of the ESAPI implementation.</em>    </li>
     <li> <strong class="uidlink"><a href="esapi.test-module.html">esapi.test</a></strong>
     <ul>
-    <li> <strong class="uidlink"><a href="esapi.test.conf-module.html">esapi.test.conf</a></strong>
+    <li> <strong class="uidlink"><a href="esapi.test.http-module.html">esapi.test.http</a></strong>
     <ul>
-    <li> <strong class="uidlink"><a href="esapi.test.conf.settings-module.html">esapi.test.conf.settings</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="esapi.test.http.mock_http_request-module.html">esapi.test.http.mock_http_request</a></strong>: <em class="summary">A mock HTTP request used for testing.</em>    </li>
+    <li> <strong class="uidlink"><a href="esapi.test.http.mock_http_response-module.html">esapi.test.http.mock_http_response</a></strong>: <em class="summary">A mock HTTP response used for testing.</em>    </li>
+    <li> <strong class="uidlink"><a href="esapi.test.http.mock_session-module.html">esapi.test.http.mock_session</a></strong>: <em class="summary">A mock session used for testing.</em>    </li>
     </ul>
     </li>
+    <li> <strong class="uidlink"><a href="esapi.test.test_access_controller-module.html">esapi.test.test_access_controller</a></strong>: <em class="summary">Test suite for AccessController interface.</em>    </li>
+    <li> <strong class="uidlink"><a href="esapi.test.test_authenticator-module.html">esapi.test.test_authenticator</a></strong>: <em class="summary">Test suite for Authenticator interface.</em>    </li>
     <li> <strong class="uidlink"><a href="esapi.test.test_encoder-module.html">esapi.test.test_encoder</a></strong>: <em class="summary">Test suite for Encoder implementation.</em>    </li>
     <li> <strong class="uidlink"><a href="esapi.test.test_encryptor-module.html">esapi.test.test_encryptor</a></strong>: <em class="summary">Test suite for the Encryptor interface.</em>    </li>
+    <li> <strong class="uidlink"><a href="esapi.test.test_executor-module.html">esapi.test.test_executor</a></strong>: <em class="summary">Test suite for Executor interface.</em>    </li>
+    <li> <strong class="uidlink"><a href="esapi.test.test_http_utilities-module.html">esapi.test.test_http_utilities</a></strong>: <em class="summary">Test suite for the Logger interface.</em>    </li>
+    <li> <strong class="uidlink"><a href="esapi.test.test_intrusion_detector-module.html">esapi.test.test_intrusion_detector</a></strong>: <em class="summary">Test suite for IntrusionDetector interface.</em>    </li>
     <li> <strong class="uidlink"><a href="esapi.test.test_logger-module.html">esapi.test.test_logger</a></strong>: <em class="summary">Test suite for the Logger interface.</em>    </li>
+    <li> <strong class="uidlink"><a href="esapi.test.test_random_access_map-module.html">esapi.test.test_random_access_map</a></strong>: <em class="summary">Test suite for AccessReferenceMap interface.</em>    </li>
     <li> <strong class="uidlink"><a href="esapi.test.test_randomizer-module.html">esapi.test.test_randomizer</a></strong>: <em class="summary">Test suite for the Randomizer interface.</em>    </li>
+    <li> <strong class="uidlink"><a href="esapi.test.test_user-module.html">esapi.test.test_user</a></strong>: <em class="summary">Test suite for User interface.</em>    </li>
     <li> <strong class="uidlink"><a href="esapi.test.test_validator-module.html">esapi.test.test_validator</a></strong>: <em class="summary">Test suite for Validator interface.</em>    </li>
     </ul>
     </li>
     <li> <strong class="uidlink"><a href="esapi.translation-module.html">esapi.translation</a></strong>: <em class="summary">Sets _ to the GNU gettext function for i18n.</em>    </li>
+    <li> <strong class="uidlink"><a href="esapi.user-module.html">esapi.user</a></strong>: <em class="summary">The User interface represents an application user or user account.</em>    </li>
     <li> <strong class="uidlink"><a href="esapi.validation_error_list-module.html">esapi.validation_error_list</a></strong>: <em class="summary">The ValidationErrorList is a specialized dictionary to collect 
         ValidationExceptions.</em>    </li>
     <li> <strong class="uidlink"><a href="esapi.validation_rule-module.html">esapi.validation_rule</a></strong>: <em class="summary">The ValidationRule class is the parent class for the validators.</em>    </li>
@@ -176,7 +212,7 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Tue Jul 14 16:39:07 2009
+    Generated by Epydoc 3.0.1 on Sun Sep 27 16:34:56 2009
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

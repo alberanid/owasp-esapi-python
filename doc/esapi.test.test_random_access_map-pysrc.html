@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>esapi.test.test_random_access_map</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="esapi-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="esapi-module.html">Package&nbsp;esapi</a> ::
+        <a href="esapi.test-module.html">Package&nbsp;test</a> ::
+        Module&nbsp;test_random_access_map
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="esapi.test.test_random_access_map-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="esapi.test.test_random_access_map-module.html">Module esapi.test.test_random_access_map</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment">#!/usr/bin/python</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: utf-8 -*-</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-docstring">@license: OWASP Enterprise Security API (ESAPI)</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-docstring">     </tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-docstring">    This file is part of the Open Web Application Security Project (OWASP)</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-docstring">    Enterprise Security API (ESAPI) project. For details, please see</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-docstring">    U{http://www.owasp.org/index.php/ESAPI&lt;http://www.owasp.org/index.php/ESAPI&gt;}.</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-docstring">    The ESAPI is published by OWASP under the BSD license. You should read and </tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-docstring">    accept the LICENSE before you use, modify, and/or redistribute this software.</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-docstring">    </tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"><tt class="py-docstring">@summary: Test suite for AccessReferenceMap interface.</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt class="py-docstring">@copyright: Copyright (c) 2009 - The OWASP Foundation</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"><tt class="py-docstring">@author: Craig Younkins (craig.younkins@owasp.org)</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">unittest</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Package esapi=esapi-module.html"><a title="esapi" class="py-name" href="#" onclick="return doclink('link-0', 'esapi', 'link-0');">esapi</a></tt><tt class="py-op">.</tt><tt id="link-1" class="py-name" targets="Module esapi.core=esapi.core-module.html"><a title="esapi.core" class="py-name" href="#" onclick="return doclink('link-1', 'core', 'link-1');">core</a></tt> <tt class="py-keyword">import</tt> <tt id="link-2" class="py-name" targets="Class esapi.core.ESAPI=esapi.core.ESAPI-class.html"><a title="esapi.core.ESAPI" class="py-name" href="#" onclick="return doclink('link-2', 'ESAPI', 'link-2');">ESAPI</a></tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-3" class="py-name"><a title="esapi" class="py-name" href="#" onclick="return doclink('link-3', 'esapi', 'link-0');">esapi</a></tt><tt class="py-op">.</tt><tt id="link-4" class="py-name" targets="Module esapi.exceptions=esapi.exceptions-module.html"><a title="esapi.exceptions" class="py-name" href="#" onclick="return doclink('link-4', 'exceptions', 'link-4');">exceptions</a></tt> <tt class="py-keyword">import</tt> <tt id="link-5" class="py-name" targets="Class esapi.exceptions.AccessControlException=esapi.exceptions.AccessControlException-class.html"><a title="esapi.exceptions.AccessControlException" class="py-name" href="#" onclick="return doclink('link-5', 'AccessControlException', 'link-5');">AccessControlException</a></tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"> </tt>
+<a name="ARMTest"></a><div id="ARMTest-def"><a name="L24"></a><tt class="py-lineno"> 24</tt> <a class="py-toggle" href="#" id="ARMTest-toggle" onclick="return toggle('ARMTest');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="esapi.test.test_random_access_map.ARMTest-class.html">ARMTest</a><tt class="py-op">(</tt><tt class="py-base-class">unittest</tt><tt class="py-op">.</tt><tt class="py-base-class">TestCase</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ARMTest-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="ARMTest-expanded"><a name="ARMTest.__init__"></a><div id="ARMTest.__init__-def"><a name="L25"></a><tt class="py-lineno"> 25</tt> <a class="py-toggle" href="#" id="ARMTest.__init__-toggle" onclick="return toggle('ARMTest.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.test.test_random_access_map.ARMTest-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">test_name</tt><tt class="py-op">=</tt><tt class="py-string">""</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ARMTest.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="ARMTest.__init__-expanded"><a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line">        <tt class="py-name">unittest</tt><tt class="py-op">.</tt><tt class="py-name">TestCase</tt><tt class="py-op">.</tt><tt id="link-6" class="py-name" targets="Method esapi.access_reference_map.AccessReferenceMap.__init__()=esapi.access_reference_map.AccessReferenceMap-class.html#__init__,Method esapi.authenticator.Authenticator.__init__()=esapi.authenticator.Authenticator-class.html#__init__,Method esapi.codecs.codec.Codec.__init__()=esapi.codecs.codec.Codec-class.html#__init__,Method esapi.codecs.css.CSSCodec.__init__()=esapi.codecs.css.CSSCodec-class.html#__init__,Method esapi.codecs.html_entity.HTMLEntityCodec.__init__()=esapi.codecs.html_entity.HTMLEntityCodec-class.html#__init__,Method esapi.codecs.javascript.JavascriptCodec.__init__()=esapi.codecs.javascript.JavascriptCodec-class.html#__init__,Method esapi.codecs.ldap.LDAPCodec.__init__()=esapi.codecs.ldap.LDAPCodec-class.html#__init__,Method esapi.codecs.ldap_dn.LDAPDNCodec.__init__()=esapi.codecs.ldap_dn.LDAPDNCodec-class.html#__init__,Method esapi.codecs.mysql.MySQLCodec.__init__()=esapi.codecs.mysql.MySQLCodec-class.html#__init__,Method esapi.codecs.oracle.OracleCodec.__init__()=esapi.codecs.oracle.OracleCodec-class.html#__init__,Method esapi.codecs.percent.PercentCodec.__init__()=esapi.codecs.percent.PercentCodec-class.html#__init__,Method esapi.codecs.push_back_string.PushbackString.__init__()=esapi.codecs.push_back_string.PushbackString-class.html#__init__,Method esapi.codecs.unix.UnixCodec.__init__()=esapi.codecs.unix.UnixCodec-class.html#__init__,Method esapi.codecs.vbscript.VBScriptCodec.__init__()=esapi.codecs.vbscript.VBScriptCodec-class.html#__init__,Method esapi.codecs.windows.WindowsCodec.__init__()=esapi.codecs.windows.WindowsCodec-class.html#__init__,Method esapi.encoder.Encoder.__init__()=esapi.encoder.Encoder-class.html#__init__,Method esapi.encryptor.Encryptor.__init__()=esapi.encryptor.Encryptor-class.html#__init__,Method esapi.exceptions.AccessControlException.__init__()=esapi.exceptions.AccessControlException-class.html#__init__,Method esapi.exceptions.AuthenticationAccountsException.__init__()=esapi.exceptions.AuthenticationAccountsException-class.html#__init__,Method esapi.exceptions.AuthenticationCredentialsException.__init__()=esapi.exceptions.AuthenticationCredentialsException-class.html#__init__,Method esapi.exceptions.AuthenticationException.__init__()=esapi.exceptions.AuthenticationException-class.html#__init__,Method esapi.exceptions.AuthenticationHostException.__init__()=esapi.exceptions.AuthenticationHostException-class.html#__init__,Method esapi.exceptions.AuthenticationLoginException.__init__()=esapi.exceptions.AuthenticationLoginException-class.html#__init__,Method esapi.exceptions.AvailabilityException.__init__()=esapi.exceptions.AvailabilityException-class.html#__init__,Method esapi.exceptions.CertificateException.__init__()=esapi.exceptions.CertificateException-class.html#__init__,Method esapi.exceptions.ConfigurationException.__init__()=esapi.exceptions.ConfigurationException-class.html#__init__,Method esapi.exceptions.EncodingException.__init__()=esapi.exceptions.EncodingException-class.html#__init__,Method esapi.exceptions.EncryptionException.__init__()=esapi.exceptions.EncryptionException-class.html#__init__,Method esapi.exceptions.EnterpriseSecurityException.__init__()=esapi.exceptions.EnterpriseSecurityException-class.html#__init__,Method esapi.exceptions.ExecutorException.__init__()=esapi.exceptions.ExecutorException-class.html#__init__,Method esapi.exceptions.IntegrityException.__init__()=esapi.exceptions.IntegrityException-class.html#__init__,Method esapi.exceptions.IntrusionException.__init__()=esapi.exceptions.IntrusionException-class.html#__init__,Method esapi.exceptions.ValidationAvailabilityException.__init__()=esapi.exceptions.ValidationAvailabilityException-class.html#__init__,Method esapi.exceptions.ValidationException.__init__()=esapi.exceptions.ValidationException-class.html#__init__,Method esapi.exceptions.ValidationUploadException.__init__()=esapi.exceptions.ValidationUploadException-class.html#__init__,Method esapi.executor.Executor.__init__()=esapi.executor.Executor-class.html#__init__,Method esapi.http_utilities.HTTPUtilities.__init__()=esapi.http_utilities.HTTPUtilities-class.html#__init__,Method esapi.ihttp.IHttpRequest.__init__()=esapi.ihttp.IHttpRequest-class.html#__init__,Method esapi.ihttp.IHttpResponse.__init__()=esapi.ihttp.IHttpResponse-class.html#__init__,Method esapi.ihttp.ISession.__init__()=esapi.ihttp.ISession-class.html#__init__,Method esapi.log_factory.LogFactory.__init__()=esapi.log_factory.LogFactory-class.html#__init__,Method esapi.logger.Logger.EventType.__init__()=esapi.logger.Logger.EventType-class.html#__init__,Method esapi.logger.Logger.__init__()=esapi.logger.Logger-class.html#__init__,Method esapi.randomizer.Randomizer.__init__()=esapi.randomizer.Randomizer-class.html#__init__,Method esapi.reference.default_encoder.DefaultEncoder.__init__()=esapi.reference.default_encoder.DefaultEncoder-class.html#__init__,Method esapi.reference.default_encryptor.DefaultEncryptor.__init__()=esapi.reference.default_encryptor.DefaultEncryptor-class.html#__init__,Method esapi.reference.default_executor.DefaultExecutor.__init__()=esapi.reference.default_executor.DefaultExecutor-class.html#__init__,Method esapi.reference.default_http_utilities.DefaultHTTPUtilities.__init__()=esapi.reference.default_http_utilities.DefaultHTTPUtilities-class.html#__init__,Method esapi.reference.default_intrusion_detector.DefaultIntrusionDetector.Event.__init__()=esapi.reference.default_intrusion_detector.DefaultIntrusionDetector.Event-class.html#__init__,Method esapi.reference.default_intrusion_detector.DefaultIntrusionDetector.__init__()=esapi.reference.default_intrusion_detector.DefaultIntrusionDetector-class.html#__init__,Method esapi.reference.default_randomizer.DefaultRandomizer.__init__()=esapi.reference.default_randomizer.DefaultRandomizer-class.html#__init__,Method esapi.reference.default_security_configuration.DefaultSecurityConfiguration.__init__()=esapi.reference.default_security_configuration.DefaultSecurityConfiguration-class.html#__init__,Method esapi.reference.default_user.DefaultUser.__init__()=esapi.reference.default_user.DefaultUser-class.html#__init__,Method esapi.reference.default_validator.DefaultValidator.__init__()=esapi.reference.default_validator.DefaultValidator-class.html#__init__,Method esapi.reference.file_based_access_controller.FileBasedAccessController.__init__()=esapi.reference.file_based_access_controller.FileBasedAccessController-class.html#__init__,Method esapi.reference.file_based_access_controller.Rule.__init__()=esapi.reference.file_based_access_controller.Rule-class.html#__init__,Method esapi.reference.python_log_factory.PythonLogFactory.PythonLogger.__init__()=esapi.reference.python_log_factory.PythonLogFactory.PythonLogger-class.html#__init__,Method esapi.reference.python_log_factory.PythonLogFactory.__init__()=esapi.reference.python_log_factory.PythonLogFactory-class.html#__init__,Method esapi.reference.random_access_reference_map.RandomAccessReferenceMap.__init__()=esapi.reference.random_access_reference_map.RandomAccessReferenceMap-class.html#__init__,Method esapi.reference.shelve_authenticator.ShelveAuthenticator.__init__()=esapi.reference.shelve_authenticator.ShelveAuthenticator-class.html#__init__,Method esapi.reference.user_credentials.UserCredentials.__init__()=esapi.reference.user_credentials.UserCredentials-class.html#__init__,Method esapi.reference.validation.base_validation_rule.BaseValidationRule.__init__()=esapi.reference.validation.base_validation_rule.BaseValidationRule-class.html#__init__,Method esapi.reference.validation.credit_card_validation_rule.CreditCardValidationRule.__init__()=esapi.reference.validation.credit_card_validation_rule.CreditCardValidationRule-class.html#__init__,Method esapi.reference.validation.date_validation_rule.DateValidationRule.__init__()=esapi.reference.validation.date_validation_rule.DateValidationRule-class.html#__init__,Method esapi.reference.validation.number_validation_rule.NumberValidationRule.__init__()=esapi.reference.validation.number_validation_rule.NumberValidationRule-class.html#__init__,Method esapi.reference.validation.string_validation_rule.StringValidationRule.__init__()=esapi.reference.validation.string_validation_rule.StringValidationRule-class.html#__init__,Method esapi.security_configuration.SecurityConfiguration.Threshold.__init__()=esapi.security_configuration.SecurityConfiguration.Threshold-class.html#__init__,Method esapi.security_configuration.SecurityConfiguration.__init__()=esapi.security_configuration.SecurityConfiguration-class.html#__init__,Method esapi.test.http.mock_http_request.MockHttpRequest.__init__()=esapi.test.http.mock_http_request.MockHttpRequest-class.html#__init__,Method esapi.test.http.mock_http_response.MockHttpResponse.__init__()=esapi.test.http.mock_http_response.MockHttpResponse-class.html#__init__,Method esapi.test.http.mock_session.MockSession.__init__()=esapi.test.http.mock_session.MockSession-class.html#__init__,Method esapi.test.test_access_controller.AccessControllerTest.__init__()=esapi.test.test_access_controller.AccessControllerTest-class.html#__init__,Method esapi.test.test_authenticator.ValidatorTest.__init__()=esapi.test.test_authenticator.ValidatorTest-class.html#__init__,Method esapi.test.test_encoder.EncoderTest.__init__()=esapi.test.test_encoder.EncoderTest-class.html#__init__,Method esapi.test.test_encryptor.EncryptorTest.__init__()=esapi.test.test_encryptor.EncryptorTest-class.html#__init__,Method esapi.test.test_executor.ExecutorTest.__init__()=esapi.test.test_executor.ExecutorTest-class.html#__init__,Method esapi.test.test_http_utilities.HTTPUtilitiesTest.__init__()=esapi.test.test_http_utilities.HTTPUtilitiesTest-class.html#__init__,Method esapi.test.test_intrusion_detector.IntrusionDetectorTest.__init__()=esapi.test.test_intrusion_detector.IntrusionDetectorTest-class.html#__init__,Method esapi.test.test_logger.LoggerTest.__init__()=esapi.test.test_logger.LoggerTest-class.html#__init__,Method esapi.test.test_random_access_map.ARMTest.__init__()=esapi.test.test_random_access_map.ARMTest-class.html#__init__,Method esapi.test.test_randomizer.RandomizerTest.__init__()=esapi.test.test_randomizer.RandomizerTest-class.html#__init__,Method esapi.test.test_user.UserTest.__init__()=esapi.test.test_user.UserTest-class.html#__init__,Method esapi.test.test_validator.ValidatorTest.__init__()=esapi.test.test_validator.ValidatorTest-class.html#__init__,Method esapi.user.AnonymousUser.__init__()=esapi.user.AnonymousUser-class.html#__init__,Method esapi.user.User.__init__()=esapi.user.User-class.html#__init__,Method esapi.validator.Validator.__init__()=esapi.validator.Validator-class.html#__init__"><a title="esapi.access_reference_map.AccessReferenceMap.__init__
+esapi.authenticator.Authenticator.__init__
+esapi.codecs.codec.Codec.__init__
+esapi.codecs.css.CSSCodec.__init__
+esapi.codecs.html_entity.HTMLEntityCodec.__init__
+esapi.codecs.javascript.JavascriptCodec.__init__
+esapi.codecs.ldap.LDAPCodec.__init__
+esapi.codecs.ldap_dn.LDAPDNCodec.__init__
+esapi.codecs.mysql.MySQLCodec.__init__
+esapi.codecs.oracle.OracleCodec.__init__
+esapi.codecs.percent.PercentCodec.__init__
+esapi.codecs.push_back_string.PushbackString.__init__
+esapi.codecs.unix.UnixCodec.__init__
+esapi.codecs.vbscript.VBScriptCodec.__init__
+esapi.codecs.windows.WindowsCodec.__init__
+esapi.encoder.Encoder.__init__
+esapi.encryptor.Encryptor.__init__
+esapi.exceptions.AccessControlException.__init__
+esapi.exceptions.AuthenticationAccountsException.__init__
+esapi.exceptions.AuthenticationCredentialsException.__init__
+esapi.exceptions.AuthenticationException.__init__
+esapi.exceptions.AuthenticationHostException.__init__
+esapi.exceptions.AuthenticationLoginException.__init__
+esapi.exceptions.AvailabilityException.__init__
+esapi.exceptions.CertificateException.__init__
+esapi.exceptions.ConfigurationException.__init__
+esapi.exceptions.EncodingException.__init__
+esapi.exceptions.EncryptionException.__init__
+esapi.exceptions.EnterpriseSecurityException.__init__
+esapi.exceptions.ExecutorException.__init__
+esapi.exceptions.IntegrityException.__init__
+esapi.exceptions.IntrusionException.__init__
+esapi.exceptions.ValidationAvailabilityException.__init__
+esapi.exceptions.ValidationException.__init__
+esapi.exceptions.ValidationUploadException.__init__
+esapi.executor.Executor.__init__
+esapi.http_utilities.HTTPUtilities.__init__
+esapi.ihttp.IHttpRequest.__init__
+esapi.ihttp.IHttpResponse.__init__
+esapi.ihttp.ISession.__init__
+esapi.log_factory.LogFactory.__init__
+esapi.logger.Logger.EventType.__init__
+esapi.logger.Logger.__init__
+esapi.randomizer.Randomizer.__init__
+esapi.reference.default_encoder.DefaultEncoder.__init__
+esapi.reference.default_encryptor.DefaultEncryptor.__init__
+esapi.reference.default_executor.DefaultExecutor.__init__
+esapi.reference.default_http_utilities.DefaultHTTPUtilities.__init__
+esapi.reference.default_intrusion_detector.DefaultIntrusionDetector.Event.__init__
+esapi.reference.default_intrusion_detector.DefaultIntrusionDetector.__init__
+esapi.reference.default_randomizer.DefaultRandomizer.__init__
+esapi.reference.default_security_configuration.DefaultSecurityConfiguration.__init__
+esapi.reference.default_user.DefaultUser.__init__
+esapi.reference.default_validator.DefaultValidator.__init__
+esapi.reference.file_based_access_controller.FileBasedAccessController.__init__
+esapi.reference.file_based_access_controller.Rule.__init__
+esapi.reference.python_log_factory.PythonLogFactory.PythonLogger.__init__
+esapi.reference.python_log_factory.PythonLogFactory.__init__
+esapi.reference.random_access_reference_map.RandomAccessReferenceMap.__init__
+esapi.reference.shelve_authenticator.ShelveAuthenticator.__init__
+esapi.reference.user_credentials.UserCredentials.__init__
+esapi.reference.validation.base_validation_rule.BaseValidationRule.__init__
+esapi.reference.validation.credit_card_validation_rule.CreditCardValidationRule.__init__
+esapi.reference.validation.date_validation_rule.DateValidationRule.__init__
+esapi.reference.validation.number_validation_rule.NumberValidationRule.__init__
+esapi.reference.validation.string_validation_rule.StringValidationRule.__init__
+esapi.security_configuration.SecurityConfiguration.Threshold.__init__
+esapi.security_configuration.SecurityConfiguration.__init__
+esapi.test.http.mock_http_request.MockHttpRequest.__init__
+esapi.test.http.mock_http_response.MockHttpResponse.__init__
+esapi.test.http.mock_session.MockSession.__init__
+esapi.test.test_access_controller.AccessControllerTest.__init__
+esapi.test.test_authenticator.ValidatorTest.__init__
+esapi.test.test_encoder.EncoderTest.__init__
+esapi.test.test_encryptor.EncryptorTest.__init__
+esapi.test.test_executor.ExecutorTest.__init__
+esapi.test.test_http_utilities.HTTPUtilitiesTest.__init__
+esapi.test.test_intrusion_detector.IntrusionDetectorTest.__init__
+esapi.test.test_logger.LoggerTest.__init__
+esapi.test.test_random_access_map.ARMTest.__init__
+esapi.test.test_randomizer.RandomizerTest.__init__
+esapi.test.test_user.UserTest.__init__
+esapi.test.test_validator.ValidatorTest.__init__
+esapi.user.AnonymousUser.__init__
+esapi.user.User.__init__
+esapi.validator.Validator.__init__" class="py-name" href="#" onclick="return doclink('link-6', '__init__', 'link-6');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt class="py-name">test_name</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line">         </tt>
+<a name="ARMTest.get_new_arm"></a><div id="ARMTest.get_new_arm-def"><a name="L28"></a><tt class="py-lineno"> 28</tt> <a class="py-toggle" href="#" id="ARMTest.get_new_arm-toggle" onclick="return toggle('ARMTest.get_new_arm');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.test.test_random_access_map.ARMTest-class.html#get_new_arm">get_new_arm</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-op">*</tt><tt class="py-param">args</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ARMTest.get_new_arm-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="ARMTest.get_new_arm-expanded"><a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line">        <tt class="py-name">klass</tt> <tt class="py-op">=</tt> <tt id="link-7" class="py-name"><a title="esapi.core.ESAPI" class="py-name" href="#" onclick="return doclink('link-7', 'ESAPI', 'link-2');">ESAPI</a></tt><tt class="py-op">.</tt><tt id="link-8" class="py-name" targets="Class Method esapi.core.ESAPI.security_configuration()=esapi.core.ESAPI-class.html#security_configuration,Module esapi.security_configuration=esapi.security_configuration-module.html"><a title="esapi.core.ESAPI.security_configuration
+esapi.security_configuration" class="py-name" href="#" onclick="return doclink('link-8', 'security_configuration', 'link-8');">security_configuration</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-9" class="py-name" targets="Method esapi.reference.default_security_configuration.DefaultSecurityConfiguration.get_class_for_interface()=esapi.reference.default_security_configuration.DefaultSecurityConfiguration-class.html#get_class_for_interface,Method esapi.security_configuration.SecurityConfiguration.get_class_for_interface()=esapi.security_configuration.SecurityConfiguration-class.html#get_class_for_interface"><a title="esapi.reference.default_security_configuration.DefaultSecurityConfiguration.get_class_for_interface
+esapi.security_configuration.SecurityConfiguration.get_class_for_interface" class="py-name" href="#" onclick="return doclink('link-9', 'get_class_for_interface', 'link-9');">get_class_for_interface</a></tt><tt class="py-op">(</tt><tt class="py-string">"access_reference_map"</tt><tt class="py-op">)</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">klass</tt><tt class="py-op">(</tt><tt class="py-op">*</tt><tt class="py-name">args</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">         </tt>
+<a name="ARMTest.test_update"></a><div id="ARMTest.test_update-def"><a name="L32"></a><tt class="py-lineno"> 32</tt> <a class="py-toggle" href="#" id="ARMTest.test_update-toggle" onclick="return toggle('ARMTest.test_update');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.test.test_random_access_map.ARMTest-class.html#test_update">test_update</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ARMTest.test_update-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="ARMTest.test_update-expanded"><a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line">        <tt class="py-name">arm</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-10" class="py-name" targets="Method esapi.test.test_random_access_map.ARMTest.get_new_arm()=esapi.test.test_random_access_map.ARMTest-class.html#get_new_arm"><a title="esapi.test.test_random_access_map.ARMTest.get_new_arm" class="py-name" href="#" onclick="return doclink('link-10', 'get_new_arm', 'link-10');">get_new_arm</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line">         </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line">        <tt class="py-name">direct_refs</tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'direct1'</tt><tt class="py-op">,</tt> <tt class="py-string">'direct2'</tt><tt class="py-op">,</tt> <tt class="py-string">'direct3'</tt><tt class="py-op">)</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line">         </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line">        <tt class="py-comment"># test to make sure update does something</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">        <tt class="py-name">arm</tt><tt class="py-op">.</tt><tt id="link-11" class="py-name" targets="Method esapi.access_reference_map.AccessReferenceMap.update()=esapi.access_reference_map.AccessReferenceMap-class.html#update,Method esapi.reference.random_access_reference_map.RandomAccessReferenceMap.update()=esapi.reference.random_access_reference_map.RandomAccessReferenceMap-class.html#update"><a title="esapi.access_reference_map.AccessReferenceMap.update
+esapi.reference.random_access_reference_map.RandomAccessReferenceMap.update" class="py-name" href="#" onclick="return doclink('link-11', 'update', 'link-11');">update</a></tt><tt class="py-op">(</tt><tt class="py-name">direct_refs</tt><tt class="py-op">)</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line">        <tt class="py-name">indirect_ref1</tt> <tt class="py-op">=</tt> <tt class="py-name">arm</tt><tt class="py-op">.</tt><tt id="link-12" class="py-name" targets="Method esapi.access_reference_map.AccessReferenceMap.get_indirect_reference()=esapi.access_reference_map.AccessReferenceMap-class.html#get_indirect_reference,Method esapi.reference.random_access_reference_map.RandomAccessReferenceMap.get_indirect_reference()=esapi.reference.random_access_reference_map.RandomAccessReferenceMap-class.html#get_indirect_reference"><a title="esapi.access_reference_map.AccessReferenceMap.get_indirect_reference
+esapi.reference.random_access_reference_map.RandomAccessReferenceMap.get_indirect_reference" class="py-name" href="#" onclick="return doclink('link-12', 'get_indirect_reference', 'link-12');">get_indirect_reference</a></tt><tt class="py-op">(</tt><tt class="py-string">'direct1'</tt><tt class="py-op">)</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">indirect_ref1</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">fail</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line">         </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line">        <tt class="py-comment"># makes sure update removes items that are no longer in the list</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">        <tt class="py-name">direct_refs</tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'direct1'</tt><tt class="py-op">,</tt> <tt class="py-string">'direct4'</tt><tt class="py-op">)</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line">        <tt class="py-name">arm</tt><tt class="py-op">.</tt><tt id="link-13" class="py-name"><a title="esapi.access_reference_map.AccessReferenceMap.update
+esapi.reference.random_access_reference_map.RandomAccessReferenceMap.update" class="py-name" href="#" onclick="return doclink('link-13', 'update', 'link-11');">update</a></tt><tt class="py-op">(</tt><tt class="py-name">direct_refs</tt><tt class="py-op">)</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">assertTrue</tt><tt class="py-op">(</tt><tt class="py-name">arm</tt><tt class="py-op">.</tt><tt id="link-14" class="py-name"><a title="esapi.access_reference_map.AccessReferenceMap.get_indirect_reference
+esapi.reference.random_access_reference_map.RandomAccessReferenceMap.get_indirect_reference" class="py-name" href="#" onclick="return doclink('link-14', 'get_indirect_reference', 'link-12');">get_indirect_reference</a></tt><tt class="py-op">(</tt><tt class="py-string">'direct2'</tt><tt class="py-op">)</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">)</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line">         </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line">        <tt class="py-comment"># Make sure the indirect reference for direct1 didn't change</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">        <tt class="py-name">new_indirect_ref1</tt> <tt class="py-op">=</tt> <tt class="py-name">arm</tt><tt class="py-op">.</tt><tt id="link-15" class="py-name"><a title="esapi.access_reference_map.AccessReferenceMap.get_indirect_reference
+esapi.reference.random_access_reference_map.RandomAccessReferenceMap.get_indirect_reference" class="py-name" href="#" onclick="return doclink('link-15', 'get_indirect_reference', 'link-12');">get_indirect_reference</a></tt><tt class="py-op">(</tt><tt class="py-string">'direct1'</tt><tt class="py-op">)</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">assertEquals</tt><tt class="py-op">(</tt><tt class="py-name">indirect_ref1</tt><tt class="py-op">,</tt> <tt class="py-name">new_indirect_ref1</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">         </tt>
+<a name="ARMTest.test_indirect_references"></a><div id="ARMTest.test_indirect_references-def"><a name="L52"></a><tt class="py-lineno"> 52</tt> <a class="py-toggle" href="#" id="ARMTest.test_indirect_references-toggle" onclick="return toggle('ARMTest.test_indirect_references');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.test.test_random_access_map.ARMTest-class.html#test_indirect_references">test_indirect_references</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ARMTest.test_indirect_references-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="ARMTest.test_indirect_references-expanded"><a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">        <tt class="py-name">direct_refs</tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'123'</tt><tt class="py-op">,</tt> <tt class="py-string">'234'</tt><tt class="py-op">,</tt> <tt class="py-string">'345'</tt><tt class="py-op">)</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line">        <tt class="py-name">arm</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-16" class="py-name"><a title="esapi.test.test_random_access_map.ARMTest.get_new_arm" class="py-name" href="#" onclick="return doclink('link-16', 'get_new_arm', 'link-10');">get_new_arm</a></tt><tt class="py-op">(</tt><tt class="py-name">direct_refs</tt><tt class="py-op">)</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line">        <tt class="py-name">indirect</tt> <tt class="py-op">=</tt> <tt class="py-name">arm</tt><tt class="py-op">.</tt><tt id="link-17" class="py-name"><a title="esapi.access_reference_map.AccessReferenceMap.get_indirect_reference
+esapi.reference.random_access_reference_map.RandomAccessReferenceMap.get_indirect_reference" class="py-name" href="#" onclick="return doclink('link-17', 'get_indirect_reference', 'link-12');">get_indirect_reference</a></tt><tt class="py-op">(</tt><tt class="py-string">'234'</tt><tt class="py-op">)</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">         </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line">        <tt class="py-comment"># indirect reference should not be in direct references</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">assertFalse</tt><tt class="py-op">(</tt><tt class="py-name">indirect</tt> <tt class="py-keyword">in</tt> <tt class="py-name">direct_refs</tt><tt class="py-op">)</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">         </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">        <tt class="py-comment"># Confirm we can get the data back</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">assertEquals</tt><tt class="py-op">(</tt><tt class="py-string">'234'</tt><tt class="py-op">,</tt> <tt class="py-name">arm</tt><tt class="py-op">.</tt><tt id="link-18" class="py-name" targets="Method esapi.access_reference_map.AccessReferenceMap.get_direct_reference()=esapi.access_reference_map.AccessReferenceMap-class.html#get_direct_reference,Method esapi.reference.random_access_reference_map.RandomAccessReferenceMap.get_direct_reference()=esapi.reference.random_access_reference_map.RandomAccessReferenceMap-class.html#get_direct_reference"><a title="esapi.access_reference_map.AccessReferenceMap.get_direct_reference
+esapi.reference.random_access_reference_map.RandomAccessReferenceMap.get_direct_reference" class="py-name" href="#" onclick="return doclink('link-18', 'get_direct_reference', 'link-18');">get_direct_reference</a></tt><tt class="py-op">(</tt><tt class="py-name">indirect</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">         </tt>
+<a name="ARMTest.test_invalid_indirect"></a><div id="ARMTest.test_invalid_indirect-def"><a name="L63"></a><tt class="py-lineno"> 63</tt> <a class="py-toggle" href="#" id="ARMTest.test_invalid_indirect-toggle" onclick="return toggle('ARMTest.test_invalid_indirect');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.test.test_random_access_map.ARMTest-class.html#test_invalid_indirect">test_invalid_indirect</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ARMTest.test_invalid_indirect-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="ARMTest.test_invalid_indirect-expanded"><a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">        <tt class="py-comment"># If the indirect reference is invalid, AccessControlException should</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">        <tt class="py-comment"># be raised</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">        <tt class="py-name">direct_refs</tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'123'</tt><tt class="py-op">,</tt> <tt class="py-string">'234'</tt><tt class="py-op">,</tt> <tt class="py-string">'345'</tt><tt class="py-op">)</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">        <tt class="py-name">arm</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-19" class="py-name"><a title="esapi.test.test_random_access_map.ARMTest.get_new_arm" class="py-name" href="#" onclick="return doclink('link-19', 'get_new_arm', 'link-10');">get_new_arm</a></tt><tt class="py-op">(</tt><tt class="py-name">direct_refs</tt><tt class="py-op">)</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">assertRaises</tt><tt class="py-op">(</tt> <tt id="link-20" class="py-name"><a title="esapi.exceptions.AccessControlException" class="py-name" href="#" onclick="return doclink('link-20', 'AccessControlException', 'link-5');">AccessControlException</a></tt><tt class="py-op">,</tt>  </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">            <tt class="py-name">arm</tt><tt class="py-op">.</tt><tt id="link-21" class="py-name"><a title="esapi.access_reference_map.AccessReferenceMap.get_direct_reference
+esapi.reference.random_access_reference_map.RandomAccessReferenceMap.get_direct_reference" class="py-name" href="#" onclick="return doclink('link-21', 'get_direct_reference', 'link-18');">get_direct_reference</a></tt><tt class="py-op">,</tt> <tt class="py-string">"invalid"</tt> <tt class="py-op">)</tt> </tt>
+</div><a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line">             </tt>
+<a name="ARMTest.test_add_direct_reference"></a><div id="ARMTest.test_add_direct_reference-def"><a name="L71"></a><tt class="py-lineno"> 71</tt> <a class="py-toggle" href="#" id="ARMTest.test_add_direct_reference-toggle" onclick="return toggle('ARMTest.test_add_direct_reference');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.test.test_random_access_map.ARMTest-class.html#test_add_direct_reference">test_add_direct_reference</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ARMTest.test_add_direct_reference-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="ARMTest.test_add_direct_reference-expanded"><a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">        <tt class="py-name">direct_refs</tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'123'</tt><tt class="py-op">,</tt> <tt class="py-string">'234'</tt><tt class="py-op">,</tt> <tt class="py-string">'345'</tt><tt class="py-op">)</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">        <tt class="py-name">arm</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-22" class="py-name"><a title="esapi.test.test_random_access_map.ARMTest.get_new_arm" class="py-name" href="#" onclick="return doclink('link-22', 'get_new_arm', 'link-10');">get_new_arm</a></tt><tt class="py-op">(</tt><tt class="py-name">direct_refs</tt><tt class="py-op">)</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">         </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">        <tt class="py-name">new_direct</tt> <tt class="py-op">=</tt> <tt class="py-string">"newDirect"</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">        <tt class="py-name">indirect1</tt> <tt class="py-op">=</tt> <tt class="py-name">arm</tt><tt class="py-op">.</tt><tt id="link-23" class="py-name" targets="Method esapi.access_reference_map.AccessReferenceMap.add_direct_reference()=esapi.access_reference_map.AccessReferenceMap-class.html#add_direct_reference,Method esapi.reference.random_access_reference_map.RandomAccessReferenceMap.add_direct_reference()=esapi.reference.random_access_reference_map.RandomAccessReferenceMap-class.html#add_direct_reference"><a title="esapi.access_reference_map.AccessReferenceMap.add_direct_reference
+esapi.reference.random_access_reference_map.RandomAccessReferenceMap.add_direct_reference" class="py-name" href="#" onclick="return doclink('link-23', 'add_direct_reference', 'link-23');">add_direct_reference</a></tt><tt class="py-op">(</tt><tt class="py-name">new_direct</tt><tt class="py-op">)</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">        <tt class="py-name">got_direct</tt> <tt class="py-op">=</tt> <tt class="py-name">arm</tt><tt class="py-op">.</tt><tt id="link-24" class="py-name"><a title="esapi.access_reference_map.AccessReferenceMap.get_direct_reference
+esapi.reference.random_access_reference_map.RandomAccessReferenceMap.get_direct_reference" class="py-name" href="#" onclick="return doclink('link-24', 'get_direct_reference', 'link-18');">get_direct_reference</a></tt><tt class="py-op">(</tt><tt class="py-name">indirect1</tt><tt class="py-op">)</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">assertEquals</tt><tt class="py-op">(</tt><tt class="py-name">new_direct</tt><tt class="py-op">,</tt> <tt class="py-name">got_direct</tt><tt class="py-op">)</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">         </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">        <tt class="py-comment"># Indirect reference should not change</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">        <tt class="py-name">indirect2</tt> <tt class="py-op">=</tt> <tt class="py-name">arm</tt><tt class="py-op">.</tt><tt id="link-25" class="py-name"><a title="esapi.access_reference_map.AccessReferenceMap.add_direct_reference
+esapi.reference.random_access_reference_map.RandomAccessReferenceMap.add_direct_reference" class="py-name" href="#" onclick="return doclink('link-25', 'add_direct_reference', 'link-23');">add_direct_reference</a></tt><tt class="py-op">(</tt><tt class="py-name">new_direct</tt><tt class="py-op">)</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">assertEquals</tt><tt class="py-op">(</tt><tt class="py-name">indirect1</tt><tt class="py-op">,</tt> <tt class="py-name">indirect2</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">         </tt>
+<a name="ARMTest.test_remove_direct_reference"></a><div id="ARMTest.test_remove_direct_reference-def"><a name="L84"></a><tt class="py-lineno"> 84</tt> <a class="py-toggle" href="#" id="ARMTest.test_remove_direct_reference-toggle" onclick="return toggle('ARMTest.test_remove_direct_reference');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.test.test_random_access_map.ARMTest-class.html#test_remove_direct_reference">test_remove_direct_reference</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ARMTest.test_remove_direct_reference-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="ARMTest.test_remove_direct_reference-expanded"><a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line">        <tt class="py-name">direct_refs</tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'123'</tt><tt class="py-op">,</tt> <tt class="py-string">'234'</tt><tt class="py-op">,</tt> <tt class="py-string">'345'</tt><tt class="py-op">)</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line">        <tt class="py-name">arm</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-26" class="py-name"><a title="esapi.test.test_random_access_map.ARMTest.get_new_arm" class="py-name" href="#" onclick="return doclink('link-26', 'get_new_arm', 'link-10');">get_new_arm</a></tt><tt class="py-op">(</tt><tt class="py-name">direct_refs</tt><tt class="py-op">)</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">         </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">        <tt class="py-name">my_direct</tt> <tt class="py-op">=</tt> <tt class="py-string">'234'</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">        <tt class="py-name">indirect</tt> <tt class="py-op">=</tt> <tt class="py-name">arm</tt><tt class="py-op">.</tt><tt id="link-27" class="py-name"><a title="esapi.access_reference_map.AccessReferenceMap.get_indirect_reference
+esapi.reference.random_access_reference_map.RandomAccessReferenceMap.get_indirect_reference" class="py-name" href="#" onclick="return doclink('link-27', 'get_indirect_reference', 'link-12');">get_indirect_reference</a></tt><tt class="py-op">(</tt><tt class="py-name">my_direct</tt><tt class="py-op">)</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">indirect</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">fail</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">        <tt class="py-name">deleted_indirect</tt> <tt class="py-op">=</tt> <tt class="py-name">arm</tt><tt class="py-op">.</tt><tt id="link-28" class="py-name" targets="Method esapi.access_reference_map.AccessReferenceMap.remove_direct_reference()=esapi.access_reference_map.AccessReferenceMap-class.html#remove_direct_reference,Method esapi.reference.random_access_reference_map.RandomAccessReferenceMap.remove_direct_reference()=esapi.reference.random_access_reference_map.RandomAccessReferenceMap-class.html#remove_direct_reference"><a title="esapi.access_reference_map.AccessReferenceMap.remove_direct_reference
+esapi.reference.random_access_reference_map.RandomAccessReferenceMap.remove_direct_reference" class="py-name" href="#" onclick="return doclink('link-28', 'remove_direct_reference', 'link-28');">remove_direct_reference</a></tt><tt class="py-op">(</tt><tt class="py-name">my_direct</tt><tt class="py-op">)</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">assertEquals</tt><tt class="py-op">(</tt><tt class="py-name">indirect</tt><tt class="py-op">,</tt> <tt class="py-name">deleted_indirect</tt><tt class="py-op">)</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">         </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">        <tt class="py-comment"># Ensure we can't access the data anymore</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">assertRaises</tt><tt class="py-op">(</tt> <tt id="link-29" class="py-name"><a title="esapi.exceptions.AccessControlException" class="py-name" href="#" onclick="return doclink('link-29', 'AccessControlException', 'link-5');">AccessControlException</a></tt><tt class="py-op">,</tt>  </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line">            <tt class="py-name">arm</tt><tt class="py-op">.</tt><tt id="link-30" class="py-name"><a title="esapi.access_reference_map.AccessReferenceMap.get_direct_reference
+esapi.reference.random_access_reference_map.RandomAccessReferenceMap.get_direct_reference" class="py-name" href="#" onclick="return doclink('link-30', 'get_direct_reference', 'link-18');">get_direct_reference</a></tt><tt class="py-op">,</tt> <tt class="py-name">indirect</tt> <tt class="py-op">)</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">             </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">        <tt class="py-name">bogus</tt> <tt class="py-op">=</tt> <tt class="py-name">arm</tt><tt class="py-op">.</tt><tt id="link-31" class="py-name"><a title="esapi.access_reference_map.AccessReferenceMap.remove_direct_reference
+esapi.reference.random_access_reference_map.RandomAccessReferenceMap.remove_direct_reference" class="py-name" href="#" onclick="return doclink('link-31', 'remove_direct_reference', 'link-28');">remove_direct_reference</a></tt><tt class="py-op">(</tt><tt class="py-string">"ridiculous"</tt><tt class="py-op">)</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">assertTrue</tt><tt class="py-op">(</tt><tt class="py-name">bogus</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line">         </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line"><tt class="py-keyword">if</tt> <tt class="py-name">__name__</tt> <tt class="py-op">==</tt> <tt class="py-string">"__main__"</tt><tt class="py-op">:</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">    <tt class="py-name">unittest</tt><tt class="py-op">.</tt><tt class="py-name">main</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="esapi-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Sun Sep 27 16:35:00 2009
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

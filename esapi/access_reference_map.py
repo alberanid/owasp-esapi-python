@@ -89,7 +89,7 @@ class AccessReferenceMap(object):
         Removes a direct reference and its associated indirect reference from
         the AccessReferenceMap.
         
-        @param direct: the direct reference to remove
+        @param direct_ref: the direct reference to remove
         @return: the corresponding indirect reference
         """
         raise NotImplementedError()
