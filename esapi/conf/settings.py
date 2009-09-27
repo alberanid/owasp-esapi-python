@@ -120,7 +120,7 @@ HttpUtilities_ResponseContentType = 'text/html; charset=UTF-8'
 #===========================================================================
 # ESAPI Executor
 Executor_WorkingDirectory = r'/tmp'
-Executor_AllowedExecutables = ('/bin/sh')
+Executor_AllowedExecutables = ('/bin/sh', 'C:\Windows\System32\cmd.exe')
 # In seconds
 Executor_MaxRunningTime = 10
 
@@ -237,8 +237,3 @@ Validator_HTTPJSESSIONID = r"""^[A-Z0-9]{10,30}$"""
 # Validation of file related input
 Validator_Filename = r"""^[a-zA-Z0-9!@#$%^&{}\[\]()_+-=,.~'` ]{1,255}$"""
 Validator_DirectoryName = r"""^[a-zA-Z0-9:\\!@#$%^&{}\[\]()_+-=,.~'` ]{1,255}$"""
-
-try:
-    from settings_local import *
-except ImportError:
-    pass
