@@ -2,16 +2,14 @@
 # You can find more information about ESAPI
 # http://www.owasp.org/index.php/ESAPI
 #
-# WARNING: THIS FILE SHOULD ONLY CONTAIN SAFE DEFAULTS!!!!!
-# TO CUSTOMIZE THIS FILE FOR YOUR INSTALLATION, SEE 'settings_local.template'
-# SETTINGS DEFINED IN 'settings_local.py' WILL OVERRIDE THESE DEFAULTS!
+# THIS DOCUMENTATION NEEDS TO BE UPDATED!
 #
 # WARNING: Operating system protection should be used to lock down the conf
-# resources directory and all the files inside.  Note that if you are using file-based
+# directory and all the files inside.  Note that if you are using file-based
 # implementations that some files may need to be read-write as they get
 # updated dynamically.
 #
-# Before using, be sure to update the MasterKey and MasterSalt as described below.
+# Before using, be sure to update the MasterSalt as described below.
 #
 #===========================================================================
 # ESAPI Configuration
@@ -20,16 +18,14 @@
 # or implement your own providers to take advantage of your enterprise's security
 # infrastructure. The functions in ESAPI are referenced using the ESAPI locator, like:
 #
-#      ESAPI.encryptor().encrypt( "Secret message" );
+#      ESAPI.encryptor().encrypt( "Secret message" )
 #
 # Below you can specify the classname for the provider that you wish to use in your
 # application. The only requirement is that it implement the appropriate ESAPI interface.
 # This allows you to switch security implementations in the future without rewriting the
 # entire application.
 #
-# DefaultAccessController requires ESAPI-AccessControlPolicy.xml in .esapi directory
 ESAPI_access_controller = 'esapi.reference.file_based_access_controller.FileBasedAccessController'
-# FileBasedAuthenticator requires users.txt file in .esapi directory
 ESAPI_access_reference_map = 'esapi.reference.random_access_reference_map.RandomAccessReferenceMap'
 ESAPI_authenticator = 'esapi.reference.shelve_authenticator.ShelveAuthenticator'
 ESAPI_encoder = 'esapi.reference.default_encoder.DefaultEncoder'
