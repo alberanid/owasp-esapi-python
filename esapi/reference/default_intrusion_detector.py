@@ -100,7 +100,7 @@ class DefaultIntrusionDetector(IntrusionDetector):
     def take_security_action(self, action, message):
         """
         Take a specified security action. In this implementation, acceptable
-        actions are: log, disable, logout.
+        actions are: log, disable, logout, and lock.
         
         @param action: the action to take. Ie "log", "disable", "logout"
         @param message: the message to log if the action is "log"
@@ -112,10 +112,12 @@ class DefaultIntrusionDetector(IntrusionDetector):
         user = ESAPI.authenticator().current_user
         if user.is_anonymous():
             return
-        if action == "disable":
+        elif action == "disable":
             user.disable()
-        if action == "logout":
+        elif action == "logout":
             user.logout()
+        elif action == "lock":
+            user.lock()
         
     def add_security_event(self, user, event_name):
         """

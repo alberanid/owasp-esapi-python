@@ -117,19 +117,13 @@ class DefaultSecurityConfiguration(SecurityConfiguration):
         return settings.Authenticator_UsernameParameterName
         
     def get_remember_token_duration(self):
-        days = settings.Authenticator_RememberTokenDuration
-        duration = 1000 * 60 * 60 * 24 * days
-        return duration
+        return settings.Authenticator_RememberTokenDuration
 
     def get_session_idle_timeout_length(self):
-        minutes = settings.Authenticator_IdleTimeoutDuration
-        duration = 1000 * 60 * minutes
-        return duration
+        return settings.Authenticator_IdleTimeoutDuration
 
     def get_session_absolute_timeout_length(self):
-        minutes = settings.Authenticator_AbsoluteTimeoutDuration
-        duration = 1000 * 60 * minutes
-        return duration
+        return settings.Authenticator_AbsoluteTimeoutDuration
         
     def get_allowed_login_attempts(self):
         return settings.Authenticator_AllowedLoginAttempts

@@ -57,7 +57,7 @@ class IntrusionDetectorTest(unittest.TestCase):
                 "IntegrityException %s" % i )
             
         self.assertFalse(user.is_logged_in())
-        self.assertFalse(user.is_enabled())
+        self.assertTrue(user.is_locked())
         
     def test_add_event(self):
         username = "testAddEventIDS"
@@ -75,7 +75,7 @@ class IntrusionDetectorTest(unittest.TestCase):
         for i in range(15):
             ESAPI.intrusion_detector().add_event("test", "test message")
             
-        self.assertFalse(user.is_enabled())
+        self.assertTrue(user.is_locked())
         
 if __name__ == "__main__":
     unittest.main()

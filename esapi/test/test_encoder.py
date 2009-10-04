@@ -39,8 +39,6 @@ class EncoderTest(unittest.TestCase):
     
     def __init__(self, test_name=""):
         """
-        Instantiates a new EncoderTest test.
-        
         @param test_name: the test name
         """
         unittest.TestCase.__init__(self, test_name)
@@ -50,12 +48,7 @@ class EncoderTest(unittest.TestCase):
         Checks that only valid codecs are allowed.
         """
         codecs = [CSSCodec(), str]
-        try:
-            instance = ESAPI.encoder(codecs)
-            self.fail()
-        except TypeError:
-            # Expected
-            pass
+        self.assertRaises(TypeError, ESAPI.encoder, codecs)
             
     def test_canonicalize(self):
         codecs = [HTMLEntityCodec(), PercentCodec()]
@@ -243,22 +236,9 @@ class EncoderTest(unittest.TestCase):
         self.assertEquals( "< < < < < < <", instance.canonicalize( "%26lt; %26lt; &#X25;3c &#x25;3c %2526lt%253B %2526lt%253B %2526lt%253B", False ) )
 
         # test strict mode with both mixed and multiple encoding
-        try:
-            self.assertEquals( "< < < < < < <", instance.canonicalize( "%26lt; %26lt; &#X25;3c &#x25;3c %2526lt%253B %2526lt%253B %2526lt%253B" ) )
-        except IntrusionException, e:
-            # expected
-            pass
-        
-        try:
-            self.assertEquals( "<script", instance.canonicalize("%253Cscript" ) )
-        except IntrusionException, e:
-            # expected
-            pass
-        try:
-            self.assertEquals( "<script", instance.canonicalize("&#37;3Cscript" ) )
-        except IntrusionException, e:
-            # expected
-            pass
+        self.assertRaises( IntrusionException, instance.canonicalize, "%26lt; %26lt; &#X25;3c &#x25;3c %2526lt%253B %2526lt%253B %2526lt%253B" )
+        self.assertRaises( IntrusionException, instance.canonicalize, "%253Cscript" ) 
+        self.assertRaises( IntrusionException, instance.canonicalize, "&#37;3Cscript" )
             
     def test_encode_for_html(self):
         instance = ESAPI.encoder()

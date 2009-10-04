@@ -41,8 +41,7 @@ class DefaultExecutor(Executor):
     def __init__(self):
         self.logger = ESAPI.logger("Executor")
         self.working_dir = ESAPI.security_configuration().get_working_directory()
-        max_running_sec = ESAPI.security_configuration().get_max_running_time()
-        self.max_running_time = timedelta(seconds=max_running_sec)
+        self.max_running_time = ESAPI.security_configuration().get_max_running_time()
         if os.name == 'nt':
             self.logger.warning( Logger.SECURITY_SUCCESS,
                 _("Using WindowsCodec for Executor. If this is not running on Windows, this could allow for injection") )

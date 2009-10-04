@@ -11,6 +11,8 @@
 #
 # Before using, be sure to update the MasterSalt as described below.
 #
+from datetime import timedelta
+
 #===========================================================================
 # ESAPI Configuration
 #
@@ -51,11 +53,11 @@ Authenticator_AllowedLoginAttempts = 5
 Authenticator_MaxOldPasswordHashes = 12
 Authenticator_UsernameParameterName = 'username'
 Authenticator_PasswordParameterName = 'password'
-# RememberTokenDuration (in days)
-Authenticator_RememberTokenDuration = 14
-# Session Timeouts (in minutes)
-Authenticator_IdleTimeoutDuration = 20
-Authenticator_AbsoluteTimeoutDuration = 20
+# RememberTokenDuration
+Authenticator_RememberTokenDuration = timedelta(days=14)
+# Session Timeouts
+Authenticator_IdleTimeoutDuration = timedelta(minutes=20)
+Authenticator_AbsoluteTimeoutDuration = timedelta(minutes=20)
 
 #===========================================================================
 # ESAPI Encryption
@@ -116,9 +118,8 @@ HttpUtilities_ResponseContentType = 'text/html; charset=UTF-8'
 #===========================================================================
 # ESAPI Executor
 Executor_WorkingDirectory = r'/tmp'
-Executor_AllowedExecutables = ('/bin/sh', 'C:\Windows\System32\cmd.exe')
-# In seconds
-Executor_MaxRunningTime = 10
+Executor_AllowedExecutables = ('/bin/sh', '/bin/sleep', 'C:\Windows\System32\cmd.exe')
+Executor_MaxRunningTime = timedelta(seconds=10)
 
 
 #===========================================================================
@@ -137,7 +138,7 @@ Logger_MaxLogFileSize = 10000000
 #
 # Each event has a base to which .count, .interval, and .action are added
 # The IntrusionException will fire if we receive "count" events within "interval" seconds
-# The IntrusionDetector is configurable to take the following actions: log, logout, and disable
+# The IntrusionDetector is configurable to take the following actions: log, logout, disable, and lock
 #  (multiple actions separated by commas are allowed e.g. event.test.actions=log,disable
 #
 # Custom Events
@@ -146,7 +147,7 @@ Logger_MaxLogFileSize = 10000000
 #
 IntrusionDetector_event_test_count = 2
 IntrusionDetector_event_test_interval = 10
-IntrusionDetector_event_test_actions = ('disable','log')
+IntrusionDetector_event_test_actions = ('lock','log')
 
 # Exception Events
 # All EnterpriseSecurityExceptions are registered automatically
@@ -156,12 +157,12 @@ IntrusionDetector_event_test_actions = ('disable','log')
 # any intrusion is an attack
 IntrusionDetector_IntrusionException_count = 1
 IntrusionDetector_IntrusionException_interval = 1
-IntrusionDetector_IntrusionException_actions = ('log','disable','logout')
+IntrusionDetector_IntrusionException_actions = ('log','lock','logout')
 
 # for test purposes
 IntrusionDetector_IntegrityException_count = 10
 IntrusionDetector_IntegrityException_interval = 5
-IntrusionDetector_IntegrityException_actions = ('log','disable','logout')
+IntrusionDetector_IntegrityException_actions = ('log','lock','logout')
 
 # rapid validation errors indicate scans or attacks in progress
 # esapi.errors.ValidationException.count=10

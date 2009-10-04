@@ -23,22 +23,29 @@
 import unittest
 import inspect
 import time
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from esapi.core import ESAPI
 from esapi.translation import _
+from esapi.exceptions import AuthenticationLoginException, AuthenticationException
 from esapi.reference.default_encoder import DefaultEncoder
+from esapi.test.http.mock_http_request import MockHttpRequest
+from esapi.test.http.mock_http_response import MockHttpResponse
 
-# TESTS NOT BEING RUN!!!!!!!!!!!!
-# Re-enable when ready
-#class UserTest(unittest.TestCase):
-class UserTest():
+class UserTest(unittest.TestCase):
     def __init__(self, test_name=""):
         """       
         @param test_name: the test name
         """
         unittest.TestCase.__init__(self, test_name)
         self.user_class = ESAPI.security_configuration().get_class_for_interface('user')
+        
+    def setUp(self):
+        request = MockHttpRequest()
+        response = MockHttpResponse()
+        ESAPI.http_utilities().set_current_http(request, response)
+        ESAPI.authenticator().logout()
+        ESAPI.authenticator().clear_all_data()
              
     def create_test_user(self, username=None, password=None):
         """
@@ -48,10 +55,17 @@ class UserTest():
         @raises AuthenticationException:
         """
         if username is None:
-            username = ESAPI.randomizer().get_random_string(8, DefaultEncoder. CHAR_ALPHANUMERICS)
+            username = ESAPI.randomizer().get_random_string(8, DefaultEncoder.CHAR_ALPHANUMERICS)
             
         if password is None:
             password = ESAPI.randomizer().get_random_string(8, DefaultEncoder.CHAR_ALPHANUMERICS)
+            while True:
+                try:
+                    ESAPI.authenticator().verify_password_strength(password)
+                except:
+                    password = ESAPI.randomizer().get_random_string(8, DefaultEncoder.CHAR_ALPHANUMERICS)
+                else:
+                    break
             
         caller = inspect.stack()[2][3]
         print (_("Creating user %(username)s for %(caller)s") %
@@ -63,10 +77,13 @@ class UserTest():
         
     def test_add_role(self):
         user = self.create_test_user()
-        role = "the role"
+        role = "therole"
         user.add_role(role)
         self.assertTrue(user.is_in_role(role))
         self.assertFalse(user.is_in_role("ridiculous"))
+        
+        user.add_role(role)
+        self.assertEquals(1, len(user.roles))
         
     def test_add_roles(self):
         user = self.create_test_user()
@@ -110,7 +127,7 @@ class UserTest():
         self.assertFalse(user.verify_password("badpass"))
      
     def test_enable_disable(self):
-        user = self.create_test_user(password='password')
+        user = self.create_test_user(password='password12!@')
         user.enable()
         self.assertTrue(user.is_enabled())
         user.disable()
@@ -120,11 +137,11 @@ class UserTest():
         pass
     
     def test_account_name(self):
-        user = self.create_test_user(username='myuser')
-        account_name = 'new name'
+        user = self.create_test_user(username='testAccountNameUser')
+        account_name = 'newname'
         user.account_name = account_name
-        self.assertTrue(account_name == user.account_name)
-        self.assertFalse("ridiculous" == use.account_name)
+        self.assertEquals(account_name, user.account_name)
+        self.assertFalse("ridiculous" == user.account_name)
         
     def test_last_failed_login_time(self):
         user = self.create_test_user()
@@ -146,27 +163,28 @@ class UserTest():
         self.assertTrue(time1 < time2)
         
     def test_last_login_time(self):
-        user = self.create_test_user(password='testpass')
-        user.verify_password('testpass')
+        password = 'testpass12!@'
+        user = self.create_test_user(password=password)
+        user.verify_password(password)
         time1 = user.last_login_time
         time.sleep(0.01)
-        user.verify_password('testpass')
+        user.verify_password(password)
         time2 = user.last_login_time
         self.assertTrue(time1 < time2)
         
     def test_last_password_change_time(self):
-        old_password = 'pass1'
+        old_password = 'password12!@'
         user = self.create_test_user(password=old_password)
         time1 = user.last_password_change_time
         time.sleep(0.01)
-        new_password = 'pass2'
+        new_password = 'woot23@#'
         user.change_password(old_password, new_password, new_password)
         time2 = user.last_password_change_time
         self.assertTrue(time1 < time2)
         
     def test_get_roles(self):
         user = self.create_test_user()
-        role = 'ADMIN'
+        role = 'admin'
         user.add_role(role)
         roles = user.roles
         self.assertTrue(len(roles) > 0)
@@ -174,10 +192,10 @@ class UserTest():
         
     def test_remove_role(self):
         user = self.create_test_user()
-        role = 'the role'
+        role = 'therole'
         user.add_role(role)
         self.assertTrue(user.is_in_role(role))
-        self.remove_role(role)
+        user.remove_role(role)
         self.assertFalse(user.is_in_role(role))
         
     def test_screen_name(self):
@@ -199,21 +217,14 @@ class UserTest():
     def test_increment_failed_login_count(self):
         user = self.create_test_user()
         user.enable()
-        self.assertEquals(0, user.failed_login_count)
+        self.assertEquals(0, user.get_failed_login_count())
         
-        try:
-            user.login_with_password("ridiculous")
-        except:
-            pass
+        self.assertRaises(AuthenticationLoginException, user.login_with_password, "ridiculous")
             
-        self.assertEquals(1, user.failed_login_count)
+        self.assertEquals(1, user.get_failed_login_count())
         
-        try:
-            user.login_with_password("ridiculous")
-        except:
-            pass
-            
-        self.assertEquals(2, user.failed_login_count)
+        self.assertRaises(AuthenticationLoginException, user.login_with_password, "ridiculous")            
+        self.assertEquals(2, user.get_failed_login_count())
         
     def test_is_enabled(self):
         user = self.create_test_user()
@@ -253,28 +264,50 @@ class UserTest():
         pass
         
     def test_login_with_password(self):
-        user = self.create_test_user(password='password')
+        password = 'password12!@'
+        user = self.create_test_user(password=password)
         user.enable()
-        user.login_with_password('password')
+        user.login_with_password(password)
         self.assertTrue(user.is_logged_in())
         
+        # Test no password
+        user.logout()
+        self.assertRaises(AuthenticationLoginException, user.login_with_password, None)
+        
+        # Test disabled
+        user.logout()
+        user.disable()
+        self.assertRaises(AuthenticationLoginException, user.login_with_password, password)
+        user.enable()
+        
+        # Test lockout
         user.logout()
         self.assertFalse(user.is_logged_in())
         self.assertFalse(user.is_locked())
+        self.assertTrue(user.is_enabled())
         
-        for i in range(3):
+        for i in range(15):
             try:
-                user.login_with_password('password')
+                user.login_with_password('wrongpassword')
             except:
                 pass
             self.assertFalse(user.is_logged_in())
             
         self.assertTrue(user.is_locked())
+        self.assertRaises(AuthenticationLoginException, user.login_with_password, password)
         user.unlock()
         self.assertEquals(user.failed_login_count, 0)
+        
+    def test_expired_user(self):
+        password = "password12!@"
+        user = self.create_test_user(password=password)
+        user.enable()
+        user.expiration_time = datetime.now() - timedelta(days=1)
+        
+        self.assertRaises(AuthenticationLoginException, user.login_with_password, password)
             
     def test_logout(self):
-        password = 'test123'
+        password = 'password12!@'
         user = self.create_test_user(password=password)
         user.enable()
         user.login_with_password(password)
@@ -298,7 +331,11 @@ class UserTest():
         # Date in future, should not expire
         user.expiration_time = datetime.max
         self.assertFalse( user.is_expired() )
-        
+            def test_locale(self):
+        user = self.create_test_user()
+        locale = "en/US"
+        user.locale = locale
+        self.assertEquals(user.locale, locale)
            
 if __name__ == "__main__":
     unittest.main()

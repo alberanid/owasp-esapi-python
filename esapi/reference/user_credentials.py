@@ -60,3 +60,9 @@ class UserCredentials():
         """
         self._password_hashes.append(new_hash)
     
+    def get_old_password_hashes(self):
+        """
+        Returns a tuple of old password hashes.
+        """
+        return tuple(self._password_hashes)
+        

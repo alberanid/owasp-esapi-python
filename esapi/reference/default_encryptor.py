@@ -65,7 +65,6 @@ class DefaultEncryptor(Encryptor):
                 {'algorithm' : self.encrypt_algorithm} )
         
         self.encryption_key_length = ESAPI.security_configuration().get_encryption_key_length()
-        #self.master_key = ESAPI.security_configuration().get_master_key()
         self.master_salt = ESAPI.security_configuration().get_master_salt()
         
         # Public key crypto
@@ -76,7 +75,6 @@ class DefaultEncryptor(Encryptor):
                 _("Encryption Failure - Unknown algorithm for signing: %(algorithm)s") %
                 {'algorithm' : self.signing_algorithm} )
         self.signing_key_length = ESAPI.security_configuration().get_digital_signature_key_length()
-        #self.signing_key_pair = ESAPI.security_configuration().get_digital_signature_key()
         
         # Key locations
         self.keys_location = ESAPI.security_configuration().get_encryption_keys_location()

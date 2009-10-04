@@ -162,8 +162,8 @@ class SecurityConfiguration:
         
     def get_remember_token_duration(self):
         """
-        Gets the length of the time to live window for remember me tokens 
-        (in milliseconds).
+        Gets the length of the time to live window for remember me tokens as
+        a timedelta object.
         
         @return: The time to live length for generated remember me tokens.
         """
@@ -171,8 +171,8 @@ class SecurityConfiguration:
 
     def get_session_idle_timeout_length(self):
         """
-        Gets the idle timeout length for sessions (in milliseconds). This is 
-        the amount of time that a session can live before it expires due to 
+        Gets the idle timeout length for sessions as a timedelta object. This 
+        is the amount of time that a session can live before it expires due to 
         lack of activity. Applications or frameworks could provide a 
         reauthenticate function that enables a session to continue after 
         reauthentication.
@@ -183,8 +183,8 @@ class SecurityConfiguration:
 
     def get_session_absolute_timeout_length(self):
         """
-        Gets the absolute timeout length for sessions (in milliseconds). This 
-        is the amount of time that a session can live before it expires 
+        Gets the absolute timeout length for sessions as a timedelta object. 
+        This is the amount of time that a session can live before it expires 
         regardless of the amount of user activity. Applications or frameworks 
         could provide a reauthenticate function that enables a session to 
         continue after reauthentication.
@@ -263,6 +263,13 @@ class SecurityConfiguration:
         @return: a list of the current allowed executables
         """
         raise NotImplementedError()
+        
+    def get_max_running_time(self):
+        """
+        Returns the maximum length of time any process should be executed for 
+        as a timedelta object.
+        """
+        raise NotImplementedError()        
         
     # Hashing
     def get_master_salt(self):

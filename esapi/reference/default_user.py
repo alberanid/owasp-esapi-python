@@ -54,11 +54,12 @@ class DefaultUser(User):
         self._set_account_name(account_name)
         
         # Get random numbers until we find an unused account number
+        # WARNING: This could cause in infinite loop if the number of users equals the keyspace of uids.
         while True:
             id = ESAPI.randomizer().get_random_integer(1)
-            #if ESAPI.authenticator().get_user(id) is None and id != 0:
-            self._account_id = id
-            break
+            if id != 0 and not ESAPI.authenticator().exists(account_id=id):
+                self._account_id = id
+                break
         
         self.logger = ESAPI.logger("DefaultUser")
         self._screen_name = None
@@ -179,10 +180,10 @@ class DefaultUser(User):
         
     def remove_role(self, role):
         if isinstance(role, str):
-            role = lower(role)
+            role = role.lower()
             
         try:
-            self._role.remove(role)
+            self._roles.remove(role)
             self.logger.trace(Logger.SECURITY_SUCCESS,
                 _("Role %(role_name)s removed from %(account_name)") %
                 {'role_name' : role,
@@ -193,7 +194,7 @@ class DefaultUser(User):
         
     def is_in_role(self, role):
         if isinstance(role, str):
-            role = lower(role)
+            role = role.lower()
             
         return role in self._roles
         
@@ -217,7 +218,7 @@ class DefaultUser(User):
         
     def change_password(self, old_password, new_password1, new_password2):
         ESAPI.authenticator().change_password(self, 
-            old_passowrd, 
+            old_password, 
             new_password1, 
             new_password2)
         
@@ -384,7 +385,7 @@ class DefaultUser(User):
     def remove_session(self, session):
         try:
             self._sessions.remove(session)
-        except Exception:
+        except:
             pass
         
     def get_sessions(self):
@@ -400,7 +401,7 @@ class DefaultUser(User):
         if session is None:
             return True
             
-        deadline = session.creation_time + timedelta(milliseconds=self.ABSOLUTE_TIMEOUT_LENGTH)
+        deadline = session.creation_time + self.ABSOLUTE_TIMEOUT_LENGTH
         return datetime.now() > deadline
         
     def is_session_timeout(self):
@@ -408,7 +409,7 @@ class DefaultUser(User):
         if session is None:
             return True
             
-        deadline = session.last_accessed_time + timedelta(milliseconds=self.IDLE_TIMEOUT_LENGTH)
+        deadline = session.last_accessed_time + self.IDLE_TIMEOUT_LENGTH
         return datetime.now() > deadline
     
     # Locking
@@ -421,7 +422,7 @@ class DefaultUser(User):
     def unlock(self):
         self._locked = False
         self._failed_login_count = 0
-        self.logger.fail( Logger.SECURITY_SUCCESS,
+        self.logger.info( Logger.SECURITY_SUCCESS,
             _("Account unlocked: %(account_name)s") % 
             {'account_name' : self.account_name})
         

@@ -332,6 +332,7 @@ class ShelveAuthenticator(Authenticator):
         
         try:
             self.set_hashed_password(user, self.hash_password(password1, account_name))
+            user.last_password_change_time = datetime.now()
         except EncryptionException, extra:
             raise AuthenticationException(
                 _("Internal error"),
@@ -394,7 +395,7 @@ class ShelveAuthenticator(Authenticator):
             user.last_password_change_time = datetime.now()
             
             new_hash = self.hash_password(new_password1, user.account_name)
-            if new_hash in self.get_old_password_hashes(user):
+            if new_hash in self.get_old_password_hashes(user.account_name):
                 raise AuthenticationCredentialsException(
                     _("Password change failed"),
                     _("Password matches a recent password for user: %(user)s") %
@@ -412,9 +413,18 @@ class ShelveAuthenticator(Authenticator):
                 {'user' : user.account_name},
                 extra )
         
-    def get_user(self, account_name):
-        account_name = account_name.lower()
-        return self.user_shelf.get(account_name, None)
+    def get_user(self, account_name=None, account_id=None):
+        if account_name is not None:
+            account_name = account_name.lower()
+            return self.user_shelf.get(account_name, None)
+            
+        elif account_id is not None:
+            # This is a bad nieve search and should be changed according to your system.
+            # SQL can do this much better
+            for user in self.user_shelf.values():
+                if user.account_id == account_id:
+                    return user
+            return None
     
     def hash_password(self, password, account_name):
         salt = account_name.lower()
@@ -487,6 +497,24 @@ class ShelveAuthenticator(Authenticator):
                 _("Invalid password"),
                 _("New password is not long or complex enough") )
         
-    def exists(self, account_name):
-        account_name = account_name.lower()
-        return self.user_shelf.has_key(account_name)
+    def exists(self, account_name=None, account_id=None):     
+        if account_name is not None:
+            account_name = account_name.lower()
+            return self.user_shelf.has_key(account_name)
+            
+        elif account_id is not None:
+            # This is a bad nieve search and should be changed according to your system.
+            # SQL can do this much better
+            for user_name in self.user_shelf.keys():
+                user = self.user_shelf[user_name]
+                if user.account_id == account_id:
+                    return True
+            return False
+        
+    def get_old_password_hashes(self, account_name):
+        if self.exists(account_name):
+            return self.cred_shelf[account_name].get_old_password_hashes()
+        else:
+            return []
+    
+    

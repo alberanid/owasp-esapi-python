@@ -79,17 +79,35 @@ class ExecutorTest(unittest.TestCase):
         parent_dir = '/'
         result = instance.execute_system_command(executable, params, parent_dir, codec=codec)
         print "result:", result
+
+        # Don't log the params
+        result = instance.execute_system_command(executable, params, parent_dir, log_params=False)
+
+        # Test default codec
+        result = instance.execute_system_command(executable, params, parent_dir)
+        print "result:", result
+        
+        # Test bad executable
+        self.assertRaises( ExecutorException, instance.execute_system_command, "/usr/bin/passwd", [], parent_dir)
+        
+        # Test bad working directory
+        self.assertRaises( ExecutorException, instance.execute_system_command, executable, params, parent_dir, "/rediculous")
         
         executable = '/bin/sh;.inject'
-        self.assertRaises(ExecutorException, instance.execute_system_command, executable, params, parent_dir, codec=codec)
+        self.assertRaises( ExecutorException, instance.execute_system_command, executable, params, parent_dir, codec=codec)
         
         executable = '/../bin/sh'
-        self.assertRaises(ExecutorException, instance.execute_system_command, executable, params, parent_dir, codec=codec)        
+        self.assertRaises( ExecutorException, instance.execute_system_command, executable, params, parent_dir, codec=codec)        
 
         executable = '/bin/sh'
         params.append(';ls')
         result = instance.execute_system_command(executable, params, parent_dir, codec=codec)
-        print "result:", result          
+        print "result:", result    
+        
+        # Exceed the runtime
+        executable = '/bin/sleep'
+        params = ['30']
+        self.assertRaises( ExecutorException, instance.execute_system_command, executable, params, parent_dir)
                 
 if __name__ == "__main__":
     unittest.main()

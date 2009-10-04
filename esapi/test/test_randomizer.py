@@ -87,7 +87,26 @@ class RandomizerTest(unittest.TestCase):
             if guid in guids: 
                 self.fail()
             guids.append(guid)
-    
+            
+    def test_get_random_boolean(self):
+        instance = ESAPI.randomizer()
+        trues = 0
+        falses = 0
+        for i in range(1000):
+            ans = instance.get_random_boolean()
+            if ans:
+                trues += 1
+            else:
+                falses += 1
+        if trues > 700 or falses > 700:
+            print "There may be a problem with the randomizer."
+            print "Got %s trues and %s falses" % (trues, falses)
+            self.fail()
+            
+    def test_get_random_filename(self):
+        instance = ESAPI.randomizer()
+        for i in range(10):
+            instance.get_random_filename('txt')
     
 if __name__ == "__main__":
     unittest.main()
