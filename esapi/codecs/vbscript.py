@@ -49,7 +49,7 @@ class VBScriptCodec(codec.Codec):
                     inquotes = True
                     encoding = False
                     
-                # handle characters than need encoding
+                # handle characters that need special encoding
                 else:
                     if inquotes:
                         buf += '"'
@@ -88,48 +88,17 @@ class VBScriptCodec(codec.Codec):
 	  
         Formats all are legal both upper/lower case:
             - "x - all special characters
-            - chrw(x)
+            - chrw(x) - not supported yet
         """
         pbs.mark()
         
+        # Will always be true because pbs.has_next() in codec.decode        
         first = pbs.next()
-        if first is None:
-            pbs.reset()
-            return None
             
         # if this is not an encoded character, return None
         if first == '"':
             second = pbs.next()           
             return second
-        elif first == 'c':
-            # could be chrw(x)
-            next_4 = ''.join([pbs.next() for x in range(4)])
-            if next_4 == 'hrw(':
-                num_buf = ''
-                for i in range(4):
-                    # Look for a maximum of 4 digits afterwards
-                    next_num = pbs.next()
-                    if next_num is not None and next_num.isdigit():
-                        num_buf += next_num
-                    else:
-                        pbs.pushback(next_num)
-                        break
-                if not pbs.peek(')'):
-                    # Something isn't right here
-                    pbs.reset()
-                    return None
-                # Eat the end paren
-                pbs.next()
-                # Try to convert to number
-                try:
-                    decoded = unichr(int(num_buf))
-                    return decoded
-                except ValueError:
-                    pbs.reset()
-                    return None
-            else:
-                # fall through to reset and return None
-                pass
         
         pbs.reset()
         return None

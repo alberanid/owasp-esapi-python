@@ -17,6 +17,7 @@
 """
 
 import esapi.codecs.codec as codec
+import esapi.codecs.push_back_string
 
 class HTMLEntityCodec(codec.Codec):
     """
@@ -70,11 +71,8 @@ class HTMLEntityCodec(codec.Codec):
         """
         pbs.mark()
         
+        # Will always be true because pbs.has_next() in codec.decode
         first = pbs.next()
-        # if should never be true because pbs.has_next() in codec.decode
-        if first is None:
-            pbs.reset()
-            return None
             
         # if this is not an encoded character, return none
         if first != '&':
@@ -162,7 +160,7 @@ class HTMLEntityCodec(codec.Codec):
         while pbs.has_next():
             char = pbs.peek()
             
-            if char in "0123456789ABCDEFabcdef":
+            if esapi.codecs.push_back_string.is_hex_digit(char):
                 # If char is a hex digit than add it on and keep going
                 buf += char
                 pbs.next()
@@ -171,8 +169,9 @@ class HTMLEntityCodec(codec.Codec):
                 pbs.next()
                 break
             else:
-                # otherwise just quit
-                break
+                # malformed, just quit
+                pbs.reset()
+                return None
         try:
             i = int(buf, 16)
             return unichr(i)

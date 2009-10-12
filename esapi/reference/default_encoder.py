@@ -212,6 +212,4 @@ class DefaultEncoder(Encoder):
         try:
             return base64.b64decode(input_)
         except:
-            return None
-
-
+            return None

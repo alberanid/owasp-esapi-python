@@ -18,18 +18,7 @@
 """
 
 from esapi.codecs.push_back_string import PushbackString
-
-def is_ascii(string):
-    """
-    Determines if all the characters in the given string are part of the
-    128 characters of ascii. ord(char) must be in range(128)
-    """
-    try:
-        string.decode('ascii')
-        return True
-    except UnicodeDecodeError:
-        return False
-        
+      
 def is_8bit(char):
     """
     Returns True if ord(char) < 256, False otherwise

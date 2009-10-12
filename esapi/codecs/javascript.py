@@ -51,19 +51,18 @@ class JavascriptCodec(codec.Codec):
         temp = codec.get_hex_for_char(char).upper()
         if ord(char) < 256:
             padding = '00'[len(temp):]
-            return "\\x" + padding + temp
+            return u"\\x" + padding + temp
            
         # otherwise encode with \\uHHHH
+        # Will never get here because 8-bit implies < 256
         padding = '0000'[len(temp):]
-        return "\\u" + padding + temp
+        return u"\\u" + padding + temp
         
     def decode_character(self, pbs):
         pbs.mark()
         
+        # Will always be true because pbs.has_next() in codec.decode
         first = pbs.next()
-        if first is None:
-            pbs.reset()
-            return None
             
         # if this is not an encoded character, return None
         if first != '\\':
@@ -144,7 +143,7 @@ class JavascriptCodec(codec.Codec):
                 buf += char2
                 # get digit 3 if present
                 char3 = pbs.next()
-                if not esapi.codecs.push_back_string.is_octal_digit(char3):
+                if not push_back_string.is_octal_digit(char3):
                     pbs.pushback(char3)
                 else:
                     buf += char3

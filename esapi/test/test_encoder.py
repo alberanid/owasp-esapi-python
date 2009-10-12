@@ -28,12 +28,17 @@ from esapi.codecs.css import CSSCodec
 from esapi.codecs.html_entity import HTMLEntityCodec
 from esapi.codecs.percent import PercentCodec
 from esapi.codecs.javascript import JavascriptCodec
-from esapi.codecs.mysql import MySQLCodec
+from esapi.codecs.mysql import MySQLCodec, BadModeError
+from esapi.codecs.vbscript import VBScriptCodec
 from esapi.codecs.oracle import OracleCodec
 from esapi.codecs.windows import WindowsCodec
 from esapi.codecs.unix import UnixCodec
 
 from esapi.exceptions import IntrusionException
+
+PLAIN = 0
+ENCODED = 1
+ALT_ENCODINGS = 2
 
 class EncoderTest(unittest.TestCase):
     
@@ -240,8 +245,11 @@ class EncoderTest(unittest.TestCase):
         self.assertRaises( IntrusionException, instance.canonicalize, "%253Cscript" ) 
         self.assertRaises( IntrusionException, instance.canonicalize, "&#37;3Cscript" )
             
-    def test_encode_for_html(self):
+    def test_html_codec(self):
         instance = ESAPI.encoder()
+        
+        ### High level
+        
         self.assertEquals(None, instance.encode_for_html(None))
         # test invalid characters are replaced with spaces
         self.assertEquals("a b c d e f&#x9;g", instance.encode_for_html("a" + unichr(0) + "b" + unichr(4) + "c" + unichr(128) + "d" + unichr(150) + "e" +unichr(159) + "f" + unichr(9) + "g"))
@@ -249,10 +257,38 @@ class EncoderTest(unittest.TestCase):
         self.assertEquals("&lt;script&gt;", instance.encode_for_html("<script>"))
         self.assertEquals("&amp;lt&#x3b;script&amp;gt&#x3b;", instance.encode_for_html("&lt;script&gt;"))
         self.assertEquals("&#x21;&#x40;&#x24;&#x25;&#x28;&#x29;&#x3d;&#x2b;&#x7b;&#x7d;&#x5b;&#x5d;", instance.encode_for_html("!@$%()=+{}[]"))
-#        self.assertEquals("&#x21;&#x40;&#x24;&#x25;&#x28;&#x29;&#x3d;&#x2b;&#x7b;&#x7d;&#x5b;&#x5d;", instance.encode_for_html(instance.canonicalize("&#33;&#64;&#36;&#37;&#40;&#41;&#61;&#43;&#123;&#125;&#91;&#93;") ) )
+
         self.assertEquals(",.-_ ", instance.encode_for_html(",.-_ "))
         self.assertEquals("dir&amp;", instance.encode_for_html("dir&"))
         self.assertEquals("one&amp;two", instance.encode_for_html("one&two"))
+        # Unicode
+        self.assertEquals(unichr(12345), instance.encode_for_html(unichr(12345)))
+        
+        ### Low lovel
+        codec = HTMLEntityCodec()
+        
+        cases = (
+                 # PLAIN - ENCODED - ALT_ENCODINGS
+                 ('', '', ()),
+                 ('t','t', ()),
+                 ('test', 'test', ()),
+                 ('<script>', '&lt;script&gt;', ()),
+                 ('!@#$%^&*(){}[]?+/=|\\', '&#x21;&#x40;&#x23;&#x24;&#x25;&#x5e;&amp;&#x2a;&#x28;&#x29;&#x7b;&#x7d;&#x5b;&#x5d;&#x3f;&#x2b;&#x2f;&#x3d;&#x7c;&#x5c;', ()),
+                 ('"`~1234_-', '&quot;&#x60;&#x7e;1234&#x5f;&#x2d;', ()),
+                 (unichr(9), "&#x9;", ()),
+                 (unichr(12345), unichr(12345), ()),
+                 ('\\', '&#x5c;', ()),
+             )
+             
+        for case in cases:
+            self.assertEquals(case[ENCODED], codec.encode('', case[PLAIN]))
+            self.assertEquals(case[PLAIN], codec.decode(case[ENCODED]))
+            for encoding in case[ALT_ENCODINGS]:
+                self.assertEquals(case[PLAIN], codec.decode(encoding))
+        
+        # Bad entity name
+        self.assertEquals("&ridiculous;", codec.decode("&ridiculous;"))
+        
         
     def test_encode_for_html_attribute(self):
         instance = ESAPI.encoder()
@@ -262,50 +298,176 @@ class EncoderTest(unittest.TestCase):
         self.assertEquals(",.-_", instance.encode_for_html_attribute(",.-_"))
         self.assertEquals("&#x20;&#x21;&#x40;&#x24;&#x25;&#x28;&#x29;&#x3d;&#x2b;&#x7b;&#x7d;&#x5b;&#x5d;", instance.encode_for_html_attribute(" !@$%()=+{}[]"))
         
-    def test_encode_for_css(self):
+    def test_codec_for_css(self):
         instance = ESAPI.encoder()
-        
+       
+        ### High level
         self.assertEquals(None, instance.encode_for_css(None))
         self.assertEquals("\\3c script\\3e ", instance.encode_for_css("<script>"))
         self.assertEquals("\\21 \\40 \\24 \\25 \\28 \\29 \\3d \\2b \\7b \\7d \\5b \\5d ", instance.encode_for_css("!@$%()=+{}[]"))
-            
-    def test_encode_for_javascript(self):
+        # Unicode
+        self.assertEquals(unichr(12345), instance.encode_for_css(unichr(12345)))
+        
+        ### Low level
+        codec = CSSCodec()
+        
+        cases = (
+             # PLAIN - ENCODED - ALT_ENCODINGS
+             ('', '', ()), # 0 length string
+             ('t','t', ()),
+             ('test', 'test', ()),
+             ('<script>', '\\3c script\\3e ', ()),
+             ('!@#$%^&*(){}[]?+/=|\\', '\\21 \\40 \\23 \\24 \\25 \\5e \\26 \\2a \\28 \\29 \\7b \\7d \\5b \\5d \\3f \\2b \\2f \\3d \\7c \\5c ', ()),
+             ('"`~1234_-', '\\22 \\60 \\7e 1234\\5f \\2d ', ()),
+             (unichr(9), "\\9 ", ()),
+             (unichr(12345), unichr(12345), ()),
+             ('\\', '\\5c ', ('\\')),
+             ('\\2aq', None, ("\\2aq",)), # Malformed hex
+             ('\\2aq ', None, ("\\2aq ",)), # Malformed hex
+             ('\\q ', None, ('\\q ',)), # Malformed hex
+         )
+             
+        for case in cases:
+            if case[ENCODED] is not None:
+                self.assertEquals(case[ENCODED], codec.encode('', case[PLAIN]))
+                self.assertEquals(case[PLAIN], codec.decode(case[ENCODED]))
+            for encoding in case[ALT_ENCODINGS]:
+                print "encoding=",encoding
+                self.assertEquals(case[PLAIN], codec.decode(encoding))
+                           
+    def test_codec_for_javascript(self):
         instance = ESAPI.encoder()
+        
+        ### High level
         self.assertEquals(None, instance.encode_for_javascript(None))
         self.assertEquals("\\x3Cscript\\x3E", instance.encode_for_javascript("<script>"))
         self.assertEquals(",.\\x2D_\\x20", instance.encode_for_javascript(",.-_ "))
         self.assertEquals("\\x21\\x40\\x24\\x25\\x28\\x29\\x3D\\x2B\\x7B\\x7D\\x5B\\x5D", instance.encode_for_javascript("!@$%()=+{}[]"))
+        
+        #   Unicode
+        self.assertEquals(unichr(12345), instance.encode_for_javascript(unichr(12345)))
+        
+        ### Low level
+        codec = JavascriptCodec()
+        
+        # Bad hex format
+        self.assertEquals("\\xAQ", codec.decode("\\xAQ"))
+        self.assertEquals("\\uAAQ", codec.decode("\\uAAQ"))
+        
     
-    def test_encode_for_vbscript(self):
+    def test_codec_for_vbscript(self):
         instance = ESAPI.encoder()
+        
+        ### High level
         self.assertEquals(None, instance.encode_for_vbscript(None))
         self.assertEquals( "chrw(60)&\"script\"&chrw(62)", instance.encode_for_vbscript("<script>"))
         self.assertEquals( "x\"&chrw(32)&chrw(33)&chrw(64)&chrw(36)&chrw(37)&chrw(40)&chrw(41)&chrw(61)&chrw(43)&chrw(123)&chrw(125)&chrw(91)&chrw(93)", instance.encode_for_vbscript("x !@$%()=+{}[]"))
         self.assertEquals( "alert\"&chrw(40)&chrw(39)&\"ESAPI\"&chrw(32)&\"test\"&chrw(33)&chrw(39)&chrw(41)", instance.encode_for_vbscript("alert('ESAPI test!')" ))
         self.assertEquals( "jeff.williams\"&chrw(64)&\"aspectsecurity.com", instance.encode_for_vbscript("jeff.williams@aspectsecurity.com"))
         self.assertEquals( "test\"&chrw(32)&chrw(60)&chrw(62)&chrw(32)&\"test", instance.encode_for_vbscript("test <> test" ))
+        
+        ### Low level
+        codec = VBScriptCodec()
+
+        cases = (
+             # PLAIN - ENCODED - ALT_ENCODINGS
+             ('', '', ()), # 0 length string
+             ('t','t', ()),
+             ('test', 'test', ()),
+             (unichr(12345), unichr(12345), ()),
+         )
+             
+        for case in cases:
+            if case[ENCODED] is not None:
+                self.assertEquals(case[ENCODED], codec.encode('', case[PLAIN]))
+                self.assertEquals(case[PLAIN], codec.decode(case[ENCODED]))
+            for encoding in case[ALT_ENCODINGS]:
+                print "encoding=",encoding
+                self.assertEquals(case[PLAIN], codec.decode(encoding))
+                
+        encode_only_cases = (
+             # PLAIN - ENCODED - ALT_ENCODINGS
+             ('<script>', 'chrw(60)&"script"&chrw(62)', ()),
+             ('!@#$%^&*(){}[]?+/=|\\', 'chrw(33)&chrw(64)&chrw(35)&chrw(36)&chrw(37)&chrw(94)&chrw(38)&chrw(42)&chrw(40)&chrw(41)&chrw(123)&chrw(125)&chrw(91)&chrw(93)&chrw(63)&chrw(43)&chrw(47)&chrw(61)&chrw(124)&chrw(92)', ()),
+             ('"`~1234_-', 'chrw(34)&chrw(96)&chrw(126)&"1234"&chrw(95)&chrw(45)', ()),
+             (unichr(9), "chrw(9)", ()),
+             ('\\', 'chrw(92)', ('\\')),
+         )
+         
+        for case in encode_only_cases:
+            if case[ENCODED] is not None:
+                self.assertEquals(case[ENCODED], codec.encode('', case[PLAIN]))
     
     def test_encode_for_xpath(self):
         instance = ESAPI.encoder()
         self.assertEquals(None, instance.encode_for_xpath(None))
         self.assertEquals("&#x27;or 1&#x3d;1", instance.encode_for_xpath("'or 1=1"))
         
-    def test_encode_for_sql(self):
+    def test_sql_codec(self):
         instance = ESAPI.encoder()
 
+        ### High level
         mySQL1 = MySQLCodec( MySQLCodec.ANSI_MODE )
         self.assertEquals(None, instance.encode_for_sql(mySQL1, None))
         self.assertEquals("Jeff'' or ''1''=''1", instance.encode_for_sql(mySQL1, "Jeff' or '1'='1"))
+        self.assertEquals("''", instance.encode_for_sql(mySQL1, "'"))
+        self.assertEquals(unichr(12345), instance.encode_for_sql(mySQL1, unichr(12345)))
         
         mySQL2 = MySQLCodec( MySQLCodec.MYSQL_MODE )
         self.assertEquals(None, instance.encode_for_sql(mySQL2, None))
         self.assertEquals("Jeff\\' or \\'1\\'\\=\\'1", instance.encode_for_sql(mySQL2, "Jeff' or '1'='1"))
-
+        self.assertEquals("\\t", instance.encode_for_sql(mySQL2, unichr(9)))
+        self.assertEquals(unichr(12345), instance.encode_for_sql(mySQL2, unichr(12345)))
+    
+        ### Low level
+        cases = ('test',
+                 '<script>',
+                 'the answer',
+                 '!@#$%^&*(){}[]?+/=|\\',
+                 '"`~1234_-',
+                 unichr(9),
+                 unichr(12345))
+                 
+        for case in cases:
+            self.assertEquals(case, mySQL1.decode(mySQL1.encode('', case)))
+            self.assertEquals(case, mySQL2.decode(mySQL1.encode('', case)))
+            
+        self.assertEquals(unichr(9), mySQL2.decode("\\t"))
+        self.assertEquals('m', mySQL2.decode("\\m"))
+        
+        self.assertEquals("'", mySQL1.decode("''"))
+        self.assertEquals("'", mySQL1.decode("'"))
+        self.assertEquals("'q", mySQL1.decode("'q"))
+        
+        # Bad mode
+        self.assertRaises(BadModeError, MySQLCodec, -2 )
+        
+    
+    def test_oracle_codec(self):
+        instance = ESAPI.encoder()
+        ### High level
         oracle = OracleCodec()
         self.assertEquals(None, instance.encode_for_sql(oracle, None))
         self.assertEquals("Jeff\\' or \\'1\\'\\=\\'1", instance.encode_for_sql(oracle, "Jeff' or '1'='1"))
+        
+        
+        ### Low level
+        cases = ('t',
+                 'test',
+                 '<script>',
+                 'the answer',
+                 '!@#$%^&*(){}[]?+/=|\\',
+                 '"`~1234_-',
+                 unichr(9),
+                 unichr(12345),
+                 '\\')
+                 
+        for case in cases:
+            self.assertEquals(case, oracle.decode(oracle.encode('', case)))
+            
+        self.assertEquals('\\\\', oracle.encode('', '\\'))
+        self.assertEquals('\\', oracle.decode('\\'))
     
-
     def test_encode_for_ldap(self):
         instance = ESAPI.encoder()
         self.assertEquals(None, instance.encode_for_ldap(None))
@@ -340,23 +502,27 @@ class EncoderTest(unittest.TestCase):
         self.assertEquals(",.-_", instance.encode_for_xml_attribute(",.-_"))
         self.assertEquals("&#x20;&#x21;&#x40;&#x24;&#x25;&#x28;&#x29;&#x3d;&#x2b;&#x7b;&#x7d;&#x5b;&#x5d;", instance.encode_for_xml_attribute(" !@$%()=+{}[]"))
     
-    def test_encode_for_url(self):
+    def test_percent_codec(self):
         instance = ESAPI.encoder()
+        
+        ### High level
         self.assertEquals(None, instance.encode_for_url(None))
         self.assertEquals("%3Cscript%3E", instance.encode_for_url("<script>"))
-
-    def test_decode_from_url(self):
-        instance = ESAPI.encoder()
+        self.assertEquals("%03", instance.encode_for_url(unichr(3)))
+        self.assertEquals("+", instance.encode_for_url(" "))
+        self.assertEquals(unichr(12345), instance.encode_for_url(unichr(12345)))
+        
         self.assertEquals(None, instance.decode_from_url(None))
         self.assertEquals("<script>", instance.decode_from_url("%3Cscript%3E"))
+        self.assertEquals(unichr(3), instance.decode_from_url("%03"))
         self.assertEquals("     ", instance.decode_from_url("+++++") )
+        self.assertEquals(unichr(12345), instance.decode_from_url(unichr(12345)))
 
-        try:
-            instance.decode_from_url( "%3xridiculous" )
-            self.fail()
-        except:
-            # expected
-            pass
+        # Wrap in assertRaises
+        self.assertEquals("%3xridiculous", instance.decode_from_url( "%3xridiculous" ))
+
+        ### Low level
+        
 
     def test_encode_for_base64(self):
         instance = ESAPI.encoder()
@@ -405,8 +571,7 @@ class EncoderTest(unittest.TestCase):
         enc = win.encode(Encoder.CHAR_ALPHANUMERICS, orig)
         self.assertEquals(orig, win.decode(enc))
         self.assertEquals(orig, win.decode(orig))
-        
-        # TODO: Check that these are acceptable for Windows
+       
         self.assertEquals("c^:^\\jeff", instance.encode_for_os(win, "c:\\jeff"));		
         self.assertEquals("c^:^\\jeff", win.encode(immune, "c:\\jeff"))
         self.assertEquals("dir^ ^&^ foo", instance.encode_for_os(win, "dir & foo"))
@@ -416,7 +581,7 @@ class EncoderTest(unittest.TestCase):
         instance = ESAPI.encoder()
 
         unix = UnixCodec()
-        immune = []
+        immune = ''
         self.assertEquals(None, instance.encode_for_os(unix, None))
         
         npbs = PushbackString("n")
@@ -435,16 +600,19 @@ class EncoderTest(unittest.TestCase):
         self.assertEquals(orig, unix.decode(enc))
         self.assertEquals(orig, unix.decode(orig))
         
-        # TODO: Check that these are acceptable for Unix hosts
         self.assertEquals("c\\:\\\\jeff", instance.encode_for_os(unix, "c:\\jeff"))
         self.assertEquals("c\\:\\\\jeff", unix.encode(immune, "c:\\jeff"))
         self.assertEquals("dir\\ \\&\\ foo", instance.encode_for_os(unix, "dir & foo"))
         self.assertEquals("dir\\ \\&\\ foo", unix.encode(immune, "dir & foo"))
 
         # Unix paths (that must be encoded safely)
-        # TODO: Check that these are acceptable for Unix
         self.assertEquals("\\/etc\\/hosts", instance.encode_for_os(unix, "/etc/hosts"))
         self.assertEquals("\\/etc\\/hosts\\;\\ ls\\ -l", instance.encode_for_os(unix, "/etc/hosts; ls -l"))
+        
+        self.assertEquals("\\", unix.decode('\\'))
+        self.assertEquals(unichr(12345), unix.encode('', unichr(12345)))
+        
+        
             
 #    def test_concurrency(self):
 #        class EncoderConcurrencyMock(threading.Thread):

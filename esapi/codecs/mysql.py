@@ -38,7 +38,7 @@ class MySQLCodec(codec.Codec):
             changes the encoding
         """
         codec.Codec.__init__(self)
-        if mode != 0 and mode != 1:
+        if mode != MySQLCodec.MYSQL_MODE and mode != MySQLCodec.ANSI_MODE:
             raise BadModeError()
         self.mode = mode
     
@@ -128,10 +128,8 @@ class MySQLCodec(codec.Codec):
         """
         pbs.mark()
         
+        # Will always be true because pbs.has_next() in codec.decode
         first = pbs.next()
-        if first is None:
-            pbs.reset()
-            return None
             
         # if this is not an encoded character, return None
         if first != "'":
@@ -160,10 +158,8 @@ class MySQLCodec(codec.Codec):
         """
         pbs.mark()
         
+        # Will always be true because pbs.has_next() in codec.decode
         first = pbs.next()
-        if first is None:
-            pbs.reset()
-            return None
             
         # if this is not an encoded character, return None
         if first != "\\":

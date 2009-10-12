@@ -18,7 +18,7 @@
 """
 
 import esapi.codecs.codec as codec
-import esapi.codecs.push_back_string
+import esapi.codecs.push_back_string as push_back_string
 
 class CSSCodec(codec.Codec):
     """
@@ -60,10 +60,8 @@ class CSSCodec(codec.Codec):
         """
         pbs.mark()
         
+        # Will always be true because pbs.has_next() in codec.decode
         first = pbs.next()
-        if first is None:
-            pbs.reset()
-            return None
             
         # if this is not an encoded character, return None
         if first != "\\":
@@ -76,7 +74,7 @@ class CSSCodec(codec.Codec):
             return None
             
         # look for \HHH format
-        if esapi.codecs.push_back_string.is_hex_digit(second):
+        if push_back_string.is_hex_digit(second):
             # Search for up to 6 hex digits following until a space
             buf = ''
             buf += second
@@ -84,11 +82,11 @@ class CSSCodec(codec.Codec):
                 next_char = pbs.next()
                 if next_char is None or ord(next_char) == 0x20:
                     break
-                if esapi.codecs.push_back_string.is_hex_digit(next_char):
+                if push_back_string.is_hex_digit(next_char):
                     buf += next_char
                 else:
-                    pbs.pushback(next_char)
-                    break
+                    pbs.reset()
+                    return None
             try:
                 i = int(buf, 16)
                 return unichr(i)
@@ -96,5 +94,6 @@ class CSSCodec(codec.Codec):
                 # Throw an exception for malformed entity?
                 pass
                 
-        return second
+        pbs.reset()
+        return None
         
