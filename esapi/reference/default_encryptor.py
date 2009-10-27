@@ -17,8 +17,6 @@
 """
 
 # Todo
-# Change hash after Encoder and Base64 encoder have been written
-# Check EncryptionException
 
 import hashlib
 import os
@@ -77,7 +75,7 @@ class DefaultEncryptor(Encryptor):
         self.signing_key_length = ESAPI.security_configuration().get_digital_signature_key_length()
         
         # Key locations
-        self.keys_location = ESAPI.security_configuration().get_encryption_keys_location()
+        self.keys_location = os.path.realpath(ESAPI.security_configuration().get_encryption_keys_location()) + '/'
         self.keys_symmetric_location = self.keys_location + "symmetric"
         self.keys_asymmetric_private_location = self.keys_location + "asymmetric-private"
         self.keys_asymmetric_public_location = self.keys_location + "asymmetric-public"
@@ -102,7 +100,10 @@ class DefaultEncryptor(Encryptor):
             return encoded
             
         except ValueError, e:
-            raise EncryptionException, _("Internal Error - Can't find hash algorithm ") + self.hash_algorithm
+            raise EncryptionException(
+                _("Problem hashing"),
+                _("Internal Error - Can't find hash algorithm ") + self.hash_algorithm  
+                )
         
     def encrypt(self, plaintext):
         try:

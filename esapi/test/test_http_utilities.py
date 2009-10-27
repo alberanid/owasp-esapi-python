@@ -70,6 +70,14 @@ class HTTPUtilitiesTest(unittest.TestCase):
         csrf2 = ESAPI.http_utilities().add_csrf_token('test1?one=two')
         self.assertTrue(csrf2.find('?') > -1)
         
+    def test_add_header(self):
+        instance = ESAPI.http_utilities()
+        request = MockHttpRequest()
+        response = MockHttpResponse()
+        instance.set_current_http(request, response)
+        
+        instance.add_header('HeaderName', 'HeaderValue')
+        
     def test_assert_secure_request(self):
         request = MockHttpRequest()
         
@@ -136,9 +144,11 @@ class HTTPUtilitiesTest(unittest.TestCase):
     def test_send_safe_redirect(self):
         pass
         
-    def test_set_cookie(self):
+    def test_add_cookie(self):
         instance = ESAPI.http_utilities()
         response = MockHttpResponse()
+        request = MockHttpRequest()
+        instance.set_current_http(request, response)
         self.assertEquals(0, len(response.cookies))
         
         # add_cookie(key, value='', max_age=None, path='/', domain=None,
@@ -147,7 +157,7 @@ class HTTPUtilitiesTest(unittest.TestCase):
         instance.add_cookie(response, key='test1', value='test1')
         self.assertEquals(1, len(response.cookies))
         
-        instance.add_cookie(response, key='test2', value='test2')
+        instance.add_cookie(key='test2', value='test2')
         self.assertEquals(2, len(response.cookies))
         
         # illegal name
@@ -218,6 +228,14 @@ class HTTPUtilitiesTest(unittest.TestCase):
         
         max_age = 60 * 60 * 24 * 14
         ESAPI.http_utilities().set_remember_token( password, max_age, "domain", '/', request, response )
+        
+    def test_query_to_dict(self):
+        instance = ESAPI.http_utilities()
+        
+        query = '?a=1&b=2&c=3'
+        testing = instance.query_to_dict(query)
+        correct = {'a' : '1', 'b' : '2', 'c' : '3'}
+        self.assertEquals(testing, correct)
         
 if __name__ == "__main__":
     unittest.main()

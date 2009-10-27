@@ -104,7 +104,7 @@ class DefaultHTTPUtilities(HTTPUtilities):
                 stripped_name, "HTTPHeaderName", 20, False)
             safe_value = ESAPI.validator().get_valid_input("addHeader",
                 stripped_value, "HTTPHeaderValue", 500, False)
-            response[safe_name] = safe_value
+            response.headers[safe_name] = safe_value
         except ValidationException, extra:
             self.logger.warning( Logger.SECURITY_FAILURE,
                 _("Attempt to add invalid header denied"), extra )
@@ -180,8 +180,8 @@ class DefaultHTTPUtilities(HTTPUtilities):
         d = {}
         
         for pair in text.split('&'):
-            for key, value in pair.split('='):
-                d[key] = value
+            key, value = pair.split('=')
+            d[key] = value
                 
         return d
         

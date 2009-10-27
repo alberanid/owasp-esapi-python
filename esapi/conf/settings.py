@@ -2,8 +2,6 @@
 # You can find more information about ESAPI
 # http://www.owasp.org/index.php/ESAPI
 #
-# THIS DOCUMENTATION NEEDS TO BE UPDATED!
-#
 # WARNING: Operating system protection should be used to lock down the conf
 # directory and all the files inside.  Note that if you are using file-based
 # implementations that some files may need to be read-write as they get
@@ -11,22 +9,28 @@
 #
 # Before using, be sure to update the MasterSalt as described below.
 #
+# This settings file is Python code, and must be syntactically correct.
+# Use `python settings.py` from a shell to verify the syntax.
+#
 from datetime import timedelta
 
 #===========================================================================
-# ESAPI Configuration
+# ESAPI Provider Configuration
 #
-# ESAPI is designed to be easily extensible. You can use the reference implementation
-# or implement your own providers to take advantage of your enterprise's security
-# infrastructure. The functions in ESAPI are referenced using the ESAPI locator, like:
+# ESAPI is designed to be easily extensible. You can use the reference 
+# implementation or implement your own providers to take advantage of your 
+# enterprise's security infrastructure. The functions in ESAPI are referenced 
+# using the ESAPI locator, like:
 #
+#      from esapi.core import ESAPI
 #      ESAPI.encryptor().encrypt( "Secret message" )
 #
-# Below you can specify the classname for the provider that you wish to use in your
-# application. The only requirement is that it implement the appropriate ESAPI interface.
-# This allows you to switch security implementations in the future without rewriting the
-# entire application.
+# Below you can specify the classname for the provider that you wish to use in 
+# your application. The only requirement is that it implement the appropriate 
+# ESAPI interface. This allows you to switch security implementations in the 
+# future without rewriting the entire application.
 #
+
 ESAPI_access_controller = 'esapi.reference.file_based_access_controller.FileBasedAccessController'
 ESAPI_access_reference_map = 'esapi.reference.random_access_reference_map.RandomAccessReferenceMap'
 ESAPI_authenticator = 'esapi.reference.shelve_authenticator.ShelveAuthenticator'
@@ -40,42 +44,46 @@ ESAPI_randomizer = 'esapi.reference.default_randomizer.DefaultRandomizer'
 ESAPI_validator = 'esapi.reference.default_validator.DefaultValidator'
 ESAPI_user = 'esapi.reference.default_user.DefaultUser'
 
+
 #===========================================================================
 # General Application configuration
 #
+
 # Set the application name if these logs are combined with other applications
 General_ApplicationName = 'ESAPITest'
+
 
 #===========================================================================
 # ESAPI Authenticator
 #
+
 Authenticator_AllowedLoginAttempts = 5
 Authenticator_MaxOldPasswordHashes = 12
 Authenticator_UsernameParameterName = 'username'
 Authenticator_PasswordParameterName = 'password'
-# RememberTokenDuration
 Authenticator_RememberTokenDuration = timedelta(days=14)
-# Session Timeouts
 Authenticator_IdleTimeoutDuration = timedelta(minutes=20)
 Authenticator_AbsoluteTimeoutDuration = timedelta(minutes=20)
+
 
 #===========================================================================
 # ESAPI Encryption
 #
 # The ESAPI Encryptor provides basic cryptographic functions with a simplified API.
-# To get started, generate a new key using java -classpath esapi.jar esapi.reference.JavaEncryptor
-# There is not currently any support for key rotation, so be careful when changing your key and salt as it
-# will invalidate all signed, encrypted, and hashed data.
+# To get started, generate new keys using the instructions in the README.
 #
 # WARNING: Not all combinations of algorithms and key lengths are supported.
-# If you choose to use a key length greater than 128 (and you should), you must download the
-# unlimited strength policy files and install in the lib directory of your JRE/JDK.
-# See http://java.sun.com/javase/downloads/index.jsp for more information.
+# ESAPI leverages Google's Keyczar (http://www.keyczar.org/) to provide safe 
+# and useful encryption. Keyczar has limitations on what algorithms are 
+# available to encourage the use of the best ones.
 #
 
-# KeysLocation should have a trailing slash
-Encryptor_KeysLocation = '/tmp/esapi/keyring/'
+# Directory in which keys are stored
+Encryptor_KeysLocation = '/tmp/esapi/keyring'
 
+# The master salt is appended to all hashes. 
+# WARNING: THIS MUST BE CHANGED FROM THE DEFAULT BY FOLLOWING THE INSTRUCTIONS
+# IN THE README TO GENERATE NEW ENCRYPTION KEYS
 Encryptor_MasterSalt = 'SbftnvmEWD5ZHHP+pX3fqugNysc='
 
 # AES is the most widely used and strongest encryption algorithm
@@ -94,64 +102,88 @@ Encryptor_CharacterEncoding = 'UTF-8'
 #===========================================================================
 # ESAPI HttpUtilties
 #
-# The HttpUtilities provide basic protections to HTTP requests and responses. Primarily these methods 
-# protect against malicious data from attackers, such as unprintable characters, escaped characters,
-# and other simple attacks. The HttpUtilities also provides utility methods for dealing with cookies,
+# The HttpUtilities provide basic protections to HTTP requests and responses. 
+# Primarily these methods protect against malicious data from attackers, such
+# as unprintable characters, escaped characters, and other simple attacks. 
+# The HttpUtilities also provides utility methods for dealing with cookies,
 # headers, and CSRF tokens.
 #
-HttpUtilities_UploadDir = r'UploadDir'
-# Force HTTP only on all cookies in ESAPI SafeRequest
+
+# Forces the "HTTPOnly" flag to be used on the session cookie
 HttpUtilities_ForceHttpOnlySession = False
+# Forces the "Secure" flag to be used on the session cookie
 HttpUtilities_ForceSecureSession = False
+
+# Forces the "HTTPOnly" flag to be used on all cookies
 HttpUtilities_ForceHttpOnlyCookies = True
+# Forces the "Secure" flag to be used on all cookies
 HttpUtilities_ForceSecureCookies = True
+
 # File upload configuration
+HttpUtilities_UploadDir = r'UploadDir'
+# A Python list of extensions allowed to be uploaded
 HttpUtilities_AllowedUploadExtensions = '.zip,.pdf,.tar,.gz,.xls,.properties,.txt,.xml'.lower().split(',')
 HttpUtilities_MaxUploadFileBytes = 5000000
-# Using UTF-8 throughout your stack is highly recommended. That includes your database driver,
-# container, and any other technologies you may be using. Failure to do this may expose you
-# to Unicode transcoding injection attacks. Use of UTF-8 does not hinder internationalization.
+# Using UTF-8 throughout your stack is highly recommended. That includes your 
+# database driver, container, and any other technologies you may be using. 
+# Failure to do this may expose you to Unicode transcoding injection attacks. 
+# Use of UTF-8 does not hinder internationalization.
 HttpUtilities_ResponseContentType = 'text/html; charset=UTF-8'
-
 
 
 #===========================================================================
 # ESAPI Executor
+#
+
+# The directory in which files are executed
 Executor_WorkingDirectory = r'/tmp'
+# The executables your web application is allowed to execute
 Executor_AllowedExecutables = ('/bin/sh', '/bin/sleep', 'C:\Windows\System32\cmd.exe')
+# If an executed process continues for this amount of time, it will be terminated
 Executor_MaxRunningTime = timedelta(seconds=10)
 
 
 #===========================================================================
 # ESAPI Logging
-# If you use an HTML log viewer that does not properly HTML escape log data, you can set LogEncodingRequired to true
+#
+
+# If you use an HTML log viewer that does not properly HTML escape log data, 
+# you should set LogEncodingRequired to true
 Logger_LogEncodingRequired = False
-# LogFileName, the name of the logging file. Provide a full directory path (e.g., C:\\ESAPI\\ESAPI_logging_file) if you
-# want to place it in a specific directory.
+# The name of the logging file. Provide a full directory path 
+# (e.g., C:\\ESAPI\\ESAPI_logging_file) if you want to place it in a specific 
+# directory.
 Logger_LogFileName = 'ESAPI_logging_file'
-# MaxLogFileSize, the max size (in bytes) of a single log file before it cuts over to a new one (default is 10,000,000)
+# The max size (in bytes) of a single log file before it cuts over to a new one 
+# (default is 10,000,000)
 Logger_MaxLogFileSize = 10000000
 
 
 #===========================================================================
 # ESAPI Intrusion Detection
 #
-# Each event has a base to which .count, .interval, and .action are added
-# The IntrusionException will fire if we receive "count" events within "interval" seconds
-# The IntrusionDetector is configurable to take the following actions: log, logout, disable, and lock
-#  (multiple actions separated by commas are allowed e.g. event.test.actions=log,disable
+# Each event has a base to which _count, _interval, and _action are added
+# The IntrusionException will fire if we receive "count" events within 
+# "interval" seconds
+# The IntrusionDetector is configurable to take the following actions: 
+#    log, logout, disable, and lock
+# Multiple actions in a Python tuple are allowed
+#    e.g. event_test_actions = ('log','disable')
 #
 # Custom Events
-# Names must start with "event." as the base
-# Use IntrusionDetector.addEvent( "test" ) in your code to trigger "event.test" here
+# Names must start with "IntrusionDetector_event_" as the base
+# Use `ESAPI.intrusion_detector.add_event( "testEvent", "Log message" )` 
+# in your code to trigger "event_test" here
 #
+
 IntrusionDetector_event_test_count = 2
 IntrusionDetector_event_test_interval = 10
 IntrusionDetector_event_test_actions = ('lock','log')
 
 # Exception Events
 # All EnterpriseSecurityExceptions are registered automatically
-# Call IntrusionDetector.getInstance().addException(e) for Exceptions that do not extend EnterpriseSecurityException
+# Call ESAPI.intrusion_detector.add_exception(e) for Exceptions that do not 
+# extend EnterpriseSecurityException
 # Use the fully qualified classname of the exception as the base
 
 # any intrusion is an attack
@@ -165,9 +197,9 @@ IntrusionDetector_IntegrityException_interval = 5
 IntrusionDetector_IntegrityException_actions = ('log','lock','logout')
 
 # rapid validation errors indicate scans or attacks in progress
-# esapi.errors.ValidationException.count=10
-# esapi.errors.ValidationException.interval=10
-# esapi.errors.ValidationException.actions=log,logout
+# IntrusionDetector_ValidationException_count = 10
+# IntrusionDetector_ValidationException_interval = 10
+# IntrusionDetector_ValidationException_actions = ('log', 'logout')
 
 # sessions jumping between hosts indicates session hijacking
 IntrusionDetector_AuthenticationHostException_count = 2
@@ -178,26 +210,23 @@ IntrusionDetector_AuthenticationHostException_actions = ('log','logout')
 #===========================================================================
 # ESAPI Validation
 #
-# The ESAPI validator does many security checks on input, such as canonicalization
-# and whitelist validation. Note that all of these validation rules are applied *after*
-# canonicalization. Double-encoded characters (even with different encodings involved,
-# are never allowed.
+# The ESAPI validator does many security checks on input, including 
+# canonicalization and whitelist validation. Note that all of these validation
+# rules are applied *after* canonicalization. Double-encoded characters 
+# (even with different encodings involved, are never allowed.
 #
 # To use:
 #
-# First set up a pattern below. You can choose any name you want, prefixed by the word
-# "Validation." For example:
-#   Validation.Email=^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\\\\.[a-zA-Z]{2,4}$
+# First set up a pattern below. You can choose any name you want, prefixed by 
+# the word "Validation_". It is a good idea to put regex strings in raw 
+# triple-quoted strings.
+# For example:
+#   Validator_Email = r"""^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[a-zA-Z]{2,4}$"""
 # 
 # Then you can validate in your code against the pattern like this:
-#   Validator.getInstance().getValidDataFromBrowser( "Email", input );
-#   Validator.getInstance().isValidDataFromBrowser( "Email", input );
-#
-# Converting Java regex to Python:
-# Replace \\ with \
-# Regex find\replace:  \\([^\\w\.\+\?\$\*\[\]])   ->  \1
-
-#Validator_SafeString = r"""^[\p{L}\p{N}.]{0,1024}$"""
+#   ESAPI.validator().get_valid_input( "Context", input, "Email", 100, False )
+#   ESAPI.validator().is_valid_input( "Context", input, "Email", 100, False )
+#
 Validator_Email = r"""^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[a-zA-Z]{2,4}$"""
 Validator_IPAddress = r"""^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$"""
 # This regex modified slightly from Java version: ? just before $ has been removed

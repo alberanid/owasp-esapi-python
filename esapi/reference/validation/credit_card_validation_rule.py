@@ -90,5 +90,3 @@ class CreditCardValidationRule(BaseValidationRule):
             
         return None
         
-    def sanitize(self, context, input_):
-        return self.whitelist(input_, Encoder.CHAR_DIGITS)

@@ -157,5 +157,3 @@ class StringValidationRule(BaseValidationRule):
             else:
                 raise
         
-    def sanitize(self, context, input_):
-        return self.whitelist(input_, Encoder.CHAR_ALPHANUMERICS)

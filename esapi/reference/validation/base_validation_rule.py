@@ -61,7 +61,7 @@ class BaseValidationRule(ValidationRule):
         try:
             return self.get_valid( context, input_ )
         except ValidationException, extra:
-            return self.sanitize( context, input_ )
+            return None
             
     def is_valid(self, context, input_):
         try:
@@ -71,14 +71,3 @@ class BaseValidationRule(ValidationRule):
             return False
         except Exception, extra:
             return False
-            
-    def whitelist(self, input_, whitelist):
-        stripped = ''
-        for char in input_:
-            if char.isdigit():
-                stripped += char
-                
-        return stripped
-        
-    def sanitize(self, context, input_):
-        raise NotImplementedError()

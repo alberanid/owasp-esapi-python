@@ -61,8 +61,10 @@ class JavascriptCodec(codec.Codec):
     def decode_character(self, pbs):
         pbs.mark()
         
-        # Will always be true because pbs.has_next() in codec.decode
         first = pbs.next()
+        if first is None:
+            pbs.reset()
+            return None
             
         # if this is not an encoded character, return None
         if first != '\\':
