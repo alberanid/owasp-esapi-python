@@ -84,7 +84,7 @@ Encryptor_KeysLocation = '/tmp/esapi/keyring'
 # The master salt is appended to all hashes. 
 # WARNING: THIS MUST BE CHANGED FROM THE DEFAULT BY FOLLOWING THE INSTRUCTIONS
 # IN THE README TO GENERATE NEW ENCRYPTION KEYS
-Encryptor_MasterSalt = 'SbftnvmEWD5ZHHP+pX3fqugNysc='
+Encryptor_MasterSalt = None
 
 # AES is the most widely used and strongest encryption algorithm
 Encryptor_EncryptionAlgorithm = 'AES'

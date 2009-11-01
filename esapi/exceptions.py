@@ -78,7 +78,18 @@ class EnterpriseSecurityException(Exception):
         
         @return: a string containing a message that is safe to display in logs
         """
-        return self.log_message
+        cause = self.get_cause()
+        causestr = None
+        if cause:
+            if hasattr(cause, 'get_log_message'):
+                causestr = cause.get_log_message()
+            elif hasattr(cause, '__str__'):
+                causestr = str(cause)
+            
+        if causestr:
+            return self.log_message + "\nCause: " + causestr
+        else:
+            return self.log_message
         
     def get_cause(self):
         """
@@ -253,7 +264,18 @@ class IntrusionException(Exception):
         
         @return: a string containing a message that is safe to display in logs
         """
-        return self.log_message
+        cause = self.get_cause()
+        causestr = None
+        if cause:
+            if hasattr(cause, 'get_log_message'):
+                causestr = cause.get_log_message()
+            elif hasattr(cause, '__str__'):
+                causestr = str(cause)
+            
+        if causestr:
+            return self.log_message + "\nCause: " + causestr
+        else:
+            return self.log_message
         
     def get_cause(self):
         """

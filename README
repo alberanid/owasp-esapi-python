@@ -18,7 +18,7 @@ Installation:
     * By default, ESAPI is set up for Linux. If you are running ESAPI on Windows, you will need to modify the Encryptor_KeysLocation and Executor_WorkingDirectory settings in esapi/conf/settings.py. You should use forward slashes in the paths.
     * See "To set up a crypto keyring" to generate the keys necessary for crypto.
     * Run the unit tests by opening a shell or command prompt in esapi/test and running runTests.bat or runTests.sh, depending on your platform. If you get around 7 errors relating to crypto, please ensure you have followed the steps under "To set up a crypto keyring".
-    Note: Running all tests may appear to block or pause, particularly on Windows. This may be be due to exahaustion of the entropy pool. If it blocks, try moving the mouse, typing, or generating some disk activity.
+    Note: Running all tests may appear to block or pause, particularly on Windows. This may be be due to exahaustion of the entropy pool. If it blocks, try moving the mouse, typing, or generating some disk activity to help regenerate the entropy pool.
 
 To adapt and integrate with your project:
     You can use as much or as little of ESAPI as you would like. You'll want to do a 'from esapi.core import ESAPI' and use the methods that class provides.

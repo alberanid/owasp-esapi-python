@@ -1,0 +1,2 @@
+* Regen the documentation
+* Check settings.py - Remove default MasterSalt
