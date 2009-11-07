@@ -448,7 +448,7 @@ class EncoderTest(unittest.TestCase):
         ### High level
         oracle = OracleCodec()
         self.assertEquals(None, instance.encode_for_sql(oracle, None))
-        self.assertEquals("Jeff\\' or \\'1\\'\\=\\'1", instance.encode_for_sql(oracle, "Jeff' or '1'='1"))
+        self.assertEquals("''", instance.encode_for_sql(oracle, "'"))
         
         
         ### Low level
@@ -465,8 +465,8 @@ class EncoderTest(unittest.TestCase):
         for case in cases:
             self.assertEquals(case, oracle.decode(oracle.encode('', case)))
             
-        self.assertEquals('\\\\', oracle.encode('', '\\'))
-        self.assertEquals('\\', oracle.decode('\\'))
+        self.assertEquals("''", oracle.encode('', "'"))
+        self.assertEquals("'", oracle.decode("''"))
     
     def test_encode_for_ldap(self):
         instance = ESAPI.encoder()

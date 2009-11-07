@@ -81,6 +81,12 @@ class DefaultEncryptor(Encryptor):
         self.keys_asymmetric_public_location = self.keys_location + "asymmetric-public"
              
     def hash(self, plaintext, salt, iterations=None):
+        # Verify a MasterSalt has been set
+        if not self.master_salt or len(self.master_salt) < 20:
+            raise Exception(
+                _("There is an error in the application configuration. The MasterSalt has not been set properly. Please see the instructions in the README for setting up a crypto keyring. Currently, Encryptor_MasterSalt=%(value)s") % 
+                {'value' : self.master_salt})
+    
         if iterations is None: 
             iterations = self.hash_iterations
     

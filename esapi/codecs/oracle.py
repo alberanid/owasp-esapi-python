@@ -20,13 +20,13 @@ import esapi.codecs.codec as codec
 
 class OracleCodec(codec.Codec):
     """
-    Implementation of the Codec interface for Oracle strings. See 
-    U{here<http://www.oracle.com/technology/tech/pl_sql/pdf/how_to_write_injection_proof_plsql.pdf>}
-    for more information. There are three types of SQL literal: text, datetime,
-    and numeric. The "alternative quoting" mechanism available in Oracle that 
-    uses braces around a string must not be used for text literals.
+    Implementation of the Codec interface for Oracle strings. This class will
+    only protect you from SQL injection when user data is placed within an
+    Oracle quoted string such as:
+    
+    select * from table where user_name='  USERDATA    ';
   
-    @see: U{Special Characters in Oracle Queries<http://download-uk.oracle.com/docs/cd/B10501_01/text.920/a96518/cqspcl.htm>}
+    @see: U{How to escape single quotes in strings<http://oraqa.com/2006/03/20/how-to-escape-single-quotes-in-strings/>}
     """
    
     def __init__(self):
@@ -37,29 +37,20 @@ class OracleCodec(codec.Codec):
     
     def encode_character(self, immune, char):
         """
-        Encode a single character with a backslash
+        Encodes ' to ''
         """
-        # Check for immunes
-        if char in immune:
-            return char
-            
-        # Only look at 8-bit 
-        if not codec.is_8bit(char):
-            return char
         
-        # Pass alphanumerics
-        if char.isalnum():  
-            return char
+        if char == "'":
+            return "''"
             
-        return "\\" + char
+        return char
     
     def decode_character(self, pbs):
         """
         Returns the decoded version of the character starting at index, or
         None if no decoding is possible.
         
-        Formats all are legal
-        \c decodes to c
+        '' decodes to '
         """
         pbs.mark()
         
@@ -69,7 +60,7 @@ class OracleCodec(codec.Codec):
             return None
             
         # if this is not an encoded character, return None
-        if first != "\\":
+        if first != "'":
             pbs.reset()
             return None
             
@@ -78,5 +69,9 @@ class OracleCodec(codec.Codec):
             pbs.reset()
             return None
             
-        return second
+        if second != "'":
+            pbs.reset()
+            return None
+            
+        return "'"
         

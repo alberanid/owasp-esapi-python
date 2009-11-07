@@ -39,7 +39,7 @@ class DefaultSecurityConfiguration(SecurityConfiguration):
         """Instantiates a new configuration"""
         SecurityConfiguration.__init__(self)
         self.load_configuration()
-        
+                
         self.resource_dir = esapi.conf.resources.__path__[0]
         
     # Helper
@@ -53,12 +53,6 @@ class DefaultSecurityConfiguration(SecurityConfiguration):
         for option in dir(settings):
             if "Master" not in option and option[0] != "_":
                 self.log_special("  |   %(key)s = %(value)s" % {"key": option, "value": str(settings.__dict__[option])})
-                
-        # Verify a Encryptor_MasterSalt has been set
-        if not settings.Encryptor_MasterSalt:
-            raise Exception(
-                _("There is an error in the application configuration. The MasterSalt has not been set properly. Please see the instructions in the README for setting up a crypto keyring. Currently, Encryptor_MasterSalt=%(value)s") % 
-                {'value' : settings.Encryptor_MasterSalt})
     
     def log_special(self, text):
         print text
