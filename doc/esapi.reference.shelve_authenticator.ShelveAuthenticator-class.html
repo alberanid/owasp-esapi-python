@@ -344,7 +344,8 @@ current user.</td>
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a href="esapi.reference.shelve_authenticator.ShelveAuthenticator-class.html#get_user" class="summary-sig-name">get_user</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">account_name</span>)</span><br />
+        <span class="summary-sig-arg">account_name</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">account_id</span>=<span class="summary-sig-default">None</span>)</span><br />
       Return a user matching the provided account_name.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="esapi.reference.shelve_authenticator-pysrc.html#ShelveAuthenticator.get_user">source&nbsp;code</a></span>
@@ -439,10 +440,28 @@ current user.</td>
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a href="esapi.reference.shelve_authenticator.ShelveAuthenticator-class.html#exists" class="summary-sig-name">exists</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">account_name</span>)</span><br />
+        <span class="summary-sig-arg">account_name</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">account_id</span>=<span class="summary-sig-default">None</span>)</span><br />
       Determines if the account exists.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="esapi.reference.shelve_authenticator-pysrc.html#ShelveAuthenticator.exists">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_old_password_hashes"></a><span class="summary-sig-name">get_old_password_hashes</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">account_name</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.reference.shelve_authenticator-pysrc.html#ShelveAuthenticator.get_old_password_hashes">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -736,7 +755,7 @@ The implementation should do the following:
         <dd>the user that has been created.</dd>
     <dt>Raises:</dt>
     <dd><ul class="nomargin-top">
-        <li><code><strong class='fraise'><a href="esapi.exceptions-module.html#AuthenticationException">AuthenticationException</a></strong></code> - if user creation fails.</li>
+        <li><code><strong class='fraise'><a href="esapi.exceptions.AuthenticationException-class.html">AuthenticationException</a></strong></code> - if user creation fails.</li>
     </ul></dd>
     <dt>Overrides:
         <a href="esapi.authenticator.Authenticator-class.html#create_user">authenticator.Authenticator.create_user</a>
@@ -805,7 +824,7 @@ The implementation should do the following:
     </ul></dd>
     <dt>Raises:</dt>
     <dd><ul class="nomargin-top">
-        <li><code><strong class='fraise'><a href="esapi.exceptions-module.html#AuthenticationException">AuthenticationException</a></strong></code> - if any errors occur</li>
+        <li><code><strong class='fraise'><a href="esapi.exceptions.AuthenticationException-class.html">AuthenticationException</a></strong></code> - if any errors occur</li>
     </ul></dd>
     <dt>Overrides:
         <a href="esapi.authenticator.Authenticator-class.html#change_password">authenticator.Authenticator.change_password</a>
@@ -822,7 +841,8 @@ The implementation should do the following:
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
   <h3 class="epydoc"><span class="sig"><span class="sig-name">get_user</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">account_name</span>)</span>
+        <span class="sig-arg">account_name</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">account_id</span>=<span class="sig-default">None</span>)</span>
   </h3>
   </td><td align="right" valign="top"
     ><span class="codelink"><a href="esapi.reference.shelve_authenticator-pysrc.html#ShelveAuthenticator.get_user">source&nbsp;code</a></span>&nbsp;
@@ -878,7 +898,7 @@ The implementation should do the following:
         <dd>the hashed password</dd>
     <dt>Raises:</dt>
     <dd><ul class="nomargin-top">
-        <li><code><strong class='fraise'><a href="esapi.exceptions-module.html#EncryptionException">EncryptionException</a></strong></code> - if something goes wrong when hashing</li>
+        <li><code><strong class='fraise'><a href="esapi.exceptions.EncryptionException-class.html">EncryptionException</a></strong></code> - if something goes wrong when hashing</li>
     </ul></dd>
     <dt>Overrides:
         <a href="esapi.authenticator.Authenticator-class.html#hash_password">authenticator.Authenticator.hash_password</a>
@@ -910,7 +930,7 @@ The implementation should do the following:
     </ul></dd>
     <dt>Raises:</dt>
     <dd><ul class="nomargin-top">
-        <li><code><strong class='fraise'><a href="esapi.exceptions-module.html#AuthenticationException">AuthenticationException</a></strong></code> - Will be raised if the user does not exist.</li>
+        <li><code><strong class='fraise'><a href="esapi.exceptions.AuthenticationException-class.html">AuthenticationException</a></strong></code> - Will be raised if the user does not exist.</li>
     </ul></dd>
     <dt>Overrides:
         <a href="esapi.authenticator.Authenticator-class.html#remove_user">authenticator.Authenticator.remove_user</a>
@@ -943,7 +963,7 @@ The implementation should do the following:
     </ul></dd>
     <dt>Raises:</dt>
     <dd><ul class="nomargin-top">
-        <li><code><strong class='fraise'><a href="esapi.exceptions-module.html#AuthenticationException">AuthenticationException</a></strong></code> - if the account name does not meet complexity requirements.</li>
+        <li><code><strong class='fraise'><a href="esapi.exceptions.AuthenticationException-class.html">AuthenticationException</a></strong></code> - if the account name does not meet complexity requirements.</li>
     </ul></dd>
     <dt>Overrides:
         <a href="esapi.authenticator.Authenticator-class.html#verify_account_name_strength">authenticator.Authenticator.verify_account_name_strength</a>
@@ -986,7 +1006,7 @@ The implementation should do the following:
     </ul></dd>
     <dt>Raises:</dt>
     <dd><ul class="nomargin-top">
-        <li><code><strong class='fraise'><a href="esapi.exceptions-module.html#AuthenticationException">AuthenticationException</a></strong></code> - if the new password does not meet the complexity requirements or is
+        <li><code><strong class='fraise'><a href="esapi.exceptions.AuthenticationException-class.html">AuthenticationException</a></strong></code> - if the new password does not meet the complexity requirements or is
         too similar to the old password.</li>
     </ul></dd>
     <dt>Overrides:
@@ -1004,7 +1024,8 @@ The implementation should do the following:
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr valign="top"><td>
   <h3 class="epydoc"><span class="sig"><span class="sig-name">exists</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">account_name</span>)</span>
+        <span class="sig-arg">account_name</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">account_id</span>=<span class="sig-default">None</span>)</span>
   </h3>
   </td><td align="right" valign="top"
     ><span class="codelink"><a href="esapi.reference.shelve_authenticator-pysrc.html#ShelveAuthenticator.exists">source&nbsp;code</a></span>&nbsp;
@@ -1053,7 +1074,7 @@ The implementation should do the following:
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Sun Sep 27 16:34:57 2009
+    Generated by Epydoc 3.0.1 on Sun Nov  8 16:04:22 2009
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

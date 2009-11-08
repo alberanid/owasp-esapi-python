@@ -117,7 +117,8 @@ unittest.TestCase --+
         <tr>
           <td><span class="summary-sig"><a href="esapi.test.test_encoder.EncoderTest-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">test_name</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>)</span><br />
-      Instantiates a new EncoderTest test.</td>
+      Create an instance of the class that will use the named test method 
+      when executed.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="esapi.test.test_encoder-pysrc.html#EncoderTest.__init__">source&nbsp;code</a></span>
             
@@ -182,9 +183,9 @@ unittest.TestCase --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="test_encode_for_html"></a><span class="summary-sig-name">test_encode_for_html</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td><span class="summary-sig"><a name="test_html_codec"></a><span class="summary-sig-name">test_html_codec</span>(<span class="summary-sig-arg">self</span>)</span></td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="esapi.test.test_encoder-pysrc.html#EncoderTest.test_encode_for_html">source&nbsp;code</a></span>
+            <span class="codelink"><a href="esapi.test.test_encoder-pysrc.html#EncoderTest.test_html_codec">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -214,9 +215,9 @@ unittest.TestCase --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="test_encode_for_css"></a><span class="summary-sig-name">test_encode_for_css</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td><span class="summary-sig"><a name="test_codec_for_css"></a><span class="summary-sig-name">test_codec_for_css</span>(<span class="summary-sig-arg">self</span>)</span></td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="esapi.test.test_encoder-pysrc.html#EncoderTest.test_encode_for_css">source&nbsp;code</a></span>
+            <span class="codelink"><a href="esapi.test.test_encoder-pysrc.html#EncoderTest.test_codec_for_css">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -230,9 +231,9 @@ unittest.TestCase --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="test_encode_for_javascript"></a><span class="summary-sig-name">test_encode_for_javascript</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td><span class="summary-sig"><a name="test_codec_for_javascript"></a><span class="summary-sig-name">test_codec_for_javascript</span>(<span class="summary-sig-arg">self</span>)</span></td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="esapi.test.test_encoder-pysrc.html#EncoderTest.test_encode_for_javascript">source&nbsp;code</a></span>
+            <span class="codelink"><a href="esapi.test.test_encoder-pysrc.html#EncoderTest.test_codec_for_javascript">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -246,9 +247,9 @@ unittest.TestCase --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="test_encode_for_vbscript"></a><span class="summary-sig-name">test_encode_for_vbscript</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td><span class="summary-sig"><a name="test_codec_for_vbscript"></a><span class="summary-sig-name">test_codec_for_vbscript</span>(<span class="summary-sig-arg">self</span>)</span></td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="esapi.test.test_encoder-pysrc.html#EncoderTest.test_encode_for_vbscript">source&nbsp;code</a></span>
+            <span class="codelink"><a href="esapi.test.test_encoder-pysrc.html#EncoderTest.test_codec_for_vbscript">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -278,9 +279,25 @@ unittest.TestCase --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="test_encode_for_sql"></a><span class="summary-sig-name">test_encode_for_sql</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td><span class="summary-sig"><a name="test_sql_codec"></a><span class="summary-sig-name">test_sql_codec</span>(<span class="summary-sig-arg">self</span>)</span></td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="esapi.test.test_encoder-pysrc.html#EncoderTest.test_encode_for_sql">source&nbsp;code</a></span>
+            <span class="codelink"><a href="esapi.test.test_encoder-pysrc.html#EncoderTest.test_sql_codec">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="test_oracle_codec"></a><span class="summary-sig-name">test_oracle_codec</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.test.test_encoder-pysrc.html#EncoderTest.test_oracle_codec">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -358,25 +375,9 @@ unittest.TestCase --+
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="test_encode_for_url"></a><span class="summary-sig-name">test_encode_for_url</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td><span class="summary-sig"><a name="test_percent_codec"></a><span class="summary-sig-name">test_percent_codec</span>(<span class="summary-sig-arg">self</span>)</span></td>
           <td align="right" valign="top">
-            <span class="codelink"><a href="esapi.test.test_encoder-pysrc.html#EncoderTest.test_encode_for_url">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a name="test_decode_from_url"></a><span class="summary-sig-name">test_decode_from_url</span>(<span class="summary-sig-arg">self</span>)</span></td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="esapi.test.test_encoder-pysrc.html#EncoderTest.test_decode_from_url">source&nbsp;code</a></span>
+            <span class="codelink"><a href="esapi.test.test_encoder-pysrc.html#EncoderTest.test_percent_codec">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -562,7 +563,9 @@ unittest.TestCase --+
     </td>
   </tr></table>
   
-  <p>Instantiates a new EncoderTest test.</p>
+  <p>Create an instance of the class that will use the named test method 
+  when executed. Raises a ValueError if the instance does not have a method
+  with the specified name.</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
@@ -601,7 +604,7 @@ unittest.TestCase --+
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Sun Sep 27 16:34:57 2009
+    Generated by Epydoc 3.0.1 on Sun Nov  8 16:04:22 2009
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

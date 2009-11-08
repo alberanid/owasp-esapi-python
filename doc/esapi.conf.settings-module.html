@@ -198,35 +198,36 @@ r'"><code class="variable-quote">'</code><code class="variable-string">esapi.ref
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="Authenticator_RememberTokenDuration"></a><span class="summary-name">Authenticator_RememberTokenDuration</span> = <code title="14">14</code>
+        <a name="Authenticator_RememberTokenDuration"></a><span class="summary-name">Authenticator_RememberTokenDuration</span> = <code title="datetime.timedelta(14)">datetime.timedelta(14)</code>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="Authenticator_IdleTimeoutDuration"></a><span class="summary-name">Authenticator_IdleTimeoutDuration</span> = <code title="20">20</code>
+        <a name="Authenticator_IdleTimeoutDuration"></a><span class="summary-name">Authenticator_IdleTimeoutDuration</span> = <code title="datetime.timedelta(0, 1200)">datetime.timedelta(0, 1200)</code>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="Authenticator_AbsoluteTimeoutDuration"></a><span class="summary-name">Authenticator_AbsoluteTimeoutDuration</span> = <code title="20">20</code>
+        <a href="esapi.conf.settings-module.html#Authenticator_AbsoluteTimeoutDuration" class="summary-name">Authenticator_AbsoluteTimeoutDuration</a> = <code title="datetime.timedelta(0, 1200)">datetime.timedelta(0, <code class="variable-ellipsis">...</code></code>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="Encryptor_KeysLocation"></a><span class="summary-name">Encryptor_KeysLocation</span> = <code title="'/tmp/esapi/keyring/'"><code class="variable-quote">'</code><code class="variable-string">/tmp/esapi/keyring/</code><code class="variable-quote">'</code></code>
+        <a name="Encryptor_KeysLocation"></a><span class="summary-name">Encryptor_KeysLocation</span> = <code title="'/tmp/esapi/keyring'"><code class="variable-quote">'</code><code class="variable-string">/tmp/esapi/keyring</code><code class="variable-quote">'</code></code>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="Encryptor_MasterSalt"></a><span class="summary-name">Encryptor_MasterSalt</span> = <code title="'SbftnvmEWD5ZHHP+pX3fqugNysc='"><code class="variable-quote">'</code><code class="variable-string">SbftnvmEWD5ZHHP+pX3fqugNysc=</code><code class="variable-quote">'</code></code>
+        <a name="Encryptor_MasterSalt"></a><span class="summary-name">Encryptor_MasterSalt</span> = <code title="None">None</code><br />
+      hash(x)
     </td>
   </tr>
 <tr>
@@ -282,13 +283,6 @@ r'"><code class="variable-quote">'</code><code class="variable-string">esapi.ref
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="HttpUtilities_UploadDir"></a><span class="summary-name">HttpUtilities_UploadDir</span> = <code title="'UploadDir'"><code class="variable-quote">'</code><code class="variable-string">UploadDir</code><code class="variable-quote">'</code></code>
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
         <a name="HttpUtilities_ForceHttpOnlySession"></a><span class="summary-name">HttpUtilities_ForceHttpOnlySession</span> = <code title="False">False</code>
     </td>
   </tr>
@@ -317,7 +311,14 @@ r'"><code class="variable-quote">'</code><code class="variable-string">esapi.ref
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="esapi.conf.settings-module.html#HttpUtilities_AllowedUploadExtensions" class="summary-name">HttpUtilities_AllowedUploadExtensions</a> = <code title="['.zip', '.pdf', '.tar', '.gz', '.xls', '.properties', '.txt', '.xml']"><code class="variable-group">[</code><code class="variable-quote">'</code><code class="variable-string">.zip</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">.pdf</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">.tar</code><code class="variable-ellipsis">...</code></code>
+        <a name="HttpUtilities_UploadDir"></a><span class="summary-name">HttpUtilities_UploadDir</span> = <code title="'UploadDir'"><code class="variable-quote">'</code><code class="variable-string">UploadDir</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="HttpUtilities_AllowedUploadExtensions"></a><span class="summary-name">HttpUtilities_AllowedUploadExtensions</span> = <code title="[]"><code class="variable-group">[</code><code class="variable-group">]</code></code>
     </td>
   </tr>
 <tr>
@@ -345,14 +346,14 @@ r'"><code class="variable-quote">'</code><code class="variable-string">esapi.ref
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="esapi.conf.settings-module.html#Executor_AllowedExecutables" class="summary-name">Executor_AllowedExecutables</a> = <code title="('/bin/sh', 'C:\\Windows\\System32\\cmd.exe')"><code class="variable-group">(</code><code class="variable-quote">'</code><code class="variable-string">/bin/sh</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">C:\\Windows\\System</code><code class="variable-ellipsis">...</code></code>
+        <a name="Executor_AllowedExecutables"></a><span class="summary-name">Executor_AllowedExecutables</span> = <code title="()"><code class="variable-group">(</code><code class="variable-group">)</code></code>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="Executor_MaxRunningTime"></a><span class="summary-name">Executor_MaxRunningTime</span> = <code title="10">10</code>
+        <a name="Executor_MaxRunningTime"></a><span class="summary-name">Executor_MaxRunningTime</span> = <code title="datetime.timedelta(0, 10)">datetime.timedelta(0, 10)</code>
     </td>
   </tr>
 <tr>
@@ -394,7 +395,7 @@ r'"><code class="variable-quote">'</code><code class="variable-string">esapi.ref
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="IntrusionDetector_event_test_actions"></a><span class="summary-name">IntrusionDetector_event_test_actions</span> = <code title="('disable', 'log')"><code class="variable-group">(</code><code class="variable-quote">'</code><code class="variable-string">disable</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">log</code><code class="variable-quote">'</code><code class="variable-group">)</code></code>
+        <a name="IntrusionDetector_event_test_actions"></a><span class="summary-name">IntrusionDetector_event_test_actions</span> = <code title="('lock', 'log')"><code class="variable-group">(</code><code class="variable-quote">'</code><code class="variable-string">lock</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">log</code><code class="variable-quote">'</code><code class="variable-group">)</code></code>
     </td>
   </tr>
 <tr>
@@ -415,7 +416,7 @@ r'"><code class="variable-quote">'</code><code class="variable-string">esapi.ref
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="esapi.conf.settings-module.html#IntrusionDetector_IntrusionException_actions" class="summary-name">IntrusionDetector_IntrusionException_actions</a> = <code title="('log', 'disable', 'logout')"><code class="variable-group">(</code><code class="variable-quote">'</code><code class="variable-string">log</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">disabl</code><code class="variable-ellipsis">...</code></code>
+        <a href="esapi.conf.settings-module.html#IntrusionDetector_IntrusionException_actions" class="summary-name">IntrusionDetector_IntrusionException_actions</a> = <code title="('log', 'lock', 'logout')"><code class="variable-group">(</code><code class="variable-quote">'</code><code class="variable-string">log</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">lock</code><code class="variable-quote">'</code><code class="variable-op">,</code><code class="variable-ellipsis">...</code></code>
     </td>
   </tr>
 <tr>
@@ -436,7 +437,7 @@ r'"><code class="variable-quote">'</code><code class="variable-string">esapi.ref
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="esapi.conf.settings-module.html#IntrusionDetector_IntegrityException_actions" class="summary-name">IntrusionDetector_IntegrityException_actions</a> = <code title="('log', 'disable', 'logout')"><code class="variable-group">(</code><code class="variable-quote">'</code><code class="variable-string">log</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">disabl</code><code class="variable-ellipsis">...</code></code>
+        <a href="esapi.conf.settings-module.html#IntrusionDetector_IntegrityException_actions" class="summary-name">IntrusionDetector_IntegrityException_actions</a> = <code title="('log', 'lock', 'logout')"><code class="variable-group">(</code><code class="variable-quote">'</code><code class="variable-string">log</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">lock</code><code class="variable-quote">'</code><code class="variable-op">,</code><code class="variable-ellipsis">...</code></code>
     </td>
   </tr>
 <tr>
@@ -649,8 +650,7 @@ r'"><code class="variable-quote">'</code><code class="variable-string">esapi.ref
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="__package__"></a><span class="summary-name">__package__</span> = <code title="None">None</code><br />
-      hash(x)
+        <a name="__package__"></a><span class="summary-name">__package__</span> = <code title="'esapi.conf'"><code class="variable-quote">'</code><code class="variable-string">esapi.conf</code><code class="variable-quote">'</code></code>
     </td>
   </tr>
 </table>
@@ -853,37 +853,19 @@ r'"><code class="variable-quote">'</code><code class="variable-string">esapi.ref
   </dl>
 </td></tr></table>
 </div>
-<a name="HttpUtilities_AllowedUploadExtensions"></a>
+<a name="Authenticator_AbsoluteTimeoutDuration"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
-  <h3 class="epydoc">HttpUtilities_AllowedUploadExtensions</h3>
+  <h3 class="epydoc">Authenticator_AbsoluteTimeoutDuration</h3>
   
   <dl class="fields">
   </dl>
   <dl class="fields">
     <dt>Value:</dt>
       <dd><table><tr><td><pre class="variable">
-<code class="variable-group">[</code><code class="variable-quote">'</code><code class="variable-string">.zip</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">.pdf</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">.tar</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">.gz</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">.xls</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">.properties</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">.txt</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">.xml</code><code class="variable-quote">'</code><code class="variable-group">]</code>
-</pre></td></tr></table>
-</dd>
-  </dl>
-</td></tr></table>
-</div>
-<a name="Executor_AllowedExecutables"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <h3 class="epydoc">Executor_AllowedExecutables</h3>
-  
-  <dl class="fields">
-  </dl>
-  <dl class="fields">
-    <dt>Value:</dt>
-      <dd><table><tr><td><pre class="variable">
-<code class="variable-group">(</code><code class="variable-quote">'</code><code class="variable-string">/bin/sh</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">C:\\Windows\\System32\\cmd.exe</code><code class="variable-quote">'</code><code class="variable-group">)</code>
+datetime.timedelta(0, 1200)
 </pre></td></tr></table>
 </dd>
   </dl>
@@ -901,7 +883,7 @@ r'"><code class="variable-quote">'</code><code class="variable-string">esapi.ref
   <dl class="fields">
     <dt>Value:</dt>
       <dd><table><tr><td><pre class="variable">
-<code class="variable-group">(</code><code class="variable-quote">'</code><code class="variable-string">log</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">disable</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">logout</code><code class="variable-quote">'</code><code class="variable-group">)</code>
+<code class="variable-group">(</code><code class="variable-quote">'</code><code class="variable-string">log</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">lock</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">logout</code><code class="variable-quote">'</code><code class="variable-group">)</code>
 </pre></td></tr></table>
 </dd>
   </dl>
@@ -919,7 +901,7 @@ r'"><code class="variable-quote">'</code><code class="variable-string">esapi.ref
   <dl class="fields">
     <dt>Value:</dt>
       <dd><table><tr><td><pre class="variable">
-<code class="variable-group">(</code><code class="variable-quote">'</code><code class="variable-string">log</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">disable</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">logout</code><code class="variable-quote">'</code><code class="variable-group">)</code>
+<code class="variable-group">(</code><code class="variable-quote">'</code><code class="variable-string">log</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">lock</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">logout</code><code class="variable-quote">'</code><code class="variable-group">)</code>
 </pre></td></tr></table>
 </dd>
   </dl>
@@ -1099,7 +1081,7 @@ r'"><code class="variable-quote">'</code><code class="variable-string">esapi.ref
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Sun Sep 27 16:34:56 2009
+    Generated by Epydoc 3.0.1 on Sun Nov  8 16:04:21 2009
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

@@ -236,8 +236,6 @@ a wide variety of applications to enforce access control.</em>
       <em class="summary">The UserCredentials class holds the credentials used to 
         authenticate a User.</em>
     </li>
-    <li> <strong class="uidlink"><a href="esapi.test.test_user.UserTest-class.html">esapi.test.test_user.UserTest</a></strong>
-    </li>
     <li> <strong class="uidlink"><a href="esapi.validation_rule.ValidationRule-class.html">esapi.validation_rule.ValidationRule</a></strong>
     <ul>
     <li> <strong class="uidlink"><a href="esapi.reference.validation.base_validation_rule.BaseValidationRule-class.html">esapi.reference.validation.base_validation_rule.BaseValidationRule</a></strong>:
@@ -299,6 +297,65 @@ a wide variety of applications to enforce access control.</em>
     <li> <strong class="uidlink"><a href="esapi.exceptions.EnterpriseSecurityException-class.html">esapi.exceptions.EnterpriseSecurityException</a></strong>:
       <em class="summary">EnterpriseSecurityException is the base class for all security 
         related exceptions.</em>
+    <ul>
+    <li> <strong class="uidlink"><a href="esapi.exceptions.AccessControlException-class.html">esapi.exceptions.AccessControlException</a></strong>:
+      <em class="summary">An AccessControlException should be raised when a user attempts to 
+        access a resource that they are not authorized for.</em>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.exceptions.AuthenticationException-class.html">esapi.exceptions.AuthenticationException</a></strong>:
+      <em class="summary">An AuthenticationException should be raised when anything goes 
+        wrong during login or logout.</em>
+    <ul>
+    <li> <strong class="uidlink"><a href="esapi.exceptions.AuthenticationAccountsException-class.html">esapi.exceptions.AuthenticationAccountsException</a></strong>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.exceptions.AuthenticationCredentialsException-class.html">esapi.exceptions.AuthenticationCredentialsException</a></strong>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.exceptions.AuthenticationHostException-class.html">esapi.exceptions.AuthenticationHostException</a></strong>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.exceptions.AuthenticationLoginException-class.html">esapi.exceptions.AuthenticationLoginException</a></strong>
+    </li>
+    </ul>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.exceptions.AvailabilityException-class.html">esapi.exceptions.AvailabilityException</a></strong>:
+      <em class="summary">An AvailabilityException should be raised when the availability of 
+        a limited resource is in jeopardy.</em>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.exceptions.CertificateException-class.html">esapi.exceptions.CertificateException</a></strong>:
+      <em class="summary">A CertificateException should be raised for any problems that arise
+        during processing of digital certificates.</em>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.exceptions.ConfigurationException-class.html">esapi.exceptions.ConfigurationException</a></strong>:
+      <em class="summary">A ConfigurationException should be raised for any problems related 
+        to importing or parsing esapi.conf.settings.</em>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.exceptions.EncodingException-class.html">esapi.exceptions.EncodingException</a></strong>:
+      <em class="summary">An ExecutorException should be raised for any problems that occur 
+        when encoding or decoding data.</em>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.exceptions.EncryptionException-class.html">esapi.exceptions.EncryptionException</a></strong>:
+      <em class="summary">An EncryptionException should be raised for any problems related to
+        encryption, hashing, or digital signatures.</em>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.exceptions.ExecutorException-class.html">esapi.exceptions.ExecutorException</a></strong>:
+      <em class="summary">An ExecutorException should be raised for any problems that arise 
+        during the execution of a system executable.</em>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.exceptions.IntegrityException-class.html">esapi.exceptions.IntegrityException</a></strong>:
+      <em class="summary">An IntegrityException should be raised when an integrity problem is
+        detected in a piece of data.</em>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.exceptions.ValidationException-class.html">esapi.exceptions.ValidationException</a></strong>:
+      <em class="summary">A ValidationException should be raised to indicate that the data 
+        provided by the user or from some other external source does not 
+        match the validation rules that have been specified for that data.</em>
+    <ul>
+    <li> <strong class="uidlink"><a href="esapi.exceptions.ValidationAvailabilityException-class.html">esapi.exceptions.ValidationAvailabilityException</a></strong>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.exceptions.ValidationUploadException-class.html">esapi.exceptions.ValidationUploadException</a></strong>
+    </li>
+    </ul>
+    </li>
+    </ul>
     </li>
     <li> <strong class="uidlink"><a href="esapi.exceptions.IntrusionException-class.html">esapi.exceptions.IntrusionException</a></strong>:
       <em class="summary">An IntrusionException should be raised anytime an error condition 
@@ -347,6 +404,8 @@ a wide variety of applications to enforce access control.</em>
     <li> <strong class="uidlink"><a href="esapi.test.test_logger.LoggerTest-class.html">esapi.test.test_logger.LoggerTest</a></strong>
     </li>
     <li> <strong class="uidlink"><a href="esapi.test.test_randomizer.RandomizerTest-class.html">esapi.test.test_randomizer.RandomizerTest</a></strong>
+    </li>
+    <li> <strong class="uidlink"><a href="esapi.test.test_user.UserTest-class.html">esapi.test.test_user.UserTest</a></strong>
     </li>
     <li> <strong class="uidlink"><a href="esapi.test.test_authenticator.ValidatorTest-class.html">esapi.test.test_authenticator.ValidatorTest</a></strong>
     </li>
@@ -400,7 +459,7 @@ a wide variety of applications to enforce access control.</em>
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Sun Sep 27 16:34:56 2009
+    Generated by Epydoc 3.0.1 on Sun Nov  8 16:04:21 2009
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

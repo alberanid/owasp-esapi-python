@@ -58,6 +58,40 @@
 </table>
 <!-- ==================== CLASS DESCRIPTION ==================== -->
 <h1 class="epydoc">Class UserTest</h1><p class="nomargin-top"><span class="codelink"><a href="esapi.test.test_user-pysrc.html#UserTest">source&nbsp;code</a></span></p>
+<pre class="base-tree">
+       object --+    
+                |    
+unittest.TestCase --+
+                    |
+                   <strong class="uidshort">UserTest</strong>
+</pre>
+
+<hr />
+<!-- ==================== NESTED CLASSES ==================== -->
+<a name="section-NestedClasses"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Nested Classes</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-NestedClasses"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>unittest.TestCase</code></b>:
+      <code><a href="exceptions.AssertionError-class.html">failureException</a></code>
+      </p>
+    </td>
+  </tr>
+</table>
 <!-- ==================== INSTANCE METHODS ==================== -->
 <a name="section-InstanceMethods"></a>
 <table class="summary" border="1" cellpadding="3"
@@ -82,9 +116,28 @@
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a href="esapi.test.test_user.UserTest-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">test_name</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>)</span></td>
+        <span class="summary-sig-arg">test_name</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>)</span><br />
+      Create an instance of the class that will use the named test method 
+      when executed.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="esapi.test.test_user-pysrc.html#UserTest.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.test.test_user.UserTest-class.html#setUp" class="summary-sig-name">setUp</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Hook method for setting up the test fixture before exercising it.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.test.test_user-pysrc.html#UserTest.setUp">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -485,6 +538,22 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
+          <td><span class="summary-sig"><a name="test_expired_user"></a><span class="summary-sig-name">test_expired_user</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.test.test_user-pysrc.html#UserTest.test_expired_user">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
           <td><span class="summary-sig"><a name="test_logout"></a><span class="summary-sig-name">test_logout</span>(<span class="summary-sig-arg">self</span>)</span></td>
           <td align="right" valign="top">
             <span class="codelink"><a href="esapi.test.test_user-pysrc.html#UserTest.test_logout">source&nbsp;code</a></span>
@@ -527,6 +596,100 @@
       
     </td>
   </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="test_locale"></a><span class="summary-sig-name">test_locale</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.test.test_user-pysrc.html#UserTest.test_locale">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>unittest.TestCase</code></b>:
+      <code>__call__</code>,
+      <code>__eq__</code>,
+      <code>__hash__</code>,
+      <code>__ne__</code>,
+      <code>__repr__</code>,
+      <code>__str__</code>,
+      <code>assertAlmostEqual</code>,
+      <code>assertAlmostEquals</code>,
+      <code>assertEqual</code>,
+      <code>assertEquals</code>,
+      <code>assertFalse</code>,
+      <code>assertNotAlmostEqual</code>,
+      <code>assertNotAlmostEquals</code>,
+      <code>assertNotEqual</code>,
+      <code>assertNotEquals</code>,
+      <code>assertRaises</code>,
+      <code>assertTrue</code>,
+      <code>assert_</code>,
+      <code>countTestCases</code>,
+      <code>debug</code>,
+      <code>defaultTestResult</code>,
+      <code>fail</code>,
+      <code>failIf</code>,
+      <code>failIfAlmostEqual</code>,
+      <code>failIfEqual</code>,
+      <code>failUnless</code>,
+      <code>failUnlessAlmostEqual</code>,
+      <code>failUnlessEqual</code>,
+      <code>failUnlessRaises</code>,
+      <code>id</code>,
+      <code>run</code>,
+      <code>shortDescription</code>,
+      <code>tearDown</code>
+      </p>
+    <div class="private">    <p class="indent-wrapped-lines"><b>Inherited from <code>unittest.TestCase</code></b> (private):
+      <code>_exc_info</code>
+      </p></div>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__delattr__</code>,
+      <code>__format__</code>,
+      <code>__getattribute__</code>,
+      <code>__new__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__setattr__</code>,
+      <code>__sizeof__</code>,
+      <code>__subclasshook__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Properties</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Properties"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
+    </td>
+  </tr>
 </table>
 <!-- ==================== METHOD DETAILS ==================== -->
 <a name="section-MethodDetails"></a>
@@ -562,12 +725,40 @@
     </td>
   </tr></table>
   
-  
+  <p>Create an instance of the class that will use the named test method 
+  when executed. Raises a ValueError if the instance does not have a method
+  with the specified name.</p>
   <dl class="fields">
     <dt>Parameters:</dt>
     <dd><ul class="nomargin-top">
         <li><strong class="pname"><code>test_name</code></strong> - the test name</li>
     </ul></dd>
+    <dt>Overrides:
+        object.__init__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="setUp"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">setUp</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.test.test_user-pysrc.html#UserTest.setUp">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Hook method for setting up the test fixture before exercising it.</p>
+  <dl class="fields">
+    <dt>Overrides:
+        unittest.TestCase.setUp
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
   </dl>
 </td></tr></table>
 </div>
@@ -625,7 +816,7 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Sun Sep 27 16:34:57 2009
+    Generated by Epydoc 3.0.1 on Sun Nov  8 16:04:22 2009
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

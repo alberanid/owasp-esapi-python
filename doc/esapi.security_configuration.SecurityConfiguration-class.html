@@ -292,8 +292,8 @@
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a href="esapi.security_configuration.SecurityConfiguration-class.html#get_remember_token_duration" class="summary-sig-name">get_remember_token_duration</a>(<span class="summary-sig-arg">self</span>)</span><br />
-      Gets the length of the time to live window for remember me tokens (in
-      milliseconds).</td>
+      Gets the length of the time to live window for remember me tokens as 
+      a timedelta object.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_remember_token_duration">source&nbsp;code</a></span>
             
@@ -310,7 +310,7 @@
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a href="esapi.security_configuration.SecurityConfiguration-class.html#get_session_idle_timeout_length" class="summary-sig-name">get_session_idle_timeout_length</a>(<span class="summary-sig-arg">self</span>)</span><br />
-      Gets the idle timeout length for sessions (in milliseconds).</td>
+      Gets the idle timeout length for sessions as a timedelta object.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_session_idle_timeout_length">source&nbsp;code</a></span>
             
@@ -327,7 +327,7 @@
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td><span class="summary-sig"><a href="esapi.security_configuration.SecurityConfiguration-class.html#get_session_absolute_timeout_length" class="summary-sig-name">get_session_absolute_timeout_length</a>(<span class="summary-sig-arg">self</span>)</span><br />
-      Gets the absolute timeout length for sessions (in milliseconds).</td>
+      Gets the absolute timeout length for sessions as a timedelta object.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_session_absolute_timeout_length">source&nbsp;code</a></span>
             
@@ -471,6 +471,24 @@
       Gets the allowed executables to run with the Executor.</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_allowed_executables">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_max_running_time"></a><span class="summary-sig-name">get_max_running_time</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Returns the maximum length of time any process should be executed for
+      as a timedelta object.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.security_configuration-pysrc.html#SecurityConfiguration.get_max_running_time">source&nbsp;code</a></span>
             
           </td>
         </tr>
@@ -951,8 +969,8 @@
     </td>
   </tr></table>
   
-  <p>Gets the length of the time to live window for remember me tokens (in 
-  milliseconds).</p>
+  <p>Gets the length of the time to live window for remember me tokens as a
+  timedelta object.</p>
   <dl class="fields">
     <dt>Returns:</dt>
         <dd>The time to live length for generated remember me tokens.</dd>
@@ -973,10 +991,11 @@
     </td>
   </tr></table>
   
-  <p>Gets the idle timeout length for sessions (in milliseconds). This is 
-  the amount of time that a session can live before it expires due to lack 
-  of activity. Applications or frameworks could provide a reauthenticate 
-  function that enables a session to continue after reauthentication.</p>
+  <p>Gets the idle timeout length for sessions as a timedelta object. This 
+  is the amount of time that a session can live before it expires due to 
+  lack of activity. Applications or frameworks could provide a 
+  reauthenticate function that enables a session to continue after 
+  reauthentication.</p>
   <dl class="fields">
     <dt>Returns:</dt>
         <dd>The session idle timeout length.</dd>
@@ -997,8 +1016,8 @@
     </td>
   </tr></table>
   
-  <p>Gets the absolute timeout length for sessions (in milliseconds). This 
-  is the amount of time that a session can live before it expires 
+  <p>Gets the absolute timeout length for sessions as a timedelta object. 
+  This is the amount of time that a session can live before it expires 
   regardless of the amount of user activity. Applications or frameworks 
   could provide a reauthenticate function that enables a session to 
   continue after reauthentication.</p>
@@ -1437,7 +1456,7 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Sun Sep 27 16:34:57 2009
+    Generated by Epydoc 3.0.1 on Sun Nov  8 16:04:22 2009
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"
