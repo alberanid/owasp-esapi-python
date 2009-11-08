@@ -45,7 +45,7 @@ class DefaultEncryptor(Encryptor):
     """
     
     VALID_ENCRYPTION_ALGOS = ('AES')
-    VALID_SIGNING_ALGOS = ('DSA', 'DSA')
+    VALID_SIGNING_ALGOS = ('DSA')
     
     def __init__(self):
         Encryptor.__init__(self)
