@@ -41,4 +41,4 @@ To enable internationalization:
     On *nix: export LANGUAGE=en_US
     On Windows: set LANGUAGE=en_US
     
-    Please note that as of this writing, no translation files are available. A GNU gettext .po file is available in esapi/conf/locale . 
+    Please note that as of this writing, no translation files are available. A GNU gettext .pot file is available in esapi/conf/locale . 

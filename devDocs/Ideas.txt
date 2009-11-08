@@ -1,1 +1,0 @@
-move multiplication from security_config to settings.py, or include timedelta's in settings.py. Units need to be more explicit
