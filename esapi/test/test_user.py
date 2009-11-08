@@ -20,6 +20,12 @@
 # Implement any 'pass' methods
 # Regroup in same groups as User interface
 
+# Use esapi/test/conf instead of esapi/conf
+# It is important that this is at the top, as it affects the imports below
+# by loading the test configuration instead of the normal one.
+# This should ONLY ever be used in the unit tests.
+import esapi.test.conf
+
 import unittest
 import inspect
 import time
@@ -36,7 +42,7 @@ class UserTest(unittest.TestCase):
     def __init__(self, test_name=""):
         """       
         @param test_name: the test name
-        """
+        """     
         unittest.TestCase.__init__(self, test_name)
         self.user_class = ESAPI.security_configuration().get_class_for_interface('user')
         

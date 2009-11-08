@@ -21,18 +21,16 @@
 import pickle
 import re
 import sys
-import os.path
 
 from esapi.core import ESAPI
 from esapi.security_configuration import SecurityConfiguration
 from esapi.translation import _
 from esapi.exceptions import ConfigurationException
-import esapi.conf.resources
 
-try:
-    import esapi.conf.settings as settings
-except ImportError:
-    raise ImportError, _("Unable to import settings file - Check settings.py")
+# These will be modules set in load_configuration
+conf = None
+resources = None
+settings = None
 
 class DefaultSecurityConfiguration(SecurityConfiguration):
     def __init__(self):
@@ -40,11 +38,30 @@ class DefaultSecurityConfiguration(SecurityConfiguration):
         SecurityConfiguration.__init__(self)
         self.load_configuration()
                 
-        self.resource_dir = esapi.conf.resources.__path__[0]
+        self.resource_dir = resources.__path__[0]
         
     # Helper
     def load_configuration(self):
         """Load configuration"""
+        
+        # Get the correct set of modules
+        global conf, resources, settings
+        try:
+            # If esapi.test.conf was already imported, we know we are running a unit
+            # test, so we should load the testing configuration
+            
+            if 'esapi.test.conf' in sys.modules:
+                self.log_special(_("WARNING - LOADING UNIT TEST CONFIGURATION! IF YOU ARE NOT RUNNING UNIT TESTS, SOMETHING IS VERY WRONG AND YOUR APP IS NOT SECURE!"))
+                import esapi.test.conf as conf
+                import esapi.test.conf.resources as resources
+                import esapi.test.conf.settings as settings
+            else:
+                import esapi.conf as conf
+                import esapi.conf.resources as resources
+                import esapi.conf.settings as settings
+              
+        except ImportError:
+            raise ImportError, _("Unable to import settings file - Check settings.py")
             
         self.log_special(_("Loaded ESAPI properties"))
         

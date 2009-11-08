@@ -2,17 +2,8 @@
 # You can find more information about ESAPI
 # http://www.owasp.org/index.php/ESAPI
 #
-# WARNING: Operating system protection should be used to lock down the conf
-# directory and all the files inside.  Note that if you are using file-based
-# implementations that some files may need to be read-write as they get
-# updated dynamically.
-#
-# Before using, be sure to update the MasterSalt as described below.
-# This settings.py may be used, and contains only very safe defaults.
-#
-# This settings file is Python code, and must be syntactically correct.
-# Use `python settings.py` from a shell to verify the syntax. If the syntax
-# is correct, you should receive no output.
+# THIS SETTINGS FILE IS FOR UNIT TESTS **ONLY**! IT IS NOT SAFE FOR PRODUCTION
+# USE! USE esapi/conf/settings.py AND DO NOT MODIFY THIS FILE!
 #
 from datetime import timedelta
 
@@ -86,7 +77,7 @@ Encryptor_KeysLocation = '/tmp/esapi/keyring'
 # The master salt is appended to all hashes. 
 # WARNING: THIS MUST BE CHANGED FROM THE DEFAULT BY FOLLOWING THE INSTRUCTIONS
 # IN THE README TO GENERATE NEW ENCRYPTION KEYS
-Encryptor_MasterSalt = None
+Encryptor_MasterSalt = 'avxup4Txu01KZE0V0kjvHGyVfLs='
 
 # AES is the most widely used and strongest encryption algorithm
 Encryptor_EncryptionAlgorithm = 'AES'
@@ -123,8 +114,8 @@ HttpUtilities_ForceSecureCookies = True
 
 # File upload configuration
 HttpUtilities_UploadDir = r'UploadDir'
-# A Python list of extensions allowed to be uploaded, including the period
-HttpUtilities_AllowedUploadExtensions = []
+# A Python list of extensions allowed to be uploaded
+HttpUtilities_AllowedUploadExtensions = '.zip,.pdf,.tar,.gz,.xls,.properties,.txt,.xml'.lower().split(',')
 HttpUtilities_MaxUploadFileBytes = 5000000
 # Using UTF-8 throughout your stack is highly recommended. That includes your 
 # database driver, container, and any other technologies you may be using. 
@@ -140,7 +131,7 @@ HttpUtilities_ResponseContentType = 'text/html; charset=UTF-8'
 # The directory in which files are executed
 Executor_WorkingDirectory = r'/tmp'
 # The executables your web application is allowed to execute
-Executor_AllowedExecutables = ()
+Executor_AllowedExecutables = ('/bin/sh', '/bin/sleep', 'C:\Windows\System32\cmd.exe')
 # If an executed process continues for this amount of time, it will be terminated
 Executor_MaxRunningTime = timedelta(seconds=10)
 

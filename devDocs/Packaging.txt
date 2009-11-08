@@ -1,2 +1,2 @@
 * Regen the documentation
-* Check settings.py - Remove default MasterSalt
+* diff esapi/conf/settings.py esapi/test/conf/settings.py

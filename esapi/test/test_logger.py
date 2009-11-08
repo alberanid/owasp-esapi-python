@@ -16,6 +16,12 @@
 @author: Craig Younkins (craig.younkins@owasp.org)
 """
 
+# Use esapi/test/conf instead of esapi/conf
+# It is important that this is at the top, as it affects the imports below
+# by loading the test configuration instead of the normal one.
+# This should ONLY ever be used in the unit tests.
+import esapi.test.conf
+
 import unittest
 import sys
 
