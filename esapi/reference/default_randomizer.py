@@ -43,10 +43,10 @@ class DefaultRandomizer(Randomizer):
         self.logger = ESAPI.logger("Randomizer")
 
     def get_random_string(self, length, character_set):
-        ret = ""
+        ret = []
         for i in range(length):
-            ret += self.get_random_choice(character_set)
-        return ret
+            ret.append( self.get_random_choice(character_set) )
+        return ''.join(ret)
 
     def get_random_boolean(self):
         return self.get_random_choice([True, False])
