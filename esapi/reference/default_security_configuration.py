@@ -21,7 +21,6 @@
 import pickle
 import re
 import sys
-import logging
 
 from esapi.core import ESAPI
 from esapi.security_configuration import SecurityConfiguration
@@ -73,7 +72,7 @@ class DefaultSecurityConfiguration(SecurityConfiguration):
                 self.log_special("  |   %(key)s = %(value)s" % {"key": option, "value": str(settings.__dict__[option])})
     
     def log_special(self, text):
-        logging.info(text)
+        print text
            
     # General
     def get_application_name(self):
