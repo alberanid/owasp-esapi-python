@@ -1,0 +1,9 @@
+* diff esapi/conf/settings.py esapi/test/conf/settings.py
+* Regen the documentation - See regen_documentation.bat
+* Regen the i18n .pot file:
+    echo > esapi/conf/locale/esapi.pot
+    find esapi/ -iname "*.py" -exec xgettext -C -j -L Python -o esapi/conf/locale/esapi.pot {} \;
+    cp esapi/conf/locale/esapi.pot esapi/test/conf/locale/esapi.pot
+* Push any updates to the repo
+* Clone a fresh, new copy from the repo
+* Zip up everything except the devDocs folder

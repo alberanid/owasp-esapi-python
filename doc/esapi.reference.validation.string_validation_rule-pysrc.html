@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>esapi.reference.validation.string_validation_rule</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="esapi-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="esapi-module.html">Package&nbsp;esapi</a> ::
+        <a href="esapi.reference-module.html">Package&nbsp;reference</a> ::
+        <a href="esapi.reference.validation-module.html">Package&nbsp;validation</a> ::
+        Module&nbsp;string_validation_rule
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="esapi.reference.validation.string_validation_rule-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="esapi.reference.validation.string_validation_rule-module.html">Module esapi.reference.validation.string_validation_rule</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment">#!/usr/bin/python</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: utf-8 -*-</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-docstring">@license: OWASP Enterprise Security API (ESAPI)</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-docstring">     </tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-docstring">    This file is part of the Open Web Application Security Project (OWASP)</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-docstring">    Enterprise Security API (ESAPI) project. For details, please see</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-docstring">    U{http://www.owasp.org/index.php/ESAPI&lt;http://www.owasp.org/index.php/ESAPI&gt;}.</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-docstring">    The ESAPI is published by OWASP under the BSD license. You should read and </tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-docstring">    accept the LICENSE before you use, modify, and/or redistribute this software.</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-docstring">    </tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"><tt class="py-docstring">@summary: A ValidationRule for strings.</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt class="py-docstring">@copyright: Copyright (c) 2009 - The OWASP Foundation</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"><tt class="py-docstring">@author: Craig Younkins (craig.younkins@owasp.org)</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">re</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Package esapi=esapi-module.html"><a title="esapi" class="py-name" href="#" onclick="return doclink('link-0', 'esapi', 'link-0');">esapi</a></tt><tt class="py-op">.</tt><tt id="link-1" class="py-name" targets="Module esapi.translation=esapi.translation-module.html"><a title="esapi.translation" class="py-name" href="#" onclick="return doclink('link-1', 'translation', 'link-1');">translation</a></tt> <tt class="py-keyword">import</tt> <tt class="py-name">_</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-2" class="py-name"><a title="esapi" class="py-name" href="#" onclick="return doclink('link-2', 'esapi', 'link-0');">esapi</a></tt><tt class="py-op">.</tt><tt id="link-3" class="py-name" targets="Package esapi.reference=esapi.reference-module.html"><a title="esapi.reference" class="py-name" href="#" onclick="return doclink('link-3', 'reference', 'link-3');">reference</a></tt><tt class="py-op">.</tt><tt id="link-4" class="py-name" targets="Package esapi.reference.validation=esapi.reference.validation-module.html"><a title="esapi.reference.validation" class="py-name" href="#" onclick="return doclink('link-4', 'validation', 'link-4');">validation</a></tt><tt class="py-op">.</tt><tt id="link-5" class="py-name" targets="Module esapi.reference.validation.base_validation_rule=esapi.reference.validation.base_validation_rule-module.html"><a title="esapi.reference.validation.base_validation_rule" class="py-name" href="#" onclick="return doclink('link-5', 'base_validation_rule', 'link-5');">base_validation_rule</a></tt> <tt class="py-keyword">import</tt> <tt id="link-6" class="py-name" targets="Class esapi.reference.validation.base_validation_rule.BaseValidationRule=esapi.reference.validation.base_validation_rule.BaseValidationRule-class.html"><a title="esapi.reference.validation.base_validation_rule.BaseValidationRule" class="py-name" href="#" onclick="return doclink('link-6', 'BaseValidationRule', 'link-6');">BaseValidationRule</a></tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-7" class="py-name"><a title="esapi" class="py-name" href="#" onclick="return doclink('link-7', 'esapi', 'link-0');">esapi</a></tt><tt class="py-op">.</tt><tt id="link-8" class="py-name" targets="Module esapi.exceptions=esapi.exceptions-module.html"><a title="esapi.exceptions" class="py-name" href="#" onclick="return doclink('link-8', 'exceptions', 'link-8');">exceptions</a></tt> <tt class="py-keyword">import</tt> <tt id="link-9" class="py-name" targets="Class esapi.exceptions.ValidationException=esapi.exceptions.ValidationException-class.html"><a title="esapi.exceptions.ValidationException" class="py-name" href="#" onclick="return doclink('link-9', 'ValidationException', 'link-9');">ValidationException</a></tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-10" class="py-name"><a title="esapi" class="py-name" href="#" onclick="return doclink('link-10', 'esapi', 'link-0');">esapi</a></tt><tt class="py-op">.</tt><tt id="link-11" class="py-name"><a title="esapi.exceptions" class="py-name" href="#" onclick="return doclink('link-11', 'exceptions', 'link-8');">exceptions</a></tt> <tt class="py-keyword">import</tt> <tt id="link-12" class="py-name" targets="Class esapi.exceptions.EncodingException=esapi.exceptions.EncodingException-class.html"><a title="esapi.exceptions.EncodingException" class="py-name" href="#" onclick="return doclink('link-12', 'EncodingException', 'link-12');">EncodingException</a></tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line"> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-13" class="py-name"><a title="esapi" class="py-name" href="#" onclick="return doclink('link-13', 'esapi', 'link-0');">esapi</a></tt><tt class="py-op">.</tt><tt id="link-14" class="py-name" targets="Package esapi.conf=esapi.conf-module.html,Package esapi.test.conf=esapi.test.conf-module.html"><a title="esapi.conf
+esapi.test.conf" class="py-name" href="#" onclick="return doclink('link-14', 'conf', 'link-14');">conf</a></tt><tt class="py-op">.</tt><tt id="link-15" class="py-name" targets="Module esapi.conf.constants=esapi.conf.constants-module.html,Module esapi.test.conf.constants=esapi.test.conf.constants-module.html"><a title="esapi.conf.constants
+esapi.test.conf.constants" class="py-name" href="#" onclick="return doclink('link-15', 'constants', 'link-15');">constants</a></tt> <tt class="py-keyword">import</tt> <tt id="link-16" class="py-name" targets="Variable esapi.conf.constants.MAX_INTEGER=esapi.conf.constants-module.html#MAX_INTEGER,Variable esapi.test.conf.constants.MAX_INTEGER=esapi.test.conf.constants-module.html#MAX_INTEGER"><a title="esapi.conf.constants.MAX_INTEGER
+esapi.test.conf.constants.MAX_INTEGER" class="py-name" href="#" onclick="return doclink('link-16', 'MAX_INTEGER', 'link-16');">MAX_INTEGER</a></tt><tt class="py-op">,</tt> <tt id="link-17" class="py-name" targets="Variable esapi.conf.constants.MIN_INTEGER=esapi.conf.constants-module.html#MIN_INTEGER,Variable esapi.test.conf.constants.MIN_INTEGER=esapi.test.conf.constants-module.html#MIN_INTEGER"><a title="esapi.conf.constants.MIN_INTEGER
+esapi.test.conf.constants.MIN_INTEGER" class="py-name" href="#" onclick="return doclink('link-17', 'MIN_INTEGER', 'link-17');">MIN_INTEGER</a></tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"> </tt>
+<a name="StringValidationRule"></a><div id="StringValidationRule-def"><a name="L29"></a><tt class="py-lineno"> 29</tt> <a class="py-toggle" href="#" id="StringValidationRule-toggle" onclick="return toggle('StringValidationRule');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="esapi.reference.validation.string_validation_rule.StringValidationRule-class.html">StringValidationRule</a><tt class="py-op">(</tt><tt class="py-base-class">BaseValidationRule</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="StringValidationRule-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="StringValidationRule-expanded"><a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line"><tt class="py-docstring">    This validator performs syntax validation of strings.</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="StringValidationRule.__init__"></a><div id="StringValidationRule.__init__-def"><a name="L33"></a><tt class="py-lineno"> 33</tt> <a class="py-toggle" href="#" id="StringValidationRule.__init__-toggle" onclick="return toggle('StringValidationRule.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.reference.validation.string_validation_rule.StringValidationRule-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">type_name</tt><tt class="py-op">,</tt> <tt class="py-param">encoder</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-param">whitelist_pattern</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="StringValidationRule.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="StringValidationRule.__init__-expanded"><a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">whitelist_patterns</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">blacklist_patterns</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">min_length</tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">max_length</tt> <tt class="py-op">=</tt> <tt id="link-18" class="py-name"><a title="esapi.conf.constants.MAX_INTEGER
+esapi.test.conf.constants.MAX_INTEGER" class="py-name" href="#" onclick="return doclink('link-18', 'MAX_INTEGER', 'link-16');">MAX_INTEGER</a></tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">         </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line">        <tt id="link-19" class="py-name"><a title="esapi.reference.validation.base_validation_rule.BaseValidationRule" class="py-name" href="#" onclick="return doclink('link-19', 'BaseValidationRule', 'link-6');">BaseValidationRule</a></tt><tt class="py-op">.</tt><tt id="link-20" class="py-name" targets="Method esapi.access_reference_map.AccessReferenceMap.__init__()=esapi.access_reference_map.AccessReferenceMap-class.html#__init__,Method esapi.authenticator.Authenticator.__init__()=esapi.authenticator.Authenticator-class.html#__init__,Method esapi.codecs.codec.Codec.__init__()=esapi.codecs.codec.Codec-class.html#__init__,Method esapi.codecs.css.CSSCodec.__init__()=esapi.codecs.css.CSSCodec-class.html#__init__,Method esapi.codecs.html_entity.HTMLEntityCodec.__init__()=esapi.codecs.html_entity.HTMLEntityCodec-class.html#__init__,Method esapi.codecs.javascript.JavascriptCodec.__init__()=esapi.codecs.javascript.JavascriptCodec-class.html#__init__,Method esapi.codecs.ldap.LDAPCodec.__init__()=esapi.codecs.ldap.LDAPCodec-class.html#__init__,Method esapi.codecs.ldap_dn.LDAPDNCodec.__init__()=esapi.codecs.ldap_dn.LDAPDNCodec-class.html#__init__,Method esapi.codecs.mysql.MySQLCodec.__init__()=esapi.codecs.mysql.MySQLCodec-class.html#__init__,Method esapi.codecs.oracle.OracleCodec.__init__()=esapi.codecs.oracle.OracleCodec-class.html#__init__,Method esapi.codecs.percent.PercentCodec.__init__()=esapi.codecs.percent.PercentCodec-class.html#__init__,Method esapi.codecs.push_back_string.PushbackString.__init__()=esapi.codecs.push_back_string.PushbackString-class.html#__init__,Method esapi.codecs.unix.UnixCodec.__init__()=esapi.codecs.unix.UnixCodec-class.html#__init__,Method esapi.codecs.vbscript.VBScriptCodec.__init__()=esapi.codecs.vbscript.VBScriptCodec-class.html#__init__,Method esapi.codecs.windows.WindowsCodec.__init__()=esapi.codecs.windows.WindowsCodec-class.html#__init__,Method esapi.encoder.Encoder.__init__()=esapi.encoder.Encoder-class.html#__init__,Method esapi.encryptor.Encryptor.__init__()=esapi.encryptor.Encryptor-class.html#__init__,Method esapi.exceptions.AccessControlException.__init__()=esapi.exceptions.AccessControlException-class.html#__init__,Method esapi.exceptions.AuthenticationAccountsException.__init__()=esapi.exceptions.AuthenticationAccountsException-class.html#__init__,Method esapi.exceptions.AuthenticationCredentialsException.__init__()=esapi.exceptions.AuthenticationCredentialsException-class.html#__init__,Method esapi.exceptions.AuthenticationException.__init__()=esapi.exceptions.AuthenticationException-class.html#__init__,Method esapi.exceptions.AuthenticationHostException.__init__()=esapi.exceptions.AuthenticationHostException-class.html#__init__,Method esapi.exceptions.AuthenticationLoginException.__init__()=esapi.exceptions.AuthenticationLoginException-class.html#__init__,Method esapi.exceptions.AvailabilityException.__init__()=esapi.exceptions.AvailabilityException-class.html#__init__,Method esapi.exceptions.CertificateException.__init__()=esapi.exceptions.CertificateException-class.html#__init__,Method esapi.exceptions.ConfigurationException.__init__()=esapi.exceptions.ConfigurationException-class.html#__init__,Method esapi.exceptions.EncodingException.__init__()=esapi.exceptions.EncodingException-class.html#__init__,Method esapi.exceptions.EncryptionException.__init__()=esapi.exceptions.EncryptionException-class.html#__init__,Method esapi.exceptions.EnterpriseSecurityException.__init__()=esapi.exceptions.EnterpriseSecurityException-class.html#__init__,Method esapi.exceptions.ExecutorException.__init__()=esapi.exceptions.ExecutorException-class.html#__init__,Method esapi.exceptions.IntegrityException.__init__()=esapi.exceptions.IntegrityException-class.html#__init__,Method esapi.exceptions.IntrusionException.__init__()=esapi.exceptions.IntrusionException-class.html#__init__,Method esapi.exceptions.ValidationAvailabilityException.__init__()=esapi.exceptions.ValidationAvailabilityException-class.html#__init__,Method esapi.exceptions.ValidationException.__init__()=esapi.exceptions.ValidationException-class.html#__init__,Method esapi.exceptions.ValidationUploadException.__init__()=esapi.exceptions.ValidationUploadException-class.html#__init__,Method esapi.executor.Executor.__init__()=esapi.executor.Executor-class.html#__init__,Method esapi.http_utilities.HTTPUtilities.__init__()=esapi.http_utilities.HTTPUtilities-class.html#__init__,Method esapi.ihttp.IHttpRequest.__init__()=esapi.ihttp.IHttpRequest-class.html#__init__,Method esapi.ihttp.IHttpResponse.__init__()=esapi.ihttp.IHttpResponse-class.html#__init__,Method esapi.ihttp.ISession.__init__()=esapi.ihttp.ISession-class.html#__init__,Method esapi.log_factory.LogFactory.__init__()=esapi.log_factory.LogFactory-class.html#__init__,Method esapi.logger.Logger.EventType.__init__()=esapi.logger.Logger.EventType-class.html#__init__,Method esapi.logger.Logger.__init__()=esapi.logger.Logger-class.html#__init__,Method esapi.randomizer.Randomizer.__init__()=esapi.randomizer.Randomizer-class.html#__init__,Method esapi.reference.default_encoder.DefaultEncoder.__init__()=esapi.reference.default_encoder.DefaultEncoder-class.html#__init__,Method esapi.reference.default_encryptor.DefaultEncryptor.__init__()=esapi.reference.default_encryptor.DefaultEncryptor-class.html#__init__,Method esapi.reference.default_executor.DefaultExecutor.__init__()=esapi.reference.default_executor.DefaultExecutor-class.html#__init__,Method esapi.reference.default_http_utilities.DefaultHTTPUtilities.__init__()=esapi.reference.default_http_utilities.DefaultHTTPUtilities-class.html#__init__,Method esapi.reference.default_intrusion_detector.DefaultIntrusionDetector.Event.__init__()=esapi.reference.default_intrusion_detector.DefaultIntrusionDetector.Event-class.html#__init__,Method esapi.reference.default_intrusion_detector.DefaultIntrusionDetector.__init__()=esapi.reference.default_intrusion_detector.DefaultIntrusionDetector-class.html#__init__,Method esapi.reference.default_randomizer.DefaultRandomizer.__init__()=esapi.reference.default_randomizer.DefaultRandomizer-class.html#__init__,Method esapi.reference.default_security_configuration.DefaultSecurityConfiguration.__init__()=esapi.reference.default_security_configuration.DefaultSecurityConfiguration-class.html#__init__,Method esapi.reference.default_user.DefaultUser.__init__()=esapi.reference.default_user.DefaultUser-class.html#__init__,Method esapi.reference.default_validator.DefaultValidator.__init__()=esapi.reference.default_validator.DefaultValidator-class.html#__init__,Method esapi.reference.file_based_access_controller.FileBasedAccessController.__init__()=esapi.reference.file_based_access_controller.FileBasedAccessController-class.html#__init__,Method esapi.reference.file_based_access_controller.Rule.__init__()=esapi.reference.file_based_access_controller.Rule-class.html#__init__,Method esapi.reference.python_log_factory.PythonLogFactory.PythonLogger.__init__()=esapi.reference.python_log_factory.PythonLogFactory.PythonLogger-class.html#__init__,Method esapi.reference.python_log_factory.PythonLogFactory.__init__()=esapi.reference.python_log_factory.PythonLogFactory-class.html#__init__,Method esapi.reference.random_access_reference_map.RandomAccessReferenceMap.__init__()=esapi.reference.random_access_reference_map.RandomAccessReferenceMap-class.html#__init__,Method esapi.reference.shelve_authenticator.ShelveAuthenticator.__init__()=esapi.reference.shelve_authenticator.ShelveAuthenticator-class.html#__init__,Method esapi.reference.user_credentials.UserCredentials.__init__()=esapi.reference.user_credentials.UserCredentials-class.html#__init__,Method esapi.reference.validation.base_validation_rule.BaseValidationRule.__init__()=esapi.reference.validation.base_validation_rule.BaseValidationRule-class.html#__init__,Method esapi.reference.validation.credit_card_validation_rule.CreditCardValidationRule.__init__()=esapi.reference.validation.credit_card_validation_rule.CreditCardValidationRule-class.html#__init__,Method esapi.reference.validation.date_validation_rule.DateValidationRule.__init__()=esapi.reference.validation.date_validation_rule.DateValidationRule-class.html#__init__,Method esapi.reference.validation.number_validation_rule.NumberValidationRule.__init__()=esapi.reference.validation.number_validation_rule.NumberValidationRule-class.html#__init__,Method esapi.reference.validation.string_validation_rule.StringValidationRule.__init__()=esapi.reference.validation.string_validation_rule.StringValidationRule-class.html#__init__,Method esapi.security_configuration.SecurityConfiguration.Threshold.__init__()=esapi.security_configuration.SecurityConfiguration.Threshold-class.html#__init__,Method esapi.security_configuration.SecurityConfiguration.__init__()=esapi.security_configuration.SecurityConfiguration-class.html#__init__,Method esapi.test.http.mock_http_request.MockHttpRequest.__init__()=esapi.test.http.mock_http_request.MockHttpRequest-class.html#__init__,Method esapi.test.http.mock_http_response.MockHttpResponse.__init__()=esapi.test.http.mock_http_response.MockHttpResponse-class.html#__init__,Method esapi.test.http.mock_session.MockSession.__init__()=esapi.test.http.mock_session.MockSession-class.html#__init__,Method esapi.test.test_access_controller.AccessControllerTest.__init__()=esapi.test.test_access_controller.AccessControllerTest-class.html#__init__,Method esapi.test.test_authenticator.ValidatorTest.__init__()=esapi.test.test_authenticator.ValidatorTest-class.html#__init__,Method esapi.test.test_encoder.EncoderTest.__init__()=esapi.test.test_encoder.EncoderTest-class.html#__init__,Method esapi.test.test_encryptor.EncryptorTest.__init__()=esapi.test.test_encryptor.EncryptorTest-class.html#__init__,Method esapi.test.test_executor.ExecutorTest.__init__()=esapi.test.test_executor.ExecutorTest-class.html#__init__,Method esapi.test.test_http_utilities.HTTPUtilitiesTest.__init__()=esapi.test.test_http_utilities.HTTPUtilitiesTest-class.html#__init__,Method esapi.test.test_intrusion_detector.IntrusionDetectorTest.__init__()=esapi.test.test_intrusion_detector.IntrusionDetectorTest-class.html#__init__,Method esapi.test.test_logger.LoggerTest.__init__()=esapi.test.test_logger.LoggerTest-class.html#__init__,Method esapi.test.test_random_access_map.ARMTest.__init__()=esapi.test.test_random_access_map.ARMTest-class.html#__init__,Method esapi.test.test_randomizer.RandomizerTest.__init__()=esapi.test.test_randomizer.RandomizerTest-class.html#__init__,Method esapi.test.test_user.UserTest.__init__()=esapi.test.test_user.UserTest-class.html#__init__,Method esapi.test.test_validator.ValidatorTest.__init__()=esapi.test.test_validator.ValidatorTest-class.html#__init__,Method esapi.user.AnonymousUser.__init__()=esapi.user.AnonymousUser-class.html#__init__,Method esapi.user.User.__init__()=esapi.user.User-class.html#__init__,Method esapi.validator.Validator.__init__()=esapi.validator.Validator-class.html#__init__"><a title="esapi.access_reference_map.AccessReferenceMap.__init__
+esapi.authenticator.Authenticator.__init__
+esapi.codecs.codec.Codec.__init__
+esapi.codecs.css.CSSCodec.__init__
+esapi.codecs.html_entity.HTMLEntityCodec.__init__
+esapi.codecs.javascript.JavascriptCodec.__init__
+esapi.codecs.ldap.LDAPCodec.__init__
+esapi.codecs.ldap_dn.LDAPDNCodec.__init__
+esapi.codecs.mysql.MySQLCodec.__init__
+esapi.codecs.oracle.OracleCodec.__init__
+esapi.codecs.percent.PercentCodec.__init__
+esapi.codecs.push_back_string.PushbackString.__init__
+esapi.codecs.unix.UnixCodec.__init__
+esapi.codecs.vbscript.VBScriptCodec.__init__
+esapi.codecs.windows.WindowsCodec.__init__
+esapi.encoder.Encoder.__init__
+esapi.encryptor.Encryptor.__init__
+esapi.exceptions.AccessControlException.__init__
+esapi.exceptions.AuthenticationAccountsException.__init__
+esapi.exceptions.AuthenticationCredentialsException.__init__
+esapi.exceptions.AuthenticationException.__init__
+esapi.exceptions.AuthenticationHostException.__init__
+esapi.exceptions.AuthenticationLoginException.__init__
+esapi.exceptions.AvailabilityException.__init__
+esapi.exceptions.CertificateException.__init__
+esapi.exceptions.ConfigurationException.__init__
+esapi.exceptions.EncodingException.__init__
+esapi.exceptions.EncryptionException.__init__
+esapi.exceptions.EnterpriseSecurityException.__init__
+esapi.exceptions.ExecutorException.__init__
+esapi.exceptions.IntegrityException.__init__
+esapi.exceptions.IntrusionException.__init__
+esapi.exceptions.ValidationAvailabilityException.__init__
+esapi.exceptions.ValidationException.__init__
+esapi.exceptions.ValidationUploadException.__init__
+esapi.executor.Executor.__init__
+esapi.http_utilities.HTTPUtilities.__init__
+esapi.ihttp.IHttpRequest.__init__
+esapi.ihttp.IHttpResponse.__init__
+esapi.ihttp.ISession.__init__
+esapi.log_factory.LogFactory.__init__
+esapi.logger.Logger.EventType.__init__
+esapi.logger.Logger.__init__
+esapi.randomizer.Randomizer.__init__
+esapi.reference.default_encoder.DefaultEncoder.__init__
+esapi.reference.default_encryptor.DefaultEncryptor.__init__
+esapi.reference.default_executor.DefaultExecutor.__init__
+esapi.reference.default_http_utilities.DefaultHTTPUtilities.__init__
+esapi.reference.default_intrusion_detector.DefaultIntrusionDetector.Event.__init__
+esapi.reference.default_intrusion_detector.DefaultIntrusionDetector.__init__
+esapi.reference.default_randomizer.DefaultRandomizer.__init__
+esapi.reference.default_security_configuration.DefaultSecurityConfiguration.__init__
+esapi.reference.default_user.DefaultUser.__init__
+esapi.reference.default_validator.DefaultValidator.__init__
+esapi.reference.file_based_access_controller.FileBasedAccessController.__init__
+esapi.reference.file_based_access_controller.Rule.__init__
+esapi.reference.python_log_factory.PythonLogFactory.PythonLogger.__init__
+esapi.reference.python_log_factory.PythonLogFactory.__init__
+esapi.reference.random_access_reference_map.RandomAccessReferenceMap.__init__
+esapi.reference.shelve_authenticator.ShelveAuthenticator.__init__
+esapi.reference.user_credentials.UserCredentials.__init__
+esapi.reference.validation.base_validation_rule.BaseValidationRule.__init__
+esapi.reference.validation.credit_card_validation_rule.CreditCardValidationRule.__init__
+esapi.reference.validation.date_validation_rule.DateValidationRule.__init__
+esapi.reference.validation.number_validation_rule.NumberValidationRule.__init__
+esapi.reference.validation.string_validation_rule.StringValidationRule.__init__
+esapi.security_configuration.SecurityConfiguration.Threshold.__init__
+esapi.security_configuration.SecurityConfiguration.__init__
+esapi.test.http.mock_http_request.MockHttpRequest.__init__
+esapi.test.http.mock_http_response.MockHttpResponse.__init__
+esapi.test.http.mock_session.MockSession.__init__
+esapi.test.test_access_controller.AccessControllerTest.__init__
+esapi.test.test_authenticator.ValidatorTest.__init__
+esapi.test.test_encoder.EncoderTest.__init__
+esapi.test.test_encryptor.EncryptorTest.__init__
+esapi.test.test_executor.ExecutorTest.__init__
+esapi.test.test_http_utilities.HTTPUtilitiesTest.__init__
+esapi.test.test_intrusion_detector.IntrusionDetectorTest.__init__
+esapi.test.test_logger.LoggerTest.__init__
+esapi.test.test_random_access_map.ARMTest.__init__
+esapi.test.test_randomizer.RandomizerTest.__init__
+esapi.test.test_user.UserTest.__init__
+esapi.test.test_validator.ValidatorTest.__init__
+esapi.user.AnonymousUser.__init__
+esapi.user.User.__init__
+esapi.validator.Validator.__init__" class="py-name" href="#" onclick="return doclink('link-20', '__init__', 'link-20');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt class="py-name">type_name</tt><tt class="py-op">,</tt> <tt id="link-21" class="py-name" targets="Class Method esapi.core.ESAPI.encoder()=esapi.core.ESAPI-class.html#encoder,Module esapi.encoder=esapi.encoder-module.html"><a title="esapi.core.ESAPI.encoder
+esapi.encoder" class="py-name" href="#" onclick="return doclink('link-21', 'encoder', 'link-21');">encoder</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line">         </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">whitelist_pattern</tt><tt class="py-op">:</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-22" class="py-name" targets="Method esapi.reference.validation.string_validation_rule.StringValidationRule.add_whitelist_pattern()=esapi.reference.validation.string_validation_rule.StringValidationRule-class.html#add_whitelist_pattern"><a title="esapi.reference.validation.string_validation_rule.StringValidationRule.add_whitelist_pattern" class="py-name" href="#" onclick="return doclink('link-22', 'add_whitelist_pattern', 'link-22');">add_whitelist_pattern</a></tt><tt class="py-op">(</tt><tt class="py-name">whitelist_pattern</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line">             </tt>
+<a name="StringValidationRule.add_whitelist_pattern"></a><div id="StringValidationRule.add_whitelist_pattern-def"><a name="L44"></a><tt class="py-lineno"> 44</tt> <a class="py-toggle" href="#" id="StringValidationRule.add_whitelist_pattern-toggle" onclick="return toggle('StringValidationRule.add_whitelist_pattern');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.reference.validation.string_validation_rule.StringValidationRule-class.html#add_whitelist_pattern">add_whitelist_pattern</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">pattern_string</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="StringValidationRule.add_whitelist_pattern-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="StringValidationRule.add_whitelist_pattern-expanded"><a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">            <tt class="py-name">pattern</tt> <tt class="py-op">=</tt> <tt class="py-name">re</tt><tt class="py-op">.</tt><tt class="py-name">compile</tt><tt class="py-op">(</tt> <tt class="py-name">pattern_string</tt> <tt class="py-op">)</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">whitelist_patterns</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">pattern</tt><tt class="py-op">)</tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">Exception</tt><tt class="py-op">,</tt> <tt class="py-name">extra</tt><tt class="py-op">:</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt class="py-name">RuntimeError</tt><tt class="py-op">(</tt>  </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">                <tt class="py-name">_</tt><tt class="py-op">(</tt><tt class="py-string">"Validation misconfiguration, problem with specified pattern: %(pattern)s"</tt><tt class="py-op">)</tt> <tt class="py-op">%</tt>              </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">               <tt class="py-op">{</tt><tt class="py-string">'pattern'</tt> <tt class="py-op">:</tt> <tt class="py-name">pattern_string</tt><tt class="py-op">}</tt><tt class="py-op">,</tt>  </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line">               <tt class="py-name">extra</tt> <tt class="py-op">)</tt> </tt>
+</div><a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">             </tt>
+<a name="StringValidationRule.add_blacklist_pattern"></a><div id="StringValidationRule.add_blacklist_pattern-def"><a name="L54"></a><tt class="py-lineno"> 54</tt> <a class="py-toggle" href="#" id="StringValidationRule.add_blacklist_pattern-toggle" onclick="return toggle('StringValidationRule.add_blacklist_pattern');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.reference.validation.string_validation_rule.StringValidationRule-class.html#add_blacklist_pattern">add_blacklist_pattern</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">pattern_string</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="StringValidationRule.add_blacklist_pattern-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="StringValidationRule.add_blacklist_pattern-expanded"><a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">            <tt class="py-name">pattern</tt> <tt class="py-op">=</tt> <tt class="py-name">re</tt><tt class="py-op">.</tt><tt class="py-name">compile</tt><tt class="py-op">(</tt> <tt class="py-name">pattern_string</tt> <tt class="py-op">)</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">blacklist_patterns</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">pattern</tt><tt class="py-op">)</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">Exception</tt><tt class="py-op">,</tt> <tt class="py-name">extra</tt><tt class="py-op">:</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt class="py-name">RuntimeError</tt><tt class="py-op">(</tt>  </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">                <tt class="py-name">_</tt><tt class="py-op">(</tt><tt class="py-string">"Validation misconfiguration, problem with specified pattern: %(pattern)s"</tt><tt class="py-op">)</tt> <tt class="py-op">%</tt>              </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">               <tt class="py-op">{</tt><tt class="py-string">'pattern'</tt> <tt class="py-op">:</tt> <tt class="py-name">pattern_string</tt><tt class="py-op">}</tt><tt class="py-op">,</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">               <tt class="py-name">extra</tt> <tt class="py-op">)</tt> </tt>
+</div><a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">             </tt>
+<a name="StringValidationRule.set_minimum_length"></a><div id="StringValidationRule.set_minimum_length-def"><a name="L64"></a><tt class="py-lineno"> 64</tt> <a class="py-toggle" href="#" id="StringValidationRule.set_minimum_length-toggle" onclick="return toggle('StringValidationRule.set_minimum_length');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.reference.validation.string_validation_rule.StringValidationRule-class.html#set_minimum_length">set_minimum_length</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">length</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="StringValidationRule.set_minimum_length-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="StringValidationRule.set_minimum_length-expanded"><a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">min_length</tt> <tt class="py-op">=</tt> <tt class="py-name">length</tt> </tt>
+</div><a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">         </tt>
+<a name="StringValidationRule.set_maximum_length"></a><div id="StringValidationRule.set_maximum_length-def"><a name="L67"></a><tt class="py-lineno"> 67</tt> <a class="py-toggle" href="#" id="StringValidationRule.set_maximum_length-toggle" onclick="return toggle('StringValidationRule.set_maximum_length');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.reference.validation.string_validation_rule.StringValidationRule-class.html#set_maximum_length">set_maximum_length</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">length</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="StringValidationRule.set_maximum_length-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="StringValidationRule.set_maximum_length-expanded"><a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">max_length</tt> <tt class="py-op">=</tt> <tt class="py-name">length</tt> </tt>
+</div><a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">         </tt>
+<a name="StringValidationRule.get_valid"></a><div id="StringValidationRule.get_valid-def"><a name="L70"></a><tt class="py-lineno"> 70</tt> <a class="py-toggle" href="#" id="StringValidationRule.get_valid-toggle" onclick="return toggle('StringValidationRule.get_valid');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="esapi.reference.validation.string_validation_rule.StringValidationRule-class.html#get_valid">get_valid</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">context</tt><tt class="py-op">,</tt> <tt class="py-param">input_</tt><tt class="py-op">,</tt> <tt class="py-param">error_list</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="StringValidationRule.get_valid-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="StringValidationRule.get_valid-expanded"><a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">            <tt class="py-comment"># check none</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">input_</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt> <tt class="py-keyword">or</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">input_</tt><tt class="py-op">)</tt> <tt class="py-op">==</tt> <tt class="py-number">0</tt><tt class="py-op">:</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">allow_none</tt><tt class="py-op">:</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">                    <tt class="py-keyword">return</tt> <tt class="py-name">None</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">                <tt class="py-keyword">raise</tt> <tt id="link-23" class="py-name"><a title="esapi.exceptions.ValidationException" class="py-name" href="#" onclick="return doclink('link-23', 'ValidationException', 'link-9');">ValidationException</a></tt><tt class="py-op">(</tt>  </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">                    <tt class="py-name">_</tt><tt class="py-op">(</tt><tt class="py-string">"%(context)s: Input required"</tt><tt class="py-op">)</tt> <tt class="py-op">%</tt>  </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">                   <tt class="py-op">{</tt><tt class="py-string">'context'</tt> <tt class="py-op">:</tt> <tt class="py-name">context</tt><tt class="py-op">}</tt><tt class="py-op">,</tt>  </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">                   <tt class="py-name">_</tt><tt class="py-op">(</tt><tt class="py-string">"Input required: context=%(context)s, input=%(input)s"</tt><tt class="py-op">)</tt> <tt class="py-op">%</tt>  </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">                   <tt class="py-op">{</tt><tt class="py-string">'context'</tt> <tt class="py-op">:</tt> <tt class="py-name">context</tt><tt class="py-op">,</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">                    <tt class="py-string">'input'</tt> <tt class="py-op">:</tt> <tt class="py-name">input_</tt><tt class="py-op">}</tt><tt class="py-op">,</tt>  </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">                   <tt class="py-name">context</tt> <tt class="py-op">)</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">                         </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">            <tt class="py-comment"># canonicalize</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line">            <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line">                <tt class="py-name">canonical</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-24" class="py-name"><a title="esapi.core.ESAPI.encoder
+esapi.encoder" class="py-name" href="#" onclick="return doclink('link-24', 'encoder', 'link-21');">encoder</a></tt><tt class="py-op">.</tt><tt id="link-25" class="py-name" targets="Method esapi.encoder.Encoder.canonicalize()=esapi.encoder.Encoder-class.html#canonicalize,Method esapi.reference.default_encoder.DefaultEncoder.canonicalize()=esapi.reference.default_encoder.DefaultEncoder-class.html#canonicalize"><a title="esapi.encoder.Encoder.canonicalize
+esapi.reference.default_encoder.DefaultEncoder.canonicalize" class="py-name" href="#" onclick="return doclink('link-25', 'canonicalize', 'link-25');">canonicalize</a></tt><tt class="py-op">(</tt> <tt class="py-name">input_</tt> <tt class="py-op">)</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">            <tt class="py-keyword">except</tt> <tt id="link-26" class="py-name"><a title="esapi.exceptions.EncodingException" class="py-name" href="#" onclick="return doclink('link-26', 'EncodingException', 'link-12');">EncodingException</a></tt><tt class="py-op">,</tt> <tt class="py-name">extra</tt><tt class="py-op">:</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">                <tt class="py-keyword">raise</tt> <tt id="link-27" class="py-name"><a title="esapi.exceptions.ValidationException" class="py-name" href="#" onclick="return doclink('link-27', 'ValidationException', 'link-9');">ValidationException</a></tt><tt class="py-op">(</tt>  </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">                    <tt class="py-name">_</tt><tt class="py-op">(</tt><tt class="py-string">"%(context)s: Invalid input. Encoding problem detected."</tt><tt class="py-op">)</tt> <tt class="py-op">%</tt>  </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">                   <tt class="py-op">{</tt><tt class="py-string">'context'</tt> <tt class="py-op">:</tt> <tt class="py-name">context</tt><tt class="py-op">}</tt><tt class="py-op">,</tt>  </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">                   <tt class="py-name">_</tt><tt class="py-op">(</tt><tt class="py-string">"Error canonicalizing user input"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt>  </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">                   <tt class="py-name">extra</tt><tt class="py-op">,</tt>  </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">                   <tt class="py-name">context</tt> <tt class="py-op">)</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">                 </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">            <tt class="py-comment"># check length</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">canonical</tt><tt class="py-op">)</tt> <tt class="py-op">&lt;</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">min_length</tt><tt class="py-op">:</tt>            </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line">                <tt class="py-keyword">raise</tt> <tt id="link-28" class="py-name"><a title="esapi.exceptions.ValidationException" class="py-name" href="#" onclick="return doclink('link-28', 'ValidationException', 'link-9');">ValidationException</a></tt><tt class="py-op">(</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">                    <tt class="py-name">_</tt><tt class="py-op">(</tt><tt class="py-string">"%(context)s: Invalid input. The minimum length of %(min_length)s characters was not met."</tt><tt class="py-op">)</tt> <tt class="py-op">%</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">                    <tt class="py-op">{</tt> <tt class="py-string">'context'</tt> <tt class="py-op">:</tt> <tt class="py-name">context</tt><tt class="py-op">,</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line">                      <tt class="py-string">'min_length'</tt> <tt class="py-op">:</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">min_length</tt><tt class="py-op">,</tt> <tt class="py-op">}</tt><tt class="py-op">,</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line">                    <tt class="py-name">_</tt><tt class="py-op">(</tt><tt class="py-string">"Input failed to meet minimum length of %(min_length)s by %(diff)s characters: context=%(context)s, type=%(type)s, input=%(input)s"</tt><tt class="py-op">)</tt> <tt class="py-op">%</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">                    <tt class="py-op">{</tt> <tt class="py-string">'min_length'</tt> <tt class="py-op">:</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">min_length</tt><tt class="py-op">,</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">                      <tt class="py-string">'diff'</tt> <tt class="py-op">:</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">min_length</tt> <tt class="py-op">-</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">canonical</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">                      <tt class="py-string">'context'</tt> <tt class="py-op">:</tt> <tt class="py-name">context</tt><tt class="py-op">,</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">                      <tt class="py-string">'type'</tt> <tt class="py-op">:</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-29" class="py-name" targets="Method esapi.reference.validation.base_validation_rule.BaseValidationRule.get_type_name()=esapi.reference.validation.base_validation_rule.BaseValidationRule-class.html#get_type_name,Method esapi.validation_rule.ValidationRule.get_type_name()=esapi.validation_rule.ValidationRule-class.html#get_type_name"><a title="esapi.reference.validation.base_validation_rule.BaseValidationRule.get_type_name
+esapi.validation_rule.ValidationRule.get_type_name" class="py-name" href="#" onclick="return doclink('link-29', 'get_type_name', 'link-29');">get_type_name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">                      <tt class="py-string">'input'</tt> <tt class="py-op">:</tt> <tt class="py-name">input_</tt><tt class="py-op">,</tt><tt class="py-op">}</tt><tt class="py-op">,</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">                    <tt class="py-name">context</tt> <tt class="py-op">)</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">                 </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">canonical</tt><tt class="py-op">)</tt> <tt class="py-op">&gt;</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">max_length</tt><tt class="py-op">:</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">                <tt class="py-keyword">raise</tt> <tt id="link-30" class="py-name"><a title="esapi.exceptions.ValidationException" class="py-name" href="#" onclick="return doclink('link-30', 'ValidationException', 'link-9');">ValidationException</a></tt><tt class="py-op">(</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">                    <tt class="py-name">_</tt><tt class="py-op">(</tt><tt class="py-string">"%(context)s: Invalid input. The maximum length of %(max_length)s characters was exceeded."</tt><tt class="py-op">)</tt> <tt class="py-op">%</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">                    <tt class="py-op">{</tt> <tt class="py-string">'context'</tt> <tt class="py-op">:</tt> <tt class="py-name">context</tt><tt class="py-op">,</tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">                      <tt class="py-string">'max_length'</tt> <tt class="py-op">:</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">max_length</tt><tt class="py-op">,</tt> <tt class="py-op">}</tt><tt class="py-op">,</tt> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">                    <tt class="py-name">_</tt><tt class="py-op">(</tt><tt class="py-string">"Input exceeds maximum allowed length of %(max_length)s by %(diff)s characters: context=%(context)s, type=%(type)s, input=%(input)s"</tt><tt class="py-op">)</tt> <tt class="py-op">%</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line">                    <tt class="py-op">{</tt> <tt class="py-string">'max_length'</tt> <tt class="py-op">:</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">max_length</tt><tt class="py-op">,</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line">                      <tt class="py-string">'diff'</tt> <tt class="py-op">:</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">canonical</tt><tt class="py-op">)</tt> <tt class="py-op">-</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">max_length</tt><tt class="py-op">,</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line">                      <tt class="py-string">'context'</tt> <tt class="py-op">:</tt> <tt class="py-name">context</tt><tt class="py-op">,</tt> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">                      <tt class="py-string">'type'</tt> <tt class="py-op">:</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-31" class="py-name"><a title="esapi.reference.validation.base_validation_rule.BaseValidationRule.get_type_name
+esapi.validation_rule.ValidationRule.get_type_name" class="py-name" href="#" onclick="return doclink('link-31', 'get_type_name', 'link-29');">get_type_name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line">                      <tt class="py-string">'input'</tt> <tt class="py-op">:</tt> <tt class="py-name">input_</tt><tt class="py-op">,</tt><tt class="py-op">}</tt><tt class="py-op">,</tt> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line">                    <tt class="py-name">context</tt> <tt class="py-op">)</tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line">                 </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line">            <tt class="py-comment"># check whitelist patterns</tt> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">pattern</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">whitelist_patterns</tt><tt class="py-op">:</tt> </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">pattern</tt><tt class="py-op">.</tt><tt class="py-name">match</tt><tt class="py-op">(</tt><tt class="py-name">canonical</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line">                    <tt class="py-keyword">raise</tt> <tt id="link-32" class="py-name"><a title="esapi.exceptions.ValidationException" class="py-name" href="#" onclick="return doclink('link-32', 'ValidationException', 'link-9');">ValidationException</a></tt><tt class="py-op">(</tt> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line">                        <tt class="py-name">_</tt><tt class="py-op">(</tt><tt class="py-string">"%(context)s: Invalid input. Please conform to regex %(regex)s%(optional)s"</tt><tt class="py-op">)</tt> <tt class="py-op">%</tt> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line">                        <tt class="py-op">{</tt> <tt class="py-string">'context'</tt> <tt class="py-op">:</tt> <tt class="py-name">context</tt><tt class="py-op">,</tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line">                          <tt class="py-string">'regex'</tt> <tt class="py-op">:</tt> <tt class="py-name">pattern</tt><tt class="py-op">.</tt><tt class="py-name">pattern</tt><tt class="py-op">,</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line">                          <tt class="py-string">'optional'</tt> <tt class="py-op">:</tt> <tt class="py-op">(</tt><tt class="py-string">''</tt><tt class="py-op">,</tt> <tt class="py-string">' with a maximum length of '</tt> <tt class="py-op">+</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">max_length</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">max_length</tt> <tt class="py-op">==</tt> <tt id="link-33" class="py-name"><a title="esapi.conf.constants.MAX_INTEGER
+esapi.test.conf.constants.MAX_INTEGER" class="py-name" href="#" onclick="return doclink('link-33', 'MAX_INTEGER', 'link-16');">MAX_INTEGER</a></tt><tt class="py-op">]</tt><tt class="py-op">,</tt><tt class="py-op">}</tt><tt class="py-op">,</tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">                        <tt class="py-name">_</tt><tt class="py-op">(</tt><tt class="py-string">"Invalid input: context=%(context)s, type(%(type)s)=%(pattern)s, input=%(input)s"</tt><tt class="py-op">)</tt> <tt class="py-op">%</tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line">                        <tt class="py-op">{</tt> <tt class="py-string">'context'</tt> <tt class="py-op">:</tt> <tt class="py-name">context</tt><tt class="py-op">,</tt> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line">                          <tt class="py-string">'type'</tt> <tt class="py-op">:</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-34" class="py-name"><a title="esapi.reference.validation.base_validation_rule.BaseValidationRule.get_type_name
+esapi.validation_rule.ValidationRule.get_type_name" class="py-name" href="#" onclick="return doclink('link-34', 'get_type_name', 'link-29');">get_type_name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line">                          <tt class="py-string">'pattern'</tt> <tt class="py-op">:</tt> <tt class="py-name">pattern</tt><tt class="py-op">.</tt><tt class="py-name">pattern</tt><tt class="py-op">,</tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line">                          <tt class="py-string">'input'</tt> <tt class="py-op">:</tt> <tt class="py-name">input_</tt><tt class="py-op">}</tt><tt class="py-op">,</tt> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line">                        <tt class="py-name">context</tt> <tt class="py-op">)</tt> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line">                           </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line">            <tt class="py-comment"># check blacklist patterns</tt> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">pattern</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">blacklist_patterns</tt><tt class="py-op">:</tt> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">pattern</tt><tt class="py-op">.</tt><tt class="py-name">match</tt><tt class="py-op">(</tt><tt class="py-name">canonical</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line">                    <tt class="py-keyword">raise</tt> <tt id="link-35" class="py-name"><a title="esapi.exceptions.ValidationException" class="py-name" href="#" onclick="return doclink('link-35', 'ValidationException', 'link-9');">ValidationException</a></tt><tt class="py-op">(</tt> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line">                        <tt class="py-name">_</tt><tt class="py-op">(</tt><tt class="py-string">"%(context)s: Invalid input. Dangerous input matching %(pattern)s detected."</tt><tt class="py-op">)</tt> <tt class="py-op">%</tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line">                        <tt class="py-op">{</tt> <tt class="py-string">'context'</tt> <tt class="py-op">:</tt> <tt class="py-name">context</tt><tt class="py-op">,</tt> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line">                          <tt class="py-string">'pattern'</tt> <tt class="py-op">:</tt> <tt class="py-name">pattern</tt><tt class="py-op">.</tt><tt class="py-name">pattern</tt><tt class="py-op">,</tt><tt class="py-op">}</tt><tt class="py-op">,</tt> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line">                        <tt class="py-name">_</tt><tt class="py-op">(</tt><tt class="py-string">"Dangerous input: context=%(context)s, type(%(type)s)=%(pattern)s, input=%(input)s"</tt><tt class="py-op">)</tt> <tt class="py-op">%</tt> </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line">                        <tt class="py-op">{</tt> <tt class="py-string">'context'</tt> <tt class="py-op">:</tt> <tt class="py-name">context</tt><tt class="py-op">,</tt> </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line">                          <tt class="py-string">'type'</tt> <tt class="py-op">:</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-36" class="py-name"><a title="esapi.reference.validation.base_validation_rule.BaseValidationRule.get_type_name
+esapi.validation_rule.ValidationRule.get_type_name" class="py-name" href="#" onclick="return doclink('link-36', 'get_type_name', 'link-29');">get_type_name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line">                          <tt class="py-string">'pattern'</tt> <tt class="py-op">:</tt> <tt class="py-name">pattern</tt><tt class="py-op">.</tt><tt class="py-name">pattern</tt><tt class="py-op">,</tt> </tt>
+<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line">                          <tt class="py-string">'input'</tt> <tt class="py-op">:</tt> <tt class="py-name">input_</tt><tt class="py-op">,</tt><tt class="py-op">}</tt><tt class="py-op">,</tt> </tt>
+<a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line">                        <tt class="py-name">context</tt> <tt class="py-op">)</tt> </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line">                           </tt>
+<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line">            <tt class="py-comment"># validation passed</tt> </tt>
+<a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">canonical</tt> </tt>
+<a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line">     </tt>
+<a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt id="link-37" class="py-name"><a title="esapi.exceptions.ValidationException" class="py-name" href="#" onclick="return doclink('link-37', 'ValidationException', 'link-9');">ValidationException</a></tt><tt class="py-op">,</tt> <tt class="py-name">extra</tt><tt class="py-op">:</tt> </tt>
+<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">error_list</tt> <tt class="py-keyword">is</tt> <tt class="py-keyword">not</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line">                <tt class="py-name">error_list</tt><tt class="py-op">[</tt><tt class="py-name">context</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">extra</tt> </tt>
+<a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line">            <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line">                <tt class="py-keyword">raise</tt> </tt>
+</div></div><a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="esapi-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Sun Nov  8 16:04:24 2009
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

@@ -1,0 +1,1300 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>esapi.reference.default_encoder.DefaultEncoder</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="esapi-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="esapi-module.html">Package&nbsp;esapi</a> ::
+        <a href="esapi.reference-module.html">Package&nbsp;reference</a> ::
+        <a href="esapi.reference.default_encoder-module.html">Module&nbsp;default_encoder</a> ::
+        Class&nbsp;DefaultEncoder
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="esapi.reference.default_encoder.DefaultEncoder-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class DefaultEncoder</h1><p class="nomargin-top"><span class="codelink"><a href="esapi.reference.default_encoder-pysrc.html#DefaultEncoder">source&nbsp;code</a></span></p>
+<pre class="base-tree">
+<a href="esapi.encoder.Encoder-class.html">encoder.Encoder</a> --+
+                  |
+                 <strong class="uidshort">DefaultEncoder</strong>
+</pre>
+
+<hr />
+<p>Reference implementation of the Encoder interface. This implementation
+  takes a whitelist approach to encoding, meaning that everything not 
+  specifically identified in a list of &quot;immune&quot; characters is 
+  encoded.</p>
+
+<hr />
+<div class="fields">      <p><strong>Author:</strong>
+        Craig Younkins (craig.younkins@owasp.org)
+      </p>
+</div><!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.reference.default_encoder.DefaultEncoder-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">codecs</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Instantiates a new DefaultEncoder.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.reference.default_encoder-pysrc.html#DefaultEncoder.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.reference.default_encoder.DefaultEncoder-class.html#canonicalize" class="summary-sig-name">canonicalize</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">input_</span>,
+        <span class="summary-sig-arg">strict</span>=<span class="summary-sig-default">True</span>)</span><br />
+      Canonicalization is simply the operation of reducing a possibly 
+      encoded string down to its simplest form.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.reference.default_encoder-pysrc.html#DefaultEncoder.canonicalize">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.reference.default_encoder.DefaultEncoder-class.html#encode_for_css" class="summary-sig-name">encode_for_css</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">input_</span>)</span><br />
+      Encode data for use in Cascading Style Sheets (CSS) content.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.reference.default_encoder-pysrc.html#DefaultEncoder.encode_for_css">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.reference.default_encoder.DefaultEncoder-class.html#encode_for_html" class="summary-sig-name">encode_for_html</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">input_</span>)</span><br />
+      Encode data for use in HTML using HTML entity encoding</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.reference.default_encoder-pysrc.html#DefaultEncoder.encode_for_html">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.reference.default_encoder.DefaultEncoder-class.html#encode_for_html_attribute" class="summary-sig-name">encode_for_html_attribute</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">input_</span>)</span><br />
+      Encode data for use in HTML attributes.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.reference.default_encoder-pysrc.html#DefaultEncoder.encode_for_html_attribute">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.reference.default_encoder.DefaultEncoder-class.html#encode_for_javascript" class="summary-sig-name">encode_for_javascript</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">input_</span>)</span><br />
+      Encode data for insertion inside a data value in JavaScript.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.reference.default_encoder-pysrc.html#DefaultEncoder.encode_for_javascript">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.reference.default_encoder.DefaultEncoder-class.html#encode_for_vbscript" class="summary-sig-name">encode_for_vbscript</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">input_</span>)</span><br />
+      Encode data for insertion inside a data value in a Visual Basic 
+      script.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.reference.default_encoder-pysrc.html#DefaultEncoder.encode_for_vbscript">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.reference.default_encoder.DefaultEncoder-class.html#encode_for_sql" class="summary-sig-name">encode_for_sql</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">codec</span>,
+        <span class="summary-sig-arg">input_</span>)</span><br />
+      Encode input for use in a SQL query, according to the selected codec 
+      (appropriate codecs include the MySQLCodec and OracleCodec).</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.reference.default_encoder-pysrc.html#DefaultEncoder.encode_for_sql">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.reference.default_encoder.DefaultEncoder-class.html#encode_for_os" class="summary-sig-name">encode_for_os</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">codec</span>,
+        <span class="summary-sig-arg">input_</span>)</span><br />
+      Encode for an operating system command shell according to the 
+      selected codec (appropriate codecs include the WindowsCodec and 
+      UnixCodec).</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.reference.default_encoder-pysrc.html#DefaultEncoder.encode_for_os">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.reference.default_encoder.DefaultEncoder-class.html#encode_for_ldap" class="summary-sig-name">encode_for_ldap</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">input_</span>)</span><br />
+      Encode data for use in LDAP queries.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.reference.default_encoder-pysrc.html#DefaultEncoder.encode_for_ldap">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.reference.default_encoder.DefaultEncoder-class.html#encode_for_dn" class="summary-sig-name">encode_for_dn</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">input_</span>)</span><br />
+      Encode data for use in an LDAP distinguished name.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.reference.default_encoder-pysrc.html#DefaultEncoder.encode_for_dn">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.reference.default_encoder.DefaultEncoder-class.html#encode_for_xpath" class="summary-sig-name">encode_for_xpath</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">input_</span>)</span><br />
+      Encode data for use in an XPath query.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.reference.default_encoder-pysrc.html#DefaultEncoder.encode_for_xpath">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.reference.default_encoder.DefaultEncoder-class.html#encode_for_xml" class="summary-sig-name">encode_for_xml</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">input_</span>)</span><br />
+      Encode data for use in an XML element.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.reference.default_encoder-pysrc.html#DefaultEncoder.encode_for_xml">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.reference.default_encoder.DefaultEncoder-class.html#encode_for_xml_attribute" class="summary-sig-name">encode_for_xml_attribute</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">input_</span>)</span><br />
+      Encode data for use in an XML attribute.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.reference.default_encoder-pysrc.html#DefaultEncoder.encode_for_xml_attribute">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.reference.default_encoder.DefaultEncoder-class.html#encode_for_url" class="summary-sig-name">encode_for_url</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">input_</span>)</span><br />
+      Encode for use in a URL.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.reference.default_encoder-pysrc.html#DefaultEncoder.encode_for_url">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.reference.default_encoder.DefaultEncoder-class.html#decode_from_url" class="summary-sig-name">decode_from_url</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">input_</span>)</span><br />
+      Decode from URL.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.reference.default_encoder-pysrc.html#DefaultEncoder.decode_from_url">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.reference.default_encoder.DefaultEncoder-class.html#encode_for_base64" class="summary-sig-name">encode_for_base64</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">input_</span>)</span><br />
+      Encode for Base64.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.reference.default_encoder-pysrc.html#DefaultEncoder.encode_for_base64">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.reference.default_encoder.DefaultEncoder-class.html#decode_from_base64" class="summary-sig-name">decode_from_base64</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">input_</span>)</span><br />
+      Decode data encoded with BASE-64 encoding.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.reference.default_encoder-pysrc.html#DefaultEncoder.decode_from_base64">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="IMMUNE_HTML"></a><span class="summary-name">IMMUNE_HTML</span> = <code title="',.-_ '"><code class="variable-quote">'</code><code class="variable-string">,.-_ </code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="IMMUNE_HTMLATTR"></a><span class="summary-name">IMMUNE_HTMLATTR</span> = <code title="',.-_'"><code class="variable-quote">'</code><code class="variable-string">,.-_</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="IMMUNE_CSS"></a><span class="summary-name">IMMUNE_CSS</span> = <code title="''"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="IMMUNE_JAVASCRIPT"></a><span class="summary-name">IMMUNE_JAVASCRIPT</span> = <code title="',._'"><code class="variable-quote">'</code><code class="variable-string">,._</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="IMMUNE_VBSCRIPT"></a><span class="summary-name">IMMUNE_VBSCRIPT</span> = <code title="',._'"><code class="variable-quote">'</code><code class="variable-string">,._</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="IMMUNE_XML"></a><span class="summary-name">IMMUNE_XML</span> = <code title="',.-_ '"><code class="variable-quote">'</code><code class="variable-string">,.-_ </code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="IMMUNE_SQL"></a><span class="summary-name">IMMUNE_SQL</span> = <code title="' '"><code class="variable-quote">'</code><code class="variable-string"> </code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="IMMUNE_OS"></a><span class="summary-name">IMMUNE_OS</span> = <code title="'-'"><code class="variable-quote">'</code><code class="variable-string">-</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="IMMUNE_XMLATTR"></a><span class="summary-name">IMMUNE_XMLATTR</span> = <code title="',.-_'"><code class="variable-quote">'</code><code class="variable-string">,.-_</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="IMMUNE_XPATH"></a><span class="summary-name">IMMUNE_XPATH</span> = <code title="',.-_ '"><code class="variable-quote">'</code><code class="variable-string">,.-_ </code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="IMMUNE_LDAP"></a><span class="summary-name">IMMUNE_LDAP</span> = <code title="''"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="IMMUNE_LDAP_DN"></a><span class="summary-name">IMMUNE_LDAP_DN</span> = <code title="''"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="IMMUNE_URL"></a><span class="summary-name">IMMUNE_URL</span> = <code title="'-_.~'"><code class="variable-quote">'</code><code class="variable-string">-_.~</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="esapi.encoder.Encoder-class.html">encoder.Encoder</a></code></b>:
+      <code><a href="esapi.encoder.Encoder-class.html#CHAR_ALPHANUMERICS">CHAR_ALPHANUMERICS</a></code>,
+      <code><a href="esapi.encoder.Encoder-class.html#CHAR_DIGITS">CHAR_DIGITS</a></code>,
+      <code><a href="esapi.encoder.Encoder-class.html#CHAR_LETTERS">CHAR_LETTERS</a></code>,
+      <code><a href="esapi.encoder.Encoder-class.html#CHAR_LOWERS">CHAR_LOWERS</a></code>,
+      <code><a href="esapi.encoder.Encoder-class.html#CHAR_LOWER_HEX">CHAR_LOWER_HEX</a></code>,
+      <code><a href="esapi.encoder.Encoder-class.html#CHAR_PASSWORD_ALL">CHAR_PASSWORD_ALL</a></code>,
+      <code><a href="esapi.encoder.Encoder-class.html#CHAR_PASSWORD_DIGITS">CHAR_PASSWORD_DIGITS</a></code>,
+      <code><a href="esapi.encoder.Encoder-class.html#CHAR_PASSWORD_LETTERS">CHAR_PASSWORD_LETTERS</a></code>,
+      <code><a href="esapi.encoder.Encoder-class.html#CHAR_PASSWORD_LOWERS">CHAR_PASSWORD_LOWERS</a></code>,
+      <code><a href="esapi.encoder.Encoder-class.html#CHAR_PASSWORD_SPECIALS">CHAR_PASSWORD_SPECIALS</a></code>,
+      <code><a href="esapi.encoder.Encoder-class.html#CHAR_PASSWORD_UPPERS">CHAR_PASSWORD_UPPERS</a></code>,
+      <code><a href="esapi.encoder.Encoder-class.html#CHAR_SPECIALS">CHAR_SPECIALS</a></code>,
+      <code><a href="esapi.encoder.Encoder-class.html#CHAR_UPPERS">CHAR_UPPERS</a></code>,
+      <code><a href="esapi.encoder.Encoder-class.html#CHAR_UPPER_HEX">CHAR_UPPER_HEX</a></code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">codecs</span>=<span class="sig-default">None</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.reference.default_encoder-pysrc.html#DefaultEncoder.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Instantiates a new DefaultEncoder.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>codecs</code></strong> - : a list of codec instances to use for canonicalization</li>
+    </ul></dd>
+    <dt>Overrides:
+        <a href="esapi.encoder.Encoder-class.html#__init__">encoder.Encoder.__init__</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="canonicalize"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">canonicalize</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">input_</span>,
+        <span class="sig-arg">strict</span>=<span class="sig-default">True</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.reference.default_encoder-pysrc.html#DefaultEncoder.canonicalize">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Canonicalization is simply the operation of reducing a possibly 
+  encoded string down to its simplest form. This is important, because 
+  attackers frequently use encoding to change their input in a way that 
+  will bypass validation filters, but still be interpreted properly by the 
+  target of the attack. Note that data encoded more than once is not 
+  something that a normal user would generate and should be regarded as an 
+  attack.</p>
+  <p>Everyone <a href="http://cwe.mitre.org/data/definitions/180.html" 
+  target="_top">says</a> you shouldn't do validation without canonicalizing
+  the data first. This is easier said than done. The canonicalize method 
+  can be used to simplify just about any input down to its most basic form.
+  Note that canonicalize doesn't handle Unicode issues, it focuses on 
+  higher level encoding and escaping schemes. In addition to simple 
+  decoding, canonicalize also handles:</p>
+  <ul>
+    <li>
+      Perverse but legal variants of escaping schemes
+    </li>
+    <li>
+      Multiple escaping (%2526 or &amp;#x26;lt;)
+    </li>
+    <li>
+      Mixed escaping (%26lt;)
+    </li>
+    <li>
+      Nested escaping (%%316 or &amp;%6ct;)
+    </li>
+    <li>
+      All combinations of multiple, mixed, and nested encoding/escaping 
+      (%2&amp;#x35;3c or &amp;#x2526gt;)
+    </li>
+  </ul>
+  <p>Using canonicalize is simple. The default is just...</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>clean = ESAPI.encoder().canonicalize( request.getParameter(<span class="py-string">&quot;input&quot;</span>))</pre>
+  <p>You need to decode untrusted data so that it's safe for ANY downstream
+  interpreter or decoder. For example, if your data goes into a Windows 
+  command shell, then into a database, and then to a browser, you're going 
+  to need to decode for all of those systems. You can build a custom 
+  encoder to canonicalize for your application like this...</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>codeclist = [WindowsCodec(), MySQLCodec(), PercentCodec()]
+<span class="py-prompt">&gt;&gt;&gt; </span>encoder = DefaultEncoder( codeclist )
+<span class="py-prompt">&gt;&gt;&gt; </span>clean = encoder.canonicalize( request.getParameter( <span class="py-string">&quot;input&quot;</span> ))</pre>
+  <p>In ESAPI, the Validator uses the canonicalize method before it does 
+  validation.  So all you need to do is to validate as normal and you'll be
+  protected against a host of encoded attacks.</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>input = request.getParameter( <span class="py-string">&quot;name&quot;</span> )
+<span class="py-prompt">&gt;&gt;&gt; </span>name = ESAPI.validator().is_valid_input( <span class="py-string">&quot;test&quot;</span>, input, <span class="py-string">&quot;FirstName&quot;</span>, 20, False)</pre>
+  <p>However, the default canonicalize() method only decodes HTMLEntity, 
+  percent (URL) encoding, and JavaScript encoding. If you'd like to use a 
+  custom canonicalizer with your validator, that's pretty easy too.</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment">#... setup custom encoder as above</span>
+<span class="py-prompt">&gt;&gt;&gt; </span>validator = DefaultValidator( encoder )
+<span class="py-prompt">&gt;&gt;&gt; </span>input = request.getParameter( <span class="py-string">&quot;name&quot;</span> )
+<span class="py-prompt">&gt;&gt;&gt; </span>name = validator.is_valid_input( <span class="py-string">&quot;test&quot;</span>, input, <span class="py-string">&quot;name&quot;</span>, 20, False)</pre>
+  <p>Although ESAPI is able to canonicalize multiple, mixed, or nested 
+  encoding, it's safer to not accept this stuff in the first place. In 
+  ESAPI, the default is &quot;strict&quot; mode that throws an 
+  IntrusionException if it receives anything not single-encoded with a 
+  single scheme.  Currently this is not configurable in ESAPI.properties, 
+  but it probably should be.  Even if you disable &quot;strict&quot; mode, 
+  you'll still get warning messages in the log about each multiple encoding
+  and mixed encoding received.</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment"># disabling strict mode to allow mixed encoding</span>
+<span class="py-prompt">&gt;&gt;&gt; </span>url = ESAPI.encoder().canonicalize( request.getParameter(<span class="py-string">&quot;url&quot;</span>), False)</pre>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>input_</code></strong> - the text to canonicalize</li>
+        <li><strong class="pname"><code>strict</code></strong> - true (default) if checking for double encoding is desired, false 
+          otherwise</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>a string containing the canonicalized text</dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.EncodingException-class.html">EncodingException</a></strong></code> - if canonicalization fails</li>
+    </ul></dd>
+    <dt>Overrides:
+        <a href="esapi.encoder.Encoder-class.html#canonicalize">encoder.Encoder.canonicalize</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="encode_for_css"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">encode_for_css</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">input_</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.reference.default_encoder-pysrc.html#DefaultEncoder.encode_for_css">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Encode data for use in Cascading Style Sheets (CSS) content.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>input_</code></strong> - the text to encode for CSS</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>input encoded for CSS</dd>
+    <dt>Overrides:
+        <a href="esapi.encoder.Encoder-class.html#encode_for_css">encoder.Encoder.encode_for_css</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="encode_for_html"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">encode_for_html</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">input_</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.reference.default_encoder-pysrc.html#DefaultEncoder.encode_for_html">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Encode data for use in HTML using HTML entity encoding</p>
+  <p>Note that the following characters: 00-08, 0B-0C, 0E-1F, and 7F-9F 
+  cannot be used in HTML.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>input_</code></strong> - the text to encode for HTML</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>input encoded for HTML</dd>
+    <dt>Overrides:
+        <a href="esapi.encoder.Encoder-class.html#encode_for_html">encoder.Encoder.encode_for_html</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="encode_for_html_attribute"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">encode_for_html_attribute</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">input_</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.reference.default_encoder-pysrc.html#DefaultEncoder.encode_for_html_attribute">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Encode data for use in HTML attributes.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>input_</code></strong> - the text to encode for an HTML attribute</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>input encoded for use as an HTML attribute</dd>
+    <dt>Overrides:
+        <a href="esapi.encoder.Encoder-class.html#encode_for_html_attribute">encoder.Encoder.encode_for_html_attribute</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="encode_for_javascript"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">encode_for_javascript</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">input_</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.reference.default_encoder-pysrc.html#DefaultEncoder.encode_for_javascript">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Encode data for insertion inside a data value in JavaScript. Putting 
+  user data directly inside a script is quite dangerous. Great care must be
+  taken to prevent putting user data directly into script code itself, as 
+  no amount of encoding will prevent attacks there.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>input_</code></strong> - the text to encode for JavaScript</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>input encoded for use in JavaScript</dd>
+    <dt>Overrides:
+        <a href="esapi.encoder.Encoder-class.html#encode_for_javascript">encoder.Encoder.encode_for_javascript</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="encode_for_vbscript"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">encode_for_vbscript</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">input_</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.reference.default_encoder-pysrc.html#DefaultEncoder.encode_for_vbscript">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Encode data for insertion inside a data value in a Visual Basic 
+  script. Putting user data directly inside a script is quite dangerous. 
+  Great care must be taken to prevent putting user data directly into 
+  script code itself, as no amount of encoding will prevent attacks 
+  there.</p>
+  <p>This method is not recommended as VBScript is only supported by 
+  Internet Explorer</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>input_</code></strong> - the text to encode for VBScript</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>input encoded for use in VBScript</dd>
+    <dt>Overrides:
+        <a href="esapi.encoder.Encoder-class.html#encode_for_vbscript">encoder.Encoder.encode_for_vbscript</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="encode_for_sql"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">encode_for_sql</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">codec</span>,
+        <span class="sig-arg">input_</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.reference.default_encoder-pysrc.html#DefaultEncoder.encode_for_sql">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Encode input for use in a SQL query, according to the selected codec 
+  (appropriate codecs include the MySQLCodec and OracleCodec).</p>
+  <p>This method is not recommended. The use of the PreparedStatement 
+  interface is the preferred approach. However, if for some reason this is 
+  impossible, then this method is provided as a weaker alternative.</p>
+  <p>The best approach is to make sure any single-quotes are double-quoted.
+  Another possible approach is to use the {escape} syntax described in the 
+  JDBC specification in section 1.5.6.</p>
+  <p>However, this syntax does not work with all drivers, and requires 
+  modification of all queries.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>codec</code></strong> - a Codec that declares which database 'input' is being encoded for
+          (ie. MySQL, Oracle, etc.)</li>
+        <li><strong class="pname"><code>input_</code></strong> - the text to encode for SQL</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>input encoded for use in SQL</dd>
+    <dt>Overrides:
+        <a href="esapi.encoder.Encoder-class.html#encode_for_sql">encoder.Encoder.encode_for_sql</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="encode_for_os"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">encode_for_os</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">codec</span>,
+        <span class="sig-arg">input_</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.reference.default_encoder-pysrc.html#DefaultEncoder.encode_for_os">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Encode for an operating system command shell according to the selected
+  codec (appropriate codecs include the WindowsCodec and UnixCodec).</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>codec</code></strong> - a Codec that declares which operating system 'input' is being 
+          encoded for (ie. Windows, Unix, etc.)</li>
+        <li><strong class="pname"><code>input_</code></strong> - the text to encode for the command shell</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>input encoded for use in command shell</dd>
+    <dt>Overrides:
+        <a href="esapi.encoder.Encoder-class.html#encode_for_os">encoder.Encoder.encode_for_os</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="encode_for_ldap"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">encode_for_ldap</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">input_</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.reference.default_encoder-pysrc.html#DefaultEncoder.encode_for_ldap">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Encode data for use in LDAP queries.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>input_</code></strong> - the text to encode for LDAP</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>input encoded for use in LDAP</dd>
+    <dt>Overrides:
+        <a href="esapi.encoder.Encoder-class.html#encode_for_ldap">encoder.Encoder.encode_for_ldap</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="encode_for_dn"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">encode_for_dn</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">input_</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.reference.default_encoder-pysrc.html#DefaultEncoder.encode_for_dn">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Encode data for use in an LDAP distinguished name.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>input_</code></strong> - the text to encode for an LDAP distinguished name</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>input encoded for use in an LDAP distinguished name</dd>
+    <dt>Overrides:
+        <a href="esapi.encoder.Encoder-class.html#encode_for_dn">encoder.Encoder.encode_for_dn</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="encode_for_xpath"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">encode_for_xpath</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">input_</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.reference.default_encoder-pysrc.html#DefaultEncoder.encode_for_xpath">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Encode data for use in an XPath query.</p>
+  <p>NB: The reference implementation encodes almost everything and may 
+  over-encode.</p>
+  <p>The difficulty with XPath encoding is that XPath has no built in 
+  mechanism for escaping characters. It is possible to use XQuery in a 
+  parameterized way to prevent injection.</p>
+  <p>For more information, refer to <a 
+  href="http://www.ibm.com/developerworks/xml/library/x-xpathinjection.html"
+  target="_top">this article</a> which specifies the following list of 
+  characters as the most dangerous: ^&amp;&quot;*';&lt;&gt;(). <a 
+  href="http://www.packetstormsecurity.org/papers/bypass/Blind_XPath_Injection_20040518.pdf"
+  target="_top">This paper</a> suggests disallowing ' and &quot; in 
+  queries.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>input_</code></strong> - the text to encode for XPath</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>input encoded for use in XPath</dd>
+    <dt>Overrides:
+        <a href="esapi.encoder.Encoder-class.html#encode_for_xpath">encoder.Encoder.encode_for_xpath</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="encode_for_xml"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">encode_for_xml</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">input_</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.reference.default_encoder-pysrc.html#DefaultEncoder.encode_for_xml">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Encode data for use in an XML element. The implementation should 
+  follow the <a href="http://www.w3schools.com/xml/xml_encoding.asp" 
+  target="_top">XML Encoding Standard</a> from the W3C.</p>
+  <p>The use of a real XML parser is strongly encouraged. However, in the 
+  hopefully rare case that you need to make sure that data is safe for 
+  inclusion in an XML document and cannot use a parse, this method provides
+  a safe mechanism to do so.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>input_</code></strong> - the text to encode for XML</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>input encoded for use in XML</dd>
+    <dt>Overrides:
+        <a href="esapi.encoder.Encoder-class.html#encode_for_xml">encoder.Encoder.encode_for_xml</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="encode_for_xml_attribute"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">encode_for_xml_attribute</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">input_</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.reference.default_encoder-pysrc.html#DefaultEncoder.encode_for_xml_attribute">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Encode data for use in an XML attribute. The implementation should 
+  follow the <a href="http://www.w3schools.com/xml/xml_encoding.asp" 
+  target="_top">XML Encoding Standard</a> from the W3C.</p>
+  <p>The use of a real XML parser is highly encouraged. However, in the 
+  hopefully rare case that you need to make sure that data is safe for 
+  inclusion in an XML document and cannot use a parse, this method provides
+  a safe mechanism to do so.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>input_</code></strong> - the text to encode for use as an XML attribute</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>input encoded for use in an XML attribute</dd>
+    <dt>Overrides:
+        <a href="esapi.encoder.Encoder-class.html#encode_for_xml_attribute">encoder.Encoder.encode_for_xml_attribute</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="encode_for_url"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">encode_for_url</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">input_</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.reference.default_encoder-pysrc.html#DefaultEncoder.encode_for_url">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Encode for use in a URL. This method performs <a 
+  href="http://en.wikipedia.org/wiki/Percent-encoding" target="_top">URL 
+  Encoding</a> on the entire string.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>input_</code></strong> - the text to encode for use in a URL</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>input_ encoded for use in a URL</dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.EncodingException-class.html">EncodingException</a></strong></code> - if encoding fails</li>
+    </ul></dd>
+    <dt>Overrides:
+        <a href="esapi.encoder.Encoder-class.html#encode_for_url">encoder.Encoder.encode_for_url</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="decode_from_url"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">decode_from_url</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">input_</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.reference.default_encoder-pysrc.html#DefaultEncoder.decode_from_url">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Decode from URL. Implementations should first canonicalize and detect 
+  any double-encoding. If this check passes, then the data is decoded using
+  URL decoding.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>input_</code></strong> - the text to decode from an encoded URL</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>the decoded URL value</dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.EncodingException-class.html">EncodingException</a></strong></code> - if decoding fails</li>
+    </ul></dd>
+    <dt>Overrides:
+        <a href="esapi.encoder.Encoder-class.html#decode_from_url">encoder.Encoder.decode_from_url</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="encode_for_base64"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">encode_for_base64</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">input_</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.reference.default_encoder-pysrc.html#DefaultEncoder.encode_for_base64">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Encode for Base64.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>input_</code></strong> - the text to encode for Base64</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>input encoded for Base64</dd>
+    <dt>Overrides:
+        <a href="esapi.encoder.Encoder-class.html#encode_for_base64">encoder.Encoder.encode_for_base64</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="decode_from_base64"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">decode_from_base64</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">input_</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.reference.default_encoder-pysrc.html#DefaultEncoder.decode_from_base64">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Decode data encoded with BASE-64 encoding.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>input_</code></strong> - the Base64 text to decode</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>input decoded from Base64</dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'>IOException</strong></code></li>
+    </ul></dd>
+    <dt>Overrides:
+        <a href="esapi.encoder.Encoder-class.html#decode_from_base64">encoder.Encoder.decode_from_base64</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="esapi-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Sun Nov  8 16:04:21 2009
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

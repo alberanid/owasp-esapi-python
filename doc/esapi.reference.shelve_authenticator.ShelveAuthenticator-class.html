@@ -1,0 +1,1096 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>esapi.reference.shelve_authenticator.ShelveAuthenticator</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="esapi-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="esapi-module.html">Package&nbsp;esapi</a> ::
+        <a href="esapi.reference-module.html">Package&nbsp;reference</a> ::
+        <a href="esapi.reference.shelve_authenticator-module.html">Module&nbsp;shelve_authenticator</a> ::
+        Class&nbsp;ShelveAuthenticator
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="esapi.reference.shelve_authenticator.ShelveAuthenticator-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class ShelveAuthenticator</h1><p class="nomargin-top"><span class="codelink"><a href="esapi.reference.shelve_authenticator-pysrc.html#ShelveAuthenticator">source&nbsp;code</a></span></p>
+<pre class="base-tree">
+<a href="esapi.authenticator.Authenticator-class.html">authenticator.Authenticator</a> --+
+                              |
+                             <strong class="uidshort">ShelveAuthenticator</strong>
+</pre>
+
+<hr />
+<p>This implementation uses Python's shelve module to store serialized 
+  user objects in a binary file.</p>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.reference.shelve_authenticator.ShelveAuthenticator-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.reference.shelve_authenticator-pysrc.html#ShelveAuthenticator.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.reference.shelve_authenticator.ShelveAuthenticator-class.html#clear_current" class="summary-sig-name">clear_current</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Clears the current user.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.reference.shelve_authenticator-pysrc.html#ShelveAuthenticator.clear_current">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="clear_all_data"></a><span class="summary-sig-name">clear_all_data</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.reference.shelve_authenticator-pysrc.html#ShelveAuthenticator.clear_all_data">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.reference.shelve_authenticator.ShelveAuthenticator-class.html#login" class="summary-sig-name">login</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">request</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">response</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Authenticates the user's credentials from the HttpRequest if 
+necessary, creates a session if necessary, and sets the user as the
+current user.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.reference.shelve_authenticator-pysrc.html#ShelveAuthenticator.login">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="login_with_username_and_password"></a><span class="summary-sig-name">login_with_username_and_password</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">request</span>,
+        <span class="summary-sig-arg">response</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.reference.shelve_authenticator-pysrc.html#ShelveAuthenticator.login_with_username_and_password">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_user_from_session"></a><span class="summary-sig-name">get_user_from_session</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.reference.shelve_authenticator-pysrc.html#ShelveAuthenticator.get_user_from_session">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_user_from_remember_token"></a><span class="summary-sig-name">get_user_from_remember_token</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.reference.shelve_authenticator-pysrc.html#ShelveAuthenticator.get_user_from_remember_token">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.reference.shelve_authenticator.ShelveAuthenticator-class.html#verify_password" class="summary-sig-name">verify_password</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">user</span>,
+        <span class="summary-sig-arg">password</span>)</span><br />
+      Verify that the supplied password matches the password for this user.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.reference.shelve_authenticator-pysrc.html#ShelveAuthenticator.verify_password">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_hashed_password"></a><span class="summary-sig-name">get_hashed_password</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">user</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.reference.shelve_authenticator-pysrc.html#ShelveAuthenticator.get_hashed_password">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="set_hashed_password"></a><span class="summary-sig-name">set_hashed_password</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">user</span>,
+        <span class="summary-sig-arg">new_hash</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.reference.shelve_authenticator-pysrc.html#ShelveAuthenticator.set_hashed_password">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.reference.shelve_authenticator.ShelveAuthenticator-class.html#logout" class="summary-sig-name">logout</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">user</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Logs out the user.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.reference.shelve_authenticator-pysrc.html#ShelveAuthenticator.logout">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.reference.shelve_authenticator.ShelveAuthenticator-class.html#create_user" class="summary-sig-name">create_user</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">account_name</span>,
+        <span class="summary-sig-arg">password1</span>,
+        <span class="summary-sig-arg">password2</span>)</span><br />
+      Creates a new user with the information provided.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.reference.shelve_authenticator-pysrc.html#ShelveAuthenticator.create_user">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.reference.shelve_authenticator.ShelveAuthenticator-class.html#generate_strong_password" class="summary-sig-name">generate_strong_password</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Generates a strong password between 7 and 9 characters in length from
+      a charset including uppercase and lowercase letters, numbers, and 
+      special characters.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.reference.shelve_authenticator-pysrc.html#ShelveAuthenticator.generate_strong_password">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.reference.shelve_authenticator.ShelveAuthenticator-class.html#change_password" class="summary-sig-name">change_password</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">user</span>,
+        <span class="summary-sig-arg">current_password</span>,
+        <span class="summary-sig-arg">new_password1</span>,
+        <span class="summary-sig-arg">new_password2</span>)</span><br />
+      Changes the password for the specified user.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.reference.shelve_authenticator-pysrc.html#ShelveAuthenticator.change_password">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.reference.shelve_authenticator.ShelveAuthenticator-class.html#get_user" class="summary-sig-name">get_user</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">account_name</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">account_id</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Return a user matching the provided account_name.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.reference.shelve_authenticator-pysrc.html#ShelveAuthenticator.get_user">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.reference.shelve_authenticator.ShelveAuthenticator-class.html#hash_password" class="summary-sig-name">hash_password</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">password</span>,
+        <span class="summary-sig-arg">account_name</span>)</span><br />
+      Returns a string of the hashed password, using the account_name as a 
+      salt.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.reference.shelve_authenticator-pysrc.html#ShelveAuthenticator.hash_password">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.reference.shelve_authenticator.ShelveAuthenticator-class.html#remove_user" class="summary-sig-name">remove_user</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">account_name</span>)</span><br />
+      Removes the account associated with the given account_name.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.reference.shelve_authenticator-pysrc.html#ShelveAuthenticator.remove_user">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.reference.shelve_authenticator.ShelveAuthenticator-class.html#verify_account_name_strength" class="summary-sig-name">verify_account_name_strength</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">account_name</span>)</span><br />
+      Ensures that the account name passes site-specific complexity 
+      requirements, like minimum length.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.reference.shelve_authenticator-pysrc.html#ShelveAuthenticator.verify_account_name_strength">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.reference.shelve_authenticator.ShelveAuthenticator-class.html#verify_password_strength" class="summary-sig-name">verify_password_strength</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">new_password</span>,
+        <span class="summary-sig-arg">old_password</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Ensures that the password meets site-specific complexity 
+      requirements, like length or character set requirements.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.reference.shelve_authenticator-pysrc.html#ShelveAuthenticator.verify_password_strength">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.reference.shelve_authenticator.ShelveAuthenticator-class.html#exists" class="summary-sig-name">exists</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">account_name</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">account_id</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Determines if the account exists.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.reference.shelve_authenticator-pysrc.html#ShelveAuthenticator.exists">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_old_password_hashes"></a><span class="summary-sig-name">get_old_password_hashes</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">account_name</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.reference.shelve_authenticator-pysrc.html#ShelveAuthenticator.get_old_password_hashes">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="USER"></a><span class="summary-name">USER</span> = <code title="'ESAPIUserSessionKey'"><code class="variable-quote">'</code><code class="variable-string">ESAPIUserSessionKey</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="USERS_FILENAME"></a><span class="summary-name">USERS_FILENAME</span> = <code title="'users.shelf'"><code class="variable-quote">'</code><code class="variable-string">users.shelf</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="CREDS_FILENAME"></a><span class="summary-name">CREDS_FILENAME</span> = <code title="'creds.shelf'"><code class="variable-quote">'</code><code class="variable-string">creds.shelf</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="MAX_ACCOUNT_NAME_LENGTH"></a><span class="summary-name">MAX_ACCOUNT_NAME_LENGTH</span> = <code title="250">250</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="MIN_PASSWORD_STRENGTH"></a><span class="summary-name">MIN_PASSWORD_STRENGTH</span> = <code title="16">16</code>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.reference.shelve_authenticator-pysrc.html#ShelveAuthenticator.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="esapi.authenticator.Authenticator-class.html#__init__">authenticator.Authenticator.__init__</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="clear_current"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">clear_current</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.reference.shelve_authenticator-pysrc.html#ShelveAuthenticator.clear_current">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Clears the current user. This allows the thread to be reused 
+  safely.</p>
+  <p>This clears all threadlocal variables from the thread. This should 
+  ONLY be called after all possible ESAPI operations have concluded. If you
+  clear too early, many calls will fail, including logging, which requires 
+  the user identity.</p>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="esapi.authenticator.Authenticator-class.html#clear_current">authenticator.Authenticator.clear_current</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="login"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">login</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">request</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">response</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.reference.shelve_authenticator-pysrc.html#ShelveAuthenticator.login">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+
+Authenticates the user's credentials from the HttpRequest if 
+necessary, creates a session if necessary, and sets the user as the
+current user.
+
+The implementation should do the following:
+    1. Check if the user is already store in the session
+        A. If so, check that the session absolute and inactivity
+           timeouts have not expired.
+        B. Step 2 may not be required if 1A has been satisfied.
+    2. Verify user credentials
+    3. Set the last host of the user 
+       (eg. user.set_last_host_address(address))
+    4. Verify that the request is secure
+    5. Verify the user account is allowed to be logged in
+        A. Verify user is not disabled, expired, or locked
+    6. Assign user to session variable
+
+@param request: Optional parameter to specify the request. Defaults to
+    the current request.
+@param response: Optional parameter to specify the response. Defaults
+    to the current response.
+@return: the user
+@raises AuthenticationException: if credentials are not verified, or
+    if the account is disabled, locked, expired, or timed out.
+
+</pre>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="esapi.authenticator.Authenticator-class.html#login">authenticator.Authenticator.login</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="verify_password"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">verify_password</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">user</span>,
+        <span class="sig-arg">password</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.reference.shelve_authenticator-pysrc.html#ShelveAuthenticator.verify_password">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Verify that the supplied password matches the password for this user. 
+  Password should be stored as a hash. It is recommended you use the 
+  hash_password(password, account_name) method in this class. This method 
+  is typically used for &quot;reauthentication&quot; for the most sensitive
+  functions, such as</p>
+  <ul>
+    <li>
+      Transactions
+    </li>
+    <li>
+      Changing email address
+    </li>
+    <li>
+      Changing other sensitive account information
+    </li>
+  </ul>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>user</code></strong> - the user that requires verification</li>
+        <li><strong class="pname"><code>password_hash</code></strong> - the hashed password</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>True if the password is correct for the given user. False 
+          otherwise</dd>
+    <dt>Overrides:
+        <a href="esapi.authenticator.Authenticator-class.html#verify_password">authenticator.Authenticator.verify_password</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="logout"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">logout</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">user</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.reference.shelve_authenticator-pysrc.html#ShelveAuthenticator.logout">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Logs out the user.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>user</code></strong> - Optional user to logout. Defaults to the current user.</li>
+    </ul></dd>
+    <dt>Overrides:
+        <a href="esapi.authenticator.Authenticator-class.html#logout">authenticator.Authenticator.logout</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="create_user"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">create_user</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">account_name</span>,
+        <span class="sig-arg">password1</span>,
+        <span class="sig-arg">password2</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.reference.shelve_authenticator-pysrc.html#ShelveAuthenticator.create_user">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Creates a new user with the information provided. Implementations 
+  should check account_name and password for proper format and strength 
+  against brute force attacks.</p>
+  <p>Two copies of the password are required to encourage user interface 
+  designers to include a &quot;re-type password&quot; field in their forms.
+  Implementations if this method should verify that both are the same.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>account_name</code></strong> - the account name of the new user.</li>
+        <li><strong class="pname"><code>password1</code></strong> - the password of the new user.</li>
+        <li><strong class="pname"><code>password2</code></strong> - the password of the new user. This is used to to protect against 
+          typos.</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>the user that has been created.</dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.AuthenticationException-class.html">AuthenticationException</a></strong></code> - if user creation fails.</li>
+    </ul></dd>
+    <dt>Overrides:
+        <a href="esapi.authenticator.Authenticator-class.html#create_user">authenticator.Authenticator.create_user</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="generate_strong_password"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">generate_strong_password</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.reference.shelve_authenticator-pysrc.html#ShelveAuthenticator.generate_strong_password">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Generates a strong password between 7 and 9 characters in length from 
+  a charset including uppercase and lowercase letters, numbers, and special
+  characters. It excludes the confusing characters.</p>
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd>a strong password as a string</dd>
+    <dt>Overrides:
+        <a href="esapi.authenticator.Authenticator-class.html#generate_strong_password">authenticator.Authenticator.generate_strong_password</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="change_password"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">change_password</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">user</span>,
+        <span class="sig-arg">current_password</span>,
+        <span class="sig-arg">new_password1</span>,
+        <span class="sig-arg">new_password2</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.reference.shelve_authenticator-pysrc.html#ShelveAuthenticator.change_password">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Changes the password for the specified user. This requires the current
+  password, as well as the password to replace it with. The new password 
+  should be checked against old hashes to be sure an old password isn't 
+  being reused.</p>
+  <p>Password strength should also be verified. This new password must be 
+  repeated to ensure that the user has typed it in correctly.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>user</code></strong> - the user to change the password for</li>
+        <li><strong class="pname"><code>current_password</code></strong> - the current password for the specified user</li>
+        <li><strong class="pname"><code>new_password1</code></strong> - the new password</li>
+        <li><strong class="pname"><code>new_password2</code></strong> - the new password again.</li>
+    </ul></dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.AuthenticationException-class.html">AuthenticationException</a></strong></code> - if any errors occur</li>
+    </ul></dd>
+    <dt>Overrides:
+        <a href="esapi.authenticator.Authenticator-class.html#change_password">authenticator.Authenticator.change_password</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_user"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_user</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">account_name</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">account_id</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.reference.shelve_authenticator-pysrc.html#ShelveAuthenticator.get_user">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return a user matching the provided account_name.</p>
+  <p>If account_name is not given, or the specified user cannot be found, 
+  None should be returned.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>account_name</code></strong> - the account name</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>the matching user object, or None</dd>
+    <dt>Overrides:
+        <a href="esapi.authenticator.Authenticator-class.html#get_user">authenticator.Authenticator.get_user</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="hash_password"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">hash_password</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">password</span>,
+        <span class="sig-arg">account_name</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.reference.shelve_authenticator-pysrc.html#ShelveAuthenticator.hash_password">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns a string of the hashed password, using the account_name as a 
+  salt. The salt helps to prevent against &quot;rainbow&quot; table attacks
+  where the attacker pre-calculates hashes for known strings.</p>
+  <p>This method specifies the use of the user's account name as the salt 
+  value. The Encryptor.hash method can be used if a different salt is 
+  required.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>password</code></strong> - the password to hash</li>
+        <li><strong class="pname"><code>account_name</code></strong> - the account name to use as the salt</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>the hashed password</dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.EncryptionException-class.html">EncryptionException</a></strong></code> - if something goes wrong when hashing</li>
+    </ul></dd>
+    <dt>Overrides:
+        <a href="esapi.authenticator.Authenticator-class.html#hash_password">authenticator.Authenticator.hash_password</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="remove_user"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">remove_user</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">account_name</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.reference.shelve_authenticator-pysrc.html#ShelveAuthenticator.remove_user">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Removes the account associated with the given account_name.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>account_name</code></strong> - the account name of the account to remove</li>
+    </ul></dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.AuthenticationException-class.html">AuthenticationException</a></strong></code> - Will be raised if the user does not exist.</li>
+    </ul></dd>
+    <dt>Overrides:
+        <a href="esapi.authenticator.Authenticator-class.html#remove_user">authenticator.Authenticator.remove_user</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="verify_account_name_strength"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">verify_account_name_strength</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">account_name</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.reference.shelve_authenticator-pysrc.html#ShelveAuthenticator.verify_account_name_strength">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Ensures that the account name passes site-specific complexity 
+  requirements, like minimum length.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>account_name</code></strong> - the account name</li>
+    </ul></dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.AuthenticationException-class.html">AuthenticationException</a></strong></code> - if the account name does not meet complexity requirements.</li>
+    </ul></dd>
+    <dt>Overrides:
+        <a href="esapi.authenticator.Authenticator-class.html#verify_account_name_strength">authenticator.Authenticator.verify_account_name_strength</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="verify_password_strength"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">verify_password_strength</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">new_password</span>,
+        <span class="sig-arg">old_password</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.reference.shelve_authenticator-pysrc.html#ShelveAuthenticator.verify_password_strength">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Ensures that the password meets site-specific complexity requirements,
+  like length or character set requirements. This method optionally takes 
+  in the old password so that the algorithm can analyze the new password to
+  see if the two are too similar. Note that this has to be invoked when the
+  user has entered the old password, as the list of old credentials stored 
+  by ESAPI is all hashed.</p>
+  <p>It is a good idea for implementations to compare the password for 
+  similarity to dictionary words. This is NOT done in the default 
+  implementation.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>new_password</code></strong> - the new password</li>
+        <li><strong class="pname"><code>old_password</code></strong> - Optional old password. If provided, similarity to the new 
+          password will be analyzed.</li>
+    </ul></dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.AuthenticationException-class.html">AuthenticationException</a></strong></code> - if the new password does not meet the complexity requirements or is
+        too similar to the old password.</li>
+    </ul></dd>
+    <dt>Overrides:
+        <a href="esapi.authenticator.Authenticator-class.html#verify_password_strength">authenticator.Authenticator.verify_password_strength</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="exists"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">exists</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">account_name</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">account_id</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.reference.shelve_authenticator-pysrc.html#ShelveAuthenticator.exists">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Determines if the account exists.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>account_name</code></strong> - the account name</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>True if the account exists</dd>
+    <dt>Overrides:
+        <a href="esapi.authenticator.Authenticator-class.html#exists">authenticator.Authenticator.exists</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="esapi-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Sun Nov  8 16:04:22 2009
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

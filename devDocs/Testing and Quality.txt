@@ -1,0 +1,4 @@
+Static analysis: PyLint
+Unit testing: Standard lib unittest
+Coverage: coverage by Ned Batchelder
+Unit testing and coverage controller: nose

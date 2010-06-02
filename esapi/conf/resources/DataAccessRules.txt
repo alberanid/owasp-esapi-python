@@ -1,0 +1,9 @@
+# Data Access Rules
+#
+java.io.BufferedReader             | any         | read        | default deny
+java.lang.String                   | user        | read, write |
+java.lang.Math                     | admin       | read, write |
+java.util.ArrayList                | admin       | read        |
+java.awt.event.MouseWheelEvent     | admin, user | write, read |
+java.util.Date                     | user        | write       |
+java.util.Random                   | user, admin | read        |

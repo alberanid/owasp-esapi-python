@@ -1,0 +1,521 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>esapi.randomizer.Randomizer</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="esapi-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="esapi-module.html">Package&nbsp;esapi</a> ::
+        <a href="esapi.randomizer-module.html">Module&nbsp;randomizer</a> ::
+        Class&nbsp;Randomizer
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="esapi.randomizer.Randomizer-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class Randomizer</h1><p class="nomargin-top"><span class="codelink"><a href="esapi.randomizer-pysrc.html#Randomizer">source&nbsp;code</a></span></p>
+<dl><dt>Known Subclasses:</dt>
+<dd>
+      <ul class="subclass-list">
+<li><a href="esapi.reference.default_randomizer.DefaultRandomizer-class.html">reference.default_randomizer.DefaultRandomizer</a></li>  </ul>
+</dd></dl>
+
+<hr />
+<p>The Randomizer interface defines a set of methods for creating 
+  cryptographically random numbers and strings. Implementers should be sure
+  to use a strong cryptographic implementation, such as 
+  random.SystemRandom. Weak sources of randomness can undermine a wide 
+  variety of security mechanisms. The specific algorithm used is 
+  configurable in settings.py.</p>
+
+<hr />
+<div class="fields">      <p><strong>Author:</strong>
+        Craig Younkins (craig.younkins@owasp.org)
+      </p>
+</div><!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__init__"></a><span class="summary-sig-name">__init__</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.randomizer-pysrc.html#Randomizer.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.randomizer.Randomizer-class.html#get_random_string" class="summary-sig-name">get_random_string</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">length</span>,
+        <span class="summary-sig-arg">character_set</span>)</span><br />
+      Gets a random string of a desired length and character set.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.randomizer-pysrc.html#Randomizer.get_random_string">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.randomizer.Randomizer-class.html#get_random_boolean" class="summary-sig-name">get_random_boolean</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Returns a random boolean.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.randomizer-pysrc.html#Randomizer.get_random_boolean">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.randomizer.Randomizer-class.html#get_random_integer" class="summary-sig-name">get_random_integer</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">min_</span>=<span class="summary-sig-default">-2147483648</span>,
+        <span class="summary-sig-arg">max_</span>=<span class="summary-sig-default">2147483648</span>)</span><br />
+      Returns a random integer or long.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.randomizer-pysrc.html#Randomizer.get_random_integer">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.randomizer.Randomizer-class.html#get_random_filename" class="summary-sig-name">get_random_filename</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">extension</span>)</span><br />
+      Returns an unguessable random filename with the specified extension.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.randomizer-pysrc.html#Randomizer.get_random_filename">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.randomizer.Randomizer-class.html#get_random_float" class="summary-sig-name">get_random_float</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">min_</span>=<span class="summary-sig-default">-2147483648.0</span>,
+        <span class="summary-sig-arg">max_</span>=<span class="summary-sig-default">2147483648.0</span>)</span><br />
+      Returns a random floating point number.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.randomizer-pysrc.html#Randomizer.get_random_float">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.randomizer.Randomizer-class.html#get_random_guid" class="summary-sig-name">get_random_guid</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Generates a random GUID according to <a 
+      href="http://tools.ietf.org/html/rfc4122#section-4.1.3" 
+      target="_top">RFC 4122 V4</a>.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.randomizer-pysrc.html#Randomizer.get_random_guid">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.randomizer.Randomizer-class.html#get_random_choice" class="summary-sig-name">get_random_choice</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">seq</span>)</span><br />
+      Selects a random element from the sequence.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.randomizer-pysrc.html#Randomizer.get_random_choice">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="get_random_string"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_random_string</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">length</span>,
+        <span class="sig-arg">character_set</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.randomizer-pysrc.html#Randomizer.get_random_string">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Gets a random string of a desired length and character set.  The use 
+  of random.SystemRandom is recommended because it provides a 
+  cryptographically strong pseudo-random number generator. If 
+  random.SystemRandom is not used, the pseudo-random number gernerator used
+  should comply with the statistical random number generator tests 
+  specified in <a href="http://csrc.nist.gov/cryptval/140-2.htm" 
+  target="_top">FIPS 140-2, Security Requirements for Cryptographic 
+  Modules</a>, section 4.9.1.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>length</code></strong> - the length of the string</li>
+        <li><strong class="pname"><code>character_set</code></strong> - the set of characters to include in the created random string</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>the random string of the desired length and character set</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_random_boolean"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_random_boolean</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.randomizer-pysrc.html#Randomizer.get_random_boolean">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns a random boolean.  The use of random.SystemRandom is 
+  recommended because it provides a cryptographically strong pseudo-random 
+  number generator. If random.SystemRandom is not used, the pseudo-random 
+  number gernerator used should comply with the statistical random number 
+  generator tests specified in <a 
+  href="http://csrc.nist.gov/cryptval/140-2.htm" target="_top">FIPS 140-2, 
+  Security Requirements for Cryptographic Modules</a>, section 4.9.1.</p>
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd>true or false, randomly</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_random_integer"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_random_integer</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">min_</span>=<span class="sig-default">-2147483648</span>,
+        <span class="sig-arg">max_</span>=<span class="sig-default">2147483648</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.randomizer-pysrc.html#Randomizer.get_random_integer">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns a random integer or long.  The use of random.SystemRandom is 
+  recommended because it provides a cryptographically strong pseudo-random 
+  number generator. If random.SystemRandom is not used, the pseudo-random 
+  number gernerator used should comply with the statistical random number 
+  generator tests specified in <a 
+  href="http://csrc.nist.gov/cryptval/140-2.htm" target="_top">FIPS 140-2, 
+  Security Requirements for Cryptographic Modules</a>, section 4.9.1.</p>
+  <p>The lower bound (minimum) is inclusive and the upper bound (max) is 
+  also inclusive.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>min_</code></strong> - the minimum integer that will be returned</li>
+        <li><strong class="pname"><code>max_</code></strong> - the maximum integer that will be returned</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>the random integer</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_random_filename"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_random_filename</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">extension</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.randomizer-pysrc.html#Randomizer.get_random_filename">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns an unguessable random filename with the specified extension. 
+  This method could call getRandomString(length, charset) from this Class 
+  with the desired length and alphanumerics as the charset then merely 
+  append &quot;.&quot; + extension.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>extension</code></strong> - extension to add to the random filename</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>a random unguessable filename ending with the specified extension</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_random_float"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_random_float</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">min_</span>=<span class="sig-default">-2147483648.0</span>,
+        <span class="sig-arg">max_</span>=<span class="sig-default">2147483648.0</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.randomizer-pysrc.html#Randomizer.get_random_float">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns a random floating point number.  The use of 
+  random.SystemRandom is recommended because it provides a 
+  cryptographically strong pseudo-random number generator. If 
+  random.SystemRandom is not used, the pseudo-random number gernerator used
+  should comply with the statistical random number generator tests 
+  specified in <a href="http://csrc.nist.gov/cryptval/140-2.htm" 
+  target="_top">FIPS 140-2, Security Requirements for Cryptographic 
+  Modules</a>, section 4.9.1.</p>
+  <p>The lower bound (minimum) is inclusive and the upper bound (max) is 
+  also inclusive.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>min_</code></strong> - the minimum float that will be returned</li>
+        <li><strong class="pname"><code>max_</code></strong> - the maximum float that will be returned</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>the random float</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_random_guid"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_random_guid</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.randomizer-pysrc.html#Randomizer.get_random_guid">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Generates a random GUID according to <a 
+  href="http://tools.ietf.org/html/rfc4122#section-4.1.3" target="_top">RFC
+  4122 V4</a>. This should set the version to '4', and satisfy the high-bit
+  requirement by setting the correct position to '8','9','a', or 'b'. The 
+  format is a well-defined sequence of 32 hex digits grouped into chunks of
+  8-4-4-4-12.</p>
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd>the GUID</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_random_choice"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_random_choice</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">seq</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.randomizer-pysrc.html#Randomizer.get_random_choice">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Selects a random element from the sequence.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>seq</code></strong> - a sequence to select a random element from</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>the random element</dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="esapi-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Sun Nov  8 16:04:21 2009
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

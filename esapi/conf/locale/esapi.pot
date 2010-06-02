@@ -1,0 +1,1118 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-11-08 17:11-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: esapi/validation_error_list.py:30
+msgid "context parameter cannot be None"
+msgstr ""
+
+#: esapi/validation_error_list.py:32
+msgid "validation_exception parameter cannot be None"
+msgstr ""
+
+#: esapi/validation_error_list.py:34
+#, python-format
+msgid "Context %(context)s already exists, must be unique"
+msgstr ""
+
+#: esapi/exceptions.py:247
+msgid "INTRUSION"
+msgstr ""
+
+#: esapi/reference/default_security_configuration.py:54
+msgid ""
+"WARNING - LOADING UNIT TEST CONFIGURATION! IF YOU ARE NOT RUNNING UNIT "
+"TESTS, SOMETHING IS VERY WRONG AND YOUR APP IS NOT SECURE!"
+msgstr ""
+
+#: esapi/reference/default_security_configuration.py:64
+msgid "Unable to import settings file - Check settings.py"
+msgstr ""
+
+#: esapi/reference/default_security_configuration.py:66
+msgid "Loaded ESAPI properties"
+msgstr ""
+
+#: esapi/reference/default_security_configuration.py:68
+msgid " ======Master Configuration======"
+msgstr ""
+
+#: esapi/reference/default_security_configuration.py:89
+#: esapi/reference/default_security_configuration.py:100
+#: esapi/reference/default_security_configuration.py:111
+msgid ""
+"There is an error in the application configuration. See the security log for "
+"more details."
+msgstr ""
+
+#: esapi/reference/default_security_configuration.py:90
+#, python-format
+msgid "Class for this interface not specified in settings: %(interface)s"
+msgstr ""
+
+#: esapi/reference/default_security_configuration.py:101
+#, python-format
+msgid "Fully-qualified name is malformed: %(name)s"
+msgstr ""
+
+#: esapi/reference/default_security_configuration.py:112
+#, python-format
+msgid "Error getting class %(class)s from module %(module)s"
+msgstr ""
+
+#: esapi/reference/default_security_configuration.py:225
+#, python-format
+msgid ""
+"Trying to get validation pattern Validator_%(key)s failed because it doesn't "
+"exist"
+msgstr ""
+
+#: esapi/reference/default_security_configuration.py:232
+#, python-format
+msgid ""
+"SecurityConfiguration for Validator_%(key)s is not a valid regex in "
+"settings. Returning None."
+msgstr ""
+
+#: esapi/reference/shelve_authenticator.py:93
+msgid "Attempt to login with an insecure request"
+msgstr ""
+
+#: esapi/reference/shelve_authenticator.py:102
+#: esapi/reference/shelve_authenticator.py:112
+#: esapi/reference/default_user.py:89 esapi/reference/default_user.py:97
+#: esapi/reference/default_user.py:105 esapi/reference/default_user.py:113
+#: esapi/reference/default_user.py:133
+msgid "Login failed"
+msgstr ""
+
+#: esapi/reference/shelve_authenticator.py:103
+#, python-format
+msgid "Anonymous user cannot be set to current user. User: %(user)s"
+msgstr ""
+
+#: esapi/reference/shelve_authenticator.py:113
+#, python-format
+msgid " User: %(user)s"
+msgstr ""
+
+#: esapi/reference/shelve_authenticator.py:119
+msgid "Disabled user cannot be set to current user."
+msgstr ""
+
+#: esapi/reference/shelve_authenticator.py:124
+msgid "Locked user cannot be set to current user."
+msgstr ""
+
+#: esapi/reference/shelve_authenticator.py:130
+msgid "Expired user cannot be set to current user."
+msgstr ""
+
+#: esapi/reference/shelve_authenticator.py:135
+msgid "Session inactivity timeout."
+msgstr ""
+
+#: esapi/reference/shelve_authenticator.py:140
+msgid "Session absolute timeout."
+msgstr ""
+
+#: esapi/reference/shelve_authenticator.py:163
+msgid "User requested relogin. Performing logout then authentication"
+msgstr ""
+
+#: esapi/reference/shelve_authenticator.py:172
+#: esapi/reference/shelve_authenticator.py:179
+#: esapi/reference/default_http_utilities.py:417
+msgid "Authentication failed"
+msgstr ""
+
+#: esapi/reference/shelve_authenticator.py:173
+#, python-format
+msgid "Authentication failed for %(user)s because of null username or password"
+msgstr ""
+
+#: esapi/reference/shelve_authenticator.py:180
+#, python-format
+msgid "Authentication failed because user %(user)s doesn't exist"
+msgstr ""
+
+#: esapi/reference/shelve_authenticator.py:204
+msgid "Found corrupt or expired remember token"
+msgstr ""
+
+#: esapi/reference/shelve_authenticator.py:215
+#, python-format
+msgid "Found valid remember token but no user matching %(username)s"
+msgstr ""
+
+#: esapi/reference/shelve_authenticator.py:220
+#, python-format
+msgid "Logging in user with remember token: %(username)s"
+msgstr ""
+
+#: esapi/reference/shelve_authenticator.py:227
+msgid "Login via remember me cookie failed"
+msgstr ""
+
+#: esapi/reference/shelve_authenticator.py:231
+msgid "Remember token was missing, corrupt, or expired"
+msgstr ""
+
+#: esapi/reference/shelve_authenticator.py:248
+#, python-format
+msgid "Password verified for %(user)s"
+msgstr ""
+
+#: esapi/reference/shelve_authenticator.py:253
+#, python-format
+msgid "Encryption error verifying password for %(user)s"
+msgstr ""
+
+#: esapi/reference/shelve_authenticator.py:256
+#, python-format
+msgid "Password verification failed for %(user)s"
+msgstr ""
+
+#: esapi/reference/shelve_authenticator.py:298
+msgid "Logout successful"
+msgstr ""
+
+#: esapi/reference/shelve_authenticator.py:304
+#: esapi/reference/shelve_authenticator.py:309
+msgid "Account creation failed"
+msgstr ""
+
+#: esapi/reference/shelve_authenticator.py:305
+msgid "Attempt to create user with None account_name"
+msgstr ""
+
+#: esapi/reference/shelve_authenticator.py:310
+#, python-format
+msgid "Duplicate user creation denied for %(user)s"
+msgstr ""
+
+#: esapi/reference/shelve_authenticator.py:318
+#: esapi/reference/shelve_authenticator.py:451
+#: esapi/reference/shelve_authenticator.py:461
+msgid "Invalid account name"
+msgstr ""
+
+#: esapi/reference/shelve_authenticator.py:319
+#, python-format
+msgid "Attempt to create account %(user)s with a None password"
+msgstr ""
+
+#: esapi/reference/shelve_authenticator.py:326
+msgid "Passwords do not match"
+msgstr ""
+
+#: esapi/reference/shelve_authenticator.py:327
+#, python-format
+msgid "Passwords for %(user)s do not match"
+msgstr ""
+
+#: esapi/reference/shelve_authenticator.py:338
+msgid "Internal error"
+msgstr ""
+
+#: esapi/reference/shelve_authenticator.py:339
+#, python-format
+msgid "Error hashing password for %(user)s"
+msgstr ""
+
+#: esapi/reference/shelve_authenticator.py:345
+#, python-format
+msgid "New user created: %(user)s"
+msgstr ""
+
+#: esapi/reference/shelve_authenticator.py:382
+#: esapi/reference/shelve_authenticator.py:390
+#: esapi/reference/shelve_authenticator.py:400
+#: esapi/reference/shelve_authenticator.py:411
+msgid "Password change failed"
+msgstr ""
+
+#: esapi/reference/shelve_authenticator.py:383
+#, python-format
+msgid "Authentication failed for password change on user: %(user)s"
+msgstr ""
+
+#: esapi/reference/shelve_authenticator.py:391
+#, python-format
+msgid "New passwords do not match for password change on user: %(user)s"
+msgstr ""
+
+#: esapi/reference/shelve_authenticator.py:401
+#, python-format
+msgid "Password matches a recent password for user: %(user)s"
+msgstr ""
+
+#: esapi/reference/shelve_authenticator.py:406
+#, python-format
+msgid "Password changed for user: %(user)s"
+msgstr ""
+
+#: esapi/reference/shelve_authenticator.py:412
+#, python-format
+msgid "Encryption exception changing password for %(user)s"
+msgstr ""
+
+#: esapi/reference/shelve_authenticator.py:438
+msgid "Remove user failed"
+msgstr ""
+
+#: esapi/reference/shelve_authenticator.py:439
+#, python-format
+msgid "Can't remove invalid account_name: %(user)s"
+msgstr ""
+
+#: esapi/reference/shelve_authenticator.py:444
+#, python-format
+msgid "User successfully removed: %(user)s"
+msgstr ""
+
+#: esapi/reference/shelve_authenticator.py:452
+msgid "Attempt to create account with a None account name"
+msgstr ""
+
+#: esapi/reference/shelve_authenticator.py:462
+#, python-format
+msgid "New account name is not valid: %(user)s"
+msgstr ""
+
+#: esapi/reference/shelve_authenticator.py:468
+#: esapi/reference/shelve_authenticator.py:478
+#: esapi/reference/shelve_authenticator.py:497
+msgid "Invalid password"
+msgstr ""
+
+#: esapi/reference/shelve_authenticator.py:469
+msgid "New password cannot be None"
+msgstr ""
+
+#: esapi/reference/shelve_authenticator.py:479
+msgid "New password cannot contain pieces of old password."
+msgstr ""
+
+#: esapi/reference/shelve_authenticator.py:498
+msgid "New password is not long or complex enough"
+msgstr ""
+
+#: esapi/reference/random_access_reference_map.py:53
+msgid "Access denied"
+msgstr ""
+
+#: esapi/reference/random_access_reference_map.py:54
+#, python-format
+msgid "Request for invalid indirect reference: %(ref)s"
+msgstr ""
+
+#: esapi/reference/default_executor.py:47
+msgid ""
+"Using WindowsCodec for Executor. If this is not running on Windows, this "
+"could allow for injection"
+msgstr ""
+
+#: esapi/reference/default_executor.py:51
+msgid ""
+"Using UnixCodec for Executor. If this is not running on Unix, this could "
+"allow injection"
+msgstr ""
+
+#: esapi/reference/default_executor.py:73
+#: esapi/reference/default_executor.py:86
+#: esapi/reference/default_executor.py:94
+#: esapi/reference/default_executor.py:104
+#: esapi/reference/default_executor.py:135
+#: esapi/reference/default_executor.py:145
+msgid "Execution failure"
+msgstr ""
+
+#: esapi/reference/default_executor.py:74
+#, python-format
+msgid "No such executable: %(executable)s"
+msgstr ""
+
+#: esapi/reference/default_executor.py:87
+#, python-format
+msgid "Directory did not pass validation: %(dir)s"
+msgstr ""
+
+#: esapi/reference/default_executor.py:95
+#, python-format
+msgid ""
+"Attempt to invoke executable that is not listed as an approved executable in "
+"configuration: %(executable)s"
+msgstr ""
+
+#: esapi/reference/default_executor.py:105
+#, python-format
+msgid "No such working directory for running executable: %(dir)s"
+msgstr ""
+
+#: esapi/reference/default_executor.py:115
+#, python-format
+msgid "Initiating executable %(args)s in %(dir)s"
+msgstr ""
+
+#: esapi/reference/default_executor.py:120
+#, python-format
+msgid "Initiating executable %(executable)s in %(dir)s"
+msgstr ""
+
+#: esapi/reference/default_executor.py:136
+#, python-format
+msgid "Process exceeded maximum running time and was killed: %(executable)s"
+msgstr ""
+
+#: esapi/reference/default_executor.py:146
+msgid "Exception thrown during execution of system command"
+msgstr ""
+
+#: esapi/reference/default_encryptor.py:62
+#, python-format
+msgid "Encryption Failure - Unknown algorithm for encryption: %(algorithm)s"
+msgstr ""
+
+#: esapi/reference/default_encryptor.py:72
+msgid "Failure to encrypt"
+msgstr ""
+
+#: esapi/reference/default_encryptor.py:73
+#, python-format
+msgid "Encryption Failure - Unknown algorithm for signing: %(algorithm)s"
+msgstr ""
+
+#: esapi/reference/default_encryptor.py:87
+#, python-format
+msgid ""
+"There is an error in the application configuration. The MasterSalt has not "
+"been set properly. Please see the instructions in the README for setting up "
+"a crypto keyring. Currently, Encryptor_MasterSalt=%(value)s"
+msgstr ""
+
+#: esapi/reference/default_encryptor.py:110
+msgid "Problem hashing"
+msgstr ""
+
+#: esapi/reference/default_encryptor.py:111
+msgid "Internal Error - Can't find hash algorithm "
+msgstr ""
+
+#: esapi/reference/default_encryptor.py:121
+msgid "Problem encrypting"
+msgstr ""
+
+#: esapi/reference/default_encryptor.py:122
+#: esapi/reference/default_encryptor.py:133
+#: esapi/reference/default_encryptor.py:144
+msgid "Keyczar raised an error"
+msgstr ""
+
+#: esapi/reference/default_encryptor.py:132
+msgid "Problem decrypting"
+msgstr ""
+
+#: esapi/reference/default_encryptor.py:143
+msgid "Problem signing"
+msgstr ""
+
+#: esapi/reference/default_encryptor.py:153
+msgid "Keyczar raise an exception when verifying a signature"
+msgstr ""
+
+#: esapi/reference/default_encryptor.py:188
+#: esapi/reference/default_encryptor.py:195
+#: esapi/reference/default_encryptor.py:201
+#: esapi/reference/default_encryptor.py:209
+#: esapi/reference/default_encryptor.py:210
+msgid "Invalid seal"
+msgstr ""
+
+#: esapi/reference/default_encryptor.py:189
+msgid "Seal was not formatted properly"
+msgstr ""
+
+#: esapi/reference/default_encryptor.py:196
+msgid "Seal has expired"
+msgstr ""
+
+#: esapi/reference/default_encryptor.py:202
+msgid "Seal integrity check failed"
+msgstr ""
+
+#: esapi/reference/default_encryptor.py:224
+#, python-format
+msgid "Creating new keys in %(location)s"
+msgstr ""
+
+#: esapi/reference/validation/string_validation_rule.py:50
+#: esapi/reference/validation/string_validation_rule.py:60
+#, python-format
+msgid ""
+"Validation misconfiguration, problem with specified pattern: %(pattern)s"
+msgstr ""
+
+#: esapi/reference/validation/string_validation_rule.py:77
+#: esapi/reference/default_validator.py:316
+#, python-format
+msgid "%(context)s: Input required"
+msgstr ""
+
+#: esapi/reference/validation/string_validation_rule.py:79
+#: esapi/reference/default_validator.py:261
+#: esapi/reference/default_validator.py:318
+#, python-format
+msgid "Input required: context=%(context)s, input=%(input)s"
+msgstr ""
+
+#: esapi/reference/validation/string_validation_rule.py:89
+#, python-format
+msgid "%(context)s: Invalid input. Encoding problem detected."
+msgstr ""
+
+#: esapi/reference/validation/string_validation_rule.py:91
+#: esapi/reference/validation/date_validation_rule.py:74
+#: esapi/reference/validation/number_validation_rule.py:54
+msgid "Error canonicalizing user input"
+msgstr ""
+
+#: esapi/reference/validation/string_validation_rule.py:98
+#, python-format
+msgid ""
+"%(context)s: Invalid input. The minimum length of %(min_length)s characters "
+"was not met."
+msgstr ""
+
+#: esapi/reference/validation/string_validation_rule.py:101
+#, python-format
+msgid ""
+"Input failed to meet minimum length of %(min_length)s by %(diff)s "
+"characters: context=%(context)s, type=%(type)s, input=%(input)s"
+msgstr ""
+
+#: esapi/reference/validation/string_validation_rule.py:111
+#, python-format
+msgid ""
+"%(context)s: Invalid input. The maximum length of %(max_length)s characters "
+"was exceeded."
+msgstr ""
+
+#: esapi/reference/validation/string_validation_rule.py:114
+#, python-format
+msgid ""
+"Input exceeds maximum allowed length of %(max_length)s by %(diff)s "
+"characters: context=%(context)s, type=%(type)s, input=%(input)s"
+msgstr ""
+
+#: esapi/reference/validation/string_validation_rule.py:126
+#, python-format
+msgid ""
+"%(context)s: Invalid input. Please conform to regex %(regex)s%(optional)s"
+msgstr ""
+
+#: esapi/reference/validation/string_validation_rule.py:130
+#, python-format
+msgid ""
+"Invalid input: context=%(context)s, type(%(type)s)=%(pattern)s, input=%"
+"(input)s"
+msgstr ""
+
+#: esapi/reference/validation/string_validation_rule.py:141
+#, python-format
+msgid ""
+"%(context)s: Invalid input. Dangerous input matching %(pattern)s detected."
+msgstr ""
+
+#: esapi/reference/validation/string_validation_rule.py:144
+#, python-format
+msgid ""
+"Dangerous input: context=%(context)s, type(%(type)s)=%(pattern)s, input=%"
+"(input)s"
+msgstr ""
+
+#: esapi/reference/validation/credit_card_validation_rule.py:52
+#, python-format
+msgid "%(context)s: Input credit card required"
+msgstr ""
+
+#: esapi/reference/validation/credit_card_validation_rule.py:54
+#, python-format
+msgid "Input credit card required: context=%(context)s, input=%(input)s"
+msgstr ""
+
+#: esapi/reference/validation/credit_card_validation_rule.py:78
+#, python-format
+msgid "%(context)s: Invalid credit card input"
+msgstr ""
+
+#: esapi/reference/validation/credit_card_validation_rule.py:80
+#, python-format
+msgid ""
+"Invalid credit card input. Credit card number did not pass Luhn test: "
+"context=%(context)s"
+msgstr ""
+
+#: esapi/reference/validation/date_validation_rule.py:60
+#, python-format
+msgid "%(context)s: Input date required"
+msgstr ""
+
+#: esapi/reference/validation/date_validation_rule.py:62
+#, python-format
+msgid "Input date required: context=%(context)s, input=%(context)s"
+msgstr ""
+
+#: esapi/reference/validation/date_validation_rule.py:72
+msgid "%(context): Invalid date input. Encoding problem detected."
+msgstr ""
+
+#: esapi/reference/validation/date_validation_rule.py:83
+#, python-format
+msgid "%(context)s: Invalid date must follow the %(format)s format"
+msgstr ""
+
+#: esapi/reference/validation/date_validation_rule.py:86
+#, python-format
+msgid "Invalid date: context=%(context)s, format=%(format)s, input=%(input)s"
+msgstr ""
+
+#: esapi/reference/validation/number_validation_rule.py:40
+#, python-format
+msgid "%(context)s: Input number required"
+msgstr ""
+
+#: esapi/reference/validation/number_validation_rule.py:42
+#, python-format
+msgid "Input number required: context=%(context)s, input=%(input)s"
+msgstr ""
+
+#: esapi/reference/validation/number_validation_rule.py:52
+#, python-format
+msgid "%(context)s: Invalid number input. Encoding problem detected."
+msgstr ""
+
+#: esapi/reference/validation/number_validation_rule.py:60
+#, python-format
+msgid "%(context)s: Invalid number input: context"
+msgstr ""
+
+#: esapi/reference/validation/number_validation_rule.py:62
+#, python-format
+msgid ""
+"Validation parameter error for number: max_value ( %(max_value)s ) must be "
+"greater than min_value ( %(min_value)s ) for %(context)s"
+msgstr ""
+
+#: esapi/reference/validation/number_validation_rule.py:73
+#, python-format
+msgid "%(context)s: Invalid number input"
+msgstr ""
+
+#: esapi/reference/validation/number_validation_rule.py:75
+#, python-format
+msgid "Invalid number input format: context=%(context)s, input=%(input)s"
+msgstr ""
+
+#: esapi/reference/validation/number_validation_rule.py:84
+#, python-format
+msgid ""
+"Invalid number input must be between %(min_value)s and %(max_value)s: "
+"context=%(context)s"
+msgstr ""
+
+#: esapi/reference/validation/number_validation_rule.py:88
+#, python-format
+msgid ""
+"Invalid number input must be between %(min_value)s and %(max_value)s: "
+"context=%(context)s, input=%(input)s"
+msgstr ""
+
+#: esapi/reference/file_based_access_controller.py:138
+msgid "Not authorized for URL"
+msgstr ""
+
+#: esapi/reference/file_based_access_controller.py:139
+#, python-format
+msgid "Not authorized for URL: %(url)s"
+msgstr ""
+
+#: esapi/reference/file_based_access_controller.py:146
+msgid "Not authorized for function"
+msgstr ""
+
+#: esapi/reference/file_based_access_controller.py:147
+#, python-format
+msgid "Not authorized for function: %(function)s"
+msgstr ""
+
+#: esapi/reference/file_based_access_controller.py:155
+msgid "Not authorized for data"
+msgstr ""
+
+#: esapi/reference/file_based_access_controller.py:156
+#, python-format
+msgid "Not authorized for data: %(data)s"
+msgstr ""
+
+#: esapi/reference/file_based_access_controller.py:164
+msgid "Not authorized for file"
+msgstr ""
+
+#: esapi/reference/file_based_access_controller.py:165
+#, python-format
+msgid "Not authorized for file: %(file)s"
+msgstr ""
+
+#: esapi/reference/file_based_access_controller.py:173
+msgid "Not authorized for service"
+msgstr ""
+
+#: esapi/reference/file_based_access_controller.py:174
+#, python-format
+msgid "Not authorized for service: %(service)s"
+msgstr ""
+
+#: esapi/reference/file_based_access_controller.py:219
+#, python-format
+msgid "Failed to canonicalize input: %(key)s"
+msgstr ""
+
+#: esapi/reference/file_based_access_controller.py:230
+msgid "Attempt to manipulate access control path"
+msgstr ""
+
+#: esapi/reference/file_based_access_controller.py:231
+#, python-format
+msgid "Attempt to manipulate access control path: %(path)s"
+msgstr ""
+
+#: esapi/reference/file_based_access_controller.py:307
+#, python-format
+msgid "Failed to canonicalize role: %(role)s"
+msgstr ""
+
+#: esapi/reference/file_based_access_controller.py:316
+#, python-format
+msgid ""
+"Role is invalid, and was not added to the list of roles for this rule: %"
+"(role)s"
+msgstr ""
+
+#: esapi/reference/file_based_access_controller.py:372
+#, python-format
+msgid "Problem in access control file. Duplicate rule ignored: %(rule)s"
+msgstr ""
+
+#: esapi/reference/file_based_access_controller.py:382
+#, python-format
+msgid "Problem in access control file: %(file)s"
+msgstr ""
+
+#: esapi/reference/file_based_access_controller.py:390
+#, python-format
+msgid "Failure closing access control file: %(file)s"
+msgstr ""
+
+#: esapi/reference/default_intrusion_detector.py:72
+#: esapi/reference/default_intrusion_detector.py:93
+#, python-format
+msgid ""
+"User exceeded quota of %(count)s per %(interval)s seconds for event %"
+"(event_name)s. Taking actions %(actions)s"
+msgstr ""
+
+#: esapi/reference/default_intrusion_detector.py:81
+#, python-format
+msgid "Security event %(name)s received: %(message)s"
+msgstr ""
+
+#: esapi/reference/default_intrusion_detector.py:110
+msgid "INTRUSION - "
+msgstr ""
+
+#: esapi/reference/default_intrusion_detector.py:159
+msgid "Threshold exceeded"
+msgstr ""
+
+#: esapi/reference/default_intrusion_detector.py:160
+#, python-format
+msgid "Exceeded threshold for %(key)s"
+msgstr ""
+
+#: esapi/reference/default_validator.py:152
+#, python-format
+msgid "%(context)s: Input directory path required"
+msgstr ""
+
+#: esapi/reference/default_validator.py:154
+#, python-format
+msgid "Input directory path required: context=%(context)s, input=%(input)s"
+msgstr ""
+
+#: esapi/reference/default_validator.py:162
+#: esapi/reference/default_validator.py:181
+#: esapi/reference/default_validator.py:198
+#: esapi/reference/default_validator.py:211
+#: esapi/reference/default_validator.py:220
+#: esapi/reference/default_validator.py:231
+#, python-format
+msgid "%(context)s: Invalid directory name"
+msgstr ""
+
+#: esapi/reference/default_validator.py:164
+#, python-format
+msgid ""
+"Parent directory required: context=%(context)s, input=%(input)s, parent_dir=%"
+"(parent_dir)s"
+msgstr ""
+
+#: esapi/reference/default_validator.py:183
+#, python-format
+msgid ""
+"Invalid directory name does not match the canonical path: context=%(context)"
+"s, input=%(input)s, canonical=%(canonical_input)s"
+msgstr ""
+
+#: esapi/reference/default_validator.py:200
+#, python-format
+msgid ""
+"Invalid parent directory name does not match the canonical path: context=%"
+"(context)s, input=%(input)s, parent_dir=%(parent_dir)s, canonical_parent=%"
+"(canonical_parent)s"
+msgstr ""
+
+#: esapi/reference/default_validator.py:213
+#, python-format
+msgid ""
+"Invalid directory name does not exist: context=%(context)s, input=%(input)s"
+msgstr ""
+
+#: esapi/reference/default_validator.py:222
+#, python-format
+msgid ""
+"Invalid parent directory name does not exist: context=%(context)s, "
+"parent_dir=%(parent_dir)s"
+msgstr ""
+
+#: esapi/reference/default_validator.py:233
+#, python-format
+msgid ""
+"Input directory is not inside given parent directory: context=%(context)s,  "
+"input=%(input)s, parent_dir=%(parent_dir)s"
+msgstr ""
+
+#: esapi/reference/default_validator.py:259
+#, python-format
+msgid "%(context)s: Input file name required"
+msgstr ""
+
+#: esapi/reference/default_validator.py:279
+#, python-format
+msgid ""
+"%(context)s: Invalid file name does not have valid extension ( %"
+"(allowed_extensions)s )"
+msgstr ""
+
+#: esapi/reference/default_validator.py:282
+#, python-format
+msgid ""
+"Invalid file name does not have valid extension ( %(allowed_extensions)s ): "
+"context=%(context)s, input=%(input)s"
+msgstr ""
+
+#: esapi/reference/default_validator.py:326
+#: esapi/reference/default_validator.py:335
+#, python-format
+msgid "%(context)s: Invalid file content can not exceed %(max_bytes)s bytes"
+msgstr ""
+
+#: esapi/reference/default_validator.py:329
+msgid "Exceeded ESAPI max length of %(max_bytes) bytes by %(exceeded)s bytes"
+msgstr ""
+
+#: esapi/reference/default_validator.py:338
+#, python-format
+msgid "Exceeded max_bytes of %(max_bytes)s bytes by %(exceeded)s bytes"
+msgstr ""
+
+#: esapi/reference/default_encoder.py:93
+msgid "Codecs in list must be instances of children of Codec"
+msgstr ""
+
+#: esapi/reference/default_encoder.py:121
+#: esapi/reference/default_encoder.py:136
+#: esapi/reference/default_encoder.py:148
+msgid "Input validation failure"
+msgstr ""
+
+#: esapi/reference/default_encoder.py:122
+#, python-format
+msgid ""
+"Multiple (%(times_encoded)sx) and mixed encoding (%(codecs_found)s) detected "
+"in %(input)s"
+msgstr ""
+
+#: esapi/reference/default_encoder.py:129
+msgid ""
+"Multiple (%s(times_encoded)x) and mixed encoding (%(codecs_found)s) detected "
+"in %(input)s"
+msgstr ""
+
+#: esapi/reference/default_encoder.py:137
+#: esapi/reference/default_encoder.py:142
+msgid "Multiple (%s(times_encoded)x) encoding detected in %(input)s"
+msgstr ""
+
+#: esapi/reference/default_encoder.py:149
+#: esapi/reference/default_encoder.py:154
+#, python-format
+msgid "Mixed encoding (%(codecs_found)s) detected in %(input)s"
+msgstr ""
+
+#: esapi/reference/default_http_utilities.py:78
+msgid ""
+"Attempt to add unsafe data to cookie (skip mode). Skipping cookie and "
+"continuing."
+msgstr ""
+
+#: esapi/reference/default_http_utilities.py:110
+msgid "Attempt to add invalid header denied"
+msgstr ""
+
+#: esapi/reference/default_http_utilities.py:117
+#: esapi/reference/default_http_utilities.py:124
+msgid "Insecure request received"
+msgstr ""
+
+#: esapi/reference/default_http_utilities.py:118
+#, python-format
+msgid "Receieved non-SSL request: %(url)s"
+msgstr ""
+
+#: esapi/reference/default_http_utilities.py:125
+#, python-format
+msgid "Receieved request using %(method)s when only %(req_method)s is allowed"
+msgstr ""
+
+#: esapi/reference/default_http_utilities.py:156
+msgid "Invalid request"
+msgstr ""
+
+#: esapi/reference/default_http_utilities.py:157
+msgid "Tampering detected. Hidden field data did not decrypt properly."
+msgstr ""
+
+#: esapi/reference/default_http_utilities.py:209
+msgid "Problem encrypting state in cookie - skipping entry"
+msgstr ""
+
+#: esapi/reference/default_http_utilities.py:215
+msgid "Problem encrypting state in cookie because of max cookie length"
+msgstr ""
+
+#: esapi/reference/default_http_utilities.py:216
+msgid "Encryption Exception"
+msgstr ""
+
+#: esapi/reference/default_http_utilities.py:217
+#, python-format
+msgid ""
+"Encrypted cookie state length of %(len)s is longer than allowed %(allowed)s."
+msgstr ""
+
+#: esapi/reference/default_http_utilities.py:257
+#, python-format
+msgid "HTTP header value: %(value)s"
+msgstr ""
+
+#: esapi/reference/default_http_utilities.py:272
+#, python-format
+msgid "HTTP parameter value: %(val)s"
+msgstr ""
+
+#: esapi/reference/default_http_utilities.py:363
+msgid "Attempt to set invalid header denied"
+msgstr ""
+
+#: esapi/reference/default_http_utilities.py:396
+#, python-format
+msgid "Enabled remember me token for %(user)s"
+msgstr ""
+
+#: esapi/reference/default_http_utilities.py:401
+#, python-format
+msgid "Attempt to set remember me token failed for %(user)s"
+msgstr ""
+
+#: esapi/reference/default_http_utilities.py:418
+msgid "Possibly forged HTTP request without proper CSRF token detected"
+msgstr ""
+
+#: esapi/reference/python_log_factory.py:177
+msgid "unknown"
+msgstr ""
+
+#: esapi/reference/python_log_factory.py:203
+msgid "SUCCESS"
+msgstr ""
+
+#: esapi/reference/python_log_factory.py:203
+msgid "FAILURE"
+msgstr ""
+
+#: esapi/reference/default_user.py:90
+#, python-format
+msgid "Missing password: %(account_name)s"
+msgstr ""
+
+#: esapi/reference/default_user.py:98
+#, python-format
+msgid "Disabled user attempt to login: %(account_name)s"
+msgstr ""
+
+#: esapi/reference/default_user.py:106
+#, python-format
+msgid "Locked user attempt to login: %(account_name)s"
+msgstr ""
+
+#: esapi/reference/default_user.py:114
+#, python-format
+msgid "Expired user attempt to login: %(account_name)s"
+msgstr ""
+
+#: esapi/reference/default_user.py:125
+#, python-format
+msgid "User logged in: %(account_name)s"
+msgstr ""
+
+#: esapi/reference/default_user.py:134
+#, python-format
+msgid "Incorrect password provided for %(account_name)s"
+msgstr ""
+
+#: esapi/reference/default_user.py:168
+#, python-format
+msgid "Role %(role_name)s added to %(account_name)s"
+msgstr ""
+
+#: esapi/reference/default_user.py:175
+msgid "Add role failed"
+msgstr ""
+
+#: esapi/reference/default_user.py:176
+#, python-format
+msgid "Attempt to add invalid role %(role_name)s to %(account_name)s"
+msgstr ""
+
+#: esapi/reference/default_user.py:188
+msgid "Role %(role_name)s removed from %(account_name)"
+msgstr ""
+
+#: esapi/reference/default_user.py:231
+#, python-format
+msgid "Set last password change time to %(time)s for %(account_name)s"
+msgstr ""
+
+#: esapi/reference/default_user.py:243
+#, python-format
+msgid "Account disabled: %(account_name)s"
+msgstr ""
+
+#: esapi/reference/default_user.py:249
+#, python-format
+msgid "Account enabled: %(account_name)s"
+msgstr ""
+
+#: esapi/reference/default_user.py:273
+#, python-format
+msgid "Account name changed from %(old)s to %(new)s"
+msgstr ""
+
+#: esapi/reference/default_user.py:300
+#, python-format
+msgid "Account expiration time was set to %(time)s for %(account_name)s"
+msgstr ""
+
+#: esapi/reference/default_user.py:324
+#, python-format
+msgid "Set last failed login time to %(time)s for %(user)s"
+msgstr ""
+
+#: esapi/reference/default_user.py:341
+msgid "Host change"
+msgstr ""
+
+#: esapi/reference/default_user.py:342
+#, python-format
+msgid "User sessions just jumped from %(old)s to %(new)s"
+msgstr ""
+
+#: esapi/reference/default_user.py:358
+#, python-format
+msgid "Set last successful login time to %(time)s for %(account_name)s"
+msgstr ""
+
+#: esapi/reference/default_user.py:373
+#, python-format
+msgid "ScreenName changed to %(new)s for %(account_name)s"
+msgstr ""
+
+#: esapi/reference/default_user.py:419
+#, python-format
+msgid "Account locked: %(account_name)s"
+msgstr ""
+
+#: esapi/reference/default_user.py:426
+#, python-format
+msgid "Account unlocked: %(account_name)s"
+msgstr ""
+
+#: esapi/reference/default_randomizer.py:61
+msgid "Generated a new random filename: "
+msgstr ""
+
+#: esapi/test/test_user.py:77
+#, python-format
+msgid "Creating user %(username)s for %(caller)s"
+msgstr ""
+
+#: esapi/test/test_user.py:106
+#, python-format
+msgid "Hash of %(old_password)s = %(hash)s"
+msgstr ""
+
+#: esapi/test/test_user.py:112 esapi/test/test_user.py:120
+#, python-format
+msgid "Hash of %(password)s = %(hash)s"
+msgstr ""
+
+#: esapi/logger.py:113
+msgid "SECURITY SUCCESS"
+msgstr ""
+
+#: esapi/logger.py:117
+msgid "SECURITY FAILURE"
+msgstr ""
+
+#: esapi/logger.py:121
+msgid "EVENT SUCCESS"
+msgstr ""
+
+#: esapi/logger.py:125
+msgid "EVENT FAILURE"
+msgstr ""

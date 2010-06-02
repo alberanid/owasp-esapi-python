@@ -1,0 +1,6 @@
+Define project conventions/differences
+
+Test case
+Code
+
+Build a "real" app

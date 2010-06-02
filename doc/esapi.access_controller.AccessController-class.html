@@ -1,0 +1,828 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>esapi.access_controller.AccessController</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="esapi-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="esapi-module.html">Package&nbsp;esapi</a> ::
+        <a href="esapi.access_controller-module.html">Module&nbsp;access_controller</a> ::
+        Class&nbsp;AccessController
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="esapi.access_controller.AccessController-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class AccessController</h1><p class="nomargin-top"><span class="codelink"><a href="esapi.access_controller-pysrc.html#AccessController">source&nbsp;code</a></span></p>
+<dl><dt>Known Subclasses:</dt>
+<dd>
+      <ul class="subclass-list">
+<li><a href="esapi.reference.file_based_access_controller.FileBasedAccessController-class.html">reference.file_based_access_controller.FileBasedAccessController</a></li>  </ul>
+</dd></dl>
+
+<hr />
+<pre class="literalblock">
+
+The AccessController interface defines a set of methods that can be used in
+a wide variety of applications to enforce access control. In most 
+applications, access control must be performed in multiple different
+locations across the various application layers. This class provides
+access control for URLs, business functions, data, services, and files.
+
+The implementation of this interface will need to access the current User
+object (from Authenticator.current_user) to determine roles or permissions.
+In addition, the implementation will also need information about the 
+resources that are being accessed. Using the user information and the
+resource information, the implementation should return an access control
+decision.
+
+Implementors are encouraged to implement the ESAPI access control rules,
+like assert_authorized() using existing access control mechanisms, such as 
+is_user_in_role() or has_privilege(). While powerful, methods like
+is_user_in_role() can be confusing for developers, as users may be in
+multiple roles or possess multiple overlapping privileges. Direct use of
+these finer grained access control methods encourages the use of complex
+boolean tests throughout the code, which can easily lead to developer
+mistakes.
+
+The point of the ESAPI access control interface is to centralize access
+control logic behind easy to use calls like assert_authorized_for_data() so
+that access control is easy to use and easy to verify. Here is an example 
+of a very straightforward to implement, understand, and verify ESAPI access
+control check:
+
+try:
+    ESAPI.access_controller().assert_authorized_for_function(
+        &quot;businessFunction&quot; )
+    # execute businessFunction
+except AccessControlException, extra:
+    # attack in progress
+    
+Note that in the user interface layer, acccess control checks can be used
+to control whether particular controls are rendered or not. These checks
+are supposed to fail when an unauthorized user is logged in, and do not
+represent attacks. Remember that regardless of how the user interface
+appears, an attacker can attempt to invoke any business function or access
+any data in your application. Therefore, access control checks in the user
+interface should be repeated in both the business logic and data layers.
+
+</pre>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.access_controller.AccessController-class.html#is_authorized_for_url" class="summary-sig-name">is_authorized_for_url</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">url</span>)</span><br />
+      Checks if the account is authorized to access the referenced URL.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.access_controller-pysrc.html#AccessController.is_authorized_for_url">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.access_controller.AccessController-class.html#is_authorized_for_function" class="summary-sig-name">is_authorized_for_function</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">function_name</span>)</span><br />
+      Checks if the account is authorized to access the referenced 
+      function.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.access_controller-pysrc.html#AccessController.is_authorized_for_function">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.access_controller.AccessController-class.html#is_authorized_for_data" class="summary-sig-name">is_authorized_for_data</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">key</span>)</span><br />
+      Checks if an account is authorized to access the data, referenced by 
+      a key as a string.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.access_controller-pysrc.html#AccessController.is_authorized_for_data">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.access_controller.AccessController-class.html#is_authorized_for_file" class="summary-sig-name">is_authorized_for_file</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">filepath</span>)</span><br />
+      Checks if an account is authorized to access the referenced file.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.access_controller-pysrc.html#AccessController.is_authorized_for_file">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.access_controller.AccessController-class.html#is_authorized_for_service" class="summary-sig-name">is_authorized_for_service</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">service_name</span>)</span><br />
+      Checks if an account is authorized to access the referenced service.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.access_controller-pysrc.html#AccessController.is_authorized_for_service">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.access_controller.AccessController-class.html#assert_authorized_for_url" class="summary-sig-name">assert_authorized_for_url</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">url</span>)</span><br />
+      Checks if an account is authorized to access the referenced URL.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.access_controller-pysrc.html#AccessController.assert_authorized_for_url">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.access_controller.AccessController-class.html#assert_authorized_for_function" class="summary-sig-name">assert_authorized_for_function</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">function_name</span>)</span><br />
+      Checks if an account is authorized to access the referenced function.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.access_controller-pysrc.html#AccessController.assert_authorized_for_function">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.access_controller.AccessController-class.html#assert_authorized_for_data" class="summary-sig-name">assert_authorized_for_data</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">key</span>)</span><br />
+      Checks if the current user is authorized to access the referenced 
+      data.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.access_controller-pysrc.html#AccessController.assert_authorized_for_data">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.access_controller.AccessController-class.html#assert_authorized_for_file" class="summary-sig-name">assert_authorized_for_file</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">filepath</span>)</span><br />
+      Checks if an account is authorized to access the referenced file.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.access_controller-pysrc.html#AccessController.assert_authorized_for_file">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.access_controller.AccessController-class.html#assert_authorized_for_service" class="summary-sig-name">assert_authorized_for_service</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">service_name</span>)</span><br />
+      Checks if an account is authorized to access the referenced service.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.access_controller-pysrc.html#AccessController.assert_authorized_for_service">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="is_authorized_for_url"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">is_authorized_for_url</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">url</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.access_controller-pysrc.html#AccessController.is_authorized_for_url">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Checks if the account is authorized to access the referenced URL. 
+  Generally, this method should be invoked in the application's controller 
+  or a filter as follows:</p>
+  <p>ESAPI.access_controller().is_authorized_for_url(request.url)</p>
+  <p>The implementation of this method should call 
+  assert_authorized_for_url(url), and if an AccessControlException is not 
+  raised, this method should return true. This way, if the user is not 
+  authorized, false would be returned, and the exception would be 
+  logged.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>url</code></strong> - the url that the user should be checked for</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>true, if the user is authorized for the url</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="is_authorized_for_function"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">is_authorized_for_function</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">function_name</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.access_controller-pysrc.html#AccessController.is_authorized_for_function">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Checks if the account is authorized to access the referenced 
+  function.</p>
+  <p>The implementation of this method should call 
+  assert_authorized_for_function(function_name), and if an 
+  AccessControlException is not thrown, this method should return true.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>function_name</code></strong> - the name of the function</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>true, if the user is authorized for the function</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="is_authorized_for_data"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">is_authorized_for_data</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">key</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.access_controller-pysrc.html#AccessController.is_authorized_for_data">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Checks if an account is authorized to access the data, referenced by a
+  key as a string.</p>
+  <p>The implementation of this method should call 
+  assert_authorized_for_data(key), and if an AccessControlException is not 
+  thrown, this method should return true.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>key</code></strong> - a string key identifying the referenced data</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>true, if the user is authorized for the data</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="is_authorized_for_file"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">is_authorized_for_file</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">filepath</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.access_controller-pysrc.html#AccessController.is_authorized_for_file">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Checks if an account is authorized to access the referenced file.</p>
+  <p>The implementation of this method should call 
+  assert_authorized_for_file(filepath), and if an AccessControlException is
+  not raised, this method should return true.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>filepath</code></strong> - the path of the file to be checked, including filename</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>true, if the user is authorized for the file</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="is_authorized_for_service"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">is_authorized_for_service</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">service_name</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.access_controller-pysrc.html#AccessController.is_authorized_for_service">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Checks if an account is authorized to access the referenced service. 
+  This can be used in applications that provide access to a variety of back
+  end services.</p>
+  <p>The implementations of this method should call 
+  assert_authorized_for_service(service_name), and if an 
+  AccessControlException is not thrown, this method should return true.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>service_name</code></strong> - the name of the service</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>true, if the user is authorized for the service</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="assert_authorized_for_url"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">assert_authorized_for_url</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">url</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.access_controller-pysrc.html#AccessController.assert_authorized_for_url">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Checks if an account is authorized to access the referenced URL.</p>
+  <p>Generally, this method should be invoked in the application's 
+  controller or in a filter as follows:</p>
+  <p>ESAPI.access_controller().assert_authorized_for_url(request.url)</p>
+  <p>This method raises an AccessControlException if access is not 
+  authorized, or if the referenced URL does not exist. If the user is 
+  authorized, this method simply returns.</p>
+  <p>The implementation should do the following:</p>
+  <ul>
+    <li>
+      Check to see if the resource exists and if not, raise an 
+      AccessControlException
+    </li>
+    <li>
+      Use available information to make an access control decision
+      <ul>
+        <li>
+          Ideally, this policy would be data driven
+        </li>
+        <li>
+          You can use the current user, roles, data type, data name, time 
+          of day, etc.
+        </li>
+        <li>
+          Access control decisions must default to deny
+        </li>
+      </ul>
+    </li>
+    <li>
+      If access is not permitted, raise an AccessControlException with 
+      details.
+    </li>
+  </ul>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>url</code></strong> - the full url that the user is trying to access</li>
+    </ul></dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.AccessControlException-class.html">AccessControlException</a></strong></code> - if access is not permitted.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="assert_authorized_for_function"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">assert_authorized_for_function</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">function_name</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.access_controller-pysrc.html#AccessController.assert_authorized_for_function">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Checks if an account is authorized to access the referenced function. 
+  The implementation should define the function &quot;namespace&quot; to be
+  enforced. Choosing something simple like the class name of action classes
+  or menu item names will make this implementation easier to use.</p>
+  <p>This method raises an AccessControlException if access is not 
+  authorized, or if the referenced function does not exist. If the user is 
+  authorized, this method simply returns.</p>
+  <p>The implementation should do the following:</p>
+  <ul>
+    <li>
+      Check to see if the function exists and if not, raise an 
+      AccessControlException
+    </li>
+    <li>
+      Use available information to make an access control decision
+      <ul>
+        <li>
+          Ideally, this policy would be data driven
+        </li>
+        <li>
+          You can use the current user, roles, data type, data name, time 
+          of day, etc.
+        </li>
+        <li>
+          Access control decisions must default to deny
+        </li>
+      </ul>
+    </li>
+    <li>
+      If access is not permitted, raise an AccessControlException with 
+      details.
+    </li>
+  </ul>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>function_name</code></strong> - the name of the function</li>
+    </ul></dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.AccessControlException-class.html">AccessControlException</a></strong></code> - if access is not permitted.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="assert_authorized_for_data"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">assert_authorized_for_data</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">key</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.access_controller-pysrc.html#AccessController.assert_authorized_for_data">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Checks if the current user is authorized to access the referenced 
+  data. This method simply returns if access is authorized. It raises an 
+  AccessControlException if access is not authorized, or if the referenced 
+  data does not exist.</p>
+  <p>The implementation should do the following:</p>
+  <ul>
+    <li>
+      Check to see if the data exists and if not, raise an 
+      AccessControlException
+    </li>
+    <li>
+      Use available information to make an access control decision
+      <ul>
+        <li>
+          Ideally, this policy would be data driven
+        </li>
+        <li>
+          You can use the current user, roles, data type, data name, time 
+          of day, etc.
+        </li>
+        <li>
+          Access control decisions must default to deny
+        </li>
+      </ul>
+    </li>
+    <li>
+      If access is not permitted, raise an AccessControlException with 
+      details.
+    </li>
+  </ul>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>key</code></strong> - the name for the data</li>
+    </ul></dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.AccessControlException-class.html">AccessControlException</a></strong></code> - if access is not permitted.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="assert_authorized_for_file"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">assert_authorized_for_file</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">filepath</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.access_controller-pysrc.html#AccessController.assert_authorized_for_file">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Checks if an account is authorized to access the referenced file. The 
+  implementation should validate and canonicalize thte input to make sure 
+  the filepath is not malicious.</p>
+  <p>This method raises an AccessControlException if access is not 
+  authorized, or if the referenced file does not exist. If the user is 
+  authorized, this method simply returns.</p>
+  <p>The implementation should do the following:</p>
+  <ul>
+    <li>
+      Check to see if the file exists and if not, raise an 
+      AccessControlException
+    </li>
+    <li>
+      Use available information to make an access control decision
+      <ul>
+        <li>
+          Ideally, this policy would be data driven
+        </li>
+        <li>
+          You can use the current user, roles, data type, data name, time 
+          of day, etc.
+        </li>
+        <li>
+          Access control decisions must default to deny
+        </li>
+      </ul>
+    </li>
+    <li>
+      If access is not permitted, raise an AccessControlException with 
+      details.
+    </li>
+  </ul>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>filepath</code></strong> - path to the file to be checked.</li>
+    </ul></dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.AccessControlException-class.html">AccessControlException</a></strong></code> - if access is not permitted.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="assert_authorized_for_service"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">assert_authorized_for_service</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">service_name</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.access_controller-pysrc.html#AccessController.assert_authorized_for_service">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Checks if an account is authorized to access the referenced service. 
+  This can be used in applications that provide access to a variety of 
+  backend services.</p>
+  <p>This method raises an AccessControlException if access is not 
+  authorized, or if the referenced service does not exist. If the user is 
+  authorized, this method simply returns.</p>
+  <p>The implementation should do the following:</p>
+  <ul>
+    <li>
+      Check to see if the service exists and if not, raise an 
+      AccessControlException
+    </li>
+    <li>
+      Use available information to make an access control decision
+      <ul>
+        <li>
+          Ideally, this policy would be data driven
+        </li>
+        <li>
+          You can use the current user, roles, data type, data name, time 
+          of day, etc.
+        </li>
+        <li>
+          Access control decisions must default to deny
+        </li>
+      </ul>
+    </li>
+    <li>
+      If access is not permitted, raise an AccessControlException with 
+      details.
+    </li>
+  </ul>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>service_name</code></strong> - the service name</li>
+    </ul></dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="esapi.exceptions.AccessControlException-class.html">AccessControlException</a></strong></code> - if access is not permitted.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="esapi-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Sun Nov  8 16:04:21 2009
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

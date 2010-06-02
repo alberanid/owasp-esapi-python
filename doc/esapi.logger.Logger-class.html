@@ -1,0 +1,980 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>esapi.logger.Logger</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="esapi-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="esapi-module.html">Package&nbsp;esapi</a> ::
+        <a href="esapi.logger-module.html">Module&nbsp;logger</a> ::
+        Class&nbsp;Logger
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="esapi.logger.Logger-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class Logger</h1><p class="nomargin-top"><span class="codelink"><a href="esapi.logger-pysrc.html#Logger">source&nbsp;code</a></span></p>
+<dl><dt>Known Subclasses:</dt>
+<dd>
+      <ul class="subclass-list">
+<li><a href="esapi.reference.python_log_factory.PythonLogFactory.PythonLogger-class.html">reference.python_log_factory.PythonLogFactory.PythonLogger</a></li>  </ul>
+</dd></dl>
+
+<hr />
+<p>The Logger interface defines a set of methods that can be used to log 
+  security events. It supports a hierarchy of logging levels which can be 
+  configured at runtime to determine the severity of events that are 
+  logged, and those below the current threshold that are discarded. 
+  Implementors should use a well established logging library as it is quite
+  difficult to create a high-performance logger.</p>
+  <p>The logging levels defined by this interface (in descending order) 
+  are:</p>
+  <ul>
+    <li>
+      fatal (highest value)
+    </li>
+    <li>
+      error
+    </li>
+    <li>
+      warning
+    </li>
+    <li>
+      info
+    </li>
+    <li>
+      debug
+    </li>
+    <li>
+      trace (lowest value)
+    </li>
+  </ul>
+  <p>ESAPI also allows for the definition of the type of log event that is 
+  being generated. The Logger interface predefines 4 types of Log events: 
+  SECURITY_SUCCESS, SECURITY_FAILURE, EVENT_SUCCESS, EVENT_FAILURE. Your 
+  implementation can extend or change this list if desired.</p>
+  <p>This Logger allows callers to determine which logging levels are 
+  enabled, and to submit events at different severity levels. Implementors 
+  of this interface should:</p>
+  <ul>
+    <li>
+      provide a mechanism for setting the logging level threshold that is 
+      currently enabled. This usually works by logging all events at and 
+      above that severity level, and discarding all events below that 
+      level. This is usually done via configuration, but can also be made 
+      accessible programmatically.
+    </li>
+    <li>
+      ensure that dangerous HTML characters are encoded before they are 
+      logged to defend against malicious injection into logs that might be 
+      viewed in an HTML based log viewer.
+    </li>
+    <li>
+      encode any CRLF characters included in log data in order to prevent 
+      log injection attacks.
+    </li>
+    <li>
+      avoid logging the user's session ID. Rather, they should log 
+      something equivalent like a generated logging session ID, or a hashed
+      value of the session ID so they can track session specific events 
+      without risking the exposure of a live session's ID.
+    </li>
+    <li>
+      record the following information with each event:
+      <ul>
+        <li>
+          identity of the user that caused the event,
+        </li>
+        <li>
+          a description of the event (supplied by the caller),
+        </li>
+        <li>
+          whether the event succeeded or failed (indicated by the caller),
+        </li>
+        <li>
+          severity level of the event (indicated by the caller),
+        </li>
+        <li>
+          that this is a security relevant event (indicated by the caller),
+        </li>
+        <li>
+          hostname or IP where the event occurred (and ideally the user's 
+          source IP as well),
+        </li>
+        <li>
+          a time stamp
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <p>Custom logger implementations might also:</p>
+  <ul>
+    <li>
+      filter out any sensitive data specific to the current application or
+    </li>
+  </ul>
+  <p>organization, such as credit cards, social security numbers, etc.</p>
+  <p>In the default implementation, this interface is implemented by 
+  PythonLogger, which is an inner class in PythonLogFactory.java. 
+  PythonLogger uses the logging package as the basis for its logging 
+  implementation. This default implementation implements requirements #1 
+  thru #5 above. Customization: It is expected that most organizations will
+  implement their own custom Logger class in order to integrate ESAPI 
+  logging with their logging infrastructure. The ESAPI Reference 
+  Implementation is intended to provide a simple functional example of an 
+  implementation.</p>
+
+<!-- ==================== NESTED CLASSES ==================== -->
+<a name="section-NestedClasses"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Nested Classes</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-NestedClasses"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="esapi.logger.Logger.EventType-class.html" class="summary-name">EventType</a><br />
+      Defines the type of log event that is being generated.
+    </td>
+  </tr>
+</table>
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__init__"></a><span class="summary-sig-name">__init__</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.logger-pysrc.html#Logger.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.logger.Logger-class.html#set_level" class="summary-sig-name">set_level</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">level</span>)</span><br />
+      Dynamically set the logging severity level.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.logger-pysrc.html#Logger.set_level">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.logger.Logger-class.html#fatal" class="summary-sig-name">fatal</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event_type</span>,
+        <span class="summary-sig-arg">message</span>,
+        <span class="summary-sig-arg">exception</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Log a fatal level security event if 'fatal' level logging is enabled 
+      and also record the stack trace associated with the event.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.logger-pysrc.html#Logger.fatal">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.logger.Logger-class.html#is_fatal_enabled" class="summary-sig-name">is_fatal_enabled</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Allows the caller to determine if messages logged at this level will 
+      be discarded, to avoid performing expensive processing.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.logger-pysrc.html#Logger.is_fatal_enabled">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.logger.Logger-class.html#error" class="summary-sig-name">error</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event_type</span>,
+        <span class="summary-sig-arg">message</span>,
+        <span class="summary-sig-arg">exception</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Log an error level security event if 'error' level logging is enabled
+      and also record the stack trace associated with the event.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.logger-pysrc.html#Logger.error">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.logger.Logger-class.html#is_error_enabled" class="summary-sig-name">is_error_enabled</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Allows the caller to determine if messages logged at this level will 
+      be discarded, to avoid performing expensive processing.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.logger-pysrc.html#Logger.is_error_enabled">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.logger.Logger-class.html#warning" class="summary-sig-name">warning</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event_type</span>,
+        <span class="summary-sig-arg">message</span>,
+        <span class="summary-sig-arg">exception</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Log a warning level security event if 'warning' level logging is 
+      enabled and also record the stack trace associated with the event.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.logger-pysrc.html#Logger.warning">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.logger.Logger-class.html#is_warning_enabled" class="summary-sig-name">is_warning_enabled</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Allows the caller to determine if messages logged at this level will 
+      be discarded, to avoid performing expensive processing.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.logger-pysrc.html#Logger.is_warning_enabled">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.logger.Logger-class.html#info" class="summary-sig-name">info</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event_type</span>,
+        <span class="summary-sig-arg">message</span>,
+        <span class="summary-sig-arg">exception</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Log an info level security event if 'info' level logging is enabled 
+      and also record the stack trace associated with the event.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.logger-pysrc.html#Logger.info">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.logger.Logger-class.html#is_info_enabled" class="summary-sig-name">is_info_enabled</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Allows the caller to determine if messages logged at this level will 
+      be discarded, to avoid performing expensive processing.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.logger-pysrc.html#Logger.is_info_enabled">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.logger.Logger-class.html#debug" class="summary-sig-name">debug</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event_type</span>,
+        <span class="summary-sig-arg">message</span>,
+        <span class="summary-sig-arg">exception</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Log a debug level security event if 'debug' level logging is enabled 
+      and also record the stack trace associated with the event.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.logger-pysrc.html#Logger.debug">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.logger.Logger-class.html#is_debug_enabled" class="summary-sig-name">is_debug_enabled</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Allows the caller to determine if messages logged at this level will 
+      be discarded, to avoid performing expensive processing.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.logger-pysrc.html#Logger.is_debug_enabled">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.logger.Logger-class.html#trace" class="summary-sig-name">trace</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event_type</span>,
+        <span class="summary-sig-arg">message</span>,
+        <span class="summary-sig-arg">exception</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Log a trace level security event if 'trace' level logging is enabled 
+      and also record the stack trace associated with the event.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.logger-pysrc.html#Logger.trace">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="esapi.logger.Logger-class.html#is_trace_enabled" class="summary-sig-name">is_trace_enabled</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Allows the caller to determine if messages logged at this level will 
+      be discarded, to avoid performing expensive processing.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="esapi.logger-pysrc.html#Logger.is_trace_enabled">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="SECURITY_SUCCESS"></a><span class="summary-name">SECURITY_SUCCESS</span> = <code title="EventType(&quot;SECURITY SUCCESS&quot;, True)">EventType(&quot;SECURITY SUCCESS&quot;, True)</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="SECURITY_FAILURE"></a><span class="summary-name">SECURITY_FAILURE</span> = <code title="EventType(&quot;SECURITY FAILURE&quot;, False)">EventType(&quot;SECURITY FAILURE&quot;, False)</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="EVENT_SUCCESS"></a><span class="summary-name">EVENT_SUCCESS</span> = <code title="EventType(&quot;EVENT SUCCESS&quot;, True)">EventType(&quot;EVENT SUCCESS&quot;, True)</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="EVENT_FAILURE"></a><span class="summary-name">EVENT_FAILURE</span> = <code title="EventType(&quot;EVENT FAILURE&quot;, False)">EventType(&quot;EVENT FAILURE&quot;, False)</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="OFF"></a><span class="summary-name">OFF</span> = <code title="2147483647">2147483647</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="FATAL"></a><span class="summary-name">FATAL</span> = <code title="1000">1000</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="ERROR"></a><span class="summary-name">ERROR</span> = <code title="800">800</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="WARNING"></a><span class="summary-name">WARNING</span> = <code title="600">600</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="INFO"></a><span class="summary-name">INFO</span> = <code title="400">400</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="DEBUG"></a><span class="summary-name">DEBUG</span> = <code title="200">200</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="TRACE"></a><span class="summary-name">TRACE</span> = <code title="100">100</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="ALL"></a><span class="summary-name">ALL</span> = <code title="-2147483648">-2147483648</code>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="set_level"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">set_level</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">level</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.logger-pysrc.html#Logger.set_level">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Dynamically set the logging severity level. All events of this level 
+  and higher will be logged from this point forward for all logs. All 
+  events below this level will be discarded.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>level</code></strong> - The level to set the logging level to.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="fatal"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">fatal</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">event_type</span>,
+        <span class="sig-arg">message</span>,
+        <span class="sig-arg">exception</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.logger-pysrc.html#Logger.fatal">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Log a fatal level security event if 'fatal' level logging is enabled 
+  and also record the stack trace associated with the event.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>event_type</code></strong> - the type of event</li>
+        <li><strong class="pname"><code>message</code></strong> - the message to log</li>
+        <li><strong class="pname"><code>exception</code></strong> - the exception to be logged</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="is_fatal_enabled"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">is_fatal_enabled</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.logger-pysrc.html#Logger.is_fatal_enabled">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Allows the caller to determine if messages logged at this level will 
+  be discarded, to avoid performing expensive processing.</p>
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd>True if fatal level messages will be output to the log</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="error"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">error</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">event_type</span>,
+        <span class="sig-arg">message</span>,
+        <span class="sig-arg">exception</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.logger-pysrc.html#Logger.error">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Log an error level security event if 'error' level logging is enabled 
+  and also record the stack trace associated with the event.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>event_type</code></strong> - the type of event</li>
+        <li><strong class="pname"><code>message</code></strong> - the message to log</li>
+        <li><strong class="pname"><code>exception</code></strong> - the exception to be logged</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="is_error_enabled"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">is_error_enabled</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.logger-pysrc.html#Logger.is_error_enabled">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Allows the caller to determine if messages logged at this level will 
+  be discarded, to avoid performing expensive processing.</p>
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd>True if error level messages will be output to the log</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="warning"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">warning</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">event_type</span>,
+        <span class="sig-arg">message</span>,
+        <span class="sig-arg">exception</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.logger-pysrc.html#Logger.warning">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Log a warning level security event if 'warning' level logging is 
+  enabled and also record the stack trace associated with the event.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>event_type</code></strong> - the type of event</li>
+        <li><strong class="pname"><code>message</code></strong> - the message to log</li>
+        <li><strong class="pname"><code>exception</code></strong> - the exception to be logged</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="is_warning_enabled"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">is_warning_enabled</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.logger-pysrc.html#Logger.is_warning_enabled">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Allows the caller to determine if messages logged at this level will 
+  be discarded, to avoid performing expensive processing.</p>
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd>True if warning level messages will be output to the log</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="info"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">info</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">event_type</span>,
+        <span class="sig-arg">message</span>,
+        <span class="sig-arg">exception</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.logger-pysrc.html#Logger.info">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Log an info level security event if 'info' level logging is enabled 
+  and also record the stack trace associated with the event.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>event_type</code></strong> - the type of event</li>
+        <li><strong class="pname"><code>message</code></strong> - the message to log</li>
+        <li><strong class="pname"><code>exception</code></strong> - the exception to be logged</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="is_info_enabled"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">is_info_enabled</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.logger-pysrc.html#Logger.is_info_enabled">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Allows the caller to determine if messages logged at this level will 
+  be discarded, to avoid performing expensive processing.</p>
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd>True if info level messages will be output to the log</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="debug"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">debug</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">event_type</span>,
+        <span class="sig-arg">message</span>,
+        <span class="sig-arg">exception</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.logger-pysrc.html#Logger.debug">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Log a debug level security event if 'debug' level logging is enabled 
+  and also record the stack trace associated with the event.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>event_type</code></strong> - the type of event</li>
+        <li><strong class="pname"><code>message</code></strong> - the message to log</li>
+        <li><strong class="pname"><code>exception</code></strong> - the exception to be logged</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="is_debug_enabled"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">is_debug_enabled</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.logger-pysrc.html#Logger.is_debug_enabled">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Allows the caller to determine if messages logged at this level will 
+  be discarded, to avoid performing expensive processing.</p>
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd>True if debug level messages will be output to the log</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="trace"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">trace</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">event_type</span>,
+        <span class="sig-arg">message</span>,
+        <span class="sig-arg">exception</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.logger-pysrc.html#Logger.trace">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Log a trace level security event if 'trace' level logging is enabled 
+  and also record the stack trace associated with the event.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>event_type</code></strong> - the type of event</li>
+        <li><strong class="pname"><code>message</code></strong> - the message to log</li>
+        <li><strong class="pname"><code>exception</code></strong> - the exception to be logged</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="is_trace_enabled"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">is_trace_enabled</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="esapi.logger-pysrc.html#Logger.is_trace_enabled">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Allows the caller to determine if messages logged at this level will 
+  be discarded, to avoid performing expensive processing.</p>
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd>True if the trace level messages will be output to the log</dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="esapi-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Sun Nov  8 16:04:21 2009
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+So you think you've finished a module?
+
+Look through the module to ensure it is complete
+Check that the documentation is good and sufficient.
+Are all the strings that could be translated in _("")?
+Ensure the test cases are written and test most of the functionality
+Make sure any regex uses the re.UNICODE flag
+Run module throught PyLint for checking
+Verify nose runs all tests successfully
+Ensure coverage is adequate

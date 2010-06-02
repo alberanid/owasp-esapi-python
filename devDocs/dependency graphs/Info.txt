@@ -1,0 +1,8 @@
+python py2depgraph.py path/to/my/script.py | python depgraph2dot.py | dot -T png -o depgraph.png
+
+
+http://www.tarind.com/depgraph.html
+
+-----------
+
+python graph_directory.py /path/to/owasp-esapi-python/esapi/

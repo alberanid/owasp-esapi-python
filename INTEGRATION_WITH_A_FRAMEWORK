@@ -1,0 +1,5 @@
+ESAPI on Python will integrate with pretty much any web framework you choose. 
+
+When integrating with a framework, the biggest thing you must do is write wrapper classes for Requests, Responses, and Sessions. Because these classes are non-standard across the many web frameworks and stacks for Python, ESAPI was written to be independent of them. These classes were examined in a few of the major frameworks, and an interface was written specifying what ESAPI expects from each of these objects. The expected interfaces for these three classes are detailed in esapi\ihttp.py. If you want to integrate ESAPI with your framework, you must write a small wrapper that proxies the calls ESAPI will make to the necessary ones for your framework such that ESAPI gets the information it expects from the wrapped object. You then pass ESAPI the wrapped object wherever it is needed. 
+
+That should be the only thing needed to integrate with a framework and start using ESAPI! If you write a wrapper for a public framework or stack, please email it to me (craig.younkins@owasp.org) or the ESAPI on Python mailing list. Thanks!
