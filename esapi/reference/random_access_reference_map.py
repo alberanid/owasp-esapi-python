@@ -99,3 +99,9 @@ class RandomAccessReferenceMap(AccessReferenceMap):
             
             self.itod[indirect] = direct
             self.dtoi[direct] = indirect
+            
+    def indirects(self):
+        for indirect in self.itod.keys():
+            yield indirect
+            
+            
