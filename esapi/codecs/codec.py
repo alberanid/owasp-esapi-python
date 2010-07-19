@@ -64,11 +64,8 @@ class Codec():
                 the String to encode
         @return: the encoded String
         """    
-        ret = ''
         try:
-            for char in raw:
-                ret += self.encode_character(immune, char)
-            return ret
+            return ''.join([self.encode_character(immune, char) for char in raw])
         except TypeError:
             return None
         
