@@ -39,9 +39,11 @@ class HTMLEntityCodec(codec.Codec):
         # Check for immune
         if char in immune:
             return char
+        
+        ord_char = ord(char)
             
         # Only look at 8-bit 
-        if not codec.is_8bit(char):
+        if not codec.is_8bit(ord_char):
             return char
         
         # Pass alphanumerics
@@ -49,19 +51,19 @@ class HTMLEntityCodec(codec.Codec):
             return char
             
         # Check for illegal characters
-        if (codec.is_control_char(char) and 
+        if (codec.is_control_char(ord_char) and 
                    char != "\t" and
                    char != "\n" and
                    char != "\r"):
             return " "
           
         # Check if there's a defined entity
-        entity_name = self.entity_values_to_names.get(ord(char), None)
+        entity_name = self.entity_values_to_names.get(ord_char, None)
         if entity_name is not None:
             return "&" + entity_name + ";"
             
         # Return the hex entity as suggested in the spec
-        hex_str = codec.get_hex_for_char(char).lower()
+        hex_str = codec.get_hex_for_char(ord_char).lower()
         return "&#x" + hex_str + ";"
     
     def decode_character(self, pbs):

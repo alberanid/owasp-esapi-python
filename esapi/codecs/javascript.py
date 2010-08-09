@@ -38,9 +38,11 @@ class JavascriptCodec(codec.Codec):
         # Check for immunes
         if char in immune:
             return char
+        
+        ord_char = ord(char)
             
         # Only look at 8-bit 
-        if not codec.is_8bit(char):
+        if not codec.is_8bit(ord_char):
             return char
         
         # Pass alphanumerics
@@ -48,7 +50,7 @@ class JavascriptCodec(codec.Codec):
             return char
             
         # encode up to 256 with \\xHH
-        temp = codec.get_hex_for_char(char).upper()
+        temp = codec.get_hex_for_char(ord_char).upper()
         if ord(char) < 256:
             padding = '00'[len(temp):]
             return u"\\x" + padding + temp

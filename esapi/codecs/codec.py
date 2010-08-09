@@ -19,24 +19,24 @@
 
 from esapi.codecs.push_back_string import PushbackString
       
-def is_8bit(char):
+def is_8bit(ord_char):
     """
     Returns True if ord(char) < 256, False otherwise
     """
-    return ord(char) < 256
+    return ord_char < 256
         
-def is_control_char(char):
-    if (ord(char) <= 0x1F or        # C0 control codes
-       0x7F <= ord(char) <= 0x9F):  # Del and C1 control codes
+def is_control_char(ord_char):
+    if (ord_char <= 0x1F or        # C0 control codes
+       0x7F <= ord_char <= 0x9F):  # Del and C1 control codes
         return True
     
     return False
         
-def get_hex_for_char(char):
+def get_hex_for_char(ord_char):
     """
     Returns the hex equivalent of the given character in the form 3C
     """
-    return hex(ord(char))[2:]
+    return hex(ord_char)[2:]
 
 class Codec():
     """

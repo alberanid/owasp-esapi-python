@@ -49,9 +49,11 @@ class MySQLCodec(codec.Codec):
         # Check for immunes
         if char in immune:
             return char
+        
+        ord_char = ord(char)
             
         # Only look at 8-bit 
-        if not codec.is_8bit(char):
+        if not codec.is_8bit(ord_char):
             return char
         
         # Pass alphanumerics
@@ -59,7 +61,7 @@ class MySQLCodec(codec.Codec):
             return char
             
         if self.mode == MySQLCodec.MYSQL_MODE:
-            return self.encode_character_mysql(char)
+            return self.encode_character_mysql(char, ord_char)
         elif self.mode == MySQLCodec.ANSI_MODE:
             return self.encode_character_ansi(char)
         else:
@@ -78,7 +80,7 @@ class MySQLCodec(codec.Codec):
             
         return char
         
-    def encode_character_mysql(self, char):
+    def encode_character_mysql(self, char, ord_char):
         """
         Encodes a character for MySQL.
         """
@@ -96,8 +98,8 @@ class MySQLCodec(codec.Codec):
         0x5f : "\\_",
         }
         
-        if lookup.has_key(ord(char)):
-            return lookup[ord(char)]
+        if lookup.has_key(ord_char):
+            return lookup[ord_char]
             
         return "\\" + char
     

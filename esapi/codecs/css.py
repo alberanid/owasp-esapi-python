@@ -36,9 +36,11 @@ class CSSCodec(codec.Codec):
         # Check for immunes
         if char in immune:
             return char
+        
+        ord_char = ord(char)
             
         # Only look at 8-bit 
-        if not codec.is_8bit(char):
+        if not codec.is_8bit(ord_char):
             return char
         
         # Pass alphanumerics
@@ -46,7 +48,7 @@ class CSSCodec(codec.Codec):
             return char
             
         # Return the hex and end in whitespace to terminate
-        hex_str = codec.get_hex_for_char(char)
+        hex_str = codec.get_hex_for_char(ord_char)
         return "\\" + hex_str + " "
     
     def decode_character(self, pbs):

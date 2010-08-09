@@ -42,16 +42,18 @@ class PercentCodec(codec.Codec):
         if char == ' ':
             return '+'
         
+        ord_char = ord(char)
+        
         # Only look at 8-bit 
-        if not codec.is_8bit(char):
+        if not codec.is_8bit(ord_char):
             return char
         
         # Pass alphanumerics
         if char.isalnum():  
             return char
             
-        hex_str = codec.get_hex_for_char(char).upper()
-        if ord(char) < 0x10:
+        hex_str = codec.get_hex_for_char(ord_char).upper()
+        if ord_char < 0x10:
             hex_str = '0' + hex_str
             
         return '%' + hex_str

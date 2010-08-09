@@ -36,7 +36,7 @@ class LDAPDNCodec(Codec):
         Encode a String so that it can be safely used in an LDAP distinguished
         name.
         """    
-        ret = ''
+        ret = []
         try:
             # Add the leading backslash if needed
             if  len(raw) > 0 and (raw[0] == ' ' or raw[0] == '#'):
@@ -44,15 +44,15 @@ class LDAPDNCodec(Codec):
                 
             try:
                 for char in raw:
-                    ret += self.encode_character(immune, char)
+                    ret.append(self.encode_character(immune, char))
             except TypeError:
                 return None
                 
             # Add the trailing backslash if needed
             if len(raw) > 1 and raw[-1] == ' ':
-                ret = ret[:-1] + "\\" + ret[-1]
+                ret.insert(-1, "\\")
                 
-            return ret
+            return ''.join(ret)
         except TypeError:
             return None
     

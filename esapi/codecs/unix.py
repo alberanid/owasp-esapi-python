@@ -39,8 +39,10 @@ class UnixCodec(codec.Codec):
         if char in immune:
             return char
             
+        ord_char = ord(char)
+            
         # Only look at 8-bit 
-        if not codec.is_8bit(char):
+        if not codec.is_8bit(ord_char):
             return char
         
         # Pass alphanumerics
