@@ -487,7 +487,7 @@ class EncoderTest(unittest.TestCase):
         self.assertEquals("Helloï¿½", instance.encode_for_dn("Helloï¿½"), "No special characters to escape")
         self.assertEquals("\\# Helloï¿½", instance.encode_for_dn("# Helloï¿½"), "leading #")
         self.assertEquals("\\ Helloï¿½", instance.encode_for_dn(" Helloï¿½"), "leading space")
-        self.assertEquals("Helloï¿½\\ ", instance.encode_for_dn("Helloï¿½ "))
+        self.assertEquals("Helloï¿½\\ ", instance.encode_for_dn("Helloï¿½ "), "trailing space")
         self.assertEquals("Hello\\<\\>", instance.encode_for_dn("Hello<>"), "less than greater than")
         self.assertEquals("\\  \\ ", instance.encode_for_dn("   "), "only 3 spaces")
         self.assertEquals("\\ Hello\\\\ \\+ \\, \\\"World\\\" \\;\\ ", instance.encode_for_dn(" Hello\\ + , \"World\" ; "), "Christmas Tree DN")
